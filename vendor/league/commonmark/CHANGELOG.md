@@ -4,7 +4,6 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) princi
 
 ## [Unreleased][unreleased]
 
-<<<<<<< HEAD
 ## [1.6.7] - 2022-01-13
 
 ### Changed
@@ -101,8 +100,6 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) princi
 
  - Fixed mentions not being parsed when appearing after non-word characters (#582)
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ## [1.5.6] - 2020-10-17
 
 ### Changed
@@ -491,7 +488,6 @@ No changes were made since 1.0.0-rc1.
    - Removed `DelimiterStack::iterateByCharacters()` (use the new `processDelimiters()` method instead)
    - Removed the protected `DelimiterStack::findMatchingOpener()` method
 
-<<<<<<< HEAD
 [unreleased]: https://github.com/thephpleague/commonmark/compare/1.6.7...1.6
 [1.6.7]: https://github.com/thephpleague/commonmark/compare/1.6.6...1.6.7
 [1.6.6]: https://github.com/thephpleague/commonmark/compare/1.6.5...1.6.6
@@ -503,9 +499,6 @@ No changes were made since 1.0.0-rc1.
 [1.6.0]: https://github.com/thephpleague/commonmark/compare/1.5.8...1.6.0
 [1.5.8]: https://github.com/thephpleague/commonmark/compare/1.5.7...1.5.8
 [1.5.7]: https://github.com/thephpleague/commonmark/compare/1.5.6...1.5.7
-=======
-[unreleased]: https://github.com/thephpleague/commonmark/compare/1.5.6...1.5
->>>>>>> parent of 31cfa1b1 (p)
 [1.5.6]: https://github.com/thephpleague/commonmark/compare/1.5.5...1.5.6
 [1.5.5]: https://github.com/thephpleague/commonmark/compare/1.5.4...1.5.5
 [1.5.4]: https://github.com/thephpleague/commonmark/compare/1.5.3...1.5.4

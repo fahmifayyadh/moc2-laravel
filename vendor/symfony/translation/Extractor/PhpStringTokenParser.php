@@ -133,11 +133,7 @@ class PhpStringTokenParser
         $str = preg_replace('~(\r\n|\n|\r)$~', '', $str);
 
         // nowdoc string
-<<<<<<< HEAD
         if (str_contains($startToken, '\'')) {
-=======
-        if (false !== strpos($startToken, '\'')) {
->>>>>>> parent of 31cfa1b1 (p)
             return $str;
         }
 

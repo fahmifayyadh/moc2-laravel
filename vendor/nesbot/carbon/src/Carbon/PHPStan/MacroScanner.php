@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 /**
  * This file is part of the Carbon package.
  *
@@ -10,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\PHPStan;
 
 use Carbon\CarbonInterface;
@@ -33,11 +30,7 @@ final class MacroScanner
     public function hasMethod(string $className, string $methodName): bool
     {
         return is_a($className, CarbonInterface::class, true) &&
-<<<<<<< HEAD
             \is_callable([$className, 'hasMacro']) &&
-=======
-            is_callable([$className, 'hasMacro']) &&
->>>>>>> parent of 31cfa1b1 (p)
             $className::hasMacro($methodName);
     }
 

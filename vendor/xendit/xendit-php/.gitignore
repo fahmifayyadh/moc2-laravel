@@ -28,11 +28,6 @@ clover.xml
 
 .env
 
-<<<<<<< HEAD
 composer.phar
 composer-setup.php
 bin/
-=======
-composer-setup.php
-bin/
->>>>>>> parent of 31cfa1b1 (p)

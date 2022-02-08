@@ -8,10 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Traits;
 
 use Carbon\Carbon;
@@ -25,10 +22,7 @@ use Closure;
 use DateTimeInterface;
 use DateTimeZone;
 use Exception;
-<<<<<<< HEAD
 use ReturnTypeWillChange;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Trait Creator.
@@ -56,13 +50,8 @@ trait Creator
      * Please see the testing aids section (specifically static::setTestNow())
      * for more on the possibility of this constructor returning a test instance.
      *
-<<<<<<< HEAD
      * @param DateTimeInterface|string|null $time
      * @param DateTimeZone|string|null      $tz
-=======
-     * @param string|null              $time
-     * @param DateTimeZone|string|null $tz
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws InvalidFormatException
      */
@@ -72,11 +61,7 @@ trait Creator
             $time = $this->constructTimezoneFromDateTime($time, $tz)->format('Y-m-d H:i:s.u');
         }
 
-<<<<<<< HEAD
         if (is_numeric($time) && (!\is_string($time) || !preg_match('/^\d{1,14}$/', $time))) {
-=======
-        if (is_numeric($time) && (!is_string($time) || !preg_match('/^\d{1,14}$/', $time))) {
->>>>>>> parent of 31cfa1b1 (p)
             $time = static::createFromTimestampUTC($time)->format('Y-m-d\TH:i:s.uP');
         }
 
@@ -93,11 +78,7 @@ trait Creator
         }
 
         // Work-around for PHP bug https://bugs.php.net/bug.php?id=67127
-<<<<<<< HEAD
         if (!str_contains((string) .1, '.')) {
-=======
-        if (strpos((string) .1, '.') === false) {
->>>>>>> parent of 31cfa1b1 (p)
             $locale = setlocale(LC_NUMERIC, '0');
             setlocale(LC_NUMERIC, 'C');
         }
@@ -114,11 +95,7 @@ trait Creator
             setlocale(LC_NUMERIC, $locale);
         }
 
-<<<<<<< HEAD
         self::setLastErrors(parent::getLastErrors());
-=======
-        static::setLastErrors(parent::getLastErrors());
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -239,19 +216,11 @@ trait Creator
             return static::rawParse($time, $tz);
         }
 
-<<<<<<< HEAD
         if (\is_string($function) && method_exists(static::class, $function)) {
             $function = [static::class, $function];
         }
 
         return $function(...\func_get_args());
-=======
-        if (is_string($function) && method_exists(static::class, $function)) {
-            $function = [static::class, $function];
-        }
-
-        return $function(...func_get_args());
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -370,11 +339,7 @@ trait Creator
             return $now(static::now($tz));
         }
 
-<<<<<<< HEAD
         return $now->avoidMutation()->tz($tz);
-=======
-        return $now;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -403,13 +368,8 @@ trait Creator
      */
     public static function create($year = 0, $month = 1, $day = 1, $hour = 0, $minute = 0, $second = 0, $tz = null)
     {
-<<<<<<< HEAD
         if (\is_string($year) && !is_numeric($year) || $year instanceof DateTimeInterface) {
             return static::parse($year, $tz ?: (\is_string($month) || $month instanceof DateTimeZone ? $month : null));
-=======
-        if (is_string($year) && !is_numeric($year)) {
-            return static::parse($year, $tz ?: (is_string($month) || $month instanceof DateTimeZone ? $month : null));
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $defaults = null;
@@ -430,21 +390,12 @@ trait Creator
             return $defaults[$unit];
         };
 
-<<<<<<< HEAD
         $year = $year ?? $getDefault('year');
         $month = $month ?? $getDefault('month');
         $day = $day ?? $getDefault('day');
         $hour = $hour ?? $getDefault('hour');
         $minute = $minute ?? $getDefault('minute');
         $second = (float) ($second ?? $getDefault('second'));
-=======
-        $year = $year === null ? $getDefault('year') : $year;
-        $month = $month === null ? $getDefault('month') : $month;
-        $day = $day === null ? $getDefault('day') : $day;
-        $hour = $hour === null ? $getDefault('hour') : $hour;
-        $minute = $minute === null ? $getDefault('minute') : $minute;
-        $second = (float) ($second === null ? $getDefault('second') : $second);
->>>>>>> parent of 31cfa1b1 (p)
 
         self::assertBetween('month', $month, 0, 99);
         self::assertBetween('day', $day, 0, 99);
@@ -504,11 +455,7 @@ trait Creator
         $fields = static::getRangesByUnit();
 
         foreach ($fields as $field => $range) {
-<<<<<<< HEAD
             if ($$field !== null && (!\is_int($$field) || $$field < $range[0] || $$field > $range[1])) {
-=======
-            if ($$field !== null && (!is_int($$field) || $$field < $range[0] || $$field > $range[1])) {
->>>>>>> parent of 31cfa1b1 (p)
                 if (static::isStrictModeEnabled()) {
                     throw new InvalidDateException($field, $$field);
                 }
@@ -520,11 +467,7 @@ trait Creator
         $instance = static::create($year, $month, $day, $hour, $minute, $second, $tz);
 
         foreach (array_reverse($fields) as $field => $range) {
-<<<<<<< HEAD
             if ($$field !== null && (!\is_int($$field) || $$field !== $instance->$field)) {
-=======
-            if ($$field !== null && (!is_int($$field) || $$field !== $instance->$field)) {
->>>>>>> parent of 31cfa1b1 (p)
                 if (static::isStrictModeEnabled()) {
                     throw new InvalidDateException($field, $$field);
                 }
@@ -537,7 +480,6 @@ trait Creator
     }
 
     /**
-<<<<<<< HEAD
      * Create a new Carbon instance from a specific date and time using strict validation.
      *
      * @see create()
@@ -569,8 +511,6 @@ trait Creator
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Create a Carbon instance from just a date. The time portion is set to now.
      *
      * @param int|null                 $year
@@ -653,17 +593,10 @@ trait Creator
         // @codeCoverageIgnoreEnd
 
         if ($originalTz === null) {
-<<<<<<< HEAD
             return parent::createFromFormat($format, (string) $time);
         }
 
         $tz = \is_int($originalTz)
-=======
-            return parent::createFromFormat($format, "$time");
-        }
-
-        $tz = is_int($originalTz)
->>>>>>> parent of 31cfa1b1 (p)
             ? @timezone_name_from_abbr('', (int) ($originalTz * static::MINUTES_PER_HOUR * static::SECONDS_PER_MINUTE), 1)
             : $originalTz;
 
@@ -673,11 +606,7 @@ trait Creator
             return false;
         }
 
-<<<<<<< HEAD
         return parent::createFromFormat($format, (string) $time, $tz);
-=======
-        return parent::createFromFormat($format, "$time", $tz);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -761,10 +690,7 @@ trait Creator
      *
      * @return static|false
      */
-<<<<<<< HEAD
     #[ReturnTypeWillChange]
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public static function createFromFormat($format, $time, $tz = null)
     {
         $function = static::$createFromFormatFunction;
@@ -773,19 +699,11 @@ trait Creator
             return static::rawCreateFromFormat($format, $time, $tz);
         }
 
-<<<<<<< HEAD
         if (\is_string($function) && method_exists(static::class, $function)) {
             $function = [static::class, $function];
         }
 
         return $function(...\func_get_args());
-=======
-        if (is_string($function) && method_exists(static::class, $function)) {
-            $function = [static::class, $function];
-        }
-
-        return $function(...func_get_args());
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -986,18 +904,10 @@ trait Creator
 
         $date = null;
 
-<<<<<<< HEAD
         if (\is_string($var)) {
             $var = trim($var);
 
             if (!preg_match('/^P[0-9T]/', $var) &&
-=======
-        if (is_string($var)) {
-            $var = trim($var);
-
-            if (is_string($var) &&
-                !preg_match('/^P[0-9T]/', $var) &&
->>>>>>> parent of 31cfa1b1 (p)
                 !preg_match('/^R[0-9]/', $var) &&
                 preg_match('/[a-z0-9]/i', $var)
             ) {
@@ -1022,14 +932,10 @@ trait Creator
 
     /**
      * {@inheritdoc}
-<<<<<<< HEAD
      *
      * @return array
      */
     #[ReturnTypeWillChange]
-=======
-     */
->>>>>>> parent of 31cfa1b1 (p)
     public static function getLastErrors()
     {
         return static::$lastErrors;

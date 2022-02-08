@@ -12,16 +12,12 @@
 namespace Monolog\Processor;
 
 use Monolog\Logger;
-<<<<<<< HEAD
 use Psr\Log\LogLevel;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Injects Hg branch and Hg revision number in all records
  *
  * @author Jonathan A. Schweder <jonathanschweder@gmail.com>
-<<<<<<< HEAD
  *
  * @phpstan-import-type LevelName from \Monolog\Logger
  * @phpstan-import-type Level from \Monolog\Logger
@@ -37,28 +33,15 @@ class MercurialProcessor implements ProcessorInterface
      * @param int|string $level The minimum logging level at which this Processor will be triggered
      *
      * @phpstan-param Level|LevelName|LogLevel::* $level
-=======
- */
-class MercurialProcessor implements ProcessorInterface
-{
-    private $level;
-    private static $cache;
-
-    /**
-     * @param string|int $level The minimum logging level at which this Processor will be triggered
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct($level = Logger::DEBUG)
     {
         $this->level = Logger::toMonologLevel($level);
     }
 
-<<<<<<< HEAD
     /**
      * {@inheritDoc}
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function __invoke(array $record): array
     {
         // return if the level is not high enough
@@ -71,12 +54,9 @@ class MercurialProcessor implements ProcessorInterface
         return $record;
     }
 
-<<<<<<< HEAD
     /**
      * @return array{branch: string, revision: string}|array<never>
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     private static function getMercurialInfo(): array
     {
         if (self::$cache) {

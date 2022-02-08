@@ -1,26 +1,15 @@
 <?php
 
-<<<<<<< HEAD
 declare(strict_types=1);
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
 
-<<<<<<< HEAD
 /**
  * Decorator used to return only a subset of a stream.
  */
 final class LimitStream implements StreamInterface
-=======
-
-/**
- * Decorator used to return only a subset of a stream
- */
-class LimitStream implements StreamInterface
->>>>>>> parent of 31cfa1b1 (p)
 {
     use StreamDecoratorTrait;
 
@@ -39,24 +28,15 @@ class LimitStream implements StreamInterface
      */
     public function __construct(
         StreamInterface $stream,
-<<<<<<< HEAD
         int $limit = -1,
         int $offset = 0
-=======
-        $limit = -1,
-        $offset = 0
->>>>>>> parent of 31cfa1b1 (p)
     ) {
         $this->stream = $stream;
         $this->setLimit($limit);
         $this->setOffset($offset);
     }
 
-<<<<<<< HEAD
     public function eof(): bool
-=======
-    public function eof()
->>>>>>> parent of 31cfa1b1 (p)
     {
         // Always return true if the underlying stream is EOF
         if ($this->stream->eof()) {
@@ -64,11 +44,7 @@ class LimitStream implements StreamInterface
         }
 
         // No limit and the underlying stream is not at EOF
-<<<<<<< HEAD
         if ($this->limit === -1) {
-=======
-        if ($this->limit == -1) {
->>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
@@ -77,22 +53,12 @@ class LimitStream implements StreamInterface
 
     /**
      * Returns the size of the limited subset of data
-<<<<<<< HEAD
      */
     public function getSize(): ?int
     {
         if (null === ($length = $this->stream->getSize())) {
             return null;
         } elseif ($this->limit === -1) {
-=======
-     * {@inheritdoc}
-     */
-    public function getSize()
-    {
-        if (null === ($length = $this->stream->getSize())) {
-            return null;
-        } elseif ($this->limit == -1) {
->>>>>>> parent of 31cfa1b1 (p)
             return $length - $this->offset;
         } else {
             return min($this->limit, $length - $this->offset);
@@ -101,14 +67,8 @@ class LimitStream implements StreamInterface
 
     /**
      * Allow for a bounded seek on the read limited stream
-<<<<<<< HEAD
      */
     public function seek($offset, $whence = SEEK_SET): void
-=======
-     * {@inheritdoc}
-     */
-    public function seek($offset, $whence = SEEK_SET)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($whence !== SEEK_SET || $offset < 0) {
             throw new \RuntimeException(sprintf(
@@ -131,14 +91,8 @@ class LimitStream implements StreamInterface
 
     /**
      * Give a relative tell()
-<<<<<<< HEAD
      */
     public function tell(): int
-=======
-     * {@inheritdoc}
-     */
-    public function tell()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->stream->tell() - $this->offset;
     }
@@ -150,11 +104,7 @@ class LimitStream implements StreamInterface
      *
      * @throws \RuntimeException if the stream cannot be seeked.
      */
-<<<<<<< HEAD
     public function setOffset(int $offset): void
-=======
-    public function setOffset($offset)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $current = $this->stream->tell();
 
@@ -179,24 +129,14 @@ class LimitStream implements StreamInterface
      * @param int $limit Number of bytes to allow to be read from the stream.
      *                   Use -1 for no limit.
      */
-<<<<<<< HEAD
     public function setLimit(int $limit): void
-=======
-    public function setLimit($limit)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->limit = $limit;
     }
 
-<<<<<<< HEAD
     public function read($length): string
     {
         if ($this->limit === -1) {
-=======
-    public function read($length)
-    {
-        if ($this->limit == -1) {
->>>>>>> parent of 31cfa1b1 (p)
             return $this->stream->read($length);
         }
 

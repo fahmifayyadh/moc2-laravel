@@ -74,17 +74,10 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @param string $keyword
      */
-<<<<<<< HEAD
     public function __construct(string $keyword)
     {
         if (!self::isLanguageConstruct($keyword)) {
             throw new \InvalidArgumentException('Unknown language construct: '.$keyword);
-=======
-    public function __construct($keyword)
-    {
-        if (!self::isLanguageConstruct($keyword)) {
-            throw new \InvalidArgumentException('Unknown language construct: ' . $keyword);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->keyword = $keyword;
@@ -105,11 +98,7 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return string
      */
-<<<<<<< HEAD
     public function getName(): string
-=======
-    public function getName()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->keyword;
     }
@@ -119,11 +108,7 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return bool
      */
-<<<<<<< HEAD
     public function returnsReference(): bool
-=======
-    public function returnsReference()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return false;
     }
@@ -133,19 +118,11 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return array
      */
-<<<<<<< HEAD
     public function getParameters(): array
     {
         $params = [];
         foreach (self::$languageConstructs[$this->keyword] as $parameter => $opts) {
             $params[] = new ReflectionLanguageConstructParameter($this->keyword, $parameter, $opts);
-=======
-    public function getParameters()
-    {
-        $params = [];
-        foreach (self::$languageConstructs[$this->keyword] as $parameter => $opts) {
-            \array_push($params, new ReflectionLanguageConstructParameter($this->keyword, $parameter, $opts));
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $params;
@@ -156,16 +133,11 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * (Hint: it always returns false)
      *
-<<<<<<< HEAD
      * @todo remove \ReturnTypeWillChange attribute after dropping support for PHP 7.x (when we can use union types)
      *
      * @return string|false (false)
      */
     #[\ReturnTypeWillChange]
-=======
-     * @return bool false
-     */
->>>>>>> parent of 31cfa1b1 (p)
     public function getFileName()
     {
         return false;
@@ -176,11 +148,7 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return string
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->getName();
     }
@@ -192,11 +160,7 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return bool
      */
-<<<<<<< HEAD
     public static function isLanguageConstruct(string $keyword): bool
-=======
-    public static function isLanguageConstruct($keyword)
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \array_key_exists($keyword, self::$languageConstructs);
     }

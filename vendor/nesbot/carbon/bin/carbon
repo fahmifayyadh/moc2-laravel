@@ -1,11 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-<<<<<<< HEAD
 use Carbon\Cli\Invoker;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 $dir = __DIR__.'/..';
 
 if (!file_exists($dir.'/autoload.php')) {
@@ -23,8 +20,4 @@ if (!file_exists($dir.'/autoload.php')) {
 
 require $dir.'/autoload.php';
 
-<<<<<<< HEAD
 exit((new Invoker())(...$argv) ? 0 : 1);
-=======
-exit((new \Carbon\Cli\Invoker())(...$argv) ? 0 : 1);
->>>>>>> parent of 31cfa1b1 (p)

@@ -14,11 +14,7 @@ class Inflectible
     /**
      * @return Transformation[]
      */
-<<<<<<< HEAD
     public static function getSingular(): iterable
-=======
-    public static function getSingular() : iterable
->>>>>>> parent of 31cfa1b1 (p)
     {
         yield new Transformation(new Pattern('/l[ae]r$/i'), '');
     }
@@ -26,11 +22,7 @@ class Inflectible
     /**
      * @return Transformation[]
      */
-<<<<<<< HEAD
     public static function getPlural(): iterable
-=======
-    public static function getPlural() : iterable
->>>>>>> parent of 31cfa1b1 (p)
     {
         yield new Transformation(new Pattern('/([eöiü][^aoıueöiü]{0,6})$/u'), '\1ler');
         yield new Transformation(new Pattern('/([aoıu][^aoıueöiü]{0,6})$/u'), '\1lar');
@@ -39,11 +31,7 @@ class Inflectible
     /**
      * @return Substitution[]
      */
-<<<<<<< HEAD
     public static function getIrregular(): iterable
-=======
-    public static function getIrregular() : iterable
->>>>>>> parent of 31cfa1b1 (p)
     {
         yield new Substitution(new Word('ben'), new Word('biz'));
         yield new Substitution(new Word('sen'), new Word('siz'));

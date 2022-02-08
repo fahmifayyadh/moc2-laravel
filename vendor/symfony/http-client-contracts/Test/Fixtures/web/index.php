@@ -29,11 +29,7 @@ foreach ($_SERVER as $k => $v) {
     }
 }
 
-<<<<<<< HEAD
 $json = json_encode($vars, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE);
-=======
-$json = json_encode($vars, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
->>>>>>> parent of 31cfa1b1 (p)
 
 switch ($vars['REQUEST_URI']) {
     default:
@@ -115,11 +111,7 @@ switch ($vars['REQUEST_URI']) {
         break;
 
     case '/post':
-<<<<<<< HEAD
         $output = json_encode($_POST + ['REQUEST_METHOD' => $vars['REQUEST_METHOD']], \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE);
-=======
-        $output = json_encode($_POST + ['REQUEST_METHOD' => $vars['REQUEST_METHOD']], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
->>>>>>> parent of 31cfa1b1 (p)
         header('Content-Type: application/json', true);
         header('Content-Length: '.strlen($output));
         echo $output;

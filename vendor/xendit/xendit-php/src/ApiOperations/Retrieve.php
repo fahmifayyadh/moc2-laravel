@@ -27,7 +27,6 @@ trait Retrieve
     /**
      * Send GET request to retrieve data
      *
-<<<<<<< HEAD
      * @param string|null $id ID
      *
      * @return array
@@ -36,15 +35,5 @@ trait Retrieve
     {
         $url = static::classUrl() . '/' . $id;
         return static::_request('GET', $url, $params);
-=======
-     * @param int|null $id ID
-     *
-     * @return array
-     */
-    public static function retrieve($id)
-    {
-        $url = static::classUrl() . '/' . $id;
-        return static::_request('GET', $url, []);
->>>>>>> parent of 31cfa1b1 (p)
     }
 }

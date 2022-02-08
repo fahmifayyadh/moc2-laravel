@@ -20,13 +20,8 @@ class GetWithMetadata extends AbstractPlugin
     /**
      * Get metadata for an object with required metadata.
      *
-<<<<<<< HEAD
      * @param string   $path     path to file
      * @param string[] $metadata metadata keys
-=======
-     * @param string $path     path to file
-     * @param array  $metadata metadata keys
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws InvalidArgumentException
      * @throws FileNotFoundException

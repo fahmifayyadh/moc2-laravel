@@ -110,17 +110,10 @@ class Disbursements
      * ]
      * @throws Exceptions\ApiException
      */
-<<<<<<< HEAD
     public static function retrieveExternal($external_id, $params = [])
     {
         $url = static::classUrl() . '?external_id=' . $external_id;
         return static::_request('GET', $url, $params);
-=======
-    public static function retrieveExternal($external_id)
-    {
-        $url = static::classUrl() . '?external_id=' . $external_id;
-        return static::_request('GET', $url);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

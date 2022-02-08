@@ -35,7 +35,6 @@ class BufferingLogger extends AbstractLogger
         return $logs;
     }
 
-<<<<<<< HEAD
     /**
      * @return array
      */
@@ -49,8 +48,6 @@ class BufferingLogger extends AbstractLogger
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function __destruct()
     {
         foreach ($this->logs as [$level, $message, $context]) {

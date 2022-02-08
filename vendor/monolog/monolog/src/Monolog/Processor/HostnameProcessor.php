@@ -16,10 +16,7 @@ namespace Monolog\Processor;
  */
 class HostnameProcessor implements ProcessorInterface
 {
-<<<<<<< HEAD
     /** @var string */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     private static $host;
 
     public function __construct()
@@ -27,12 +24,9 @@ class HostnameProcessor implements ProcessorInterface
         self::$host = (string) gethostname();
     }
 
-<<<<<<< HEAD
     /**
      * {@inheritDoc}
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function __invoke(array $record): array
     {
         $record['extra']['hostname'] = self::$host;

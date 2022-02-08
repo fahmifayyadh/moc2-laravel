@@ -13,7 +13,6 @@ use PhpParser\Node\Stmt\Use_;
 class BuilderFactory
 {
     /**
-<<<<<<< HEAD
      * Creates an attribute node.
      *
      * @param string|Name $name Name of the attribute
@@ -29,8 +28,6 @@ class BuilderFactory
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Creates a namespace builder.
      *
      * @param null|string|Node\Name $name Name of the namespace
@@ -75,7 +72,6 @@ class BuilderFactory
     }
 
     /**
-<<<<<<< HEAD
      * Creates an enum builder.
      *
      * @param string $name Name of the enum
@@ -87,8 +83,6 @@ class BuilderFactory
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Creates a trait use builder.
      *
      * @param Node\Name|string ...$traits Trait names
@@ -194,7 +188,6 @@ class BuilderFactory
     }
 
     /**
-<<<<<<< HEAD
      * Creates a class constant builder.
      *
      * @param string|Identifier                          $name  Name
@@ -218,8 +211,6 @@ class BuilderFactory
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Creates node a for a literal value.
      *
      * @param Expr|bool|null|int|float|string|array $value $value
@@ -256,7 +247,6 @@ class BuilderFactory
      */
     public function args(array $args) : array {
         $normalizedArgs = [];
-<<<<<<< HEAD
         foreach ($args as $key => $arg) {
             if (!($arg instanceof Arg)) {
                 $arg = new Arg(BuilderHelpers::normalizeValue($arg));
@@ -265,14 +255,6 @@ class BuilderFactory
                 $arg->name = BuilderHelpers::normalizeIdentifier($key);
             }
             $normalizedArgs[] = $arg;
-=======
-        foreach ($args as $arg) {
-            if ($arg instanceof Arg) {
-                $normalizedArgs[] = $arg;
-            } else {
-                $normalizedArgs[] = new Arg(BuilderHelpers::normalizeValue($arg));
-            }
->>>>>>> parent of 31cfa1b1 (p)
         }
         return $normalizedArgs;
     }
@@ -351,11 +333,7 @@ class BuilderFactory
     public function constFetch($name) : Expr\ConstFetch {
         return new Expr\ConstFetch(BuilderHelpers::normalizeName($name));
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * Creates a property fetch node.
      *

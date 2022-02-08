@@ -12,10 +12,7 @@
     <title><?php echo $tpl->escape($page_title) ?></title>
 
     <style><?php echo $stylesheet ?></style>
-<<<<<<< HEAD
     <style><?php echo $prismCss ?></style>
-=======
->>>>>>> parent of 31cfa1b1 (p)
   </head>
   <body>
 
@@ -29,11 +26,7 @@
       </div>
     </div>
 
-<<<<<<< HEAD
     <script data-manual><?php echo $prismJs ?></script>
-=======
-    <script><?php echo $prettify ?></script>
->>>>>>> parent of 31cfa1b1 (p)
     <script><?php echo $zepto ?></script>
     <script><?php echo $clipboard ?></script>
     <script><?php echo $javascript ?></script>

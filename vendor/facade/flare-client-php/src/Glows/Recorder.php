@@ -4,11 +4,7 @@ namespace Facade\FlareClient\Glows;
 
 class Recorder
 {
-<<<<<<< HEAD
     public const GLOW_LIMIT = 30;
-=======
-    const GLOW_LIMIT = 30;
->>>>>>> parent of 31cfa1b1 (p)
 
     private $glows = [];
 

@@ -14,17 +14,11 @@ declare(strict_types=1);
 namespace phpDocumentor\Reflection\DocBlock\Tags;
 
 use InvalidArgumentException;
-<<<<<<< HEAD
 
 use function filter_var;
 use function preg_match;
 use function trim;
 
-=======
-use function filter_var;
-use function preg_match;
-use function trim;
->>>>>>> parent of 31cfa1b1 (p)
 use const FILTER_VALIDATE_EMAIL;
 
 /**
@@ -59,11 +53,7 @@ final class Author extends BaseTag implements Factory\StaticMethod
      *
      * @return string The author's name.
      */
-<<<<<<< HEAD
     public function getAuthorName(): string
-=======
-    public function getAuthorName() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->authorName;
     }
@@ -73,11 +63,7 @@ final class Author extends BaseTag implements Factory\StaticMethod
      *
      * @return string The author's email.
      */
-<<<<<<< HEAD
     public function getEmail(): string
-=======
-    public function getEmail() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->authorEmail;
     }
@@ -85,11 +71,7 @@ final class Author extends BaseTag implements Factory\StaticMethod
     /**
      * Returns this tag in string form.
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->authorEmail) {
             $authorEmail = '<' . $this->authorEmail . '>';
@@ -97,25 +79,15 @@ final class Author extends BaseTag implements Factory\StaticMethod
             $authorEmail = '';
         }
 
-<<<<<<< HEAD
         $authorName = $this->authorName;
-=======
-        $authorName = (string) $this->authorName;
->>>>>>> parent of 31cfa1b1 (p)
 
         return $authorName . ($authorEmail !== '' ? ($authorName !== '' ? ' ' : '') . $authorEmail : '');
     }
 
     /**
-<<<<<<< HEAD
      * Attempts to create a new Author object based on the tag body.
      */
     public static function create(string $body): ?self
-=======
-     * Attempts to create a new Author object based on †he tag body.
-     */
-    public static function create(string $body) : ?self
->>>>>>> parent of 31cfa1b1 (p)
     {
         $splitTagContent = preg_match('/^([^\<]*)(?:\<([^\>]*)\>)?$/u', $body, $matches);
         if (!$splitTagContent) {

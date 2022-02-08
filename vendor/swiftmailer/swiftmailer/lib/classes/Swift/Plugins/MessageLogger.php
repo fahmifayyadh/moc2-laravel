@@ -42,11 +42,7 @@ class Swift_Plugins_MessageLogger implements Swift_Events_SendListener
      */
     public function countMessages()
     {
-<<<<<<< HEAD
         return \count($this->messages);
-=======
-        return count($this->messages);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

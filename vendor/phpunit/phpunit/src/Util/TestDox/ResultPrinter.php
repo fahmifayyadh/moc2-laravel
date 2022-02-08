@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Util\TestDox;
 
-<<<<<<< HEAD
 use function get_class;
 use function in_array;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestCase;
@@ -23,10 +20,7 @@ use PHPUnit\Framework\Warning;
 use PHPUnit\Framework\WarningTestCase;
 use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\Util\Printer;
-<<<<<<< HEAD
 use Throwable;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -133,11 +127,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * An error occurred.
      */
-<<<<<<< HEAD
     public function addError(Test $test, Throwable $t, float $time): void
-=======
-    public function addError(Test $test, \Throwable $t, float $time): void
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->isOfInterest($test)) {
             return;
@@ -176,11 +166,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * Incomplete test.
      */
-<<<<<<< HEAD
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->isOfInterest($test)) {
             return;
@@ -193,11 +179,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * Risky test.
      */
-<<<<<<< HEAD
     public function addRiskyTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->isOfInterest($test)) {
             return;
@@ -210,11 +192,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * Skipped test.
      */
-<<<<<<< HEAD
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->isOfInterest($test)) {
             return;
@@ -249,11 +227,7 @@ abstract class ResultPrinter extends Printer implements TestListener
             return;
         }
 
-<<<<<<< HEAD
         $class = get_class($test);
-=======
-        $class = \get_class($test);
->>>>>>> parent of 31cfa1b1 (p)
 
         if ($this->testClass !== $class) {
             if ($this->testClass !== '') {
@@ -345,11 +319,7 @@ abstract class ResultPrinter extends Printer implements TestListener
 
         if (!empty($this->groups)) {
             foreach ($test->getGroups() as $group) {
-<<<<<<< HEAD
                 if (in_array($group, $this->groups, true)) {
-=======
-                if (\in_array($group, $this->groups)) {
->>>>>>> parent of 31cfa1b1 (p)
                     return true;
                 }
             }
@@ -359,11 +329,7 @@ abstract class ResultPrinter extends Printer implements TestListener
 
         if (!empty($this->excludeGroups)) {
             foreach ($test->getGroups() as $group) {
-<<<<<<< HEAD
                 if (in_array($group, $this->excludeGroups, true)) {
-=======
-                if (\in_array($group, $this->excludeGroups)) {
->>>>>>> parent of 31cfa1b1 (p)
                     return false;
                 }
             }

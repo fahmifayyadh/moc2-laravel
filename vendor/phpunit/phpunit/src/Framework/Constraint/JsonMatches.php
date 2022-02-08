@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function json_decode;
 use function sprintf;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Util\Json;
 use SebastianBergmann\Comparator\ComparisonFailure;
@@ -38,11 +35,7 @@ final class JsonMatches extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             'matches JSON string "%s"',
             $this->value
         );
@@ -74,25 +67,15 @@ final class JsonMatches extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Throws an exception for the given compared value and test description.
-=======
-     * Throws an exception for the given compared value and test description
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @param mixed             $other             evaluated value or object
      * @param string            $description       Additional information about the test
      * @param ComparisonFailure $comparisonFailure
      *
-<<<<<<< HEAD
      * @throws \PHPUnit\Framework\Exception
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
-=======
-     * @throws ExpectationFailedException
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @psalm-return never-return
      */
@@ -112,13 +95,8 @@ final class JsonMatches extends Constraint
             }
 
             $comparisonFailure = new ComparisonFailure(
-<<<<<<< HEAD
                 json_decode($this->value),
                 json_decode($other),
-=======
-                \json_decode($this->value),
-                \json_decode($other),
->>>>>>> parent of 31cfa1b1 (p)
                 Json::prettify($recodedValue),
                 Json::prettify($recodedOther),
                 false,

@@ -17,11 +17,7 @@ use PHPUnit\Framework\ExpectationFailedException;
 final class IsAnything extends Constraint
 {
     /**
-<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
-=======
-     * Evaluates the constraint for parameter $other
->>>>>>> parent of 31cfa1b1 (p)
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.

@@ -113,22 +113,15 @@ class GuzzleClient implements ClientInterface
         $url = strval($url);
         try {
             if (count($params) > 0) {
-<<<<<<< HEAD
                 $isQueryParam = isset($params['query-param']) && $params['query-param'] === 'true'; // additional condition to check if the requestor is imposing query param, otherwise default json
                 
                 if($isQueryParam) unset($params['query-param']);
                 
-=======
->>>>>>> parent of 31cfa1b1 (p)
                 $response =  $this->http->request(
                     $opts['method'], $url, [
                         'auth' => [$apiKey, ''],
                         'headers' => $headers,
-<<<<<<< HEAD
                         $isQueryParam ? RequestOptions::QUERY : RequestOptions::JSON => $params
-=======
-                        RequestOptions::JSON => $params
->>>>>>> parent of 31cfa1b1 (p)
                     ]
                 );
             } else {

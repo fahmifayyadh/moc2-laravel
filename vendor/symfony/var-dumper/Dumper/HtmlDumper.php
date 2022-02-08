@@ -153,11 +153,7 @@ class HtmlDumper extends CliDumper
      */
     protected function getDumpHeader()
     {
-<<<<<<< HEAD
         $this->headerIsDumped = $this->outputStream ?? $this->lineDumper;
-=======
-        $this->headerIsDumped = null !== $this->outputStream ? $this->outputStream : $this->lineDumper;
->>>>>>> parent of 31cfa1b1 (p)
 
         if (null !== $this->dumpHeader) {
             return $this->dumpHeader;
@@ -940,21 +936,13 @@ EOHTML
                     $s .= '">';
                 }
 
-<<<<<<< HEAD
                 $s .= $map[$c[$i]] ?? sprintf('\x%02X', \ord($c[$i]));
-=======
-                $s .= isset($map[$c[$i]]) ? $map[$c[$i]] : sprintf('\x%02X', \ord($c[$i]));
->>>>>>> parent of 31cfa1b1 (p)
             } while (isset($c[++$i]));
 
             return $s.'</span>';
         }, $v).'</span>';
 
-<<<<<<< HEAD
         if (isset($attr['file']) && $href = $this->getSourceLink($attr['file'], $attr['line'] ?? 0)) {
-=======
-        if (isset($attr['file']) && $href = $this->getSourceLink($attr['file'], isset($attr['line']) ? $attr['line'] : 0)) {
->>>>>>> parent of 31cfa1b1 (p)
             $attr['href'] = $href;
         }
         if (isset($attr['href'])) {
@@ -976,11 +964,7 @@ EOHTML
         if (-1 === $this->lastDepth) {
             $this->line = sprintf($this->dumpPrefix, $this->dumpId, $this->indentPad).$this->line;
         }
-<<<<<<< HEAD
         if ($this->headerIsDumped !== ($this->outputStream ?? $this->lineDumper)) {
-=======
-        if ($this->headerIsDumped !== (null !== $this->outputStream ? $this->outputStream : $this->lineDumper)) {
->>>>>>> parent of 31cfa1b1 (p)
             $this->line = $this->getDumpHeader().$this->line;
         }
 
@@ -1014,11 +998,7 @@ EOHTML
     }
 }
 
-<<<<<<< HEAD
 function esc(string $str)
-=======
-function esc($str)
->>>>>>> parent of 31cfa1b1 (p)
 {
     return htmlspecialchars($str, \ENT_QUOTES, 'UTF-8');
 }

@@ -91,7 +91,6 @@ class EWallets
 
         return static::_request('GET', $url);
     }
-<<<<<<< HEAD
 
     /**
      * Send a create e-wallet charge request
@@ -198,6 +197,4 @@ class EWallets
         
         return static::_request('GET', $url, $params);
     }
-=======
->>>>>>> parent of 31cfa1b1 (p)
 }

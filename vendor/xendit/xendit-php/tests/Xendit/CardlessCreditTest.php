@@ -121,7 +121,6 @@ class CardlessCreditTest extends TestCase
 
         CardlessCredit::create($params);
     }
-<<<<<<< HEAD
 
     /**
      * Calculate payment types
@@ -226,6 +225,4 @@ class CardlessCreditTest extends TestCase
 
         CardlessCredit::calculatePaymentTypes($params);
     }
-=======
->>>>>>> parent of 31cfa1b1 (p)
 }

@@ -71,20 +71,12 @@ abstract class AbstractSurrogateFragmentRenderer extends RoutableFragmentRendere
             $uri = $this->generateSignedFragmentUri($uri, $request);
         }
 
-<<<<<<< HEAD
         $alt = $options['alt'] ?? null;
-=======
-        $alt = isset($options['alt']) ? $options['alt'] : null;
->>>>>>> parent of 31cfa1b1 (p)
         if ($alt instanceof ControllerReference) {
             $alt = $this->generateSignedFragmentUri($alt, $request);
         }
 
-<<<<<<< HEAD
         $tag = $this->surrogate->renderIncludeTag($uri, $alt, $options['ignore_errors'] ?? false, $options['comment'] ?? '');
-=======
-        $tag = $this->surrogate->renderIncludeTag($uri, $alt, isset($options['ignore_errors']) ? $options['ignore_errors'] : false, isset($options['comment']) ? $options['comment'] : '');
->>>>>>> parent of 31cfa1b1 (p)
 
         return new Response($tag);
     }

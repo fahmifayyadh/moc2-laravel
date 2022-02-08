@@ -25,11 +25,7 @@ interface Application extends Container
     /**
      * Get the path to the bootstrap directory.
      *
-<<<<<<< HEAD
      * @param  string  $path
-=======
-     * @param  string  $path Optionally, a path to append to the bootstrap path
->>>>>>> parent of 31cfa1b1 (p)
      * @return string
      */
     public function bootstrapPath($path = '');
@@ -37,11 +33,7 @@ interface Application extends Container
     /**
      * Get the path to the application configuration files.
      *
-<<<<<<< HEAD
      * @param  string  $path
-=======
-     * @param  string  $path Optionally, a path to append to the config path
->>>>>>> parent of 31cfa1b1 (p)
      * @return string
      */
     public function configPath($path = '');
@@ -49,11 +41,7 @@ interface Application extends Container
     /**
      * Get the path to the database directory.
      *
-<<<<<<< HEAD
      * @param  string  $path
-=======
-     * @param  string  $path Optionally, a path to append to the database path
->>>>>>> parent of 31cfa1b1 (p)
      * @return string
      */
     public function databasePath($path = '');

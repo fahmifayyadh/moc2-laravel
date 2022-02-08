@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Util;
 
-<<<<<<< HEAD
 use const PHP_OS;
 use const PHP_VERSION;
 use function addcslashes;
@@ -42,8 +41,6 @@ use function strncmp;
 use function strpos;
 use function trait_exists;
 use function version_compare;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\CodeCoverageException;
 use PHPUnit\Framework\InvalidCoversTargetException;
@@ -52,13 +49,10 @@ use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Warning;
 use PHPUnit\Runner\Version;
 use PHPUnit\Util\Annotation\Registry;
-<<<<<<< HEAD
 use ReflectionClass;
 use ReflectionException;
 use ReflectionFunction;
 use ReflectionMethod;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use SebastianBergmann\Environment\OperatingSystem;
 
 /**
@@ -97,22 +91,14 @@ final class Test
     public static function describe(\PHPUnit\Framework\Test $test): array
     {
         if ($test instanceof TestCase) {
-<<<<<<< HEAD
             return [get_class($test), $test->getName()];
-=======
-            return [\get_class($test), $test->getName()];
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($test instanceof SelfDescribing) {
             return ['', $test->toString()];
         }
 
-<<<<<<< HEAD
         return ['', get_class($test)];
-=======
-        return ['', \get_class($test)];
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     public static function describeAsString(\PHPUnit\Framework\Test $test): string
@@ -121,11 +107,7 @@ final class Test
             return $test->toString();
         }
 
-<<<<<<< HEAD
         return get_class($test);
-=======
-        return \get_class($test);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -207,18 +189,13 @@ final class Test
      */
     public static function getMissingRequirements(string $className, string $methodName): array
     {
-<<<<<<< HEAD
         $required = self::getRequirements($className, $methodName);
-=======
-        $required = static::getRequirements($className, $methodName);
->>>>>>> parent of 31cfa1b1 (p)
         $missing  = [];
         $hint     = null;
 
         if (!empty($required['PHP'])) {
             $operator = new VersionComparisonOperator(empty($required['PHP']['operator']) ? '>=' : $required['PHP']['operator']);
 
-<<<<<<< HEAD
             if (!version_compare(PHP_VERSION, $required['PHP']['version'], $operator->asString())) {
                 $missing[] = sprintf('PHP %s %s is required.', $operator->asString(), $required['PHP']['version']);
                 $hint      = 'PHP';
@@ -228,17 +205,6 @@ final class Test
 
             if (!$required['PHP_constraint']['constraint']->complies($version)) {
                 $missing[] = sprintf(
-=======
-            if (!\version_compare(\PHP_VERSION, $required['PHP']['version'], $operator->asString())) {
-                $missing[] = \sprintf('PHP %s %s is required.', $operator->asString(), $required['PHP']['version']);
-                $hint      = 'PHP';
-            }
-        } elseif (!empty($required['PHP_constraint'])) {
-            $version = new \PharIo\Version\Version(self::sanitizeVersionNumber(\PHP_VERSION));
-
-            if (!$required['PHP_constraint']['constraint']->complies($version)) {
-                $missing[] = \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                     'PHP version does not match the required constraint %s.',
                     $required['PHP_constraint']['constraint']->asString()
                 );
@@ -252,24 +218,15 @@ final class Test
 
             $operator = new VersionComparisonOperator(empty($required['PHPUnit']['operator']) ? '>=' : $required['PHPUnit']['operator']);
 
-<<<<<<< HEAD
             if (!version_compare($phpunitVersion, $required['PHPUnit']['version'], $operator->asString())) {
                 $missing[] = sprintf('PHPUnit %s %s is required.', $operator->asString(), $required['PHPUnit']['version']);
-=======
-            if (!\version_compare($phpunitVersion, $required['PHPUnit']['version'], $operator->asString())) {
-                $missing[] = \sprintf('PHPUnit %s %s is required.', $operator->asString(), $required['PHPUnit']['version']);
->>>>>>> parent of 31cfa1b1 (p)
                 $hint      = $hint ?? 'PHPUnit';
             }
         } elseif (!empty($required['PHPUnit_constraint'])) {
             $phpunitVersion = new \PharIo\Version\Version(self::sanitizeVersionNumber(Version::id()));
 
             if (!$required['PHPUnit_constraint']['constraint']->complies($phpunitVersion)) {
-<<<<<<< HEAD
                 $missing[] = sprintf(
-=======
-                $missing[] = \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                     'PHPUnit version does not match the required constraint %s.',
                     $required['PHPUnit_constraint']['constraint']->asString()
                 );
@@ -279,33 +236,21 @@ final class Test
         }
 
         if (!empty($required['OSFAMILY']) && $required['OSFAMILY'] !== (new OperatingSystem)->getFamily()) {
-<<<<<<< HEAD
             $missing[] = sprintf('Operating system %s is required.', $required['OSFAMILY']);
-=======
-            $missing[] = \sprintf('Operating system %s is required.', $required['OSFAMILY']);
->>>>>>> parent of 31cfa1b1 (p)
             $hint      = $hint ?? 'OSFAMILY';
         }
 
         if (!empty($required['OS'])) {
-<<<<<<< HEAD
             $requiredOsPattern = sprintf('/%s/i', addcslashes($required['OS'], '/'));
 
             if (!preg_match($requiredOsPattern, PHP_OS)) {
                 $missing[] = sprintf('Operating system matching %s is required.', $requiredOsPattern);
-=======
-            $requiredOsPattern = \sprintf('/%s/i', \addcslashes($required['OS'], '/'));
-
-            if (!\preg_match($requiredOsPattern, \PHP_OS)) {
-                $missing[] = \sprintf('Operating system matching %s is required.', $requiredOsPattern);
->>>>>>> parent of 31cfa1b1 (p)
                 $hint      = $hint ?? 'OS';
             }
         }
 
         if (!empty($required['functions'])) {
             foreach ($required['functions'] as $function) {
-<<<<<<< HEAD
                 $pieces = explode('::', $function);
 
                 if (count($pieces) === 2 && class_exists($pieces[0]) && method_exists($pieces[0], $pieces[1])) {
@@ -317,32 +262,14 @@ final class Test
                 }
 
                 $missing[] = sprintf('Function %s is required.', $function);
-=======
-                $pieces = \explode('::', $function);
-
-                if (\count($pieces) === 2 && \class_exists($pieces[0]) && \method_exists($pieces[0], $pieces[1])) {
-                    continue;
-                }
-
-                if (\function_exists($function)) {
-                    continue;
-                }
-
-                $missing[] = \sprintf('Function %s is required.', $function);
->>>>>>> parent of 31cfa1b1 (p)
                 $hint      = $hint ?? 'function_' . $function;
             }
         }
 
         if (!empty($required['setting'])) {
             foreach ($required['setting'] as $setting => $value) {
-<<<<<<< HEAD
                 if (ini_get($setting) !== $value) {
                     $missing[] = sprintf('Setting "%s" must be "%s".', $setting, $value);
-=======
-                if (\ini_get($setting) !== $value) {
-                    $missing[] = \sprintf('Setting "%s" must be "%s".', $setting, $value);
->>>>>>> parent of 31cfa1b1 (p)
                     $hint      = $hint ?? '__SETTING_' . $setting;
                 }
             }
@@ -354,13 +281,8 @@ final class Test
                     continue;
                 }
 
-<<<<<<< HEAD
                 if (!extension_loaded($extension)) {
                     $missing[] = sprintf('Extension %s is required.', $extension);
-=======
-                if (!\extension_loaded($extension)) {
-                    $missing[] = \sprintf('Extension %s is required.', $extension);
->>>>>>> parent of 31cfa1b1 (p)
                     $hint      = $hint ?? 'extension_' . $extension;
                 }
             }
@@ -368,34 +290,20 @@ final class Test
 
         if (!empty($required['extension_versions'])) {
             foreach ($required['extension_versions'] as $extension => $req) {
-<<<<<<< HEAD
                 $actualVersion = phpversion($extension);
 
                 $operator = new VersionComparisonOperator(empty($req['operator']) ? '>=' : $req['operator']);
 
                 if ($actualVersion === false || !version_compare($actualVersion, $req['version'], $operator->asString())) {
                     $missing[] = sprintf('Extension %s %s %s is required.', $extension, $operator->asString(), $req['version']);
-=======
-                $actualVersion = \phpversion($extension);
-
-                $operator = new VersionComparisonOperator(empty($req['operator']) ? '>=' : $req['operator']);
-
-                if ($actualVersion === false || !\version_compare($actualVersion, $req['version'], $operator->asString())) {
-                    $missing[] = \sprintf('Extension %s %s %s is required.', $extension, $operator->asString(), $req['version']);
->>>>>>> parent of 31cfa1b1 (p)
                     $hint      = $hint ?? 'extension_' . $extension;
                 }
             }
         }
 
         if ($hint && isset($required['__OFFSET'])) {
-<<<<<<< HEAD
             array_unshift($missing, '__OFFSET_FILE=' . $required['__OFFSET']['__FILE']);
             array_unshift($missing, '__OFFSET_LINE=' . ($required['__OFFSET'][$hint] ?? 1));
-=======
-            \array_unshift($missing, '__OFFSET_FILE=' . $required['__OFFSET']['__FILE']);
-            \array_unshift($missing, '__OFFSET_LINE=' . ($required['__OFFSET'][$hint] ?? 1));
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $missing;
@@ -486,21 +394,13 @@ final class Test
         $dependencies = $annotations['class']['depends'] ?? [];
 
         if (isset($annotations['method']['depends'])) {
-<<<<<<< HEAD
             $dependencies = array_merge(
-=======
-            $dependencies = \array_merge(
->>>>>>> parent of 31cfa1b1 (p)
                 $dependencies,
                 $annotations['method']['depends']
             );
         }
 
-<<<<<<< HEAD
         return array_unique($dependencies);
-=======
-        return \array_unique($dependencies);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /** @psalm-param class-string $className */
@@ -545,21 +445,13 @@ final class Test
             }
         }
 
-<<<<<<< HEAD
         return array_unique(array_merge([], ...$groups));
-=======
-        return \array_unique(\array_merge([], ...$groups));
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /** @psalm-param class-string $className */
     public static function getSize(string $className, ?string $methodName): int
     {
-<<<<<<< HEAD
         $groups = array_flip(self::getGroups($className, $methodName));
-=======
-        $groups = \array_flip(self::getGroups($className, $methodName));
->>>>>>> parent of 31cfa1b1 (p)
 
         if (isset($groups['large'])) {
             return self::LARGE;
@@ -611,11 +503,7 @@ final class Test
     /** @psalm-param class-string $className */
     public static function getHookMethods(string $className): array
     {
-<<<<<<< HEAD
         if (!class_exists($className, false)) {
-=======
-        if (!\class_exists($className, false)) {
->>>>>>> parent of 31cfa1b1 (p)
             return self::emptyHookMethodsArray();
         }
 
@@ -623,11 +511,7 @@ final class Test
             self::$hookMethods[$className] = self::emptyHookMethodsArray();
 
             try {
-<<<<<<< HEAD
                 foreach ((new ReflectionClass($className))->getMethods() as $method) {
-=======
-                foreach ((new \ReflectionClass($className))->getMethods() as $method) {
->>>>>>> parent of 31cfa1b1 (p)
                     if ($method->getDeclaringClass()->getName() === Assert::class) {
                         continue;
                     }
@@ -640,11 +524,7 @@ final class Test
 
                     if ($method->isStatic()) {
                         if ($docBlock->isHookToBeExecutedBeforeClass()) {
-<<<<<<< HEAD
                             array_unshift(
-=======
-                            \array_unshift(
->>>>>>> parent of 31cfa1b1 (p)
                                 self::$hookMethods[$className]['beforeClass'],
                                 $method->getName()
                             );
@@ -656,11 +536,7 @@ final class Test
                     }
 
                     if ($docBlock->isToBeExecutedBeforeTest()) {
-<<<<<<< HEAD
                         array_unshift(
-=======
-                        \array_unshift(
->>>>>>> parent of 31cfa1b1 (p)
                             self::$hookMethods[$className]['before'],
                             $method->getName()
                         );
@@ -670,18 +546,13 @@ final class Test
                         self::$hookMethods[$className]['after'][] = $method->getName();
                     }
                 }
-<<<<<<< HEAD
             } catch (ReflectionException $e) {
-=======
-            } catch (\ReflectionException $e) {
->>>>>>> parent of 31cfa1b1 (p)
             }
         }
 
         return self::$hookMethods[$className];
     }
 
-<<<<<<< HEAD
     public static function isTestMethod(ReflectionMethod $method): bool
     {
         if (!$method->isPublic()) {
@@ -693,15 +564,6 @@ final class Test
         }
 
         return array_key_exists(
-=======
-    public static function isTestMethod(\ReflectionMethod $method): bool
-    {
-        if (\strpos($method->getName(), 'test') === 0) {
-            return true;
-        }
-
-        return \array_key_exists(
->>>>>>> parent of 31cfa1b1 (p)
             'test',
             Registry::getInstance()->forMethod(
                 $method->getDeclaringClass()->getName(),
@@ -725,15 +587,9 @@ final class Test
         $classShortcut = null;
 
         if (!empty($annotations['class'][$mode . 'DefaultClass'])) {
-<<<<<<< HEAD
             if (count($annotations['class'][$mode . 'DefaultClass']) > 1) {
                 throw new CodeCoverageException(
                     sprintf(
-=======
-            if (\count($annotations['class'][$mode . 'DefaultClass']) > 1) {
-                throw new CodeCoverageException(
-                    \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                         'More than one @%sClass annotation in class or interface "%s".',
                         $mode,
                         $className
@@ -747,16 +603,11 @@ final class Test
         $list = $annotations['class'][$mode] ?? [];
 
         if (isset($annotations['method'][$mode])) {
-<<<<<<< HEAD
             $list = array_merge($list, $annotations['method'][$mode]);
-=======
-            $list = \array_merge($list, $annotations['method'][$mode]);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $codeList = [];
 
-<<<<<<< HEAD
         foreach (array_unique($list) as $element) {
             if ($classShortcut && strncmp($element, '::', 2) === 0) {
                 $element = $classShortcut . $element;
@@ -769,20 +620,6 @@ final class Test
             if ($mode === 'covers' && interface_exists($element)) {
                 throw new InvalidCoversTargetException(
                     sprintf(
-=======
-        foreach (\array_unique($list) as $element) {
-            if ($classShortcut && \strncmp($element, '::', 2) === 0) {
-                $element = $classShortcut . $element;
-            }
-
-            $element = \preg_replace('/[\s()]+$/', '', $element);
-            $element = \explode(' ', $element);
-            $element = $element[0];
-
-            if ($mode === 'covers' && \interface_exists($element)) {
-                throw new InvalidCoversTargetException(
-                    \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                         'Trying to @cover interface "%s".',
                         $element
                     )
@@ -792,11 +629,7 @@ final class Test
             $codeList[] = self::resolveElementToReflectionObjects($element);
         }
 
-<<<<<<< HEAD
         return self::resolveReflectionObjectsToLines(array_merge([], ...$codeList));
-=======
-        return self::resolveReflectionObjectsToLines(\array_merge([], ...$codeList));
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     private static function emptyHookMethodsArray(): array
@@ -847,19 +680,11 @@ final class Test
     {
         $codeToCoverList = [];
 
-<<<<<<< HEAD
         if (function_exists($element) && strpos($element, '\\') !== false) {
             try {
                 $codeToCoverList[] = new ReflectionFunction($element);
                 // @codeCoverageIgnoreStart
             } catch (ReflectionException $e) {
-=======
-        if (\function_exists($element) && \strpos($element, '\\') !== false) {
-            try {
-                $codeToCoverList[] = new \ReflectionFunction($element);
-                // @codeCoverageIgnoreStart
-            } catch (\ReflectionException $e) {
->>>>>>> parent of 31cfa1b1 (p)
                 throw new Exception(
                     $e->getMessage(),
                     (int) $e->getCode(),
@@ -867,31 +692,18 @@ final class Test
                 );
             }
             // @codeCoverageIgnoreEnd
-<<<<<<< HEAD
         } elseif (strpos($element, '::') !== false) {
             [$className, $methodName] = explode('::', $element);
-=======
-        } elseif (\strpos($element, '::') !== false) {
-            [$className, $methodName] = \explode('::', $element);
->>>>>>> parent of 31cfa1b1 (p)
 
             if (isset($methodName[0]) && $methodName[0] === '<') {
                 $classes = [$className];
 
                 foreach ($classes as $className) {
-<<<<<<< HEAD
                     if (!class_exists($className) &&
                         !interface_exists($className) &&
                         !trait_exists($className)) {
                         throw new InvalidCoversTargetException(
                             sprintf(
-=======
-                    if (!\class_exists($className) &&
-                        !\interface_exists($className) &&
-                        !\trait_exists($className)) {
-                        throw new InvalidCoversTargetException(
-                            \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                                 'Trying to @cover or @use not existing class or ' .
                                 'interface "%s".',
                                 $className
@@ -900,15 +712,9 @@ final class Test
                     }
 
                     try {
-<<<<<<< HEAD
                         $methods = (new ReflectionClass($className))->getMethods();
                         // @codeCoverageIgnoreStart
                     } catch (ReflectionException $e) {
-=======
-                        $methods = (new \ReflectionClass($className))->getMethods();
-                        // @codeCoverageIgnoreStart
-                    } catch (\ReflectionException $e) {
->>>>>>> parent of 31cfa1b1 (p)
                         throw new Exception(
                             $e->getMessage(),
                             (int) $e->getCode(),
@@ -920,28 +726,16 @@ final class Test
                     $inverse    = isset($methodName[1]) && $methodName[1] === '!';
                     $visibility = 'isPublic';
 
-<<<<<<< HEAD
                     if (strpos($methodName, 'protected')) {
                         $visibility = 'isProtected';
                     } elseif (strpos($methodName, 'private')) {
-=======
-                    if (\strpos($methodName, 'protected')) {
-                        $visibility = 'isProtected';
-                    } elseif (\strpos($methodName, 'private')) {
->>>>>>> parent of 31cfa1b1 (p)
                         $visibility = 'isPrivate';
                     }
 
                     foreach ($methods as $method) {
-<<<<<<< HEAD
                         if ($inverse && !$method->{$visibility}()) {
                             $codeToCoverList[] = $method;
                         } elseif (!$inverse && $method->{$visibility}()) {
-=======
-                        if ($inverse && !$method->$visibility()) {
-                            $codeToCoverList[] = $method;
-                        } elseif (!$inverse && $method->$visibility()) {
->>>>>>> parent of 31cfa1b1 (p)
                             $codeToCoverList[] = $method;
                         }
                     }
@@ -950,7 +744,6 @@ final class Test
                 $classes = [$className];
 
                 foreach ($classes as $className) {
-<<<<<<< HEAD
                     if ($className === '' && function_exists($methodName)) {
                         try {
                             $codeToCoverList[] = new ReflectionFunction(
@@ -958,15 +751,6 @@ final class Test
                             );
                             // @codeCoverageIgnoreStart
                         } catch (ReflectionException $e) {
-=======
-                    if ($className === '' && \function_exists($methodName)) {
-                        try {
-                            $codeToCoverList[] = new \ReflectionFunction(
-                                $methodName
-                            );
-                            // @codeCoverageIgnoreStart
-                        } catch (\ReflectionException $e) {
->>>>>>> parent of 31cfa1b1 (p)
                             throw new Exception(
                                 $e->getMessage(),
                                 (int) $e->getCode(),
@@ -975,17 +759,10 @@ final class Test
                         }
                         // @codeCoverageIgnoreEnd
                     } else {
-<<<<<<< HEAD
                         if (!((class_exists($className) || interface_exists($className) || trait_exists($className)) &&
                             method_exists($className, $methodName))) {
                             throw new InvalidCoversTargetException(
                                 sprintf(
-=======
-                        if (!((\class_exists($className) || \interface_exists($className) || \trait_exists($className)) &&
-                            \method_exists($className, $methodName))) {
-                            throw new InvalidCoversTargetException(
-                                \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                                     'Trying to @cover or @use not existing method "%s::%s".',
                                     $className,
                                     $methodName
@@ -994,20 +771,12 @@ final class Test
                         }
 
                         try {
-<<<<<<< HEAD
                             $codeToCoverList[] = new ReflectionMethod(
-=======
-                            $codeToCoverList[] = new \ReflectionMethod(
->>>>>>> parent of 31cfa1b1 (p)
                                 $className,
                                 $methodName
                             );
                             // @codeCoverageIgnoreStart
-<<<<<<< HEAD
                         } catch (ReflectionException $e) {
-=======
-                        } catch (\ReflectionException $e) {
->>>>>>> parent of 31cfa1b1 (p)
                             throw new Exception(
                                 $e->getMessage(),
                                 (int) $e->getCode(),
@@ -1021,47 +790,27 @@ final class Test
         } else {
             $extended = false;
 
-<<<<<<< HEAD
             if (strpos($element, '<extended>') !== false) {
                 $element  = str_replace('<extended>', '', $element);
-=======
-            if (\strpos($element, '<extended>') !== false) {
-                $element  = \str_replace('<extended>', '', $element);
->>>>>>> parent of 31cfa1b1 (p)
                 $extended = true;
             }
 
             $classes = [$element];
 
             if ($extended) {
-<<<<<<< HEAD
                 $classes = array_merge(
                     $classes,
                     class_implements($element),
                     class_parents($element)
-=======
-                $classes = \array_merge(
-                    $classes,
-                    \class_implements($element),
-                    \class_parents($element)
->>>>>>> parent of 31cfa1b1 (p)
                 );
             }
 
             foreach ($classes as $className) {
-<<<<<<< HEAD
                 if (!class_exists($className) &&
                     !interface_exists($className) &&
                     !trait_exists($className)) {
                     throw new InvalidCoversTargetException(
                         sprintf(
-=======
-                if (!\class_exists($className) &&
-                    !\interface_exists($className) &&
-                    !\trait_exists($className)) {
-                    throw new InvalidCoversTargetException(
-                        \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                             'Trying to @cover or @use not existing class or ' .
                             'interface "%s".',
                             $className
@@ -1070,15 +819,9 @@ final class Test
                 }
 
                 try {
-<<<<<<< HEAD
                     $codeToCoverList[] = new ReflectionClass($className);
                     // @codeCoverageIgnoreStart
                 } catch (ReflectionException $e) {
-=======
-                    $codeToCoverList[] = new \ReflectionClass($className);
-                    // @codeCoverageIgnoreStart
-                } catch (\ReflectionException $e) {
->>>>>>> parent of 31cfa1b1 (p)
                     throw new Exception(
                         $e->getMessage(),
                         (int) $e->getCode(),
@@ -1097,11 +840,7 @@ final class Test
         $result = [];
 
         foreach ($reflectors as $reflector) {
-<<<<<<< HEAD
             if ($reflector instanceof ReflectionClass) {
-=======
-            if ($reflector instanceof \ReflectionClass) {
->>>>>>> parent of 31cfa1b1 (p)
                 foreach ($reflector->getTraits() as $trait) {
                     $reflectors[] = $trait;
                 }
@@ -1115,24 +854,14 @@ final class Test
                 $result[$filename] = [];
             }
 
-<<<<<<< HEAD
             $result[$filename] = array_merge(
                 $result[$filename],
                 range($reflector->getStartLine(), $reflector->getEndLine())
-=======
-            $result[$filename] = \array_merge(
-                $result[$filename],
-                \range($reflector->getStartLine(), $reflector->getEndLine())
->>>>>>> parent of 31cfa1b1 (p)
             );
         }
 
         foreach ($result as $filename => $lineNumbers) {
-<<<<<<< HEAD
             $result[$filename] = array_keys(array_flip($lineNumbers));
-=======
-            $result[$filename] = \array_keys(\array_flip($lineNumbers));
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $result;
@@ -1140,19 +869,11 @@ final class Test
 
     /**
      * Trims any extensions from version string that follows after
-<<<<<<< HEAD
      * the <major>.<minor>[.<patch>] format.
      */
     private static function sanitizeVersionNumber(string $version)
     {
         return preg_replace(
-=======
-     * the <major>.<minor>[.<patch>] format
-     */
-    private static function sanitizeVersionNumber(string $version)
-    {
-        return \preg_replace(
->>>>>>> parent of 31cfa1b1 (p)
             '/^(\d+\.\d+(?:.\d+)?).*$/',
             '$1',
             $version
@@ -1187,11 +908,7 @@ final class Test
      *
      * Zend Framework (http://framework.zend.com/)
      *
-<<<<<<< HEAD
      * @see      http://github.com/zendframework/zf2 for the canonical source repository
-=======
-     * @link      http://github.com/zendframework/zf2 for the canonical source repository
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
      * @license   http://framework.zend.com/license/new-bsd New BSD License
@@ -1199,17 +916,10 @@ final class Test
     private static function mergeArraysRecursively(array $a, array $b): array
     {
         foreach ($b as $key => $value) {
-<<<<<<< HEAD
             if (array_key_exists($key, $a)) {
                 if (is_int($key)) {
                     $a[] = $value;
                 } elseif (is_array($value) && is_array($a[$key])) {
-=======
-            if (\array_key_exists($key, $a)) {
-                if (\is_int($key)) {
-                    $a[] = $value;
-                } elseif (\is_array($value) && \is_array($a[$key])) {
->>>>>>> parent of 31cfa1b1 (p)
                     $a[$key] = self::mergeArraysRecursively($a[$key], $value);
                 } else {
                     $a[$key] = $value;

@@ -34,11 +34,7 @@ class KeywordsMatcher extends AbstractMatcher
      *
      * @return array
      */
-<<<<<<< HEAD
     public function getKeywords(): array
-=======
-    public function getKeywords()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->keywords;
     }
@@ -50,11 +46,7 @@ class KeywordsMatcher extends AbstractMatcher
      *
      * @return bool
      */
-<<<<<<< HEAD
     public function isKeyword(string $keyword): bool
-=======
-    public function isKeyword($keyword)
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \in_array($keyword, $this->keywords);
     }
@@ -62,11 +54,7 @@ class KeywordsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function getMatches(array $tokens, array $info = []): array
-=======
-    public function getMatches(array $tokens, array $info = [])
->>>>>>> parent of 31cfa1b1 (p)
     {
         $input = $this->getInput($tokens);
 
@@ -78,15 +66,9 @@ class KeywordsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function hasMatched(array $tokens): bool
     {
         $token = \array_pop($tokens);
-=======
-    public function hasMatched(array $tokens)
-    {
-        $token     = \array_pop($tokens);
->>>>>>> parent of 31cfa1b1 (p)
         $prevToken = \array_pop($tokens);
 
         switch (true) {

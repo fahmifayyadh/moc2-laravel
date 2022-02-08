@@ -38,7 +38,6 @@ final class Xdebug implements Driver
             throw new RuntimeException('This driver requires Xdebug');
         }
 
-<<<<<<< HEAD
         if (\version_compare(\phpversion('xdebug'), '3', '>=')) {
             $mode = \getenv('XDEBUG_MODE');
 
@@ -52,10 +51,6 @@ final class Xdebug implements Driver
             }
         } elseif (!\ini_get('xdebug.coverage_enable')) {
             throw new RuntimeException('xdebug.coverage_enable=On has to be set');
-=======
-        if (!\ini_get('xdebug.coverage_enable')) {
-            throw new RuntimeException('xdebug.coverage_enable=On has to be set in php.ini');
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($filter === null) {

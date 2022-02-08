@@ -10,10 +10,7 @@
 namespace PHPUnit\Framework\MockObject\Builder;
 
 use PHPUnit\Framework\MockObject\Stub\Stub;
-<<<<<<< HEAD
 use Throwable;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 interface InvocationStubber
 {
@@ -61,9 +58,5 @@ interface InvocationStubber
     public function willReturnOnConsecutiveCalls(...$values)/*: self */;
 
     /** @return self */
-<<<<<<< HEAD
     public function willThrowException(Throwable $exception)/*: self */;
-=======
-    public function willThrowException(\Throwable $exception)/*: self */;
->>>>>>> parent of 31cfa1b1 (p)
 }

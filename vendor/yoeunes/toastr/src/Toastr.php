@@ -45,13 +45,8 @@ class Toastr
     /**
      * Toastr constructor.
      *
-<<<<<<< HEAD
      * @param  SessionManager  $session
      * @param  Repository  $config
-=======
-     * @param SessionManager $session
-     * @param Repository     $config
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(SessionManager $session, Repository $config)
     {
@@ -74,16 +69,9 @@ class Toastr
     /**
      * Shortcut for adding an error notification.
      *
-<<<<<<< HEAD
      * @param  string  $message  The notification's message
      * @param  string  $title  The notification's title
      * @param  array  $options
-=======
-     * @param string $message The notification's message
-     * @param string $title   The notification's title
-     * @param array  $options
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return Toastr
      */
     public function error(string $message, string $title = '', array $options = []): self
@@ -94,16 +82,9 @@ class Toastr
     /**
      * Shortcut for adding an info notification.
      *
-<<<<<<< HEAD
      * @param  string  $message  The notification's message
      * @param  string  $title  The notification's title
      * @param  array  $options
-=======
-     * @param string $message The notification's message
-     * @param string $title   The notification's title
-     * @param array  $options
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return Toastr
      */
     public function info(string $message, string $title = '', array $options = []): self
@@ -114,16 +95,9 @@ class Toastr
     /**
      * Shortcut for adding a success notification.
      *
-<<<<<<< HEAD
      * @param  string  $message  The notification's message
      * @param  string  $title  The notification's title
      * @param  array  $options
-=======
-     * @param string $message The notification's message
-     * @param string $title   The notification's title
-     * @param array  $options
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return Toastr
      */
     public function success(string $message, string $title = '', array $options = []): self
@@ -134,16 +108,9 @@ class Toastr
     /**
      * Shortcut for adding a warning notification.
      *
-<<<<<<< HEAD
      * @param  string  $message  The notification's message
      * @param  string  $title  The notification's title
      * @param  array  $options
-=======
-     * @param string $message The notification's message
-     * @param string $title   The notification's title
-     * @param array  $options
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return Toastr
      */
     public function warning(string $message, string $title = '', array $options = []): self
@@ -154,18 +121,10 @@ class Toastr
     /**
      * Add a notification.
      *
-<<<<<<< HEAD
      * @param  string  $type  Could be error, info, success, or warning.
      * @param  string  $message  The notification's message
      * @param  string  $title  The notification's title
      * @param  array  $options
-=======
-     * @param string $type    Could be error, info, success, or warning.
-     * @param string $message The notification's message
-     * @param string $title   The notification's title
-     * @param array  $options
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return Toastr
      */
     public function addNotification(string $type, string $message, string $title = '', array $options = []): self
@@ -232,18 +191,10 @@ class Toastr
     /**
      * Create a single toastr.
      *
-<<<<<<< HEAD
      * @param  string  $type
      * @param  string  $message
      * @param  string|null  $title
      * @param  string|null  $options
-=======
-     * @param string      $type
-     * @param string      $message
-     * @param string|null $title
-     * @param string|null $options
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return string
      */
     public function toastr(string $type, string $message = '', string $title = '', string $options = ''): string
@@ -266,12 +217,7 @@ class Toastr
     /**
      * Limit the number of displayed toasts.
      *
-<<<<<<< HEAD
      * @param  int  $max
-=======
-     * @param int $max
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return \Yoeunes\Toastr\Toastr
      */
     public function maxItems(int $max): self
@@ -284,12 +230,7 @@ class Toastr
     /**
      * helper function to escape single quote for example for french words.
      *
-<<<<<<< HEAD
      * @param  string  $value
-=======
-     * @param string $value
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return string
      */
     private function escapeSingleQuote(string $value): string

@@ -1,6 +1,5 @@
 # Change Log
 
-<<<<<<< HEAD
 ## 1.5.0 (2022-01-20)
 
 * Override default call count expectations via expects() #1146
@@ -31,9 +30,6 @@
 
 ## 1.4.2 (2020-08-11)
 
-=======
-## 1.4.2 (2020-08-11)
->>>>>>> parent of 31cfa1b1 (p)
 * Fix array to string conversion in ConstantsPass (#1086)
 * Fixed nullable PHP 8.0 union types (#1088, #1089)
 * Fixed support for PHP 8.0 parent type (#1088, #1089)
@@ -47,7 +43,6 @@
 * Added provisional support for PHP 8.0 (#1068, #1072,#1079)
 * Fix mocking methods with iterable return type without specifying a return value (#1075)
 
-<<<<<<< HEAD
 ## 1.3.3 (2020-08-11)
 
 * Fix array to string conversion in ConstantsPass (#1086)
@@ -63,8 +58,6 @@
 * Added provisional support for PHP 8.0 (#1068, #1072,#1079)
 * Fix mocking methods with iterable return type without specifying a return value (#1075)
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ## 1.4.0 (2020-05-19)
 
 * Fix mocking with anonymous classes (#1039)
@@ -72,10 +65,7 @@
 * Drops support for PHP < 7.3 and PHPUnit < 8 (#1059)
 
 ## 1.3.1 (2019-12-26)
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 * Revert improved exception debugging due to BC breaks (#1032)
 
 ## 1.3.0 (2019-11-24)

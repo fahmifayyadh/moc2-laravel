@@ -50,12 +50,6 @@ class ElementNode extends AbstractNode
         return new Specificity(0, 0, $this->element ? 1 : 0);
     }
 
-<<<<<<< HEAD
-=======
-    /**
-     * {@inheritdoc}
-     */
->>>>>>> parent of 31cfa1b1 (p)
     public function __toString(): string
     {
         $element = $this->element ?: '*';

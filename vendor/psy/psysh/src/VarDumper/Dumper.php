@@ -24,13 +24,8 @@ class Dumper extends CliDumper
     private $forceArrayIndexes;
 
     protected static $onlyControlCharsRx = '/^[\x00-\x1F\x7F]+$/';
-<<<<<<< HEAD
     protected static $controlCharsRx = '/([\x00-\x1F\x7F]+)/';
     protected static $controlCharsMap = [
-=======
-    protected static $controlCharsRx     = '/([\x00-\x1F\x7F]+)/';
-    protected static $controlCharsMap    = [
->>>>>>> parent of 31cfa1b1 (p)
         "\0"   => '\0',
         "\t"   => '\t',
         "\n"   => '\n',
@@ -69,11 +64,7 @@ class Dumper extends CliDumper
         }
     }
 
-<<<<<<< HEAD
     protected function style($style, $value, $attr = []): string
-=======
-    protected function style($style, $value, $attr = [])
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ('ref' === $style) {
             $value = \strtr($value, '@', '#');
@@ -83,11 +74,7 @@ class Dumper extends CliDumper
         $map = self::$controlCharsMap;
         $cchr = $this->styles['cchr'];
 
-<<<<<<< HEAD
         $chunks = \preg_split(self::$controlCharsRx, $value, -1, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_DELIM_CAPTURE);
-=======
-        $chunks = \preg_split(self::$controlCharsRx, $value, null, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
->>>>>>> parent of 31cfa1b1 (p)
         foreach ($chunks as $chunk) {
             if (\preg_match(self::$onlyControlCharsRx, $chunk)) {
                 $chars = '';

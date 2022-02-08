@@ -7,11 +7,7 @@
     "authors": [
         {
             "name": "PHP-FIG",
-<<<<<<< HEAD
             "homepage": "https://www.php-fig.org/"
-=======
-            "homepage": "http://www.php-fig.org/"
->>>>>>> parent of 31cfa1b1 (p)
         }
     ],
     "require": {

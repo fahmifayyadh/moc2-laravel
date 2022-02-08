@@ -12,11 +12,7 @@ Getting Started
 ---------------
 
 ```
-<<<<<<< HEAD
 $ composer require symfony/debug
-=======
-$ composer install symfony/debug
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 ```php
@@ -28,14 +24,7 @@ Debug::enable();
 Resources
 ---------
 
-<<<<<<< HEAD
  * [Contributing](https://symfony.com/doc/current/contributing/index.html)
  * [Report issues](https://github.com/symfony/symfony/issues) and
    [send Pull Requests](https://github.com/symfony/symfony/pulls)
    in the [main Symfony repository](https://github.com/symfony/symfony)
-=======
-  * [Contributing](https://symfony.com/doc/current/contributing/index.html)
-  * [Report issues](https://github.com/symfony/symfony/issues) and
-    [send Pull Requests](https://github.com/symfony/symfony/pulls)
-    in the [main Symfony repository](https://github.com/symfony/symfony)
->>>>>>> parent of 31cfa1b1 (p)

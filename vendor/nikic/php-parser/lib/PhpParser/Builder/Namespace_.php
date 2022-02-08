@@ -37,11 +37,7 @@ class Namespace_ extends Declaration
     /**
      * Returns the built node.
      *
-<<<<<<< HEAD
      * @return Stmt\Namespace_ The built node
-=======
-     * @return Node The built node
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function getNode() : Node {
         return new Stmt\Namespace_($this->name, $this->stmts, $this->attributes);

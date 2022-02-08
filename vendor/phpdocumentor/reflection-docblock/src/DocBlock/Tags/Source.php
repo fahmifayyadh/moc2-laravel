@@ -17,10 +17,7 @@ use phpDocumentor\Reflection\DocBlock\Description;
 use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
 use Webmozart\Assert\Assert;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function preg_match;
 
 /**
@@ -55,11 +52,7 @@ final class Source extends BaseTag implements Factory\StaticMethod
         string $body,
         ?DescriptionFactory $descriptionFactory = null,
         ?TypeContext $context = null
-<<<<<<< HEAD
     ): self {
-=======
-    ) : self {
->>>>>>> parent of 31cfa1b1 (p)
         Assert::stringNotEmpty($body);
         Assert::notNull($descriptionFactory);
 
@@ -77,11 +70,7 @@ final class Source extends BaseTag implements Factory\StaticMethod
             $description = $matches[3];
         }
 
-<<<<<<< HEAD
         return new static($startingLine, $lineCount, $descriptionFactory->create($description ?? '', $context));
-=======
-        return new static($startingLine, $lineCount, $descriptionFactory->create($description??'', $context));
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -90,11 +79,7 @@ final class Source extends BaseTag implements Factory\StaticMethod
      * @return int The starting line, relative to the structural element's
      *     location.
      */
-<<<<<<< HEAD
     public function getStartingLine(): int
-=======
-    public function getStartingLine() : int
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->startingLine;
     }
@@ -105,20 +90,12 @@ final class Source extends BaseTag implements Factory\StaticMethod
      * @return int|null The number of lines, relative to the starting line. NULL
      *     means "to the end".
      */
-<<<<<<< HEAD
     public function getLineCount(): ?int
-=======
-    public function getLineCount() : ?int
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->lineCount;
     }
 
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->description) {
             $description = $this->description->render();
@@ -128,23 +105,12 @@ final class Source extends BaseTag implements Factory\StaticMethod
 
         $startingLine = (string) $this->startingLine;
 
-<<<<<<< HEAD
         $lineCount = $this->lineCount !== null ? ' ' . $this->lineCount : '';
 
         return $startingLine
             . $lineCount
             . ($description !== ''
                 ? ' ' . $description
-=======
-        $lineCount = $this->lineCount !== null ? '' . $this->lineCount : '';
-
-        return $startingLine
-            . ($lineCount !== ''
-                ? ($startingLine || $startingLine === '0' ? ' ' : '') . $lineCount
-                : '')
-            . ($description !== ''
-                ? ($startingLine || $startingLine === '0' || $lineCount !== '' ? ' ' : '') . $description
->>>>>>> parent of 31cfa1b1 (p)
                 : '');
     }
 }

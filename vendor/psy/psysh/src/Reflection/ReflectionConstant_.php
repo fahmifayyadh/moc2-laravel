@@ -42,20 +42,12 @@ class ReflectionConstant_ implements \Reflector
      *
      * @param string $name
      */
-<<<<<<< HEAD
     public function __construct(string $name)
-=======
-    public function __construct($name)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->name = $name;
 
         if (!\defined($name) && !self::isMagicConstant($name)) {
-<<<<<<< HEAD
             throw new \InvalidArgumentException('Unknown constant: '.$name);
-=======
-            throw new \InvalidArgumentException('Unknown constant: ' . $name);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (!self::isMagicConstant($name)) {
@@ -71,11 +63,7 @@ class ReflectionConstant_ implements \Reflector
      *
      * @return string|null
      */
-<<<<<<< HEAD
     public static function export(string $name, bool $return = false)
-=======
-    public static function export($name, $return = false)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $refl = new self($name);
         $value = $refl->getValue();
@@ -86,11 +74,7 @@ class ReflectionConstant_ implements \Reflector
             return $str;
         }
 
-<<<<<<< HEAD
         echo $str."\n";
-=======
-        echo $str . "\n";
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     public static function isMagicConstant($name)
@@ -103,11 +87,7 @@ class ReflectionConstant_ implements \Reflector
      *
      * @return false
      */
-<<<<<<< HEAD
     public function getDocComment(): bool
-=======
-    public function getDocComment()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return false;
     }
@@ -117,11 +97,7 @@ class ReflectionConstant_ implements \Reflector
      *
      * @return string
      */
-<<<<<<< HEAD
     public function getName(): string
-=======
-    public function getName()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->name;
     }
@@ -133,11 +109,7 @@ class ReflectionConstant_ implements \Reflector
      *
      * @return string
      */
-<<<<<<< HEAD
     public function getNamespaceName(): string
-=======
-    public function getNamespaceName()
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->inNamespace()) {
             return '';
@@ -161,11 +133,7 @@ class ReflectionConstant_ implements \Reflector
      *
      * @return bool
      */
-<<<<<<< HEAD
     public function inNamespace(): bool
-=======
-    public function inNamespace()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \strpos($this->name, '\\') !== false;
     }
@@ -175,11 +143,7 @@ class ReflectionConstant_ implements \Reflector
      *
      * @return string
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->getName();
     }

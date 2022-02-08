@@ -311,15 +311,10 @@ class ClassLoader
         spl_autoload_register(array($this, 'loadClass'), true, $prepend);
 
         if (null === $this->vendorDir) {
-<<<<<<< HEAD
             return;
         }
 
         if ($prepend) {
-=======
-            //no-op
-        } elseif ($prepend) {
->>>>>>> parent of 31cfa1b1 (p)
             self::$registeredLoaders = array($this->vendorDir => $this) + self::$registeredLoaders;
         } else {
             unset(self::$registeredLoaders[$this->vendorDir]);

@@ -19,24 +19,16 @@ $usageInstructions = <<<END
   # show the translation status of all locales
   $ php translation-status.php
 
-<<<<<<< HEAD
   # only show the translation status of incomplete or erroneous locales
   $ php translation-status.php --incomplete
 
   # show the translation status of all locales, all their missing translations and mismatches between trans-unit id and source
-=======
-  # show the translation status of all locales and all their missing translations
->>>>>>> parent of 31cfa1b1 (p)
   $ php translation-status.php -v
 
   # show the status of a single locale
   $ php translation-status.php fr
 
-<<<<<<< HEAD
   # show the status of a single locale, missing translations and mismatches between trans-unit id and source
-=======
-  # show the status of a single locale and all its missing translations
->>>>>>> parent of 31cfa1b1 (p)
   $ php translation-status.php fr -v
 
 END;
@@ -46,11 +38,8 @@ $config = [
     'verbose_output' => false,
     // NULL = analyze all locales
     'locale_to_analyze' => null,
-<<<<<<< HEAD
     // append --incomplete to only show incomplete languages
     'include_completed_languages' => true,
-=======
->>>>>>> parent of 31cfa1b1 (p)
     // the reference files all the other translations are compared to
     'original_files' => [
         'src/Symfony/Component/Form/Resources/translations/validators.en.xlf',
@@ -62,24 +51,17 @@ $config = [
 $argc = $_SERVER['argc'];
 $argv = $_SERVER['argv'];
 
-<<<<<<< HEAD
 if ($argc > 4) {
-=======
-if ($argc > 3) {
->>>>>>> parent of 31cfa1b1 (p)
     echo str_replace('translation-status.php', $argv[0], $usageInstructions);
     exit(1);
 }
 
 foreach (array_slice($argv, 1) as $argumentOrOption) {
-<<<<<<< HEAD
     if ('--incomplete' === $argumentOrOption) {
         $config['include_completed_languages'] = false;
         continue;
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     if (0 === strpos($argumentOrOption, '-')) {
         $config['verbose_output'] = true;
     } else {
@@ -95,10 +77,7 @@ foreach ($config['original_files'] as $originalFilePath) {
 }
 
 $totalMissingTranslations = 0;
-<<<<<<< HEAD
 $totalTranslationMismatches = 0;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 foreach ($config['original_files'] as $originalFilePath) {
     $translationFilePaths = findTranslationFiles($originalFilePath, $config['locale_to_analyze']);
@@ -107,7 +86,6 @@ foreach ($config['original_files'] as $originalFilePath) {
     $totalMissingTranslations += array_sum(array_map(function ($translation) {
         return count($translation['missingKeys']);
     }, array_values($translationStatus)));
-<<<<<<< HEAD
     $totalTranslationMismatches += array_sum(array_map(function ($translation) {
         return count($translation['mismatches']);
     }, array_values($translationStatus)));
@@ -116,13 +94,6 @@ foreach ($config['original_files'] as $originalFilePath) {
 }
 
 exit($totalTranslationMismatches > 0 ? 1 : 0);
-=======
-
-    printTranslationStatus($originalFilePath, $translationStatus, $config['verbose_output']);
-}
-
-exit($totalMissingTranslations > 0 ? 1 : 0);
->>>>>>> parent of 31cfa1b1 (p)
 
 function findTranslationFiles($originalFilePath, $localeToAnalyze)
 {
@@ -155,28 +126,20 @@ function calculateTranslationStatus($originalFilePath, $translationFilePaths)
     foreach ($translationFilePaths as $locale => $translationPath) {
         $translatedKeys = extractTranslationKeys($translationPath);
         $missingKeys = array_diff_key($allTranslationKeys, $translatedKeys);
-<<<<<<< HEAD
         $mismatches = findTransUnitMismatches($allTranslationKeys, $translatedKeys);
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
         $translationStatus[$locale] = [
             'total' => count($allTranslationKeys),
             'translated' => count($translatedKeys),
             'missingKeys' => $missingKeys,
-<<<<<<< HEAD
             'mismatches' => $mismatches,
         ];
         $translationStatus[$locale]['is_completed'] = isTranslationCompleted($translationStatus[$locale]);
-=======
-        ];
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     return $translationStatus;
 }
 
-<<<<<<< HEAD
 function isTranslationCompleted(array $translationStatus): bool
 {
     return $translationStatus['total'] === $translationStatus['translated'] && 0 === count($translationStatus['mismatches']);
@@ -186,12 +149,6 @@ function printTranslationStatus($originalFilePath, $translationStatus, $verboseO
 {
     printTitle($originalFilePath);
     printTable($translationStatus, $verboseOutput, $includeCompletedLanguages);
-=======
-function printTranslationStatus($originalFilePath, $translationStatus, $verboseOutput)
-{
-    printTitle($originalFilePath);
-    printTable($translationStatus, $verboseOutput);
->>>>>>> parent of 31cfa1b1 (p)
     echo \PHP_EOL.\PHP_EOL;
 }
 
@@ -217,7 +174,6 @@ function extractTranslationKeys($filePath)
     return $translationKeys;
 }
 
-<<<<<<< HEAD
 /**
  * Check whether the trans-unit id and source match with the base translation.
  */
@@ -240,19 +196,13 @@ function findTransUnitMismatches(array $baseTranslationKeys, array $translatedKe
     return $mismatches;
 }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 function printTitle($title)
 {
     echo $title.\PHP_EOL;
     echo str_repeat('=', strlen($title)).\PHP_EOL.\PHP_EOL;
 }
 
-<<<<<<< HEAD
 function printTable($translations, $verboseOutput, bool $includeCompletedLanguages)
-=======
-function printTable($translations, $verboseOutput)
->>>>>>> parent of 31cfa1b1 (p)
 {
     if (0 === count($translations)) {
         echo 'No translations found';
@@ -262,7 +212,6 @@ function printTable($translations, $verboseOutput)
     $longestLocaleNameLength = max(array_map('strlen', array_keys($translations)));
 
     foreach ($translations as $locale => $translation) {
-<<<<<<< HEAD
         if (!$includeCompletedLanguages && $translation['is_completed']) {
             continue;
         }
@@ -304,26 +253,6 @@ function printTable($translations, $verboseOutput)
             $shouldBeClosed = true;
         }
         if ($shouldBeClosed) {
-=======
-        if ($translation['translated'] > $translation['total']) {
-            textColorRed();
-        } elseif ($translation['translated'] === $translation['total']) {
-            textColorGreen();
-        }
-
-        echo sprintf('| Locale: %-'.$longestLocaleNameLength.'s | Translated: %d/%d', $locale, $translation['translated'], $translation['total']).\PHP_EOL;
-
-        textColorNormal();
-
-        if (true === $verboseOutput && count($translation['missingKeys']) > 0) {
-            echo str_repeat('-', 80).\PHP_EOL;
-            echo '| Missing Translations:'.\PHP_EOL;
-
-            foreach ($translation['missingKeys'] as $id => $content) {
-                echo sprintf('|   (id=%s) %s', $id, $content).\PHP_EOL;
-            }
-
->>>>>>> parent of 31cfa1b1 (p)
             echo str_repeat('-', 80).\PHP_EOL;
         }
     }

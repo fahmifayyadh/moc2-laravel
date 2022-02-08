@@ -18,12 +18,7 @@ interface Swift_Filterable
     /**
      * Add a new StreamFilter, referenced by $key.
      *
-<<<<<<< HEAD
      * @param string $key
-=======
-     * @param Swift_StreamFilter $filter
-     * @param string             $key
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function addFilter(Swift_StreamFilter $filter, $key);
 

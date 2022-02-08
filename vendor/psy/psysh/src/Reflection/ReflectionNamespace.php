@@ -23,11 +23,7 @@ class ReflectionNamespace implements \Reflector
      *
      * @param string $name
      */
-<<<<<<< HEAD
     public function __construct(string $name)
-=======
-    public function __construct($name)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->name = $name;
     }
@@ -37,11 +33,7 @@ class ReflectionNamespace implements \Reflector
      *
      * @return string
      */
-<<<<<<< HEAD
     public function getName(): string
-=======
-    public function getName()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->name;
     }
@@ -61,11 +53,7 @@ class ReflectionNamespace implements \Reflector
      *
      * @return string
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->getName();
     }

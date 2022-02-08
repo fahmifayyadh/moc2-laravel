@@ -17,10 +17,7 @@ use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Trait_;
-<<<<<<< HEAD
 use PhpParser\Node\VariadicPlaceholder;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use Psy\Exception\ErrorException;
 
 /**
@@ -65,11 +62,7 @@ class CalledClassPass extends CodeCleanerPass
             $name = \strtolower($node->name);
             if (\in_array($name, ['get_class', 'get_called_class'])) {
                 $msg = \sprintf('%s() called without object from outside a class', $name);
-<<<<<<< HEAD
                 throw new ErrorException($msg, 0, \E_USER_WARNING, null, $node->getLine());
-=======
-                throw new ErrorException($msg, 0, E_USER_WARNING, null, $node->getLine());
->>>>>>> parent of 31cfa1b1 (p)
             }
         }
     }
@@ -84,17 +77,12 @@ class CalledClassPass extends CodeCleanerPass
         }
     }
 
-<<<<<<< HEAD
     private function isNull(Node $node): bool
     {
         if ($node instanceof VariadicPlaceholder) {
             return false;
         }
 
-=======
-    private function isNull(Node $node)
-    {
->>>>>>> parent of 31cfa1b1 (p)
         return $node->value instanceof ConstFetch && \strtolower($node->value->name) === 'null';
     }
 }

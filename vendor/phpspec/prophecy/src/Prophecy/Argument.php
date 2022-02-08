@@ -218,17 +218,12 @@ class Argument
      * @return Token\InArrayToken
      */
 
-<<<<<<< HEAD
     public static function in($value)
-=======
-    public function in($value)
->>>>>>> parent of 31cfa1b1 (p)
     {
         return new Token\InArrayToken($value);
     }
 
     /**
-<<<<<<< HEAD
      * Checks that argument is not in array.
      *
      * @param array $value
@@ -237,16 +232,6 @@ class Argument
      */
 
     public static function notIn($value)
-=======
-     * Checks that argument is in array.
-     *
-     * @param array $value
-     *
-     * @return Token\InArrayToken
-     */
-
-    public function notIn($value)
->>>>>>> parent of 31cfa1b1 (p)
     {
         return new Token\NotInArrayToken($value);
     }

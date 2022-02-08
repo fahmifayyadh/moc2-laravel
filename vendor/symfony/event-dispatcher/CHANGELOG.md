@@ -29,37 +29,21 @@ CHANGELOG
 3.4.0
 -----
 
-<<<<<<< HEAD
  * Implementing `TraceableEventDispatcherInterface` without the `reset()` method has been deprecated.
-=======
-  * Implementing `TraceableEventDispatcherInterface` without the `reset()` method has been deprecated.
->>>>>>> parent of 31cfa1b1 (p)
 
 3.3.0
 -----
 
-<<<<<<< HEAD
  * The ContainerAwareEventDispatcher class has been deprecated. Use EventDispatcher with closure factories instead.
-=======
-  * The ContainerAwareEventDispatcher class has been deprecated. Use EventDispatcher with closure factories instead.
->>>>>>> parent of 31cfa1b1 (p)
 
 3.0.0
 -----
 
-<<<<<<< HEAD
  * The method `getListenerPriority($eventName, $listener)` has been added to the
    `EventDispatcherInterface`.
  * The methods `Event::setDispatcher()`, `Event::getDispatcher()`, `Event::setName()`
    and `Event::getName()` have been removed.
    The event dispatcher and the event name are passed to the listener call.
-=======
-  * The method `getListenerPriority($eventName, $listener)` has been added to the
-    `EventDispatcherInterface`.
-  * The methods `Event::setDispatcher()`, `Event::getDispatcher()`, `Event::setName()`
-    and `Event::getName()` have been removed.
-    The event dispatcher and the event name are passed to the listener call.
->>>>>>> parent of 31cfa1b1 (p)
 
 2.5.0
 -----

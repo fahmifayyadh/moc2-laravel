@@ -14,12 +14,9 @@
  * - Glavić
  * - Milos Sakovic
  */
-<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 return [
     'year' => '{2,3,4,22,23,24,32,33,34,42,43,44,52,53,54}:count године|[0,Inf[:count година',
     'y' => ':count г.',
@@ -66,11 +63,7 @@ return [
     'calendar' => [
         'sameDay' => '[данас у] LT',
         'nextDay' => '[сутра у] LT',
-<<<<<<< HEAD
         'nextWeek' => function (CarbonInterface $date) {
-=======
-        'nextWeek' => function (\Carbon\CarbonInterface $date) {
->>>>>>> parent of 31cfa1b1 (p)
             switch ($date->dayOfWeek) {
                 case 0:
                     return '[у недељу у] LT';
@@ -83,11 +76,7 @@ return [
             }
         },
         'lastDay' => '[јуче у] LT',
-<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $date) {
-=======
-        'lastWeek' => function (\Carbon\CarbonInterface $date) {
->>>>>>> parent of 31cfa1b1 (p)
             switch ($date->dayOfWeek) {
                 case 0:
                     return '[прошле недеље у] LT';

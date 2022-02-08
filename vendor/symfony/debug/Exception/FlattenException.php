@@ -67,11 +67,7 @@ class FlattenException
         $e->setStatusCode($statusCode);
         $e->setHeaders($headers);
         $e->setTraceFromThrowable($exception);
-<<<<<<< HEAD
         $e->setClass($exception instanceof FatalThrowableError ? $exception->getOriginalClassName() : \get_class($exception));
-=======
-        $e->setClass($exception instanceof FatalThrowableError ? $exception->getOriginalClassName() : get_debug_type($exception));
->>>>>>> parent of 31cfa1b1 (p)
         $e->setFile($exception->getFile());
         $e->setLine($exception->getLine());
 
@@ -285,19 +281,11 @@ class FlattenException
             $this->trace[] = [
                 'namespace' => $namespace,
                 'short_class' => $class,
-<<<<<<< HEAD
                 'class' => $entry['class'] ?? '',
                 'type' => $entry['type'] ?? '',
                 'function' => $entry['function'] ?? null,
                 'file' => $entry['file'] ?? null,
                 'line' => $entry['line'] ?? null,
-=======
-                'class' => isset($entry['class']) ? $entry['class'] : '',
-                'type' => isset($entry['type']) ? $entry['type'] : '',
-                'function' => isset($entry['function']) ? $entry['function'] : null,
-                'file' => isset($entry['file']) ? $entry['file'] : null,
-                'line' => isset($entry['line']) ? $entry['line'] : null,
->>>>>>> parent of 31cfa1b1 (p)
                 'args' => isset($entry['args']) ? $this->flattenArgs($entry['args']) : [],
             ];
         }

@@ -9,10 +9,7 @@
  */
 namespace PHPUnit\Framework\MockObject\Rule;
 
-<<<<<<< HEAD
 use function count;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\MockObject\Invocation as BaseInvocation;
 use PHPUnit\Framework\MockObject\Verifiable;
 use PHPUnit\Framework\SelfDescribing;
@@ -29,20 +26,12 @@ abstract class InvocationOrder implements SelfDescribing, Verifiable
 
     public function getInvocationCount(): int
     {
-<<<<<<< HEAD
         return count($this->invocations);
-=======
-        return \count($this->invocations);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function hasBeenInvoked(): bool
     {
-<<<<<<< HEAD
         return count($this->invocations) > 0;
-=======
-        return \count($this->invocations) > 0;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     final public function invoked(BaseInvocation $invocation)

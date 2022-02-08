@@ -18,19 +18,11 @@ namespace Symfony\Component\HttpFoundation;
  */
 class ResponseHeaderBag extends HeaderBag
 {
-<<<<<<< HEAD
     public const COOKIES_FLAT = 'flat';
     public const COOKIES_ARRAY = 'array';
 
     public const DISPOSITION_ATTACHMENT = 'attachment';
     public const DISPOSITION_INLINE = 'inline';
-=======
-    const COOKIES_FLAT = 'flat';
-    const COOKIES_ARRAY = 'array';
-
-    const DISPOSITION_ATTACHMENT = 'attachment';
-    const DISPOSITION_INLINE = 'inline';
->>>>>>> parent of 31cfa1b1 (p)
 
     protected $computedCacheControl = [];
     protected $cookies = [];
@@ -184,11 +176,7 @@ class ResponseHeaderBag extends HeaderBag
      */
     public function getCacheControlDirective($key)
     {
-<<<<<<< HEAD
         return $this->computedCacheControl[$key] ?? null;
-=======
-        return \array_key_exists($key, $this->computedCacheControl) ? $this->computedCacheControl[$key] : null;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function setCookie(Cookie $cookie)

@@ -75,12 +75,8 @@ class MethodDefinitionPass implements Pass
 
             if (!$param->isVariadic()) {
                 if (false !== $param->isDefaultValueAvailable()) {
-<<<<<<< HEAD
                     $defaultValue = $param->getDefaultValue();
                     $paramDef .= ' = ' . (is_object($defaultValue) ? get_class($defaultValue) : var_export($defaultValue, true));
-=======
-                    $paramDef .= ' = ' . var_export($param->getDefaultValue(), true);
->>>>>>> parent of 31cfa1b1 (p)
                 } elseif ($param->isOptional()) {
                     $paramDef .= ' = null';
                 }

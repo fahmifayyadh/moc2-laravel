@@ -294,11 +294,7 @@ class RequestContext
      */
     public function getParameter($name)
     {
-<<<<<<< HEAD
         return $this->parameters[$name] ?? null;
-=======
-        return isset($this->parameters[$name]) ? $this->parameters[$name] : null;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

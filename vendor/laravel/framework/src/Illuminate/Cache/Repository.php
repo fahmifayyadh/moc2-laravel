@@ -550,11 +550,7 @@ class Repository implements ArrayAccess, CacheContract
     /**
      * Get the event dispatcher instance.
      *
-<<<<<<< HEAD
      * @return \Illuminate\Contracts\Events\Dispatcher
-=======
-     * @return  \Illuminate\Contracts\Events\Dispatcher
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function getEventDispatcher()
     {

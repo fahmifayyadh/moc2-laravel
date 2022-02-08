@@ -2,11 +2,8 @@
 
 namespace Illuminate\Validation\Rules;
 
-<<<<<<< HEAD
 use InvalidArgumentException;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 class RequiredIf
 {
     /**
@@ -24,15 +21,11 @@ class RequiredIf
      */
     public function __construct($condition)
     {
-<<<<<<< HEAD
         if (! is_string($condition)) {
             $this->condition = $condition;
         } else {
             throw new InvalidArgumentException('The provided condition must be a callable or boolean.');
         }
-=======
-        $this->condition = $condition;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

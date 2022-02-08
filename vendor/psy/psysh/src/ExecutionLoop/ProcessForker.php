@@ -44,11 +44,7 @@ class ProcessForker extends AbstractListener
      *
      * @return bool
      */
-<<<<<<< HEAD
     public static function isSupported(): bool
-=======
-    public static function isSupported()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return self::isPcntlSupported() && !self::disabledPcntlFunctions() && self::isPosixSupported() && !self::disabledPosixFunctions();
     }
@@ -56,11 +52,7 @@ class ProcessForker extends AbstractListener
     /**
      * Verify that all required pcntl functions are, in fact, available.
      */
-<<<<<<< HEAD
     public static function isPcntlSupported(): bool
-=======
-    public static function isPcntlSupported()
->>>>>>> parent of 31cfa1b1 (p)
     {
         foreach (self::$pcntlFunctions as $func) {
             if (!\function_exists($func)) {
@@ -82,11 +74,7 @@ class ProcessForker extends AbstractListener
     /**
      * Verify that all required posix functions are, in fact, available.
      */
-<<<<<<< HEAD
     public static function isPosixSupported(): bool
-=======
-    public static function isPosixSupported()
->>>>>>> parent of 31cfa1b1 (p)
     {
         foreach (self::$posixFunctions as $func) {
             if (!\function_exists($func)) {
@@ -105,11 +93,7 @@ class ProcessForker extends AbstractListener
         return self::checkDisabledFunctions(self::$posixFunctions);
     }
 
-<<<<<<< HEAD
     private static function checkDisabledFunctions(array $functions): array
-=======
-    private static function checkDisabledFunctions(array $functions)
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \array_values(\array_intersect($functions, \array_map('strtolower', \array_map('trim', \explode(',', \ini_get('disable_functions'))))));
     }
@@ -124,11 +108,7 @@ class ProcessForker extends AbstractListener
      */
     public function beforeRun(Shell $shell)
     {
-<<<<<<< HEAD
         list($up, $down) = \stream_socket_pair(\STREAM_PF_UNIX, \STREAM_SOCK_STREAM, \STREAM_IPPROTO_IP);
-=======
-        list($up, $down) = \stream_socket_pair(STREAM_PF_UNIX, STREAM_SOCK_STREAM, STREAM_IPPROTO_IP);
->>>>>>> parent of 31cfa1b1 (p)
 
         if (!$up) {
             throw new \RuntimeException('Unable to create socket pair');
@@ -144,13 +124,8 @@ class ProcessForker extends AbstractListener
             \fclose($up);
 
             // Wait for a return value from the loop process.
-<<<<<<< HEAD
             $read = [$down];
             $write = null;
-=======
-            $read   = [$down];
-            $write  = null;
->>>>>>> parent of 31cfa1b1 (p)
             $except = null;
 
             do {
@@ -215,11 +190,7 @@ class ProcessForker extends AbstractListener
     {
         // if there's an old savegame hanging around, let's kill it.
         if (isset($this->savegame)) {
-<<<<<<< HEAD
             \posix_kill($this->savegame, \SIGKILL);
-=======
-            \posix_kill($this->savegame, SIGKILL);
->>>>>>> parent of 31cfa1b1 (p)
             \pcntl_signal_dispatch();
         }
     }
@@ -237,11 +208,7 @@ class ProcessForker extends AbstractListener
             \fwrite($this->up, $this->serializeReturn($shell->getScopeVariables(false)));
             \fclose($this->up);
 
-<<<<<<< HEAD
             \posix_kill(\posix_getpid(), \SIGKILL);
-=======
-            \posix_kill(\posix_getpid(), SIGKILL);
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -266,11 +233,7 @@ class ProcessForker extends AbstractListener
 
             // worker exited cleanly, let's bail
             if (!\pcntl_wexitstatus($status)) {
-<<<<<<< HEAD
                 \posix_kill(\posix_getpid(), \SIGKILL);
-=======
-                \posix_kill(\posix_getpid(), SIGKILL);
->>>>>>> parent of 31cfa1b1 (p)
             }
 
             // worker didn't exit cleanly, we'll need to have another go
@@ -290,11 +253,7 @@ class ProcessForker extends AbstractListener
      *
      * @return string
      */
-<<<<<<< HEAD
     private function serializeReturn(array $return): string
-=======
-    private function serializeReturn(array $return)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $serializable = [];
 
@@ -314,12 +273,6 @@ class ProcessForker extends AbstractListener
                 $serializable[$key] = $value;
             } catch (\Throwable $e) {
                 // we'll just ignore this one...
-<<<<<<< HEAD
-=======
-            } catch (\Exception $e) {
-                // and this one too...
-                // @todo remove this once we don't support PHP 5.x anymore :)
->>>>>>> parent of 31cfa1b1 (p)
             }
         }
 

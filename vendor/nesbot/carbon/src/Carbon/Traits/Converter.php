@@ -8,10 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Traits;
 
 use Carbon\Carbon;
@@ -23,10 +20,7 @@ use Carbon\Exceptions\UnitException;
 use Closure;
 use DateTime;
 use DateTimeImmutable;
-<<<<<<< HEAD
 use ReturnTypeWillChange;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Trait Converter.
@@ -45,11 +39,7 @@ trait Converter
      *
      * @var string|Closure|null
      */
-<<<<<<< HEAD
     protected static $toStringFormat;
-=======
-    protected static $toStringFormat = null;
->>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Reset the format used to the default when type juggling a Carbon instance to a string
@@ -87,10 +77,7 @@ trait Converter
      *
      * @return string
      */
-<<<<<<< HEAD
     #[ReturnTypeWillChange]
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function format($format)
     {
         $function = $this->localFormatFunction ?: static::$formatFunction;
@@ -99,19 +86,11 @@ trait Converter
             return $this->rawFormat($format);
         }
 
-<<<<<<< HEAD
         if (\is_string($function) && method_exists($this, $function)) {
             $function = [$this, $function];
         }
 
         return $function(...\func_get_args());
-=======
-        if (is_string($function) && method_exists($this, $function)) {
-            $function = [$this, $function];
-        }
-
-        return $function(...func_get_args());
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -143,11 +122,7 @@ trait Converter
         return $format instanceof Closure
             ? $format($this)
             : $this->rawFormat($format ?: (
-<<<<<<< HEAD
                 \defined('static::DEFAULT_TO_STRING_FORMAT')
-=======
-                defined('static::DEFAULT_TO_STRING_FORMAT')
->>>>>>> parent of 31cfa1b1 (p)
                     ? static::DEFAULT_TO_STRING_FORMAT
                     : CarbonInterface::DEFAULT_TO_STRING_FORMAT
             ));
@@ -350,13 +325,9 @@ trait Converter
      */
     public function toIso8601ZuluString($unitPrecision = 'second')
     {
-<<<<<<< HEAD
         return $this->avoidMutation()
             ->utc()
             ->rawFormat('Y-m-d\T'.static::getTimeFormatByPrecision($unitPrecision).'\Z');
-=======
-        return $this->copy()->utc()->rawFormat('Y-m-d\T'.static::getTimeFormatByPrecision($unitPrecision).'\Z');
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -484,15 +455,9 @@ trait Converter
      */
     public function toRfc7231String()
     {
-<<<<<<< HEAD
         return $this->avoidMutation()
             ->setTimezone('GMT')
             ->rawFormat(\defined('static::RFC7231_FORMAT') ? static::RFC7231_FORMAT : CarbonInterface::RFC7231_FORMAT);
-=======
-        return $this->copy()
-            ->setTimezone('GMT')
-            ->rawFormat(defined('static::RFC7231_FORMAT') ? static::RFC7231_FORMAT : CarbonInterface::RFC7231_FORMAT);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -518,11 +483,7 @@ trait Converter
             'second' => $this->second,
             'micro' => $this->micro,
             'timestamp' => $this->timestamp,
-<<<<<<< HEAD
             'formatted' => $this->rawFormat(\defined('static::DEFAULT_TO_STRING_FORMAT') ? static::DEFAULT_TO_STRING_FORMAT : CarbonInterface::DEFAULT_TO_STRING_FORMAT),
-=======
-            'formatted' => $this->rawFormat(defined('static::DEFAULT_TO_STRING_FORMAT') ? static::DEFAULT_TO_STRING_FORMAT : CarbonInterface::DEFAULT_TO_STRING_FORMAT),
->>>>>>> parent of 31cfa1b1 (p)
             'timezone' => $this->timezone,
         ];
     }
@@ -554,11 +515,7 @@ trait Converter
      */
     public function toString()
     {
-<<<<<<< HEAD
         return $this->avoidMutation()->locale('en')->isoFormat('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
-=======
-        return $this->copy()->locale('en')->isoFormat('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -583,11 +540,7 @@ trait Converter
 
         $yearFormat = $this->year < 0 || $this->year > 9999 ? 'YYYYYY' : 'YYYY';
         $tzFormat = $keepOffset ? 'Z' : '[Z]';
-<<<<<<< HEAD
         $date = $keepOffset ? $this : $this->avoidMutation()->utc();
-=======
-        $date = $keepOffset ? $this : $this->copy()->utc();
->>>>>>> parent of 31cfa1b1 (p)
 
         return $date->isoFormat("$yearFormat-MM-DD[T]HH:mm:ss.SSSSSS$tzFormat");
     }
@@ -675,11 +628,7 @@ trait Converter
             $period->setDateInterval($interval);
         }
 
-<<<<<<< HEAD
         if (\is_int($end) || \is_string($end) && ctype_digit($end)) {
-=======
-        if (is_int($end) || is_string($end) && ctype_digit($end)) {
->>>>>>> parent of 31cfa1b1 (p)
             $period->setRecurrences($end);
         } elseif ($end) {
             $period->setEndDate($end);

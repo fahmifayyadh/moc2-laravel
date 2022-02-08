@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 declare(strict_types=1);
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp\Psr7;
 
 use InvalidArgumentException;
@@ -22,11 +19,7 @@ class Request implements RequestInterface
     /** @var string */
     private $method;
 
-<<<<<<< HEAD
     /** @var string|null */
-=======
-    /** @var null|string */
->>>>>>> parent of 31cfa1b1 (p)
     private $requestTarget;
 
     /** @var UriInterface */
@@ -35,7 +28,6 @@ class Request implements RequestInterface
     /**
      * @param string                               $method  HTTP method
      * @param string|UriInterface                  $uri     URI
-<<<<<<< HEAD
      * @param array<string, string|string[]>       $headers Request headers
      * @param string|resource|StreamInterface|null $body    Request body
      * @param string                               $version Protocol version
@@ -46,18 +38,6 @@ class Request implements RequestInterface
         array $headers = [],
         $body = null,
         string $version = '1.1'
-=======
-     * @param array                                $headers Request headers
-     * @param string|null|resource|StreamInterface $body    Request body
-     * @param string                               $version Protocol version
-     */
-    public function __construct(
-        $method,
-        $uri,
-        array $headers = [],
-        $body = null,
-        $version = '1.1'
->>>>>>> parent of 31cfa1b1 (p)
     ) {
         $this->assertMethod($method);
         if (!($uri instanceof UriInterface)) {
@@ -78,22 +58,14 @@ class Request implements RequestInterface
         }
     }
 
-<<<<<<< HEAD
     public function getRequestTarget(): string
-=======
-    public function getRequestTarget()
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->requestTarget !== null) {
             return $this->requestTarget;
         }
 
         $target = $this->uri->getPath();
-<<<<<<< HEAD
         if ($target === '') {
-=======
-        if ($target == '') {
->>>>>>> parent of 31cfa1b1 (p)
             $target = '/';
         }
         if ($this->uri->getQuery() != '') {
@@ -103,11 +75,7 @@ class Request implements RequestInterface
         return $target;
     }
 
-<<<<<<< HEAD
     public function withRequestTarget($requestTarget): RequestInterface
-=======
-    public function withRequestTarget($requestTarget)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (preg_match('#\s#', $requestTarget)) {
             throw new InvalidArgumentException(
@@ -120,20 +88,12 @@ class Request implements RequestInterface
         return $new;
     }
 
-<<<<<<< HEAD
     public function getMethod(): string
-=======
-    public function getMethod()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->method;
     }
 
-<<<<<<< HEAD
     public function withMethod($method): RequestInterface
-=======
-    public function withMethod($method)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->assertMethod($method);
         $new = clone $this;
@@ -141,20 +101,12 @@ class Request implements RequestInterface
         return $new;
     }
 
-<<<<<<< HEAD
     public function getUri(): UriInterface
-=======
-    public function getUri()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->uri;
     }
 
-<<<<<<< HEAD
     public function withUri(UriInterface $uri, $preserveHost = false): RequestInterface
-=======
-    public function withUri(UriInterface $uri, $preserveHost = false)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($uri === $this->uri) {
             return $this;
@@ -170,11 +122,7 @@ class Request implements RequestInterface
         return $new;
     }
 
-<<<<<<< HEAD
     private function updateHostFromUri(): void
-=======
-    private function updateHostFromUri()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $host = $this->uri->getHost();
 
@@ -197,7 +145,6 @@ class Request implements RequestInterface
         $this->headers = [$header => [$host]] + $this->headers;
     }
 
-<<<<<<< HEAD
     /**
      * @param mixed $method
      */
@@ -205,12 +152,6 @@ class Request implements RequestInterface
     {
         if (!is_string($method) || $method === '') {
             throw new InvalidArgumentException('Method must be a non-empty string.');
-=======
-    private function assertMethod($method)
-    {
-        if (!is_string($method) || $method === '') {
-            throw new \InvalidArgumentException('Method must be a non-empty string.');
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 }

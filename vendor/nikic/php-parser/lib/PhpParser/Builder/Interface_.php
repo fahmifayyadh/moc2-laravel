@@ -4,10 +4,7 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
-<<<<<<< HEAD
 use PhpParser\Node;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
@@ -18,12 +15,9 @@ class Interface_ extends Declaration
     protected $constants = [];
     protected $methods = [];
 
-<<<<<<< HEAD
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * Creates an interface builder.
      *
@@ -72,7 +66,6 @@ class Interface_ extends Declaration
     }
 
     /**
-<<<<<<< HEAD
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -86,8 +79,6 @@ class Interface_ extends Declaration
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Returns the built interface node.
      *
      * @return Stmt\Interface_ The built interface node
@@ -96,10 +87,7 @@ class Interface_ extends Declaration
         return new Stmt\Interface_($this->name, [
             'extends' => $this->extends,
             'stmts' => array_merge($this->constants, $this->methods),
-<<<<<<< HEAD
             'attrGroups' => $this->attributeGroups,
-=======
->>>>>>> parent of 31cfa1b1 (p)
         ], $this->attributes);
     }
 }

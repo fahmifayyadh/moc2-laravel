@@ -24,14 +24,11 @@ namespace Illuminate\Support\Facades;
  * @method static int transactionLevel()
  * @method static array pretend(\Closure $callback)
  * @method static void listen(\Closure $callback)
-<<<<<<< HEAD
  * @method static void enableQueryLog()
  * @method static void disableQueryLog()
  * @method static bool logging()
  * @method static array getQueryLog()
  * @method static void flushQueryLog()
-=======
->>>>>>> parent of 31cfa1b1 (p)
  *
  * @see \Illuminate\Database\DatabaseManager
  * @see \Illuminate\Database\Connection

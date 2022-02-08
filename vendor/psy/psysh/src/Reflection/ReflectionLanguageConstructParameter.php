@@ -24,27 +24,17 @@ class ReflectionLanguageConstructParameter extends \ReflectionParameter
 
     public function __construct($function, $parameter, array $opts)
     {
-<<<<<<< HEAD
         $this->function = $function;
         $this->parameter = $parameter;
         $this->opts = $opts;
-=======
-        $this->function  = $function;
-        $this->parameter = $parameter;
-        $this->opts      = $opts;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * No class here.
-<<<<<<< HEAD
      *
      * @todo remove \ReturnTypeWillChange attribute after dropping support for PHP 7.0 (when we can use nullable types)
      */
     #[\ReturnTypeWillChange]
-=======
-     */
->>>>>>> parent of 31cfa1b1 (p)
     public function getClass()
     {
         return;
@@ -55,11 +45,7 @@ class ReflectionLanguageConstructParameter extends \ReflectionParameter
      *
      * @return bool
      */
-<<<<<<< HEAD
     public function isArray(): bool
-=======
-    public function isArray()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \array_key_exists('isArray', $this->opts) && $this->opts['isArray'];
     }
@@ -67,26 +53,18 @@ class ReflectionLanguageConstructParameter extends \ReflectionParameter
     /**
      * Get param default value.
      *
-<<<<<<< HEAD
      * @todo remove \ReturnTypeWillChange attribute after dropping support for PHP 7.x (when we can use mixed type)
      *
      * @return mixed
      */
     #[\ReturnTypeWillChange]
-=======
-     * @return mixed
-     */
->>>>>>> parent of 31cfa1b1 (p)
     public function getDefaultValue()
     {
         if ($this->isDefaultValueAvailable()) {
             return $this->opts['defaultValue'];
         }
-<<<<<<< HEAD
 
         return null;
-=======
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -94,11 +72,7 @@ class ReflectionLanguageConstructParameter extends \ReflectionParameter
      *
      * @return string
      */
-<<<<<<< HEAD
     public function getName(): string
-=======
-    public function getName()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->parameter;
     }
@@ -108,11 +82,7 @@ class ReflectionLanguageConstructParameter extends \ReflectionParameter
      *
      * @return bool
      */
-<<<<<<< HEAD
     public function isOptional(): bool
-=======
-    public function isOptional()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \array_key_exists('isOptional', $this->opts) && $this->opts['isOptional'];
     }
@@ -122,11 +92,7 @@ class ReflectionLanguageConstructParameter extends \ReflectionParameter
      *
      * @return bool
      */
-<<<<<<< HEAD
     public function isDefaultValueAvailable(): bool
-=======
-    public function isDefaultValueAvailable()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \array_key_exists('defaultValue', $this->opts);
     }
@@ -138,11 +104,7 @@ class ReflectionLanguageConstructParameter extends \ReflectionParameter
      *
      * @return bool
      */
-<<<<<<< HEAD
     public function isPassedByReference(): bool
-=======
-    public function isPassedByReference()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \array_key_exists('isPassedByReference', $this->opts) && $this->opts['isPassedByReference'];
     }

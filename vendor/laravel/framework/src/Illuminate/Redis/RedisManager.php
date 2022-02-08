@@ -192,11 +192,7 @@ class RedisManager implements Factory
         }
 
         return array_filter($parsed, function ($key) {
-<<<<<<< HEAD
             return ! in_array($key, ['driver'], true);
-=======
-            return ! in_array($key, ['driver', 'username'], true);
->>>>>>> parent of 31cfa1b1 (p)
         }, ARRAY_FILTER_USE_KEY);
     }
 

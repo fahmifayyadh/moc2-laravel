@@ -25,11 +25,7 @@ final class Resource_ implements Type
     /**
      * Returns a rendered output of the Type as it would be used in a DocBlock.
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return 'resource';
     }

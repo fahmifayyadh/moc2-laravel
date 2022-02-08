@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function strlen;
 use function strpos;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\InvalidArgumentException;
 
 /**
@@ -29,11 +26,7 @@ final class StringStartsWith extends Constraint
 
     public function __construct(string $prefix)
     {
-<<<<<<< HEAD
         if (strlen($prefix) === 0) {
-=======
-        if (\strlen($prefix) === 0) {
->>>>>>> parent of 31cfa1b1 (p)
             throw InvalidArgumentException::create(1, 'non-empty string');
         }
 
@@ -56,10 +49,6 @@ final class StringStartsWith extends Constraint
      */
     protected function matches($other): bool
     {
-<<<<<<< HEAD
         return strpos((string) $other, $this->prefix) === 0;
-=======
-        return \strpos((string) $other, $this->prefix) === 0;
->>>>>>> parent of 31cfa1b1 (p)
     }
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # Monolog - Logging for PHP [![Continuous Integration](https://github.com/Seldaek/monolog/workflows/Continuous%20Integration/badge.svg?branch=main)](https://github.com/Seldaek/monolog/actions)
-=======
-# Monolog - Logging for PHP [![Build Status](https://travis-ci.org/Seldaek/monolog.svg?branch=master)](https://travis-ci.org/Seldaek/monolog)
->>>>>>> parent of 31cfa1b1 (p)
 
 [![Total Downloads](https://img.shields.io/packagist/dt/monolog/monolog.svg)](https://packagist.org/packages/monolog/monolog)
 [![Latest Stable Version](https://img.shields.io/packagist/v/monolog/monolog.svg)](https://packagist.org/packages/monolog/monolog)
@@ -68,15 +64,11 @@ can also add your own there if you publish one.
 
 ### Requirements
 
-<<<<<<< HEAD
 - Monolog `^2.0` works with PHP 7.2 or above, use Monolog `^1.25` for PHP 5.3+ support.
 
 ### Support
 
 Monolog 1.x support is somewhat limited at this point and only important fixes will be done. You should migrate to Monolog 2 where possible to benefit from all the latest features and fixes.
-=======
-- Monolog 2.x works with PHP 7.2 or above, use Monolog `^1.0` for PHP 5.3+ support.
->>>>>>> parent of 31cfa1b1 (p)
 
 ### Submitting bugs and feature requests
 
@@ -94,11 +86,7 @@ Bugs and feature request are tracked on [GitHub](https://github.com/Seldaek/mono
 - [Slim](http://www.slimframework.com/) is usable with Monolog via the [Slim-Monolog](https://github.com/Flynsarmy/Slim-Monolog) log writer.
 - [XOOPS 2.6](http://xoops.org/) comes out of the box with Monolog.
 - [Aura.Web_Project](https://github.com/auraphp/Aura.Web_Project) comes out of the box with Monolog.
-<<<<<<< HEAD
 - [Nette Framework](http://nette.org/en/) is usable with Monolog via the [contributte/monolog](https://github.com/contributte/monolog) or [orisai/nette-monolog](https://github.com/orisai/nette-monolog) extensions.
-=======
-- [Nette Framework](http://nette.org/en/) can be used with Monolog via [contributte/monolog](https://github.com/contributte/monolog) extension.
->>>>>>> parent of 31cfa1b1 (p)
 - [Proton Micro Framework](https://github.com/alexbilbie/Proton) comes out of the box with Monolog.
 - [FuelPHP](http://fuelphp.com/) comes out of the box with Monolog.
 - [Equip Framework](https://github.com/equip/framework) comes out of the box with Monolog.

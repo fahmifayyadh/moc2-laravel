@@ -14,10 +14,7 @@ declare(strict_types=1);
 namespace phpDocumentor\Reflection\DocBlock;
 
 use phpDocumentor\Reflection\DocBlock\Tags\Example;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function array_slice;
 use function file;
 use function getcwd;
@@ -26,10 +23,7 @@ use function is_readable;
 use function rtrim;
 use function sprintf;
 use function trim;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use const DIRECTORY_SEPARATOR;
 
 /**
@@ -46,11 +40,7 @@ class ExampleFinder
     /**
      * Attempts to find the example contents for the given descriptor.
      */
-<<<<<<< HEAD
     public function find(Example $example): string
-=======
-    public function find(Example $example) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         $filename = $example->getFilePath();
 
@@ -65,11 +55,7 @@ class ExampleFinder
     /**
      * Registers the project's root directory where an 'examples' folder can be expected.
      */
-<<<<<<< HEAD
     public function setSourceDirectory(string $directory = ''): void
-=======
-    public function setSourceDirectory(string $directory = '') : void
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->sourceDirectory = $directory;
     }
@@ -77,11 +63,7 @@ class ExampleFinder
     /**
      * Returns the project's root directory where an 'examples' folder can be expected.
      */
-<<<<<<< HEAD
     public function getSourceDirectory(): string
-=======
-    public function getSourceDirectory() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->sourceDirectory;
     }
@@ -91,11 +73,7 @@ class ExampleFinder
      *
      * @param string[] $directories
      */
-<<<<<<< HEAD
     public function setExampleDirectories(array $directories): void
-=======
-    public function setExampleDirectories(array $directories) : void
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->exampleDirectories = $directories;
     }
@@ -105,11 +83,7 @@ class ExampleFinder
      *
      * @return string[]
      */
-<<<<<<< HEAD
     public function getExampleDirectories(): array
-=======
-    public function getExampleDirectories() : array
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->exampleDirectories;
     }
@@ -127,11 +101,7 @@ class ExampleFinder
      *
      * @return string[] all lines of the example file
      */
-<<<<<<< HEAD
     private function getExampleFileContents(string $filename): ?array
-=======
-    private function getExampleFileContents(string $filename) : ?array
->>>>>>> parent of 31cfa1b1 (p)
     {
         $normalizedPath = null;
 
@@ -161,11 +131,7 @@ class ExampleFinder
     /**
      * Get example filepath based on the example directory inside your project.
      */
-<<<<<<< HEAD
     private function getExamplePathFromExampleDirectory(string $file): string
-=======
-    private function getExamplePathFromExampleDirectory(string $file) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return getcwd() . DIRECTORY_SEPARATOR . 'examples' . DIRECTORY_SEPARATOR . $file;
     }
@@ -173,11 +139,7 @@ class ExampleFinder
     /**
      * Returns a path to the example file in the given directory..
      */
-<<<<<<< HEAD
     private function constructExamplePath(string $directory, string $file): string
-=======
-    private function constructExamplePath(string $directory, string $file) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return rtrim($directory, '\\/') . DIRECTORY_SEPARATOR . $file;
     }
@@ -185,11 +147,7 @@ class ExampleFinder
     /**
      * Get example filepath based on sourcecode.
      */
-<<<<<<< HEAD
     private function getExamplePathFromSource(string $file): string
-=======
-    private function getExamplePathFromSource(string $file) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return sprintf(
             '%s%s%s',

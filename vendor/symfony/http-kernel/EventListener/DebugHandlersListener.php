@@ -33,10 +33,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 class DebugHandlersListener implements EventSubscriberInterface
 {
-<<<<<<< HEAD
     private $earlyHandler;
-=======
->>>>>>> parent of 31cfa1b1 (p)
     private $exceptionHandler;
     private $logger;
     private $levels;
@@ -57,7 +54,6 @@ class DebugHandlersListener implements EventSubscriberInterface
      */
     public function __construct(callable $exceptionHandler = null, LoggerInterface $logger = null, $levels = \E_ALL, ?int $throwAt = \E_ALL, bool $scream = true, $fileLinkFormat = null, bool $scope = true)
     {
-<<<<<<< HEAD
         $handler = set_exception_handler('var_dump');
         $this->earlyHandler = \is_array($handler) ? $handler[0] : null;
         restore_exception_handler();
@@ -65,11 +61,6 @@ class DebugHandlersListener implements EventSubscriberInterface
         $this->exceptionHandler = $exceptionHandler;
         $this->logger = $logger;
         $this->levels = $levels ?? \E_ALL;
-=======
-        $this->exceptionHandler = $exceptionHandler;
-        $this->logger = $logger;
-        $this->levels = null === $levels ? \E_ALL : $levels;
->>>>>>> parent of 31cfa1b1 (p)
         $this->throwAt = \is_int($throwAt) ? $throwAt : (null === $throwAt ? null : ($throwAt ? \E_ALL : null));
         $this->scream = $scream;
         $this->fileLinkFormat = $fileLinkFormat;
@@ -93,13 +84,10 @@ class DebugHandlersListener implements EventSubscriberInterface
         $handler = \is_array($handler) ? $handler[0] : null;
         restore_exception_handler();
 
-<<<<<<< HEAD
         if (!$handler instanceof ErrorHandler && !$handler instanceof LegacyErrorHandler) {
             $handler = $this->earlyHandler;
         }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if ($this->logger || null !== $this->throwAt) {
             if ($handler instanceof ErrorHandler || $handler instanceof LegacyErrorHandler) {
                 if ($this->logger) {

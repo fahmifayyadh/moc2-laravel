@@ -50,11 +50,7 @@ class AutoCompleter
      *
      * @return array
      */
-<<<<<<< HEAD
     public function processCallback(string $input, int $index, array $info = []): array
-=======
-    public function processCallback($input, $index, $info = [])
->>>>>>> parent of 31cfa1b1 (p)
     {
         // Some (Windows?) systems provide incomplete `readline_info`, so let's
         // try to work around it.
@@ -66,11 +62,7 @@ class AutoCompleter
             $line = $input;
         }
 
-<<<<<<< HEAD
         $tokens = \token_get_all('<?php '.$line);
-=======
-        $tokens = \token_get_all('<?php ' . $line);
->>>>>>> parent of 31cfa1b1 (p)
 
         // remove whitespaces
         $tokens = \array_filter($tokens, function ($token) {
@@ -99,11 +91,7 @@ class AutoCompleter
      *
      * @return array
      */
-<<<<<<< HEAD
     public function callback(string $input, int $index): array
-=======
-    public function callback($input, $index)
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->processCallback($input, $index, \readline_info());
     }

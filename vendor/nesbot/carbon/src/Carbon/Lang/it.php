@@ -22,12 +22,9 @@
  * - Davide Casiraghi (davide-casiraghi)
  * - Pete Scopes (pdscopes)
  */
-<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 return [
     'year' => ':count anno|:count anni',
     'a_year' => 'un anno|:count anni',
@@ -87,11 +84,7 @@ return [
         'nextDay' => '[Domani alle] LT',
         'nextWeek' => 'dddd [alle] LT',
         'lastDay' => '[Ieri alle] LT',
-<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $date) {
-=======
-        'lastWeek' => function (\Carbon\CarbonInterface $date) {
->>>>>>> parent of 31cfa1b1 (p)
             switch ($date->dayOfWeek) {
                 case 0:
                     return '[la scorsa] dddd [alle] LT';

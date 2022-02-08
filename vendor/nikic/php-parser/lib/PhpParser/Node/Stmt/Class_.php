@@ -13,10 +13,7 @@ class Class_ extends ClassLike
     const MODIFIER_STATIC    =  8;
     const MODIFIER_ABSTRACT  = 16;
     const MODIFIER_FINAL     = 32;
-<<<<<<< HEAD
     const MODIFIER_READONLY  = 64;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
     const VISIBILITY_MODIFIER_MASK = 7; // 1 | 2 | 4
 
@@ -36,11 +33,7 @@ class Class_ extends ClassLike
      *                                'extends'     => null   : Name of extended class
      *                                'implements'  => array(): Names of implemented interfaces
      *                                'stmts'       => array(): Statements
-<<<<<<< HEAD
      *                                'attrGroups'  => array(): PHP attribute groups
-=======
-     *                                '$attrGroups' => array(): PHP attribute groups
->>>>>>> parent of 31cfa1b1 (p)
      * @param array       $attributes Additional attributes
      */
     public function __construct($name, array $subNodes = [], array $attributes = []) {
@@ -104,13 +97,10 @@ class Class_ extends ClassLike
             throw new Error('Multiple final modifiers are not allowed');
         }
 
-<<<<<<< HEAD
         if ($a & self::MODIFIER_READONLY && $b & self::MODIFIER_READONLY) {
             throw new Error('Multiple readonly modifiers are not allowed');
         }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if ($a & 48 && $b & 48) {
             throw new Error('Cannot use the final modifier on an abstract class member');
         }

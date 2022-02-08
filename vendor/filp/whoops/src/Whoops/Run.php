@@ -7,10 +7,7 @@
 namespace Whoops;
 
 use InvalidArgumentException;
-<<<<<<< HEAD
 use Throwable;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use Whoops\Exception\ErrorException;
 use Whoops\Exception\Inspector;
 use Whoops\Handler\CallbackHandler;
@@ -21,7 +18,6 @@ use Whoops\Util\SystemFacade;
 
 final class Run implements RunInterface
 {
-<<<<<<< HEAD
     /**
      * @var bool
      */
@@ -35,10 +31,6 @@ final class Run implements RunInterface
     /**
      * @var bool
      */
-=======
-    private $isRegistered;
-    private $allowQuit       = true;
->>>>>>> parent of 31cfa1b1 (p)
     private $sendOutput      = true;
 
     /**
@@ -47,19 +39,15 @@ final class Run implements RunInterface
     private $sendHttpCode    = 500;
 
     /**
-<<<<<<< HEAD
      * @var integer|false
      */
     private $sendExitCode    = 1;
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * @var HandlerInterface[]
      */
     private $handlerStack = [];
 
-<<<<<<< HEAD
     /**
      * @var array
      * @psalm-var list<array{patterns: string, levels: int}>
@@ -78,27 +66,17 @@ final class Run implements RunInterface
      */
     private $canThrowExceptions = true;
 
-=======
-    private $silencedPatterns = [];
-
-    private $system;
-
->>>>>>> parent of 31cfa1b1 (p)
     public function __construct(SystemFacade $system = null)
     {
         $this->system = $system ?: new SystemFacade;
     }
 
     /**
-<<<<<<< HEAD
      * Explicitly request your handler runs as the last of all currently registered handlers.
      *
      * @param callable|HandlerInterface $handler
      *
      * @return Run
-=======
-     * Explicitly request your handler runs as the last of all currently registered handlers
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function appendHandler($handler)
     {
@@ -107,15 +85,11 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Explicitly request your handler runs as the first of all currently registered handlers.
      *
      * @param callable|HandlerInterface $handler
      *
      * @return Run
-=======
-     * Explicitly request your handler runs as the first of all currently registered handlers
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function prependHandler($handler)
     {
@@ -123,7 +97,6 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Register your handler as the last of all currently registered handlers (to be executed first).
      * Prefer using appendHandler and prependHandler for clarity.
      *
@@ -132,14 +105,6 @@ final class Run implements RunInterface
      * @return Run
      *
      * @throws InvalidArgumentException If argument is not callable or instance of HandlerInterface.
-=======
-     * Register your handler as the last of all currently registered handlers.
-     * Prefer using appendHandler and prependHandler for clarity.
-     *
-     * @throws InvalidArgumentException  If argument is not callable or instance of HandlerInterface
-     * @param  Callable|HandlerInterface $handler
-     * @return Run
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function pushHandler($handler)
     {
@@ -148,32 +113,21 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Removes and returns the last handler pushed to the handler stack.
      *
      * @see Run::removeFirstHandler(), Run::removeLastHandler()
      *
      * @return HandlerInterface|null
-=======
-     * See removeFirstHandler and removeLastHandler
-     * @return null|HandlerInterface
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function popHandler()
     {
         return array_pop($this->handlerStack);
     }
 
-<<<<<<< HEAD
     /**
      * Removes the first handler.
      *
      * @return void
-=======
-
-    /**
-     * Removes the first handler
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function removeFirstHandler()
     {
@@ -181,13 +135,9 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Removes the last handler.
      *
      * @return void
-=======
-     * Removes the last handler
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function removeLastHandler()
     {
@@ -195,13 +145,8 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Returns an array with all handlers, in the order they were added to the stack.
      *
-=======
-     * Returns an array with all handlers, in the
-     * order they were added to the stack.
->>>>>>> parent of 31cfa1b1 (p)
      * @return array
      */
     public function getHandlers()
@@ -210,13 +155,8 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Clears all handlers in the handlerStack, including the default PrettyPage handler.
      *
-=======
-     * Clears all handlers in the handlerStack, including
-     * the default PrettyPage handler.
->>>>>>> parent of 31cfa1b1 (p)
      * @return Run
      */
     public function clearHandlers()
@@ -226,21 +166,8 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Registers this instance as an error handler.
      *
-=======
-     * @param  \Throwable $exception
-     * @return Inspector
-     */
-    private function getInspector($exception)
-    {
-        return new Inspector($exception);
-    }
-
-    /**
-     * Registers this instance as an error handler.
->>>>>>> parent of 31cfa1b1 (p)
      * @return Run
      */
     public function register()
@@ -264,12 +191,8 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Unregisters all handlers registered by this Whoops\Run instance.
      *
-=======
-     * Unregisters all handlers registered by this Whoops\Run instance
->>>>>>> parent of 31cfa1b1 (p)
      * @return Run
      */
     public function unregister()
@@ -286,13 +209,9 @@ final class Run implements RunInterface
 
     /**
      * Should Whoops allow Handlers to force the script to quit?
-<<<<<<< HEAD
      *
      * @param bool|int $exit
      *
-=======
-     * @param  bool|int $exit
->>>>>>> parent of 31cfa1b1 (p)
      * @return bool
      */
     public function allowQuit($exit = null)
@@ -305,19 +224,12 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Silence particular errors in particular files.
      *
      * @param array|string $patterns List or a single regex pattern to match.
      * @param int          $levels   Defaults to E_STRICT | E_DEPRECATED.
      *
      * @return Run
-=======
-     * Silence particular errors in particular files
-     * @param  array|string $patterns List or a single regex pattern to match
-     * @param  int          $levels   Defaults to E_STRICT | E_DEPRECATED
-     * @return \Whoops\Run
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function silenceErrorsInPaths($patterns, $levels = 10240)
     {
@@ -333,21 +245,12 @@ final class Run implements RunInterface
                 (array) $patterns
             )
         );
-<<<<<<< HEAD
 
         return $this;
     }
 
     /**
      * Returns an array with silent errors in path configuration.
-=======
-        return $this;
-    }
-
-
-    /**
-     * Returns an array with silent errors in path configuration
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return array
      */
@@ -356,24 +259,16 @@ final class Run implements RunInterface
         return $this->silencedPatterns;
     }
 
-<<<<<<< HEAD
     /**
-=======
-    /*
->>>>>>> parent of 31cfa1b1 (p)
      * Should Whoops send HTTP error code to the browser if possible?
      * Whoops will by default send HTTP code 500, but you may wish to
      * use 502, 503, or another 5xx family code.
      *
      * @param bool|int $code
-<<<<<<< HEAD
      *
      * @return int|false
      *
      * @throws InvalidArgumentException
-=======
-     * @return int|false
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function sendHttpCode($code = null)
     {
@@ -391,11 +286,7 @@ final class Run implements RunInterface
 
         if ($code < 400 || 600 <= $code) {
             throw new InvalidArgumentException(
-<<<<<<< HEAD
                 "Invalid status code '$code', must be 4xx or 5xx"
-=======
-                 "Invalid status code '$code', must be 4xx or 5xx"
->>>>>>> parent of 31cfa1b1 (p)
             );
         }
 
@@ -403,7 +294,6 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Should Whoops exit with a specific code on the CLI if possible?
      * Whoops will exit with 1 by default, but you can specify something else.
      *
@@ -434,11 +324,6 @@ final class Run implements RunInterface
      *
      * @param bool|int $send
      *
-=======
-     * Should Whoops push output directly to the client?
-     * If this is false, output will be returned by handleException
-     * @param  bool|int $send
->>>>>>> parent of 31cfa1b1 (p)
      * @return bool
      */
     public function writeToOutput($send = null)
@@ -451,19 +336,11 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Handles an exception, ultimately generating a Whoops error page.
      *
      * @param Throwable $exception
      *
      * @return string Output generated by handlers.
-=======
-     * Handles an exception, ultimately generating a Whoops error
-     * page.
-     *
-     * @param  \Throwable $exception
-     * @return string     Output generated by handlers
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function handleException($exception)
     {
@@ -533,20 +410,15 @@ final class Run implements RunInterface
             // HHVM fix for https://github.com/facebook/hhvm/issues/4055
             $this->system->flushOutputBuffer();
 
-<<<<<<< HEAD
             $this->system->stopExecution(
                 $this->sendExitCode()
             );
-=======
-            $this->system->stopExecution(1);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $output;
     }
 
     /**
-<<<<<<< HEAD
      * Converts generic PHP errors to \ErrorException instances, before passing them off to be handled.
      *
      * This method MUST be compatible with set_error_handler.
@@ -558,19 +430,6 @@ final class Run implements RunInterface
      *
      * @return bool
      *
-=======
-     * Converts generic PHP errors to \ErrorException
-     * instances, before passing them off to be handled.
-     *
-     * This method MUST be compatible with set_error_handler.
-     *
-     * @param int    $level
-     * @param string $message
-     * @param string $file
-     * @param int    $line
-     *
-     * @return bool
->>>>>>> parent of 31cfa1b1 (p)
      * @throws ErrorException
      */
     public function handleError($level, $message, $file = null, $line = null)
@@ -605,11 +464,8 @@ final class Run implements RunInterface
 
     /**
      * Special case to deal with Fatal errors and the like.
-<<<<<<< HEAD
      *
      * @return void
-=======
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function handleShutdown()
     {
@@ -633,7 +489,6 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * @param Throwable $exception
      *
      * @return Inspector
@@ -652,13 +507,6 @@ final class Run implements RunInterface
      *
      * @throws InvalidArgumentException
      */
-=======
-     * In certain scenarios, like in shutdown handler, we can not throw exceptions
-     * @var bool
-     */
-    private $canThrowExceptions = true;
-
->>>>>>> parent of 31cfa1b1 (p)
     private function resolveHandler($handler)
     {
         if (is_callable($handler)) {
@@ -667,11 +515,7 @@ final class Run implements RunInterface
 
         if (!$handler instanceof HandlerInterface) {
             throw new InvalidArgumentException(
-<<<<<<< HEAD
                 "Handler must be a callable, or instance of "
-=======
-                  "Handler must be a callable, or instance of "
->>>>>>> parent of 31cfa1b1 (p)
                 . "Whoops\\Handler\\HandlerInterface"
             );
         }
@@ -680,7 +524,6 @@ final class Run implements RunInterface
     }
 
     /**
-<<<<<<< HEAD
      * Echo something to the browser.
      *
      * @param string $output
@@ -690,15 +533,6 @@ final class Run implements RunInterface
     private function writeToOutputNow($output)
     {
         if ($this->sendHttpCode() && Misc::canSendHeaders()) {
-=======
-     * Echo something to the browser
-     * @param  string $output
-     * @return $this
-     */
-    private function writeToOutputNow($output)
-    {
-        if ($this->sendHttpCode() && \Whoops\Util\Misc::canSendHeaders()) {
->>>>>>> parent of 31cfa1b1 (p)
             $this->system->setHttpResponseCode(
                 $this->sendHttpCode()
             );

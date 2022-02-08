@@ -16,10 +16,7 @@ namespace phpDocumentor\Reflection\Types;
 use InvalidArgumentException;
 use phpDocumentor\Reflection\Fqsen;
 use phpDocumentor\Reflection\Type;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function strpos;
 
 /**
@@ -56,20 +53,12 @@ final class Object_ implements Type
     /**
      * Returns the FQSEN associated with this object.
      */
-<<<<<<< HEAD
     public function getFqsen(): ?Fqsen
-=======
-    public function getFqsen() : ?Fqsen
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->fqsen;
     }
 
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->fqsen) {
             return (string) $this->fqsen;

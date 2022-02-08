@@ -1,26 +1,17 @@
 <?php
 
-<<<<<<< HEAD
 declare(strict_types=1);
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
 
 /**
  * PHP stream implementation.
-<<<<<<< HEAD
-=======
- *
- * @var $stream
->>>>>>> parent of 31cfa1b1 (p)
  */
 class Stream implements StreamInterface
 {
     /**
-<<<<<<< HEAD
      * @see http://php.net/manual/function.fopen.php
      * @see http://php.net/manual/en/function.gzopen.php
      */
@@ -40,24 +31,6 @@ class Stream implements StreamInterface
     /** @var string|null */
     private $uri;
     /** @var mixed[] */
-=======
-     * Resource modes.
-     *
-     * @var string
-     *
-     * @see http://php.net/manual/function.fopen.php
-     * @see http://php.net/manual/en/function.gzopen.php
-     */
-    const READABLE_MODES = '/r|a\+|ab\+|w\+|wb\+|x\+|xb\+|c\+|cb\+/';
-    const WRITABLE_MODES = '/a|w|r\+|rb\+|rw|x|c/';
-
-    private $stream;
-    private $size;
-    private $seekable;
-    private $readable;
-    private $writable;
-    private $uri;
->>>>>>> parent of 31cfa1b1 (p)
     private $customMetadata;
 
     /**
@@ -69,21 +42,12 @@ class Stream implements StreamInterface
      * - metadata: (array) Any additional metadata to return when the metadata
      *   of the stream is accessed.
      *
-<<<<<<< HEAD
      * @param resource                            $stream  Stream resource to wrap.
      * @param array{size?: int, metadata?: array} $options Associative array of options.
      *
      * @throws \InvalidArgumentException if the stream is not a stream resource
      */
     public function __construct($stream, array $options = [])
-=======
-     * @param resource $stream  Stream resource to wrap.
-     * @param array    $options Associative array of options.
-     *
-     * @throws \InvalidArgumentException if the stream is not a stream resource
-     */
-    public function __construct($stream, $options = [])
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!is_resource($stream)) {
             throw new \InvalidArgumentException('Stream must be a resource');
@@ -93,14 +57,7 @@ class Stream implements StreamInterface
             $this->size = $options['size'];
         }
 
-<<<<<<< HEAD
         $this->customMetadata = $options['metadata'] ?? [];
-=======
-        $this->customMetadata = isset($options['metadata'])
-            ? $options['metadata']
-            : [];
-
->>>>>>> parent of 31cfa1b1 (p)
         $this->stream = $stream;
         $meta = stream_get_meta_data($this->stream);
         $this->seekable = $meta['seekable'];
@@ -117,35 +74,23 @@ class Stream implements StreamInterface
         $this->close();
     }
 
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString()
->>>>>>> parent of 31cfa1b1 (p)
     {
         try {
             if ($this->isSeekable()) {
                 $this->seek(0);
             }
             return $this->getContents();
-<<<<<<< HEAD
         } catch (\Throwable $e) {
             if (\PHP_VERSION_ID >= 70400) {
                 throw $e;
             }
             trigger_error(sprintf('%s::__toString exception: %s', self::class, (string) $e), E_USER_ERROR);
-=======
-        } catch (\Exception $e) {
->>>>>>> parent of 31cfa1b1 (p)
             return '';
         }
     }
 
-<<<<<<< HEAD
     public function getContents(): string
-=======
-    public function getContents()
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -160,11 +105,7 @@ class Stream implements StreamInterface
         return $contents;
     }
 
-<<<<<<< HEAD
     public function close(): void
-=======
-    public function close()
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (isset($this->stream)) {
             if (is_resource($this->stream)) {
@@ -188,11 +129,7 @@ class Stream implements StreamInterface
         return $result;
     }
 
-<<<<<<< HEAD
     public function getSize(): ?int
-=======
-    public function getSize()
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->size !== null) {
             return $this->size;
@@ -208,11 +145,7 @@ class Stream implements StreamInterface
         }
 
         $stats = fstat($this->stream);
-<<<<<<< HEAD
         if (is_array($stats) && isset($stats['size'])) {
-=======
-        if (isset($stats['size'])) {
->>>>>>> parent of 31cfa1b1 (p)
             $this->size = $stats['size'];
             return $this->size;
         }
@@ -220,38 +153,22 @@ class Stream implements StreamInterface
         return null;
     }
 
-<<<<<<< HEAD
     public function isReadable(): bool
-=======
-    public function isReadable()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->readable;
     }
 
-<<<<<<< HEAD
     public function isWritable(): bool
-=======
-    public function isWritable()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->writable;
     }
 
-<<<<<<< HEAD
     public function isSeekable(): bool
-=======
-    public function isSeekable()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->seekable;
     }
 
-<<<<<<< HEAD
     public function eof(): bool
-=======
-    public function eof()
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -260,11 +177,7 @@ class Stream implements StreamInterface
         return feof($this->stream);
     }
 
-<<<<<<< HEAD
     public function tell(): int
-=======
-    public function tell()
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -279,20 +192,12 @@ class Stream implements StreamInterface
         return $result;
     }
 
-<<<<<<< HEAD
     public function rewind(): void
-=======
-    public function rewind()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->seek(0);
     }
 
-<<<<<<< HEAD
     public function seek($offset, $whence = SEEK_SET): void
-=======
-    public function seek($offset, $whence = SEEK_SET)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $whence = (int) $whence;
 
@@ -308,11 +213,7 @@ class Stream implements StreamInterface
         }
     }
 
-<<<<<<< HEAD
     public function read($length): string
-=======
-    public function read($length)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -336,11 +237,7 @@ class Stream implements StreamInterface
         return $string;
     }
 
-<<<<<<< HEAD
     public function write($string): int
-=======
-    public function write($string)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -360,14 +257,11 @@ class Stream implements StreamInterface
         return $result;
     }
 
-<<<<<<< HEAD
     /**
      * {@inheritdoc}
      *
      * @return mixed
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function getMetadata($key = null)
     {
         if (!isset($this->stream)) {
@@ -380,10 +274,6 @@ class Stream implements StreamInterface
 
         $meta = stream_get_meta_data($this->stream);
 
-<<<<<<< HEAD
         return $meta[$key] ?? null;
-=======
-        return isset($meta[$key]) ? $meta[$key] : null;
->>>>>>> parent of 31cfa1b1 (p)
     }
 }

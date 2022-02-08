@@ -27,11 +27,7 @@ class SilentInput
      *
      * @param string $inputString
      */
-<<<<<<< HEAD
     public function __construct(string $inputString)
-=======
-    public function __construct($inputString)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->inputString = $inputString;
     }
@@ -41,11 +37,7 @@ class SilentInput
      *
      * @return string
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->inputString;
     }

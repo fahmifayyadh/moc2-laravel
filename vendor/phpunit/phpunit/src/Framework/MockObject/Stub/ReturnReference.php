@@ -9,10 +9,7 @@
  */
 namespace PHPUnit\Framework\MockObject\Stub;
 
-<<<<<<< HEAD
 use function sprintf;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\MockObject\Invocation;
 use SebastianBergmann\Exporter\Exporter;
 
@@ -40,11 +37,7 @@ final class ReturnReference implements Stub
     {
         $exporter = new Exporter;
 
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             'return user-specified reference %s',
             $exporter->export($this->reference)
         );

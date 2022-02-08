@@ -26,13 +26,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ConsoleLogger extends AbstractLogger
 {
-<<<<<<< HEAD
     public const INFO = 'info';
     public const ERROR = 'error';
-=======
-    const INFO = 'info';
-    const ERROR = 'error';
->>>>>>> parent of 31cfa1b1 (p)
 
     private $output;
     private $verbosityLevelMap = [
@@ -109,11 +104,7 @@ class ConsoleLogger extends AbstractLogger
      */
     private function interpolate(string $message, array $context): string
     {
-<<<<<<< HEAD
         if (!str_contains($message, '{')) {
-=======
-        if (false === strpos($message, '{')) {
->>>>>>> parent of 31cfa1b1 (p)
             return $message;
         }
 

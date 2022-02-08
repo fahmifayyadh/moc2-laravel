@@ -8,17 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
 namespace Carbon\Traits;
 
 use Carbon\CarbonInterface;
 use ReturnTypeWillChange;
-=======
-namespace Carbon\Traits;
-
-use Carbon\CarbonInterface;
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Trait Modifiers.
@@ -90,11 +84,7 @@ trait Modifiers
         }
 
         return $this->change(
-<<<<<<< HEAD
             'next '.(\is_string($modifier) ? $modifier : static::$days[$modifier])
-=======
-            'next '.(is_string($modifier) ? $modifier : static::$days[$modifier])
->>>>>>> parent of 31cfa1b1 (p)
         );
     }
 
@@ -176,11 +166,7 @@ trait Modifiers
         }
 
         return $this->change(
-<<<<<<< HEAD
             'last '.(\is_string($modifier) ? $modifier : static::$days[$modifier])
-=======
-            'last '.(is_string($modifier) ? $modifier : static::$days[$modifier])
->>>>>>> parent of 31cfa1b1 (p)
         );
     }
 
@@ -239,19 +225,11 @@ trait Modifiers
      */
     public function nthOfMonth($nth, $dayOfWeek)
     {
-<<<<<<< HEAD
         $date = $this->avoidMutation()->firstOfMonth();
         $check = $date->rawFormat('Y-m');
         $date = $date->modify('+'.$nth.' '.static::$days[$dayOfWeek]);
 
         return $date->rawFormat('Y-m') === $check ? $this->modify((string) $date) : false;
-=======
-        $date = $this->copy()->firstOfMonth();
-        $check = $date->rawFormat('Y-m');
-        $date = $date->modify('+'.$nth.' '.static::$days[$dayOfWeek]);
-
-        return $date->rawFormat('Y-m') === $check ? $this->modify("$date") : false;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -297,20 +275,12 @@ trait Modifiers
      */
     public function nthOfQuarter($nth, $dayOfWeek)
     {
-<<<<<<< HEAD
         $date = $this->avoidMutation()->day(1)->month($this->quarter * static::MONTHS_PER_QUARTER);
-=======
-        $date = $this->copy()->day(1)->month($this->quarter * static::MONTHS_PER_QUARTER);
->>>>>>> parent of 31cfa1b1 (p)
         $lastMonth = $date->month;
         $year = $date->year;
         $date = $date->firstOfQuarter()->modify('+'.$nth.' '.static::$days[$dayOfWeek]);
 
-<<<<<<< HEAD
         return ($lastMonth < $date->month || $year !== $date->year) ? false : $this->modify((string) $date);
-=======
-        return ($lastMonth < $date->month || $year !== $date->year) ? false : $this->modify("$date");
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -356,15 +326,9 @@ trait Modifiers
      */
     public function nthOfYear($nth, $dayOfWeek)
     {
-<<<<<<< HEAD
         $date = $this->avoidMutation()->firstOfYear()->modify('+'.$nth.' '.static::$days[$dayOfWeek]);
 
         return $this->year === $date->year ? $this->modify((string) $date) : false;
-=======
-        $date = $this->copy()->firstOfYear()->modify('+'.$nth.' '.static::$days[$dayOfWeek]);
-
-        return $this->year === $date->year ? $this->modify("$date") : false;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -466,14 +430,10 @@ trait Modifiers
      * Calls \DateTime::modify if mutable or \DateTimeImmutable::modify else.
      *
      * @see https://php.net/manual/en/datetime.modify.php
-<<<<<<< HEAD
      *
      * @return static|false
      */
     #[ReturnTypeWillChange]
-=======
-     */
->>>>>>> parent of 31cfa1b1 (p)
     public function modify($modify)
     {
         return parent::modify((string) $modify);
@@ -497,11 +457,7 @@ trait Modifiers
     {
         return $this->modify(preg_replace_callback('/^(next|previous|last)\s+(\d{1,2}(h|am|pm|:\d{1,2}(:\d{1,2})?))$/i', function ($match) {
             $match[2] = str_replace('h', ':00', $match[2]);
-<<<<<<< HEAD
             $test = $this->avoidMutation()->modify($match[2]);
-=======
-            $test = $this->copy()->modify($match[2]);
->>>>>>> parent of 31cfa1b1 (p)
             $method = $match[1] === 'next' ? 'lt' : 'gt';
             $match[1] = $test->$method($this) ? $match[1].' day' : 'today';
 

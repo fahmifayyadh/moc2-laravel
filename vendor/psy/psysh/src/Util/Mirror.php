@@ -21,17 +21,10 @@ use Psy\Reflection\ReflectionNamespace;
  */
 class Mirror
 {
-<<<<<<< HEAD
     const CONSTANT = 1;
     const METHOD = 2;
     const STATIC_PROPERTY = 4;
     const PROPERTY = 8;
-=======
-    const CONSTANT        = 1;
-    const METHOD          = 2;
-    const STATIC_PROPERTY = 4;
-    const PROPERTY        = 8;
->>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Get a Reflector for a function, class or instance, constant, method or property.
@@ -50,11 +43,7 @@ class Mirror
      *
      * @return \Reflector
      */
-<<<<<<< HEAD
     public static function get($value, string $member = null, int $filter = 15): \Reflector
-=======
-    public static function get($value, $member = null, $filter = 15)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($member === null && \is_string($value)) {
             if (\function_exists($value)) {
@@ -109,21 +98,13 @@ class Mirror
             return new ReflectionNamespace($namespace);
         }
 
-<<<<<<< HEAD
         throw new \InvalidArgumentException('Unknown namespace, class or function: '.$value);
-=======
-        throw new \InvalidArgumentException('Unknown namespace, class or function: ' . $value);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * Check declared namespaces for a given namespace.
      */
-<<<<<<< HEAD
     private static function namespaceExists(string $value): bool
-=======
-    private static function namespaceExists($value)
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \in_array(\strtolower($value), self::getDeclaredNamespaces());
     }
@@ -134,11 +115,7 @@ class Mirror
      * Note that this relies on at least one function, class, interface, trait
      * or constant to have been declared in that namespace.
      */
-<<<<<<< HEAD
     private static function getDeclaredNamespaces(): array
-=======
-    private static function getDeclaredNamespaces()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $functions = \get_defined_functions();
 

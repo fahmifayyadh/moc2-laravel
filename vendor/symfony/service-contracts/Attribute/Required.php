@@ -11,11 +11,6 @@
 
 namespace Symfony\Contracts\Service\Attribute;
 
-<<<<<<< HEAD
-=======
-use Attribute;
-
->>>>>>> parent of 31cfa1b1 (p)
 /**
  * A required dependency.
  *
@@ -24,11 +19,7 @@ use Attribute;
  *
  * @author Alexander M. Turek <me@derrabus.de>
  */
-<<<<<<< HEAD
 #[\Attribute(\Attribute::TARGET_METHOD | \Attribute::TARGET_PROPERTY)]
-=======
-#[Attribute(Attribute::TARGET_METHOD | Attribute::TARGET_PROPERTY)]
->>>>>>> parent of 31cfa1b1 (p)
 final class Required
 {
 }

@@ -80,15 +80,9 @@ class Swift_Transport_NullTransport implements Swift_Transport
         }
 
         $count = (
-<<<<<<< HEAD
             \count((array) $message->getTo())
             + \count((array) $message->getCc())
             + \count((array) $message->getBcc())
-=======
-            count((array) $message->getTo())
-            + count((array) $message->getCc())
-            + count((array) $message->getBcc())
->>>>>>> parent of 31cfa1b1 (p)
             );
 
         return $count;

@@ -50,12 +50,6 @@ class NegationNode extends AbstractNode
         return $this->selector->getSpecificity()->plus($this->subSelector->getSpecificity());
     }
 
-<<<<<<< HEAD
-=======
-    /**
-     * {@inheritdoc}
-     */
->>>>>>> parent of 31cfa1b1 (p)
     public function __toString(): string
     {
         return sprintf('%s[%s:not(%s)]', $this->getNodeName(), $this->selector, $this->subSelector);

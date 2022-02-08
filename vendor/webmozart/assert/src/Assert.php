@@ -18,10 +18,6 @@ use Countable;
 use DateTime;
 use DateTimeImmutable;
 use Exception;
-<<<<<<< HEAD
-=======
-use InvalidArgumentException;
->>>>>>> parent of 31cfa1b1 (p)
 use ResourceBundle;
 use SimpleXMLElement;
 use Throwable;
@@ -30,22 +26,14 @@ use Traversable;
 /**
  * Efficient assertions to validate the input/output of your methods.
  *
-<<<<<<< HEAD
-=======
- * @mixin Mixin
- *
->>>>>>> parent of 31cfa1b1 (p)
  * @since  1.0
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
 class Assert
 {
-<<<<<<< HEAD
     use Mixin;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * @psalm-pure
      * @psalm-assert string $value
@@ -120,7 +108,6 @@ class Assert
 
     /**
      * @psalm-pure
-<<<<<<< HEAD
      * @psalm-assert positive-int $value
      *
      * @param mixed  $value
@@ -140,8 +127,6 @@ class Assert
 
     /**
      * @psalm-pure
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * @psalm-assert float $value
      *
      * @param mixed  $value
@@ -180,11 +165,7 @@ class Assert
 
     /**
      * @psalm-pure
-<<<<<<< HEAD
      * @psalm-assert positive-int|0 $value
-=======
-     * @psalm-assert int $value
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @param mixed  $value
      * @param string $message

@@ -12,11 +12,7 @@ namespace PHPUnit\Framework\MockObject\Builder;
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
-<<<<<<< HEAD
 interface ParametersMatch extends Match_
-=======
-interface ParametersMatch extends Match
->>>>>>> parent of 31cfa1b1 (p)
 {
     /**
      * Sets the parameters to match for, each parameter to this function will

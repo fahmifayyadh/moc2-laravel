@@ -23,19 +23,11 @@ class HttpCliImp implements HttpClientInterface {
 
     public function __construct(Guzzle $guzz)
     {
-<<<<<<< HEAD
         $this->_guzz = $guzz;
     }
     public function request($method, $uri, array $options = [])
     {
         return $this->_guzz->request($method, $uri, $options);
-=======
-        $this->$_guzz = $guzz;
-    }
-    public function request($method, $uri, array $options = [])
-    {
-        return $this->$guzz->request($method, $uri, $options);
->>>>>>> parent of 31cfa1b1 (p)
     }
 }
 

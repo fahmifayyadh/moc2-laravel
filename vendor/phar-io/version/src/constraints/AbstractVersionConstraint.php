@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?php declare(strict_types = 1);
-=======
-<?php
->>>>>>> parent of 31cfa1b1 (p)
 /*
  * This file is part of PharIo\Version.
  *
@@ -11,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 namespace PharIo\Version;
 
 abstract class AbstractVersionConstraint implements VersionConstraint {
@@ -23,28 +18,6 @@ abstract class AbstractVersionConstraint implements VersionConstraint {
     }
 
     public function asString(): string {
-=======
-
-namespace PharIo\Version;
-
-abstract class AbstractVersionConstraint implements VersionConstraint {
-    /**
-     * @var string
-     */
-    private $originalValue = '';
-
-    /**
-     * @param string $originalValue
-     */
-    public function __construct($originalValue) {
-        $this->originalValue = $originalValue;
-    }
-
-    /**
-     * @return string
-     */
-    public function asString() {
->>>>>>> parent of 31cfa1b1 (p)
         return $this->originalValue;
     }
 }

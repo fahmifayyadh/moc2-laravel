@@ -15,10 +15,7 @@ namespace phpDocumentor\Reflection\DocBlock;
 
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter\PassthroughFormatter;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function vsprintf;
 
 /**
@@ -75,11 +72,7 @@ class Description
     /**
      * Returns the body template.
      */
-<<<<<<< HEAD
     public function getBodyTemplate(): string
-=======
-    public function getBodyTemplate() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->bodyTemplate;
     }
@@ -89,11 +82,7 @@ class Description
      *
      * @return Tag[]
      */
-<<<<<<< HEAD
     public function getTags(): array
-=======
-    public function getTags() : array
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->tags;
     }
@@ -102,11 +91,7 @@ class Description
      * Renders this description as a string where the provided formatter will format the tags in the expected string
      * format.
      */
-<<<<<<< HEAD
     public function render(?Formatter $formatter = null): string
-=======
-    public function render(?Formatter $formatter = null) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($formatter === null) {
             $formatter = new PassthroughFormatter();
@@ -123,11 +108,7 @@ class Description
     /**
      * Returns a plain string representation of this description.
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->render();
     }

@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function get_class;
 use function sprintf;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Util\Filter;
 use Throwable;
 
@@ -34,11 +31,7 @@ final class Exception extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             'exception of type "%s"',
             $this->className
         );
@@ -56,11 +49,7 @@ final class Exception extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Returns the description of the failure.
-=======
-     * Returns the description of the failure
->>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -77,25 +66,15 @@ final class Exception extends Constraint
                     . "\n" . Filter::getFilteredStacktrace($other);
             }
 
-<<<<<<< HEAD
             return sprintf(
                 'exception of type "%s" matches expected exception "%s"%s',
                 get_class($other),
-=======
-            return \sprintf(
-                'exception of type "%s" matches expected exception "%s"%s',
-                \get_class($other),
->>>>>>> parent of 31cfa1b1 (p)
                 $this->className,
                 $message
             );
         }
 
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             'exception of type "%s" is thrown',
             $this->className
         );

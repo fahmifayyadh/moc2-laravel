@@ -9,14 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function mb_stripos;
 use function mb_strpos;
 use function mb_strtolower;
 use function sprintf;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that asserts that the string it is evaluated for contains
  * a given string.
@@ -50,20 +47,12 @@ final class StringContains extends Constraint
     public function toString(): string
     {
         if ($this->ignoreCase) {
-<<<<<<< HEAD
             $string = mb_strtolower($this->string);
-=======
-            $string = \mb_strtolower($this->string);
->>>>>>> parent of 31cfa1b1 (p)
         } else {
             $string = $this->string;
         }
 
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             'contains "%s"',
             $string
         );
@@ -82,16 +71,9 @@ final class StringContains extends Constraint
         }
 
         if ($this->ignoreCase) {
-<<<<<<< HEAD
             return mb_stripos($other, $this->string) !== false;
         }
 
         return mb_strpos($other, $this->string) !== false;
-=======
-            return \mb_stripos($other, $this->string) !== false;
-        }
-
-        return \mb_strpos($other, $this->string) !== false;
->>>>>>> parent of 31cfa1b1 (p)
     }
 }

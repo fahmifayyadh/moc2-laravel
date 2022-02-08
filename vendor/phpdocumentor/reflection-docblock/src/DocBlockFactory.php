@@ -20,10 +20,7 @@ use phpDocumentor\Reflection\DocBlock\StandardTagFactory;
 use phpDocumentor\Reflection\DocBlock\Tag;
 use phpDocumentor\Reflection\DocBlock\TagFactory;
 use Webmozart\Assert\Assert;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function array_shift;
 use function count;
 use function explode;
@@ -58,11 +55,7 @@ final class DocBlockFactory implements DocBlockFactoryInterface
      *
      * @param array<string, class-string<Tag>> $additionalTags
      */
-<<<<<<< HEAD
     public static function createInstance(array $additionalTags = []): self
-=======
-    public static function createInstance(array $additionalTags = []) : self
->>>>>>> parent of 31cfa1b1 (p)
     {
         $fqsenResolver      = new FqsenResolver();
         $tagFactory         = new StandardTagFactory($fqsenResolver);
@@ -83,11 +76,7 @@ final class DocBlockFactory implements DocBlockFactoryInterface
      * @param object|string $docblock A string containing the DocBlock to parse or an object supporting the
      *                                getDocComment method (such as a ReflectionClass object).
      */
-<<<<<<< HEAD
     public function create($docblock, ?Types\Context $context = null, ?Location $location = null): DocBlock
-=======
-    public function create($docblock, ?Types\Context $context = null, ?Location $location = null) : DocBlock
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (is_object($docblock)) {
             if (!method_exists($docblock, 'getDocComment')) {
@@ -124,11 +113,7 @@ final class DocBlockFactory implements DocBlockFactoryInterface
     /**
      * @param class-string<Tag> $handler
      */
-<<<<<<< HEAD
     public function registerTagHandler(string $tagName, string $handler): void
-=======
-    public function registerTagHandler(string $tagName, string $handler) : void
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->tagFactory->registerTagHandler($tagName, $handler);
     }
@@ -138,11 +123,7 @@ final class DocBlockFactory implements DocBlockFactoryInterface
      *
      * @param string $comment String containing the comment text.
      */
-<<<<<<< HEAD
     private function stripDocComment(string $comment): string
-=======
-    private function stripDocComment(string $comment) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         $comment = preg_replace('#[ \t]*(?:\/\*\*|\*\/|\*)?[ \t]?(.*)?#u', '$1', $comment);
         Assert::string($comment);
@@ -251,11 +232,7 @@ final class DocBlockFactory implements DocBlockFactoryInterface
      *
      * @return DocBlock\Tag[]
      */
-<<<<<<< HEAD
     private function parseTagBlock(string $tags, Types\Context $context): array
-=======
-    private function parseTagBlock(string $tags, Types\Context $context) : array
->>>>>>> parent of 31cfa1b1 (p)
     {
         $tags = $this->filterTagBlock($tags);
         if ($tags === null) {
@@ -274,11 +251,7 @@ final class DocBlockFactory implements DocBlockFactoryInterface
     /**
      * @return string[]
      */
-<<<<<<< HEAD
     private function splitTagBlockIntoTagLines(string $tags): array
-=======
-    private function splitTagBlockIntoTagLines(string $tags) : array
->>>>>>> parent of 31cfa1b1 (p)
     {
         $result = [];
         foreach (explode("\n", $tags) as $tagLine) {
@@ -292,11 +265,7 @@ final class DocBlockFactory implements DocBlockFactoryInterface
         return $result;
     }
 
-<<<<<<< HEAD
     private function filterTagBlock(string $tags): ?string
-=======
-    private function filterTagBlock(string $tags) : ?string
->>>>>>> parent of 31cfa1b1 (p)
     {
         $tags = trim($tags);
         if (!$tags) {

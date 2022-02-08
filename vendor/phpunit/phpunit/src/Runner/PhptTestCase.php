@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Runner;
 
-<<<<<<< HEAD
 use const DEBUG_BACKTRACE_IGNORE_ARGS;
 use const DIRECTORY_SEPARATOR;
 use function array_merge;
@@ -44,8 +43,6 @@ use function unlink;
 use function unserialize;
 use function var_export;
 use function version_compare;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExpectationFailedException;
@@ -67,35 +64,6 @@ use Throwable;
 final class PhptTestCase implements SelfDescribing, Test
 {
     /**
-<<<<<<< HEAD
-=======
-     * @var string[]
-     */
-    private const SETTINGS = [
-        'allow_url_fopen=1',
-        'auto_append_file=',
-        'auto_prepend_file=',
-        'disable_functions=',
-        'display_errors=1',
-        'docref_ext=.html',
-        'docref_root=',
-        'error_append_string=',
-        'error_prepend_string=',
-        'error_reporting=-1',
-        'html_errors=0',
-        'log_errors=0',
-        'magic_quotes_runtime=0',
-        'open_basedir=',
-        'output_buffering=Off',
-        'output_handler=',
-        'report_memleaks=0',
-        'report_zend_debug=0',
-        'safe_mode=0',
-        'xdebug.default_enable=0',
-    ];
-
-    /**
->>>>>>> parent of 31cfa1b1 (p)
      * @var string
      */
     private $filename;
@@ -117,15 +85,9 @@ final class PhptTestCase implements SelfDescribing, Test
      */
     public function __construct(string $filename, AbstractPhpProcess $phpUtil = null)
     {
-<<<<<<< HEAD
         if (!is_file($filename)) {
             throw new Exception(
                 sprintf(
-=======
-        if (!\is_file($filename)) {
-            throw new Exception(
-                \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                     'File "%s" does not exist.',
                     $filename
                 )
@@ -147,20 +109,13 @@ final class PhptTestCase implements SelfDescribing, Test
     /**
      * Runs a test and collects its result in a TestResult instance.
      *
-<<<<<<< HEAD
-=======
-     * @throws Exception
->>>>>>> parent of 31cfa1b1 (p)
      * @throws \SebastianBergmann\CodeCoverage\CoveredCodeNotExecutedException
      * @throws \SebastianBergmann\CodeCoverage\InvalidArgumentException
      * @throws \SebastianBergmann\CodeCoverage\MissingCoversAnnotationException
      * @throws \SebastianBergmann\CodeCoverage\RuntimeException
      * @throws \SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-<<<<<<< HEAD
      * @throws Exception
-=======
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function run(TestResult $result = null): TestResult
     {
@@ -180,11 +135,7 @@ final class PhptTestCase implements SelfDescribing, Test
 
         $code     = $this->render($sections['FILE']);
         $xfail    = false;
-<<<<<<< HEAD
         $settings = $this->parseIniSection($this->settings($result->getCollectCodeCoverageInformation()));
-=======
-        $settings = $this->parseIniSection(self::SETTINGS);
->>>>>>> parent of 31cfa1b1 (p)
 
         $result->startTest($this);
 
@@ -210,11 +161,7 @@ final class PhptTestCase implements SelfDescribing, Test
         }
 
         if (isset($sections['XFAIL'])) {
-<<<<<<< HEAD
             $xfail = trim($sections['XFAIL']);
-=======
-            $xfail = \trim($sections['XFAIL']);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (isset($sections['STDIN'])) {
@@ -256,11 +203,7 @@ final class PhptTestCase implements SelfDescribing, Test
                 }
 
                 $hint    = $this->getLocationHintFromDiff($diff, $sections);
-<<<<<<< HEAD
                 $trace   = array_merge($hint, debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
-=======
-                $trace   = \array_merge($hint, \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS));
->>>>>>> parent of 31cfa1b1 (p)
                 $failure = new PHPTAssertionFailedError(
                     $e->getMessage(),
                     0,
@@ -280,11 +223,7 @@ final class PhptTestCase implements SelfDescribing, Test
             $result->addFailure($this, new IncompleteTestError('XFAIL section but test passes'), $time);
         }
 
-<<<<<<< HEAD
         $this->runClean($sections, $result->getCollectCodeCoverageInformation());
-=======
-        $this->runClean($sections);
->>>>>>> parent of 31cfa1b1 (p)
 
         $result->endTest($this, $time);
 
@@ -334,7 +273,6 @@ final class PhptTestCase implements SelfDescribing, Test
      */
     private function parseIniSection($content, $ini = []): array
     {
-<<<<<<< HEAD
         if (is_string($content)) {
             $content = explode("\n", trim($content));
         }
@@ -347,20 +285,6 @@ final class PhptTestCase implements SelfDescribing, Test
             $setting = explode('=', $setting, 2);
             $name    = trim($setting[0]);
             $value   = trim($setting[1]);
-=======
-        if (\is_string($content)) {
-            $content = \explode("\n", \trim($content));
-        }
-
-        foreach ($content as $setting) {
-            if (\strpos($setting, '=') === false) {
-                continue;
-            }
-
-            $setting = \explode('=', $setting, 2);
-            $name    = \trim($setting[0]);
-            $value   = \trim($setting[1]);
->>>>>>> parent of 31cfa1b1 (p)
 
             if ($name === 'extension' || $name === 'zend_extension') {
                 if (!isset($ini[$name])) {
@@ -382,13 +306,8 @@ final class PhptTestCase implements SelfDescribing, Test
     {
         $env = [];
 
-<<<<<<< HEAD
         foreach (explode("\n", trim($content)) as $e) {
             $e = explode('=', trim($e), 2);
-=======
-        foreach (\explode("\n", \trim($content)) as $e) {
-            $e = \explode('=', \trim($e), 2);
->>>>>>> parent of 31cfa1b1 (p)
 
             if (!empty($e[0]) && isset($e[1])) {
                 $env[$e[0]] = $e[1];
@@ -399,15 +318,9 @@ final class PhptTestCase implements SelfDescribing, Test
     }
 
     /**
-<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws Exception
      * @throws ExpectationFailedException
-=======
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     * @throws Exception
->>>>>>> parent of 31cfa1b1 (p)
      */
     private function assertPhptExpectation(array $sections, string $output): void
     {
@@ -417,19 +330,11 @@ final class PhptTestCase implements SelfDescribing, Test
             'EXPECTREGEX' => 'assertRegExp',
         ];
 
-<<<<<<< HEAD
         $actual = preg_replace('/\r\n/', "\n", trim($output));
 
         foreach ($assertions as $sectionName => $sectionAssertion) {
             if (isset($sections[$sectionName])) {
                 $sectionContent = preg_replace('/\r\n/', "\n", trim($sections[$sectionName]));
-=======
-        $actual = \preg_replace('/\r\n/', "\n", \trim($output));
-
-        foreach ($assertions as $sectionName => $sectionAssertion) {
-            if (isset($sections[$sectionName])) {
-                $sectionContent = \preg_replace('/\r\n/', "\n", \trim($sections[$sectionName]));
->>>>>>> parent of 31cfa1b1 (p)
                 $expected       = $sectionName === 'EXPECTREGEX' ? "/{$sectionContent}/" : $sectionContent;
 
                 if ($expected === null) {
@@ -457,7 +362,6 @@ final class PhptTestCase implements SelfDescribing, Test
         $skipif    = $this->render($sections['SKIPIF']);
         $jobResult = $this->phpUtil->runJob($skipif, $this->stringifyIni($settings));
 
-<<<<<<< HEAD
         if (!strncasecmp('skip', ltrim($jobResult['stdout']), 4)) {
             $message = '';
 
@@ -467,17 +371,6 @@ final class PhptTestCase implements SelfDescribing, Test
 
             $hint  = $this->getLocationHint($message, $sections, 'SKIPIF');
             $trace = array_merge($hint, debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
-=======
-        if (!\strncasecmp('skip', \ltrim($jobResult['stdout']), 4)) {
-            $message = '';
-
-            if (\preg_match('/^\s*skip\s*(.+)\s*/i', $jobResult['stdout'], $skipMatch)) {
-                $message = \substr($skipMatch[1], 2);
-            }
-
-            $hint  = $this->getLocationHint($message, $sections, 'SKIPIF');
-            $trace = \array_merge($hint, \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS));
->>>>>>> parent of 31cfa1b1 (p)
             $result->addFailure(
                 $this,
                 new SyntheticSkippedError($message, 0, $trace[0]['file'], $trace[0]['line'], $trace),
@@ -491,11 +384,7 @@ final class PhptTestCase implements SelfDescribing, Test
         return false;
     }
 
-<<<<<<< HEAD
     private function runClean(array &$sections, bool $collectCoverage): void
-=======
-    private function runClean(array &$sections): void
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->phpUtil->setStdin('');
         $this->phpUtil->setArgs('');
@@ -503,11 +392,7 @@ final class PhptTestCase implements SelfDescribing, Test
         if (isset($sections['CLEAN'])) {
             $cleanCode = $this->render($sections['CLEAN']);
 
-<<<<<<< HEAD
             $this->phpUtil->runJob($cleanCode, $this->settings($collectCoverage));
-=======
-            $this->phpUtil->runJob($cleanCode, self::SETTINGS);
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -538,17 +423,10 @@ final class PhptTestCase implements SelfDescribing, Test
 
         $lineNr = 0;
 
-<<<<<<< HEAD
         foreach (file($this->filename) as $line) {
             $lineNr++;
 
             if (preg_match('/^--([_A-Z]+)--/', $line, $result)) {
-=======
-        foreach (\file($this->filename) as $line) {
-            $lineNr++;
-
-            if (\preg_match('/^--([_A-Z]+)--/', $line, $result)) {
->>>>>>> parent of 31cfa1b1 (p)
                 $section                        = $result[1];
                 $sections[$section]             = '';
                 $sections[$section . '_offset'] = $lineNr;
@@ -564,11 +442,7 @@ final class PhptTestCase implements SelfDescribing, Test
         }
 
         if (isset($sections['FILEEOF'])) {
-<<<<<<< HEAD
             $sections['FILE'] = rtrim($sections['FILEEOF'], "\r\n");
-=======
-            $sections['FILE'] = \rtrim($sections['FILEEOF'], "\r\n");
->>>>>>> parent of 31cfa1b1 (p)
             unset($sections['FILEEOF']);
         }
 
@@ -581,11 +455,7 @@ final class PhptTestCase implements SelfDescribing, Test
         foreach ($unsupportedSections as $section) {
             if (isset($sections[$section])) {
                 throw new Exception(
-<<<<<<< HEAD
                     "PHPUnit does not support PHPT {$section} sections"
-=======
-                    "PHPUnit does not support PHPT $section sections"
->>>>>>> parent of 31cfa1b1 (p)
                 );
             }
         }
@@ -604,7 +474,6 @@ final class PhptTestCase implements SelfDescribing, Test
             'EXPECTF',
             'EXPECTREGEX',
         ];
-<<<<<<< HEAD
         $testDirectory = dirname($this->filename) . DIRECTORY_SEPARATOR;
 
         foreach ($allowSections as $section) {
@@ -615,18 +484,6 @@ final class PhptTestCase implements SelfDescribing, Test
                     !is_readable($testDirectory . $externalFilename)) {
                     throw new Exception(
                         sprintf(
-=======
-        $testDirectory = \dirname($this->filename) . \DIRECTORY_SEPARATOR;
-
-        foreach ($allowSections as $section) {
-            if (isset($sections[$section . '_EXTERNAL'])) {
-                $externalFilename = \trim($sections[$section . '_EXTERNAL']);
-
-                if (!\is_file($testDirectory . $externalFilename) ||
-                    !\is_readable($testDirectory . $externalFilename)) {
-                    throw new Exception(
-                        \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                             'Could not load --%s-- %s for PHPT file',
                             $section . '_EXTERNAL',
                             $testDirectory . $externalFilename
@@ -634,11 +491,7 @@ final class PhptTestCase implements SelfDescribing, Test
                     );
                 }
 
-<<<<<<< HEAD
                 $sections[$section] = file_get_contents($testDirectory . $externalFilename);
-=======
-                $sections[$section] = \file_get_contents($testDirectory . $externalFilename);
->>>>>>> parent of 31cfa1b1 (p)
             }
         }
     }
@@ -655,11 +508,7 @@ final class PhptTestCase implements SelfDescribing, Test
         ];
 
         foreach ($requiredSections as $section) {
-<<<<<<< HEAD
             if (is_array($section)) {
-=======
-            if (\is_array($section)) {
->>>>>>> parent of 31cfa1b1 (p)
                 $foundSection = false;
 
                 foreach ($section as $anySection) {
@@ -687,21 +536,13 @@ final class PhptTestCase implements SelfDescribing, Test
 
     private function render(string $code): string
     {
-<<<<<<< HEAD
         return str_replace(
-=======
-        return \str_replace(
->>>>>>> parent of 31cfa1b1 (p)
             [
                 '__DIR__',
                 '__FILE__',
             ],
             [
-<<<<<<< HEAD
                 "'" . dirname($this->filename) . "'",
-=======
-                "'" . \dirname($this->filename) . "'",
->>>>>>> parent of 31cfa1b1 (p)
                 "'" . $this->filename . "'",
             ],
             $code
@@ -710,13 +551,8 @@ final class PhptTestCase implements SelfDescribing, Test
 
     private function getCoverageFiles(): array
     {
-<<<<<<< HEAD
         $baseDir  = dirname(realpath($this->filename)) . DIRECTORY_SEPARATOR;
         $basename = basename($this->filename, 'phpt');
-=======
-        $baseDir  = \dirname(\realpath($this->filename)) . \DIRECTORY_SEPARATOR;
-        $basename = \basename($this->filename, 'phpt');
->>>>>>> parent of 31cfa1b1 (p)
 
         return [
             'coverage' => $baseDir . $basename . 'coverage',
@@ -734,34 +570,20 @@ final class PhptTestCase implements SelfDescribing, Test
 
         $composerAutoload = '\'\'';
 
-<<<<<<< HEAD
         if (defined('PHPUNIT_COMPOSER_INSTALL')) {
             $composerAutoload = var_export(PHPUNIT_COMPOSER_INSTALL, true);
-=======
-        if (\defined('PHPUNIT_COMPOSER_INSTALL') && !\defined('PHPUNIT_TESTSUITE')) {
-            $composerAutoload = \var_export(PHPUNIT_COMPOSER_INSTALL, true);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $phar = '\'\'';
 
-<<<<<<< HEAD
         if (defined('__PHPUNIT_PHAR__')) {
             $phar = var_export(__PHPUNIT_PHAR__, true);
-=======
-        if (\defined('__PHPUNIT_PHAR__')) {
-            $phar = \var_export(__PHPUNIT_PHAR__, true);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $globals = '';
 
         if (!empty($GLOBALS['__PHPUNIT_BOOTSTRAP'])) {
-<<<<<<< HEAD
             $globals = '$GLOBALS[\'__PHPUNIT_BOOTSTRAP\'] = ' . var_export(
-=======
-            $globals = '$GLOBALS[\'__PHPUNIT_BOOTSTRAP\'] = ' . \var_export(
->>>>>>> parent of 31cfa1b1 (p)
                 $GLOBALS['__PHPUNIT_BOOTSTRAP'],
                 true
             ) . ";\n";
@@ -777,17 +599,12 @@ final class PhptTestCase implements SelfDescribing, Test
             ]
         );
 
-<<<<<<< HEAD
         file_put_contents($files['job'], $job);
-=======
-        \file_put_contents($files['job'], $job);
->>>>>>> parent of 31cfa1b1 (p)
         $job = $template->render();
     }
 
     private function cleanupForCoverage(): array
     {
-<<<<<<< HEAD
         $coverage = [];
         $files    = $this->getCoverageFiles();
 
@@ -805,17 +622,6 @@ final class PhptTestCase implements SelfDescribing, Test
 
         foreach ($files as $file) {
             @unlink($file);
-=======
-        $files    = $this->getCoverageFiles();
-        $coverage = @\unserialize(\file_get_contents($files['coverage']));
-
-        if ($coverage === false) {
-            $coverage = [];
-        }
-
-        foreach ($files as $file) {
-            @\unlink($file);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $coverage;
@@ -826,11 +632,7 @@ final class PhptTestCase implements SelfDescribing, Test
         $settings = [];
 
         foreach ($ini as $key => $value) {
-<<<<<<< HEAD
             if (is_array($value)) {
-=======
-            if (\is_array($value)) {
->>>>>>> parent of 31cfa1b1 (p)
                 foreach ($value as $val) {
                     $settings[] = $key . '=' . $val;
                 }
@@ -850,13 +652,8 @@ final class PhptTestCase implements SelfDescribing, Test
         $previousLine = '';
         $block        = 'message';
 
-<<<<<<< HEAD
         foreach (preg_split('/\r\n|\r|\n/', $message) as $line) {
             $line = trim($line);
-=======
-        foreach (\preg_split('/\r\n|\r|\n/', $message) as $line) {
-            $line = \trim($line);
->>>>>>> parent of 31cfa1b1 (p)
 
             if ($block === 'message' && $line === '--- Expected') {
                 $block = 'expected';
@@ -867,21 +664,13 @@ final class PhptTestCase implements SelfDescribing, Test
             }
 
             if ($block === 'diff') {
-<<<<<<< HEAD
                 if (strpos($line, '+') === 0) {
-=======
-                if (\strpos($line, '+') === 0) {
->>>>>>> parent of 31cfa1b1 (p)
                     $needle = $this->getCleanDiffLine($previousLine);
 
                     break;
                 }
 
-<<<<<<< HEAD
                 if (strpos($line, '-') === 0) {
-=======
-                if (\strpos($line, '-') === 0) {
->>>>>>> parent of 31cfa1b1 (p)
                     $needle = $this->getCleanDiffLine($line);
 
                     break;
@@ -898,11 +687,7 @@ final class PhptTestCase implements SelfDescribing, Test
 
     private function getCleanDiffLine(string $line): string
     {
-<<<<<<< HEAD
         if (preg_match('/^[\-+]([\'\"]?)(.*)\1$/', $line, $matches)) {
-=======
-        if (\preg_match('/^[\-+]([\'\"]?)(.*)\1$/', $line, $matches)) {
->>>>>>> parent of 31cfa1b1 (p)
             $line = $matches[2];
         }
 
@@ -911,19 +696,11 @@ final class PhptTestCase implements SelfDescribing, Test
 
     private function getLocationHint(string $needle, array $sections, ?string $sectionName = null): array
     {
-<<<<<<< HEAD
         $needle = trim($needle);
 
         if (empty($needle)) {
             return [[
                 'file' => realpath($this->filename),
-=======
-        $needle = \trim($needle);
-
-        if (empty($needle)) {
-            return [[
-                'file' => \realpath($this->filename),
->>>>>>> parent of 31cfa1b1 (p)
                 'line' => 1,
             ]];
         }
@@ -945,7 +722,6 @@ final class PhptTestCase implements SelfDescribing, Test
             }
 
             if (isset($sections[$section . '_EXTERNAL'])) {
-<<<<<<< HEAD
                 $externalFile = trim($sections[$section . '_EXTERNAL']);
 
                 return [
@@ -955,17 +731,6 @@ final class PhptTestCase implements SelfDescribing, Test
                     ],
                     [
                         'file' => realpath($this->filename),
-=======
-                $externalFile = \trim($sections[$section . '_EXTERNAL']);
-
-                return [
-                    [
-                        'file' => \realpath(\dirname($this->filename) . \DIRECTORY_SEPARATOR . $externalFile),
-                        'line' => 1,
-                    ],
-                    [
-                        'file' => \realpath($this->filename),
->>>>>>> parent of 31cfa1b1 (p)
                         'line' => ($sections[$section . '_EXTERNAL_offset'] ?? 0) + 1,
                     ],
                 ];
@@ -974,17 +739,10 @@ final class PhptTestCase implements SelfDescribing, Test
             $sectionOffset = $sections[$section . '_offset'] ?? 0;
             $offset        = $sectionOffset + 1;
 
-<<<<<<< HEAD
             foreach (preg_split('/\r\n|\r|\n/', $sections[$section]) as $line) {
                 if (strpos($line, $needle) !== false) {
                     return [[
                         'file' => realpath($this->filename),
-=======
-            foreach (\preg_split('/\r\n|\r|\n/', $sections[$section]) as $line) {
-                if (\strpos($line, $needle) !== false) {
-                    return [[
-                        'file' => \realpath($this->filename),
->>>>>>> parent of 31cfa1b1 (p)
                         'line' => $offset,
                     ]];
                 }
@@ -995,18 +753,13 @@ final class PhptTestCase implements SelfDescribing, Test
         if ($sectionName) {
             // String not found in specified section, show user the start of the named section
             return [[
-<<<<<<< HEAD
                 'file' => realpath($this->filename),
-=======
-                'file' => \realpath($this->filename),
->>>>>>> parent of 31cfa1b1 (p)
                 'line' => $sectionOffset,
             ]];
         }
 
         // No section specified, show user start of code
         return [[
-<<<<<<< HEAD
             'file' => realpath($this->filename),
             'line' => 1,
         ]];
@@ -1063,10 +816,4 @@ final class PhptTestCase implements SelfDescribing, Test
 
         return $settings;
     }
-=======
-            'file' => \realpath($this->filename),
-            'line' => 1,
-        ]];
-    }
->>>>>>> parent of 31cfa1b1 (p)
 }

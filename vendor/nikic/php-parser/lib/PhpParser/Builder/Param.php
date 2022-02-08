@@ -19,12 +19,9 @@ class Param implements PhpParser\Builder
 
     protected $variadic = false;
 
-<<<<<<< HEAD
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * Creates a parameter builder.
      *
@@ -50,11 +47,7 @@ class Param implements PhpParser\Builder
     /**
      * Sets type for the parameter.
      *
-<<<<<<< HEAD
      * @param string|Node\Name|Node\Identifier|Node\ComplexType $type Parameter type
-=======
-     * @param string|Node\Name|Node\NullableType|Node\UnionType $type Parameter type
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return $this The builder instance (for fluid interface)
      */
@@ -70,11 +63,7 @@ class Param implements PhpParser\Builder
     /**
      * Sets type for the parameter.
      *
-<<<<<<< HEAD
      * @param string|Node\Name|Node\Identifier|Node\ComplexType $type Parameter type
-=======
-     * @param string|Node\Name|Node\NullableType|Node\UnionType $type Parameter type
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return $this The builder instance (for fluid interface)
      *
@@ -107,7 +96,6 @@ class Param implements PhpParser\Builder
     }
 
     /**
-<<<<<<< HEAD
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -121,8 +109,6 @@ class Param implements PhpParser\Builder
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Returns the built parameter node.
      *
      * @return Node\Param The built parameter node
@@ -130,11 +116,7 @@ class Param implements PhpParser\Builder
     public function getNode() : Node {
         return new Node\Param(
             new Node\Expr\Variable($this->name),
-<<<<<<< HEAD
             $this->default, $this->type, $this->byRef, $this->variadic, [], 0, $this->attributeGroups
-=======
-            $this->default, $this->type, $this->byRef, $this->variadic
->>>>>>> parent of 31cfa1b1 (p)
         );
     }
 }

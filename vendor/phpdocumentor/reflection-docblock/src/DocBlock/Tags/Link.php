@@ -43,11 +43,7 @@ final class Link extends BaseTag implements Factory\StaticMethod
         string $body,
         ?DescriptionFactory $descriptionFactory = null,
         ?TypeContext $context = null
-<<<<<<< HEAD
     ): self {
-=======
-    ) : self {
->>>>>>> parent of 31cfa1b1 (p)
         Assert::notNull($descriptionFactory);
 
         $parts = Utils::pregSplit('/\s+/Su', $body, 2);
@@ -59,11 +55,7 @@ final class Link extends BaseTag implements Factory\StaticMethod
     /**
      * Gets the link
      */
-<<<<<<< HEAD
     public function getLink(): string
-=======
-    public function getLink() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->link;
     }
@@ -71,11 +63,7 @@ final class Link extends BaseTag implements Factory\StaticMethod
     /**
      * Returns a string representation for this tag.
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->description) {
             $description = $this->description->render();
@@ -83,11 +71,7 @@ final class Link extends BaseTag implements Factory\StaticMethod
             $description = '';
         }
 
-<<<<<<< HEAD
         $link = $this->link;
-=======
-        $link = (string) $this->link;
->>>>>>> parent of 31cfa1b1 (p)
 
         return $link . ($description !== '' ? ($link !== '' ? ' ' : '') . $description : '');
     }

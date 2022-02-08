@@ -28,30 +28,18 @@ class ReflectionClassConstant implements \Reflector
      * @param string|object $class
      * @param string        $name
      */
-<<<<<<< HEAD
     public function __construct($class, string $name)
-=======
-    public function __construct($class, $name)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$class instanceof \ReflectionClass) {
             $class = new \ReflectionClass($class);
         }
 
         $this->class = $class;
-<<<<<<< HEAD
         $this->name = $name;
 
         $constants = $class->getConstants();
         if (!\array_key_exists($name, $constants)) {
             throw new \InvalidArgumentException('Unknown constant: '.$name);
-=======
-        $this->name  = $name;
-
-        $constants = $class->getConstants();
-        if (!\array_key_exists($name, $constants)) {
-            throw new \InvalidArgumentException('Unknown constant: ' . $name);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->value = $constants[$name];
@@ -66,11 +54,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return string|null
      */
-<<<<<<< HEAD
     public static function export($class, string $name, bool $return = false)
-=======
-    public static function export($class, $name, $return = false)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $refl = new self($class, $name);
         $value = $refl->getValue();
@@ -81,11 +65,7 @@ class ReflectionClassConstant implements \Reflector
             return $str;
         }
 
-<<<<<<< HEAD
         echo $str."\n";
-=======
-        echo $str . "\n";
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -93,11 +73,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return \ReflectionClass
      */
-<<<<<<< HEAD
     public function getDeclaringClass(): \ReflectionClass
-=======
-    public function getDeclaringClass()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $parent = $this->class;
 
@@ -107,11 +83,7 @@ class ReflectionClassConstant implements \Reflector
         //
         // While this isn't _technically_ correct, it's prolly close enough.
         do {
-<<<<<<< HEAD
             $class = $parent;
-=======
-            $class  = $parent;
->>>>>>> parent of 31cfa1b1 (p)
             $parent = $class->getParentClass();
         } while ($parent && $parent->hasConstant($this->name) && $parent->getConstant($this->name) === $this->value);
 
@@ -123,11 +95,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return false
      */
-<<<<<<< HEAD
     public function getDocComment(): bool
-=======
-    public function getDocComment()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return false;
     }
@@ -141,11 +109,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return int
      */
-<<<<<<< HEAD
     public function getModifiers(): int
-=======
-    public function getModifiers()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \ReflectionMethod::IS_PUBLIC;
     }
@@ -155,11 +119,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return string
      */
-<<<<<<< HEAD
     public function getName(): string
-=======
-    public function getName()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->name;
     }
@@ -179,11 +139,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return bool false
      */
-<<<<<<< HEAD
     public function isPrivate(): bool
-=======
-    public function isPrivate()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return false;
     }
@@ -193,11 +149,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return bool false
      */
-<<<<<<< HEAD
     public function isProtected(): bool
-=======
-    public function isProtected()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return false;
     }
@@ -207,11 +159,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return bool true
      */
-<<<<<<< HEAD
     public function isPublic(): bool
-=======
-    public function isPublic()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }
@@ -221,11 +169,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return string
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->getName();
     }
@@ -273,11 +217,7 @@ class ReflectionClassConstant implements \Reflector
      *
      * @return ReflectionClassConstant|\ReflectionClassConstant
      */
-<<<<<<< HEAD
     public static function create($class, string $name)
-=======
-    public static function create($class, $name)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (\class_exists(\ReflectionClassConstant::class)) {
             return new \ReflectionClassConstant($class, $name);

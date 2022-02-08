@@ -54,11 +54,7 @@ class Swift_Plugins_BandwidthMonitorPlugin implements Swift_Events_SendListener,
     public function commandSent(Swift_Events_CommandEvent $evt)
     {
         $command = $evt->getCommand();
-<<<<<<< HEAD
         $this->out += \strlen($command);
-=======
-        $this->out += strlen($command);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -67,11 +63,7 @@ class Swift_Plugins_BandwidthMonitorPlugin implements Swift_Events_SendListener,
     public function responseReceived(Swift_Events_ResponseEvent $evt)
     {
         $response = $evt->getResponse();
-<<<<<<< HEAD
         $this->in += \strlen($response);
-=======
-        $this->in += strlen($response);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -81,11 +73,7 @@ class Swift_Plugins_BandwidthMonitorPlugin implements Swift_Events_SendListener,
      */
     public function write($bytes)
     {
-<<<<<<< HEAD
         $this->out += \strlen($bytes);
-=======
-        $this->out += strlen($bytes);
->>>>>>> parent of 31cfa1b1 (p)
         foreach ($this->mirrors as $stream) {
             $stream->write($bytes);
         }

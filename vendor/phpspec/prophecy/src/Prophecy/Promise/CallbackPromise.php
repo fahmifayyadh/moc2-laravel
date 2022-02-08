@@ -15,10 +15,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Prophecy\MethodProphecy;
 use Prophecy\Exception\InvalidArgumentException;
 use Closure;
-<<<<<<< HEAD
 use ReflectionFunction;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Callback promise.
@@ -61,11 +58,7 @@ class CallbackPromise implements PromiseInterface
     {
         $callback = $this->callback;
 
-<<<<<<< HEAD
         if ($callback instanceof Closure && method_exists('Closure', 'bind') && (new ReflectionFunction($callback))->getClosureThis() !== null) {
-=======
-        if ($callback instanceof Closure && method_exists('Closure', 'bind')) {
->>>>>>> parent of 31cfa1b1 (p)
             $callback = Closure::bind($callback, $object);
         }
 

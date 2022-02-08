@@ -59,11 +59,7 @@ EOS;
      *
      * @return string
      */
-<<<<<<< HEAD
     public static function unvis(string $input): string
-=======
-    public static function unvis($input)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $output = \preg_replace_callback(self::UNVIS_RX, 'self::unvisReplace', $input);
         // other escapes & octal are handled by stripcslashes
@@ -77,11 +73,7 @@ EOS;
      *
      * @return string
      */
-<<<<<<< HEAD
     protected static function unvisReplace(array $match): string
-=======
-    protected static function unvisReplace($match)
->>>>>>> parent of 31cfa1b1 (p)
     {
         // \040, \s
         if (!empty($match[1])) {

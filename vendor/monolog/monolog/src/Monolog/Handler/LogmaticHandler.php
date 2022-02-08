@@ -40,11 +40,6 @@ class LogmaticHandler extends SocketHandler
      * @param string     $hostname Host name supplied by Logmatic.
      * @param string     $appname  Application name supplied by Logmatic.
      * @param bool       $useSSL   Whether or not SSL encryption should be used.
-<<<<<<< HEAD
-=======
-     * @param int|string $level    The minimum logging level to trigger this handler.
-     * @param bool       $bubble   Whether or not messages that are handled should bubble up the stack.
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws MissingExtensionException If SSL encryption is set to true and OpenSSL is missing
      */
@@ -65,11 +60,7 @@ class LogmaticHandler extends SocketHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function generateDataStream(array $record): string
     {
@@ -77,11 +68,7 @@ class LogmaticHandler extends SocketHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function getDefaultFormatter(): FormatterInterface
     {

@@ -50,11 +50,7 @@ class Translator implements TranslatorInterface
 
     public function __construct(ParserInterface $parser = null)
     {
-<<<<<<< HEAD
         $this->mainParser = $parser ?? new Parser();
-=======
-        $this->mainParser = $parser ?: new Parser();
->>>>>>> parent of 31cfa1b1 (p)
 
         $this
             ->registerExtension(new Extension\NodeExtension())
@@ -67,19 +63,11 @@ class Translator implements TranslatorInterface
 
     public static function getXpathLiteral(string $element): string
     {
-<<<<<<< HEAD
         if (!str_contains($element, "'")) {
             return "'".$element."'";
         }
 
         if (!str_contains($element, '"')) {
-=======
-        if (false === strpos($element, "'")) {
-            return "'".$element."'";
-        }
-
-        if (false === strpos($element, '"')) {
->>>>>>> parent of 31cfa1b1 (p)
             return '"'.$element.'"';
         }
 
@@ -215,11 +203,7 @@ class Translator implements TranslatorInterface
     /**
      * @throws ExpressionErrorException
      */
-<<<<<<< HEAD
     public function addAttributeMatching(XPathExpr $xpath, string $operator, string $attribute, ?string $value): XPathExpr
-=======
-    public function addAttributeMatching(XPathExpr $xpath, string $operator, string $attribute, $value): XPathExpr
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->attributeMatchingTranslators[$operator])) {
             throw new ExpressionErrorException(sprintf('Attribute matcher operator "%s" not supported.', $operator));

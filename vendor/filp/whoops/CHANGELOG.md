@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 2.14.5
 
 * Allow ArrayAccess on super globals
@@ -51,8 +50,6 @@ Avoids licensing issues with prettify, and uses a maintaned, modern project.
 
 * Fix xdebug function crash on PHP 8
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 # 2.9.0
 
 * JsonResponseHandler includes the exception code

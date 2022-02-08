@@ -44,11 +44,7 @@ final class TraversableContainsOnly extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
-=======
-     * Evaluates the constraint for parameter $other
->>>>>>> parent of 31cfa1b1 (p)
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -57,13 +53,8 @@ final class TraversableContainsOnly extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
-<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
-=======
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {

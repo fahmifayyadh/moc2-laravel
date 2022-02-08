@@ -44,7 +44,6 @@ CHANGELOG
 3.3.0
 -----
 
-<<<<<<< HEAD
  * [DEPRECATION] Class parameters have been deprecated and will be removed in 4.0.
    * router.options.generator_class
    * router.options.generator_base_class
@@ -54,17 +53,6 @@ CHANGELOG
    * router.options.matcher_dumper_class
    * router.options.matcher.cache_class
    * router.options.generator.cache_class
-=======
-  * [DEPRECATION] Class parameters have been deprecated and will be removed in 4.0.
-    * router.options.generator_class
-    * router.options.generator_base_class
-    * router.options.generator_dumper_class
-    * router.options.matcher_class
-    * router.options.matcher_base_class
-    * router.options.matcher_dumper_class
-    * router.options.matcher.cache_class
-    * router.options.generator.cache_class
->>>>>>> parent of 31cfa1b1 (p)
 
 3.2.0
 -----

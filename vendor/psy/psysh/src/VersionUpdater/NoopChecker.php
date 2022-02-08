@@ -21,11 +21,7 @@ class NoopChecker implements Checker
     /**
      * @return bool
      */
-<<<<<<< HEAD
     public function isLatest(): bool
-=======
-    public function isLatest()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }
@@ -33,11 +29,7 @@ class NoopChecker implements Checker
     /**
      * @return string
      */
-<<<<<<< HEAD
     public function getLatest(): string
-=======
-    public function getLatest()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return Shell::VERSION;
     }

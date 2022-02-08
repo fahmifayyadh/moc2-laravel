@@ -121,13 +121,9 @@ class Snapshot
             $this->includedFiles = \get_included_files();
         }
 
-<<<<<<< HEAD
         if ($includeTraits) {
             $this->traits = \get_declared_traits();
         }
-=======
-        $this->traits = \get_declared_traits();
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function blacklist(): Blacklist

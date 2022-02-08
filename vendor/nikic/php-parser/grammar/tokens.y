@@ -18,11 +18,7 @@
 %left T_BOOLEAN_AND
 %left '|'
 %left '^'
-<<<<<<< HEAD
 %left T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG T_AMPERSAND_FOLLOWED_BY_VAR_OR_VARARG
-=======
-%left '&'
->>>>>>> parent of 31cfa1b1 (p)
 %nonassoc T_IS_EQUAL T_IS_NOT_EQUAL T_IS_IDENTICAL T_IS_NOT_IDENTICAL T_SPACESHIP
 %nonassoc '<' T_IS_SMALLER_OR_EQUAL '>' T_IS_GREATER_OR_EQUAL
 %left T_SL T_SR
@@ -78,11 +74,7 @@
 %token T_USE
 %token T_INSTEADOF
 %token T_GLOBAL
-<<<<<<< HEAD
 %right T_STATIC T_ABSTRACT T_FINAL T_PRIVATE T_PROTECTED T_PUBLIC T_READONLY
-=======
-%right T_STATIC T_ABSTRACT T_FINAL T_PRIVATE T_PROTECTED T_PUBLIC
->>>>>>> parent of 31cfa1b1 (p)
 %token T_VAR
 %token T_UNSET
 %token T_ISSET
@@ -91,10 +83,7 @@
 %token T_CLASS
 %token T_TRAIT
 %token T_INTERFACE
-<<<<<<< HEAD
 %token T_ENUM
-=======
->>>>>>> parent of 31cfa1b1 (p)
 %token T_EXTENDS
 %token T_IMPLEMENTS
 %token T_OBJECT_OPERATOR
@@ -122,9 +111,5 @@
 %token T_NAME_FULLY_QUALIFIED
 %token T_NAME_QUALIFIED
 %token T_NAME_RELATIVE
-<<<<<<< HEAD
 %token T_ATTRIBUTE
 %token T_ENUM
-=======
-%token T_ATTRIBUTE
->>>>>>> parent of 31cfa1b1 (p)

@@ -13,10 +13,7 @@ namespace Prophecy\Doubler\ClassPatch;
 
 use Prophecy\Doubler\Generator\Node\ClassNode;
 use Prophecy\Doubler\Generator\Node\MethodNode;
-<<<<<<< HEAD
 use Prophecy\Doubler\Generator\Node\ReturnTypeNode;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Traversable interface patch.
@@ -68,7 +65,6 @@ class TraversablePatch implements ClassPatchInterface
     {
         $node->addInterface('Iterator');
 
-<<<<<<< HEAD
         $currentMethod = new MethodNode('current');
         (\PHP_VERSION_ID >= 80100) && $currentMethod->setReturnTypeNode(new ReturnTypeNode('mixed'));
         $node->addMethod($currentMethod);
@@ -88,13 +84,6 @@ class TraversablePatch implements ClassPatchInterface
         $validMethod = new MethodNode('valid');
         (\PHP_VERSION_ID >= 80100) && $validMethod->setReturnTypeNode(new ReturnTypeNode('bool'));
         $node->addMethod($validMethod);
-=======
-        $node->addMethod(new MethodNode('current'));
-        $node->addMethod(new MethodNode('key'));
-        $node->addMethod(new MethodNode('next'));
-        $node->addMethod(new MethodNode('rewind'));
-        $node->addMethod(new MethodNode('valid'));
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

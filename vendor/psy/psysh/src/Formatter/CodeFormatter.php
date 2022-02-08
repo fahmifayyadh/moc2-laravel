@@ -19,7 +19,6 @@ use Symfony\Component\Console\Formatter\OutputFormatter;
  */
 class CodeFormatter implements ReflectorFormatter
 {
-<<<<<<< HEAD
     const LINE_MARKER = '  <urgent>></urgent> ';
     const NO_LINE_MARKER = '    ';
 
@@ -34,22 +33,6 @@ class CodeFormatter implements ReflectorFormatter
     const HIGHLIGHT_NUMBER = 'number';
     const HIGHLIGHT_STRING = 'string';
     const HIGHLIGHT_COMMENT = 'comment';
-=======
-    const LINE_MARKER    = '  <urgent>></urgent> ';
-    const NO_LINE_MARKER = '    ';
-
-    const HIGHLIGHT_DEFAULT     = 'default';
-    const HIGHLIGHT_KEYWORD     = 'keyword';
-
-    const HIGHLIGHT_PUBLIC      = 'public';
-    const HIGHLIGHT_PROTECTED   = 'protected';
-    const HIGHLIGHT_PRIVATE     = 'private';
-
-    const HIGHLIGHT_CONST       = 'const';
-    const HIGHLIGHT_NUMBER      = 'number';
-    const HIGHLIGHT_STRING      = 'string';
-    const HIGHLIGHT_COMMENT     = 'comment';
->>>>>>> parent of 31cfa1b1 (p)
     const HIGHLIGHT_INLINE_HTML = 'inline_html';
 
     private static $tokenMap = [
@@ -98,11 +81,7 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return string formatted code
      */
-<<<<<<< HEAD
     public static function format(\Reflector $reflector, string $colorMode = null): string
-=======
-    public static function format(\Reflector $reflector, $colorMode = null)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (self::isReflectable($reflector)) {
             if ($code = @\file_get_contents($reflector->getFileName())) {
@@ -125,11 +104,7 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return string formatted code
      */
-<<<<<<< HEAD
     public static function formatCode(string $code, int $startLine = 1, int $endLine = null, int $markLine = null): string
-=======
-    public static function formatCode($code, $startLine = 1, $endLine = null, $markLine = null)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $spans = self::tokenizeSpans($code);
         $lines = self::splitLines($spans, $startLine, $endLine);
@@ -150,11 +125,7 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return int
      */
-<<<<<<< HEAD
     private static function getStartLine(\Reflector $reflector): int
-=======
-    private static function getStartLine(\Reflector $reflector)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $startLine = $reflector->getStartLine();
 
@@ -177,17 +148,10 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return \Generator [$spanType, $spanText] highlight spans
      */
-<<<<<<< HEAD
     private static function tokenizeSpans(string $code): \Generator
     {
         $spanType = null;
         $buffer = '';
-=======
-    private static function tokenizeSpans($code)
-    {
-        $spanType = null;
-        $buffer   = '';
->>>>>>> parent of 31cfa1b1 (p)
 
         foreach (\token_get_all($code) as $token) {
             $nextType = self::nextHighlightType($token, $spanType);
@@ -196,11 +160,7 @@ class CodeFormatter implements ReflectorFormatter
             if ($spanType !== $nextType) {
                 yield [$spanType, $buffer];
                 $spanType = $nextType;
-<<<<<<< HEAD
                 $buffer = '';
-=======
-                $buffer   = '';
->>>>>>> parent of 31cfa1b1 (p)
             }
 
             $buffer .= \is_array($token) ? $token[1] : $token;
@@ -249,17 +209,10 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return \Generator lines, each an array of [$spanType, $spanText] pairs
      */
-<<<<<<< HEAD
     private static function splitLines(\Generator $spans, int $startLine = 1, int $endLine = null): \Generator
     {
         $lineNum = 1;
         $buffer = [];
-=======
-    private static function splitLines(\Generator $spans, $startLine = 1, $endLine = null)
-    {
-        $lineNum = 1;
-        $buffer  = [];
->>>>>>> parent of 31cfa1b1 (p)
 
         foreach ($spans as list($spanType, $spanText)) {
             foreach (\preg_split('/(\r\n?|\n)/', $spanText) as $index => $spanLine) {
@@ -294,11 +247,7 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return \Generator Formatted lines
      */
-<<<<<<< HEAD
     private static function formatLines(\Generator $spanLines): \Generator
-=======
-    private static function formatLines(\Generator $spanLines)
->>>>>>> parent of 31cfa1b1 (p)
     {
         foreach ($spanLines as $lineNum => $spanLine) {
             $line = '';
@@ -311,11 +260,7 @@ class CodeFormatter implements ReflectorFormatter
                 }
             }
 
-<<<<<<< HEAD
             yield $lineNum => $line.\PHP_EOL;
-=======
-            yield $lineNum => $line . \PHP_EOL;
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -331,11 +276,7 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return \Generator Numbered, formatted lines
      */
-<<<<<<< HEAD
     private static function numberLines(\Generator $lines, int $markLine = null): \Generator
-=======
-    private static function numberLines(\Generator $lines, $markLine = null)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $lines = \iterator_to_array($lines);
 
@@ -372,11 +313,7 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return bool
      */
-<<<<<<< HEAD
     private static function isReflectable(\Reflector $reflector): bool
-=======
-    private static function isReflectable(\Reflector $reflector)
->>>>>>> parent of 31cfa1b1 (p)
     {
         return ($reflector instanceof \ReflectionClass || $reflector instanceof \ReflectionFunctionAbstract) && \is_file($reflector->getFileName());
     }

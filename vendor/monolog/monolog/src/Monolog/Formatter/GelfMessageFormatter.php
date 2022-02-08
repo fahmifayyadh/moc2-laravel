@@ -20,11 +20,8 @@ use Monolog\Utils;
  * @see http://docs.graylog.org/en/latest/pages/gelf.html
  *
  * @author Matt Lehner <mlehner@gmail.com>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Level from \Monolog\Logger
-=======
->>>>>>> parent of 31cfa1b1 (p)
  */
 class GelfMessageFormatter extends NormalizerFormatter
 {
@@ -52,13 +49,10 @@ class GelfMessageFormatter extends NormalizerFormatter
 
     /**
      * Translates Monolog log levels to Graylog2 log priorities.
-<<<<<<< HEAD
      *
      * @var array<int, int>
      *
      * @phpstan-var array<Level, int>
-=======
->>>>>>> parent of 31cfa1b1 (p)
      */
     private $logLevels = [
         Logger::DEBUG     => 7,
@@ -75,11 +69,7 @@ class GelfMessageFormatter extends NormalizerFormatter
     {
         parent::__construct('U.u');
 
-<<<<<<< HEAD
         $this->systemName = (is_null($systemName) || $systemName === '') ? (string) gethostname() : $systemName;
-=======
-        $this->systemName = (is_null($systemName) || $systemName === '') ? gethostname() : $systemName;
->>>>>>> parent of 31cfa1b1 (p)
 
         $this->extraPrefix = is_null($extraPrefix) ? '' : $extraPrefix;
         $this->contextPrefix = $contextPrefix;
@@ -87,7 +77,6 @@ class GelfMessageFormatter extends NormalizerFormatter
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
      */
     public function format(array $record): Message
@@ -100,17 +89,6 @@ class GelfMessageFormatter extends NormalizerFormatter
         if (isset($record['extra'])) {
             /** @var mixed[] $extra */
             $extra = parent::normalize($record['extra']);
-=======
-     * {@inheritdoc}
-     */
-    public function format(array $record): Message
-    {
-        if (isset($record['context'])) {
-            $record['context'] = parent::format($record['context']);
-        }
-        if (isset($record['extra'])) {
-            $record['extra'] = parent::format($record['extra']);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (!isset($record['datetime'], $record['message'], $record['level'])) {
@@ -134,7 +112,6 @@ class GelfMessageFormatter extends NormalizerFormatter
         if (isset($record['channel'])) {
             $message->setFacility($record['channel']);
         }
-<<<<<<< HEAD
         if (isset($extra['line'])) {
             $message->setLine($extra['line']);
             unset($extra['line']);
@@ -149,55 +126,26 @@ class GelfMessageFormatter extends NormalizerFormatter
             $len = strlen($this->extraPrefix . $key . $val);
             if ($len > $this->maxLength) {
                 $message->setAdditional($this->extraPrefix . $key, Utils::substr((string) $val, 0, $this->maxLength));
-=======
-        if (isset($record['extra']['line'])) {
-            $message->setLine($record['extra']['line']);
-            unset($record['extra']['line']);
-        }
-        if (isset($record['extra']['file'])) {
-            $message->setFile($record['extra']['file']);
-            unset($record['extra']['file']);
-        }
-
-        foreach ($record['extra'] as $key => $val) {
-            $val = is_scalar($val) || null === $val ? $val : $this->toJson($val);
-            $len = strlen($this->extraPrefix . $key . $val);
-            if ($len > $this->maxLength) {
-                $message->setAdditional($this->extraPrefix . $key, Utils::substr($val, 0, $this->maxLength));
->>>>>>> parent of 31cfa1b1 (p)
 
                 continue;
             }
             $message->setAdditional($this->extraPrefix . $key, $val);
         }
 
-<<<<<<< HEAD
         foreach ($context as $key => $val) {
             $val = is_scalar($val) || null === $val ? $val : $this->toJson($val);
             $len = strlen($this->contextPrefix . $key . $val);
             if ($len > $this->maxLength) {
                 $message->setAdditional($this->contextPrefix . $key, Utils::substr((string) $val, 0, $this->maxLength));
-=======
-        foreach ($record['context'] as $key => $val) {
-            $val = is_scalar($val) || null === $val ? $val : $this->toJson($val);
-            $len = strlen($this->contextPrefix . $key . $val);
-            if ($len > $this->maxLength) {
-                $message->setAdditional($this->contextPrefix . $key, Utils::substr($val, 0, $this->maxLength));
->>>>>>> parent of 31cfa1b1 (p)
 
                 continue;
             }
             $message->setAdditional($this->contextPrefix . $key, $val);
         }
 
-<<<<<<< HEAD
         /** @phpstan-ignore-next-line */
         if (null === $message->getFile() && isset($context['exception']['file'])) {
             if (preg_match("/^(.+):([0-9]+)$/", $context['exception']['file'], $matches)) {
-=======
-        if (null === $message->getFile() && isset($record['context']['exception']['file'])) {
-            if (preg_match("/^(.+):([0-9]+)$/", $record['context']['exception']['file'], $matches)) {
->>>>>>> parent of 31cfa1b1 (p)
                 $message->setFile($matches[1]);
                 $message->setLine($matches[2]);
             }

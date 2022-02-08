@@ -24,7 +24,6 @@ class NormalizerFormatter implements FormatterInterface
 {
     public const SIMPLE_DATE = "Y-m-d\TH:i:sP";
 
-<<<<<<< HEAD
     /** @var string */
     protected $dateFormat;
     /** @var int */
@@ -33,12 +32,6 @@ class NormalizerFormatter implements FormatterInterface
     protected $maxNormalizeItemCount = 1000;
 
     /** @var int */
-=======
-    protected $dateFormat;
-    protected $maxNormalizeDepth = 9;
-    protected $maxNormalizeItemCount = 1000;
-
->>>>>>> parent of 31cfa1b1 (p)
     private $jsonEncodeOptions = Utils::DEFAULT_JSON_FLAGS;
 
     /**
@@ -53,13 +46,9 @@ class NormalizerFormatter implements FormatterInterface
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
      *
      * @param mixed[] $record
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function format(array $record)
     {
@@ -67,11 +56,7 @@ class NormalizerFormatter implements FormatterInterface
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function formatBatch(array $records)
     {
@@ -82,7 +67,6 @@ class NormalizerFormatter implements FormatterInterface
         return $records;
     }
 
-<<<<<<< HEAD
     public function getDateFormat(): string
     {
         return $this->dateFormat;
@@ -95,8 +79,6 @@ class NormalizerFormatter implements FormatterInterface
         return $this;
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * The maximum number of normalization levels to go through
      */
@@ -142,13 +124,8 @@ class NormalizerFormatter implements FormatterInterface
     }
 
     /**
-<<<<<<< HEAD
      * @param  mixed                $data
      * @return null|scalar|array<array|scalar|null>
-=======
-     * @param  mixed                      $data
-     * @return int|bool|string|null|array
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function normalize($data, int $depth = 0)
     {
@@ -195,7 +172,6 @@ class NormalizerFormatter implements FormatterInterface
             }
 
             if ($data instanceof \JsonSerializable) {
-<<<<<<< HEAD
                 /** @var null|scalar|array<array|scalar|null> $value */
                 $value = $data->jsonSerialize();
             } elseif (method_exists($data, '__toString')) {
@@ -205,19 +181,6 @@ class NormalizerFormatter implements FormatterInterface
                 // the rest is normalized by json encoding and decoding it
                 /** @var null|scalar|array<array|scalar|null> $value */
                 $value = json_decode($this->toJson($data, true), true);
-=======
-                $value = $data->jsonSerialize();
-            } elseif (method_exists($data, '__toString')) {
-                $value = $data->__toString();
-            } else {
-                // the rest is normalized by json encoding and decoding it
-                $encoded = $this->toJson($data, true);
-                if ($encoded === false) {
-                    $value = 'JSON_ERROR';
-                } else {
-                    $value = json_decode($encoded, true);
-                }
->>>>>>> parent of 31cfa1b1 (p)
             }
 
             return [Utils::getClass($data) => $value];
@@ -231,11 +194,7 @@ class NormalizerFormatter implements FormatterInterface
     }
 
     /**
-<<<<<<< HEAD
      * @return mixed[]
-=======
-     * @return array
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function normalizeException(Throwable $e, int $depth = 0)
     {
@@ -294,12 +253,9 @@ class NormalizerFormatter implements FormatterInterface
         return Utils::jsonEncode($data, $this->jsonEncodeOptions, $ignoreErrors);
     }
 
-<<<<<<< HEAD
     /**
      * @return string
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     protected function formatDate(\DateTimeInterface $date)
     {
         // in case the date format isn't custom then we defer to the custom DateTimeImmutable
@@ -311,20 +267,12 @@ class NormalizerFormatter implements FormatterInterface
         return $date->format($this->dateFormat);
     }
 
-<<<<<<< HEAD
     public function addJsonEncodeOption(int $option): void
-=======
-    public function addJsonEncodeOption($option)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->jsonEncodeOptions |= $option;
     }
 
-<<<<<<< HEAD
     public function removeJsonEncodeOption(int $option): void
-=======
-    public function removeJsonEncodeOption($option)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->jsonEncodeOptions &= ~$option;
     }

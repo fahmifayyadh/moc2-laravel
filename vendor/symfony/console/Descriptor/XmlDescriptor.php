@@ -152,11 +152,7 @@ class XmlDescriptor extends Descriptor
      */
     protected function describeApplication(Application $application, array $options = [])
     {
-<<<<<<< HEAD
         $this->writeDocument($this->getApplicationDocument($application, $options['namespace'] ?? null));
-=======
-        $this->writeDocument($this->getApplicationDocument($application, isset($options['namespace']) ? $options['namespace'] : null));
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -205,11 +201,7 @@ class XmlDescriptor extends Descriptor
 
         $dom->appendChild($objectXML = $dom->createElement('option'));
         $objectXML->setAttribute('name', '--'.$option->getName());
-<<<<<<< HEAD
         $pos = strpos($option->getShortcut() ?? '', '|');
-=======
-        $pos = strpos($option->getShortcut(), '|');
->>>>>>> parent of 31cfa1b1 (p)
         if (false !== $pos) {
             $objectXML->setAttribute('shortcut', '-'.substr($option->getShortcut(), 0, $pos));
             $objectXML->setAttribute('shortcuts', '-'.str_replace('|', '|-', $option->getShortcut()));

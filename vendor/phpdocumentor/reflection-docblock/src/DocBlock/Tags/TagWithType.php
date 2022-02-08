@@ -14,10 +14,7 @@ declare(strict_types=1);
 namespace phpDocumentor\Reflection\DocBlock\Tags;
 
 use phpDocumentor\Reflection\Type;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function in_array;
 use function strlen;
 use function substr;
@@ -31,11 +28,7 @@ abstract class TagWithType extends BaseTag
     /**
      * Returns the type section of the variable.
      */
-<<<<<<< HEAD
     public function getType(): ?Type
-=======
-    public function getType() : ?Type
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->type;
     }
@@ -43,11 +36,7 @@ abstract class TagWithType extends BaseTag
     /**
      * @return string[]
      */
-<<<<<<< HEAD
     protected static function extractTypeFromBody(string $body): array
-=======
-    protected static function extractTypeFromBody(string $body) : array
->>>>>>> parent of 31cfa1b1 (p)
     {
         $type         = '';
         $nestingLevel = 0;

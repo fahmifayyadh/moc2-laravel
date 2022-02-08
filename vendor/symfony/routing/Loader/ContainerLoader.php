@@ -32,11 +32,7 @@ class ContainerLoader extends ObjectLoader
      */
     public function supports($resource, $type = null)
     {
-<<<<<<< HEAD
         return 'service' === $type && \is_string($resource);
-=======
-        return 'service' === $type;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

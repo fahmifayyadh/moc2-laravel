@@ -9,12 +9,9 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function is_dir;
 use function sprintf;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that checks if the directory(name) that it is evaluated for exists.
  *
@@ -38,19 +35,11 @@ final class DirectoryExists extends Constraint
      */
     protected function matches($other): bool
     {
-<<<<<<< HEAD
         return is_dir($other);
     }
 
     /**
      * Returns the description of the failure.
-=======
-        return \is_dir($other);
-    }
-
-    /**
-     * Returns the description of the failure
->>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -59,11 +48,7 @@ final class DirectoryExists extends Constraint
      */
     protected function failureDescription($other): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             'directory "%s" exists',
             $other
         );

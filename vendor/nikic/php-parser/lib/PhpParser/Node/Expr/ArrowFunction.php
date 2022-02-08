@@ -17,11 +17,7 @@ class ArrowFunction extends Expr implements FunctionLike
     /** @var Node\Param[] */
     public $params = [];
 
-<<<<<<< HEAD
     /** @var null|Node\Identifier|Node\Name|Node\ComplexType */
-=======
-    /** @var null|Node\Identifier|Node\Name|Node\NullableType|Node\UnionType */
->>>>>>> parent of 31cfa1b1 (p)
     public $returnType;
 
     /** @var Expr */
@@ -46,11 +42,7 @@ class ArrowFunction extends Expr implements FunctionLike
         $this->params = $subNodes['params'] ?? [];
         $returnType = $subNodes['returnType'] ?? null;
         $this->returnType = \is_string($returnType) ? new Node\Identifier($returnType) : $returnType;
-<<<<<<< HEAD
         $this->expr = $subNodes['expr'];
-=======
-        $this->expr = $subNodes['expr'] ?? null;
->>>>>>> parent of 31cfa1b1 (p)
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }
 

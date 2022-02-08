@@ -111,11 +111,7 @@ class ErrorHandler
     public static function register(self $handler = null, bool $replace = true): self
     {
         if (null === self::$reservedMemory) {
-<<<<<<< HEAD
             self::$reservedMemory = str_repeat('x', 32768);
-=======
-            self::$reservedMemory = str_repeat('x', 10240);
->>>>>>> parent of 31cfa1b1 (p)
             register_shutdown_function(__CLASS__.'::handleFatalError');
         }
 
@@ -191,11 +187,7 @@ class ErrorHandler
             $this->bootstrappingLogger = $bootstrappingLogger;
             $this->setDefaultLogger($bootstrappingLogger);
         }
-<<<<<<< HEAD
         $this->traceReflector = new \ReflectionProperty(\Exception::class, 'trace');
-=======
-        $this->traceReflector = new \ReflectionProperty('Exception', 'trace');
->>>>>>> parent of 31cfa1b1 (p)
         $this->traceReflector->setAccessible(true);
         $this->debug = $debug;
     }
@@ -204,11 +196,7 @@ class ErrorHandler
      * Sets a logger to non assigned errors levels.
      *
      * @param LoggerInterface $logger  A PSR-3 logger to put as default for the given levels
-<<<<<<< HEAD
      * @param array|int|null  $levels  An array map of E_* to LogLevel::* or an integer bit field of E_* constants
-=======
-     * @param array|int       $levels  An array map of E_* to LogLevel::* or an integer bit field of E_* constants
->>>>>>> parent of 31cfa1b1 (p)
      * @param bool            $replace Whether to replace or not any existing logger
      */
     public function setDefaultLogger(LoggerInterface $logger, $levels = \E_ALL, bool $replace = false): void
@@ -354,11 +342,7 @@ class ErrorHandler
     public function traceAt(int $levels, bool $replace = false): int
     {
         $prev = $this->tracedErrors;
-<<<<<<< HEAD
         $this->tracedErrors = $levels;
-=======
-        $this->tracedErrors = (int) $levels;
->>>>>>> parent of 31cfa1b1 (p)
         if (!$replace) {
             $this->tracedErrors |= $prev;
         }
@@ -438,15 +422,7 @@ class ErrorHandler
             return false;
         }
 
-<<<<<<< HEAD
         $logMessage = $this->levels[$type].': '.$message;
-=======
-        if (false !== strpos($message, "@anonymous\0")) {
-            $logMessage = $this->parseAnonymousClass($message);
-        } else {
-            $logMessage = $this->levels[$type].': '.$message;
-        }
->>>>>>> parent of 31cfa1b1 (p)
 
         if (null !== self::$toStringException) {
             $errorAsException = self::$toStringException;
@@ -475,7 +451,6 @@ class ErrorHandler
                 return true;
             }
         } else {
-<<<<<<< HEAD
             if (false !== strpos($message, '@anonymous')) {
                 $backtrace = debug_backtrace(false, 5);
 
@@ -493,8 +468,6 @@ class ErrorHandler
                 }
             }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
             $errorAsException = new \ErrorException($logMessage, 0, $type, $file, $line);
 
             if ($throw || $this->tracedErrors & $type) {
@@ -636,13 +609,9 @@ class ErrorHandler
         }
 
         $loggedErrors = $this->loggedErrors;
-<<<<<<< HEAD
         if ($exception === $handlerException) {
             $this->loggedErrors &= ~$type;
         }
-=======
-        $this->loggedErrors = $exception === $handlerException ? 0 : $this->loggedErrors;
->>>>>>> parent of 31cfa1b1 (p)
 
         try {
             $this->handleException($handlerException);
@@ -705,11 +674,7 @@ class ErrorHandler
         if ($error && $error['type'] &= \E_PARSE | \E_ERROR | \E_CORE_ERROR | \E_COMPILE_ERROR) {
             // Let's not throw anymore but keep logging
             $handler->throwAt(0, true);
-<<<<<<< HEAD
             $trace = $error['backtrace'] ?? null;
-=======
-            $trace = isset($error['backtrace']) ? $error['backtrace'] : null;
->>>>>>> parent of 31cfa1b1 (p)
 
             if (0 === strpos($error['message'], 'Allowed memory') || 0 === strpos($error['message'], 'Out of memory')) {
                 $fatalError = new OutOfMemoryError($handler->levels[$error['type']].': '.$error['message'], 0, $error, 2, false, $trace);

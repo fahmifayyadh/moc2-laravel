@@ -46,11 +46,7 @@ class HelpCommand extends Command
      *
      * @param Command $command
      */
-<<<<<<< HEAD
     public function setCommand(Command $command)
-=======
-    public function setCommand($command)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->command = $command;
     }

@@ -12,17 +12,13 @@
 namespace Monolog\Processor;
 
 use Monolog\Logger;
-<<<<<<< HEAD
 use Psr\Log\LogLevel;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Injects Git branch and Git commit SHA in all records
  *
  * @author Nick Otter
  * @author Jordi Boggiano <j.boggiano@seld.be>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Level from \Monolog\Logger
  * @phpstan-import-type LevelName from \Monolog\Logger
@@ -38,28 +34,15 @@ class GitProcessor implements ProcessorInterface
      * @param string|int $level The minimum logging level at which this Processor will be triggered
      *
      * @phpstan-param Level|LevelName|LogLevel::* $level
-=======
- */
-class GitProcessor implements ProcessorInterface
-{
-    private $level;
-    private static $cache;
-
-    /**
-     * @param string|int $level The minimum logging level at which this Processor will be triggered
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct($level = Logger::DEBUG)
     {
         $this->level = Logger::toMonologLevel($level);
     }
 
-<<<<<<< HEAD
     /**
      * {@inheritDoc}
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function __invoke(array $record): array
     {
         // return if the level is not high enough
@@ -72,12 +55,9 @@ class GitProcessor implements ProcessorInterface
         return $record;
     }
 
-<<<<<<< HEAD
     /**
      * @return array{branch: string, commit: string}|array<never>
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     private static function getGitInfo(): array
     {
         if (self::$cache) {

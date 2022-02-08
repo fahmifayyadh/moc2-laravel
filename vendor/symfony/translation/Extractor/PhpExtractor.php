@@ -21,15 +21,9 @@ use Symfony\Component\Translation\MessageCatalogue;
  */
 class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
 {
-<<<<<<< HEAD
     public const MESSAGE_TOKEN = 300;
     public const METHOD_ARGUMENTS_TOKEN = 1000;
     public const DOMAIN_TOKEN = 1001;
-=======
-    const MESSAGE_TOKEN = 300;
-    const METHOD_ARGUMENTS_TOKEN = 1000;
-    const DOMAIN_TOKEN = 1001;
->>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Prefix for new found message.
@@ -184,7 +178,6 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
                     }
                     break;
                 case \T_END_HEREDOC:
-<<<<<<< HEAD
                     if ($indentation = strspn($t[1], ' ')) {
                         $docPartWithLineBreaks = $docPart;
                         $docPart = '';
@@ -198,8 +191,6 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
                         }
                     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
                     $message .= PhpStringTokenParser::parseDocString($docToken, $docPart);
                     $docToken = '';
                     $docPart = '';

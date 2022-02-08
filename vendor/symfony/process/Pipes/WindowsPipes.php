@@ -71,11 +71,7 @@ class WindowsPipes extends AbstractPipes
                     }
                     $this->lockHandles[$pipe] = $h;
 
-<<<<<<< HEAD
                     if (!($h = fopen($file, 'w')) || !fclose($h) || !$h = fopen($file, 'r')) {
-=======
-                    if (!fclose(fopen($file, 'w')) || !$h = fopen($file, 'r')) {
->>>>>>> parent of 31cfa1b1 (p)
                         flock($this->lockHandles[$pipe], \LOCK_UN);
                         fclose($this->lockHandles[$pipe]);
                         unset($this->lockHandles[$pipe]);
@@ -92,7 +88,6 @@ class WindowsPipes extends AbstractPipes
         parent::__construct($input);
     }
 
-<<<<<<< HEAD
     /**
      * @return array
      */
@@ -106,8 +101,6 @@ class WindowsPipes extends AbstractPipes
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function __destruct()
     {
         $this->close();

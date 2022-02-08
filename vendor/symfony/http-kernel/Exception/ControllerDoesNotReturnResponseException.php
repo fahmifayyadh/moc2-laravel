@@ -38,11 +38,7 @@ class ControllerDoesNotReturnResponseException extends \LogicException
 
     private function parseControllerDefinition(callable $controller): ?array
     {
-<<<<<<< HEAD
         if (\is_string($controller) && str_contains($controller, '::')) {
-=======
-        if (\is_string($controller) && false !== strpos($controller, '::')) {
->>>>>>> parent of 31cfa1b1 (p)
             $controller = explode('::', $controller);
         }
 

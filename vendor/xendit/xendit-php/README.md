@@ -2,7 +2,6 @@
 
 This library is the abstraction of Xendit API for access from applications written with PHP.
 
-<<<<<<< HEAD
 -   [Documentation](#documentation)
 -   [Installation](#installation)
 -   [Usage](#usage)
@@ -103,67 +102,6 @@ This library is the abstraction of Xendit API for access from applications writt
     -   [Test](#tests)
         -   [Running test suite](#running-test-suite)
         -   [Running examples](#running-examples)
-=======
-- [Documentation](#documentation)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Methods' Signature and Examples](#methods-signature-and-examples)
-  - [Balance](#balance)
-    - [Get Balance](#get-balance)
-  - [Cards](#cards)
-    - [Create Charge](#create-charge)
-    - [Reverse Authorization](#reverse-authorization)
-    - [Capture Charge](#capture-charge)
-    - [Get Charge](#get-charge)
-    - [Create Refund](#create-refund)
-  - [Cardless Credit](#cardless-credit)
-    - [Create Cardless Credit Payment](#create-cardless-credit-payment)
-  - [Disbursements](#disbursements)
-    - [Create Disbursement](#create-disbursement)
-    - [Create Batch Disbursement](#create-batch-disbursement)
-    - [Get Disbursement by ID](#get-disbursement-by-id)
-    - [Get Disbursement by External ID](#get-disbursement-by-external-id)
-    - [Get Disbursement Available Banks](#get-disbursement-available-banks)
-  - [E-Wallets](#e-wallets)
-    - [Create Payment](#create-payment)
-    - [Get Payment Status](#get-payment-status)
-  - [Invoice](#invoice)
-    - [Create Invoice](#create-invoice)
-    - [Get Invoice](#get-invoice)
-    - [Get All Invoice](#get-all-invoice)
-    - [Expire Invoice](#expire-invoice)
-  - [Payouts](#payouts)
-    - [Create a Payout](#create-payout)
-    - [Get a Payout](#get-payout)
-    - [Void a Payout](#void-payout)
-  - [QR Code](#qr-code)
-    - [Create a QR Code](#create-a-qr-code)
-    - [Get QR Code](#get-qr-code)
-  - [Recurring](#recurring-payments)
-    - [Create a Recurring Payment](#create-a-recurring-payment)
-    - [Get a Recurring Payment](#get-a-recurring-payment)
-    - [Edit a Recurring Payment](#edit-recurring-payment)
-    - [Pause a Recurring Payment](#pause-recurring-payment)
-    - [Stop a Recurring Payment](#stop-recurring-payment)
-    - [Resume a Recurring Payment](#resume-recurring-payment)
-  - [Retail Outlets](#retail-outlets)
-    - [Create Fixed Payment Code](#create-fixed-payment-code)
-    - [Update Fixed Payment Code](#update-fixed-payment-code)
-    - [Get Fixed Payment Code](#get-fixed-payment-code)
-  - [Virtual Accounts](#virtual-accounts)
-    - [Create Fixed Virtual Account](#create-fixed-virtual-account)
-    - [Get Virtual Account Bank](#get-virtual-account-bank)
-    - [Get Fixed Virtual Account](#get-fixed-virtual-account)
-    - [Update Fixed Virtual Account](#update-fixed-virtual-account)
-    - [Get Fixed Virtual Account Payment](#get-fixed-virtual-account-payment)
-- [Exceptions](#exceptions)
-  - [InvalidArgumentException](#invalidargumentexception)
-  - [ApiException](#apiexception)
-- [Contributing](#contributing)
-  - [Test](#tests)
-    - [Running test suite](#running-test-suite)
-    - [Running examples](#running-examples)
->>>>>>> parent of 31cfa1b1 (p)
 
 ---
 
@@ -218,14 +156,10 @@ Checkout [custom http client example](./examples/CustomHttpClient.php) for imple
 #### Get Balance
 
 ```php
-<<<<<<< HEAD
 $params = array(
     'for-user-id' => '<sub account user id>' //The sub-account user-id that you want to make this transaction for (Optional).
 );
 \Xendit\Balance::getBalance(string $account_type, array $params);
-=======
-\Xendit\Balance::getBalance(string $account_type);
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 Usage example:
@@ -235,7 +169,6 @@ $getBalance = \Xendit\Balance::getBalance('CASH');
 var_dump($getBalance);
 ```
 
-<<<<<<< HEAD
 ### Payment Channels
 
 #### Get Payment Channels
@@ -251,8 +184,6 @@ $getPaymentChannels = \Xendit\PaymentChannels::list();
 var_dump($getPaymentChannels);
 ```
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ### Cards
 
 #### Create Charge
@@ -360,7 +291,6 @@ $refund = \Xendit\Cards::createRefund($id, $params);
 var_dump($refund);
 ```
 
-<<<<<<< HEAD
 #### Create Promotion
 
 ```php
@@ -384,8 +314,6 @@ $createPromotion = \Xendit\Promotion::create($params);
 var_dump($createPromotion);
 ```
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ### Cardless Credit
 
 #### Create Cardless Credit Payment
@@ -443,7 +371,6 @@ $createPayment = \Xendit\CardlessCredit::create($params);
 var_dump($createPayment);
 ```
 
-<<<<<<< HEAD
 #### Calculate Payment Types
 
 ```php
@@ -749,8 +676,6 @@ $getDirectDebitPaymentByReferenceID = \Xendit\DirectDebit::getDirectDebitPayment
 var_dump($getDirectDebitPaymentByReferenceID);
 ```
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ### Disbursements
 
 #### Create Disbursement
@@ -835,25 +760,17 @@ var_dump($createBatchDisbursements);
 #### Get Disbursement by ID
 
 ```php
-<<<<<<< HEAD
 \Xendit\Disbursements::retrieve(string $id, array $params);
-=======
-\Xendit\Disbursements::retrieve(string $id);
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 Usage example:
 
 ```php
 $id = 'disbursements-id';
-<<<<<<< HEAD
 $retrieveParams = [
 	'for-user-id' => 'test-reference-user-id'
 ]
 $getDisbursements = \Xendit\Disbursements::retrieve($id, $retrieveParams);
-=======
-$getDisbursements = \Xendit\Disbursements::retrieve($id);
->>>>>>> parent of 31cfa1b1 (p)
 var_dump($getDisbursements);
 ```
 
@@ -886,7 +803,6 @@ var_dump($getDisbursementsBanks);
 
 ### E-Wallets
 
-<<<<<<< HEAD
 #### Create E-Wallet Charge
 
 ```php
@@ -920,87 +836,11 @@ var_dump($createEWalletCharge);
 
 ```php
 \Xendit\EWallets::getEWalletChargeStatus(string $charge_id, array $params);
-=======
-#### Create Payment
-
-```php
-\Xendit\EWallets::create(array $params);
-```
-
-To create payment, each e-wallet has its own required params. For more information, please check [Xendit API Reference - E-Wallets](https://xendit.github.io/apireference/?bash#create-payment).
-
-##### OVO
-
-```php
-$ovoParams = [
-    'external_id' => 'demo_' . time(),
-    'amount' => 32000,
-    'phone' => '081298498259',
-    'ewallet_type' => 'OVO'
-];
-
-$createOvo = \Xendit\EWallets::create($ovoParams);
-var_dump($createOvo);
-```
-
-##### DANA
-
-```php
-$danaParams = [
-    'external_id' => 'demo_' . time(),
-    'amount' => 32000,
-    'phone' => '081298498259',
-    'expiration_date' => '2020-02-20T00:00:00.000Z',
-    'callback_url' => 'https://my-shop.com/callbacks',
-    'redirect_url' => 'https://my-shop.com/home',
-    'ewallet_type' => 'DANA'
-];
-
-$createDana = \Xendit\EWallets::create($danaParams);
-var_dump($createDana);
-```
-
-##### LinkAja
-
-```php
-$linkajaParams = [
-    'external_id' => 'demo_' . time(),
-    'amount' => 32000,
-    'phone' => '081298498259',
-    'items' => [
-        [
-            'id' => '123123',
-            'name' => 'Phone Case',
-            'price' => 100000,
-            'quantity' => 1
-        ],
-        [
-            'id' => '345678',
-            'name' => 'Powerbank',
-            'price' => 200000,
-            'quantity' => 1
-        ]
-    ],
-    'callback_url' => 'https =>//yourwebsite.com/callback',
-    'redirect_url' => 'https =>//yourwebsite.com/order/123',
-    'ewallet_type' => 'LINKAJA'
-];
-
-$createLinkaja = \Xendit\EWallets::create($linkajaParams);
-var_dump($createLinkaja);
-```
-
-#### Get Payment Status
-
-```php
-\Xendit\EWallets::getPaymentStatus(string $external_id, string $ewallet_type);
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 Usage example:
 
 ```php
-<<<<<<< HEAD
 $charge_id = 'ewc_f3925450-5c54-4777-98c1-fcf22b0d1e1c';
 $eWalletStatusParam = [
 	'for-user-id' => 'test-reference-user-id'
@@ -1073,13 +913,6 @@ $listRefundEwalletChargeParam = [
 $listRefundEwalletCharge = \Xendit\EWallets::listRefund($charge_id, $getRefundEwalletChargeParam);
 var_dump($listRefundEwalletCharge);
 ```
-=======
-$external_id = 'external-ID';
-$ewallet_type = 'OVO';
-$getPayments = \Xendit\EWallets::getPaymentStatus($external_id, $ewallet_type);
-```
-
->>>>>>> parent of 31cfa1b1 (p)
 ### Invoice
 
 #### Create Invoice
@@ -1094,12 +927,8 @@ Usage example:
 $params = ['external_id' => 'demo_147580196270',
     'payer_email' => 'sample_email@xendit.co',
     'description' => 'Trip to Bali',
-<<<<<<< HEAD
     'amount' => 32000,
     'for-user-id' => '5c2323c67d6d305ac433ba20'
-=======
-    'amount' => 32000
->>>>>>> parent of 31cfa1b1 (p)
 ];
 
 $createInvoice = \Xendit\Invoice::create($params);
@@ -1109,67 +938,46 @@ var_dump($createInvoice);
 #### Get Invoice
 
 ```php
-<<<<<<< HEAD
 \Xendit\Invoice::retrieve(string $id, array $params);
-=======
-\Xendit\Invoice::retrieve(string $id);
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 Usage example:
 
 ```php
 $id = 'invoice-id';
-<<<<<<< HEAD
 $retrieveParam = [
 	'for-user-id' => 'test-reference-user-id' // OPTIONAL
 ];
 $getInvoice = \Xendit\Invoice::retrieve($id, $retrieveParam);
-=======
-$getInvoice = \Xendit\Invoice::retrieve($id);
->>>>>>> parent of 31cfa1b1 (p)
 var_dump($getInvoice);
 ```
 
 #### Get All Invoice
 
 ```php
-<<<<<<< HEAD
 \Xendit\Invoice::retrieveAll(array $params);
-=======
-\Xendit\Invoice::retrieveAll();
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 Usage example:
 
 ```php
-<<<<<<< HEAD
 $retrieveAllParam = [
 	'for-user-id' => 'test-reference-user-id' // OPTIONAL
 ];
 $getAllInvoice = \Xendit\Invoice::retrieveAll($retrieveAllParam);
-=======
-$getAllInvoice = \Xendit\Invoice::retrieveAll();
->>>>>>> parent of 31cfa1b1 (p)
 var_dump(($getAllInvoice));
 ```
 
 #### Expire Invoice
 
 ```php
-<<<<<<< HEAD
 \Xendit\Invoice::expireInvoice(string $id, array $params);
-=======
-\Xendit\Invoice::expireInvoice(string $id);
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 Usage example:
 
 ```php
 $id = 'invoice-id';
-<<<<<<< HEAD
 $params = [
 	'for-user-id' => 'test-reference-user-id' // OPTIONAL
 ];
@@ -1318,12 +1126,6 @@ $id = 'payout-id';
 $voidPayout = \Xendit\Payouts::void($id);
 var_dump($voidPayout);
 ```
-=======
-$expireInvoice = \Xendit\Invoice::expireInvoice($id);
-var_dump($expireInvoice);
-```
-
->>>>>>> parent of 31cfa1b1 (p)
 ### Payouts
 
 #### Create Payout
@@ -1347,26 +1149,17 @@ var_dump($createPayout);
 #### Get Payout
 
 ```php
-<<<<<<< HEAD
 \Xendit\Payouts::retrieve(string $id, array $params);
-=======
-\Xendit\Payouts::retrieve(string $id);
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 Usage example:
 
 ```php
 $id = 'payout-id';
-<<<<<<< HEAD
 $params = [
 	'for-user-id' => 'test-reference-user-id' // OPTIONAL
 ]
 $getPayout = \Xendit\Payouts::retrieve($id, $params);
-=======
-
-$getPayout = \Xendit\Payouts::retrieve($id);
->>>>>>> parent of 31cfa1b1 (p)
 var_dump($getPayout);
 ```
 
@@ -1414,10 +1207,7 @@ var_dump($qr_code)
 ```
 
 Usage example:
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ```php
 $qr_code = \Xendit\QRCode::get('external_123');
 var_dump($qr_code);
@@ -1450,26 +1240,17 @@ var_dump($createRecurring);
 #### Get a Recurring Payment
 
 ```php
-<<<<<<< HEAD
 \Xendit\Recurring::retrieve(string $id, array $params);
-=======
-\Xendit\Recurring::retrieve(string $id);
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 Usage example:
 
 ```php
 $id = 'recurring-payment-id';
-<<<<<<< HEAD
 $params = [
 	'for-user-id' => 'test-reference-user-id' // OPTIONAL
 ]
 $getRecurring = \Xendit\Recurring::retrieve($id, $params);
-=======
-
-$getRecurring = \Xendit\Recurring::retrieve($id);
->>>>>>> parent of 31cfa1b1 (p)
 var_dump($getRecurring);
 ```
 
@@ -1622,25 +1403,17 @@ var_dump($getVABanks);
 #### Get Fixed Virtual Account
 
 ```php
-<<<<<<< HEAD
 \Xendit\VirtualAccounts::retrieve(string $id, array $params);
-=======
-\Xendit\VirtualAccounts::retrieve(string $id);
->>>>>>> parent of 31cfa1b1 (p)
 ```
 
 Usage example:
 
 ```php
 $id = 'VA-id';
-<<<<<<< HEAD
 $params = [
 	'for-user-id' => 'test-reference-user-id' //OPTIONAL
 ]
 $getVA = \Xendit\VirtualAccounts::retrieve($id, $params);
-=======
-$getVA = \Xendit\VirtualAccounts::retrieve($id);
->>>>>>> parent of 31cfa1b1 (p)
 var_dump($getVA);
 ```
 
@@ -1674,7 +1447,6 @@ $getFVAPayment = \Xendit\VirtualAccounts::getFVAPayment($paymentID);
 var_dump($getFVAPayment);
 ```
 
-<<<<<<< HEAD
 ### xenPlatform
 
 #### Create Account
@@ -1847,8 +1619,6 @@ $detailReport = \Xendit\Report::detail('report_5c1b34a2-6ceb-4c24-aba9-c836bac82
 var_dump($detailReport);
 ```
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ## Exceptions
 
 ### InvalidArgumentException
@@ -1898,10 +1668,7 @@ try {
 For any requests, bugs, or comments, please open an [issue](https://github.com/xendit/xendit-php-clients/issues) or [submit a pull request](https://github.com/xendit/xendit-php-clients/pulls).
 
 ### Installing Packages
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 Before you start to code, run this command to install all of the required packages. Make sure you have `composer` installed in your computer
 
 ```bash

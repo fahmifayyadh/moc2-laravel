@@ -3,7 +3,6 @@ Changelog
 
 ## UNRELEASED
 
-<<<<<<< HEAD
 ## 1.10.0
 
 ### Added
@@ -19,8 +18,6 @@ Changelog
 
 * Support for PHP <7.2
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ## 1.9.1
 
 ## Fixed
@@ -30,11 +27,7 @@ Changelog
 ## 1.9.0
 
 * added better Psalm support for `all*` & `nullOr*` methods
-<<<<<<< HEAD
 * These methods are now understood by Psalm through a mixin. You may need a newer version of Psalm in order to use this
-=======
-  * These methods are now understood by Psalm through a mixin. You may need a newer version of Psalm in order to use this
->>>>>>> parent of 31cfa1b1 (p)
 * added `@psalm-pure` annotation to `Assert::notFalse()`
 * added more `@psalm-assert` annotations where appropriate
 

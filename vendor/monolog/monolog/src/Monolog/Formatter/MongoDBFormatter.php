@@ -21,16 +21,11 @@ use Monolog\Utils;
  */
 class MongoDBFormatter implements FormatterInterface
 {
-<<<<<<< HEAD
     /** @var bool */
     private $exceptionTraceAsString;
     /** @var int */
     private $maxNestingLevel;
     /** @var bool */
-=======
-    private $exceptionTraceAsString;
-    private $maxNestingLevel;
->>>>>>> parent of 31cfa1b1 (p)
     private $isLegacyMongoExt;
 
     /**
@@ -42,16 +37,11 @@ class MongoDBFormatter implements FormatterInterface
         $this->maxNestingLevel = max($maxNestingLevel, 0);
         $this->exceptionTraceAsString = $exceptionTraceAsString;
 
-<<<<<<< HEAD
         $this->isLegacyMongoExt = extension_loaded('mongodb') && version_compare((string) phpversion('mongodb'), '1.1.9', '<=');
-=======
-        $this->isLegacyMongoExt = version_compare(phpversion('mongodb'), '1.1.9', '<=');
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * {@inheritDoc}
-<<<<<<< HEAD
      *
      * @return mixed[]
      */
@@ -61,17 +51,10 @@ class MongoDBFormatter implements FormatterInterface
         $res = $this->formatArray($record);
 
         return $res;
-=======
-     */
-    public function format(array $record): array
-    {
-        return $this->formatArray($record);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * {@inheritDoc}
-<<<<<<< HEAD
      *
      * @return array<mixed[]>
      */
@@ -114,42 +97,6 @@ class MongoDBFormatter implements FormatterInterface
      * @param  mixed          $value
      * @return mixed[]|string
      */
-=======
-     */
-    public function formatBatch(array $records): array
-    {
-        foreach ($records as $key => $record) {
-            $records[$key] = $this->format($record);
-        }
-
-        return $records;
-    }
-
-    /**
-     * @return array|string Array except when max nesting level is reached then a string "[...]"
-     */
-    protected function formatArray(array $record, int $nestingLevel = 0)
-    {
-        if ($this->maxNestingLevel == 0 || $nestingLevel <= $this->maxNestingLevel) {
-            foreach ($record as $name => $value) {
-                if ($value instanceof \DateTimeInterface) {
-                    $record[$name] = $this->formatDate($value, $nestingLevel + 1);
-                } elseif ($value instanceof \Throwable) {
-                    $record[$name] = $this->formatException($value, $nestingLevel + 1);
-                } elseif (is_array($value)) {
-                    $record[$name] = $this->formatArray($value, $nestingLevel + 1);
-                } elseif (is_object($value)) {
-                    $record[$name] = $this->formatObject($value, $nestingLevel + 1);
-                }
-            }
-        } else {
-            $record = '[...]';
-        }
-
-        return $record;
-    }
-
->>>>>>> parent of 31cfa1b1 (p)
     protected function formatObject($value, int $nestingLevel)
     {
         $objectVars = get_object_vars($value);
@@ -158,12 +105,9 @@ class MongoDBFormatter implements FormatterInterface
         return $this->formatArray($objectVars, $nestingLevel);
     }
 
-<<<<<<< HEAD
     /**
      * @return mixed[]|string
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     protected function formatException(\Throwable $exception, int $nestingLevel)
     {
         $formattedException = [
@@ -193,11 +137,7 @@ class MongoDBFormatter implements FormatterInterface
 
     private function getMongoDbDateTime(\DateTimeInterface $value): UTCDateTime
     {
-<<<<<<< HEAD
         return new UTCDateTime((int) floor(((float) $value->format('U.u')) * 1000));
-=======
-        return new UTCDateTime((int) (string) floor($value->format('U.u') * 1000));
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -209,20 +149,13 @@ class MongoDBFormatter implements FormatterInterface
      */
     private function legacyGetMongoDbDateTime(\DateTimeInterface $value): UTCDateTime
     {
-<<<<<<< HEAD
         $milliseconds = floor(((float) $value->format('U.u')) * 1000);
-=======
-        $milliseconds = floor($value->format('U.u') * 1000);
->>>>>>> parent of 31cfa1b1 (p)
 
         $milliseconds = (PHP_INT_SIZE == 8) //64-bit OS?
             ? (int) $milliseconds
             : (string) $milliseconds;
 
-<<<<<<< HEAD
         // @phpstan-ignore-next-line
-=======
->>>>>>> parent of 31cfa1b1 (p)
         return new UTCDateTime($milliseconds);
     }
 }

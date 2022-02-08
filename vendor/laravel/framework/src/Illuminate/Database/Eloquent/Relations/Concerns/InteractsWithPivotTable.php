@@ -429,11 +429,7 @@ trait InteractsWithPivotTable
                     return 0;
                 }
 
-<<<<<<< HEAD
                 $query->whereIn($this->getQualifiedRelatedPivotKeyName(), (array) $ids);
-=======
-                $query->whereIn($this->relatedPivotKey, (array) $ids);
->>>>>>> parent of 31cfa1b1 (p)
             }
 
             // Once we have all of the conditions set on the statement, we are ready
@@ -548,11 +544,7 @@ trait InteractsWithPivotTable
             $query->whereIn(...$arguments);
         }
 
-<<<<<<< HEAD
         return $query->where($this->getQualifiedForeignPivotKeyName(), $this->parent->{$this->parentKey});
-=======
-        return $query->where($this->foreignPivotKey, $this->parent->{$this->parentKey});
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

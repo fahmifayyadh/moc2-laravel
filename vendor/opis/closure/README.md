@@ -45,11 +45,7 @@ The full documentation for this library can be found [here][documentation].
 
 ## Requirements
 
-<<<<<<< HEAD
 * PHP ^5.4 || ^7.0 || ^8.0
-=======
-* PHP ^5.4 || ^7.0
->>>>>>> parent of 31cfa1b1 (p)
 
 ## Installation
 
@@ -93,8 +89,4 @@ So our advice regarding the `Opis\Closure\serialize|unserialize` functions is to
 [Packagist]: https://packagist.org/packages/opis/closure "Packagist"
 [Composer]: https://getcomposer.org "Composer"
 [SemVer]: http://semver.org/ "Semantic versioning"
-<<<<<<< HEAD
 [CHANGELOG]: https://github.com/opis/closure/blob/master/CHANGELOG.md "Changelog"
-=======
-[CHANGELOG]: https://github.com/opis/closure/blob/master/CHANGELOG.md "Changelog"
->>>>>>> parent of 31cfa1b1 (p)

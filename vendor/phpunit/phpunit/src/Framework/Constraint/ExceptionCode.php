@@ -9,12 +9,9 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function sprintf;
 use Throwable;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 final class ExceptionCode extends Constraint
 {
     /**
@@ -39,11 +36,7 @@ final class ExceptionCode extends Constraint
      * Evaluates the constraint for parameter $other. Returns true if the
      * constraint is met, false otherwise.
      *
-<<<<<<< HEAD
      * @param Throwable $other
-=======
-     * @param \Throwable $other
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function matches($other): bool
     {
@@ -51,11 +44,7 @@ final class ExceptionCode extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Returns the description of the failure.
-=======
-     * Returns the description of the failure
->>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -66,11 +55,7 @@ final class ExceptionCode extends Constraint
      */
     protected function failureDescription($other): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             '%s is equal to expected exception code %s',
             $this->exporter()->export($other->getCode()),
             $this->exporter()->export($this->expectedCode)

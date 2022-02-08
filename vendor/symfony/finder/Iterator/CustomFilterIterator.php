@@ -46,10 +46,7 @@ class CustomFilterIterator extends \FilterIterator
      *
      * @return bool true if the value should be kept, false otherwise
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function accept()
     {
         $fileinfo = $this->current();

@@ -22,7 +22,6 @@ class GitHubChecker implements Checker
     /**
      * @return bool
      */
-<<<<<<< HEAD
     public function isLatest(): bool
     {
         // version_compare doesn't handle semver completely;
@@ -30,21 +29,12 @@ class GitHubChecker implements Checker
         $version = \preg_replace('/[+-]\w+/', '', Shell::VERSION);
 
         return \version_compare($version, $this->getLatest(), '>=');
-=======
-    public function isLatest()
-    {
-        return \version_compare(Shell::VERSION, $this->getLatest(), '>=');
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * @return string
      */
-<<<<<<< HEAD
     public function getLatest(): string
-=======
-    public function getLatest()
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->latest)) {
             $this->setLatest($this->getVersionFromTag());
@@ -56,11 +46,7 @@ class GitHubChecker implements Checker
     /**
      * @param string $version
      */
-<<<<<<< HEAD
     public function setLatest(string $version)
-=======
-    public function setLatest($version)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->latest = $version;
     }
@@ -88,11 +74,7 @@ class GitHubChecker implements Checker
     {
         $context = \stream_context_create([
             'http' => [
-<<<<<<< HEAD
                 'user_agent' => 'PsySH/'.Shell::VERSION,
-=======
-                'user_agent' => 'PsySH/' . Shell::VERSION,
->>>>>>> parent of 31cfa1b1 (p)
                 'timeout'    => 3,
             ],
         ]);

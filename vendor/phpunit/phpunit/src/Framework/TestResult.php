@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Framework;
 
-<<<<<<< HEAD
 use const PHP_EOL;
 use function class_exists;
 use function count;
@@ -21,8 +20,6 @@ use function xdebug_get_monitored_functions;
 use function xdebug_is_debugger_active;
 use function xdebug_start_function_monitor;
 use function xdebug_stop_function_monitor;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use AssertionError;
 use Countable;
 use Error;
@@ -31,11 +28,8 @@ use PHPUnit\Util\Blacklist;
 use PHPUnit\Util\ErrorHandler;
 use PHPUnit\Util\Printer;
 use PHPUnit\Util\Test as TestUtil;
-<<<<<<< HEAD
 use ReflectionClass;
 use ReflectionException;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\CoveredCodeNotExecutedException as OriginalCoveredCodeNotExecutedException;
 use SebastianBergmann\CodeCoverage\Exception as OriginalCodeCoverageException;
@@ -119,11 +113,7 @@ final class TestResult implements Countable
     /**
      * @var bool
      */
-<<<<<<< HEAD
     private $convertDeprecationsToExceptions = false;
-=======
-    private $convertDeprecationsToExceptions = true;
->>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var bool
@@ -324,11 +314,7 @@ final class TestResult implements Countable
         }
 
         foreach ($this->listeners as $listener) {
-<<<<<<< HEAD
             $listener->{$notifyMethod}($test, $t, $time);
-=======
-            $listener->$notifyMethod($test, $t, $time);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->lastTestFailed = true;
@@ -395,11 +381,7 @@ final class TestResult implements Countable
         }
 
         foreach ($this->listeners as $listener) {
-<<<<<<< HEAD
             $listener->{$notifyMethod}($test, $e, $time);
-=======
-            $listener->$notifyMethod($test, $e, $time);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->lastTestFailed = true;
@@ -436,11 +418,7 @@ final class TestResult implements Countable
     public function startTest(Test $test): void
     {
         $this->lastTestFailed = false;
-<<<<<<< HEAD
         $this->runTests += count($test);
-=======
-        $this->runTests += \count($test);
->>>>>>> parent of 31cfa1b1 (p)
 
         foreach ($this->listeners as $listener) {
             $listener->startTest($test);
@@ -459,20 +437,12 @@ final class TestResult implements Countable
         }
 
         if (!$this->lastTestFailed && $test instanceof TestCase) {
-<<<<<<< HEAD
             $class = get_class($test);
-=======
-            $class = \get_class($test);
->>>>>>> parent of 31cfa1b1 (p)
             $key   = $class . '::' . $test->getName();
 
             $this->passed[$key] = [
                 'result' => $test->getResult(),
-<<<<<<< HEAD
                 'size'   => TestUtil::getSize(
-=======
-                'size'   => \PHPUnit\Util\Test::getSize(
->>>>>>> parent of 31cfa1b1 (p)
                     $class,
                     $test->getName(false)
                 ),
@@ -495,11 +465,7 @@ final class TestResult implements Countable
      */
     public function riskyCount(): int
     {
-<<<<<<< HEAD
         return count($this->risky);
-=======
-        return \count($this->risky);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -515,19 +481,11 @@ final class TestResult implements Countable
      */
     public function notImplementedCount(): int
     {
-<<<<<<< HEAD
         return count($this->notImplemented);
     }
 
     /**
      * Returns an array of TestFailure objects for the risky tests.
-=======
-        return \count($this->notImplemented);
-    }
-
-    /**
-     * Returns an array of TestFailure objects for the risky tests
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return TestFailure[]
      */
@@ -537,11 +495,7 @@ final class TestResult implements Countable
     }
 
     /**
-<<<<<<< HEAD
      * Returns an array of TestFailure objects for the incomplete tests.
-=======
-     * Returns an array of TestFailure objects for the incomplete tests
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return TestFailure[]
      */
@@ -563,19 +517,11 @@ final class TestResult implements Countable
      */
     public function skippedCount(): int
     {
-<<<<<<< HEAD
         return count($this->skipped);
     }
 
     /**
      * Returns an array of TestFailure objects for the skipped tests.
-=======
-        return \count($this->skipped);
-    }
-
-    /**
-     * Returns an array of TestFailure objects for the skipped tests
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return TestFailure[]
      */
@@ -589,19 +535,11 @@ final class TestResult implements Countable
      */
     public function errorCount(): int
     {
-<<<<<<< HEAD
         return count($this->errors);
     }
 
     /**
      * Returns an array of TestFailure objects for the errors.
-=======
-        return \count($this->errors);
-    }
-
-    /**
-     * Returns an array of TestFailure objects for the errors
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return TestFailure[]
      */
@@ -615,19 +553,11 @@ final class TestResult implements Countable
      */
     public function failureCount(): int
     {
-<<<<<<< HEAD
         return count($this->failures);
     }
 
     /**
      * Returns an array of TestFailure objects for the failures.
-=======
-        return \count($this->failures);
-    }
-
-    /**
-     * Returns an array of TestFailure objects for the failures
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return TestFailure[]
      */
@@ -641,19 +571,11 @@ final class TestResult implements Countable
      */
     public function warningCount(): int
     {
-<<<<<<< HEAD
         return count($this->warnings);
     }
 
     /**
      * Returns an array of TestFailure objects for the warnings.
-=======
-        return \count($this->warnings);
-    }
-
-    /**
-     * Returns an array of TestFailure objects for the warnings
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return TestFailure[]
      */
@@ -689,42 +611,27 @@ final class TestResult implements Countable
     /**
      * Runs a TestCase.
      *
-<<<<<<< HEAD
      * @throws \SebastianBergmann\CodeCoverage\InvalidArgumentException
      * @throws \SebastianBergmann\CodeCoverage\RuntimeException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * @throws CodeCoverageException
      * @throws OriginalCoveredCodeNotExecutedException
      * @throws OriginalMissingCoversAnnotationException
      * @throws UnintentionallyCoveredCodeException
-<<<<<<< HEAD
-=======
-     * @throws \SebastianBergmann\CodeCoverage\InvalidArgumentException
-     * @throws \SebastianBergmann\CodeCoverage\RuntimeException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function run(Test $test): void
     {
         Assert::resetCount();
 
-<<<<<<< HEAD
         $size = TestUtil::UNKNOWN;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if ($test instanceof TestCase) {
             $test->setRegisterMockObjectsFromTestArgumentsRecursively(
                 $this->registerMockObjectsFromTestArgumentsRecursively
             );
 
             $isAnyCoverageRequired = TestUtil::requiresCodeCoverageDataCollection($test);
-<<<<<<< HEAD
             $size                  = $test->getSize();
-=======
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $error      = false;
@@ -757,69 +664,37 @@ final class TestResult implements Countable
 
         $monitorFunctions = $this->beStrictAboutResourceUsageDuringSmallTests &&
             !$test instanceof WarningTestCase &&
-<<<<<<< HEAD
             $size === TestUtil::SMALL &&
             function_exists('xdebug_start_function_monitor');
 
         if ($monitorFunctions) {
             /* @noinspection ForgottenDebugOutputInspection */
             xdebug_start_function_monitor(ResourceOperations::getFunctions());
-=======
-            $test->getSize() == \PHPUnit\Util\Test::SMALL &&
-            \function_exists('xdebug_start_function_monitor');
-
-        if ($monitorFunctions) {
-            /* @noinspection ForgottenDebugOutputInspection */
-            \xdebug_start_function_monitor(ResourceOperations::getFunctions());
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         Timer::start();
 
         try {
             if (!$test instanceof WarningTestCase &&
-<<<<<<< HEAD
                 $this->shouldTimeLimitBeEnforced($size)) {
                 switch ($size) {
                     case TestUtil::SMALL:
-=======
-                $this->enforceTimeLimit &&
-                ($this->defaultTimeLimit || $test->getSize() != \PHPUnit\Util\Test::UNKNOWN) &&
-                \extension_loaded('pcntl') && \class_exists(Invoker::class)) {
-                switch ($test->getSize()) {
-                    case \PHPUnit\Util\Test::SMALL:
->>>>>>> parent of 31cfa1b1 (p)
                         $_timeout = $this->timeoutForSmallTests;
 
                         break;
 
-<<<<<<< HEAD
                     case TestUtil::MEDIUM:
-=======
-                    case \PHPUnit\Util\Test::MEDIUM:
->>>>>>> parent of 31cfa1b1 (p)
                         $_timeout = $this->timeoutForMediumTests;
 
                         break;
 
-<<<<<<< HEAD
                     case TestUtil::LARGE:
-=======
-                    case \PHPUnit\Util\Test::LARGE:
->>>>>>> parent of 31cfa1b1 (p)
                         $_timeout = $this->timeoutForLargeTests;
 
                         break;
 
-<<<<<<< HEAD
                     default:
                         $_timeout = $this->defaultTimeLimit;
-=======
-                    case \PHPUnit\Util\Test::UNKNOWN:
-                        $_timeout = $this->defaultTimeLimit;
-
-                        break;
->>>>>>> parent of 31cfa1b1 (p)
                 }
 
                 $invoker = new Invoker;
@@ -860,19 +735,11 @@ final class TestResult implements Countable
             $frame   = $e->getTrace()[0];
 
             $e = new AssertionFailedError(
-<<<<<<< HEAD
                 sprintf(
                     '%s in %s:%s',
                     $e->getMessage(),
                     $frame['file'] ?? $e->getFile(),
                     $frame['line'] ?? $e->getLine()
-=======
-                \sprintf(
-                    '%s in %s:%s',
-                    $e->getMessage(),
-                    $frame['file'],
-                    $frame['line']
->>>>>>> parent of 31cfa1b1 (p)
                 )
             );
         } catch (Warning $e) {
@@ -891,28 +758,17 @@ final class TestResult implements Countable
             $blacklist = new Blacklist;
 
             /** @noinspection ForgottenDebugOutputInspection */
-<<<<<<< HEAD
             $functions = xdebug_get_monitored_functions();
 
             /* @noinspection ForgottenDebugOutputInspection */
             xdebug_stop_function_monitor();
-=======
-            $functions = \xdebug_get_monitored_functions();
-
-            /* @noinspection ForgottenDebugOutputInspection */
-            \xdebug_stop_function_monitor();
->>>>>>> parent of 31cfa1b1 (p)
 
             foreach ($functions as $function) {
                 if (!$blacklist->isBlacklisted($function['filename'])) {
                     $this->addFailure(
                         $test,
                         new RiskyTestError(
-<<<<<<< HEAD
                             sprintf(
-=======
-                            \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                                 '%s() used in %s:%s',
                                 $function['function'],
                                 $function['filename'],
@@ -937,7 +793,6 @@ final class TestResult implements Countable
 
             if ($append && $test instanceof TestCase) {
                 try {
-<<<<<<< HEAD
                     $linesToBeCovered = TestUtil::getLinesToBeCovered(
                         get_class($test),
                         $test->getName(false)
@@ -945,15 +800,6 @@ final class TestResult implements Countable
 
                     $linesToBeUsed = TestUtil::getLinesToBeUsed(
                         get_class($test),
-=======
-                    $linesToBeCovered = \PHPUnit\Util\Test::getLinesToBeCovered(
-                        \get_class($test),
-                        $test->getName(false)
-                    );
-
-                    $linesToBeUsed = \PHPUnit\Util\Test::getLinesToBeUsed(
-                        \get_class($test),
->>>>>>> parent of 31cfa1b1 (p)
                         $test->getName(false)
                     );
                 } catch (InvalidCoversTargetException $cce) {
@@ -978,11 +824,7 @@ final class TestResult implements Countable
                     $test,
                     new UnintentionallyCoveredCodeError(
                         'This test executed code that is not listed as code to be covered or used:' .
-<<<<<<< HEAD
                         PHP_EOL . $cce->getMessage()
-=======
-                        \PHP_EOL . $cce->getMessage()
->>>>>>> parent of 31cfa1b1 (p)
                     ),
                     $time
                 );
@@ -991,11 +833,7 @@ final class TestResult implements Countable
                     $test,
                     new CoveredCodeNotExecutedException(
                         'This test did not execute all the code that is listed as code to be covered:' .
-<<<<<<< HEAD
                         PHP_EOL . $cce->getMessage()
-=======
-                        \PHP_EOL . $cce->getMessage()
->>>>>>> parent of 31cfa1b1 (p)
                     ),
                     $time
                 );
@@ -1032,15 +870,9 @@ final class TestResult implements Countable
             !$test->doesNotPerformAssertions() &&
             $test->getNumAssertions() == 0) {
             try {
-<<<<<<< HEAD
                 $reflected = new ReflectionClass($test);
                 // @codeCoverageIgnoreStart
             } catch (ReflectionException $e) {
-=======
-                $reflected = new \ReflectionClass($test);
-                // @codeCoverageIgnoreStart
-            } catch (\ReflectionException $e) {
->>>>>>> parent of 31cfa1b1 (p)
                 throw new Exception(
                     $e->getMessage(),
                     (int) $e->getCode(),
@@ -1055,11 +887,7 @@ final class TestResult implements Countable
                 try {
                     $reflected = $reflected->getMethod($name);
                     // @codeCoverageIgnoreStart
-<<<<<<< HEAD
                 } catch (ReflectionException $e) {
-=======
-                } catch (\ReflectionException $e) {
->>>>>>> parent of 31cfa1b1 (p)
                     throw new Exception(
                         $e->getMessage(),
                         (int) $e->getCode(),
@@ -1072,11 +900,7 @@ final class TestResult implements Countable
             $this->addFailure(
                 $test,
                 new RiskyTestError(
-<<<<<<< HEAD
                     sprintf(
-=======
-                    \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                         "This test did not perform any assertions\n\n%s:%d",
                         $reflected->getFileName(),
                         $reflected->getStartLine()
@@ -1090,11 +914,7 @@ final class TestResult implements Countable
             $this->addFailure(
                 $test,
                 new RiskyTestError(
-<<<<<<< HEAD
                     sprintf(
-=======
-                    \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                         'This test is annotated with "@doesNotPerformAssertions" but performed %d assertions',
                         $test->getNumAssertions()
                     )
@@ -1105,11 +925,7 @@ final class TestResult implements Countable
             $this->addFailure(
                 $test,
                 new OutputError(
-<<<<<<< HEAD
                     sprintf(
-=======
-                    \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                         'This test printed output: %s',
                         $test->getActualOutput()
                     )
@@ -1336,11 +1152,7 @@ final class TestResult implements Countable
     }
 
     /**
-<<<<<<< HEAD
      * Enables or disables the stopping for defects: error, failure, warning.
-=======
-     * Enables or disables the stopping for defects: error, failure, warning
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function stopOnDefect(bool $flag): void
     {
@@ -1374,11 +1186,7 @@ final class TestResult implements Countable
     }
 
     /**
-<<<<<<< HEAD
      * Sets the default timeout for tests.
-=======
-     * Sets the default timeout for tests
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function setDefaultTimeLimit(int $timeout): void
     {
@@ -1421,7 +1229,6 @@ final class TestResult implements Countable
     {
         $this->registerMockObjectsFromTestArgumentsRecursively = $flag;
     }
-<<<<<<< HEAD
 
     private function shouldTimeLimitBeEnforced(int $size): bool
     {
@@ -1447,6 +1254,4 @@ final class TestResult implements Countable
 
         return true;
     }
-=======
->>>>>>> parent of 31cfa1b1 (p)
 }

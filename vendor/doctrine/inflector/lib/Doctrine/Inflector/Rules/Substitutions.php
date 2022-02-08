@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Inflector\Rules;
 
 use Doctrine\Inflector\WordInflector;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function strtolower;
 use function strtoupper;
 use function substr;
@@ -25,11 +22,7 @@ class Substitutions implements WordInflector
         }
     }
 
-<<<<<<< HEAD
     public function getFlippedSubstitutions(): Substitutions
-=======
-    public function getFlippedSubstitutions() : Substitutions
->>>>>>> parent of 31cfa1b1 (p)
     {
         $substitutions = [];
 
@@ -43,11 +36,7 @@ class Substitutions implements WordInflector
         return new Substitutions(...$substitutions);
     }
 
-<<<<<<< HEAD
     public function inflect(string $word): string
-=======
-    public function inflect(string $word) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         $lowerWord = strtolower($word);
 

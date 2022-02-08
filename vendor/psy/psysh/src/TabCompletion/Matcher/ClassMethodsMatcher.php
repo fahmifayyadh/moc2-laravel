@@ -24,11 +24,7 @@ class ClassMethodsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function getMatches(array $tokens, array $info = []): array
-=======
-    public function getMatches(array $tokens, array $info = [])
->>>>>>> parent of 31cfa1b1 (p)
     {
         $input = $this->getInput($tokens);
 
@@ -61,11 +57,7 @@ class ClassMethodsMatcher extends AbstractMatcher
                 $chunks = \explode('\\', $class);
                 $className = \array_pop($chunks);
 
-<<<<<<< HEAD
                 return $className.'::'.$name;
-=======
-                return $className . '::' . $name;
->>>>>>> parent of 31cfa1b1 (p)
             },
             \array_filter($methods, function ($method) use ($input) {
                 return AbstractMatcher::startsWith($input, $method);
@@ -76,15 +68,9 @@ class ClassMethodsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function hasMatched(array $tokens): bool
     {
         $token = \array_pop($tokens);
-=======
-    public function hasMatched(array $tokens)
-    {
-        $token     = \array_pop($tokens);
->>>>>>> parent of 31cfa1b1 (p)
         $prevToken = \array_pop($tokens);
 
         switch (true) {

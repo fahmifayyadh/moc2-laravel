@@ -37,11 +37,7 @@ class ApacheRequest extends Request
     {
         $baseUrl = $this->server->get('SCRIPT_NAME');
 
-<<<<<<< HEAD
         if (!str_contains($this->server->get('REQUEST_URI'), $baseUrl)) {
-=======
-        if (false === strpos($this->server->get('REQUEST_URI'), $baseUrl)) {
->>>>>>> parent of 31cfa1b1 (p)
             // assume mod_rewrite
             return rtrim(\dirname($baseUrl), '/\\');
         }

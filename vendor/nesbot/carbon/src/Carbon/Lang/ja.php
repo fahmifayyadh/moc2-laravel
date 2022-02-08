@@ -21,12 +21,9 @@
  * - toyama satoshi
  * - atakigawa
  */
-<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 return [
     'year' => ':count年',
     'y' => ':count年',
@@ -62,11 +59,7 @@ return [
     'calendar' => [
         'sameDay' => '[今日] LT',
         'nextDay' => '[明日] LT',
-<<<<<<< HEAD
         'nextWeek' => function (CarbonInterface $current, CarbonInterface $other) {
-=======
-        'nextWeek' => function (\Carbon\CarbonInterface $current, \Carbon\CarbonInterface $other) {
->>>>>>> parent of 31cfa1b1 (p)
             if ($other->week !== $current->week) {
                 return '[来週]dddd LT';
             }
@@ -74,11 +67,7 @@ return [
             return 'dddd LT';
         },
         'lastDay' => '[昨日] LT',
-<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $current, CarbonInterface $other) {
-=======
-        'lastWeek' => function (\Carbon\CarbonInterface $current, \Carbon\CarbonInterface $other) {
->>>>>>> parent of 31cfa1b1 (p)
             if ($other->week !== $current->week) {
                 return '[先週]dddd LT';
             }

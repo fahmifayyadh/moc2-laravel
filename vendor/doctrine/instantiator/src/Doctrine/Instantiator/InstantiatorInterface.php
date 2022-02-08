@@ -15,12 +15,9 @@ interface InstantiatorInterface
      * @return object
      *
      * @throws ExceptionInterface
-<<<<<<< HEAD
      *
      * @template T of object
      * @phpstan-param class-string<T> $className
-=======
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function instantiate($className);
 }

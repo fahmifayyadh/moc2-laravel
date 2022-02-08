@@ -9,13 +9,10 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function is_array;
 use function is_string;
 use function sprintf;
 use function strpos;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use SplObjectStorage;
 
 /**
@@ -41,11 +38,7 @@ final class TraversableContainsIdentical extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         if (is_string($this->value) && strpos($this->value, "\n") !== false) {
-=======
-        if (\is_string($this->value) && \strpos($this->value, "\n") !== false) {
->>>>>>> parent of 31cfa1b1 (p)
             return 'contains "' . $this->value . '"';
         }
 
@@ -74,11 +67,7 @@ final class TraversableContainsIdentical extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Returns the description of the failure.
-=======
-     * Returns the description of the failure
->>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -89,15 +78,9 @@ final class TraversableContainsIdentical extends Constraint
      */
     protected function failureDescription($other): string
     {
-<<<<<<< HEAD
         return sprintf(
             '%s %s',
             is_array($other) ? 'an array' : 'a traversable',
-=======
-        return \sprintf(
-            '%s %s',
-            \is_array($other) ? 'an array' : 'a traversable',
->>>>>>> parent of 31cfa1b1 (p)
             $this->toString()
         );
     }

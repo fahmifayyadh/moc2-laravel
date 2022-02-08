@@ -569,11 +569,7 @@ class Dispatcher implements DispatcherContract
     /**
      * Get the queue implementation from the resolver.
      *
-<<<<<<< HEAD
      * @return \Illuminate\Contracts\Queue\Factory
-=======
-     * @return \Illuminate\Contracts\Queue\Queue
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function resolveQueue()
     {

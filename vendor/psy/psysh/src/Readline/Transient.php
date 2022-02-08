@@ -28,17 +28,12 @@ class Transient implements Readline
      *
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public static function isSupported(): bool
-=======
-    public static function isSupported()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritdoc}
      */
     public static function supportsBracketedPaste(): bool
@@ -47,32 +42,20 @@ class Transient implements Readline
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Transient Readline constructor.
      */
     public function __construct($historyFile = null, $historySize = 0, $eraseDups = false)
     {
         // don't do anything with the history file...
-<<<<<<< HEAD
         $this->history = [];
         $this->historySize = $historySize;
         $this->eraseDups = $eraseDups;
-=======
-        $this->history     = [];
-        $this->historySize = $historySize;
-        $this->eraseDups   = $eraseDups;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function addHistory(string $line): bool
-=======
-    public function addHistory($line)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->eraseDups) {
             if (($key = \array_search($line, $this->history)) !== false) {
@@ -97,11 +80,7 @@ class Transient implements Readline
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function clearHistory(): bool
-=======
-    public function clearHistory()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->history = [];
 
@@ -111,11 +90,7 @@ class Transient implements Readline
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function listHistory(): array
-=======
-    public function listHistory()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->history;
     }
@@ -123,11 +98,7 @@ class Transient implements Readline
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function readHistory(): bool
-=======
-    public function readHistory()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }
@@ -137,15 +108,9 @@ class Transient implements Readline
      *
      * @throws BreakException if user hits Ctrl+D
      *
-<<<<<<< HEAD
      * @return false|string
      */
     public function readline(string $prompt = null)
-=======
-     * @return string
-     */
-    public function readline($prompt = null)
->>>>>>> parent of 31cfa1b1 (p)
     {
         echo $prompt;
 
@@ -163,11 +128,7 @@ class Transient implements Readline
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function writeHistory(): bool
-=======
-    public function writeHistory()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }

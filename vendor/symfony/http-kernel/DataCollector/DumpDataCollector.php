@@ -14,10 +14,7 @@ namespace Symfony\Component\HttpKernel\DataCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-<<<<<<< HEAD
 use Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use Symfony\Component\Stopwatch\Stopwatch;
 use Symfony\Component\VarDumper\Cloner\Data;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
@@ -47,10 +44,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
     private $sourceContextProvider;
 
     /**
-<<<<<<< HEAD
      * @param string|FileLinkFormatter|null       $fileLinkFormat
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * @param DataDumperInterface|Connection|null $dumper
      */
     public function __construct(Stopwatch $stopwatch = null, $fileLinkFormat = null, string $charset = null, RequestStack $requestStack = null, $dumper = null)
@@ -83,11 +77,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
             $this->stopwatch->start('dump');
         }
 
-<<<<<<< HEAD
         ['name' => $name, 'file' => $file, 'line' => $line, 'file_excerpt' => $fileExcerpt] = $this->sourceContextProvider->getContext();
-=======
-        list('name' => $name, 'file' => $file, 'line' => $line, 'file_excerpt' => $fileExcerpt) = $this->sourceContextProvider->getContext();
->>>>>>> parent of 31cfa1b1 (p)
 
         if ($this->dumper instanceof Connection) {
             if (!$this->dumper->write($data)) {
@@ -130,19 +120,11 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
         if (!$this->requestStack
             || !$response->headers->has('X-Debug-Token')
             || $response->isRedirection()
-<<<<<<< HEAD
             || ($response->headers->has('Content-Type') && !str_contains($response->headers->get('Content-Type'), 'html'))
             || 'html' !== $request->getRequestFormat()
             || false === strripos($response->getContent(), '</body>')
         ) {
             if ($response->headers->has('Content-Type') && str_contains($response->headers->get('Content-Type'), 'html')) {
-=======
-            || ($response->headers->has('Content-Type') && false === strpos($response->headers->get('Content-Type'), 'html'))
-            || 'html' !== $request->getRequestFormat()
-            || false === strripos($response->getContent(), '</body>')
-        ) {
-            if ($response->headers->has('Content-Type') && false !== strpos($response->headers->get('Content-Type'), 'html')) {
->>>>>>> parent of 31cfa1b1 (p)
                 $dumper = new HtmlDumper('php://output', $this->charset);
                 $dumper->setDisplayOptions(['fileLinkFormat' => $this->fileLinkFormat]);
             } else {
@@ -201,7 +183,6 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
         $charset = array_pop($this->data);
         $fileLinkFormat = array_pop($this->data);
         $this->dataCount = \count($this->data);
-<<<<<<< HEAD
         foreach ($this->data as $dump) {
             if (!\is_string($dump['name']) || !\is_string($dump['file']) || !\is_int($dump['line'])) {
                 throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
@@ -209,10 +190,6 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
         }
 
         self::__construct($this->stopwatch, \is_string($fileLinkFormat) || $fileLinkFormat instanceof FileLinkFormatter ? $fileLinkFormat : null, \is_string($charset) ? $charset : null);
-=======
-
-        self::__construct($this->stopwatch, $fileLinkFormat, $charset);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function getDumpsCount()
@@ -222,11 +199,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
 
     public function getDumps($format, $maxDepthLimit = -1, $maxItemsPerDepth = -1)
     {
-<<<<<<< HEAD
         $data = fopen('php://memory', 'r+');
-=======
-        $data = fopen('php://memory', 'r+b');
->>>>>>> parent of 31cfa1b1 (p)
 
         if ('html' === $format) {
             $dumper = new HtmlDumper($data, $this->charset);
@@ -289,11 +262,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
         }
     }
 
-<<<<<<< HEAD
     private function doDump(DataDumperInterface $dumper, Data $data, string $name, string $file, int $line)
-=======
-    private function doDump(DataDumperInterface $dumper, $data, string $name, string $file, int $line)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($dumper instanceof CliDumper) {
             $contextDumper = function ($name, $file, $line, $fmt) {

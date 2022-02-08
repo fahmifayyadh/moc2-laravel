@@ -70,11 +70,7 @@ class IdentityTranslator implements LegacyTranslatorInterface, TranslatorInterfa
         return $this->trans($id, ['%count%' => $number] + $parameters, $domain, $locale);
     }
 
-<<<<<<< HEAD
     private function getPluralizationRule(float $number, string $locale): int
-=======
-    private function getPluralizationRule(int $number, string $locale): int
->>>>>>> parent of 31cfa1b1 (p)
     {
         return PluralizationRules::get($number, $locale, false);
     }

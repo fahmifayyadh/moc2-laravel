@@ -30,7 +30,6 @@ class ImportConfigurator
         $this->route = $route;
     }
 
-<<<<<<< HEAD
     /**
      * @return array
      */
@@ -44,8 +43,6 @@ class ImportConfigurator
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function __destruct()
     {
         $this->parent->addCollection($this->route);

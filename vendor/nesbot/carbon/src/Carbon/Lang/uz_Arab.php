@@ -8,10 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 return array_replace_recursive(require __DIR__.'/fa.php', [
     'weekdays' => ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه'],
     'weekdays_short' => ['ی.', 'د.', 'س.', 'چ.', 'پ.', 'ج.', 'ش.'],

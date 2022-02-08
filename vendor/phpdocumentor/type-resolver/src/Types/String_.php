@@ -20,20 +20,12 @@ use phpDocumentor\Reflection\Type;
  *
  * @psalm-immutable
  */
-<<<<<<< HEAD
 class String_ implements Type
-=======
-final class String_ implements Type
->>>>>>> parent of 31cfa1b1 (p)
 {
     /**
      * Returns a rendered output of the Type as it would be used in a DocBlock.
      */
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return 'string';
     }

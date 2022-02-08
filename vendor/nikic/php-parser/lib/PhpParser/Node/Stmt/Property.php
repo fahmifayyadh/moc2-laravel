@@ -3,16 +3,9 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
-<<<<<<< HEAD
 use PhpParser\Node\ComplexType;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
-=======
-use PhpParser\Node\Identifier;
-use PhpParser\Node\Name;
-use PhpParser\Node\NullableType;
-use PhpParser\Node\UnionType;
->>>>>>> parent of 31cfa1b1 (p)
 
 class Property extends Node\Stmt
 {
@@ -20,11 +13,7 @@ class Property extends Node\Stmt
     public $flags;
     /** @var PropertyProperty[] Properties */
     public $props;
-<<<<<<< HEAD
     /** @var null|Identifier|Name|ComplexType Type declaration */
-=======
-    /** @var null|Identifier|Name|NullableType|UnionType Type declaration */
->>>>>>> parent of 31cfa1b1 (p)
     public $type;
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public $attrGroups;
@@ -32,19 +21,11 @@ class Property extends Node\Stmt
     /**
      * Constructs a class property list node.
      *
-<<<<<<< HEAD
      * @param int                                     $flags      Modifiers
      * @param PropertyProperty[]                      $props      Properties
      * @param array                                   $attributes Additional attributes
      * @param null|string|Identifier|Name|ComplexType $type       Type declaration
      * @param Node\AttributeGroup[]                   $attrGroups PHP attribute groups
-=======
-     * @param int                                                $flags      Modifiers
-     * @param PropertyProperty[]                                 $props      Properties
-     * @param array                                              $attributes Additional attributes
-     * @param null|string|Identifier|Name|NullableType|UnionType $type       Type declaration
-     * @param Node\AttributeGroup[]                              $attrGroups PHP attribute groups
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(int $flags, array $props, array $attributes = [], $type = null, array $attrGroups = []) {
         $this->attributes = $attributes;
@@ -95,7 +76,6 @@ class Property extends Node\Stmt
         return (bool) ($this->flags & Class_::MODIFIER_STATIC);
     }
 
-<<<<<<< HEAD
     /**
      * Whether the property is readonly.
      *
@@ -105,8 +85,6 @@ class Property extends Node\Stmt
         return (bool) ($this->flags & Class_::MODIFIER_READONLY);
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function getType() : string {
         return 'Stmt_Property';
     }

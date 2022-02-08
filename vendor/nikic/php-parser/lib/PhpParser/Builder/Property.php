@@ -4,18 +4,11 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
-<<<<<<< HEAD
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\ComplexType;
-=======
-use PhpParser\Node\Identifier;
-use PhpParser\Node\Name;
-use PhpParser\Node\NullableType;
-use PhpParser\Node\Stmt;
->>>>>>> parent of 31cfa1b1 (p)
 
 class Property implements PhpParser\Builder
 {
@@ -28,12 +21,9 @@ class Property implements PhpParser\Builder
     /** @var null|Identifier|Name|NullableType */
     protected $type;
 
-<<<<<<< HEAD
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * Creates a property builder.
      *
@@ -88,7 +78,6 @@ class Property implements PhpParser\Builder
     }
 
     /**
-<<<<<<< HEAD
      * Makes the property readonly.
      *
      * @return $this The builder instance (for fluid interface)
@@ -100,8 +89,6 @@ class Property implements PhpParser\Builder
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Sets default value for the property.
      *
      * @param mixed $value Default value to use
@@ -132,11 +119,7 @@ class Property implements PhpParser\Builder
     /**
      * Sets the property type for PHP 7.4+.
      *
-<<<<<<< HEAD
      * @param string|Name|Identifier|ComplexType $type
-=======
-     * @param string|Name|NullableType|Identifier $type
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return $this
      */
@@ -147,7 +130,6 @@ class Property implements PhpParser\Builder
     }
 
     /**
-<<<<<<< HEAD
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -161,8 +143,6 @@ class Property implements PhpParser\Builder
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Returns the built class node.
      *
      * @return Stmt\Property The built property node
@@ -174,12 +154,8 @@ class Property implements PhpParser\Builder
                 new Stmt\PropertyProperty($this->name, $this->default)
             ],
             $this->attributes,
-<<<<<<< HEAD
             $this->type,
             $this->attributeGroups
-=======
-            $this->type
->>>>>>> parent of 31cfa1b1 (p)
         );
     }
 }

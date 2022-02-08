@@ -104,15 +104,9 @@ class MemoryDataCollector extends DataCollector implements LateDataCollectorInte
 
         $memoryLimit = strtolower($memoryLimit);
         $max = strtolower(ltrim($memoryLimit, '+'));
-<<<<<<< HEAD
         if (str_starts_with($max, '0x')) {
             $max = \intval($max, 16);
         } elseif (str_starts_with($max, '0')) {
-=======
-        if (0 === strpos($max, '0x')) {
-            $max = \intval($max, 16);
-        } elseif (0 === strpos($max, '0')) {
->>>>>>> parent of 31cfa1b1 (p)
             $max = \intval($max, 8);
         } else {
             $max = (int) $max;

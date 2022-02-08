@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function is_nan;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that accepts nan.
  */
@@ -35,10 +32,6 @@ final class IsNan extends Constraint
      */
     protected function matches($other): bool
     {
-<<<<<<< HEAD
         return is_nan($other);
-=======
-        return \is_nan($other);
->>>>>>> parent of 31cfa1b1 (p)
     }
 }

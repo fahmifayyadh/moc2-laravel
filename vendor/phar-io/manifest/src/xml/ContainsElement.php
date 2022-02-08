@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?php declare(strict_types = 1);
-=======
-<?php
->>>>>>> parent of 31cfa1b1 (p)
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -11,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 namespace PharIo\Manifest;
 
 class ContainsElement extends ManifestElement {
@@ -28,25 +23,6 @@ class ContainsElement extends ManifestElement {
     }
 
     public function getExtensionElement(): ExtensionElement {
-=======
-
-namespace PharIo\Manifest;
-
-class ContainsElement extends ManifestElement {
-    public function getName() {
-        return $this->getAttributeValue('name');
-    }
-
-    public function getVersion() {
-        return $this->getAttributeValue('version');
-    }
-
-    public function getType() {
-        return $this->getAttributeValue('type');
-    }
-
-    public function getExtensionElement() {
->>>>>>> parent of 31cfa1b1 (p)
         return new ExtensionElement(
             $this->getChildByName('extension')
         );

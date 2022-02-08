@@ -4,12 +4,6 @@ namespace PhpParser\Node;
 
 use PhpParser\NodeAbstract;
 
-<<<<<<< HEAD
-=======
-/**
- * @property Name $namespacedName Namespaced name (for global constants, if using NameResolver)
- */
->>>>>>> parent of 31cfa1b1 (p)
 class Const_ extends NodeAbstract
 {
     /** @var Identifier Name */
@@ -17,12 +11,9 @@ class Const_ extends NodeAbstract
     /** @var Expr Value */
     public $value;
 
-<<<<<<< HEAD
     /** @var Name Namespaced name (if using NameResolver) */
     public $namespacedName;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * Constructs a const node for use in class const and const statements.
      *

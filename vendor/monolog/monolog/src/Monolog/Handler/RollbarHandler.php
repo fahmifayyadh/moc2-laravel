@@ -38,10 +38,7 @@ class RollbarHandler extends AbstractProcessingHandler
      */
     protected $rollbarLogger;
 
-<<<<<<< HEAD
     /** @var string[] */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     protected $levelMap = [
         Logger::DEBUG     => 'debug',
         Logger::INFO      => 'info',
@@ -60,19 +57,11 @@ class RollbarHandler extends AbstractProcessingHandler
      */
     private $hasRecords = false;
 
-<<<<<<< HEAD
     /** @var bool */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     protected $initialized = false;
 
     /**
      * @param RollbarLogger $rollbarLogger RollbarLogger object constructed with valid token
-<<<<<<< HEAD
-=======
-     * @param string|int    $level         The minimum logging level at which this handler will be triggered
-     * @param bool          $bubble        Whether the messages that are handled can bubble up the stack or not
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(RollbarLogger $rollbarLogger, $level = Logger::ERROR, bool $bubble = true)
     {
@@ -82,11 +71,7 @@ class RollbarHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function write(array $record): void
     {
@@ -112,10 +97,7 @@ class RollbarHandler extends AbstractProcessingHandler
             $toLog = $record['message'];
         }
 
-<<<<<<< HEAD
         // @phpstan-ignore-next-line
-=======
->>>>>>> parent of 31cfa1b1 (p)
         $this->rollbarLogger->log($context['level'], $toLog, $context);
 
         $this->hasRecords = true;
@@ -130,11 +112,7 @@ class RollbarHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function close(): void
     {
@@ -142,11 +120,7 @@ class RollbarHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function reset()
     {

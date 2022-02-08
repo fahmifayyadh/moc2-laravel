@@ -29,11 +29,7 @@ final class FootnoteParser implements BlockParserInterface
             return false;
         }
 
-<<<<<<< HEAD
         $match = RegexHelper::matchFirst(
-=======
-        $match = RegexHelper::matchAll(
->>>>>>> parent of 31cfa1b1 (p)
             '/^\[\^([^\n^\]]+)\]\:\s/',
             $cursor->getLine(),
             $cursor->getNextNonSpacePosition()

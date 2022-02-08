@@ -2,13 +2,7 @@
 
 namespace PhpParser\Node;
 
-<<<<<<< HEAD
 class UnionType extends ComplexType
-=======
-use PhpParser\NodeAbstract;
-
-class UnionType extends NodeAbstract
->>>>>>> parent of 31cfa1b1 (p)
 {
     /** @var (Identifier|Name)[] Types */
     public $types;

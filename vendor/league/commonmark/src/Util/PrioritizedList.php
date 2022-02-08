@@ -50,10 +50,7 @@ final class PrioritizedList implements \IteratorAggregate
      *
      * @phpstan-return iterable<int, T>
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function getIterator(): iterable
     {
         if ($this->optimized === null) {

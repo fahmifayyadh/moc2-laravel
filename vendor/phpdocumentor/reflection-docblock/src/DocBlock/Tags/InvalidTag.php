@@ -11,10 +11,7 @@ use ReflectionClass;
 use ReflectionException;
 use ReflectionFunction;
 use Throwable;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function array_map;
 use function get_class;
 use function get_resource_type;
@@ -50,38 +47,22 @@ final class InvalidTag implements Tag
         $this->body = $body;
     }
 
-<<<<<<< HEAD
     public function getException(): ?Throwable
-=======
-    public function getException() : ?Throwable
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->throwable;
     }
 
-<<<<<<< HEAD
     public function getName(): string
-=======
-    public function getName() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->name;
     }
 
-<<<<<<< HEAD
     public static function create(string $body, string $name = ''): self
-=======
-    public static function create(string $body, string $name = '') : self
->>>>>>> parent of 31cfa1b1 (p)
     {
         return new self($name, $body);
     }
 
-<<<<<<< HEAD
     public function withError(Throwable $exception): self
-=======
-    public function withError(Throwable $exception) : self
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->flattenExceptionBacktrace($exception);
         $tag            = new self($this->name, $this->body);
@@ -96,11 +77,7 @@ final class InvalidTag implements Tag
      * Not all objects are serializable. So we need to remove them from the
      * stored exception to be sure that we do not break existing library usage.
      */
-<<<<<<< HEAD
     private function flattenExceptionBacktrace(Throwable $exception): void
-=======
-    private function flattenExceptionBacktrace(Throwable $exception) : void
->>>>>>> parent of 31cfa1b1 (p)
     {
         $traceProperty = (new ReflectionClass(Exception::class))->getProperty('trace');
         $traceProperty->setAccessible(true);
@@ -109,13 +86,8 @@ final class InvalidTag implements Tag
             $trace = $exception->getTrace();
             if (isset($trace[0]['args'])) {
                 $trace = array_map(
-<<<<<<< HEAD
                     function (array $call): array {
                         $call['args'] = array_map([$this, 'flattenArguments'], $call['args'] ?? []);
-=======
-                    function (array $call) : array {
-                        $call['args'] = array_map([$this, 'flattenArguments'], $call['args']);
->>>>>>> parent of 31cfa1b1 (p)
 
                         return $call;
                     },
@@ -157,11 +129,7 @@ final class InvalidTag implements Tag
         return $value;
     }
 
-<<<<<<< HEAD
     public function render(?Formatter $formatter = null): string
-=======
-    public function render(?Formatter $formatter = null) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($formatter === null) {
             $formatter = new Formatter\PassthroughFormatter();
@@ -170,11 +138,7 @@ final class InvalidTag implements Tag
         return $formatter->format($this);
     }
 
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->body;
     }

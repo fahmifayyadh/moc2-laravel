@@ -42,11 +42,7 @@ class CliDescriptor implements DumpDescriptorInterface
         $io = $output instanceof SymfonyStyle ? $output : new SymfonyStyle(new ArrayInput([]), $output);
         $this->dumper->setColors($output->isDecorated());
 
-<<<<<<< HEAD
         $rows = [['date', date('r', (int) $context['timestamp'])]];
-=======
-        $rows = [['date', date('r', $context['timestamp'])]];
->>>>>>> parent of 31cfa1b1 (p)
         $lastIdentifier = $this->lastIdentifier;
         $this->lastIdentifier = $clientId;
 

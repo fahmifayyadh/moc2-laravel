@@ -43,19 +43,11 @@ abstract class Command extends BaseCommand
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function asText(): string
     {
         $messages = [
             '<comment>Usage:</comment>',
             ' '.$this->getSynopsis(),
-=======
-    public function asText()
-    {
-        $messages = [
-            '<comment>Usage:</comment>',
-            ' ' . $this->getSynopsis(),
->>>>>>> parent of 31cfa1b1 (p)
             '',
         ];
 
@@ -73,11 +65,7 @@ abstract class Command extends BaseCommand
 
         if ($help = $this->getProcessedHelp()) {
             $messages[] = '<comment>Help:</comment>';
-<<<<<<< HEAD
             $messages[] = ' '.\str_replace("\n", "\n ", $help)."\n";
-=======
-            $messages[] = ' ' . \str_replace("\n", "\n ", $help) . "\n";
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return \implode("\n", $messages);
@@ -86,11 +74,7 @@ abstract class Command extends BaseCommand
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     private function getArguments(): array
-=======
-    private function getArguments()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $hidden = $this->getHiddenArguments();
 
@@ -104,11 +88,7 @@ abstract class Command extends BaseCommand
      *
      * @return array
      */
-<<<<<<< HEAD
     protected function getHiddenArguments(): array
-=======
-    protected function getHiddenArguments()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return ['command'];
     }
@@ -116,11 +96,7 @@ abstract class Command extends BaseCommand
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     private function getOptions(): array
-=======
-    private function getOptions()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $hidden = $this->getHiddenOptions();
 
@@ -134,11 +110,7 @@ abstract class Command extends BaseCommand
      *
      * @return array
      */
-<<<<<<< HEAD
     protected function getHiddenOptions(): array
-=======
-    protected function getHiddenOptions()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return ['verbose'];
     }
@@ -148,15 +120,9 @@ abstract class Command extends BaseCommand
      *
      * @return string
      */
-<<<<<<< HEAD
     private function aliasesAsText(): string
     {
         return '<comment>Aliases:</comment> <info>'.\implode(', ', $this->getAliases()).'</info>'.\PHP_EOL;
-=======
-    private function aliasesAsText()
-    {
-        return '<comment>Aliases:</comment> <info>' . \implode(', ', $this->getAliases()) . '</info>' . PHP_EOL;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -164,11 +130,7 @@ abstract class Command extends BaseCommand
      *
      * @return string
      */
-<<<<<<< HEAD
     private function argumentsAsText(): string
-=======
-    private function argumentsAsText()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $max = $this->getMaxWidth();
         $messages = [];
@@ -183,11 +145,7 @@ abstract class Command extends BaseCommand
                     $default = '';
                 }
 
-<<<<<<< HEAD
                 $description = \str_replace("\n", "\n".\str_pad('', $max + 2, ' '), $argument->getDescription());
-=======
-                $description = \str_replace("\n", "\n" . \str_pad('', $max + 2, ' '), $argument->getDescription());
->>>>>>> parent of 31cfa1b1 (p)
 
                 $messages[] = \sprintf(" <info>%-${max}s</info> %s%s", $argument->getName(), $description, $default);
             }
@@ -195,11 +153,7 @@ abstract class Command extends BaseCommand
             $messages[] = '';
         }
 
-<<<<<<< HEAD
         return \implode(\PHP_EOL, $messages);
-=======
-        return \implode(PHP_EOL, $messages);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -207,11 +161,7 @@ abstract class Command extends BaseCommand
      *
      * @return string
      */
-<<<<<<< HEAD
     private function optionsAsText(): string
-=======
-    private function optionsAsText()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $max = $this->getMaxWidth();
         $messages = [];
@@ -228,20 +178,12 @@ abstract class Command extends BaseCommand
                 }
 
                 $multiple = $option->isArray() ? '<comment> (multiple values allowed)</comment>' : '';
-<<<<<<< HEAD
                 $description = \str_replace("\n", "\n".\str_pad('', $max + 2, ' '), $option->getDescription());
-=======
-                $description = \str_replace("\n", "\n" . \str_pad('', $max + 2, ' '), $option->getDescription());
->>>>>>> parent of 31cfa1b1 (p)
 
                 $optionMax = $max - \strlen($option->getName()) - 2;
                 $messages[] = \sprintf(
                     " <info>%s</info> %-${optionMax}s%s%s%s",
-<<<<<<< HEAD
                     '--'.$option->getName(),
-=======
-                    '--' . $option->getName(),
->>>>>>> parent of 31cfa1b1 (p)
                     $option->getShortcut() ? \sprintf('(-%s) ', $option->getShortcut()) : '',
                     $description,
                     $default,
@@ -252,11 +194,7 @@ abstract class Command extends BaseCommand
             $messages[] = '';
         }
 
-<<<<<<< HEAD
         return \implode(\PHP_EOL, $messages);
-=======
-        return \implode(PHP_EOL, $messages);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -264,11 +202,7 @@ abstract class Command extends BaseCommand
      *
      * @return int
      */
-<<<<<<< HEAD
     private function getMaxWidth(): int
-=======
-    private function getMaxWidth()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $max = 0;
 
@@ -295,11 +229,7 @@ abstract class Command extends BaseCommand
      *
      * @return string
      */
-<<<<<<< HEAD
     private function formatDefaultValue($default): string
-=======
-    private function formatDefaultValue($default)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (\is_array($default) && $default === \array_values($default)) {
             return \sprintf("['%s']", \implode("', '", $default));
@@ -346,11 +276,7 @@ abstract class Command extends BaseCommand
      *
      * @return TableHelper
      */
-<<<<<<< HEAD
     protected function getTableHelper(): TableHelper
-=======
-    protected function getTableHelper()
->>>>>>> parent of 31cfa1b1 (p)
     {
         $table = $this->getApplication()->getHelperSet()->get('table');
 

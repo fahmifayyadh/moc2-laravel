@@ -241,7 +241,6 @@ class Frame implements Serializable
         return serialize($frame);
     }
 
-<<<<<<< HEAD
     public function __serialize()
     {
         $frame = $this->frame;
@@ -251,8 +250,6 @@ class Frame implements Serializable
         return $frame;
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * Unserializes the frame data, while also preserving
      * any existing comment data.
@@ -272,7 +269,6 @@ class Frame implements Serializable
         $this->frame = $frame;
     }
 
-<<<<<<< HEAD
     public function __unserialize($frame)
     {
         if (!empty($frame['_comments'])) {
@@ -283,8 +279,6 @@ class Frame implements Serializable
         $this->frame = $frame;
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * Compares Frame against one another
      * @param  Frame $frame

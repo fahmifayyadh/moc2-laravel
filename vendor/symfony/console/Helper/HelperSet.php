@@ -98,14 +98,9 @@ class HelperSet implements \IteratorAggregate
     }
 
     /**
-<<<<<<< HEAD
      * @return \Traversable<Helper>
      */
     #[\ReturnTypeWillChange]
-=======
-     * @return Helper[]
-     */
->>>>>>> parent of 31cfa1b1 (p)
     public function getIterator()
     {
         return new \ArrayIterator($this->helpers);

@@ -59,11 +59,7 @@ final class EmailAddressContains extends Constraint
             return false;
         }
 
-<<<<<<< HEAD
         throw new \LogicException('Unable to test a message address on a non-address header.');
-=======
-        throw new \LogicException(sprintf('Unable to test a message address on a non-address header.'));
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

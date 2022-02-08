@@ -39,11 +39,7 @@ class TextDescriptor extends Descriptor
             $default = '';
         }
 
-<<<<<<< HEAD
         $totalWidth = $options['total_width'] ?? Helper::strlen($argument->getName());
-=======
-        $totalWidth = isset($options['total_width']) ? $options['total_width'] : Helper::strlen($argument->getName());
->>>>>>> parent of 31cfa1b1 (p)
         $spacingWidth = $totalWidth - \strlen($argument->getName());
 
         $this->writeText(sprintf('  <info>%s</info>  %s%s%s',
@@ -75,11 +71,7 @@ class TextDescriptor extends Descriptor
             }
         }
 
-<<<<<<< HEAD
         $totalWidth = $options['total_width'] ?? $this->calculateTotalWidthForOptions([$option]);
-=======
-        $totalWidth = isset($options['total_width']) ? $options['total_width'] : $this->calculateTotalWidthForOptions([$option]);
->>>>>>> parent of 31cfa1b1 (p)
         $synopsis = sprintf('%s%s',
             $option->getShortcut() ? sprintf('-%s, ', $option->getShortcut()) : '    ',
             sprintf('--%s%s', $option->getName(), $value)
@@ -125,11 +117,7 @@ class TextDescriptor extends Descriptor
 
             $this->writeText('<comment>Options:</comment>', $options);
             foreach ($definition->getOptions() as $option) {
-<<<<<<< HEAD
                 if (\strlen($option->getShortcut() ?? '') > 1) {
-=======
-                if (\strlen($option->getShortcut()) > 1) {
->>>>>>> parent of 31cfa1b1 (p)
                     $laterOptions[] = $option;
                     continue;
                 }
@@ -188,11 +176,7 @@ class TextDescriptor extends Descriptor
      */
     protected function describeApplication(Application $application, array $options = [])
     {
-<<<<<<< HEAD
         $describedNamespace = $options['namespace'] ?? null;
-=======
-        $describedNamespace = isset($options['namespace']) ? $options['namespace'] : null;
->>>>>>> parent of 31cfa1b1 (p)
         $description = new ApplicationDescription($application, $describedNamespace);
 
         if (isset($options['raw_text']) && $options['raw_text']) {
@@ -314,11 +298,7 @@ class TextDescriptor extends Descriptor
     }
 
     /**
-<<<<<<< HEAD
      * @param array<Command|string> $commands
-=======
-     * @param (Command|string)[] $commands
->>>>>>> parent of 31cfa1b1 (p)
      */
     private function getColumnWidth(array $commands): int
     {

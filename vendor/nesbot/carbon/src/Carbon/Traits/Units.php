@@ -8,10 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Traits;
 
 use Carbon\CarbonConverterInterface;
@@ -20,10 +17,7 @@ use Carbon\CarbonInterval;
 use Carbon\Exceptions\UnitException;
 use Closure;
 use DateInterval;
-<<<<<<< HEAD
 use ReturnTypeWillChange;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Trait Units.
@@ -55,11 +49,7 @@ trait Units
                 $seconds = (int) floor($diff / static::MICROSECONDS_PER_SECOND);
                 $time += $seconds;
                 $diff -= $seconds * static::MICROSECONDS_PER_SECOND;
-<<<<<<< HEAD
                 $microtime = str_pad((string) $diff, 6, '0', STR_PAD_LEFT);
-=======
-                $microtime = str_pad("$diff", 6, '0', STR_PAD_LEFT);
->>>>>>> parent of 31cfa1b1 (p)
                 $tz = $this->tz;
 
                 return $this->tz('UTC')->modify("@$time.$microtime")->tz($tz);
@@ -177,11 +167,7 @@ trait Units
             'weekday',
         ];
 
-<<<<<<< HEAD
         return \in_array($unit, $modifiableUnits) || \in_array($unit, static::$units);
-=======
-        return in_array($unit, $modifiableUnits) || in_array($unit, static::$units);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -209,16 +195,10 @@ trait Units
      *
      * @return static
      */
-<<<<<<< HEAD
     #[ReturnTypeWillChange]
     public function add($unit, $value = 1, $overflow = null)
     {
         if (\is_string($unit) && \func_num_args() === 1) {
-=======
-    public function add($unit, $value = 1, $overflow = null)
-    {
-        if (is_string($unit) && func_num_args() === 1) {
->>>>>>> parent of 31cfa1b1 (p)
             $unit = CarbonInterval::make($unit);
         }
 
@@ -254,18 +234,11 @@ trait Units
     {
         $date = $this;
 
-<<<<<<< HEAD
         if (!is_numeric($value) || !(float) $value) {
             return $date->isMutable() ? $date : $date->avoidMutation();
         }
 
         $unit = self::singularUnit($unit);
-=======
-        if (!is_numeric($value) || !floatval($value)) {
-            return $date->isMutable() ? $date : $date->copy();
-        }
-
->>>>>>> parent of 31cfa1b1 (p)
         $metaUnits = [
             'millennium' => [static::YEARS_PER_MILLENNIUM, 'year'],
             'century' => [static::YEARS_PER_CENTURY, 'year'],
@@ -284,22 +257,14 @@ trait Units
             if ($weekendDays !== [static::SATURDAY, static::SUNDAY]) {
                 $absoluteValue = abs($value);
                 $sign = $value / max(1, $absoluteValue);
-<<<<<<< HEAD
                 $weekDaysCount = 7 - min(6, \count(array_unique($weekendDays)));
-=======
-                $weekDaysCount = 7 - min(6, count(array_unique($weekendDays)));
->>>>>>> parent of 31cfa1b1 (p)
                 $weeks = floor($absoluteValue / $weekDaysCount);
 
                 for ($diff = $absoluteValue % $weekDaysCount; $diff; $diff--) {
                     /** @var static $date */
                     $date = $date->addDays($sign);
 
-<<<<<<< HEAD
                     while (\in_array($date->dayOfWeek, $weekendDays)) {
-=======
-                    while (in_array($date->dayOfWeek, $weekendDays)) {
->>>>>>> parent of 31cfa1b1 (p)
                         $date = $date->addDays($sign);
                     }
                 }
@@ -309,11 +274,7 @@ trait Units
             }
 
             $timeString = $date->toTimeString();
-<<<<<<< HEAD
         } elseif ($canOverflow = \in_array($unit, [
-=======
-        } elseif ($canOverflow = in_array($unit, [
->>>>>>> parent of 31cfa1b1 (p)
                 'month',
                 'year',
             ]) && ($overflow === false || (
@@ -346,7 +307,6 @@ trait Units
         $date = $date->modify("$value $unit");
 
         if (isset($timeString)) {
-<<<<<<< HEAD
             $date = $date->setTimeFromTimeString($timeString);
         } elseif (isset($canOverflow, $day) && $canOverflow && $day !== $date->day) {
             $date = $date->modify('last day of previous month');
@@ -354,13 +314,6 @@ trait Units
 
         if (!$date) {
             throw new UnitException('Unable to add unit '.var_export(\func_get_args(), true));
-=======
-            return $date->setTimeFromTimeString($timeString);
-        }
-
-        if (isset($canOverflow, $day) && $canOverflow && $day !== $date->day) {
-            $date = $date->modify('last day of previous month');
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $date;
@@ -405,16 +358,10 @@ trait Units
      *
      * @return static
      */
-<<<<<<< HEAD
     #[ReturnTypeWillChange]
     public function sub($unit, $value = 1, $overflow = null)
     {
         if (\is_string($unit) && \func_num_args() === 1) {
-=======
-    public function sub($unit, $value = 1, $overflow = null)
-    {
-        if (is_string($unit) && func_num_args() === 1) {
->>>>>>> parent of 31cfa1b1 (p)
             $unit = CarbonInterval::make($unit);
         }
 
@@ -434,11 +381,7 @@ trait Units
             [$value, $unit] = [$unit, $value];
         }
 
-<<<<<<< HEAD
         return $this->addUnit($unit, -(float) $value, $overflow);
-=======
-        return $this->addUnit($unit, -floatval($value), $overflow);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -454,11 +397,7 @@ trait Units
      */
     public function subtract($unit, $value = 1, $overflow = null)
     {
-<<<<<<< HEAD
         if (\is_string($unit) && \func_num_args() === 1) {
-=======
-        if (is_string($unit) && func_num_args() === 1) {
->>>>>>> parent of 31cfa1b1 (p)
             $unit = CarbonInterval::make($unit);
         }
 

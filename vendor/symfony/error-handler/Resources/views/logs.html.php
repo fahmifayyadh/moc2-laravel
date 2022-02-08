@@ -17,11 +17,7 @@
             $status = 'warning';
         } else {
             $severity = 0;
-<<<<<<< HEAD
             if (($exception = $log['context']['exception'] ?? null) instanceof \ErrorException || $exception instanceof \Symfony\Component\ErrorHandler\Exception\SilencedErrorContext) {
-=======
-            if (($exception = $log['context']['exception'] ?? null) instanceof \ErrorException) {
->>>>>>> parent of 31cfa1b1 (p)
                 $severity = $exception->getSeverity();
             }
             $status = \E_DEPRECATED === $severity || \E_USER_DEPRECATED === $severity ? 'warning' : 'normal';

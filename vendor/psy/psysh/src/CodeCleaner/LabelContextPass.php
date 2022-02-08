@@ -84,11 +84,7 @@ class LabelContextPass extends CodeCleanerPass
         foreach ($this->labelGotos as $name => $line) {
             if (!isset($this->labelDeclarations[$name])) {
                 $msg = "'goto' to undefined label '{$name}'";
-<<<<<<< HEAD
                 throw new FatalErrorException($msg, 0, \E_ERROR, null, $line);
-=======
-                throw new FatalErrorException($msg, 0, E_ERROR, null, $line);
->>>>>>> parent of 31cfa1b1 (p)
             }
         }
     }

@@ -8,10 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Traits;
 
 use Carbon\CarbonInterface;
@@ -60,10 +57,7 @@ trait Rounding
             'microsecond' => [0, 999999],
         ]);
         $factor = 1;
-<<<<<<< HEAD
         $initialMonth = $this->month;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
         if ($normalizedUnit === 'week') {
             $normalizedUnit = 'day';
@@ -100,13 +94,9 @@ trait Rounding
                 $factor /= $delta;
                 $fraction *= $delta;
                 $arguments[0] += $this->$unit * $factor;
-<<<<<<< HEAD
                 $changes[$unit] = round(
                     $minimum + ($fraction ? $fraction * $function(($this->$unit - $minimum) / $fraction) : 0)
                 );
-=======
-                $changes[$unit] = round($minimum + ($fraction ? $fraction * call_user_func($function, ($this->$unit - $minimum) / $fraction) : 0));
->>>>>>> parent of 31cfa1b1 (p)
 
                 // Cannot use modulo as it lose double precision
                 while ($changes[$unit] >= $delta) {
@@ -118,28 +108,19 @@ trait Rounding
         }
 
         [$value, $minimum] = $arguments;
-<<<<<<< HEAD
         $normalizedValue = floor($function(($value - $minimum) / $precision) * $precision + $minimum);
 
         /** @var CarbonInterface $result */
         $result = $this->$normalizedUnit($normalizedValue);
-=======
-        /** @var CarbonInterface $result */
-        $result = $this->$normalizedUnit(floor(call_user_func($function, ($value - $minimum) / $precision) * $precision + $minimum));
->>>>>>> parent of 31cfa1b1 (p)
 
         foreach ($changes as $unit => $value) {
             $result = $result->$unit($value);
         }
 
-<<<<<<< HEAD
         return $normalizedUnit === 'month' && $precision <= 1 && abs($result->month - $initialMonth) === 2
             // Re-run the change in case an overflow occurred
             ? $result->$normalizedUnit($normalizedValue)
             : $result;
-=======
-        return $result;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -214,14 +195,10 @@ trait Rounding
      */
     public function roundWeek($weekStartsAt = null)
     {
-<<<<<<< HEAD
         return $this->closest(
             $this->avoidMutation()->floorWeek($weekStartsAt),
             $this->avoidMutation()->ceilWeek($weekStartsAt)
         );
-=======
-        return $this->closest($this->copy()->floorWeek($weekStartsAt), $this->copy()->ceilWeek($weekStartsAt));
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -246,11 +223,7 @@ trait Rounding
     public function ceilWeek($weekStartsAt = null)
     {
         if ($this->isMutable()) {
-<<<<<<< HEAD
             $startOfWeek = $this->avoidMutation()->startOfWeek($weekStartsAt);
-=======
-            $startOfWeek = $this->copy()->startOfWeek($weekStartsAt);
->>>>>>> parent of 31cfa1b1 (p)
 
             return $startOfWeek != $this ?
                 $this->startOfWeek($weekStartsAt)->addWeek() :
@@ -261,10 +234,6 @@ trait Rounding
 
         return $startOfWeek != $this ?
             $startOfWeek->addWeek() :
-<<<<<<< HEAD
             $this->avoidMutation();
-=======
-            $this->copy();
->>>>>>> parent of 31cfa1b1 (p)
     }
 }

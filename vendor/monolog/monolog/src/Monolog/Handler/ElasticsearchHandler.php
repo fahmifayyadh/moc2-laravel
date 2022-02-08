@@ -49,24 +49,13 @@ class ElasticsearchHandler extends AbstractProcessingHandler
     protected $client;
 
     /**
-<<<<<<< HEAD
      * @var mixed[] Handler config options
-=======
-     * @var array Handler config options
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected $options = [];
 
     /**
-<<<<<<< HEAD
      * @param Client  $client  Elasticsearch Client object
      * @param mixed[] $options Handler configuration
-=======
-     * @param Client     $client  Elasticsearch Client object
-     * @param array      $options Handler configuration
-     * @param string|int $level   The minimum logging level at which this handler will be triggered
-     * @param bool       $bubble  Whether the messages that are handled can bubble up the stack or not
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(Client $client, array $options = [], $level = Logger::DEBUG, bool $bubble = true)
     {
@@ -91,11 +80,7 @@ class ElasticsearchHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
     {
@@ -109,11 +94,7 @@ class ElasticsearchHandler extends AbstractProcessingHandler
     /**
      * Getter options
      *
-<<<<<<< HEAD
      * @return mixed[]
-=======
-     * @return array
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function getOptions(): array
     {
@@ -129,11 +110,7 @@ class ElasticsearchHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function handleBatch(array $records): void
     {
@@ -144,11 +121,7 @@ class ElasticsearchHandler extends AbstractProcessingHandler
     /**
      * Use Elasticsearch bulk API to send list of documents
      *
-<<<<<<< HEAD
      * @param  array[]           $records Records + _index/_type keys
-=======
-     * @param  array             $records
->>>>>>> parent of 31cfa1b1 (p)
      * @throws \RuntimeException
      */
     protected function bulkSend(array $records): void
@@ -187,11 +160,7 @@ class ElasticsearchHandler extends AbstractProcessingHandler
      *
      * Only the first error is converted into an exception.
      *
-<<<<<<< HEAD
      * @param mixed[] $responses returned by $this->client->bulk()
-=======
-     * @param array $responses returned by $this->client->bulk()
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function createExceptionFromResponses(array $responses): ElasticsearchRuntimeException
     {
@@ -207,11 +176,7 @@ class ElasticsearchHandler extends AbstractProcessingHandler
     /**
      * Creates elasticsearch exception from error array
      *
-<<<<<<< HEAD
      * @param mixed[] $error
-=======
-     * @param array $error
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function createExceptionFromError(array $error): ElasticsearchRuntimeException
     {

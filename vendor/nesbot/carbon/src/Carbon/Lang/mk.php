@@ -19,12 +19,9 @@
  * - JD Isaacks
  * - Tomi Atanasoski
  */
-<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 return [
     'year' => ':count година|:count години',
     'a_year' => 'година|:count години',
@@ -71,11 +68,7 @@ return [
         'nextDay' => '[Утре во] LT',
         'nextWeek' => '[Во] dddd [во] LT',
         'lastDay' => '[Вчера во] LT',
-<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $date) {
-=======
-        'lastWeek' => function (\Carbon\CarbonInterface $date) {
->>>>>>> parent of 31cfa1b1 (p)
             switch ($date->dayOfWeek) {
                 case 0:
                 case 3:

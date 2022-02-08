@@ -41,11 +41,7 @@ class AbstractClassPass extends CodeCleanerPass
 
                 if ($node->stmts !== null) {
                     $msg = \sprintf('Abstract function %s cannot contain body', $name);
-<<<<<<< HEAD
                     throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getLine());
-=======
-                    throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
->>>>>>> parent of 31cfa1b1 (p)
                 }
             }
         }
@@ -68,11 +64,7 @@ class AbstractClassPass extends CodeCleanerPass
                     ($count === 1) ? '' : 's',
                     \implode(', ', $this->abstractMethods)
                 );
-<<<<<<< HEAD
                 throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getLine());
-=======
-                throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
->>>>>>> parent of 31cfa1b1 (p)
             }
         }
     }

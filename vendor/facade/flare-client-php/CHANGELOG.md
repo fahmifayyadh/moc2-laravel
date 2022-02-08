@@ -2,7 +2,6 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
-<<<<<<< HEAD
 ## 1.9.1 - 2021-09-13
 
 - let `report` return the created report
@@ -44,8 +43,6 @@ All notable changes to `flare-client-php` will be documented in this file
 
 - allow PHP 8
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ## 1.3.6 - 2020-09-18
 
 - remove `larapack/dd` (#15)

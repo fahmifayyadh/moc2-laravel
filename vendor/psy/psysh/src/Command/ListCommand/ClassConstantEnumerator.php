@@ -22,11 +22,7 @@ class ClassConstantEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null): array
-=======
-    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
->>>>>>> parent of 31cfa1b1 (p)
     {
         // only list constants when a Reflector is present.
         if ($reflector === null) {
@@ -65,11 +61,7 @@ class ClassConstantEnumerator extends Enumerator
      *
      * @return array
      */
-<<<<<<< HEAD
     protected function getConstants(\Reflector $reflector, bool $noInherit = false): array
-=======
-    protected function getConstants(\Reflector $reflector, $noInherit = false)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $className = $reflector->getName();
 
@@ -84,11 +76,7 @@ class ClassConstantEnumerator extends Enumerator
             $constants[$name] = $constReflector;
         }
 
-<<<<<<< HEAD
         \ksort($constants, \SORT_NATURAL | \SORT_FLAG_CASE);
-=======
-        \ksort($constants, SORT_NATURAL | SORT_FLAG_CASE);
->>>>>>> parent of 31cfa1b1 (p)
 
         return $constants;
     }
@@ -100,11 +88,7 @@ class ClassConstantEnumerator extends Enumerator
      *
      * @return array
      */
-<<<<<<< HEAD
     protected function prepareConstants(array $constants): array
-=======
-    protected function prepareConstants(array $constants)
->>>>>>> parent of 31cfa1b1 (p)
     {
         // My kingdom for a generator.
         $ret = [];
@@ -129,11 +113,7 @@ class ClassConstantEnumerator extends Enumerator
      *
      * @return string
      */
-<<<<<<< HEAD
     protected function getKindLabel(\ReflectionClass $reflector): string
-=======
-    protected function getKindLabel(\ReflectionClass $reflector)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($reflector->isInterface()) {
             return 'Interface Constants';

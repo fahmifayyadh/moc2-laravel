@@ -100,11 +100,7 @@ class TimeitVisitor extends NodeVisitorAbstract
      *
      * @return \PhpParser\Node\Expr\StaticCall
      */
-<<<<<<< HEAD
     private function getStartCall(): StaticCall
-=======
-    private function getStartCall()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return new StaticCall(new FullyQualifiedName(TimeitCommand::class), 'markStart');
     }
@@ -118,11 +114,7 @@ class TimeitVisitor extends NodeVisitorAbstract
      *
      * @return \PhpParser\Node\Expr\StaticCall
      */
-<<<<<<< HEAD
     private function getEndCall(Expr $arg = null): StaticCall
-=======
-    private function getEndCall(Expr $arg = null)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($arg === null) {
             $arg = NoReturnValue::create();
@@ -141,11 +133,7 @@ class TimeitVisitor extends NodeVisitorAbstract
      *
      * @return \PhpParser\Node\Expr|\PhpParser\Node\Stmt\Expression
      */
-<<<<<<< HEAD
     private function maybeExpression(Node $expr, array $attrs = [])
-=======
-    private function maybeExpression($expr, $attrs = [])
->>>>>>> parent of 31cfa1b1 (p)
     {
         return \class_exists(Expression::class) ? new Expression($expr, $attrs) : $expr;
     }

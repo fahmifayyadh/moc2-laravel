@@ -9,13 +9,10 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
-<<<<<<< HEAD
 use function assert;
 use function implode;
 use function sprintf;
 use Exception;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\MockObject\Rule\AnyInvokedCount;
 use PHPUnit\Framework\MockObject\Rule\AnyParameters;
@@ -107,15 +104,9 @@ final class Matcher
     }
 
     /**
-<<<<<<< HEAD
      * @throws Exception
      * @throws ExpectationFailedException
      * @throws RuntimeException
-=======
-     * @throws \Exception
-     * @throws RuntimeException
-     * @throws ExpectationFailedException
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function invoked(Invocation $invocation)
     {
@@ -130,21 +121,13 @@ final class Matcher
 
             if (!$matcher) {
                 throw new RuntimeException(
-<<<<<<< HEAD
                     sprintf(
-=======
-                    \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                         'No builder found for match builder identification <%s>',
                         $this->afterMatchBuilderId
                     )
                 );
             }
-<<<<<<< HEAD
             assert($matcher instanceof self);
-=======
-            \assert($matcher instanceof self);
->>>>>>> parent of 31cfa1b1 (p)
 
             if ($matcher->invocationRule->hasBeenInvoked()) {
                 $this->afterMatchBuilderIsInvoked = true;
@@ -159,11 +142,7 @@ final class Matcher
             }
         } catch (ExpectationFailedException $e) {
             throw new ExpectationFailedException(
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                     "Expectation failed for %s when %s\n%s",
                     $this->methodNameRule->toString(),
                     $this->invocationRule->toString(),
@@ -181,15 +160,9 @@ final class Matcher
     }
 
     /**
-<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
      * @throws RuntimeException
-=======
-     * @throws RuntimeException
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function matches(Invocation $invocation): bool
     {
@@ -200,21 +173,13 @@ final class Matcher
 
             if (!$matcher) {
                 throw new RuntimeException(
-<<<<<<< HEAD
                     sprintf(
-=======
-                    \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                         'No builder found for match builder identification <%s>',
                         $this->afterMatchBuilderId
                     )
                 );
             }
-<<<<<<< HEAD
             assert($matcher instanceof self);
-=======
-            \assert($matcher instanceof self);
->>>>>>> parent of 31cfa1b1 (p)
 
             if (!$matcher->invocationRule->hasBeenInvoked()) {
                 return false;
@@ -235,11 +200,7 @@ final class Matcher
             }
         } catch (ExpectationFailedException $e) {
             throw new ExpectationFailedException(
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                     "Expectation failed for %s when %s\n%s",
                     $this->methodNameRule->toString(),
                     $this->invocationRule->toString(),
@@ -253,15 +214,9 @@ final class Matcher
     }
 
     /**
-<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
      * @throws RuntimeException
-=======
-     * @throws RuntimeException
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function verify(): void
     {
@@ -284,11 +239,7 @@ final class Matcher
             }
         } catch (ExpectationFailedException $e) {
             throw new ExpectationFailedException(
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                     "Expectation failed for %s when %s.\n%s",
                     $this->methodNameRule->toString(),
                     $this->invocationRule->toString(),
@@ -322,10 +273,6 @@ final class Matcher
             $list[] = 'will ' . $this->stub->toString();
         }
 
-<<<<<<< HEAD
         return implode(' ', $list);
-=======
-        return \implode(' ', $list);
->>>>>>> parent of 31cfa1b1 (p)
     }
 }

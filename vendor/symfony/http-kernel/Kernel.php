@@ -76,7 +76,6 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
 
     private static $freshCache = [];
 
-<<<<<<< HEAD
     public const VERSION = '4.4.37';
     public const VERSION_ID = 40437;
     public const MAJOR_VERSION = 4;
@@ -86,17 +85,6 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
 
     public const END_OF_MAINTENANCE = '11/2022';
     public const END_OF_LIFE = '11/2023';
-=======
-    const VERSION = '4.4.15';
-    const VERSION_ID = 40415;
-    const MAJOR_VERSION = 4;
-    const MINOR_VERSION = 4;
-    const RELEASE_VERSION = 15;
-    const EXTRA_VERSION = '';
-
-    const END_OF_MAINTENANCE = '11/2022';
-    const END_OF_LIFE = '11/2023';
->>>>>>> parent of 31cfa1b1 (p)
 
     public function __construct(string $environment, bool $debug)
     {
@@ -217,11 +205,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
     }
 
     /**
-<<<<<<< HEAD
      * Gets an HTTP kernel from the container.
-=======
-     * Gets a HTTP kernel from the container.
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @return HttpKernelInterface
      */
@@ -271,29 +255,17 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
             throw new \InvalidArgumentException(sprintf('A resource name must start with @ ("%s" given).', $name));
         }
 
-<<<<<<< HEAD
         if (str_contains($name, '..')) {
-=======
-        if (false !== strpos($name, '..')) {
->>>>>>> parent of 31cfa1b1 (p)
             throw new \RuntimeException(sprintf('File name "%s" contains invalid characters (..).', $name));
         }
 
         $bundleName = substr($name, 1);
         $path = '';
-<<<<<<< HEAD
         if (str_contains($bundleName, '/')) {
             [$bundleName, $path] = explode('/', $bundleName, 2);
         }
 
         $isResource = str_starts_with($path, 'Resources') && null !== $dir;
-=======
-        if (false !== strpos($bundleName, '/')) {
-            list($bundleName, $path) = explode('/', $bundleName, 2);
-        }
-
-        $isResource = 0 === strpos($path, 'Resources') && null !== $dir;
->>>>>>> parent of 31cfa1b1 (p)
         $overridePath = substr($path, 9);
         $bundle = $this->getBundle($bundleName);
         $files = [];
@@ -499,11 +471,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
     protected function getContainerClass()
     {
         $class = static::class;
-<<<<<<< HEAD
         $class = str_contains($class, "@anonymous\0") ? get_parent_class($class).str_replace('.', '_', ContainerBuilder::hash($class)) : $class;
-=======
-        $class = false !== strpos($class, "@anonymous\0") ? get_parent_class($class).str_replace('.', '_', ContainerBuilder::hash($class)) : $class;
->>>>>>> parent of 31cfa1b1 (p)
         $class = $this->name.str_replace('\\', '_', $class).ucfirst($this->environment).($this->debug ? 'Debug' : '').'Container';
 
         if (!preg_match('/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/', $class)) {
@@ -565,11 +533,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
                 if (!flock($lock, $wouldBlock ? \LOCK_SH : \LOCK_EX)) {
                     fclose($lock);
                     $lock = null;
-<<<<<<< HEAD
                 } elseif (!is_file($cachePath) || !\is_object($this->container = include $cachePath)) {
-=======
-                } elseif (!\is_object($this->container = include $cachePath)) {
->>>>>>> parent of 31cfa1b1 (p)
                     $this->container = null;
                 } elseif (!$oldContainer || \get_class($this->container) !== $oldContainer->name) {
                     flock($lock, \LOCK_UN);
@@ -634,13 +598,8 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
             if ($collectDeprecations) {
                 restore_error_handler();
 
-<<<<<<< HEAD
                 @file_put_contents($cacheDir.'/'.$class.'Deprecations.log', serialize(array_values($collectedLogs)));
                 @file_put_contents($cacheDir.'/'.$class.'Compiler.log', null !== $container ? implode("\n", $container->getCompiler()->getLog()) : '');
-=======
-                file_put_contents($cacheDir.'/'.$class.'Deprecations.log', serialize(array_values($collectedLogs)));
-                file_put_contents($cacheDir.'/'.$class.'Compiler.log', null !== $container ? implode("\n", $container->getCompiler()->getLog()) : '');
->>>>>>> parent of 31cfa1b1 (p)
             }
         }
 
@@ -789,11 +748,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
         if ($this instanceof CompilerPassInterface) {
             $container->addCompilerPass($this, PassConfig::TYPE_BEFORE_OPTIMIZATION, -10000);
         }
-<<<<<<< HEAD
         if (class_exists(\ProxyManager\Configuration::class) && class_exists(RuntimeInstantiator::class)) {
-=======
-        if (class_exists('ProxyManager\Configuration') && class_exists('Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator')) {
->>>>>>> parent of 31cfa1b1 (p)
             $container->setProxyInstantiator(new RuntimeInstantiator());
         }
 
@@ -811,11 +766,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
         // cache the container
         $dumper = new PhpDumper($container);
 
-<<<<<<< HEAD
         if (class_exists(\ProxyManager\Configuration::class) && class_exists(ProxyDumper::class)) {
-=======
-        if (class_exists('ProxyManager\Configuration') && class_exists('Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper')) {
->>>>>>> parent of 31cfa1b1 (p)
             $dumper->setProxyDumper(new ProxyDumper());
         }
 
@@ -907,12 +858,9 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
                 // replace multiple new lines with a single newline
                 $rawChunk .= preg_replace(['/\n{2,}/S'], "\n", $token[1]);
             } elseif (\in_array($token[0], [\T_COMMENT, \T_DOC_COMMENT])) {
-<<<<<<< HEAD
                 if (!\in_array($rawChunk[\strlen($rawChunk) - 1], [' ', "\n", "\r", "\t"], true)) {
                     $rawChunk .= ' ';
                 }
-=======
->>>>>>> parent of 31cfa1b1 (p)
                 $ignoreSpace = true;
             } else {
                 $rawChunk .= $token[1];
@@ -920,11 +868,8 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
                 // The PHP-open tag already has a new-line
                 if (\T_OPEN_TAG === $token[0]) {
                     $ignoreSpace = true;
-<<<<<<< HEAD
                 } else {
                     $ignoreSpace = false;
-=======
->>>>>>> parent of 31cfa1b1 (p)
                 }
             }
         }
@@ -953,11 +898,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
     public function unserialize($data)
     {
         @trigger_error(sprintf('The "%s" method is deprecated since Symfony 4.3.', __METHOD__), \E_USER_DEPRECATED);
-<<<<<<< HEAD
         [$environment, $debug] = unserialize($data, ['allowed_classes' => false]);
-=======
-        list($environment, $debug) = unserialize($data, ['allowed_classes' => false]);
->>>>>>> parent of 31cfa1b1 (p)
 
         $this->__construct($environment, $debug);
     }
@@ -979,13 +920,10 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
 
     public function __wakeup()
     {
-<<<<<<< HEAD
         if (\is_object($this->environment) || \is_object($this->debug)) {
             throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
         }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if (__CLASS__ !== $c = (new \ReflectionMethod($this, 'serialize'))->getDeclaringClass()->name) {
             @trigger_error(sprintf('Implementing the "%s::serialize()" method is deprecated since Symfony 4.3.', $c), \E_USER_DEPRECATED);
             $this->unserialize($this->serialized);

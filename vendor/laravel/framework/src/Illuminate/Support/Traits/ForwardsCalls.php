@@ -21,11 +21,7 @@ trait ForwardsCalls
     {
         try {
             return $object->{$method}(...$parameters);
-<<<<<<< HEAD
         } catch (Error|BadMethodCallException $e) {
-=======
-        } catch (Error | BadMethodCallException $e) {
->>>>>>> parent of 31cfa1b1 (p)
             $pattern = '~^Call to undefined method (?P<class>[^:]+)::(?P<method>[^\(]+)\(\)$~';
 
             if (! preg_match($pattern, $e->getMessage(), $matches)) {

@@ -18,11 +18,7 @@
     ],
 
     "require": {
-<<<<<<< HEAD
         "php":                               "^7.2 || ~8.0, <8.2",
-=======
-        "php":                               "^7.2 || ~8.0, <8.1",
->>>>>>> parent of 31cfa1b1 (p)
         "phpdocumentor/reflection-docblock": "^5.2",
         "sebastian/comparator":              "^3.0 || ^4.0",
         "doctrine/instantiator":             "^1.2",
@@ -30,13 +26,8 @@
     },
 
     "require-dev": {
-<<<<<<< HEAD
         "phpspec/phpspec": "^6.0 || ^7.0",
         "phpunit/phpunit": "^8.0 || ^9.0"
-=======
-        "phpspec/phpspec": "^6.0",
-        "phpunit/phpunit": "^8.0 || ^9.0 <9.3"
->>>>>>> parent of 31cfa1b1 (p)
     },
 
     "autoload": {
@@ -53,11 +44,7 @@
 
     "extra": {
         "branch-alias": {
-<<<<<<< HEAD
             "dev-master": "1.x-dev"
-=======
-            "dev-master": "1.11.x-dev"
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 }

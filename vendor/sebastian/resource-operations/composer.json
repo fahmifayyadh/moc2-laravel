@@ -10,11 +10,7 @@
         }
     ],
     "require": {
-<<<<<<< HEAD
         "php": ">=7.1"
-=======
-        "php": "^7.1"
->>>>>>> parent of 31cfa1b1 (p)
     },
     "autoload": {
         "classmap": [

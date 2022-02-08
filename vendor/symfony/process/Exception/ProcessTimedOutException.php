@@ -20,13 +20,8 @@ use Symfony\Component\Process\Process;
  */
 class ProcessTimedOutException extends RuntimeException
 {
-<<<<<<< HEAD
     public const TYPE_GENERAL = 1;
     public const TYPE_IDLE = 2;
-=======
-    const TYPE_GENERAL = 1;
-    const TYPE_IDLE = 2;
->>>>>>> parent of 31cfa1b1 (p)
 
     private $process;
     private $timeoutType;

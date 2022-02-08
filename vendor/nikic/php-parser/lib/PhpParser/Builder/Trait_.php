@@ -4,10 +4,7 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
-<<<<<<< HEAD
 use PhpParser\Node;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PhpParser\Node\Stmt;
 
 class Trait_ extends Declaration
@@ -17,12 +14,9 @@ class Trait_ extends Declaration
     protected $properties = [];
     protected $methods = [];
 
-<<<<<<< HEAD
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * Creates an interface builder.
      *
@@ -56,7 +50,6 @@ class Trait_ extends Declaration
     }
 
     /**
-<<<<<<< HEAD
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -70,8 +63,6 @@ class Trait_ extends Declaration
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Returns the built trait node.
      *
      * @return Stmt\Trait_ The built interface node
@@ -79,12 +70,8 @@ class Trait_ extends Declaration
     public function getNode() : PhpParser\Node {
         return new Stmt\Trait_(
             $this->name, [
-<<<<<<< HEAD
                 'stmts' => array_merge($this->uses, $this->properties, $this->methods),
                 'attrGroups' => $this->attributeGroups,
-=======
-                'stmts' => array_merge($this->uses, $this->properties, $this->methods)
->>>>>>> parent of 31cfa1b1 (p)
             ], $this->attributes
         );
     }

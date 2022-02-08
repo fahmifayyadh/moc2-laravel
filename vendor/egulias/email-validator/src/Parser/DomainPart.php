@@ -35,10 +35,7 @@ use Egulias\EmailValidator\Warning\TLD;
 class DomainPart extends Parser
 {
     const DOMAIN_MAX_LENGTH = 254;
-<<<<<<< HEAD
     const LABEL_MAX_LENGTH = 63;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var string
@@ -164,10 +161,7 @@ class DomainPart extends Parser
     protected function doParseDomainPart()
     {
         $domain = '';
-<<<<<<< HEAD
         $label = '';
-=======
->>>>>>> parent of 31cfa1b1 (p)
         $openedParenthesis = 0;
         do {
             $prev = $this->lexer->getPrevious();
@@ -198,16 +192,12 @@ class DomainPart extends Parser
                 $this->parseDomainLiteral();
             }
 
-<<<<<<< HEAD
             if ($this->lexer->token['type'] === EmailLexer::S_DOT) {
                 $this->checkLabelLength($label);
                 $label = '';
             } else {
                 $label .= $this->lexer->token['value'];
             }
-=======
-            $this->checkLabelLength($prev);
->>>>>>> parent of 31cfa1b1 (p)
 
             if ($this->isFWS()) {
                 $this->parseFWS();
@@ -220,11 +210,8 @@ class DomainPart extends Parser
             }
         } while (null !== $this->lexer->token['type']);
 
-<<<<<<< HEAD
         $this->checkLabelLength($label);
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         return $domain;
     }
 
@@ -357,11 +344,8 @@ class DomainPart extends Parser
     {
         $invalidDomainTokens = array(
             EmailLexer::S_DQUOTE => true,
-<<<<<<< HEAD
             EmailLexer::S_SQUOTE => true,
             EmailLexer::S_BACKTICK => true,
-=======
->>>>>>> parent of 31cfa1b1 (p)
             EmailLexer::S_SEMICOLON => true,
             EmailLexer::S_GREATERTHAN => true,
             EmailLexer::S_LOWERTHAN => true,
@@ -411,26 +395,16 @@ class DomainPart extends Parser
         return true;
     }
 
-<<<<<<< HEAD
     /**
      * @param string $label
      */
     protected function checkLabelLength($label)
     {
         if ($this->isLabelTooLong($label)) {
-=======
-    protected function checkLabelLength(array $prev)
-    {
-        if ($this->lexer->token['type'] === EmailLexer::S_DOT &&
-            $prev['type'] === EmailLexer::GENERIC &&
-            strlen($prev['value']) > 63
-        ) {
->>>>>>> parent of 31cfa1b1 (p)
             $this->warnings[LabelTooLong::CODE] = new LabelTooLong();
         }
     }
 
-<<<<<<< HEAD
     /**
      * @param string $label
      * @return bool
@@ -446,8 +420,6 @@ class DomainPart extends Parser
         return strlen($label) > self::LABEL_MAX_LENGTH;
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     protected function parseDomainComments()
     {
         $this->isUnclosedComment();

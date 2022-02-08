@@ -9,10 +9,7 @@
  */
 namespace PHPUnit\Framework\MockObject\Rule;
 
-<<<<<<< HEAD
 use function sprintf;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\MockObject\Invocation as BaseInvocation;
 
@@ -61,11 +58,7 @@ final class InvokedCount extends InvocationOrder
 
         if ($count !== $this->expectedCount) {
             throw new ExpectationFailedException(
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                     'Method was expected to be called %d times, ' .
                     'actually called %d times.',
                     $this->expectedCount,
@@ -97,11 +90,7 @@ final class InvokedCount extends InvocationOrder
                     break;
 
                 default:
-<<<<<<< HEAD
                     $message .= sprintf(
-=======
-                    $message .= \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
                         'was not expected to be called more than %d times.',
                         $this->expectedCount
                     );

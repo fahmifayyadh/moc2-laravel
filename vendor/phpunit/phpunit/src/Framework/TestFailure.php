@@ -9,12 +9,9 @@
  */
 namespace PHPUnit\Framework;
 
-<<<<<<< HEAD
 use function get_class;
 use function sprintf;
 use function trim;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Error\Error;
 use Throwable;
 
@@ -55,11 +52,7 @@ final class TestFailure
             }
 
             if (!empty($buffer)) {
-<<<<<<< HEAD
                 $buffer = trim($buffer) . "\n";
-=======
-                $buffer = \trim($buffer) . "\n";
->>>>>>> parent of 31cfa1b1 (p)
             }
 
             return $buffer;
@@ -73,11 +66,7 @@ final class TestFailure
             return $e->getClassName() . ': ' . $e->getMessage() . "\n";
         }
 
-<<<<<<< HEAD
         return get_class($e) . ': ' . $e->getMessage() . "\n";
-=======
-        return \get_class($e) . ': ' . $e->getMessage() . "\n";
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -90,11 +79,7 @@ final class TestFailure
         if ($failedTest instanceof SelfDescribing) {
             $this->testName = $failedTest->toString();
         } else {
-<<<<<<< HEAD
             $this->testName = get_class($failedTest);
-=======
-            $this->testName = \get_class($failedTest);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (!$failedTest instanceof TestCase || !$failedTest->isInIsolation()) {
@@ -109,11 +94,7 @@ final class TestFailure
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             '%s: %s',
             $this->testName,
             $this->thrownException->getMessage()

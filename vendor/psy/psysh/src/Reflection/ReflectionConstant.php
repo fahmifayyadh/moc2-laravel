@@ -23,11 +23,7 @@ class ReflectionConstant extends ReflectionClassConstant
      */
     public function __construct($class, $name)
     {
-<<<<<<< HEAD
         @\trigger_error('ReflectionConstant is now ReflectionClassConstant', \E_USER_DEPRECATED);
-=======
-        @\trigger_error('ReflectionConstant is now ReflectionClassConstant', E_USER_DEPRECATED);
->>>>>>> parent of 31cfa1b1 (p)
 
         parent::__construct($class, $name);
     }

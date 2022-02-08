@@ -31,17 +31,10 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @return string Formatted docblock
      */
-<<<<<<< HEAD
     public static function format(\Reflector $reflector): string
     {
         $docblock = new Docblock($reflector);
         $chunks = [];
-=======
-    public static function format(\Reflector $reflector)
-    {
-        $docblock = new Docblock($reflector);
-        $chunks   = [];
->>>>>>> parent of 31cfa1b1 (p)
 
         if (!empty($docblock->desc)) {
             $chunks[] = '<comment>Description:</comment>';
@@ -78,11 +71,7 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @return string
      */
-<<<<<<< HEAD
     private static function formatVector(array $vector, array $lines): string
-=======
-    private static function formatVector(array $vector, array $lines)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $template = [' '];
         foreach ($vector as $type) {
@@ -120,11 +109,7 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @return string formatted tags
      */
-<<<<<<< HEAD
     private static function formatTags(array $skip, array $tags): string
-=======
-    private static function formatTags(array $skip, array $tags)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $chunks = [];
 
@@ -151,11 +136,7 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @return string
      */
-<<<<<<< HEAD
     private static function getVectorParamTemplate(string $type, int $max): string
-=======
-    private static function getVectorParamTemplate($type, $max)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset(self::$vectorParamTemplates[$type])) {
             return \sprintf('%%-%ds', $max);
@@ -172,15 +153,9 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @return string
      */
-<<<<<<< HEAD
     private static function indent(string $text, string $indent = '  '): string
     {
         return $indent.\str_replace("\n", "\n".$indent, $text);
-=======
-    private static function indent($text, $indent = '  ')
-    {
-        return $indent . \str_replace("\n", "\n" . $indent, $text);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -190,11 +165,7 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @return string
      */
-<<<<<<< HEAD
     private static function inflect(string $text): string
-=======
-    private static function inflect($text)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $words = \trim(\preg_replace('/[\s_-]+/', ' ', \preg_replace('/([a-z])([A-Z])/', '$1 $2', $text)));
 

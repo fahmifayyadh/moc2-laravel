@@ -1,12 +1,6 @@
 Webmozart Assert
 ================
 
-<<<<<<< HEAD
-=======
-[![Build Status](https://travis-ci.org/webmozart/assert.svg?branch=master)](https://travis-ci.org/webmozart/assert)
-[![Build status](https://ci.appveyor.com/api/projects/status/lyg83bcsisrr94se/branch/master?svg=true)](https://ci.appveyor.com/project/webmozart/assert/branch/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/webmozart/assert/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/webmozart/assert/?branch=master)
->>>>>>> parent of 31cfa1b1 (p)
 [![Latest Stable Version](https://poser.pugx.org/webmozart/assert/v/stable.svg)](https://packagist.org/packages/webmozart/assert)
 [![Total Downloads](https://poser.pugx.org/webmozart/assert/downloads.svg)](https://packagist.org/packages/webmozart/assert)
 
@@ -14,11 +8,7 @@ This library contains efficient assertions to test the input and output of
 your methods. With these assertions, you can greatly reduce the amount of coding
 needed to write a safe implementation.
 
-<<<<<<< HEAD
 All assertions in the [`Assert`] class throw an `Webmozart\Assert\InvalidArgumentException` if
-=======
-All assertions in the [`Assert`] class throw an `\InvalidArgumentException` if
->>>>>>> parent of 31cfa1b1 (p)
 they fail.
 
 FAQ
@@ -77,19 +67,11 @@ If you create an employee with an invalid ID, an exception is thrown:
 
 ```php
 new Employee('foobar');
-<<<<<<< HEAD
 // => Webmozart\Assert\InvalidArgumentException:
 //    The employee ID must be an integer. Got: string
 
 new Employee(-10);
 // => Webmozart\Assert\InvalidArgumentException:
-=======
-// => InvalidArgumentException:
-//    The employee ID must be an integer. Got: string
-
-new Employee(-10);
-// => InvalidArgumentException:
->>>>>>> parent of 31cfa1b1 (p)
 //    The employee ID must be a positive integer. Got: -10
 ```
 
@@ -106,10 +88,7 @@ Method                                                   | Description
 `stringNotEmpty($value, $message = '')`                  | Check that a value is a non-empty string
 `integer($value, $message = '')`                         | Check that a value is an integer
 `integerish($value, $message = '')`                      | Check that a value casts to an integer
-<<<<<<< HEAD
 `positiveInteger($value, $message = '')`                 | Check that a value is a positive (non-zero) integer
-=======
->>>>>>> parent of 31cfa1b1 (p)
 `float($value, $message = '')`                           | Check that a value is a float
 `numeric($value, $message = '')`                         | Check that a value is numeric
 `natural($value, $message= ''')`                         | Check that a value is a non-negative integer
@@ -270,15 +249,12 @@ Overriding the following methods in your assertion class allows you to change th
 * `protected static function reportInvalidArgument($message)`
   * This method is called when an assertion fails, with the specified error message. Here you can throw your own exception, or log something.
 
-<<<<<<< HEAD
 ## Static analysis support
 
 Where applicable, assertion functions are annotated to support Psalm's
 [Assertion syntax](https://psalm.dev/docs/annotating_code/assertion_syntax/).
 A dedicated [PHPStan Plugin](https://github.com/phpstan/phpstan-webmozart-assert) is
 required for proper type support.
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 Authors
 -------

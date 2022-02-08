@@ -116,11 +116,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Returns the pattern for the path.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return string The path pattern
      */
     public function getPath()
@@ -131,11 +126,6 @@ class Route implements \Serializable
     /**
      * Sets the pattern for the path.
      *
-<<<<<<< HEAD
-=======
-     * This method implements a fluent interface.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @param string $pattern The path pattern
      *
      * @return $this
@@ -143,7 +133,6 @@ class Route implements \Serializable
     public function setPath($pattern)
     {
         if (false !== strpbrk($pattern, '?<')) {
-<<<<<<< HEAD
             $pattern = preg_replace_callback('#\{(!?)(\w++)(<.*?>)?(\?[^\}]*+)?\}#', function ($m) {
                 if (isset($m[4][0])) {
                     $this->setDefault($m[2], '?' !== $m[4] ? substr($m[4], 1) : null);
@@ -153,17 +142,6 @@ class Route implements \Serializable
                 }
 
                 return '{'.$m[1].$m[2].'}';
-=======
-            $pattern = preg_replace_callback('#\{(!?\w++)(<.*?>)?(\?[^\}]*+)?\}#', function ($m) {
-                if (isset($m[3][0])) {
-                    $this->setDefault($m[1], '?' !== $m[3] ? substr($m[3], 1) : null);
-                }
-                if (isset($m[2][0])) {
-                    $this->setRequirement($m[1], substr($m[2], 1, -1));
-                }
-
-                return '{'.$m[1].'}';
->>>>>>> parent of 31cfa1b1 (p)
             }, $pattern);
         }
 
@@ -176,11 +154,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Returns the pattern for the host.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return string The host pattern
      */
     public function getHost()
@@ -191,11 +164,6 @@ class Route implements \Serializable
     /**
      * Sets the pattern for the host.
      *
-<<<<<<< HEAD
-=======
-     * This method implements a fluent interface.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @param string $pattern The host pattern
      *
      * @return $this
@@ -223,11 +191,6 @@ class Route implements \Serializable
      * Sets the schemes (e.g. 'https') this route is restricted to.
      * So an empty array means that any scheme is allowed.
      *
-<<<<<<< HEAD
-=======
-     * This method implements a fluent interface.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @param string|string[] $schemes The scheme or an array of schemes
      *
      * @return $this
@@ -267,11 +230,6 @@ class Route implements \Serializable
      * Sets the HTTP methods (e.g. 'POST') this route is restricted to.
      * So an empty array means that any method is allowed.
      *
-<<<<<<< HEAD
-=======
-     * This method implements a fluent interface.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @param string|string[] $methods The method or an array of methods
      *
      * @return $this
@@ -285,11 +243,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Returns the options.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return array The options
      */
     public function getOptions()
@@ -298,13 +251,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Sets the options.
-     *
-     * This method implements a fluent interface.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return $this
      */
     public function setOptions(array $options)
@@ -317,13 +263,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Adds options.
-     *
-     * This method implements a fluent interface.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return $this
      */
     public function addOptions(array $options)
@@ -339,11 +278,6 @@ class Route implements \Serializable
     /**
      * Sets an option value.
      *
-<<<<<<< HEAD
-=======
-     * This method implements a fluent interface.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @param string $name  An option name
      * @param mixed  $value The option value
      *
@@ -366,11 +300,7 @@ class Route implements \Serializable
      */
     public function getOption($name)
     {
-<<<<<<< HEAD
         return $this->options[$name] ?? null;
-=======
-        return isset($this->options[$name]) ? $this->options[$name] : null;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -386,11 +316,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Returns the defaults.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return array The defaults
      */
     public function getDefaults()
@@ -399,15 +324,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Sets the defaults.
-     *
-     * This method implements a fluent interface.
-     *
-     * @param array $defaults The defaults
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return $this
      */
     public function setDefaults(array $defaults)
@@ -418,15 +334,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Adds defaults.
-     *
-     * This method implements a fluent interface.
-     *
-     * @param array $defaults The defaults
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return $this
      */
     public function addDefaults(array $defaults)
@@ -452,11 +359,7 @@ class Route implements \Serializable
      */
     public function getDefault($name)
     {
-<<<<<<< HEAD
         return $this->defaults[$name] ?? null;
-=======
-        return isset($this->defaults[$name]) ? $this->defaults[$name] : null;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -492,11 +395,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Returns the requirements.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return array The requirements
      */
     public function getRequirements()
@@ -505,15 +403,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Sets the requirements.
-     *
-     * This method implements a fluent interface.
-     *
-     * @param array $requirements The requirements
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return $this
      */
     public function setRequirements(array $requirements)
@@ -524,15 +413,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Adds requirements.
-     *
-     * This method implements a fluent interface.
-     *
-     * @param array $requirements The requirements
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return $this
      */
     public function addRequirements(array $requirements)
@@ -558,11 +438,7 @@ class Route implements \Serializable
      */
     public function getRequirement($key)
     {
-<<<<<<< HEAD
         return $this->requirements[$key] ?? null;
-=======
-        return isset($this->requirements[$key]) ? $this->requirements[$key] : null;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -598,11 +474,6 @@ class Route implements \Serializable
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Returns the condition.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @return string The condition
      */
     public function getCondition()
@@ -613,11 +484,6 @@ class Route implements \Serializable
     /**
      * Sets the condition.
      *
-<<<<<<< HEAD
-=======
-     * This method implements a fluent interface.
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @param string $condition The condition
      *
      * @return $this
@@ -661,11 +527,7 @@ class Route implements \Serializable
             $regex = (string) substr($regex, 1); // returns false for a single character
         }
 
-<<<<<<< HEAD
         if (str_ends_with($regex, '$')) {
-=======
-        if ('$' === substr($regex, -1)) {
->>>>>>> parent of 31cfa1b1 (p)
             $regex = substr($regex, 0, -1);
         }
 

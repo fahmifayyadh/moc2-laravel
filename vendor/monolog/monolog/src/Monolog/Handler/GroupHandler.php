@@ -18,23 +18,16 @@ use Monolog\ResettableInterface;
  * Forwards records to multiple handlers
  *
  * @author Lenar Lõhmus <lenar@city.ee>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
-=======
->>>>>>> parent of 31cfa1b1 (p)
  */
 class GroupHandler extends Handler implements ProcessableHandlerInterface, ResettableInterface
 {
     use ProcessableHandlerTrait;
 
-<<<<<<< HEAD
     /** @var HandlerInterface[] */
     protected $handlers;
     /** @var bool */
-=======
-    protected $handlers;
->>>>>>> parent of 31cfa1b1 (p)
     protected $bubble;
 
     /**
@@ -54,11 +47,7 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function isHandling(array $record): bool
     {
@@ -72,19 +61,12 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function handle(array $record): bool
     {
         if ($this->processors) {
-<<<<<<< HEAD
             /** @var Record $record */
-=======
->>>>>>> parent of 31cfa1b1 (p)
             $record = $this->processRecord($record);
         }
 
@@ -96,11 +78,7 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function handleBatch(array $records): void
     {
@@ -109,10 +87,7 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
             foreach ($records as $record) {
                 $processed[] = $this->processRecord($record);
             }
-<<<<<<< HEAD
             /** @var Record[] $records */
-=======
->>>>>>> parent of 31cfa1b1 (p)
             $records = $processed;
         }
 
@@ -142,22 +117,14 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
     {
         foreach ($this->handlers as $handler) {
-<<<<<<< HEAD
             if ($handler instanceof FormattableHandlerInterface) {
                 $handler->setFormatter($formatter);
             }
-=======
-            $handler->setFormatter($formatter);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this;

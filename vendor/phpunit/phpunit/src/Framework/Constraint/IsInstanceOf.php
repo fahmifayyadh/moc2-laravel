@@ -9,13 +9,10 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function sprintf;
 use ReflectionClass;
 use ReflectionException;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that asserts that the object it is evaluated for is an instance
  * of a given class.
@@ -39,11 +36,7 @@ final class IsInstanceOf extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             'is instance of %s "%s"',
             $this->getType(),
             $this->className
@@ -62,11 +55,7 @@ final class IsInstanceOf extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Returns the description of the failure.
-=======
-     * Returns the description of the failure
->>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -77,11 +66,7 @@ final class IsInstanceOf extends Constraint
      */
     protected function failureDescription($other): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             '%s is an instance of %s "%s"',
             $this->exporter()->shortenedExport($other),
             $this->getType(),
@@ -92,20 +77,12 @@ final class IsInstanceOf extends Constraint
     private function getType(): string
     {
         try {
-<<<<<<< HEAD
             $reflection = new ReflectionClass($this->className);
-=======
-            $reflection = new \ReflectionClass($this->className);
->>>>>>> parent of 31cfa1b1 (p)
 
             if ($reflection->isInterface()) {
                 return 'interface';
             }
-<<<<<<< HEAD
         } catch (ReflectionException $e) {
-=======
-        } catch (\ReflectionException $e) {
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return 'class';

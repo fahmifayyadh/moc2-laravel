@@ -11,21 +11,11 @@
  * @link     https://api.xendit.co
  */
 
-<<<<<<< HEAD
-=======
-use Dotenv\Dotenv;
->>>>>>> parent of 31cfa1b1 (p)
 use Xendit\Xendit;
 
 require 'vendor/autoload.php';
 
-<<<<<<< HEAD
 Xendit::setApiKey('SECRET_API_KEY');
-=======
-$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->load();
-Xendit::setApiKey(getenv('SECRET_API_KEY'));
->>>>>>> parent of 31cfa1b1 (p)
 
 $params = [
     'cardless_credit_type' => 'KREDIVO',
@@ -71,7 +61,6 @@ $params = [
 
 $createPayment = \Xendit\CardlessCredit::create($params);
 var_dump($createPayment);
-<<<<<<< HEAD
 
 $params = [
     'cardless_credit_type' => 'KREDIVO',
@@ -90,5 +79,3 @@ $params = [
 
 $calculatePaymentTypes = \Xendit\CardlessCredit::calculatePaymentTypes($params);
 var_dump($calculatePaymentTypes);
-=======
->>>>>>> parent of 31cfa1b1 (p)

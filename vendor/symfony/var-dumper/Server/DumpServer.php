@@ -30,11 +30,7 @@ class DumpServer
 
     public function __construct(string $host, LoggerInterface $logger = null)
     {
-<<<<<<< HEAD
         if (!str_contains($host, '://')) {
-=======
-        if (false === strpos($host, '://')) {
->>>>>>> parent of 31cfa1b1 (p)
             $host = 'tcp://'.$host;
         }
 
@@ -75,11 +71,7 @@ class DumpServer
                 continue;
             }
 
-<<<<<<< HEAD
             [$data, $context] = $payload;
-=======
-            list($data, $context) = $payload;
->>>>>>> parent of 31cfa1b1 (p)
 
             $callback($data, $context, $clientId);
         }

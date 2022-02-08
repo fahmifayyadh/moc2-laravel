@@ -9,12 +9,9 @@
  */
 namespace PHPUnit\Framework\MockObject\Stub;
 
-<<<<<<< HEAD
 use function array_pop;
 use function count;
 use function is_array;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\MockObject\Invocation;
 
 /**
@@ -34,7 +31,6 @@ final class ReturnValueMap implements Stub
 
     public function invoke(Invocation $invocation)
     {
-<<<<<<< HEAD
         $parameterCount = count($invocation->getParameters());
 
         foreach ($this->valueMap as $map) {
@@ -43,16 +39,6 @@ final class ReturnValueMap implements Stub
             }
 
             $return = array_pop($map);
-=======
-        $parameterCount = \count($invocation->getParameters());
-
-        foreach ($this->valueMap as $map) {
-            if (!\is_array($map) || $parameterCount !== (\count($map) - 1)) {
-                continue;
-            }
-
-            $return = \array_pop($map);
->>>>>>> parent of 31cfa1b1 (p)
 
             if ($invocation->getParameters() === $map) {
                 return $return;

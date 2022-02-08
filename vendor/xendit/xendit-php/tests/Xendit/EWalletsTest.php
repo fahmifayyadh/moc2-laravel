@@ -29,11 +29,8 @@ class EWalletsTest extends TestCase
 {
     const TEST_ID = "123";
     const TEST_TYPE = "DANA";
-<<<<<<< HEAD
     const TEST_CHARGE_ID = "ewc_f3925450-5c54-4777-98c1-fcf22b0d1e1c";
     const TEST_REFUND_ID = "ewr_532as23lew2321id";
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Create EWallet test
@@ -51,7 +48,6 @@ class EWalletsTest extends TestCase
             'expiration_date' => '2020-02-20T00:00:00.000Z',
             'callback_url' => 'https://my-shop.com/callbacks',
             'redirect_url' => 'https://my-shop.com/home',
-<<<<<<< HEAD
             'ewallet_type' => 'DANA',
         ];
 
@@ -104,9 +100,6 @@ class EWalletsTest extends TestCase
             'redirect_url' => 'https://my-shop.com/home',
             'ewallet_type' => 'OVO',
             'x-api-version' => '2019-02-04',
-=======
-            'ewallet_type' => 'DANA'
->>>>>>> parent of 31cfa1b1 (p)
         ];
 
         $this->stubRequest(
@@ -212,7 +205,6 @@ class EWalletsTest extends TestCase
             self::TEST_TYPE
         );
     }
-<<<<<<< HEAD
 
     /**
      * Create EWallet Charge test
@@ -725,6 +717,4 @@ class EWalletsTest extends TestCase
         EWallets::listRefund(self::TEST_CHARGE_ID);
     }
     
-=======
->>>>>>> parent of 31cfa1b1 (p)
 }

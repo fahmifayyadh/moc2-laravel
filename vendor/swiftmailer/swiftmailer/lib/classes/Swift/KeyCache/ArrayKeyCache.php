@@ -62,14 +62,7 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
                 $this->contents[$nsKey][$itemKey] .= $string;
                 break;
             default:
-<<<<<<< HEAD
                 throw new Swift_SwiftException('Invalid mode ['.$mode.'] used to set nsKey='.$nsKey.', itemKey='.$itemKey);
-=======
-                throw new Swift_SwiftException(
-                    'Invalid mode ['.$mode.'] used to set nsKey='.
-                    $nsKey.', itemKey='.$itemKey
-                    );
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -98,14 +91,7 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
                 }
                 break;
             default:
-<<<<<<< HEAD
                 throw new Swift_SwiftException('Invalid mode ['.$mode.'] used to set nsKey='.$nsKey.', itemKey='.$itemKey);
-=======
-                throw new Swift_SwiftException(
-                    'Invalid mode ['.$mode.'] used to set nsKey='.
-                    $nsKey.', itemKey='.$itemKey
-                    );
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -173,11 +159,7 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
     {
         $this->prepareCache($nsKey);
 
-<<<<<<< HEAD
         return \array_key_exists($itemKey, $this->contents[$nsKey]);
-=======
-        return array_key_exists($itemKey, $this->contents[$nsKey]);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -208,11 +190,7 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
      */
     private function prepareCache($nsKey)
     {
-<<<<<<< HEAD
         if (!\array_key_exists($nsKey, $this->contents)) {
-=======
-        if (!array_key_exists($nsKey, $this->contents)) {
->>>>>>> parent of 31cfa1b1 (p)
             $this->contents[$nsKey] = [];
         }
     }

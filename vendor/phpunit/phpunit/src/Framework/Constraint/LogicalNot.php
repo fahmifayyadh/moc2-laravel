@@ -9,13 +9,10 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function count;
 use function get_class;
 use function preg_match;
 use function str_replace;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\ExpectationFailedException;
 
 /**
@@ -56,7 +53,6 @@ final class LogicalNot extends Constraint
             'not ',
         ];
 
-<<<<<<< HEAD
         preg_match('/(\'[\w\W]*\')([\w\W]*)("[\w\W]*")/i', $string, $matches);
 
         if (count($matches) > 0) {
@@ -65,16 +61,6 @@ final class LogicalNot extends Constraint
             $negatedString = str_replace(
                 $nonInput,
                 str_replace(
-=======
-        \preg_match('/(\'[\w\W]*\')([\w\W]*)("[\w\W]*")/i', $string, $matches);
-
-        if (\count($matches) > 0) {
-            $nonInput = $matches[2];
-
-            $negatedString = \str_replace(
-                $nonInput,
-                \str_replace(
->>>>>>> parent of 31cfa1b1 (p)
                     $positives,
                     $negatives,
                     $nonInput
@@ -82,11 +68,7 @@ final class LogicalNot extends Constraint
                 $string
             );
         } else {
-<<<<<<< HEAD
             $negatedString = str_replace(
-=======
-            $negatedString = \str_replace(
->>>>>>> parent of 31cfa1b1 (p)
                 $positives,
                 $negatives,
                 $string
@@ -109,11 +91,7 @@ final class LogicalNot extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
-=======
-     * Evaluates the constraint for parameter $other
->>>>>>> parent of 31cfa1b1 (p)
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -122,13 +100,8 @@ final class LogicalNot extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
-<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
-=======
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
@@ -148,11 +121,7 @@ final class LogicalNot extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         switch (get_class($this->constraint)) {
-=======
-        switch (\get_class($this->constraint)) {
->>>>>>> parent of 31cfa1b1 (p)
             case LogicalAnd::class:
             case self::class:
             case LogicalOr::class:
@@ -170,19 +139,11 @@ final class LogicalNot extends Constraint
      */
     public function count(): int
     {
-<<<<<<< HEAD
         return count($this->constraint);
     }
 
     /**
      * Returns the description of the failure.
-=======
-        return \count($this->constraint);
-    }
-
-    /**
-     * Returns the description of the failure
->>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -193,11 +154,7 @@ final class LogicalNot extends Constraint
      */
     protected function failureDescription($other): string
     {
-<<<<<<< HEAD
         switch (get_class($this->constraint)) {
-=======
-        switch (\get_class($this->constraint)) {
->>>>>>> parent of 31cfa1b1 (p)
             case LogicalAnd::class:
             case self::class:
             case LogicalOr::class:

@@ -16,12 +16,9 @@
  * - dan-nl
  * - Simon Lelorrain (slelorrain)
  */
-<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 return [
     'year' => ':count Joer',
     'y' => ':countJ',
@@ -63,11 +60,7 @@ return [
         'nextDay' => '[Muer um] LT',
         'nextWeek' => 'dddd [um] LT',
         'lastDay' => '[Gëschter um] LT',
-<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $date) {
-=======
-        'lastWeek' => function (\Carbon\CarbonInterface $date) {
->>>>>>> parent of 31cfa1b1 (p)
             // Different date string for 'Dënschdeg' (Tuesday) and 'Donneschdeg' (Thursday) due to phonological rule
             switch ($date->dayOfWeek) {
                 case 2:

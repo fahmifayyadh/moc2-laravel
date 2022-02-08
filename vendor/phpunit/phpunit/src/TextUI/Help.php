@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\TextUI;
 
-<<<<<<< HEAD
 use const PHP_EOL;
 use function count;
 use function explode;
@@ -19,8 +18,6 @@ use function str_pad;
 use function str_repeat;
 use function strlen;
 use function wordwrap;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Util\Color;
 use SebastianBergmann\Environment\Console;
 
@@ -32,17 +29,12 @@ final class Help
     private const LEFT_MARGIN = '  ';
 
     private const HELP_TEXT = [
-<<<<<<< HEAD
         'Usage' => [
-=======
-        'Usage'                 => [
->>>>>>> parent of 31cfa1b1 (p)
             ['text' => 'phpunit [options] UnitTest [UnitTest.php]'],
             ['text' => 'phpunit [options] <directory>'],
         ],
         'Code Coverage Options' => [
             ['arg' => '--coverage-clover <file>', 'desc' => 'Generate code coverage report in Clover XML format'],
-<<<<<<< HEAD
             ['arg' => '--coverage-crap4j <file>', 'desc' => 'Generate code coverage report in Crap4J XML format'],
             ['arg' => '--coverage-html <dir>', 'desc' => 'Generate code coverage report in HTML format'],
             ['arg' => '--coverage-php <file>', 'desc' => 'Export PHP_CodeCoverage object to file'],
@@ -52,17 +44,6 @@ final class Help
             ['arg' => '--disable-coverage-ignore', 'desc' => 'Disable annotations for ignoring code coverage'],
             ['arg' => '--no-coverage', 'desc' => 'Ignore code coverage configuration'],
             ['arg' => '--dump-xdebug-filter <file>', 'desc' => 'Generate script to set Xdebug code coverage filter'],
-=======
-            ['arg'  => '--coverage-crap4j <file>', 'desc' => 'Generate code coverage report in Crap4J XML format'],
-            ['arg'  => '--coverage-html <dir>', 'desc' => 'Generate code coverage report in HTML format'],
-            ['arg'  => '--coverage-php <file>', 'desc' => 'Export PHP_CodeCoverage object to file'],
-            ['arg'  => '--coverage-text=<file>', 'desc' => 'Generate code coverage report in text format [default: standard output]'],
-            ['arg'  => '--coverage-xml <dir>', 'desc' => 'Generate code coverage report in PHPUnit XML format'],
-            ['arg'  => '--whitelist <dir>', 'desc' => 'Whitelist <dir> for code coverage analysis'],
-            ['arg'  => '--disable-coverage-ignore', 'desc' => 'Disable annotations for ignoring code coverage'],
-            ['arg'  => '--no-coverage', 'desc' => 'Ignore code coverage configuration'],
-            ['arg'  => '--dump-xdebug-filter <file>', 'desc' => 'Generate script to set Xdebug code coverage filter'],
->>>>>>> parent of 31cfa1b1 (p)
         ],
 
         'Logging Options' => [
@@ -72,15 +53,11 @@ final class Help
             ['arg' => '--testdox-text <file>', 'desc' => 'Write agile documentation in Text format to file'],
             ['arg' => '--testdox-xml <file>', 'desc' => 'Write agile documentation in XML format to file'],
             ['arg' => '--reverse-list', 'desc' => 'Print defects in reverse order'],
-<<<<<<< HEAD
             ['arg' => '--no-logging', 'desc' => 'Ignore logging configuration'],
-=======
->>>>>>> parent of 31cfa1b1 (p)
         ],
 
         'Test Selection Options' => [
             ['arg' => '--filter <pattern>', 'desc' => 'Filter which tests to run'],
-<<<<<<< HEAD
             ['arg' => '--testsuite <name>', 'desc' => 'Filter which testsuite to run'],
             ['arg' => '--group <name>', 'desc' => 'Only runs tests from the specified group(s)'],
             ['arg' => '--exclude-group <name>', 'desc' => 'Exclude tests from the specified group(s)'],
@@ -89,16 +66,6 @@ final class Help
             ['arg' => '--list-tests', 'desc' => 'List available tests'],
             ['arg' => '--list-tests-xml <file>', 'desc' => 'List available tests in XML format'],
             ['arg' => '--test-suffix <suffixes>', 'desc' => 'Only search for test in files with specified suffix(es). Default: Test.php,.phpt'],
-=======
-            ['arg'  => '--testsuite <name>', 'desc' => 'Filter which testsuite to run'],
-            ['arg'  => '--group <name>', 'desc' => 'Only runs tests from the specified group(s)'],
-            ['arg'  => '--exclude-group <name>', 'desc' => 'Exclude tests from the specified group(s)'],
-            ['arg'  => '--list-groups', 'desc' => 'List available test groups'],
-            ['arg'  => '--list-suites', 'desc' => 'List available test suites'],
-            ['arg'  => '--list-tests', 'desc' => 'List available tests'],
-            ['arg'  => '--list-tests-xml <file>', 'desc' => 'List available tests in XML format'],
-            ['arg'  => '--test-suffix <suffixes>', 'desc' => 'Only search for test in files with specified suffix(es). Default: Test.php,.phpt'],
->>>>>>> parent of 31cfa1b1 (p)
         ],
 
         'Test Execution Options' => [
@@ -144,17 +111,10 @@ final class Help
             ['arg'    => '--printer <printer>', 'desc' => 'TestListener implementation to use'],
             ['spacer' => ''],
 
-<<<<<<< HEAD
             ['arg' => '--order-by=<order>', 'desc' => 'Run tests in order: default|defects|duration|no-depends|random|reverse|size'],
             ['arg' => '--random-order-seed=<N>', 'desc' => 'Use a specific random seed <N> for random order'],
             ['arg' => '--cache-result', 'desc' => 'Write test results to cache file'],
             ['arg' => '--do-not-cache-result', 'desc' => 'Do not write test results to cache file'],
-=======
-            ['arg'  => '--order-by=<order>', 'desc' => 'Run tests in order: default|defects|duration|no-depends|random|reverse|size'],
-            ['arg'  => '--random-order-seed=<N>', 'desc' => 'Use a specific random seed <N> for random order'],
-            ['arg'  => '--cache-result', 'desc' => 'Write test results to cache file'],
-            ['arg'  => '--do-not-cache-result', 'desc' => 'Do not write test results to cache file'],
->>>>>>> parent of 31cfa1b1 (p)
         ],
 
         'Configuration Options' => [
@@ -162,10 +122,6 @@ final class Help
             ['arg' => '--bootstrap <file>', 'desc' => 'A PHP script that is included before the tests run'],
             ['arg' => '-c|--configuration <file>', 'desc' => 'Read configuration from XML file'],
             ['arg' => '--no-configuration', 'desc' => 'Ignore default configuration file (phpunit.xml)'],
-<<<<<<< HEAD
-=======
-            ['arg' => '--no-logging', 'desc' => 'Ignore logging configuration'],
->>>>>>> parent of 31cfa1b1 (p)
             ['arg' => '--no-extensions', 'desc' => 'Do not load PHPUnit extensions'],
             ['arg' => '--include-path <path(s)>', 'desc' => 'Prepend PHP\'s include_path with given path(s)'],
             ['arg' => '-d <key[=value]>', 'desc' => 'Sets a php.ini value'],
@@ -212,11 +168,7 @@ final class Help
         foreach (self::HELP_TEXT as $options) {
             foreach ($options as $option) {
                 if (isset($option['arg'])) {
-<<<<<<< HEAD
                     $this->maxArgLength = max($this->maxArgLength, isset($option['arg']) ? strlen($option['arg']) : 0);
-=======
-                    $this->maxArgLength = \max($this->maxArgLength, isset($option['arg']) ? \strlen($option['arg']) : 0);
->>>>>>> parent of 31cfa1b1 (p)
                 }
             }
         }
@@ -225,11 +177,7 @@ final class Help
     }
 
     /**
-<<<<<<< HEAD
      * Write the help file to the CLI, adapting width and colors to the console.
-=======
-     * Write the help file to the CLI, adapting width and colors to the console
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function writeToConsole(): void
     {
@@ -243,22 +191,14 @@ final class Help
     private function writePlaintext(): void
     {
         foreach (self::HELP_TEXT as $section => $options) {
-<<<<<<< HEAD
             print "{$section}:" . PHP_EOL;
 
             if ($section !== 'Usage') {
                 print PHP_EOL;
-=======
-            print "$section:" . \PHP_EOL;
-
-            if ($section !== 'Usage') {
-                print \PHP_EOL;
->>>>>>> parent of 31cfa1b1 (p)
             }
 
             foreach ($options as $option) {
                 if (isset($option['spacer'])) {
-<<<<<<< HEAD
                     print PHP_EOL;
                 }
 
@@ -273,29 +213,12 @@ final class Help
             }
 
             print PHP_EOL;
-=======
-                    print \PHP_EOL;
-                }
-
-                if (isset($option['text'])) {
-                    print self::LEFT_MARGIN . $option['text'] . \PHP_EOL;
-                }
-
-                if (isset($option['arg'])) {
-                    $arg = \str_pad($option['arg'], $this->maxArgLength);
-                    print self::LEFT_MARGIN . $arg . ' ' . $option['desc'] . \PHP_EOL;
-                }
-            }
-
-            print \PHP_EOL;
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
     private function writeWithColor(): void
     {
         foreach (self::HELP_TEXT as $section => $options) {
-<<<<<<< HEAD
             print Color::colorize('fg-yellow', "{$section}:") . PHP_EOL;
 
             foreach ($options as $option) {
@@ -313,52 +236,21 @@ final class Help
                         '/(<[^>]+>)/',
                         static function ($matches)
                         {
-=======
-            print Color::colorize('fg-yellow', "$section:") . \PHP_EOL;
-
-            foreach ($options as $option) {
-                if (isset($option['spacer'])) {
-                    print \PHP_EOL;
-                }
-
-                if (isset($option['text'])) {
-                    print self::LEFT_MARGIN . $option['text'] . \PHP_EOL;
-                }
-
-                if (isset($option['arg'])) {
-                    $arg = Color::colorize('fg-green', \str_pad($option['arg'], $this->maxArgLength));
-                    $arg = \preg_replace_callback(
-                        '/(<[^>]+>)/',
-                        static function ($matches) {
->>>>>>> parent of 31cfa1b1 (p)
                             return Color::colorize('fg-cyan', $matches[0]);
                         },
                         $arg
                     );
-<<<<<<< HEAD
                     $desc = explode(PHP_EOL, wordwrap($option['desc'], $this->maxDescLength, PHP_EOL));
 
                     print self::LEFT_MARGIN . $arg . ' ' . $desc[0] . PHP_EOL;
 
                     for ($i = 1; $i < count($desc); $i++) {
                         print str_repeat(' ', $this->maxArgLength + 3) . $desc[$i] . PHP_EOL;
-=======
-                    $desc = \explode(\PHP_EOL, \wordwrap($option['desc'], $this->maxDescLength, \PHP_EOL));
-
-                    print self::LEFT_MARGIN . $arg . ' ' . $desc[0] . \PHP_EOL;
-
-                    for ($i = 1; $i < \count($desc); $i++) {
-                        print \str_repeat(' ', $this->maxArgLength + 3) . $desc[$i] . \PHP_EOL;
->>>>>>> parent of 31cfa1b1 (p)
                     }
                 }
             }
 
-<<<<<<< HEAD
             print PHP_EOL;
-=======
-            print \PHP_EOL;
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 }

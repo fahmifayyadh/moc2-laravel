@@ -58,12 +58,8 @@ trait Request
      * @return array
      * @throws \Xendit\Exceptions\ApiException
      */
-<<<<<<< HEAD
     protected static function _request(
         $method,
-=======
-    protected static function _request($method,
->>>>>>> parent of 31cfa1b1 (p)
         $url,
         $params = []
     ) {
@@ -73,7 +69,6 @@ trait Request
             $headers['for-user-id'] = $params['for-user-id'];
         }
 
-<<<<<<< HEAD
         if (array_key_exists('with-fee-rule', $params)) {
             $headers['with-fee-rule'] = $params['with-fee-rule'];
         }
@@ -82,22 +77,17 @@ trait Request
             $headers['Idempotency-key'] = $params['Idempotency-key'];
         }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if (array_key_exists('X-IDEMPOTENCY-KEY', $params)) {
             $headers['X-IDEMPOTENCY-KEY'] = $params['X-IDEMPOTENCY-KEY'];
         }
 
         if (array_key_exists('api-version', $params)) {
             $headers['api-version'] = $params['api-version'];
-<<<<<<< HEAD
             unset($params['api-version']);
         }
 
         if (array_key_exists('X-API-VERSION', $params)) {
             $headers['X-API-VERSION'] = $params['X-API-VERSION'];
-=======
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $requestor = new \Xendit\ApiRequestor();

@@ -48,11 +48,7 @@ class TranslatorPathsPass extends AbstractRecursivePass
         foreach ($this->findControllerArguments($container) as $controller => $argument) {
             $id = substr($controller, 0, strpos($controller, ':') ?: \strlen($controller));
             if ($container->hasDefinition($id)) {
-<<<<<<< HEAD
                 [$locatorRef] = $argument->getValues();
-=======
-                list($locatorRef) = $argument->getValues();
->>>>>>> parent of 31cfa1b1 (p)
                 $this->controllers[(string) $locatorRef][$container->getDefinition($id)->getClass()] = true;
             }
         }
@@ -64,12 +60,9 @@ class TranslatorPathsPass extends AbstractRecursivePass
             foreach ($this->paths as $class => $_) {
                 if (($r = $container->getReflectionClass($class)) && !$r->isInterface()) {
                     $paths[] = $r->getFileName();
-<<<<<<< HEAD
                     foreach ($r->getTraits() as $trait) {
                         $paths[] = $trait->getFileName();
                     }
-=======
->>>>>>> parent of 31cfa1b1 (p)
                 }
             }
             if ($paths) {

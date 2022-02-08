@@ -12,12 +12,6 @@
 namespace Psy\CodeCleaner;
 
 use PhpParser\Node;
-<<<<<<< HEAD
-=======
-use PhpParser\Node\Expr;
-use PhpParser\Node\Expr\FuncCall;
-use PhpParser\Node\Expr\Variable;
->>>>>>> parent of 31cfa1b1 (p)
 use PhpParser\Node\Stmt\Do_;
 use PhpParser\Node\Stmt\Function_;
 use PhpParser\Node\Stmt\If_;
@@ -38,11 +32,8 @@ class ValidFunctionNamePass extends NamespaceAwarePass
     /**
      * Store newly defined function names on the way in, to allow recursion.
      *
-<<<<<<< HEAD
      * @throws FatalErrorException if a function is redefined in a non-conditional scope
      *
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * @param Node $node
      */
     public function enterNode(Node $node)
@@ -60,11 +51,7 @@ class ValidFunctionNamePass extends NamespaceAwarePass
                 if (\function_exists($name) ||
                     isset($this->currentScope[\strtolower($name)])) {
                     $msg = \sprintf('Cannot redeclare %s()', $name);
-<<<<<<< HEAD
                     throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getLine());
-=======
-                    throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
->>>>>>> parent of 31cfa1b1 (p)
                 }
             }
 
@@ -73,35 +60,12 @@ class ValidFunctionNamePass extends NamespaceAwarePass
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Validate that function calls will succeed.
-     *
-     * @throws FatalErrorException if a function is redefined
-     * @throws FatalErrorException if the function name is a string (not an expression) and is not defined
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @param Node $node
      */
     public function leaveNode(Node $node)
     {
         if (self::isConditional($node)) {
             $this->conditionalScopes--;
-<<<<<<< HEAD
-=======
-        } elseif ($node instanceof FuncCall) {
-            // if function name is an expression or a variable, give it a pass for now.
-            $name = $node->name;
-            if (!$name instanceof Expr && !$name instanceof Variable) {
-                $shortName = \implode('\\', $name->parts);
-                $fullName  = $this->getFullyQualifiedName($name);
-                $inScope   = isset($this->currentScope[\strtolower($fullName)]);
-                if (!$inScope && !\function_exists($shortName) && !\function_exists($fullName)) {
-                    $message = \sprintf('Call to undefined function %s()', $name);
-                    throw new FatalErrorException($message, 0, E_ERROR, null, $node->getLine());
-                }
-            }
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 

@@ -11,11 +11,7 @@ use Doctrine\Inflector\Rules\Transformations;
 
 final class Rules
 {
-<<<<<<< HEAD
     public static function getSingularRuleset(): Ruleset
-=======
-    public static function getSingularRuleset() : Ruleset
->>>>>>> parent of 31cfa1b1 (p)
     {
         return new Ruleset(
             new Transformations(...Inflectible::getSingular()),
@@ -24,11 +20,7 @@ final class Rules
         );
     }
 
-<<<<<<< HEAD
     public static function getPluralRuleset(): Ruleset
-=======
-    public static function getPluralRuleset() : Ruleset
->>>>>>> parent of 31cfa1b1 (p)
     {
         return new Ruleset(
             new Transformations(...Inflectible::getPlural()),

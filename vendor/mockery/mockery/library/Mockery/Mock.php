@@ -53,7 +53,6 @@ class Mock implements MockInterface
     protected $_mockery_ignoreMissing = false;
 
     /**
-<<<<<<< HEAD
      * Flag to indicate whether we want to set the ignoreMissing flag on
      * mocks generated form this calls to this one
      *
@@ -62,8 +61,6 @@ class Mock implements MockInterface
     protected $_mockery_ignoreMissingRecursive = false;
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Flag to indicate whether we can defer method calls missing from our
      * expectations
      *
@@ -319,7 +316,6 @@ class Mock implements MockInterface
     /**
      * Set mock to ignore unexpected methods and return Undefined class
      * @param mixed $returnValue the default return value for calls to missing functions on this mock
-<<<<<<< HEAD
      * @param bool $recursive Specify if returned mocks should also have shouldIgnoreMissing set
      * @return Mock
      */
@@ -327,13 +323,6 @@ class Mock implements MockInterface
     {
         $this->_mockery_ignoreMissing = true;
         $this->_mockery_ignoreMissingRecursive = $recursive;
-=======
-     * @return Mock
-     */
-    public function shouldIgnoreMissing($returnValue = null)
-    {
-        $this->_mockery_ignoreMissing = true;
->>>>>>> parent of 31cfa1b1 (p)
         $this->_mockery_defaultReturnValue = $returnValue;
         return $this;
     }
@@ -728,20 +717,11 @@ class Mock implements MockInterface
     {
         $rm = $this->mockery_getMethod($name);
 
-<<<<<<< HEAD
         if ($rm === null) {
             return null;
         }
 
         $returnType = Reflector::getSimplestReturnType($rm);
-=======
-        // Default return value for methods with nullable type is null
-        if ($rm === null || $rm->getReturnType() === null || $rm->getReturnType()->allowsNull()) {
-            return null;
-        }
-
-        $returnType = Reflector::getReturnType($rm, true);
->>>>>>> parent of 31cfa1b1 (p)
 
         switch ($returnType) {
             case null:     return null;
@@ -767,7 +747,6 @@ class Mock implements MockInterface
             case 'void':
                 return null;
 
-<<<<<<< HEAD
             case 'static':
                 return $this;
 
@@ -784,13 +763,6 @@ class Mock implements MockInterface
                     $mock->shouldIgnoreMissing($this->_mockery_defaultReturnValue, true);
                 }
                 return $mock;
-=======
-            case 'object':
-                return \Mockery::mock();
-
-            default:
-                return \Mockery::mock($returnType);
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -847,11 +819,7 @@ class Mock implements MockInterface
             throw new BadMethodCallException(
                 'Static method ' . $associatedRealObject->mockery_getName() . '::' . $method
                 . '() does not exist on this mock object',
-<<<<<<< HEAD
                 0,
-=======
-                null,
->>>>>>> parent of 31cfa1b1 (p)
                 $e
             );
         }

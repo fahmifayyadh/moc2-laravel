@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ### 2.3.5 (2021-10-01)
 
   * Fixed regression in StreamHandler since 2.3.3 on systems with the memory_limit set to >=20GB (#1592)
@@ -45,8 +44,6 @@
   * Fixed PHP 8 issues in SyslogUdpHandler
   * Fixed internal type error when mbstring is missing
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ### 2.1.1 (2020-07-23)
 
   * Fixed removing of json encoding options
@@ -135,7 +132,6 @@
   * Added support for the PHP 7.x `mongodb` extension in the MongoDBHandler
   * Fixed many minor issues in various handlers, and probably added a few regressions too
 
-<<<<<<< HEAD
 ### 1.26.1 (2021-05-28)
 
   * Fixed PHP 8.1 deprecation warning
@@ -144,8 +140,6 @@
 
   * Added $dateFormat and $removeUsedContextFields arguments to PsrLogMessageProcessor (backport from 2.x)
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 ### 1.25.5 (2020-07-23)
 
   * Fixed array access on null in RavenHandler

@@ -23,7 +23,6 @@ use Symfony\Component\Console\Input\InputInterface;
 abstract class Enumerator
 {
     // Output styles
-<<<<<<< HEAD
     const IS_PUBLIC = 'public';
     const IS_PROTECTED = 'protected';
     const IS_PRIVATE = 'private';
@@ -31,15 +30,6 @@ abstract class Enumerator
     const IS_CONSTANT = 'const';
     const IS_CLASS = 'class';
     const IS_FUNCTION = 'function';
-=======
-    const IS_PUBLIC    = 'public';
-    const IS_PROTECTED = 'protected';
-    const IS_PRIVATE   = 'private';
-    const IS_GLOBAL    = 'global';
-    const IS_CONSTANT  = 'const';
-    const IS_CLASS     = 'class';
-    const IS_FUNCTION  = 'function';
->>>>>>> parent of 31cfa1b1 (p)
 
     private $filter;
     private $presenter;
@@ -64,11 +54,7 @@ abstract class Enumerator
      *
      * @return array
      */
-<<<<<<< HEAD
     public function enumerate(InputInterface $input, \Reflector $reflector = null, $target = null): array
-=======
-    public function enumerate(InputInterface $input, \Reflector $reflector = null, $target = null)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $this->filter->bind($input);
 
@@ -96,11 +82,7 @@ abstract class Enumerator
      *
      * @return array
      */
-<<<<<<< HEAD
     abstract protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null): array;
-=======
-    abstract protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null);
->>>>>>> parent of 31cfa1b1 (p)
 
     protected function showItem($name)
     {

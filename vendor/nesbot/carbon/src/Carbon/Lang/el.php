@@ -19,12 +19,9 @@
  * - yiannisdesp
  * - Ilias Kasmeridis (iliaskasm)
  */
-<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 return [
     'year' => ':count χρόνος|:count χρόνια',
     'a_year' => 'ένας χρόνος|:count χρόνια',
@@ -71,11 +68,7 @@ return [
         'nextDay' => '[Αύριο {}] LT',
         'nextWeek' => 'dddd [{}] LT',
         'lastDay' => '[Χθες {}] LT',
-<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $current) {
-=======
-        'lastWeek' => function (\Carbon\CarbonInterface $current) {
->>>>>>> parent of 31cfa1b1 (p)
             switch ($current->dayOfWeek) {
                 case 6:
                     return '[το προηγούμενο] dddd [{}] LT';

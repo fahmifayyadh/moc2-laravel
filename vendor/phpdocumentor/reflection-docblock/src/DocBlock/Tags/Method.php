@@ -22,10 +22,7 @@ use phpDocumentor\Reflection\Types\Context as TypeContext;
 use phpDocumentor\Reflection\Types\Mixed_;
 use phpDocumentor\Reflection\Types\Void_;
 use Webmozart\Assert\Assert;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function array_keys;
 use function explode;
 use function implode;
@@ -62,10 +59,6 @@ final class Method extends BaseTag implements Factory\StaticMethod
 
     /**
      * @param array<int, array<string, Type|string>> $arguments
-<<<<<<< HEAD
-=======
-     *
->>>>>>> parent of 31cfa1b1 (p)
      * @phpstan-param array<int, array{name: string, type: Type}|string> $arguments
      */
     public function __construct(
@@ -93,11 +86,7 @@ final class Method extends BaseTag implements Factory\StaticMethod
         ?TypeResolver $typeResolver = null,
         ?DescriptionFactory $descriptionFactory = null,
         ?TypeContext $context = null
-<<<<<<< HEAD
     ): ?self {
-=======
-    ) : ?self {
->>>>>>> parent of 31cfa1b1 (p)
         Assert::stringNotEmpty($body);
         Assert::notNull($typeResolver);
         Assert::notNull($descriptionFactory);
@@ -111,14 +100,9 @@ final class Method extends BaseTag implements Factory\StaticMethod
         // 5. then a word with underscores, followed by ( and any character
         //    until a ) and whitespace : as method name with signature
         // 6. any remaining text : as description
-<<<<<<< HEAD
         if (
             !preg_match(
                 '/^
-=======
-        if (!preg_match(
-            '/^
->>>>>>> parent of 31cfa1b1 (p)
                 # Static keyword
                 # Declares a static method ONLY if type is also present
                 (?:
@@ -148,16 +132,10 @@ final class Method extends BaseTag implements Factory\StaticMethod
                 # Description
                 (.*)
             $/sux',
-<<<<<<< HEAD
                 $body,
                 $matches
             )
         ) {
-=======
-            $body,
-            $matches
-        )) {
->>>>>>> parent of 31cfa1b1 (p)
             return null;
         }
 
@@ -200,27 +178,16 @@ final class Method extends BaseTag implements Factory\StaticMethod
     /**
      * Retrieves the method name.
      */
-<<<<<<< HEAD
     public function getMethodName(): string
-=======
-    public function getMethodName() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->methodName;
     }
 
     /**
      * @return array<int, array<string, Type|string>>
-<<<<<<< HEAD
      * @phpstan-return array<int, array{name: string, type: Type}>
      */
     public function getArguments(): array
-=======
-     *
-     * @phpstan-return array<int, array{name: string, type: Type}>
-     */
-    public function getArguments() : array
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->arguments;
     }
@@ -230,29 +197,17 @@ final class Method extends BaseTag implements Factory\StaticMethod
      *
      * @return bool TRUE if the method declaration is for a static method, FALSE otherwise.
      */
-<<<<<<< HEAD
     public function isStatic(): bool
-=======
-    public function isStatic() : bool
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->isStatic;
     }
 
-<<<<<<< HEAD
     public function getReturnType(): Type
-=======
-    public function getReturnType() : Type
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->returnType;
     }
 
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         $arguments = [];
         foreach ($this->arguments as $argument) {
@@ -271,11 +226,7 @@ final class Method extends BaseTag implements Factory\StaticMethod
 
         $returnType = (string) $this->returnType;
 
-<<<<<<< HEAD
         $methodName = $this->methodName;
-=======
-        $methodName = (string) $this->methodName;
->>>>>>> parent of 31cfa1b1 (p)
 
         return $static
             . ($returnType !== '' ? ($static !== '' ? ' ' : '') . $returnType : '')
@@ -286,22 +237,12 @@ final class Method extends BaseTag implements Factory\StaticMethod
 
     /**
      * @param mixed[][]|string[] $arguments
-<<<<<<< HEAD
      * @phpstan-param array<int, array{name: string, type: Type}|string> $arguments
      *
      * @return mixed[][]
      * @phpstan-return array<int, array{name: string, type: Type}>
      */
     private function filterArguments(array $arguments = []): array
-=======
-     *
-     * @return mixed[][]
-     *
-     * @phpstan-param array<int, array{name: string, type: Type}|string> $arguments
-     * @phpstan-return array<int, array{name: string, type: Type}>
-     */
-    private function filterArguments(array $arguments = []) : array
->>>>>>> parent of 31cfa1b1 (p)
     {
         $result = [];
         foreach ($arguments as $argument) {
@@ -327,11 +268,7 @@ final class Method extends BaseTag implements Factory\StaticMethod
         return $result;
     }
 
-<<<<<<< HEAD
     private static function stripRestArg(string $argument): string
-=======
-    private static function stripRestArg(string $argument) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (strpos($argument, '...') === 0) {
             $argument = trim(substr($argument, 3));

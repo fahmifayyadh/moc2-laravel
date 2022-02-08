@@ -29,11 +29,7 @@ final class Url implements Reference
         $this->uri = $uri;
     }
 
-<<<<<<< HEAD
     public function __toString(): string
-=======
-    public function __toString() : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->uri;
     }

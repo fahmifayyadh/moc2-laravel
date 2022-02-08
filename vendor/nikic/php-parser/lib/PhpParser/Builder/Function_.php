@@ -12,12 +12,9 @@ class Function_ extends FunctionLike
     protected $name;
     protected $stmts = [];
 
-<<<<<<< HEAD
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * Creates a function builder.
      *
@@ -41,7 +38,6 @@ class Function_ extends FunctionLike
     }
 
     /**
-<<<<<<< HEAD
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -55,8 +51,6 @@ class Function_ extends FunctionLike
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Returns the built function node.
      *
      * @return Stmt\Function_ The built function node
@@ -67,10 +61,7 @@ class Function_ extends FunctionLike
             'params'     => $this->params,
             'returnType' => $this->returnType,
             'stmts'      => $this->stmts,
-<<<<<<< HEAD
             'attrGroups' => $this->attributeGroups,
-=======
->>>>>>> parent of 31cfa1b1 (p)
         ], $this->attributes);
     }
 }

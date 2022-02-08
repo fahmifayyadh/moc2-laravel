@@ -9,12 +9,9 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
-<<<<<<< HEAD
 use function is_string;
 use function sprintf;
 use function strtolower;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Constraint\Constraint;
 
 /**
@@ -34,11 +31,7 @@ final class MethodNameConstraint extends Constraint
 
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> parent of 31cfa1b1 (p)
             'is "%s"',
             $this->methodName
         );
@@ -46,18 +39,10 @@ final class MethodNameConstraint extends Constraint
 
     protected function matches($other): bool
     {
-<<<<<<< HEAD
         if (!is_string($other)) {
             return false;
         }
 
         return strtolower($this->methodName) === strtolower($other);
-=======
-        if (!\is_string($other)) {
-            return false;
-        }
-
-        return \strtolower($this->methodName) === \strtolower($other);
->>>>>>> parent of 31cfa1b1 (p)
     }
 }

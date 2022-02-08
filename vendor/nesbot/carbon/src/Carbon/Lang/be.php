@@ -8,7 +8,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
 // @codeCoverageIgnoreStart
 
@@ -18,12 +17,6 @@ use Symfony\Component\Translation\PluralizationRules;
 if (class_exists('Symfony\\Component\\Translation\\PluralizationRules')) {
     PluralizationRules::set(function ($number) {
         return (($number % 10 == 1) && ($number % 100 != 11)) ? 0 : ((($number % 10 >= 2) && ($number % 10 <= 4) && (($number % 100 < 10) || ($number % 100 >= 20))) ? 1 : 2);
-=======
-// @codeCoverageIgnoreStart
-if (class_exists('Symfony\\Component\\Translation\\PluralizationRules')) {
-    \Symfony\Component\Translation\PluralizationRules::set(function ($number) {
-        return ((1 == $number % 10) && (11 != $number % 100)) ? 0 : ((($number % 10 >= 2) && ($number % 10 <= 4) && (($number % 100 < 10) || ($number % 100 >= 20))) ? 1 : 2);
->>>>>>> parent of 31cfa1b1 (p)
     }, 'be');
 }
 // @codeCoverageIgnoreEnd
@@ -36,10 +29,7 @@ if (class_exists('Symfony\\Component\\Translation\\PluralizationRules')) {
  * - Serhan Apaydın
  * - JD Isaacks
  * - AbadonnaAbbys
-<<<<<<< HEAD
  * - Siomkin Alexander
-=======
->>>>>>> parent of 31cfa1b1 (p)
  */
 return [
     'year' => ':count год|:count гады|:count гадоў',
@@ -51,31 +41,18 @@ return [
     'week' => ':count тыдзень|:count тыдні|:count тыдняў',
     'a_week' => '{1}тыдзень|:count тыдзень|:count тыдні|:count тыдняў',
     'w' => ':count тыдзень|:count тыдні|:count тыдняў',
-<<<<<<< HEAD
     'day' => ':count дзень|:count дні|:count дзён',
     'a_day' => '{1}дзень|:count дзень|:count дні|:count дзён',
     'd' => ':count дн',
-=======
-    'day' => ':count дзень|:count ні|:count дзён',
-    'a_day' => '{1}дзень|:count дзень|:count ні|:count дзён',
-    'd' => ':count дзень|:count ні|:count дзён',
->>>>>>> parent of 31cfa1b1 (p)
     'hour' => ':count гадзіну|:count гадзіны|:count гадзін',
     'a_hour' => '{1}гадзіна|:count гадзіна|:count гадзіны|:count гадзін',
     'h' => ':count гадзіна|:count гадзіны|:count гадзін',
     'minute' => ':count хвіліна|:count хвіліны|:count хвілін',
     'a_minute' => '{1}хвіліна|:count хвіліна|:count хвіліны|:count хвілін',
-<<<<<<< HEAD
     'min' => ':count хв',
     'second' => ':count секунда|:count секунды|:count секунд',
     'a_second' => '{1}некалькі секунд|:count секунда|:count секунды|:count секунд',
     's' => ':count сек',
-=======
-    'min' => ':count хвіліна|:count хвіліны|:count хвілін',
-    'second' => ':count секунда|:count секунды|:count секунд',
-    'a_second' => '{1}некалькі секунд|:count секунда|:count секунды|:count секунд',
-    's' => ':count секунда|:count секунды|:count секунд',
->>>>>>> parent of 31cfa1b1 (p)
 
     'hour_ago' => ':count гадзіну|:count гадзіны|:count гадзін',
     'a_hour_ago' => '{1}гадзіну|:count гадзіну|:count гадзіны|:count гадзін',
@@ -141,11 +118,7 @@ return [
         'nextDay' => '[Заўтра ў] LT',
         'nextWeek' => '[У] dddd [ў] LT',
         'lastDay' => '[Учора ў] LT',
-<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $current) {
-=======
-        'lastWeek' => function (\Carbon\CarbonInterface $current) {
->>>>>>> parent of 31cfa1b1 (p)
             switch ($current->dayOfWeek) {
                 case 1:
                 case 2:

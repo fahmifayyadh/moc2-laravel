@@ -21,11 +21,7 @@ class ConsoleColorFactory
     /**
      * @param string $colorMode
      */
-<<<<<<< HEAD
     public function __construct(string $colorMode)
-=======
-    public function __construct($colorMode)
->>>>>>> parent of 31cfa1b1 (p)
     {
         // Nothing to see here
     }
@@ -36,11 +32,7 @@ class ConsoleColorFactory
      *
      * @return ConsoleColor
      */
-<<<<<<< HEAD
     public function getConsoleColor(): ConsoleColor
-=======
-    public function getConsoleColor()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return new ConsoleColor(); // /shrug
     }

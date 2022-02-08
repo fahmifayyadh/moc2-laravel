@@ -27,11 +27,7 @@ class Swift_Mime_ContentEncoder_Base64ContentEncoder extends Swift_Encoder_Base6
         }
 
         $remainder = 0;
-<<<<<<< HEAD
         $base64ReadBufferRemainderBytes = '';
-=======
-        $base64ReadBufferRemainderBytes = null;
->>>>>>> parent of 31cfa1b1 (p)
 
         // To reduce memory usage, the output buffer is streamed to the input buffer like so:
         //   Output Stream => base64encode => wrap line length => Input Stream
@@ -49,13 +45,8 @@ class Swift_Mime_ContentEncoder_Base64ContentEncoder extends Swift_Encoder_Base6
             } else {
                 $streamTheseBytes = $base64ReadBufferRemainderBytes.$readBytes;
             }
-<<<<<<< HEAD
             $base64ReadBufferRemainderBytes = '';
             $bytesLength = \strlen($streamTheseBytes);
-=======
-            $base64ReadBufferRemainderBytes = null;
-            $bytesLength = strlen($streamTheseBytes);
->>>>>>> parent of 31cfa1b1 (p)
 
             if (0 === $bytesLength) { // no data left to encode
                 break;
@@ -75,11 +66,7 @@ class Swift_Mime_ContentEncoder_Base64ContentEncoder extends Swift_Encoder_Base6
             $encodedTransformed = '';
             $thisMaxLineLength = $maxLineLength - $remainder - $firstLineOffset;
 
-<<<<<<< HEAD
             while ($thisMaxLineLength < \strlen($encoded)) {
-=======
-            while ($thisMaxLineLength < strlen($encoded)) {
->>>>>>> parent of 31cfa1b1 (p)
                 $encodedTransformed .= substr($encoded, 0, $thisMaxLineLength)."\r\n";
                 $firstLineOffset = 0;
                 $encoded = substr($encoded, $thisMaxLineLength);
@@ -87,11 +74,7 @@ class Swift_Mime_ContentEncoder_Base64ContentEncoder extends Swift_Encoder_Base6
                 $remainder = 0;
             }
 
-<<<<<<< HEAD
             if (0 < $remainingLength = \strlen($encoded)) {
-=======
-            if (0 < $remainingLength = strlen($encoded)) {
->>>>>>> parent of 31cfa1b1 (p)
                 $remainder += $remainingLength;
                 $encodedTransformed .= $encoded;
                 $encoded = null;

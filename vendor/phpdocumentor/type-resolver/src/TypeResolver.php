@@ -15,58 +15,40 @@ namespace phpDocumentor\Reflection;
 
 use ArrayIterator;
 use InvalidArgumentException;
-<<<<<<< HEAD
 use phpDocumentor\Reflection\PseudoTypes\IntegerRange;
 use phpDocumentor\Reflection\PseudoTypes\List_;
 use phpDocumentor\Reflection\Types\Array_;
 use phpDocumentor\Reflection\Types\ArrayKey;
-=======
-use phpDocumentor\Reflection\Types\Array_;
->>>>>>> parent of 31cfa1b1 (p)
 use phpDocumentor\Reflection\Types\ClassString;
 use phpDocumentor\Reflection\Types\Collection;
 use phpDocumentor\Reflection\Types\Compound;
 use phpDocumentor\Reflection\Types\Context;
 use phpDocumentor\Reflection\Types\Expression;
 use phpDocumentor\Reflection\Types\Integer;
-<<<<<<< HEAD
 use phpDocumentor\Reflection\Types\InterfaceString;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use phpDocumentor\Reflection\Types\Intersection;
 use phpDocumentor\Reflection\Types\Iterable_;
 use phpDocumentor\Reflection\Types\Nullable;
 use phpDocumentor\Reflection\Types\Object_;
 use phpDocumentor\Reflection\Types\String_;
 use RuntimeException;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function array_key_exists;
 use function array_pop;
 use function array_values;
 use function class_exists;
 use function class_implements;
 use function count;
-<<<<<<< HEAD
 use function current;
 use function end;
 use function in_array;
 use function is_numeric;
-=======
-use function end;
-use function in_array;
->>>>>>> parent of 31cfa1b1 (p)
 use function key;
 use function preg_split;
 use function strpos;
 use function strtolower;
 use function trim;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use const PREG_SPLIT_DELIM_CAPTURE;
 use const PREG_SPLIT_NO_EMPTY;
 
@@ -97,7 +79,6 @@ final class TypeResolver
     private $keywords = [
         'string' => Types\String_::class,
         'class-string' => Types\ClassString::class,
-<<<<<<< HEAD
         'interface-string' => Types\InterfaceString::class,
         'html-escaped-string' => PseudoTypes\HtmlEscapedString::class,
         'lowercase-string' => PseudoTypes\LowercaseString::class,
@@ -110,51 +91,32 @@ final class TypeResolver
         'integer' => Types\Integer::class,
         'positive-int' => PseudoTypes\PositiveInteger::class,
         'negative-int' => PseudoTypes\NegativeInteger::class,
-=======
-        'int' => Types\Integer::class,
-        'integer' => Types\Integer::class,
->>>>>>> parent of 31cfa1b1 (p)
         'bool' => Types\Boolean::class,
         'boolean' => Types\Boolean::class,
         'real' => Types\Float_::class,
         'float' => Types\Float_::class,
         'double' => Types\Float_::class,
-<<<<<<< HEAD
         'object' => Types\Object_::class,
         'mixed' => Types\Mixed_::class,
         'array' => Types\Array_::class,
         'array-key' => Types\ArrayKey::class,
-=======
-        'object' => Object_::class,
-        'mixed' => Types\Mixed_::class,
-        'array' => Array_::class,
->>>>>>> parent of 31cfa1b1 (p)
         'resource' => Types\Resource_::class,
         'void' => Types\Void_::class,
         'null' => Types\Null_::class,
         'scalar' => Types\Scalar::class,
         'callback' => Types\Callable_::class,
         'callable' => Types\Callable_::class,
-<<<<<<< HEAD
         'callable-string' => PseudoTypes\CallableString::class,
         'false' => PseudoTypes\False_::class,
         'true' => PseudoTypes\True_::class,
         'literal-string' => PseudoTypes\LiteralString::class,
-=======
-        'false' => PseudoTypes\False_::class,
-        'true' => PseudoTypes\True_::class,
->>>>>>> parent of 31cfa1b1 (p)
         'self' => Types\Self_::class,
         '$this' => Types\This::class,
         'static' => Types\Static_::class,
         'parent' => Types\Parent_::class,
-<<<<<<< HEAD
         'iterable' => Types\Iterable_::class,
         'never' => Types\Never_::class,
         'list' => PseudoTypes\List_::class,
-=======
-        'iterable' => Iterable_::class,
->>>>>>> parent of 31cfa1b1 (p)
     ];
 
     /**
@@ -187,11 +149,7 @@ final class TypeResolver
      *
      * @param string $type The relative or absolute type.
      */
-<<<<<<< HEAD
     public function resolve(string $type, ?Context $context = null): Type
-=======
-    public function resolve(string $type, ?Context $context = null) : Type
->>>>>>> parent of 31cfa1b1 (p)
     {
         $type = trim($type);
         if (!$type) {
@@ -227,11 +185,7 @@ final class TypeResolver
      * @param int                        $parserContext on of self::PARSER_* constants, indicating
      * the context where we are in the parsing
      */
-<<<<<<< HEAD
     private function parseTypes(ArrayIterator $tokens, Context $context, int $parserContext): Type
-=======
-    private function parseTypes(ArrayIterator $tokens, Context $context, int $parserContext) : Type
->>>>>>> parent of 31cfa1b1 (p)
     {
         $types = [];
         $token = '';
@@ -251,20 +205,12 @@ final class TypeResolver
                     );
                 }
 
-<<<<<<< HEAD
                 if (
                     !in_array($parserContext, [
                         self::PARSER_IN_COMPOUND,
                         self::PARSER_IN_ARRAY_EXPRESSION,
                         self::PARSER_IN_COLLECTION_EXPRESSION,
                     ], true)
-=======
-                if (!in_array($parserContext, [
-                    self::PARSER_IN_COMPOUND,
-                    self::PARSER_IN_ARRAY_EXPRESSION,
-                    self::PARSER_IN_COLLECTION_EXPRESSION,
-                ], true)
->>>>>>> parent of 31cfa1b1 (p)
                 ) {
                     throw new RuntimeException(
                         'Unexpected type separator'
@@ -274,20 +220,12 @@ final class TypeResolver
                 $compoundToken = $token;
                 $tokens->next();
             } elseif ($token === '?') {
-<<<<<<< HEAD
                 if (
                     !in_array($parserContext, [
                         self::PARSER_IN_COMPOUND,
                         self::PARSER_IN_ARRAY_EXPRESSION,
                         self::PARSER_IN_COLLECTION_EXPRESSION,
                     ], true)
-=======
-                if (!in_array($parserContext, [
-                    self::PARSER_IN_COMPOUND,
-                    self::PARSER_IN_ARRAY_EXPRESSION,
-                    self::PARSER_IN_COLLECTION_EXPRESSION,
-                ], true)
->>>>>>> parent of 31cfa1b1 (p)
                 ) {
                     throw new RuntimeException(
                         'Unexpected nullable character'
@@ -311,11 +249,7 @@ final class TypeResolver
                 $resolvedType = new Expression($type);
 
                 $types[] = $resolvedType;
-<<<<<<< HEAD
             } elseif ($parserContext === self::PARSER_IN_ARRAY_EXPRESSION && isset($token[0]) && $token[0] === ')') {
-=======
-            } elseif ($parserContext === self::PARSER_IN_ARRAY_EXPRESSION && $token[0] === ')') {
->>>>>>> parent of 31cfa1b1 (p)
                 break;
             } elseif ($token === '<') {
                 if (count($types) === 0) {
@@ -328,38 +262,28 @@ final class TypeResolver
                 if ($classType !== null) {
                     if ((string) $classType === 'class-string') {
                         $types[] = $this->resolveClassString($tokens, $context);
-<<<<<<< HEAD
                     } elseif ((string) $classType === 'int') {
                         $types[] = $this->resolveIntRange($tokens);
                     } elseif ((string) $classType === 'interface-string') {
                         $types[] = $this->resolveInterfaceString($tokens, $context);
-=======
->>>>>>> parent of 31cfa1b1 (p)
                     } else {
                         $types[] = $this->resolveCollection($tokens, $classType, $context);
                     }
                 }
 
                 $tokens->next();
-<<<<<<< HEAD
             } elseif (
                 $parserContext === self::PARSER_IN_COLLECTION_EXPRESSION
-=======
-            } elseif ($parserContext === self::PARSER_IN_COLLECTION_EXPRESSION
->>>>>>> parent of 31cfa1b1 (p)
                 && ($token === '>' || trim($token) === ',')
             ) {
                 break;
             } elseif ($token === self::OPERATOR_ARRAY) {
                 end($types);
                 $last = key($types);
-<<<<<<< HEAD
                 if ($last === null) {
                     throw new InvalidArgumentException('Unexpected array operator');
                 }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
                 $lastItem = $types[$last];
                 if ($lastItem instanceof Expression) {
                     $lastItem = $lastItem->getValueType();
@@ -404,11 +328,7 @@ final class TypeResolver
                 );
             }
         } elseif (count($types) === 1) {
-<<<<<<< HEAD
             return current($types);
-=======
-            return $types[0];
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($compoundToken === '|') {
@@ -427,24 +347,15 @@ final class TypeResolver
      *
      * @psalm-mutation-free
      */
-<<<<<<< HEAD
     private function resolveSingleType(string $type, Context $context): object
-=======
-    private function resolveSingleType(string $type, Context $context) : object
->>>>>>> parent of 31cfa1b1 (p)
     {
         switch (true) {
             case $this->isKeyword($type):
                 return $this->resolveKeyword($type);
-<<<<<<< HEAD
 
             case $this->isFqsen($type):
                 return $this->resolveTypedObject($type);
 
-=======
-            case $this->isFqsen($type):
-                return $this->resolveTypedObject($type);
->>>>>>> parent of 31cfa1b1 (p)
             case $this->isPartialStructuralElementName($type):
                 return $this->resolveTypedObject($type, $context);
 
@@ -464,11 +375,7 @@ final class TypeResolver
      *
      * @psalm-param class-string<Type> $typeClassName
      */
-<<<<<<< HEAD
     public function addKeyword(string $keyword, string $typeClassName): void
-=======
-    public function addKeyword(string $keyword, string $typeClassName) : void
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!class_exists($typeClassName)) {
             throw new InvalidArgumentException(
@@ -477,7 +384,6 @@ final class TypeResolver
             );
         }
 
-<<<<<<< HEAD
         $interfaces = class_implements($typeClassName);
         if ($interfaces === false) {
             throw new InvalidArgumentException(
@@ -487,9 +393,6 @@ final class TypeResolver
         }
 
         if (!in_array(Type::class, $interfaces, true)) {
-=======
-        if (!in_array(Type::class, class_implements($typeClassName), true)) {
->>>>>>> parent of 31cfa1b1 (p)
             throw new InvalidArgumentException(
                 'The class "' . $typeClassName . '" must implement the interface "phpDocumentor\Reflection\Type"'
             );
@@ -505,11 +408,7 @@ final class TypeResolver
      *
      * @psalm-mutation-free
      */
-<<<<<<< HEAD
     private function isKeyword(string $type): bool
-=======
-    private function isKeyword(string $type) : bool
->>>>>>> parent of 31cfa1b1 (p)
     {
         return array_key_exists(strtolower($type), $this->keywords);
     }
@@ -521,15 +420,9 @@ final class TypeResolver
      *
      * @psalm-mutation-free
      */
-<<<<<<< HEAD
     private function isPartialStructuralElementName(string $type): bool
     {
         return (isset($type[0]) && $type[0] !== self::OPERATOR_NAMESPACE) && !$this->isKeyword($type);
-=======
-    private function isPartialStructuralElementName(string $type) : bool
-    {
-        return ($type[0] !== self::OPERATOR_NAMESPACE) && !$this->isKeyword($type);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -537,11 +430,7 @@ final class TypeResolver
      *
      * @psalm-mutation-free
      */
-<<<<<<< HEAD
     private function isFqsen(string $type): bool
-=======
-    private function isFqsen(string $type) : bool
->>>>>>> parent of 31cfa1b1 (p)
     {
         return strpos($type, self::OPERATOR_NAMESPACE) === 0;
     }
@@ -551,11 +440,7 @@ final class TypeResolver
      *
      * @psalm-mutation-free
      */
-<<<<<<< HEAD
     private function resolveKeyword(string $type): Type
-=======
-    private function resolveKeyword(string $type) : Type
->>>>>>> parent of 31cfa1b1 (p)
     {
         $className = $this->keywords[strtolower($type)];
 
@@ -567,11 +452,7 @@ final class TypeResolver
      *
      * @psalm-mutation-free
      */
-<<<<<<< HEAD
     private function resolveTypedObject(string $type, ?Context $context = null): Object_
-=======
-    private function resolveTypedObject(string $type, ?Context $context = null) : Object_
->>>>>>> parent of 31cfa1b1 (p)
     {
         return new Object_($this->fqsenResolver->resolve($type, $context));
     }
@@ -581,11 +462,7 @@ final class TypeResolver
      *
      * @param ArrayIterator<int, (string|null)> $tokens
      */
-<<<<<<< HEAD
     private function resolveClassString(ArrayIterator $tokens, Context $context): Type
-=======
-    private function resolveClassString(ArrayIterator $tokens, Context $context) : Type
->>>>>>> parent of 31cfa1b1 (p)
     {
         $tokens->next();
 
@@ -614,7 +491,6 @@ final class TypeResolver
     }
 
     /**
-<<<<<<< HEAD
      * Resolves integer ranges
      *
      * @param ArrayIterator<int, (string|null)> $tokens
@@ -717,15 +593,12 @@ final class TypeResolver
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Resolves the collection values and keys
      *
      * @param ArrayIterator<int, (string|null)> $tokens
      *
      * @return Array_|Iterable_|Collection
      */
-<<<<<<< HEAD
     private function resolveCollection(ArrayIterator $tokens, Type $classType, Context $context): Type
     {
         $isArray    = ((string) $classType === 'array');
@@ -737,16 +610,6 @@ final class TypeResolver
             !$isArray && !$isIterable && !$isList
             && (!$classType instanceof Object_ || $classType->getFqsen() === null)
         ) {
-=======
-    private function resolveCollection(ArrayIterator $tokens, Type $classType, Context $context) : Type
-    {
-        $isArray    = ((string) $classType === 'array');
-        $isIterable = ((string) $classType === 'iterable');
-
-        // allow only "array", "iterable" or class name before "<"
-        if (!$isArray && !$isIterable
-            && (!$classType instanceof Object_ || $classType->getFqsen() === null)) {
->>>>>>> parent of 31cfa1b1 (p)
             throw new RuntimeException(
                 $classType . ' is not a collection'
             );
@@ -758,23 +621,15 @@ final class TypeResolver
         $keyType   = null;
 
         $token = $tokens->current();
-<<<<<<< HEAD
         if ($token !== null && trim($token) === ',' && !$isList) {
-=======
-        if ($token !== null && trim($token) === ',') {
->>>>>>> parent of 31cfa1b1 (p)
             // if we have a comma, then we just parsed the key type, not the value type
             $keyType = $valueType;
             if ($isArray) {
                 // check the key type for an "array" collection. We allow only
                 // strings or integers.
-<<<<<<< HEAD
                 if (
                     !$keyType instanceof ArrayKey &&
                     !$keyType instanceof String_ &&
-=======
-                if (!$keyType instanceof String_ &&
->>>>>>> parent of 31cfa1b1 (p)
                     !$keyType instanceof Integer &&
                     !$keyType instanceof Compound
                 ) {
@@ -785,13 +640,9 @@ final class TypeResolver
 
                 if ($keyType instanceof Compound) {
                     foreach ($keyType->getIterator() as $item) {
-<<<<<<< HEAD
                         if (
                             !$item instanceof ArrayKey &&
                             !$item instanceof String_ &&
-=======
-                        if (!$item instanceof String_ &&
->>>>>>> parent of 31cfa1b1 (p)
                             !$item instanceof Integer
                         ) {
                             throw new RuntimeException(
@@ -828,13 +679,10 @@ final class TypeResolver
             return new Iterable_($valueType, $keyType);
         }
 
-<<<<<<< HEAD
         if ($isList) {
             return new List_($valueType);
         }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if ($classType instanceof Object_) {
             return $this->makeCollectionFromObject($classType, $valueType, $keyType);
         }
@@ -845,11 +693,7 @@ final class TypeResolver
     /**
      * @psalm-pure
      */
-<<<<<<< HEAD
     private function makeCollectionFromObject(Object_ $object, Type $valueType, ?Type $keyType = null): Collection
-=======
-    private function makeCollectionFromObject(Object_ $object, Type $valueType, ?Type $keyType = null) : Collection
->>>>>>> parent of 31cfa1b1 (p)
     {
         return new Collection($object->getFqsen(), $valueType, $keyType);
     }

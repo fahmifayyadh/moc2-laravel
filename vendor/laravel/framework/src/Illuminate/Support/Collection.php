@@ -1197,11 +1197,7 @@ class Collection implements ArrayAccess, Enumerable
      * e.g. new Collection([1, 2, 3])->zip([4, 5, 6]);
      *      => [[1, 4], [2, 5], [3, 6]]
      *
-<<<<<<< HEAD
      * @param  mixed  ...$items
-=======
-     * @param  mixed ...$items
->>>>>>> parent of 31cfa1b1 (p)
      * @return static
      */
     public function zip($items)

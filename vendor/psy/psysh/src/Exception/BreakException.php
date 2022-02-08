@@ -32,11 +32,7 @@ class BreakException extends \Exception implements Exception
      *
      * @return string
      */
-<<<<<<< HEAD
     public function getRawMessage(): string
-=======
-    public function getRawMessage()
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->rawMessage;
     }

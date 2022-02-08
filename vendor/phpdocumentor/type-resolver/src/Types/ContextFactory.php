@@ -23,10 +23,7 @@ use ReflectionProperty;
 use Reflector;
 use RuntimeException;
 use UnexpectedValueException;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use function define;
 use function defined;
 use function file_exists;
@@ -38,19 +35,13 @@ use function strrpos;
 use function substr;
 use function token_get_all;
 use function trim;
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use const T_AS;
 use const T_CLASS;
 use const T_CURLY_OPEN;
 use const T_DOLLAR_OPEN_CURLY_BRACES;
-<<<<<<< HEAD
 use const T_NAME_FULLY_QUALIFIED;
 use const T_NAME_QUALIFIED;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use const T_NAMESPACE;
 use const T_NS_SEPARATOR;
 use const T_STRING;
@@ -86,11 +77,7 @@ final class ContextFactory
      *
      * @see Context for more information on Contexts.
      */
-<<<<<<< HEAD
     public function createFromReflector(Reflector $reflector): Context
-=======
-    public function createFromReflector(Reflector $reflector) : Context
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($reflector instanceof ReflectionClass) {
             //phpcs:ignore SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.MissingVariable
@@ -118,80 +105,43 @@ final class ContextFactory
         throw new UnexpectedValueException('Unhandled \Reflector instance given:  ' . get_class($reflector));
     }
 
-<<<<<<< HEAD
     private function createFromReflectionParameter(ReflectionParameter $parameter): Context
-=======
-    private function createFromReflectionParameter(ReflectionParameter $parameter) : Context
->>>>>>> parent of 31cfa1b1 (p)
     {
         $class = $parameter->getDeclaringClass();
         if (!$class) {
             throw new InvalidArgumentException('Unable to get class of ' . $parameter->getName());
         }
 
-<<<<<<< HEAD
         return $this->createFromReflectionClass($class);
     }
 
     private function createFromReflectionMethod(ReflectionMethod $method): Context
     {
-=======
-        //phpcs:ignore SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.MissingVariable
-        /** @var ReflectionClass<object> $class */
-
-        return $this->createFromReflectionClass($class);
-    }
-
-    private function createFromReflectionMethod(ReflectionMethod $method) : Context
-    {
-        //phpcs:ignore SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.MissingVariable
-        /** @var ReflectionClass<object> $class */
->>>>>>> parent of 31cfa1b1 (p)
         $class = $method->getDeclaringClass();
 
         return $this->createFromReflectionClass($class);
     }
 
-<<<<<<< HEAD
     private function createFromReflectionProperty(ReflectionProperty $property): Context
     {
-=======
-    private function createFromReflectionProperty(ReflectionProperty $property) : Context
-    {
-        //phpcs:ignore SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.MissingVariable
-        /** @var ReflectionClass<object> $class */
->>>>>>> parent of 31cfa1b1 (p)
         $class = $property->getDeclaringClass();
 
         return $this->createFromReflectionClass($class);
     }
 
-<<<<<<< HEAD
     private function createFromReflectionClassConstant(ReflectionClassConstant $constant): Context
     {
         //phpcs:ignore SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.MissingVariable
         /** @phpstan-var ReflectionClass<object> $class */
-=======
-    private function createFromReflectionClassConstant(ReflectionClassConstant $constant) : Context
-    {
-        //phpcs:ignore SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.MissingVariable
-        /** @var ReflectionClass<object> $class */
->>>>>>> parent of 31cfa1b1 (p)
         $class = $constant->getDeclaringClass();
 
         return $this->createFromReflectionClass($class);
     }
 
     /**
-<<<<<<< HEAD
      * @phpstan-param ReflectionClass<object> $class
      */
     private function createFromReflectionClass(ReflectionClass $class): Context
-=======
-     * @param ReflectionClass<object> $class
-     */
-    private function createFromReflectionClass(ReflectionClass $class) : Context
->>>>>>> parent of 31cfa1b1 (p)
     {
         $fileName  = $class->getFileName();
         $namespace = $class->getNamespaceName();
@@ -217,11 +167,7 @@ final class ContextFactory
      * this method first normalizes.
      * @param string $fileContents The file's contents to retrieve the aliases from with the given namespace.
      */
-<<<<<<< HEAD
     public function createForNamespace(string $namespace, string $fileContents): Context
-=======
-    public function createForNamespace(string $namespace, string $fileContents) : Context
->>>>>>> parent of 31cfa1b1 (p)
     {
         $namespace        = trim($namespace, '\\');
         $useStatements    = [];
@@ -242,15 +188,10 @@ final class ContextFactory
                     $firstBraceFound = false;
                     while ($tokens->valid() && ($braceLevel > 0 || !$firstBraceFound)) {
                         $currentToken = $tokens->current();
-<<<<<<< HEAD
                         if (
                             $currentToken === '{'
                             || in_array($currentToken[0], [T_CURLY_OPEN, T_DOLLAR_OPEN_CURLY_BRACES], true)
                         ) {
-=======
-                        if ($currentToken === '{'
-                            || in_array($currentToken[0], [T_CURLY_OPEN, T_DOLLAR_OPEN_CURLY_BRACES], true)) {
->>>>>>> parent of 31cfa1b1 (p)
                             if (!$firstBraceFound) {
                                 $firstBraceFound = true;
                             }
@@ -285,11 +226,7 @@ final class ContextFactory
      *
      * @param ArrayIterator<int, string|array{0:int,1:string,2:int}> $tokens
      */
-<<<<<<< HEAD
     private function parseNamespace(ArrayIterator $tokens): string
-=======
-    private function parseNamespace(ArrayIterator $tokens) : string
->>>>>>> parent of 31cfa1b1 (p)
     {
         // skip to the first string or namespace separator
         $this->skipToNextStringOrNamespaceSeparator($tokens);
@@ -310,16 +247,9 @@ final class ContextFactory
      * @param ArrayIterator<int, string|array{0:int,1:string,2:int}> $tokens
      *
      * @return string[]
-<<<<<<< HEAD
      * @psalm-return array<string, string>
      */
     private function parseUseStatement(ArrayIterator $tokens): array
-=======
-     *
-     * @psalm-return array<string, string>
-     */
-    private function parseUseStatement(ArrayIterator $tokens) : array
->>>>>>> parent of 31cfa1b1 (p)
     {
         $uses = [];
 
@@ -341,11 +271,7 @@ final class ContextFactory
      *
      * @param ArrayIterator<int, string|array{0:int,1:string,2:int}> $tokens
      */
-<<<<<<< HEAD
     private function skipToNextStringOrNamespaceSeparator(ArrayIterator $tokens): void
-=======
-    private function skipToNextStringOrNamespaceSeparator(ArrayIterator $tokens) : void
->>>>>>> parent of 31cfa1b1 (p)
     {
         while ($tokens->valid()) {
             $currentToken = $tokens->current();
@@ -372,20 +298,11 @@ final class ContextFactory
      * @param ArrayIterator<int, string|array{0:int,1:string,2:int}> $tokens
      *
      * @return string[]
-<<<<<<< HEAD
      * @psalm-return array<string, string>
      *
      * @psalm-suppress TypeDoesNotContainType
      */
     private function extractUseStatements(ArrayIterator $tokens): array
-=======
-     *
-     * @psalm-suppress TypeDoesNotContainType
-     *
-     * @psalm-return array<string, string>
-     */
-    private function extractUseStatements(ArrayIterator $tokens) : array
->>>>>>> parent of 31cfa1b1 (p)
     {
         $extractedUseStatements = [];
         $groupedNs              = '';

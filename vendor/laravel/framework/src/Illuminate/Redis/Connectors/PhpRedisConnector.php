@@ -128,15 +128,12 @@ class PhpRedisConnector implements Connector
             $parameters[] = Arr::get($config, 'read_timeout', 0.0);
         }
 
-<<<<<<< HEAD
         if (version_compare(phpversion('redis'), '5.3.0', '>=')) {
             if (! is_null($context = Arr::get($config, 'context'))) {
                 $parameters[] = $context;
             }
         }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
     }
 
@@ -161,15 +158,12 @@ class PhpRedisConnector implements Connector
             $parameters[] = $options['password'] ?? null;
         }
 
-<<<<<<< HEAD
         if (version_compare(phpversion('redis'), '5.3.2', '>=')) {
             if (! is_null($context = Arr::get($options, 'context'))) {
                 $parameters[] = $context;
             }
         }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         return tap(new RedisCluster(...$parameters), function ($client) use ($options) {
             if (! empty($options['prefix'])) {
                 $client->setOption(RedisCluster::OPT_PREFIX, $options['prefix']);

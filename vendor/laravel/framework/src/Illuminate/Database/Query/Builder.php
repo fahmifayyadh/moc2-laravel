@@ -698,11 +698,7 @@ class Builder
         );
 
         if (! $value instanceof Expression) {
-<<<<<<< HEAD
             $this->addBinding($this->flattenValue($value), 'where');
-=======
-            $this->addBinding($value, 'where');
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this;
@@ -1047,11 +1043,7 @@ class Builder
 
         $this->wheres[] = compact('type', 'column', 'values', 'boolean', 'not');
 
-<<<<<<< HEAD
         $this->addBinding(array_slice($this->cleanBindings(Arr::flatten($values)), 0, 2), 'where');
-=======
-        $this->addBinding($this->cleanBindings($values), 'where');
->>>>>>> parent of 31cfa1b1 (p)
 
         return $this;
     }
@@ -1119,11 +1111,8 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
-<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('Y-m-d');
         }
@@ -1163,11 +1152,8 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
-<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('H:i:s');
         }
@@ -1207,11 +1193,8 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
-<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('d');
         }
@@ -1255,11 +1238,8 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
-<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('m');
         }
@@ -1303,11 +1283,8 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
-<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('Y');
         }
@@ -1616,11 +1593,7 @@ class Builder
         $this->wheres[] = compact('type', 'column', 'operator', 'value', 'boolean');
 
         if (! $value instanceof Expression) {
-<<<<<<< HEAD
             $this->addBinding((int) $this->flattenValue($value));
-=======
-            $this->addBinding($value);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this;
@@ -1769,11 +1742,7 @@ class Builder
         $this->havings[] = compact('type', 'column', 'operator', 'value', 'boolean');
 
         if (! $value instanceof Expression) {
-<<<<<<< HEAD
             $this->addBinding($this->flattenValue($value), 'having');
-=======
-            $this->addBinding($value, 'having');
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this;
@@ -1811,11 +1780,7 @@ class Builder
 
         $this->havings[] = compact('type', 'column', 'values', 'boolean', 'not');
 
-<<<<<<< HEAD
         $this->addBinding(array_slice($this->cleanBindings(Arr::flatten($values)), 0, 2), 'having');
-=======
-        $this->addBinding($this->cleanBindings($values), 'having');
->>>>>>> parent of 31cfa1b1 (p)
 
         return $this;
     }
@@ -1967,11 +1932,7 @@ class Builder
     {
         $property = $this->unions ? 'unionOffset' : 'offset';
 
-<<<<<<< HEAD
         $this->$property = max(0, (int) $value);
-=======
-        $this->$property = max(0, $value);
->>>>>>> parent of 31cfa1b1 (p)
 
         return $this;
     }
@@ -1998,11 +1959,7 @@ class Builder
         $property = $this->unions ? 'unionLimit' : 'limit';
 
         if ($value >= 0) {
-<<<<<<< HEAD
             $this->$property = ! is_null($value) ? (int) $value : null;
-=======
-            $this->$property = $value;
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this;
@@ -3002,7 +2959,6 @@ class Builder
     }
 
     /**
-<<<<<<< HEAD
      * Get a scalar type value from an unknown type of input.
      *
      * @param  mixed  $value
@@ -3014,8 +2970,6 @@ class Builder
     }
 
     /**
-=======
->>>>>>> parent of 31cfa1b1 (p)
      * Get the default key name of the table.
      *
      * @return string

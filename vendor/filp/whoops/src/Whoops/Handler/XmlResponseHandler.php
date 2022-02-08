@@ -23,11 +23,7 @@ class XmlResponseHandler extends Handler
 
     /**
      * @param  bool|null  $returnFrames
-<<<<<<< HEAD
      * @return bool|static
-=======
-     * @return bool|$this
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function addTraceToOutput($returnFrames = null)
     {

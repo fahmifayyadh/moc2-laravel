@@ -47,11 +47,8 @@ abstract class Helper implements HelperInterface
      */
     public static function strlen($string)
     {
-<<<<<<< HEAD
         $string = (string) $string;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if (false === $encoding = mb_detect_encoding($string, null, true)) {
             return \strlen($string);
         }
@@ -70,11 +67,8 @@ abstract class Helper implements HelperInterface
      */
     public static function substr($string, $from, $length = null)
     {
-<<<<<<< HEAD
         $string = (string) $string;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         if (false === $encoding = mb_detect_encoding($string, null, true)) {
             return substr($string, $from, $length);
         }

@@ -75,11 +75,7 @@ class ToastrServiceProvider extends ServiceProvider
             $version = $arguments;
 
             if (strpos($arguments, ',')) {
-<<<<<<< HEAD
                 [$version, $src] = explode(',', $arguments);
-=======
-                list($version, $src) = explode(',', $arguments);
->>>>>>> parent of 31cfa1b1 (p)
             }
 
             if (isset($src)) {

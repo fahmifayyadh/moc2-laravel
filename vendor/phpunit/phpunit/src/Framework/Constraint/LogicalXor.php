@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function array_values;
 use function count;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\ExpectationFailedException;
 
 /**
@@ -30,11 +27,7 @@ final class LogicalXor extends Constraint
     {
         $constraint = new self;
 
-<<<<<<< HEAD
         $constraint->constraints = array_values($constraints);
-=======
-        $constraint->constraints = \array_values($constraints);
->>>>>>> parent of 31cfa1b1 (p)
 
         return $constraint;
     }
@@ -58,11 +51,7 @@ final class LogicalXor extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
-=======
-     * Evaluates the constraint for parameter $other
->>>>>>> parent of 31cfa1b1 (p)
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -71,13 +60,8 @@ final class LogicalXor extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
-<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
-=======
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
@@ -131,11 +115,7 @@ final class LogicalXor extends Constraint
         $count = 0;
 
         foreach ($this->constraints as $constraint) {
-<<<<<<< HEAD
             $count += count($constraint);
-=======
-            $count += \count($constraint);
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $count;

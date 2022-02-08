@@ -66,11 +66,7 @@ abstract class PrettyPrinterAbstract
         BinaryOp\BooleanAnd::class     => [120, -1],
         BinaryOp\BooleanOr::class      => [130, -1],
         BinaryOp\Coalesce::class       => [140,  1],
-<<<<<<< HEAD
         Expr\Ternary::class            => [150,  0],
-=======
-        Expr\Ternary::class            => [150, -1],
->>>>>>> parent of 31cfa1b1 (p)
         // parser uses %left for assignments, but they really behave as %right
         Expr\Assign::class             => [160,  1],
         Expr\AssignRef::class          => [160,  1],
@@ -828,15 +824,11 @@ abstract class PrettyPrinterAbstract
                     return null;
                 }
 
-<<<<<<< HEAD
                 // We go multiline if the original code was multiline,
                 // or if it's an array item with a comment above it.
                 if ($insertStr === ', ' &&
                     ($this->isMultiline($origNodes) || $arrItem->getComments())
                 ) {
-=======
-                if ($insertStr === ', ' && $this->isMultiline($origNodes)) {
->>>>>>> parent of 31cfa1b1 (p)
                     $insertStr = ',';
                     $insertNewline = true;
                 }
@@ -854,19 +846,11 @@ abstract class PrettyPrinterAbstract
                 $this->setIndentLevel($lastElemIndentLevel);
 
                 if ($insertNewline) {
-<<<<<<< HEAD
                     $result .= $insertStr . $this->nl;
                     $comments = $arrItem->getComments();
                     if ($comments) {
                         $result .= $this->pComments($comments) . $this->nl;
                     }
-=======
-                    $comments = $arrItem->getComments();
-                    if ($comments) {
-                        $result .= $this->nl . $this->pComments($comments);
-                    }
-                    $result .= $insertStr . $this->nl;
->>>>>>> parent of 31cfa1b1 (p)
                 } else {
                     $result .= $insertStr;
                 }
@@ -1094,12 +1078,8 @@ abstract class PrettyPrinterAbstract
              . ($modifiers & Stmt\Class_::MODIFIER_PRIVATE   ? 'private '   : '')
              . ($modifiers & Stmt\Class_::MODIFIER_STATIC    ? 'static '    : '')
              . ($modifiers & Stmt\Class_::MODIFIER_ABSTRACT  ? 'abstract '  : '')
-<<<<<<< HEAD
              . ($modifiers & Stmt\Class_::MODIFIER_FINAL     ? 'final '     : '')
              . ($modifiers & Stmt\Class_::MODIFIER_READONLY  ? 'readonly '  : '');
-=======
-             . ($modifiers & Stmt\Class_::MODIFIER_FINAL     ? 'final '     : '');
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -1148,12 +1128,8 @@ abstract class PrettyPrinterAbstract
         for ($i = 0; $i < 256; $i++) {
             // Since PHP 7.1 The lower range is 0x80. However, we also want to support code for
             // older versions.
-<<<<<<< HEAD
             $chr = chr($i);
             $this->labelCharMap[$chr] = $i >= 0x7f || ctype_alnum($chr);
-=======
-            $this->labelCharMap[chr($i)] = $i >= 0x7f || ctype_alnum($i);
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -1272,11 +1248,7 @@ abstract class PrettyPrinterAbstract
     /**
      * Lazily initializes the removal map.
      *
-<<<<<<< HEAD
      * The removal map is used to determine which additional tokens should be removed when a
-=======
-     * The removal map is used to determine which additional tokens should be returned when a
->>>>>>> parent of 31cfa1b1 (p)
      * certain node is replaced by null.
      */
     protected function initializeRemovalMap() {
@@ -1303,11 +1275,8 @@ abstract class PrettyPrinterAbstract
             'Stmt_Catch->var' => $stripLeft,
             'Stmt_ClassMethod->returnType' => $stripColon,
             'Stmt_Class->extends' => ['left' => \T_EXTENDS],
-<<<<<<< HEAD
             'Stmt_Enum->scalarType' => $stripColon,
             'Stmt_EnumCase->expr' => $stripEquals,
-=======
->>>>>>> parent of 31cfa1b1 (p)
             'Expr_PrintableNewAnonClass->extends' => ['left' => \T_EXTENDS],
             'Stmt_Continue->num' => $stripBoth,
             'Stmt_Foreach->keyVar' => $stripDoubleArrow,
@@ -1346,11 +1315,8 @@ abstract class PrettyPrinterAbstract
             'Stmt_Catch->var' => [null, false, ' ', null],
             'Stmt_ClassMethod->returnType' => [')', false, ' : ', null],
             'Stmt_Class->extends' => [null, false, ' extends ', null],
-<<<<<<< HEAD
             'Stmt_Enum->scalarType' => [null, false, ' : ', null],
             'Stmt_EnumCase->expr' => [null, false, ' = ', null],
-=======
->>>>>>> parent of 31cfa1b1 (p)
             'Expr_PrintableNewAnonClass->extends' => [null, ' extends ', null],
             'Stmt_Continue->num' => [\T_CONTINUE, false, ' ', null],
             'Stmt_Foreach->keyVar' => [\T_AS, false, null, ' => '],
@@ -1381,10 +1347,7 @@ abstract class PrettyPrinterAbstract
             //'Scalar_Encapsed->parts' => '',
             'Stmt_Catch->types' => '|',
             'UnionType->types' => '|',
-<<<<<<< HEAD
             'IntersectionType->types' => '&',
-=======
->>>>>>> parent of 31cfa1b1 (p)
             'Stmt_If->elseifs' => ' ',
             'Stmt_TryCatch->catches' => ' ',
 
@@ -1404,10 +1367,7 @@ abstract class PrettyPrinterAbstract
             'Stmt_ClassConst->consts' => ', ',
             'Stmt_ClassMethod->params' => ', ',
             'Stmt_Class->implements' => ', ',
-<<<<<<< HEAD
             'Stmt_Enum->implements' => ', ',
-=======
->>>>>>> parent of 31cfa1b1 (p)
             'Expr_PrintableNewAnonClass->implements' => ', ',
             'Stmt_Const->consts' => ', ',
             'Stmt_Declare->declares' => ', ',
@@ -1434,10 +1394,7 @@ abstract class PrettyPrinterAbstract
             'Stmt_Case->stmts' => "\n",
             'Stmt_Catch->stmts' => "\n",
             'Stmt_Class->stmts' => "\n",
-<<<<<<< HEAD
             'Stmt_Enum->stmts' => "\n",
-=======
->>>>>>> parent of 31cfa1b1 (p)
             'Expr_PrintableNewAnonClass->stmts' => "\n",
             'Stmt_Interface->stmts' => "\n",
             'Stmt_Trait->stmts' => "\n",
@@ -1453,11 +1410,8 @@ abstract class PrettyPrinterAbstract
             'Stmt_If->stmts' => "\n",
             'Stmt_Namespace->stmts' => "\n",
             'Stmt_Class->attrGroups' => "\n",
-<<<<<<< HEAD
             'Stmt_Enum->attrGroups' => "\n",
             'Stmt_EnumCase->attrGroups' => "\n",
-=======
->>>>>>> parent of 31cfa1b1 (p)
             'Stmt_Interface->attrGroups' => "\n",
             'Stmt_Trait->attrGroups' => "\n",
             'Stmt_Function->attrGroups' => "\n",
@@ -1496,10 +1450,7 @@ abstract class PrettyPrinterAbstract
             'Expr_PrintableNewAnonClass->implements' => [null, ' implements ', ''],
             'Expr_StaticCall->args' => ['(', '', ''],
             'Stmt_Class->implements' => [null, ' implements ', ''],
-<<<<<<< HEAD
             'Stmt_Enum->implements' => [null, ' implements ', ''],
-=======
->>>>>>> parent of 31cfa1b1 (p)
             'Stmt_ClassMethod->params' => ['(', '', ''],
             'Stmt_Interface->extends' => [null, ' extends ', ''],
             'Stmt_Function->params' => ['(', '', ''],

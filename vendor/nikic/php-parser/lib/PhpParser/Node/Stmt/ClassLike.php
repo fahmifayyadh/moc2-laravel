@@ -4,12 +4,6 @@ namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
 
-<<<<<<< HEAD
-=======
-/**
- * @property Node\Name $namespacedName Namespaced name (if using NameResolver)
- */
->>>>>>> parent of 31cfa1b1 (p)
 abstract class ClassLike extends Node\Stmt
 {
     /** @var Node\Identifier|null Name */
@@ -19,12 +13,9 @@ abstract class ClassLike extends Node\Stmt
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public $attrGroups;
 
-<<<<<<< HEAD
     /** @var Node\Name Namespaced name (if using NameResolver) */
     public $namespacedName;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     /**
      * @return TraitUse[]
      */

@@ -110,11 +110,7 @@ HELP
         }
 
         if (\strpos($code, '<?') === false) {
-<<<<<<< HEAD
             $code = '<?php '.$code;
-=======
-            $code = '<?php ' . $code;
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $nodes = $this->traverser->traverse($this->parse($code));
@@ -133,11 +129,7 @@ HELP
      *
      * @return array Statements
      */
-<<<<<<< HEAD
     private function parse(string $code): array
-=======
-    private function parse($code)
->>>>>>> parent of 31cfa1b1 (p)
     {
         try {
             return $this->parser->parse($code);
@@ -147,11 +139,7 @@ HELP
             }
 
             // If we got an unexpected EOF, let's try it again with a semicolon.
-<<<<<<< HEAD
             return $this->parser->parse($code.';');
-=======
-            return $this->parser->parse($code . ';');
->>>>>>> parent of 31cfa1b1 (p)
         }
     }
 }

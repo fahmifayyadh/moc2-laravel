@@ -835,7 +835,6 @@ abstract class HttpClientTestCase extends TestCase
         }
     }
 
-<<<<<<< HEAD
     public function testTimeoutOnDestruct()
     {
         $p1 = TestHttpServer::start(8067);
@@ -868,8 +867,6 @@ abstract class HttpClientTestCase extends TestCase
         }
     }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function testDestruct()
     {
         $client = $this->getHttpClient(__FUNCTION__);
@@ -1073,7 +1070,6 @@ abstract class HttpClientTestCase extends TestCase
 
         $this->assertLessThan(10, $duration);
     }
-<<<<<<< HEAD
 
     public function testWithOptions()
     {
@@ -1090,6 +1086,4 @@ abstract class HttpClientTestCase extends TestCase
         $response = $client2->request('GET', '/');
         $this->assertSame(200, $response->getStatusCode());
     }
-=======
->>>>>>> parent of 31cfa1b1 (p)
 }

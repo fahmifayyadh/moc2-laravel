@@ -20,22 +20,14 @@ class Patterns
     {
         $this->patterns = $patterns;
 
-<<<<<<< HEAD
         $patterns = array_map(static function (Pattern $pattern): string {
-=======
-        $patterns = array_map(static function (Pattern $pattern) : string {
->>>>>>> parent of 31cfa1b1 (p)
             return $pattern->getPattern();
         }, $this->patterns);
 
         $this->regex = '/^(?:' . implode('|', $patterns) . ')$/i';
     }
 
-<<<<<<< HEAD
     public function matches(string $word): bool
-=======
-    public function matches(string $word) : bool
->>>>>>> parent of 31cfa1b1 (p)
     {
         return preg_match($this->regex, $word, $regs) === 1;
     }

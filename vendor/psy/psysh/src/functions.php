@@ -17,10 +17,6 @@ use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputOption;
-<<<<<<< HEAD
-=======
-use XdgBaseDir\Xdg;
->>>>>>> parent of 31cfa1b1 (p)
 
 if (!\function_exists('Psy\\sh')) {
     /**
@@ -30,7 +26,6 @@ if (!\function_exists('Psy\\sh')) {
      *
      * @return string
      */
-<<<<<<< HEAD
     function sh(): string
     {
         if (\version_compare(\PHP_VERSION, '8.0', '<')) {
@@ -49,11 +44,6 @@ if (isset($this)) {
     }
 }
 EOS;
-=======
-    function sh()
-    {
-        return 'extract(\Psy\debug(get_defined_vars(), isset($this) ? $this : @get_called_class()));';
->>>>>>> parent of 31cfa1b1 (p)
     }
 }
 
@@ -100,15 +90,9 @@ if (!\function_exists('Psy\\debug')) {
      *
      * @return array Scope variables from the debugger session
      */
-<<<<<<< HEAD
     function debug(array $vars = [], $bindTo = null): array
     {
         echo \PHP_EOL;
-=======
-    function debug(array $vars = [], $bindTo = null)
-    {
-        echo PHP_EOL;
->>>>>>> parent of 31cfa1b1 (p)
 
         $sh = new Shell();
         $sh->setScopeVariables($vars);
@@ -153,7 +137,6 @@ if (!\function_exists('Psy\\info')) {
             return;
         }
 
-<<<<<<< HEAD
         $prettyPath = function ($path) {
             return $path;
         };
@@ -169,24 +152,10 @@ if (!\function_exists('Psy\\info')) {
                 }
             };
         }
-=======
-        $xdg = new Xdg();
-        $home = \rtrim(\str_replace('\\', '/', $xdg->getHomeDir()), '/');
-        $homePattern = '#^' . \preg_quote($home, '#') . '/#';
-
-        $prettyPath = function ($path) use ($homePattern) {
-            if (\is_string($path)) {
-                return \preg_replace($homePattern, '~/', $path);
-            } else {
-                return $path;
-            }
-        };
->>>>>>> parent of 31cfa1b1 (p)
 
         $config = $lastConfig ?: new Configuration();
         $configEnv = (isset($_SERVER['PSYSH_CONFIG']) && $_SERVER['PSYSH_CONFIG']) ? $_SERVER['PSYSH_CONFIG'] : false;
 
-<<<<<<< HEAD
         $shellInfo = [
             'PsySH version' => Shell::VERSION,
         ];
@@ -194,12 +163,6 @@ if (!\function_exists('Psy\\info')) {
         $core = [
             'PHP version'         => \PHP_VERSION,
             'OS'                  => \PHP_OS,
-=======
-        $core = [
-            'PsySH version'       => Shell::VERSION,
-            'PHP version'         => PHP_VERSION,
-            'OS'                  => PHP_OS,
->>>>>>> parent of 31cfa1b1 (p)
             'default includes'    => $config->getDefaultIncludes(),
             'require semicolons'  => $config->requireSemicolons(),
             'error logging level' => $config->errorLoggingLevel(),
@@ -220,11 +183,7 @@ if (!\function_exists('Psy\\info')) {
         try {
             $updateAvailable = !$checker->isLatest();
             $latest = $checker->getLatest();
-<<<<<<< HEAD
         } catch (\Throwable $e) {
-=======
-        } catch (\Exception $e) {
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         $updates = [
@@ -237,10 +196,7 @@ if (!\function_exists('Psy\\info')) {
         $input = [
             'interactive mode'  => $config->interactiveMode(),
             'input interactive' => $config->getInputInteractive(),
-<<<<<<< HEAD
             'yolo'              => $config->yolo(),
-=======
->>>>>>> parent of 31cfa1b1 (p)
         ];
 
         if ($config->hasReadline()) {
@@ -306,19 +262,11 @@ if (!\function_exists('Psy\\info')) {
                     foreach ($meta as $key => $val) {
                         switch ($key) {
                             case 'built_at':
-<<<<<<< HEAD
                                 $d = new \DateTime('@'.$val);
                                 $val = $d->format(\DateTime::RFC2822);
                                 break;
                         }
                         $key = 'db '.\str_replace('_', ' ', $key);
-=======
-                                $d = new \DateTime('@' . $val);
-                                $val = $d->format(\DateTime::RFC2822);
-                                break;
-                        }
-                        $key = 'db ' . \str_replace('_', ' ', $key);
->>>>>>> parent of 31cfa1b1 (p)
                         $docs[$key] = $val;
                     }
                 } else {
@@ -339,7 +287,6 @@ if (!\function_exists('Psy\\info')) {
         ];
 
         // Shenanigans, but totally justified.
-<<<<<<< HEAD
         try {
             if ($shell = Sudo::fetchProperty($config, 'shell')) {
                 $shellClass = \get_class($shell);
@@ -366,22 +313,11 @@ if (!\function_exists('Psy\\info')) {
             }
         } catch (\ReflectionException $e) {
             // shrug
-=======
-        if ($shell = Sudo::fetchProperty($config, 'shell')) {
-            $core['loop listeners'] = \array_map('get_class', Sudo::fetchProperty($shell, 'loopListeners'));
-            $core['commands']       = \array_map('get_class', $shell->all());
-
-            $autocomplete['custom matchers'] = \array_map('get_class', Sudo::fetchProperty($shell, 'matchers'));
->>>>>>> parent of 31cfa1b1 (p)
         }
 
         // @todo Show Presenter / custom casters.
 
-<<<<<<< HEAD
         return \array_merge($shellInfo, $core, \compact('updates', 'pcntl', 'input', 'readline', 'output', 'history', 'docs', 'autocomplete'));
-=======
-        return \array_merge($core, \compact('updates', 'pcntl', 'input', 'readline', 'output', 'history', 'docs', 'autocomplete'));
->>>>>>> parent of 31cfa1b1 (p)
     }
 }
 
@@ -391,7 +327,6 @@ if (!\function_exists('Psy\\bin')) {
      *
      * @return \Closure
      */
-<<<<<<< HEAD
     function bin(): \Closure
     {
         return function () {
@@ -403,29 +338,10 @@ if (!\function_exists('Psy\\bin')) {
 
                 if (\PHP_VERSION_ID < 70000) {
                     \fwrite(\STDERR, 'PHP 7.0.0 or higher is required. You can set the environment variable PSYSH_IGNORE_ENV=1 to override this restriction and proceed anyway.'.\PHP_EOL);
-=======
-    function bin()
-    {
-        return function () {
-            if (!isset($_SERVER['PSYSH_IGNORE_ENV']) || !$_SERVER['PSYSH_IGNORE_ENV']) {
-                if (defined('HHVM_VERSION_ID') && \HHVM_VERSION_ID < 31800) {
-                    fwrite(STDERR, 'HHVM 3.18 or higher is required. You can set the environment variable PSYSH_IGNORE_ENV=1 to override this restriction and proceed anyway.' . PHP_EOL);
-                    exit(1);
-                }
-
-                if (defined('HHVM_VERSION_ID') && \HHVM_VERSION_ID > 39999) {
-                    fwrite(STDERR, 'HHVM 4 or higher is not supported. You can set the environment variable PSYSH_IGNORE_ENV=1 to override this restriction and proceed anyway.' . PHP_EOL);
-                    exit(1);
-                }
-
-                if (\PHP_VERSION_ID < 50509) {
-                    fwrite(STDERR, 'PHP 5.5.9 or higher is required. You can set the environment variable PSYSH_IGNORE_ENV=1 to override this restriction and proceed anyway.' . PHP_EOL);
->>>>>>> parent of 31cfa1b1 (p)
                     exit(1);
                 }
 
                 if (\PHP_VERSION_ID > 89999) {
-<<<<<<< HEAD
                     \fwrite(\STDERR, 'PHP 9 or higher is not supported. You can set the environment variable PSYSH_IGNORE_ENV=1 to override this restriction and proceed anyway.'.\PHP_EOL);
                     exit(1);
                 }
@@ -437,19 +353,6 @@ if (!\function_exists('Psy\\bin')) {
 
                 if (!\function_exists('token_get_all')) {
                     \fwrite(\STDERR, 'The Tokenizer extension is required. Please install it. You can set the environment variable PSYSH_IGNORE_ENV=1 to override this restriction and proceed anyway.'.\PHP_EOL);
-=======
-                    fwrite(STDERR, 'PHP 9 or higher is not supported. You can set the environment variable PSYSH_IGNORE_ENV=1 to override this restriction and proceed anyway.' . PHP_EOL);
-                    exit(1);
-                }
-
-                if (!function_exists('json_encode')) {
-                    fwrite(STDERR, 'The JSON extension is required. Please install it. You can set the environment variable PSYSH_IGNORE_ENV=1 to override this restriction and proceed anyway.' . PHP_EOL);
-                    exit(1);
-                }
-
-                if (!function_exists('token_get_all')) {
-                    fwrite(STDERR, 'The Tokenizer extension is required. Please install it. You can set the environment variable PSYSH_IGNORE_ENV=1 to override this restriction and proceed anyway.' . PHP_EOL);
->>>>>>> parent of 31cfa1b1 (p)
                     exit(1);
                 }
             }
@@ -459,11 +362,7 @@ if (!\function_exists('Psy\\bin')) {
             $input = new ArgvInput();
             try {
                 $input->bind(new InputDefinition(\array_merge(Configuration::getInputOptions(), [
-<<<<<<< HEAD
                     new InputOption('help', 'h', InputOption::VALUE_NONE),
-=======
-                    new InputOption('help',    'h', InputOption::VALUE_NONE),
->>>>>>> parent of 31cfa1b1 (p)
                     new InputOption('version', 'V', InputOption::VALUE_NONE),
 
                     new InputArgument('include', InputArgument::IS_ARRAY),
@@ -481,21 +380,12 @@ if (!\function_exists('Psy\\bin')) {
             // Handle --help
             if ($usageException !== null || $input->getOption('help')) {
                 if ($usageException !== null) {
-<<<<<<< HEAD
                     echo $usageException->getMessage().\PHP_EOL.\PHP_EOL;
                 }
 
                 $version = Shell::getVersionHeader(false);
                 $argv = isset($_SERVER['argv']) ? $_SERVER['argv'] : [];
                 $name = $argv ? \basename(\reset($argv)) : 'psysh';
-=======
-                    echo $usageException->getMessage() . PHP_EOL . PHP_EOL;
-                }
-
-                $version = Shell::getVersionHeader(false);
-                $argv    = isset($_SERVER['argv']) ? $_SERVER['argv'] : [];
-                $name    = $argv ? \basename(\reset($argv)) : 'psysh';
->>>>>>> parent of 31cfa1b1 (p)
 
                 echo <<<EOL
 $version
@@ -515,10 +405,7 @@ Options:
   -r, --raw-output      Print var_export-style return values (for non-interactive input)
   -q, --quiet           Shhhhhh.
   -v|vv|vvv, --verbose  Increase the verbosity of messages.
-<<<<<<< HEAD
       --yolo            Run PsySH without input validation. You don't want this.
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 EOL;
                 exit($usageException === null ? 0 : 1);
@@ -526,11 +413,7 @@ EOL;
 
             // Handle --version
             if ($input->getOption('version')) {
-<<<<<<< HEAD
                 echo Shell::getVersionHeader($config->useUnicode()).\PHP_EOL;
-=======
-                echo Shell::getVersionHeader($config->useUnicode()) . PHP_EOL;
->>>>>>> parent of 31cfa1b1 (p)
                 exit(0);
             }
 
@@ -542,13 +425,8 @@ EOL;
             try {
                 // And go!
                 $shell->run();
-<<<<<<< HEAD
             } catch (\Throwable $e) {
                 \fwrite(\STDERR, $e->getMessage().\PHP_EOL);
-=======
-            } catch (\Exception $e) {
-                fwrite(STDERR, $e->getMessage() . PHP_EOL);
->>>>>>> parent of 31cfa1b1 (p)
 
                 // @todo this triggers the "exited unexpectedly" logic in the
                 // ForkingLoop, so we can't exit(1) after starting the shell...

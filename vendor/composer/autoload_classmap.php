@@ -38,13 +38,9 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CourierController' => $baseDir . '/app/Http/Controllers/CourierController.php',
     'App\\Http\\Controllers\\CourseController' => $baseDir . '/app/Http/Controllers/CourseController.php',
-<<<<<<< HEAD
     'App\\Http\\Controllers\\DummyController' => $baseDir . '/app/Http/Controllers/DummyController.php',
     'App\\Http\\Controllers\\EtalaseController' => $baseDir . '/app/Http/Controllers/EtalaseController.php',
     'App\\Http\\Controllers\\FcmController' => $baseDir . '/app/Http/Controllers/FcmController.php',
-=======
-    'App\\Http\\Controllers\\EtalaseController' => $baseDir . '/app/Http/Controllers/EtalaseController.php',
->>>>>>> parent of 31cfa1b1 (p)
     'App\\Http\\Controllers\\FileController' => $baseDir . '/app/Http/Controllers/FileController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\KomisiController' => $baseDir . '/app/Http/Controllers/KomisiController.php',
@@ -106,14 +102,8 @@ return array(
     'App\\TransactionReward' => $baseDir . '/app/TransactionReward.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Varian' => $baseDir . '/app/Varian.php',
-<<<<<<< HEAD
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Carbon\\AbstractTranslator' => $vendorDir . '/nesbot/carbon/src/Carbon/AbstractTranslator.php',
-=======
-    'ArithmeticError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
-    'AssertionError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
-    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonConverterInterface' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonConverterInterface.php',
     'Carbon\\CarbonImmutable' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
@@ -161,10 +151,7 @@ return array(
     'Carbon\\FactoryImmutable' => $vendorDir . '/nesbot/carbon/src/Carbon/FactoryImmutable.php',
     'Carbon\\Language' => $vendorDir . '/nesbot/carbon/src/Carbon/Language.php',
     'Carbon\\Laravel\\ServiceProvider' => $vendorDir . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
-<<<<<<< HEAD
     'Carbon\\PHPStan\\AbstractMacro' => $vendorDir . '/nesbot/carbon/src/Carbon/PHPStan/AbstractMacro.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Carbon\\PHPStan\\Macro' => $vendorDir . '/nesbot/carbon/src/Carbon/PHPStan/Macro.php',
     'Carbon\\PHPStan\\MacroExtension' => $vendorDir . '/nesbot/carbon/src/Carbon/PHPStan/MacroExtension.php',
     'Carbon\\PHPStan\\MacroScanner' => $vendorDir . '/nesbot/carbon/src/Carbon/PHPStan/MacroScanner.php',
@@ -174,10 +161,7 @@ return array(
     'Carbon\\Traits\\Converter' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Converter.php',
     'Carbon\\Traits\\Creator' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Creator.php',
     'Carbon\\Traits\\Date' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Date.php',
-<<<<<<< HEAD
     'Carbon\\Traits\\DeprecatedProperties' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/DeprecatedProperties.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Carbon\\Traits\\Difference' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Difference.php',
     'Carbon\\Traits\\IntervalRounding' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/IntervalRounding.php',
     'Carbon\\Traits\\IntervalStep' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/IntervalStep.php',
@@ -195,10 +179,7 @@ return array(
     'Carbon\\Traits\\Units' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Units.php',
     'Carbon\\Traits\\Week' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Week.php',
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
-<<<<<<< HEAD
     'Carbon\\TranslatorStrongTypeInterface' => $vendorDir . '/nesbot/carbon/src/Carbon/TranslatorStrongTypeInterface.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Cron\\AbstractField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -234,10 +215,6 @@ return array(
     'DeepCopy\\TypeFilter\\Spl\\SplDoublyLinkedListFilter' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedListFilter.php',
     'DeepCopy\\TypeFilter\\TypeFilter' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/TypeFilter.php',
     'DeepCopy\\TypeMatcher\\TypeMatcher' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/TypeMatcher/TypeMatcher.php',
-<<<<<<< HEAD
-=======
-    'DivisionByZeroError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/DivisionByZeroError.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Doctrine\\Common\\Lexer\\AbstractLexer' => $vendorDir . '/doctrine/lexer/lib/Doctrine/Common/Lexer/AbstractLexer.php',
     'Doctrine\\Inflector\\CachedWordInflector' => $vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector/CachedWordInflector.php',
     'Doctrine\\Inflector\\GenericLanguageInflectorFactory' => $vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector/GenericLanguageInflectorFactory.php',
@@ -374,10 +351,6 @@ return array(
     'Egulias\\EmailValidator\\Warning\\QuotedString' => $vendorDir . '/egulias/email-validator/src/Warning/QuotedString.php',
     'Egulias\\EmailValidator\\Warning\\TLD' => $vendorDir . '/egulias/email-validator/src/Warning/TLD.php',
     'Egulias\\EmailValidator\\Warning\\Warning' => $vendorDir . '/egulias/email-validator/src/Warning/Warning.php',
-<<<<<<< HEAD
-=======
-    'Error' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/Error.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Facade\\FlareClient\\Api' => $vendorDir . '/facade/flare-client-php/src/Api.php',
     'Facade\\FlareClient\\Concerns\\HasContext' => $vendorDir . '/facade/flare-client-php/src/Concerns/HasContext.php',
     'Facade\\FlareClient\\Concerns\\UsesTime' => $vendorDir . '/facade/flare-client-php/src/Concerns/UsesTime.php',
@@ -402,10 +375,7 @@ return array(
     'Facade\\FlareClient\\Http\\Response' => $vendorDir . '/facade/flare-client-php/src/Http/Response.php',
     'Facade\\FlareClient\\Middleware\\AddGlows' => $vendorDir . '/facade/flare-client-php/src/Middleware/AddGlows.php',
     'Facade\\FlareClient\\Middleware\\AnonymizeIp' => $vendorDir . '/facade/flare-client-php/src/Middleware/AnonymizeIp.php',
-<<<<<<< HEAD
     'Facade\\FlareClient\\Middleware\\CensorRequestBodyFields' => $vendorDir . '/facade/flare-client-php/src/Middleware/CensorRequestBodyFields.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Facade\\FlareClient\\Report' => $vendorDir . '/facade/flare-client-php/src/Report.php',
     'Facade\\FlareClient\\Solutions\\ReportSolution' => $vendorDir . '/facade/flare-client-php/src/Solutions/ReportSolution.php',
     'Facade\\FlareClient\\Stacktrace\\Codesnippet' => $vendorDir . '/facade/flare-client-php/src/Stacktrace/Codesnippet.php',
@@ -976,10 +946,6 @@ return array(
     'GuzzleHttp\\Exception\\GuzzleException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/GuzzleException.php',
     'GuzzleHttp\\Exception\\InvalidArgumentException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/InvalidArgumentException.php',
     'GuzzleHttp\\Exception\\RequestException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/RequestException.php',
-<<<<<<< HEAD
-=======
-    'GuzzleHttp\\Exception\\SeekException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/SeekException.php',
->>>>>>> parent of 31cfa1b1 (p)
     'GuzzleHttp\\Exception\\ServerException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/ServerException.php',
     'GuzzleHttp\\Exception\\TooManyRedirectsException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/TooManyRedirectsException.php',
     'GuzzleHttp\\Exception\\TransferException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/TransferException.php',
@@ -989,10 +955,7 @@ return array(
     'GuzzleHttp\\Handler\\CurlHandler' => $vendorDir . '/guzzlehttp/guzzle/src/Handler/CurlHandler.php',
     'GuzzleHttp\\Handler\\CurlMultiHandler' => $vendorDir . '/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php',
     'GuzzleHttp\\Handler\\EasyHandle' => $vendorDir . '/guzzlehttp/guzzle/src/Handler/EasyHandle.php',
-<<<<<<< HEAD
     'GuzzleHttp\\Handler\\HeaderProcessor' => $vendorDir . '/guzzlehttp/guzzle/src/Handler/HeaderProcessor.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'GuzzleHttp\\Handler\\MockHandler' => $vendorDir . '/guzzlehttp/guzzle/src/Handler/MockHandler.php',
     'GuzzleHttp\\Handler\\Proxy' => $vendorDir . '/guzzlehttp/guzzle/src/Handler/Proxy.php',
     'GuzzleHttp\\Handler\\StreamHandler' => $vendorDir . '/guzzlehttp/guzzle/src/Handler/StreamHandler.php',
@@ -1021,15 +984,10 @@ return array(
     'GuzzleHttp\\Psr7\\BufferStream' => $vendorDir . '/guzzlehttp/psr7/src/BufferStream.php',
     'GuzzleHttp\\Psr7\\CachingStream' => $vendorDir . '/guzzlehttp/psr7/src/CachingStream.php',
     'GuzzleHttp\\Psr7\\DroppingStream' => $vendorDir . '/guzzlehttp/psr7/src/DroppingStream.php',
-<<<<<<< HEAD
     'GuzzleHttp\\Psr7\\Exception\\MalformedUriException' => $vendorDir . '/guzzlehttp/psr7/src/Exception/MalformedUriException.php',
     'GuzzleHttp\\Psr7\\FnStream' => $vendorDir . '/guzzlehttp/psr7/src/FnStream.php',
     'GuzzleHttp\\Psr7\\Header' => $vendorDir . '/guzzlehttp/psr7/src/Header.php',
     'GuzzleHttp\\Psr7\\HttpFactory' => $vendorDir . '/guzzlehttp/psr7/src/HttpFactory.php',
-=======
-    'GuzzleHttp\\Psr7\\FnStream' => $vendorDir . '/guzzlehttp/psr7/src/FnStream.php',
-    'GuzzleHttp\\Psr7\\Header' => $vendorDir . '/guzzlehttp/psr7/src/Header.php',
->>>>>>> parent of 31cfa1b1 (p)
     'GuzzleHttp\\Psr7\\InflateStream' => $vendorDir . '/guzzlehttp/psr7/src/InflateStream.php',
     'GuzzleHttp\\Psr7\\LazyOpenStream' => $vendorDir . '/guzzlehttp/psr7/src/LazyOpenStream.php',
     'GuzzleHttp\\Psr7\\LimitStream' => $vendorDir . '/guzzlehttp/psr7/src/LimitStream.php',
@@ -1056,10 +1014,6 @@ return array(
     'GuzzleHttp\\RequestOptions' => $vendorDir . '/guzzlehttp/guzzle/src/RequestOptions.php',
     'GuzzleHttp\\RetryMiddleware' => $vendorDir . '/guzzlehttp/guzzle/src/RetryMiddleware.php',
     'GuzzleHttp\\TransferStats' => $vendorDir . '/guzzlehttp/guzzle/src/TransferStats.php',
-<<<<<<< HEAD
-=======
-    'GuzzleHttp\\UriTemplate' => $vendorDir . '/guzzlehttp/guzzle/src/UriTemplate.php',
->>>>>>> parent of 31cfa1b1 (p)
     'GuzzleHttp\\Utils' => $vendorDir . '/guzzlehttp/guzzle/src/Utils.php',
     'Hamcrest\\Arrays\\IsArray' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
     'Hamcrest\\Arrays\\IsArrayContaining' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
@@ -1985,7 +1939,6 @@ return array(
     'Illuminate\\View\\FileViewFinder' => $vendorDir . '/laravel/framework/src/Illuminate/View/FileViewFinder.php',
     'Illuminate\\View\\Middleware\\ShareErrorsFromSession' => $vendorDir . '/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php',
     'Illuminate\\View\\View' => $vendorDir . '/laravel/framework/src/Illuminate/View/View.php',
-<<<<<<< HEAD
     'Illuminate\\View\\ViewException' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewException.php',
     'Illuminate\\View\\ViewFinderInterface' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
     'Illuminate\\View\\ViewName' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewName.php',
@@ -1993,14 +1946,6 @@ return array(
     'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => $vendorDir . '/php-parallel-lint/php-console-color/src/ConsoleColor.php',
     'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => $vendorDir . '/php-parallel-lint/php-console-color/src/InvalidStyleException.php',
     'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => $vendorDir . '/php-parallel-lint/php-console-highlighter/src/Highlighter.php',
-=======
-    'Illuminate\\View\\ViewFinderInterface' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
-    'Illuminate\\View\\ViewName' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewName.php',
-    'Illuminate\\View\\ViewServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
-    'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => $vendorDir . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
-    'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => $vendorDir . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
-    'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => $vendorDir . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
->>>>>>> parent of 31cfa1b1 (p)
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'Kavist\\RajaOngkir\\Contracts\\HttpClientContract' => $vendorDir . '/kavist/rajaongkir/src/Contracts/HttpClientContract.php',
     'Kavist\\RajaOngkir\\Contracts\\LocationResourceContract' => $vendorDir . '/kavist/rajaongkir/src/Contracts/LocationResourceContract.php',
@@ -2217,10 +2162,7 @@ return array(
     'League\\CommonMark\\Inline\\Renderer\\TextRenderer' => $vendorDir . '/league/commonmark/src/Inline/Renderer/TextRenderer.php',
     'League\\CommonMark\\Input\\MarkdownInput' => $vendorDir . '/league/commonmark/src/Input/MarkdownInput.php',
     'League\\CommonMark\\Input\\MarkdownInputInterface' => $vendorDir . '/league/commonmark/src/Input/MarkdownInputInterface.php',
-<<<<<<< HEAD
     'League\\CommonMark\\MarkdownConverter' => $vendorDir . '/league/commonmark/src/MarkdownConverter.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'League\\CommonMark\\MarkdownConverterInterface' => $vendorDir . '/league/commonmark/src/MarkdownConverterInterface.php',
     'League\\CommonMark\\Node\\Node' => $vendorDir . '/league/commonmark/src/Node/Node.php',
     'League\\CommonMark\\Node\\NodeWalker' => $vendorDir . '/league/commonmark/src/Node/NodeWalker.php',
@@ -2263,10 +2205,7 @@ return array(
     'League\\Flysystem\\ConfigAwareTrait' => $vendorDir . '/league/flysystem/src/ConfigAwareTrait.php',
     'League\\Flysystem\\ConnectionErrorException' => $vendorDir . '/league/flysystem/src/ConnectionErrorException.php',
     'League\\Flysystem\\ConnectionRuntimeException' => $vendorDir . '/league/flysystem/src/ConnectionRuntimeException.php',
-<<<<<<< HEAD
     'League\\Flysystem\\CorruptedPathDetected' => $vendorDir . '/league/flysystem/src/CorruptedPathDetected.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'League\\Flysystem\\Directory' => $vendorDir . '/league/flysystem/src/Directory.php',
     'League\\Flysystem\\Exception' => $vendorDir . '/league/flysystem/src/Exception.php',
     'League\\Flysystem\\File' => $vendorDir . '/league/flysystem/src/File.php',
@@ -2305,10 +2244,7 @@ return array(
     'League\\MimeTypeDetection\\FinfoMimeTypeDetector' => $vendorDir . '/league/mime-type-detection/src/FinfoMimeTypeDetector.php',
     'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => $vendorDir . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
     'League\\MimeTypeDetection\\MimeTypeDetector' => $vendorDir . '/league/mime-type-detection/src/MimeTypeDetector.php',
-<<<<<<< HEAD
     'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMap' => $vendorDir . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMap.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'LocationsSeeder' => $baseDir . '/database/seeds/LocationsSeeder.php',
     'Mockery' => $vendorDir . '/mockery/mockery/library/Mockery.php',
     'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
@@ -2385,10 +2321,6 @@ return array(
     'Mockery\\Matcher\\NoArgs' => $vendorDir . '/mockery/mockery/library/Mockery/Matcher/NoArgs.php',
     'Mockery\\Matcher\\Not' => $vendorDir . '/mockery/mockery/library/Mockery/Matcher/Not.php',
     'Mockery\\Matcher\\NotAnyOf' => $vendorDir . '/mockery/mockery/library/Mockery/Matcher/NotAnyOf.php',
-<<<<<<< HEAD
-=======
-    'Mockery\\Matcher\\PHPUnitConstraint' => $vendorDir . '/mockery/mockery/library/Mockery/Matcher/PHPUnitConstraint.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Mockery\\Matcher\\Pattern' => $vendorDir . '/mockery/mockery/library/Mockery/Matcher/Pattern.php',
     'Mockery\\Matcher\\Subset' => $vendorDir . '/mockery/mockery/library/Mockery/Matcher/Subset.php',
     'Mockery\\Matcher\\Type' => $vendorDir . '/mockery/mockery/library/Mockery/Matcher/Type.php',
@@ -2473,10 +2405,7 @@ return array(
     'Monolog\\Handler\\PsrHandler' => $vendorDir . '/monolog/monolog/src/Monolog/Handler/PsrHandler.php',
     'Monolog\\Handler\\PushoverHandler' => $vendorDir . '/monolog/monolog/src/Monolog/Handler/PushoverHandler.php',
     'Monolog\\Handler\\RedisHandler' => $vendorDir . '/monolog/monolog/src/Monolog/Handler/RedisHandler.php',
-<<<<<<< HEAD
     'Monolog\\Handler\\RedisPubSubHandler' => $vendorDir . '/monolog/monolog/src/Monolog/Handler/RedisPubSubHandler.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Monolog\\Handler\\RollbarHandler' => $vendorDir . '/monolog/monolog/src/Monolog/Handler/RollbarHandler.php',
     'Monolog\\Handler\\RotatingFileHandler' => $vendorDir . '/monolog/monolog/src/Monolog/Handler/RotatingFileHandler.php',
     'Monolog\\Handler\\SamplingHandler' => $vendorDir . '/monolog/monolog/src/Monolog/Handler/SamplingHandler.php',
@@ -2616,10 +2545,6 @@ return array(
     'PHPUnit\\Framework\\MockObject\\Builder\\Identity' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Identity.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\InvocationMocker' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/InvocationMocker.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/InvocationStubber.php',
-<<<<<<< HEAD
-=======
-    'PHPUnit\\Framework\\MockObject\\Builder\\Match' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Match.php',
->>>>>>> parent of 31cfa1b1 (p)
     'PHPUnit\\Framework\\MockObject\\Builder\\Match_' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Match_.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\MethodNameMatch' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/MethodNameMatch.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\ParametersMatch' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/ParametersMatch.php',
@@ -2762,13 +2687,8 @@ return array(
     'PHPUnit\\Util\\Xml' => $vendorDir . '/phpunit/phpunit/src/Util/Xml.php',
     'PHPUnit\\Util\\XmlTestListRenderer' => $vendorDir . '/phpunit/phpunit/src/Util/XmlTestListRenderer.php',
     'PHP_Token' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-<<<<<<< HEAD
     'PHP_TokenWithScope' => $vendorDir . '/phpunit/php-token-stream/src/TokenWithScope.php',
     'PHP_TokenWithScopeAndVisibility' => $vendorDir . '/phpunit/php-token-stream/src/TokenWithScopeAndVisibility.php',
-=======
-    'PHP_TokenWithScope' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_TokenWithScopeAndVisibility' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
->>>>>>> parent of 31cfa1b1 (p)
     'PHP_Token_ABSTRACT' => $vendorDir . '/phpunit/php-token-stream/src/Abstract.php',
     'PHP_Token_AMPERSAND' => $vendorDir . '/phpunit/php-token-stream/src/Ampersand.php',
     'PHP_Token_AND_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/AndEqual.php',
@@ -2929,7 +2849,6 @@ return array(
     'PHP_Token_Stream_CachingFactory' => $vendorDir . '/phpunit/php-token-stream/src/CachingFactory.php',
     'PHP_Token_THROW' => $vendorDir . '/phpunit/php-token-stream/src/Throw.php',
     'PHP_Token_TILDE' => $vendorDir . '/phpunit/php-token-stream/src/Tilde.php',
-<<<<<<< HEAD
     'PHP_Token_TRAIT' => $vendorDir . '/phpunit/php-token-stream/src/Trait.php',
     'PHP_Token_TRAIT_C' => $vendorDir . '/phpunit/php-token-stream/src/TraitC.php',
     'PHP_Token_TRY' => $vendorDir . '/phpunit/php-token-stream/src/Try.php',
@@ -2946,25 +2865,6 @@ return array(
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Yield.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/YieldFrom.php',
     'PaketCourseTableSeeder' => $baseDir . '/database/seeds/PaketCourseTableSeeder.php',
-=======
-    'PHP_Token_TRAIT' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_TRAIT_C' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_TRY' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_UNSET' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_UNSET_CAST' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_USE' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_USE_FUNCTION' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_Util' => $vendorDir . '/phpunit/php-token-stream/src/Token/Util.php',
-    'PHP_Token_VAR' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_VARIABLE' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_WHILE' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_WHITESPACE' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'PaketCourseTableSeeder' => $baseDir . '/database/seeds/PaketCourseTableSeeder.php',
-    'ParseError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ParseError.php',
->>>>>>> parent of 31cfa1b1 (p)
     'PaymentGateway' => $baseDir . '/database/seeds/PaymentGateway.php',
     'PharIo\\Manifest\\Application' => $vendorDir . '/phar-io/manifest/src/values/Application.php',
     'PharIo\\Manifest\\ApplicationName' => $vendorDir . '/phar-io/manifest/src/values/ApplicationName.php',
@@ -3024,10 +2924,7 @@ return array(
     'PharIo\\Version\\GreaterThanOrEqualToVersionConstraint' => $vendorDir . '/phar-io/version/src/constraints/GreaterThanOrEqualToVersionConstraint.php',
     'PharIo\\Version\\InvalidPreReleaseSuffixException' => $vendorDir . '/phar-io/version/src/exceptions/InvalidPreReleaseSuffixException.php',
     'PharIo\\Version\\InvalidVersionException' => $vendorDir . '/phar-io/version/src/exceptions/InvalidVersionException.php',
-<<<<<<< HEAD
     'PharIo\\Version\\NoPreReleaseSuffixException' => $vendorDir . '/phar-io/version/src/exceptions/NoPreReleaseSuffixException.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'PharIo\\Version\\OrVersionConstraintGroup' => $vendorDir . '/phar-io/version/src/constraints/OrVersionConstraintGroup.php',
     'PharIo\\Version\\PreReleaseSuffix' => $vendorDir . '/phar-io/version/src/PreReleaseSuffix.php',
     'PharIo\\Version\\SpecificMajorAndMinorVersionConstraint' => $vendorDir . '/phar-io/version/src/constraints/SpecificMajorAndMinorVersionConstraint.php',
@@ -3045,16 +2942,11 @@ return array(
     'PhpParser\\Builder' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder.php',
     'PhpParser\\BuilderFactory' => $vendorDir . '/nikic/php-parser/lib/PhpParser/BuilderFactory.php',
     'PhpParser\\BuilderHelpers' => $vendorDir . '/nikic/php-parser/lib/PhpParser/BuilderHelpers.php',
-<<<<<<< HEAD
     'PhpParser\\Builder\\ClassConst' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/ClassConst.php',
     'PhpParser\\Builder\\Class_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/Class_.php',
     'PhpParser\\Builder\\Declaration' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/Declaration.php',
     'PhpParser\\Builder\\EnumCase' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/EnumCase.php',
     'PhpParser\\Builder\\Enum_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/Enum_.php',
-=======
-    'PhpParser\\Builder\\Class_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/Class_.php',
-    'PhpParser\\Builder\\Declaration' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/Declaration.php',
->>>>>>> parent of 31cfa1b1 (p)
     'PhpParser\\Builder\\FunctionLike' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/FunctionLike.php',
     'PhpParser\\Builder\\Function_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/Function_.php',
     'PhpParser\\Builder\\Interface_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder/Interface_.php',
@@ -3083,21 +2975,15 @@ return array(
     'PhpParser\\Lexer\\Emulative' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/Emulative.php',
     'PhpParser\\Lexer\\TokenEmulator\\AttributeEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/AttributeEmulator.php',
     'PhpParser\\Lexer\\TokenEmulator\\CoaleseEqualTokenEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/CoaleseEqualTokenEmulator.php',
-<<<<<<< HEAD
     'PhpParser\\Lexer\\TokenEmulator\\EnumTokenEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/EnumTokenEmulator.php',
     'PhpParser\\Lexer\\TokenEmulator\\ExplicitOctalEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ExplicitOctalEmulator.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'PhpParser\\Lexer\\TokenEmulator\\FlexibleDocStringEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/FlexibleDocStringEmulator.php',
     'PhpParser\\Lexer\\TokenEmulator\\FnTokenEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/FnTokenEmulator.php',
     'PhpParser\\Lexer\\TokenEmulator\\KeywordEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/KeywordEmulator.php',
     'PhpParser\\Lexer\\TokenEmulator\\MatchTokenEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/MatchTokenEmulator.php',
     'PhpParser\\Lexer\\TokenEmulator\\NullsafeTokenEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/NullsafeTokenEmulator.php',
     'PhpParser\\Lexer\\TokenEmulator\\NumericLiteralSeparatorEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/NumericLiteralSeparatorEmulator.php',
-<<<<<<< HEAD
     'PhpParser\\Lexer\\TokenEmulator\\ReadonlyTokenEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ReadonlyTokenEmulator.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'PhpParser\\Lexer\\TokenEmulator\\ReverseEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ReverseEmulator.php',
     'PhpParser\\Lexer\\TokenEmulator\\TokenEmulator' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/TokenEmulator.php',
     'PhpParser\\NameContext' => $vendorDir . '/nikic/php-parser/lib/PhpParser/NameContext.php',
@@ -3118,10 +3004,7 @@ return array(
     'PhpParser\\Node\\Arg' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Arg.php',
     'PhpParser\\Node\\Attribute' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Attribute.php',
     'PhpParser\\Node\\AttributeGroup' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/AttributeGroup.php',
-<<<<<<< HEAD
     'PhpParser\\Node\\ComplexType' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/ComplexType.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'PhpParser\\Node\\Const_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Const_.php',
     'PhpParser\\Node\\Expr' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr.php',
     'PhpParser\\Node\\Expr\\ArrayDimFetch' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr/ArrayDimFetch.php',
@@ -3174,10 +3057,7 @@ return array(
     'PhpParser\\Node\\Expr\\BinaryOp\\Spaceship' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr/BinaryOp/Spaceship.php',
     'PhpParser\\Node\\Expr\\BitwiseNot' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr/BitwiseNot.php',
     'PhpParser\\Node\\Expr\\BooleanNot' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr/BooleanNot.php',
-<<<<<<< HEAD
     'PhpParser\\Node\\Expr\\CallLike' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr/CallLike.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'PhpParser\\Node\\Expr\\Cast' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr/Cast.php',
     'PhpParser\\Node\\Expr\\Cast\\Array_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr/Cast/Array_.php',
     'PhpParser\\Node\\Expr\\Cast\\Bool_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr/Cast/Bool_.php',
@@ -3224,10 +3104,7 @@ return array(
     'PhpParser\\Node\\Expr\\Yield_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Expr/Yield_.php',
     'PhpParser\\Node\\FunctionLike' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/FunctionLike.php',
     'PhpParser\\Node\\Identifier' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Identifier.php',
-<<<<<<< HEAD
     'PhpParser\\Node\\IntersectionType' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/IntersectionType.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'PhpParser\\Node\\MatchArm' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/MatchArm.php',
     'PhpParser\\Node\\Name' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Name.php',
     'PhpParser\\Node\\Name\\FullyQualified' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Name/FullyQualified.php',
@@ -3265,11 +3142,8 @@ return array(
     'PhpParser\\Node\\Stmt\\Echo_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Stmt/Echo_.php',
     'PhpParser\\Node\\Stmt\\ElseIf_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Stmt/ElseIf_.php',
     'PhpParser\\Node\\Stmt\\Else_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Stmt/Else_.php',
-<<<<<<< HEAD
     'PhpParser\\Node\\Stmt\\EnumCase' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Stmt/EnumCase.php',
     'PhpParser\\Node\\Stmt\\Enum_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Stmt/Enum_.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'PhpParser\\Node\\Stmt\\Expression' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Stmt/Expression.php',
     'PhpParser\\Node\\Stmt\\Finally_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Stmt/Finally_.php',
     'PhpParser\\Node\\Stmt\\For_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Stmt/For_.php',
@@ -3304,10 +3178,7 @@ return array(
     'PhpParser\\Node\\Stmt\\While_' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/Stmt/While_.php',
     'PhpParser\\Node\\UnionType' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/UnionType.php',
     'PhpParser\\Node\\VarLikeIdentifier' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/VarLikeIdentifier.php',
-<<<<<<< HEAD
     'PhpParser\\Node\\VariadicPlaceholder' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Node/VariadicPlaceholder.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'PhpParser\\Parser' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Parser.php',
     'PhpParser\\ParserAbstract' => $vendorDir . '/nikic/php-parser/lib/PhpParser/ParserAbstract.php',
     'PhpParser\\ParserFactory' => $vendorDir . '/nikic/php-parser/lib/PhpParser/ParserFactory.php',
@@ -3415,7 +3286,6 @@ return array(
     'Psr\\Container\\ContainerExceptionInterface' => $vendorDir . '/psr/container/src/ContainerExceptionInterface.php',
     'Psr\\Container\\ContainerInterface' => $vendorDir . '/psr/container/src/ContainerInterface.php',
     'Psr\\Container\\NotFoundExceptionInterface' => $vendorDir . '/psr/container/src/NotFoundExceptionInterface.php',
-<<<<<<< HEAD
     'Psr\\Http\\Client\\ClientExceptionInterface' => $vendorDir . '/psr/http-client/src/ClientExceptionInterface.php',
     'Psr\\Http\\Client\\ClientInterface' => $vendorDir . '/psr/http-client/src/ClientInterface.php',
     'Psr\\Http\\Client\\NetworkExceptionInterface' => $vendorDir . '/psr/http-client/src/NetworkExceptionInterface.php',
@@ -3432,14 +3302,6 @@ return array(
     'Psr\\Http\\Message\\UploadedFileFactoryInterface' => $vendorDir . '/psr/http-factory/src/UploadedFileFactoryInterface.php',
     'Psr\\Http\\Message\\UploadedFileInterface' => $vendorDir . '/psr/http-message/src/UploadedFileInterface.php',
     'Psr\\Http\\Message\\UriFactoryInterface' => $vendorDir . '/psr/http-factory/src/UriFactoryInterface.php',
-=======
-    'Psr\\Http\\Message\\MessageInterface' => $vendorDir . '/psr/http-message/src/MessageInterface.php',
-    'Psr\\Http\\Message\\RequestInterface' => $vendorDir . '/psr/http-message/src/RequestInterface.php',
-    'Psr\\Http\\Message\\ResponseInterface' => $vendorDir . '/psr/http-message/src/ResponseInterface.php',
-    'Psr\\Http\\Message\\ServerRequestInterface' => $vendorDir . '/psr/http-message/src/ServerRequestInterface.php',
-    'Psr\\Http\\Message\\StreamInterface' => $vendorDir . '/psr/http-message/src/StreamInterface.php',
-    'Psr\\Http\\Message\\UploadedFileInterface' => $vendorDir . '/psr/http-message/src/UploadedFileInterface.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Psr\\Http\\Message\\UriInterface' => $vendorDir . '/psr/http-message/src/UriInterface.php',
     'Psr\\Log\\AbstractLogger' => $vendorDir . '/psr/log/Psr/Log/AbstractLogger.php',
     'Psr\\Log\\InvalidArgumentException' => $vendorDir . '/psr/log/Psr/Log/InvalidArgumentException.php',
@@ -3483,10 +3345,6 @@ return array(
     'Psy\\CodeCleaner\\StrictTypesPass' => $vendorDir . '/psy/psysh/src/CodeCleaner/StrictTypesPass.php',
     'Psy\\CodeCleaner\\UseStatementPass' => $vendorDir . '/psy/psysh/src/CodeCleaner/UseStatementPass.php',
     'Psy\\CodeCleaner\\ValidClassNamePass' => $vendorDir . '/psy/psysh/src/CodeCleaner/ValidClassNamePass.php',
-<<<<<<< HEAD
-=======
-    'Psy\\CodeCleaner\\ValidConstantPass' => $vendorDir . '/psy/psysh/src/CodeCleaner/ValidConstantPass.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Psy\\CodeCleaner\\ValidConstructorPass' => $vendorDir . '/psy/psysh/src/CodeCleaner/ValidConstructorPass.php',
     'Psy\\CodeCleaner\\ValidFunctionNamePass' => $vendorDir . '/psy/psysh/src/CodeCleaner/ValidFunctionNamePass.php',
     'Psy\\Command\\BufferCommand' => $vendorDir . '/psy/psysh/src/Command/BufferCommand.php',
@@ -3524,10 +3382,7 @@ return array(
     'Psy\\ConsoleColorFactory' => $vendorDir . '/psy/psysh/src/ConsoleColorFactory.php',
     'Psy\\Context' => $vendorDir . '/psy/psysh/src/Context.php',
     'Psy\\ContextAware' => $vendorDir . '/psy/psysh/src/ContextAware.php',
-<<<<<<< HEAD
     'Psy\\EnvInterface' => $vendorDir . '/psy/psysh/src/EnvInterface.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Psy\\Exception\\BreakException' => $vendorDir . '/psy/psysh/src/Exception/BreakException.php',
     'Psy\\Exception\\DeprecatedException' => $vendorDir . '/psy/psysh/src/Exception/DeprecatedException.php',
     'Psy\\Exception\\ErrorException' => $vendorDir . '/psy/psysh/src/Exception/ErrorException.php',
@@ -3573,10 +3428,7 @@ return array(
     'Psy\\Shell' => $vendorDir . '/psy/psysh/src/Shell.php',
     'Psy\\Sudo' => $vendorDir . '/psy/psysh/src/Sudo.php',
     'Psy\\Sudo\\SudoVisitor' => $vendorDir . '/psy/psysh/src/Sudo/SudoVisitor.php',
-<<<<<<< HEAD
     'Psy\\SuperglobalsEnv' => $vendorDir . '/psy/psysh/src/SuperglobalsEnv.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Psy\\TabCompletion\\AutoCompleter' => $vendorDir . '/psy/psysh/src/TabCompletion/AutoCompleter.php',
     'Psy\\TabCompletion\\Matcher\\AbstractContextAwareMatcher' => $vendorDir . '/psy/psysh/src/TabCompletion/Matcher/AbstractContextAwareMatcher.php',
     'Psy\\TabCompletion\\Matcher\\AbstractDefaultParametersMatcher' => $vendorDir . '/psy/psysh/src/TabCompletion/Matcher/AbstractDefaultParametersMatcher.php',
@@ -3766,10 +3618,6 @@ return array(
     'SebastianBergmann\\Type\\UnknownType' => $vendorDir . '/sebastian/type/src/UnknownType.php',
     'SebastianBergmann\\Type\\VoidType' => $vendorDir . '/sebastian/type/src/VoidType.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
-<<<<<<< HEAD
-=======
-    'SessionUpdateTimestampHandlerInterface' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'Symfony\\Component\\Console\\Application' => $vendorDir . '/symfony/console/Application.php',
     'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => $vendorDir . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
@@ -3968,10 +3816,7 @@ return array(
     'Symfony\\Component\\Finder\\Iterator\\FileTypeFilterIterator' => $vendorDir . '/symfony/finder/Iterator/FileTypeFilterIterator.php',
     'Symfony\\Component\\Finder\\Iterator\\FilecontentFilterIterator' => $vendorDir . '/symfony/finder/Iterator/FilecontentFilterIterator.php',
     'Symfony\\Component\\Finder\\Iterator\\FilenameFilterIterator' => $vendorDir . '/symfony/finder/Iterator/FilenameFilterIterator.php',
-<<<<<<< HEAD
     'Symfony\\Component\\Finder\\Iterator\\LazyIterator' => $vendorDir . '/symfony/finder/Iterator/LazyIterator.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Symfony\\Component\\Finder\\Iterator\\MultiplePcreFilterIterator' => $vendorDir . '/symfony/finder/Iterator/MultiplePcreFilterIterator.php',
     'Symfony\\Component\\Finder\\Iterator\\PathFilterIterator' => $vendorDir . '/symfony/finder/Iterator/PathFilterIterator.php',
     'Symfony\\Component\\Finder\\Iterator\\RecursiveDirectoryIterator' => $vendorDir . '/symfony/finder/Iterator/RecursiveDirectoryIterator.php',
@@ -4498,10 +4343,7 @@ return array(
     'Symfony\\Contracts\\HttpClient\\Test\\HttpClientTestCase' => $vendorDir . '/symfony/http-client-contracts/Test/HttpClientTestCase.php',
     'Symfony\\Contracts\\HttpClient\\Test\\TestHttpServer' => $vendorDir . '/symfony/http-client-contracts/Test/TestHttpServer.php',
     'Symfony\\Contracts\\Service\\Attribute\\Required' => $vendorDir . '/symfony/service-contracts/Attribute/Required.php',
-<<<<<<< HEAD
     'Symfony\\Contracts\\Service\\Attribute\\SubscribedService' => $vendorDir . '/symfony/service-contracts/Attribute/SubscribedService.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Symfony\\Contracts\\Service\\ResetInterface' => $vendorDir . '/symfony/service-contracts/ResetInterface.php',
     'Symfony\\Contracts\\Service\\ServiceLocatorTrait' => $vendorDir . '/symfony/service-contracts/ServiceLocatorTrait.php',
     'Symfony\\Contracts\\Service\\ServiceProviderInterface' => $vendorDir . '/symfony/service-contracts/ServiceProviderInterface.php',
@@ -4521,10 +4363,6 @@ return array(
     'Symfony\\Polyfill\\Intl\\Idn\\Resources\\unidata\\Regex' => $vendorDir . '/symfony/polyfill-intl-idn/Resources/unidata/Regex.php',
     'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Normalizer.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
-<<<<<<< HEAD
-=======
-    'Symfony\\Polyfill\\Php70\\Php70' => $vendorDir . '/symfony/polyfill-php70/Php70.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
     'Symfony\\Polyfill\\Php73\\Php73' => $vendorDir . '/symfony/polyfill-php73/Php73.php',
     'Symfony\\Polyfill\\Php80\\Php80' => $vendorDir . '/symfony/polyfill-php80/Php80.php',
@@ -4547,18 +4385,11 @@ return array(
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
-<<<<<<< HEAD
-=======
-    'TypeError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
->>>>>>> parent of 31cfa1b1 (p)
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     'Webmozart\\Assert\\Assert' => $vendorDir . '/webmozart/assert/src/Assert.php',
-<<<<<<< HEAD
     'Webmozart\\Assert\\InvalidArgumentException' => $vendorDir . '/webmozart/assert/src/InvalidArgumentException.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Webmozart\\Assert\\Mixin' => $vendorDir . '/webmozart/assert/src/Mixin.php',
     'Whoops\\Exception\\ErrorException' => $vendorDir . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
     'Whoops\\Exception\\Formatter' => $vendorDir . '/filp/whoops/src/Whoops/Exception/Formatter.php',
@@ -4578,10 +4409,6 @@ return array(
     'Whoops\\Util\\Misc' => $vendorDir . '/filp/whoops/src/Whoops/Util/Misc.php',
     'Whoops\\Util\\SystemFacade' => $vendorDir . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
     'Whoops\\Util\\TemplateHelper' => $vendorDir . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
-<<<<<<< HEAD
-=======
-    'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Xendit\\ApiOperations\\Create' => $vendorDir . '/xendit/xendit-php/src/ApiOperations/Create.php',
     'Xendit\\ApiOperations\\Request' => $vendorDir . '/xendit/xendit-php/src/ApiOperations/Request.php',
     'Xendit\\ApiOperations\\Retrieve' => $vendorDir . '/xendit/xendit-php/src/ApiOperations/Retrieve.php',
@@ -4591,11 +4418,8 @@ return array(
     'Xendit\\Balance' => $vendorDir . '/xendit/xendit-php/src/Balance.php',
     'Xendit\\CardlessCredit' => $vendorDir . '/xendit/xendit-php/src/CardlessCredit.php',
     'Xendit\\Cards' => $vendorDir . '/xendit/xendit-php/src/Cards.php',
-<<<<<<< HEAD
     'Xendit\\Customers' => $vendorDir . '/xendit/xendit-php/src/Customers.php',
     'Xendit\\DirectDebit' => $vendorDir . '/xendit/xendit-php/src/DirectDebit.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'Xendit\\Disbursements' => $vendorDir . '/xendit/xendit-php/src/Disbursements.php',
     'Xendit\\EWallets' => $vendorDir . '/xendit/xendit-php/src/EWallets.php',
     'Xendit\\Exceptions\\ApiException' => $vendorDir . '/xendit/xendit-php/src/Exceptions/ApiException.php',
@@ -4605,7 +4429,6 @@ return array(
     'Xendit\\HttpClient\\ClientInterface' => $vendorDir . '/xendit/xendit-php/src/HttpClient/ClientInterface.php',
     'Xendit\\HttpClient\\GuzzleClient' => $vendorDir . '/xendit/xendit-php/src/HttpClient/GuzzleClient.php',
     'Xendit\\Invoice' => $vendorDir . '/xendit/xendit-php/src/Invoice.php',
-<<<<<<< HEAD
     'Xendit\\PayLater' => $vendorDir . '/xendit/xendit-php/src/PayLater.php',
     'Xendit\\PaymentChannels' => $vendorDir . '/xendit/xendit-php/src/PaymentChannels.php',
     'Xendit\\Payouts' => $vendorDir . '/xendit/xendit-php/src/Payouts.php',
@@ -4616,12 +4439,6 @@ return array(
     'Xendit\\Report' => $vendorDir . '/xendit/xendit-php/src/Report.php',
     'Xendit\\Retail' => $vendorDir . '/xendit/xendit-php/src/Retail.php',
     'Xendit\\Transaction' => $vendorDir . '/xendit/xendit-php/src/Transaction.php',
-=======
-    'Xendit\\Payouts' => $vendorDir . '/xendit/xendit-php/src/Payouts.php',
-    'Xendit\\QRCode' => $vendorDir . '/xendit/xendit-php/src/QRCode.php',
-    'Xendit\\Recurring' => $vendorDir . '/xendit/xendit-php/src/Recurring.php',
-    'Xendit\\Retail' => $vendorDir . '/xendit/xendit-php/src/Retail.php',
->>>>>>> parent of 31cfa1b1 (p)
     'Xendit\\VirtualAccounts' => $vendorDir . '/xendit/xendit-php/src/VirtualAccounts.php',
     'Xendit\\Xendit' => $vendorDir . '/xendit/xendit-php/src/Xendit.php',
     'Yoeunes\\Toastr\\Facades\\Toastr' => $vendorDir . '/yoeunes/toastr/src/Facades/Toastr.php',
@@ -4675,7 +4492,6 @@ return array(
     'phpDocumentor\\Reflection\\Project' => $vendorDir . '/phpdocumentor/reflection-common/src/Project.php',
     'phpDocumentor\\Reflection\\ProjectFactory' => $vendorDir . '/phpdocumentor/reflection-common/src/ProjectFactory.php',
     'phpDocumentor\\Reflection\\PseudoType' => $vendorDir . '/phpdocumentor/type-resolver/src/PseudoType.php',
-<<<<<<< HEAD
     'phpDocumentor\\Reflection\\PseudoTypes\\CallableString' => $vendorDir . '/phpdocumentor/type-resolver/src/PseudoTypes/CallableString.php',
     'phpDocumentor\\Reflection\\PseudoTypes\\False_' => $vendorDir . '/phpdocumentor/type-resolver/src/PseudoTypes/False_.php',
     'phpDocumentor\\Reflection\\PseudoTypes\\HtmlEscapedString' => $vendorDir . '/phpdocumentor/type-resolver/src/PseudoTypes/HtmlEscapedString.php',
@@ -4690,18 +4506,12 @@ return array(
     'phpDocumentor\\Reflection\\PseudoTypes\\Numeric_' => $vendorDir . '/phpdocumentor/type-resolver/src/PseudoTypes/Numeric_.php',
     'phpDocumentor\\Reflection\\PseudoTypes\\PositiveInteger' => $vendorDir . '/phpdocumentor/type-resolver/src/PseudoTypes/PositiveInteger.php',
     'phpDocumentor\\Reflection\\PseudoTypes\\TraitString' => $vendorDir . '/phpdocumentor/type-resolver/src/PseudoTypes/TraitString.php',
-=======
-    'phpDocumentor\\Reflection\\PseudoTypes\\False_' => $vendorDir . '/phpdocumentor/type-resolver/src/PseudoTypes/False_.php',
->>>>>>> parent of 31cfa1b1 (p)
     'phpDocumentor\\Reflection\\PseudoTypes\\True_' => $vendorDir . '/phpdocumentor/type-resolver/src/PseudoTypes/True_.php',
     'phpDocumentor\\Reflection\\Type' => $vendorDir . '/phpdocumentor/type-resolver/src/Type.php',
     'phpDocumentor\\Reflection\\TypeResolver' => $vendorDir . '/phpdocumentor/type-resolver/src/TypeResolver.php',
     'phpDocumentor\\Reflection\\Types\\AbstractList' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/AbstractList.php',
     'phpDocumentor\\Reflection\\Types\\AggregatedType' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/AggregatedType.php',
-<<<<<<< HEAD
     'phpDocumentor\\Reflection\\Types\\ArrayKey' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/ArrayKey.php',
-=======
->>>>>>> parent of 31cfa1b1 (p)
     'phpDocumentor\\Reflection\\Types\\Array_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Array_.php',
     'phpDocumentor\\Reflection\\Types\\Boolean' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Boolean.php',
     'phpDocumentor\\Reflection\\Types\\Callable_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Callable_.php',
@@ -4713,17 +4523,11 @@ return array(
     'phpDocumentor\\Reflection\\Types\\Expression' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Expression.php',
     'phpDocumentor\\Reflection\\Types\\Float_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Float_.php',
     'phpDocumentor\\Reflection\\Types\\Integer' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Integer.php',
-<<<<<<< HEAD
     'phpDocumentor\\Reflection\\Types\\InterfaceString' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/InterfaceString.php',
     'phpDocumentor\\Reflection\\Types\\Intersection' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Intersection.php',
     'phpDocumentor\\Reflection\\Types\\Iterable_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Iterable_.php',
     'phpDocumentor\\Reflection\\Types\\Mixed_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Mixed_.php',
     'phpDocumentor\\Reflection\\Types\\Never_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Never_.php',
-=======
-    'phpDocumentor\\Reflection\\Types\\Intersection' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Intersection.php',
-    'phpDocumentor\\Reflection\\Types\\Iterable_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Iterable_.php',
-    'phpDocumentor\\Reflection\\Types\\Mixed_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Mixed_.php',
->>>>>>> parent of 31cfa1b1 (p)
     'phpDocumentor\\Reflection\\Types\\Null_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Null_.php',
     'phpDocumentor\\Reflection\\Types\\Nullable' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Nullable.php',
     'phpDocumentor\\Reflection\\Types\\Object_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Object_.php',

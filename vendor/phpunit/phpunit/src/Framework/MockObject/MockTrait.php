@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
-<<<<<<< HEAD
 use function class_exists;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
@@ -37,11 +34,7 @@ final class MockTrait implements MockType
 
     public function generate(): string
     {
-<<<<<<< HEAD
         if (!class_exists($this->mockName, false)) {
-=======
-        if (!\class_exists($this->mockName, false)) {
->>>>>>> parent of 31cfa1b1 (p)
             eval($this->classCode);
         }
 

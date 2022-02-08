@@ -11,11 +11,8 @@ use League\Flysystem\InvalidRootException;
 use League\Flysystem\Util;
 use League\Flysystem\Util\MimeType;
 
-<<<<<<< HEAD
 use function in_array;
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
 class Ftp extends AbstractFtpAdapter
 {
     use StreamedCopyTrait;
@@ -165,11 +162,7 @@ class Ftp extends AbstractFtpAdapter
     {
         if ($this->utf8) {
             $response = ftp_raw($this->connection, "OPTS UTF8 ON");
-<<<<<<< HEAD
             if (!in_array(substr($response[0], 0, 3), ['200', '202'])) {
-=======
-            if (substr($response[0], 0, 3) !== '200') {
->>>>>>> parent of 31cfa1b1 (p)
                 throw new ConnectionRuntimeException(
                     'Could not set UTF-8 mode for connection: ' . $this->getHost() . '::' . $this->getPort()
                 );
@@ -244,11 +237,7 @@ class Ftp extends AbstractFtpAdapter
      */
     public function disconnect()
     {
-<<<<<<< HEAD
         if ($this->hasFtpConnection()) {
-=======
-        if (is_resource($this->connection)) {
->>>>>>> parent of 31cfa1b1 (p)
             @ftp_close($this->connection);
         }
 
@@ -549,12 +538,7 @@ class Ftp extends AbstractFtpAdapter
      */
     public function isConnected()
     {
-<<<<<<< HEAD
         return $this->hasFtpConnection() && $this->getRawExecResponseCode('NOOP') === 200;
-=======
-        return is_resource($this->connection)
-            && $this->getRawExecResponseCode('NOOP') === 200;
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -580,18 +564,10 @@ class Ftp extends AbstractFtpAdapter
         $connection = $this->getConnection();
 
         if ($this->isPureFtpd) {
-<<<<<<< HEAD
             $path = str_replace([' ', '[', ']'], ['\ ', '\\[', '\\]'], $path);
         }
 
         return ftp_rawlist($connection, $options . ' ' . $this->escapePath($path));
-=======
-            $path = str_replace(' ', '\ ', $path);
-            $this->escapePath($path);
-        }
-
-        return ftp_rawlist($connection, $options . ' ' . $path);
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     private function getRawExecResponseCode($command)
@@ -600,12 +576,9 @@ class Ftp extends AbstractFtpAdapter
 
         return (int) preg_replace('/\D/', '', implode(' ', $response));
     }
-<<<<<<< HEAD
 
     private function hasFtpConnection(): bool
     {
         return is_resource($this->connection) || $this->connection instanceof \FTP\Connection;
     }
-=======
->>>>>>> parent of 31cfa1b1 (p)
 }

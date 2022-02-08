@@ -82,10 +82,7 @@ class Tokenizer {
                 if ($v === '') {
                     continue;
                 }
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
                 $result->addToken($token);
             }
         }
@@ -94,17 +91,12 @@ class Tokenizer {
     }
 
     private function fillBlanks(TokenCollection $tokens, int $maxLine): TokenCollection {
-<<<<<<< HEAD
         $prev = new Token(
             0,
             'Placeholder',
             ''
         );
 
-=======
-        /** @var Token $prev */
-        $prev  = null;
->>>>>>> parent of 31cfa1b1 (p)
         $final = new TokenCollection();
 
         foreach ($tokens as $token) {

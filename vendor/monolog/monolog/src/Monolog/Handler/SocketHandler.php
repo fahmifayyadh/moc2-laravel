@@ -18,7 +18,6 @@ use Monolog\Logger;
  *
  * @author Pablo de Leon Belloc <pablolb@gmail.com>
  * @see    http://php.net/manual/en/function.fsockopen.php
-<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
  * @phpstan-import-type FormattedRecord from AbstractProcessingHandler
@@ -28,17 +27,10 @@ class SocketHandler extends AbstractProcessingHandler
     /** @var string */
     private $connectionString;
     /** @var float */
-=======
- */
-class SocketHandler extends AbstractProcessingHandler
-{
-    private $connectionString;
->>>>>>> parent of 31cfa1b1 (p)
     private $connectionTimeout;
     /** @var resource|null */
     private $resource;
     /** @var float */
-<<<<<<< HEAD
     private $timeout = 0.0;
     /** @var float */
     private $writingTimeout = 10.0;
@@ -57,23 +49,6 @@ class SocketHandler extends AbstractProcessingHandler
 
     /**
      * @param string $connectionString Socket connection string
-=======
-    private $timeout = 0;
-    /** @var float */
-    private $writingTimeout = 10;
-    private $lastSentBytes = null;
-    /** @var int */
-    private $chunkSize = null;
-    private $persistent = false;
-    private $errno;
-    private $errstr;
-    private $lastWritingAt;
-
-    /**
-     * @param string     $connectionString Socket connection string
-     * @param int|string $level            The minimum logging level at which this handler will be triggered
-     * @param bool       $bubble           Whether the messages that are handled can bubble up the stack or not
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(string $connectionString, $level = Logger::DEBUG, bool $bubble = true)
     {
@@ -85,11 +60,7 @@ class SocketHandler extends AbstractProcessingHandler
     /**
      * Connect (if necessary) and write to the socket
      *
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * @param array $record
->>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws \UnexpectedValueException
      * @throws \RuntimeException
@@ -226,11 +197,7 @@ class SocketHandler extends AbstractProcessingHandler
     /**
      * Get current chunk size
      */
-<<<<<<< HEAD
     public function getChunkSize(): ?int
-=======
-    public function getChunkSize(): int
->>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->chunkSize;
     }
@@ -248,11 +215,8 @@ class SocketHandler extends AbstractProcessingHandler
 
     /**
      * Wrapper to allow mocking
-<<<<<<< HEAD
      *
      * @return resource|false
-=======
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function pfsockopen()
     {
@@ -261,11 +225,8 @@ class SocketHandler extends AbstractProcessingHandler
 
     /**
      * Wrapper to allow mocking
-<<<<<<< HEAD
      *
      * @return resource|false
-=======
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function fsockopen()
     {
@@ -276,24 +237,18 @@ class SocketHandler extends AbstractProcessingHandler
      * Wrapper to allow mocking
      *
      * @see http://php.net/manual/en/function.stream-set-timeout.php
-<<<<<<< HEAD
      *
      * @return bool
-=======
->>>>>>> parent of 31cfa1b1 (p)
      */
     protected function streamSetTimeout()
     {
         $seconds = floor($this->timeout);
         $microseconds = round(($this->timeout - $seconds) * 1e6);
 
-<<<<<<< HEAD
         if (!is_resource($this->resource)) {
             throw new \LogicException('streamSetTimeout called but $this->resource is not a resource');
         }
 
-=======
->>>>>>> parent of 31cfa1b1 (p)
         return stream_set_timeout($this->resource, (int) $seconds, (int) $microseconds);
     }
 
@@ -301,7 +256,6 @@ class SocketHandler extends AbstractProcessingHandler
      * Wrapper to allow mocking
      *
      * @see http://php.net/manual/en/function.stream-set-chunk-size.php
-<<<<<<< HEAD
      *
      * @return int|bool
      */
@@ -315,17 +269,11 @@ class SocketHandler extends AbstractProcessingHandler
             throw new \LogicException('streamSetChunkSize called but $this->chunkSize is not set');
         }
 
-=======
-     */
-    protected function streamSetChunkSize()
-    {
->>>>>>> parent of 31cfa1b1 (p)
         return stream_set_chunk_size($this->resource, $this->chunkSize);
     }
 
     /**
      * Wrapper to allow mocking
-<<<<<<< HEAD
      *
      * @return int|bool
      */
@@ -335,17 +283,11 @@ class SocketHandler extends AbstractProcessingHandler
             throw new \LogicException('fwrite called but $this->resource is not a resource');
         }
 
-=======
-     */
-    protected function fwrite($data)
-    {
->>>>>>> parent of 31cfa1b1 (p)
         return @fwrite($this->resource, $data);
     }
 
     /**
      * Wrapper to allow mocking
-<<<<<<< HEAD
      *
      * @return mixed[]|bool
      */
@@ -361,27 +303,11 @@ class SocketHandler extends AbstractProcessingHandler
     private function validateTimeout(float $value): void
     {
         if ($value < 0) {
-=======
-     */
-    protected function streamGetMetadata()
-    {
-        return stream_get_meta_data($this->resource);
-    }
-
-    private function validateTimeout($value)
-    {
-        $ok = filter_var($value, FILTER_VALIDATE_FLOAT);
-        if ($ok === false || $value < 0) {
->>>>>>> parent of 31cfa1b1 (p)
             throw new \InvalidArgumentException("Timeout must be 0 or a positive float (got $value)");
         }
     }
 
-<<<<<<< HEAD
     private function connectIfNotConnected(): void
-=======
-    private function connectIfNotConnected()
->>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->isConnected()) {
             return;
@@ -389,12 +315,9 @@ class SocketHandler extends AbstractProcessingHandler
         $this->connect();
     }
 
-<<<<<<< HEAD
     /**
      * @phpstan-param FormattedRecord $record
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     protected function generateDataStream(array $record): string
     {
         return (string) $record['formatted'];
@@ -422,11 +345,7 @@ class SocketHandler extends AbstractProcessingHandler
         } else {
             $resource = $this->fsockopen();
         }
-<<<<<<< HEAD
         if (is_bool($resource)) {
-=======
-        if (!$resource) {
->>>>>>> parent of 31cfa1b1 (p)
             throw new \UnexpectedValueException("Failed connecting to $this->connectionString ($this->errno: $this->errstr)");
         }
         $this->resource = $resource;
@@ -462,11 +381,7 @@ class SocketHandler extends AbstractProcessingHandler
             }
             $sent += $chunk;
             $socketInfo = $this->streamGetMetadata();
-<<<<<<< HEAD
             if (is_array($socketInfo) && $socketInfo['timed_out']) {
-=======
-            if ($socketInfo['timed_out']) {
->>>>>>> parent of 31cfa1b1 (p)
                 throw new \RuntimeException("Write timed-out");
             }
 
@@ -481,22 +396,13 @@ class SocketHandler extends AbstractProcessingHandler
 
     private function writingIsTimedOut(int $sent): bool
     {
-<<<<<<< HEAD
         // convert to ms
         if (0.0 == $this->writingTimeout) {
-=======
-        $writingTimeout = (int) floor($this->writingTimeout);
-        if (0 === $writingTimeout) {
->>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
         if ($sent !== $this->lastSentBytes) {
-<<<<<<< HEAD
             $this->lastWritingAt = microtime(true);
-=======
-            $this->lastWritingAt = time();
->>>>>>> parent of 31cfa1b1 (p)
             $this->lastSentBytes = $sent;
 
             return false;
@@ -504,11 +410,7 @@ class SocketHandler extends AbstractProcessingHandler
             usleep(100);
         }
 
-<<<<<<< HEAD
         if ((microtime(true) - $this->lastWritingAt) >= $this->writingTimeout) {
-=======
-        if ((time() - $this->lastWritingAt) >= $writingTimeout) {
->>>>>>> parent of 31cfa1b1 (p)
             $this->closeSocket();
 
             return true;

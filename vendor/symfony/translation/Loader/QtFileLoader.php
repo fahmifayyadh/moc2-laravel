@@ -65,11 +65,7 @@ class QtFileLoader implements LoaderInterface
                 $translation = $translation->nextSibling;
             }
 
-<<<<<<< HEAD
             if (class_exists(FileResource::class)) {
-=======
-            if (class_exists('Symfony\Component\Config\Resource\FileResource')) {
->>>>>>> parent of 31cfa1b1 (p)
                 $catalogue->addResource(new FileResource($resource));
             }
         }

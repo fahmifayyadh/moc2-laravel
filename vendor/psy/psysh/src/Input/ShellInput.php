@@ -33,11 +33,7 @@ class ShellInput extends StringInput
      *
      * @param string $input An array of parameters from the CLI (in the argv format)
      */
-<<<<<<< HEAD
     public function __construct(string $input)
-=======
-    public function __construct($input)
->>>>>>> parent of 31cfa1b1 (p)
     {
         parent::__construct($input);
 
@@ -54,11 +50,7 @@ class ShellInput extends StringInput
         $hasCodeArgument = false;
 
         if ($definition->getArgumentCount() > 0) {
-<<<<<<< HEAD
             $args = $definition->getArguments();
-=======
-            $args    = $definition->getArguments();
->>>>>>> parent of 31cfa1b1 (p)
             $lastArg = \array_pop($args);
             foreach ($args as $arg) {
                 if ($arg instanceof CodeArgument) {
@@ -89,41 +81,24 @@ class ShellInput extends StringInput
      *
      * @throws \InvalidArgumentException When unable to parse input (should never happen)
      */
-<<<<<<< HEAD
     private function tokenize(string $input): array
-=======
-    private function tokenize($input)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $tokens = [];
         $length = \strlen($input);
         $cursor = 0;
         while ($cursor < $length) {
             if (\preg_match('/\s+/A', $input, $match, 0, $cursor)) {
-<<<<<<< HEAD
             } elseif (\preg_match('/([^="\'\s]+?)(=?)('.StringInput::REGEX_QUOTED_STRING.'+)/A', $input, $match, 0, $cursor)) {
                 $tokens[] = [
                     $match[1].$match[2].\stripcslashes(\str_replace(['"\'', '\'"', '\'\'', '""'], '', \substr($match[3], 1, \strlen($match[3]) - 2))),
                     \stripcslashes(\substr($input, $cursor)),
                 ];
             } elseif (\preg_match('/'.StringInput::REGEX_QUOTED_STRING.'/A', $input, $match, 0, $cursor)) {
-=======
-            } elseif (\preg_match('/([^="\'\s]+?)(=?)(' . StringInput::REGEX_QUOTED_STRING . '+)/A', $input, $match, 0, $cursor)) {
-                $tokens[] = [
-                    $match[1] . $match[2] . \stripcslashes(\str_replace(['"\'', '\'"', '\'\'', '""'], '', \substr($match[3], 1, \strlen($match[3]) - 2))),
-                    \stripcslashes(\substr($input, $cursor)),
-                ];
-            } elseif (\preg_match('/' . StringInput::REGEX_QUOTED_STRING . '/A', $input, $match, 0, $cursor)) {
->>>>>>> parent of 31cfa1b1 (p)
                 $tokens[] = [
                     \stripcslashes(\substr($match[0], 1, \strlen($match[0]) - 2)),
                     \stripcslashes(\substr($input, $cursor)),
                 ];
-<<<<<<< HEAD
             } elseif (\preg_match('/'.StringInput::REGEX_STRING.'/A', $input, $match, 0, $cursor)) {
-=======
-            } elseif (\preg_match('/' . StringInput::REGEX_STRING . '/A', $input, $match, 0, $cursor)) {
->>>>>>> parent of 31cfa1b1 (p)
                 $tokens[] = [
                     \stripcslashes($match[1]),
                     \stripcslashes(\substr($input, $cursor)),
@@ -175,11 +150,7 @@ class ShellInput extends StringInput
      *
      * @throws \RuntimeException When too many arguments are given
      */
-<<<<<<< HEAD
     private function parseShellArgument(string $token, string $rest)
-=======
-    private function parseShellArgument($token, $rest)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $c = \count($this->arguments);
 
@@ -229,11 +200,7 @@ class ShellInput extends StringInput
      *
      * @param string $token The current token
      */
-<<<<<<< HEAD
     private function parseShortOption(string $token)
-=======
-    private function parseShortOption($token)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $name = \substr($token, 1);
 
@@ -256,11 +223,7 @@ class ShellInput extends StringInput
      *
      * @throws \RuntimeException When option given doesn't exist
      */
-<<<<<<< HEAD
     private function parseShortOptionSet(string $name)
-=======
-    private function parseShortOptionSet($name)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $len = \strlen($name);
         for ($i = 0; $i < $len; $i++) {
@@ -284,25 +247,12 @@ class ShellInput extends StringInput
      *
      * @param string $token The current token
      */
-<<<<<<< HEAD
     private function parseLongOption(string $token)
-=======
-    private function parseLongOption($token)
->>>>>>> parent of 31cfa1b1 (p)
     {
         $name = \substr($token, 2);
 
         if (false !== $pos = \strpos($name, '=')) {
-<<<<<<< HEAD
             if (($value = \substr($name, $pos + 1)) === '') {
-=======
-            if (0 === \strlen($value = \substr($name, $pos + 1))) {
-                // if no value after "=" then substr() returns "" since php7 only, false before
-                // see http://php.net/manual/fr/migration70.incompatible.php#119151
-                if (PHP_VERSION_ID < 70000 && false === $value) {
-                    $value = '';
-                }
->>>>>>> parent of 31cfa1b1 (p)
                 \array_unshift($this->parsed, [$value, null]);
             }
             $this->addLongOption(\substr($name, 0, $pos), $value);
@@ -319,11 +269,7 @@ class ShellInput extends StringInput
      *
      * @throws \RuntimeException When option given doesn't exist
      */
-<<<<<<< HEAD
     private function addShortOption(string $shortcut, $value)
-=======
-    private function addShortOption($shortcut, $value)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->definition->hasShortcut($shortcut)) {
             throw new \RuntimeException(\sprintf('The "-%s" option does not exist.', $shortcut));
@@ -340,11 +286,7 @@ class ShellInput extends StringInput
      *
      * @throws \RuntimeException When option given doesn't exist
      */
-<<<<<<< HEAD
     private function addLongOption(string $name, $value)
-=======
-    private function addLongOption($name, $value)
->>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->definition->hasOption($name)) {
             throw new \RuntimeException(\sprintf('The "--%s" option does not exist.', $name));
@@ -368,11 +310,7 @@ class ShellInput extends StringInput
             }
         }
 
-<<<<<<< HEAD
         if ($value === null) {
-=======
-        if (null === $value) {
->>>>>>> parent of 31cfa1b1 (p)
             if ($option->isValueRequired()) {
                 throw new \RuntimeException(\sprintf('The "--%s" option requires a value.', $name));
             }

@@ -32,11 +32,7 @@ class YamlFileLoader extends FileLoader
     protected function loadResource($resource)
     {
         if (null === $this->yamlParser) {
-<<<<<<< HEAD
             if (!class_exists(\Symfony\Component\Yaml\Parser::class)) {
-=======
-            if (!class_exists('Symfony\Component\Yaml\Parser')) {
->>>>>>> parent of 31cfa1b1 (p)
                 throw new LogicException('Loading translations from the YAML format requires the Symfony Yaml component.');
             }
 

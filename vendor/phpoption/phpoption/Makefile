@@ -11,7 +11,6 @@ phpstan-analyze-src:
 phpstan-analyze-tests:
 	@docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint vendor/bin/phpstan --rm registry.gitlab.com/grahamcampbell/php:7.4-cli analyze tests -c phpstan.tests.neon.dist
 
-<<<<<<< HEAD
 phpstan-baseline:
 	@docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint vendor/bin/phpstan --rm registry.gitlab.com/grahamcampbell/php:7.4-cli analyze src -c phpstan.src.neon.dist --generate-baseline
 
@@ -20,13 +19,6 @@ psalm-analyze:
 
 psalm-show-info:
 	@docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint vendor/bin/psalm .phar--rm registry.gitlab.com/grahamcampbell/php:7.4-cli --show-info=true
-=======
-psalm-analyze:
-	@docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint vendor/bin/psalm --rm registry.gitlab.com/grahamcampbell/php:7.4-cli
-
-psalm-show-info:
-	@docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint vendor/bin/psalm --rm registry.gitlab.com/grahamcampbell/php:7.4-cli --show-info=true
->>>>>>> parent of 31cfa1b1 (p)
 
 test: phpunit phpstan-analyze-src phpstan-analyze-tests psalm-analyze
 

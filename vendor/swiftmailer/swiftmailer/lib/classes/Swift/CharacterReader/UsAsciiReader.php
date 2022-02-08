@@ -27,11 +27,7 @@ class Swift_CharacterReader_UsAsciiReader implements Swift_CharacterReader
      */
     public function getCharPositions($string, $startOffset, &$currentMap, &$ignoredChars)
     {
-<<<<<<< HEAD
         $strlen = \strlen($string);
-=======
-        $strlen = strlen($string);
->>>>>>> parent of 31cfa1b1 (p)
         $ignoredChars = '';
         for ($i = 0; $i < $strlen; ++$i) {
             if ($string[$i] > "\x07F") {
@@ -69,11 +65,7 @@ class Swift_CharacterReader_UsAsciiReader implements Swift_CharacterReader
     public function validateByteSequence($bytes, $size)
     {
         $byte = reset($bytes);
-<<<<<<< HEAD
         if (1 == \count($bytes) && $byte >= 0x00 && $byte <= 0x7F) {
-=======
-        if (1 == count($bytes) && $byte >= 0x00 && $byte <= 0x7F) {
->>>>>>> parent of 31cfa1b1 (p)
             return 0;
         }
 

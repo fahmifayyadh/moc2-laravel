@@ -5,40 +5,24 @@ namespace PhpParser\Node\Expr;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
-<<<<<<< HEAD
 use PhpParser\Node\VariadicPlaceholder;
 
 class MethodCall extends CallLike
-=======
-
-class MethodCall extends Expr
->>>>>>> parent of 31cfa1b1 (p)
 {
     /** @var Expr Variable holding object */
     public $var;
     /** @var Identifier|Expr Method name */
     public $name;
-<<<<<<< HEAD
     /** @var array<Arg|VariadicPlaceholder> Arguments */
-=======
-    /** @var Arg[] Arguments */
->>>>>>> parent of 31cfa1b1 (p)
     public $args;
 
     /**
      * Constructs a function call node.
      *
-<<<<<<< HEAD
      * @param Expr                           $var        Variable holding object
      * @param string|Identifier|Expr         $name       Method name
      * @param array<Arg|VariadicPlaceholder> $args       Arguments
      * @param array                          $attributes Additional attributes
-=======
-     * @param Expr                   $var        Variable holding object
-     * @param string|Identifier|Expr $name       Method name
-     * @param Arg[]                  $args       Arguments
-     * @param array                  $attributes Additional attributes
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(Expr $var, $name, array $args = [], array $attributes = []) {
         $this->attributes = $attributes;
@@ -54,11 +38,8 @@ class MethodCall extends Expr
     public function getType() : string {
         return 'Expr_MethodCall';
     }
-<<<<<<< HEAD
 
     public function getRawArgs(): array {
         return $this->args;
     }
-=======
->>>>>>> parent of 31cfa1b1 (p)
 }

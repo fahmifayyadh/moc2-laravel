@@ -4,19 +4,11 @@ declare(strict_types=1);
 
 namespace League\MimeTypeDetection;
 
-<<<<<<< HEAD
 use const FILEINFO_MIME_TYPE;
 
 use const PATHINFO_EXTENSION;
 use finfo;
 
-=======
-use finfo;
-
-use const FILEINFO_MIME_TYPE;
-use const PATHINFO_EXTENSION;
-
->>>>>>> parent of 31cfa1b1 (p)
 class FinfoMimeTypeDetector implements MimeTypeDetector
 {
     private const INCONCLUSIVE_MIME_TYPES = ['application/x-empty', 'text/plain', 'text/x-asm'];
@@ -31,7 +23,6 @@ class FinfoMimeTypeDetector implements MimeTypeDetector
      */
     private $extensionMap;
 
-<<<<<<< HEAD
     /**
      * @var int|null
      */
@@ -45,22 +36,12 @@ class FinfoMimeTypeDetector implements MimeTypeDetector
         $this->finfo = new finfo(FILEINFO_MIME_TYPE, $magicFile);
         $this->extensionMap = $extensionMap ?: new GeneratedExtensionToMimeTypeMap();
         $this->bufferSampleSize = $bufferSampleSize;
-=======
-    public function __construct(string $magicFile = '', ExtensionToMimeTypeMap $extensionMap = null)
-    {
-        $this->finfo = new finfo(FILEINFO_MIME_TYPE, $magicFile);
-        $this->extensionMap = $extensionMap ?: new GeneratedExtensionToMimeTypeMap();
->>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function detectMimeType(string $path, $contents): ?string
     {
         $mimeType = is_string($contents)
-<<<<<<< HEAD
             ? (@$this->finfo->buffer($this->takeSample($contents)) ?: null)
-=======
-            ? (@$this->finfo->buffer($contents) ?: null)
->>>>>>> parent of 31cfa1b1 (p)
             : null;
 
         if ($mimeType !== null && ! in_array($mimeType, self::INCONCLUSIVE_MIME_TYPES)) {
@@ -84,7 +65,6 @@ class FinfoMimeTypeDetector implements MimeTypeDetector
 
     public function detectMimeTypeFromBuffer(string $contents): ?string
     {
-<<<<<<< HEAD
         return @$this->finfo->buffer($this->takeSample($contents)) ?: null;
     }
 
@@ -97,9 +77,3 @@ class FinfoMimeTypeDetector implements MimeTypeDetector
         return (string) substr($contents, 0, $this->bufferSampleSize);
     }
 }
-=======
-        return @$this->finfo->buffer($contents) ?: null;
-    }
-}
-
->>>>>>> parent of 31cfa1b1 (p)

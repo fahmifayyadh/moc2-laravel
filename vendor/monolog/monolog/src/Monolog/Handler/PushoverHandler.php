@@ -13,17 +13,13 @@ namespace Monolog\Handler;
 
 use Monolog\Logger;
 use Monolog\Utils;
-<<<<<<< HEAD
 use Psr\Log\LogLevel;
-=======
->>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Sends notifications through the pushover api to mobile phones
  *
  * @author Sebastian Göttschkes <sebastian.goettschkes@googlemail.com>
  * @see    https://www.pushover.net/api
-<<<<<<< HEAD
  *
  * @phpstan-import-type FormattedRecord from AbstractProcessingHandler
  * @phpstan-import-type Level from \Monolog\Logger
@@ -49,30 +45,12 @@ class PushoverHandler extends SocketHandler
     /** @var int */
     private $emergencyLevel;
     /** @var bool */
-=======
- */
-class PushoverHandler extends SocketHandler
-{
-    private $token;
-    private $users;
-    private $title;
-    private $user;
-    private $retry;
-    private $expire;
-
-    private $highPriorityLevel;
-    private $emergencyLevel;
->>>>>>> parent of 31cfa1b1 (p)
     private $useFormattedMessage = false;
 
     /**
      * All parameters that can be sent to Pushover
      * @see https://pushover.net/api
-<<<<<<< HEAD
      * @var array<string, bool>
-=======
-     * @var array
->>>>>>> parent of 31cfa1b1 (p)
      */
     private $parameterNames = [
         'token' => true,
@@ -93,11 +71,7 @@ class PushoverHandler extends SocketHandler
     /**
      * Sounds the api supports by default
      * @see https://pushover.net/api#sounds
-<<<<<<< HEAD
      * @var string[]
-=======
-     * @var array
->>>>>>> parent of 31cfa1b1 (p)
      */
     private $sounds = [
         'pushover', 'bike', 'bugle', 'cashregister', 'classical', 'cosmic', 'falling', 'gamelan', 'incoming',
@@ -109,11 +83,6 @@ class PushoverHandler extends SocketHandler
      * @param string       $token             Pushover api token
      * @param string|array $users             Pushover user id or array of ids the message will be sent to
      * @param string|null  $title             Title sent to the Pushover API
-<<<<<<< HEAD
-=======
-     * @param string|int   $level             The minimum logging level at which this handler will be triggered
-     * @param bool         $bubble            Whether the messages that are handled can bubble up the stack or not
->>>>>>> parent of 31cfa1b1 (p)
      * @param bool         $useSSL            Whether to connect via SSL. Required when pushing messages to users that are not
      *                                        the pushover.net app owner. OpenSSL is required for this option.
      * @param string|int   $highPriorityLevel The minimum logging level at which this handler will start
@@ -124,13 +93,10 @@ class PushoverHandler extends SocketHandler
      *                                        send the same notification to the user.
      * @param int          $expire            The expire parameter specifies how many seconds your notification will continue
      *                                        to be retried for (every retry seconds).
-<<<<<<< HEAD
      *
      * @phpstan-param string|array<int|string>    $users
      * @phpstan-param Level|LevelName|LogLevel::* $highPriorityLevel
      * @phpstan-param Level|LevelName|LogLevel::* $emergencyLevel
-=======
->>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(
         string $token,
@@ -149,11 +115,7 @@ class PushoverHandler extends SocketHandler
 
         $this->token = $token;
         $this->users = (array) $users;
-<<<<<<< HEAD
         $this->title = $title ?: (string) gethostname();
-=======
-        $this->title = $title ?: gethostname();
->>>>>>> parent of 31cfa1b1 (p)
         $this->highPriorityLevel = Logger::toMonologLevel($highPriorityLevel);
         $this->emergencyLevel = Logger::toMonologLevel($emergencyLevel);
         $this->retry = $retry;
@@ -167,12 +129,9 @@ class PushoverHandler extends SocketHandler
         return $this->buildHeader($content) . $content;
     }
 
-<<<<<<< HEAD
     /**
      * @phpstan-param FormattedRecord $record
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     private function buildContent(array $record): string
     {
         // Pushover has a limit of 512 characters on title and message combined.
@@ -237,14 +196,11 @@ class PushoverHandler extends SocketHandler
         $this->user = null;
     }
 
-<<<<<<< HEAD
     /**
      * @param int|string $value
      *
      * @phpstan-param Level|LevelName|LogLevel::* $value
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function setHighPriorityLevel($value): self
     {
         $this->highPriorityLevel = Logger::toMonologLevel($value);
@@ -252,14 +208,11 @@ class PushoverHandler extends SocketHandler
         return $this;
     }
 
-<<<<<<< HEAD
     /**
      * @param int|string $value
      *
      * @phpstan-param Level|LevelName|LogLevel::* $value
      */
-=======
->>>>>>> parent of 31cfa1b1 (p)
     public function setEmergencyLevel($value): self
     {
         $this->emergencyLevel = Logger::toMonologLevel($value);

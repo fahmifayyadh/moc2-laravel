@@ -22,11 +22,7 @@
     "source":     "https://github.com/paragonie/random_compat"
   },
   "require": {
-<<<<<<< HEAD
     "php": ">= 7"
-=======
-    "php": "^7"
->>>>>>> parent of 31cfa1b1 (p)
   },
   "require-dev": {
     "vimeo/psalm": "^1",

@@ -49,11 +49,7 @@ class DateCaster
 
     public static function castInterval(\DateInterval $interval, array $a, Stub $stub, $isNested, $filter)
     {
-<<<<<<< HEAD
         $now = new \DateTimeImmutable('@0', new \DateTimeZone('UTC'));
-=======
-        $now = new \DateTimeImmutable();
->>>>>>> parent of 31cfa1b1 (p)
         $numberOfSeconds = $now->add($interval)->getTimestamp() - $now->getTimestamp();
         $title = number_format($numberOfSeconds, 0, '.', ' ').'s';
 
@@ -67,12 +63,8 @@ class DateCaster
         $format = '%R ';
 
         if (0 === $i->y && 0 === $i->m && ($i->h >= 24 || $i->i >= 60 || $i->s >= 60)) {
-<<<<<<< HEAD
             $d = new \DateTimeImmutable('@0', new \DateTimeZone('UTC'));
             $i = $d->diff($d->add($i)); // recalculate carry over points
-=======
-            $i = date_diff($d = new \DateTime(), date_add(clone $d, $i)); // recalculate carry over points
->>>>>>> parent of 31cfa1b1 (p)
             $format .= 0 < $i->days ? '%ad ' : '';
         } else {
             $format .= ($i->y ? '%yy ' : '').($i->m ? '%mm ' : '').($i->d ? '%dd ' : '');
@@ -101,11 +93,7 @@ class DateCaster
         if (\PHP_VERSION_ID >= 70107) { // see https://bugs.php.net/74639
             foreach (clone $p as $i => $d) {
                 if (self::PERIOD_LIMIT === $i) {
-<<<<<<< HEAD
                     $now = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
-=======
-                    $now = new \DateTimeImmutable();
->>>>>>> parent of 31cfa1b1 (p)
                     $dates[] = sprintf('%s more', ($end = $p->getEndDate())
                         ? ceil(($end->format('U.u') - $d->format('U.u')) / ((int) $now->add($p->getDateInterval())->format('U.u') - (int) $now->format('U.u')))
                         : $p->recurrences - $i
