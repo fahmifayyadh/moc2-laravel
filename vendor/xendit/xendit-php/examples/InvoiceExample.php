@@ -11,14 +11,11 @@
  * @link     https://api.xendit.co
  */
 
-use Dotenv\Dotenv;
 use Xendit\Xendit;
 
 require 'vendor/autoload.php';
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->load();
-Xendit::setApiKey(getenv('SECRET_API_KEY'));
+Xendit::setApiKey('SECRET_API_KEY');
 
 $params = ['external_id' => 'demo_147580196270',
     'payer_email' => 'sample_email@xendit.co',
@@ -34,8 +31,14 @@ $id = $createInvoice['id'];
 $getInvoice = \Xendit\Invoice::retrieve($id);
 var_dump($getInvoice);
 
-$expireInvoice = \Xendit\Invoice::expireInvoice($id);
+$params = [
+    'for-user-id' => '<enter user id>'
+];
+$expireInvoice = \Xendit\Invoice::expireInvoice($id, $params);
 var_dump($expireInvoice);
 
-$getAllInvoice = \Xendit\Invoice::retrieveAll();
+$retrieveAll = [
+    'for-user-id' => '<enter user id>'
+];
+$getAllInvoice = \Xendit\Invoice::retrieveAll($retrieveAll);
 var_dump(($getAllInvoice));

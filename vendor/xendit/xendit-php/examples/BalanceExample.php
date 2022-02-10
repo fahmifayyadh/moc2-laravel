@@ -11,14 +11,14 @@
  * @link     https://api.xendit.co
  */
 
-use Dotenv\Dotenv;
 use Xendit\Xendit;
 
 require 'vendor/autoload.php';
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->load();
-Xendit::setApiKey(getenv('SECRET_API_KEY'));
+Xendit::setApiKey('SECRET_API_KEY');
 
-$getBalance = \Xendit\Balance::getBalance('CASH');
+$params = array(
+    'for-user-id' => '<sub account user id>' //The sub-account user-id that you want to make this transaction for (Optional).
+);
+$getBalance = \Xendit\Balance::getBalance('CASH', $params);
 var_dump($getBalance);
