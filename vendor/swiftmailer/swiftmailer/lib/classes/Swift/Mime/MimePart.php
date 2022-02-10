@@ -169,7 +169,11 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
     protected function fixHeaders()
     {
         parent::fixHeaders();
+<<<<<<< HEAD
+        if (\count($this->getChildren())) {
+=======
         if (count($this->getChildren())) {
+>>>>>>> parent of 31cfa1b1 (p)
             $this->setHeaderParameter('Content-Type', 'charset', null);
             $this->setHeaderParameter('Content-Type', 'format', null);
             $this->setHeaderParameter('Content-Type', 'delsp', null);
@@ -189,8 +193,13 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
     /** Encode charset when charset is not utf-8 */
     protected function convertString($string)
     {
+<<<<<<< HEAD
+        $charset = strtolower($this->getCharset() ?? '');
+        if (!\in_array($charset, ['utf-8', 'iso-8859-1', 'iso-8859-15', ''])) {
+=======
         $charset = strtolower($this->getCharset());
         if (!in_array($charset, ['utf-8', 'iso-8859-1', 'iso-8859-15', ''])) {
+>>>>>>> parent of 31cfa1b1 (p)
             return mb_convert_encoding($string, $charset, 'utf-8');
         }
 

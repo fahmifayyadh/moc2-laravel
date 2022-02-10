@@ -86,7 +86,11 @@ class NativeSessionStorage implements SessionStorageInterface
      * name, "PHPSESSID"
      * referer_check, ""
      * serialize_handler, "php"
+<<<<<<< HEAD
+     * use_strict_mode, "1"
+=======
      * use_strict_mode, "0"
+>>>>>>> parent of 31cfa1b1 (p)
      * use_cookies, "1"
      * use_only_cookies, "1"
      * use_trans_sid, "0"
@@ -256,7 +260,11 @@ class NativeSessionStorage implements SessionStorageInterface
 
         // Register error handler to add information about the current save handler
         $previousHandler = set_error_handler(function ($type, $msg, $file, $line) use (&$previousHandler) {
+<<<<<<< HEAD
+            if (\E_WARNING === $type && str_starts_with($msg, 'session_write_close():')) {
+=======
             if (\E_WARNING === $type && 0 === strpos($msg, 'session_write_close():')) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $handler = $this->saveHandler instanceof SessionHandlerProxy ? $this->saveHandler->getHandler() : $this->saveHandler;
                 $msg = sprintf('session_write_close(): Failed to write session data with "%s" handler', \get_class($handler));
             }
@@ -389,6 +397,12 @@ class NativeSessionStorage implements SessionStorageInterface
                     $this->emulateSameSite = $value;
                     continue;
                 }
+<<<<<<< HEAD
+                if ('cookie_secure' === $key && 'auto' === $value) {
+                    continue;
+                }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
                 ini_set('url_rewriter.tags' !== $key ? 'session.'.$key : $key, $value);
             }
         }

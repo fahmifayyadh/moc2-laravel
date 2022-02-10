@@ -32,6 +32,11 @@ trait TranslatorTrait
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
+     *
+     * @return string
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getLocale()
     {
@@ -136,9 +141,17 @@ EOF;
      * which is subject to the new BSD license (http://framework.zend.com/license/new-bsd).
      * Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
      */
+<<<<<<< HEAD
+    private function getPluralizationRule(float $number, string $locale): int
+    {
+        $number = abs($number);
+
+        switch ('pt_BR' !== $locale && 'en_US_POSIX' !== $locale && \strlen($locale) > 3 ? substr($locale, 0, strrpos($locale, '_')) : $locale) {
+=======
     private function getPluralizationRule(int $number, string $locale): int
     {
         switch ('pt_BR' !== $locale && \strlen($locale) > 3 ? substr($locale, 0, strrpos($locale, '_')) : $locale) {
+>>>>>>> parent of 31cfa1b1 (p)
             case 'af':
             case 'bn':
             case 'bg':
@@ -147,6 +160,10 @@ EOF;
             case 'de':
             case 'el':
             case 'en':
+<<<<<<< HEAD
+            case 'en_US_POSIX':
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             case 'eo':
             case 'es':
             case 'et':
@@ -205,7 +222,11 @@ EOF;
             case 'pt_BR':
             case 'ti':
             case 'wa':
+<<<<<<< HEAD
+                return ($number < 2) ? 0 : 1;
+=======
                 return ((0 == $number) || (1 == $number)) ? 0 : 1;
+>>>>>>> parent of 31cfa1b1 (p)
 
             case 'be':
             case 'bs':

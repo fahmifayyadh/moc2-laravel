@@ -41,8 +41,13 @@ class NumberComparator extends Comparator
      */
     public function __construct(?string $test)
     {
+<<<<<<< HEAD
+        if (null === $test || !preg_match('#^\s*(==|!=|[<>]=?)?\s*([0-9\.]+)\s*([kmg]i?)?\s*$#i', $test, $matches)) {
+            throw new \InvalidArgumentException(sprintf('Don\'t understand "%s" as a number test.', $test ?? 'null'));
+=======
         if (!preg_match('#^\s*(==|!=|[<>]=?)?\s*([0-9\.]+)\s*([kmg]i?)?\s*$#i', $test, $matches)) {
             throw new \InvalidArgumentException(sprintf('Don\'t understand "%s" as a number test.', $test));
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $target = $matches[2];
@@ -74,6 +79,10 @@ class NumberComparator extends Comparator
         }
 
         $this->setTarget($target);
+<<<<<<< HEAD
+        $this->setOperator($matches[1] ?? '==');
+=======
         $this->setOperator(isset($matches[1]) ? $matches[1] : '==');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

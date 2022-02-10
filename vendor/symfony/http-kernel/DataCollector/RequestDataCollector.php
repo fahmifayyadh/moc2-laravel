@@ -53,12 +53,16 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
             }
         }
 
+<<<<<<< HEAD
+        $content = $request->getContent();
+=======
         try {
             $content = $request->getContent();
         } catch (\LogicException $e) {
             // the user already got the request content as a resource
             $content = false;
         }
+>>>>>>> parent of 31cfa1b1 (p)
 
         $sessionMetadata = [];
         $sessionAttributes = [];
@@ -93,7 +97,11 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
             'format' => $request->getRequestFormat(),
             'content' => $content,
             'content_type' => $response->headers->get('Content-Type', 'text/html'),
+<<<<<<< HEAD
+            'status_text' => Response::$statusTexts[$statusCode] ?? '',
+=======
             'status_text' => isset(Response::$statusTexts[$statusCode]) ? Response::$statusTexts[$statusCode] : '',
+>>>>>>> parent of 31cfa1b1 (p)
             'status_code' => $statusCode,
             'request_query' => $request->query->all(),
             'request_request' => $request->request->all(),
@@ -155,7 +163,11 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
                     'method' => $request->getMethod(),
                     'controller' => $this->parseController($request->attributes->get('_controller')),
                     'status_code' => $statusCode,
+<<<<<<< HEAD
+                    'status_text' => Response::$statusTexts[$statusCode],
+=======
                     'status_text' => Response::$statusTexts[(int) $statusCode],
+>>>>>>> parent of 31cfa1b1 (p)
                 ]),
                 0, '/', null, $request->isSecure(), true, false, 'lax'
             ));
@@ -344,12 +356,20 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
      */
     public function getRedirect()
     {
+<<<<<<< HEAD
+        return $this->data['redirect'] ?? false;
+=======
         return isset($this->data['redirect']) ? $this->data['redirect'] : false;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function getForwardToken()
     {
+<<<<<<< HEAD
+        return $this->data['forward_token'] ?? null;
+=======
         return isset($this->data['forward_token']) ? $this->data['forward_token'] : null;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -393,13 +413,21 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
     /**
      * Parse a controller.
      *
+<<<<<<< HEAD
+     * @param string|object|array|null $controller The controller to parse
+=======
      * @param mixed $controller The controller to parse
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return array|string An array of controller data or a simple string
      */
     protected function parseController($controller)
     {
+<<<<<<< HEAD
+        if (\is_string($controller) && str_contains($controller, '::')) {
+=======
         if (\is_string($controller) && false !== strpos($controller, '::')) {
+>>>>>>> parent of 31cfa1b1 (p)
             $controller = explode('::', $controller);
         }
 
@@ -436,7 +464,11 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
                 'line' => $r->getStartLine(),
             ];
 
+<<<<<<< HEAD
+            if (str_contains($r->name, '{closure}')) {
+=======
             if (false !== strpos($r->name, '{closure}')) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return $controller;
             }
             $controller['method'] = $r->name;

@@ -9,6 +9,12 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function strlen;
+use function substr;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that asserts that the string it is evaluated for ends with a given
  * suffix.
@@ -41,6 +47,10 @@ final class StringEndsWith extends Constraint
      */
     protected function matches($other): bool
     {
+<<<<<<< HEAD
+        return substr($other, 0 - strlen($this->suffix)) === $this->suffix;
+=======
         return \substr($other, 0 - \strlen($this->suffix)) === $this->suffix;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

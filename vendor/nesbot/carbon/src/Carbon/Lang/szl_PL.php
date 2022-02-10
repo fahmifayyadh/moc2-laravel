@@ -33,9 +33,15 @@ return array_replace_recursive(require __DIR__.'/en.php', [
     'm' => ':count mjeśůnc',
     'a_month' => ':count mjeśůnc',
 
+<<<<<<< HEAD
+    'week' => ':count tydźyń',
+    'w' => ':count tydźyń',
+    'a_week' => ':count tydźyń',
+=======
     'week' => ':count Tydźyń',
     'w' => ':count Tydźyń',
     'a_week' => ':count Tydźyń',
+>>>>>>> parent of 31cfa1b1 (p)
 
     'day' => ':count dźyń',
     'd' => ':count dźyń',
@@ -45,6 +51,15 @@ return array_replace_recursive(require __DIR__.'/en.php', [
     'h' => ':count godzina',
     'a_hour' => ':count godzina',
 
+<<<<<<< HEAD
+    'minute' => ':count minuta',
+    'min' => ':count minuta',
+    'a_minute' => ':count minuta',
+
+    'second' => ':count sekůnda',
+    's' => ':count sekůnda',
+    'a_second' => ':count sekůnda',
+=======
     'minute' => ':count Minuta',
     'min' => ':count Minuta',
     'a_minute' => ':count Minuta',
@@ -52,4 +67,5 @@ return array_replace_recursive(require __DIR__.'/en.php', [
     'second' => ':count Sekůnda',
     's' => ':count Sekůnda',
     'a_second' => ':count Sekůnda',
+>>>>>>> parent of 31cfa1b1 (p)
 ]);

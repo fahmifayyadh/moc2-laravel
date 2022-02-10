@@ -45,8 +45,13 @@ class TraceCommand extends Command
         $this
             ->setName('trace')
             ->setDefinition([
+<<<<<<< HEAD
+                new InputOption('include-psy', 'p', InputOption::VALUE_NONE, 'Include Psy in the call stack.'),
+                new InputOption('num', 'n', InputOption::VALUE_REQUIRED, 'Only include NUM lines.'),
+=======
                 new InputOption('include-psy', 'p', InputOption::VALUE_NONE,     'Include Psy in the call stack.'),
                 new InputOption('num',         'n', InputOption::VALUE_REQUIRED, 'Only include NUM lines.'),
+>>>>>>> parent of 31cfa1b1 (p)
 
                 $grep,
                 $insensitive,
@@ -90,7 +95,11 @@ HELP
      *
      * @return array Formatted stacktrace lines
      */
+<<<<<<< HEAD
+    protected function getBacktrace(\Exception $e, int $count = null, bool $includePsy = true): array
+=======
     protected function getBacktrace(\Exception $e, $count = null, $includePsy = true)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return TraceFormatter::formatTrace($e, $this->filter, $count, $includePsy);
     }

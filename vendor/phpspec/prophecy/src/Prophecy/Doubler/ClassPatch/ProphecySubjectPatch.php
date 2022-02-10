@@ -52,7 +52,11 @@ class ProphecySubjectPatch implements ClassPatchInterface
                 continue;
             }
 
+<<<<<<< HEAD
+            if (!$method->getReturnTypeNode()->hasReturnStatement()) {
+=======
             if ($method->getReturnTypeNode()->isVoid()) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $method->setCode(
                     '$this->getProphecy()->makeProphecyMethodCall(__FUNCTION__, func_get_args());'
                 );
@@ -92,7 +96,11 @@ PHP
         $__call->setCode(<<<PHP
 throw new \Prophecy\Exception\Doubler\MethodNotFoundException(
     sprintf('Method `%s::%s()` not found.', get_class(\$this), func_get_arg(0)),
+<<<<<<< HEAD
+    get_class(\$this), func_get_arg(0)
+=======
     \$this->getProphecy(), func_get_arg(0)
+>>>>>>> parent of 31cfa1b1 (p)
 );
 PHP
         );

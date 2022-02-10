@@ -23,7 +23,11 @@ class LinkStub extends ConstStub
     private static $vendorRoots;
     private static $composerRoots;
 
+<<<<<<< HEAD
+    public function __construct(string $label, int $line = 0, string $href = null)
+=======
     public function __construct($label, int $line = 0, $href = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->value = $label;
 
@@ -33,12 +37,20 @@ class LinkStub extends ConstStub
         if (!\is_string($href)) {
             return;
         }
+<<<<<<< HEAD
+        if (str_starts_with($href, 'file://')) {
+=======
         if (0 === strpos($href, 'file://')) {
+>>>>>>> parent of 31cfa1b1 (p)
             if ($href === $label) {
                 $label = substr($label, 7);
             }
             $href = substr($href, 7);
+<<<<<<< HEAD
+        } elseif (str_contains($href, '://')) {
+=======
         } elseif (false !== strpos($href, '://')) {
+>>>>>>> parent of 31cfa1b1 (p)
             $this->attr['href'] = $href;
 
             return;
@@ -69,7 +81,11 @@ class LinkStub extends ConstStub
             self::$vendorRoots = [];
 
             foreach (get_declared_classes() as $class) {
+<<<<<<< HEAD
+                if ('C' === $class[0] && str_starts_with($class, 'ComposerAutoloaderInit')) {
+=======
                 if ('C' === $class[0] && 0 === strpos($class, 'ComposerAutoloaderInit')) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $r = new \ReflectionClass($class);
                     $v = \dirname($r->getFileName(), 2);
                     if (file_exists($v.'/composer/installed.json')) {
@@ -85,7 +101,11 @@ class LinkStub extends ConstStub
         }
 
         foreach (self::$vendorRoots as $root) {
+<<<<<<< HEAD
+            if ($inVendor = str_starts_with($file, $root)) {
+=======
             if ($inVendor = 0 === strpos($file, $root)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return $root;
             }
         }

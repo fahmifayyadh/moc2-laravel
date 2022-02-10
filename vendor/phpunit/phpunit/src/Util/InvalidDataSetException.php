@@ -9,9 +9,18 @@
  */
 namespace PHPUnit\Util;
 
+<<<<<<< HEAD
+use RuntimeException;
+
+/**
+ * @internal This class is not covered by the backward compatibility promise for PHPUnit
+ */
+final class InvalidDataSetException extends RuntimeException implements \PHPUnit\Exception
+=======
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 final class InvalidDataSetException extends \RuntimeException implements \PHPUnit\Exception
+>>>>>>> parent of 31cfa1b1 (p)
 {
 }

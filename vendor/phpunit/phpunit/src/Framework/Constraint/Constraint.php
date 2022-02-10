@@ -9,6 +9,10 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function sprintf;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Countable;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\SelfDescribing;
@@ -26,7 +30,11 @@ abstract class Constraint implements Countable, SelfDescribing
     private $exporter;
 
     /**
+<<<<<<< HEAD
+     * Evaluates the constraint for parameter $other.
+=======
      * Evaluates the constraint for parameter $other
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -35,8 +43,13 @@ abstract class Constraint implements Countable, SelfDescribing
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
+<<<<<<< HEAD
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws ExpectationFailedException
+=======
      * @throws ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
@@ -87,20 +100,33 @@ abstract class Constraint implements Countable, SelfDescribing
     }
 
     /**
+<<<<<<< HEAD
+     * Throws an exception for the given compared value and test description.
+=======
      * Throws an exception for the given compared value and test description
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @param mixed             $other             evaluated value or object
      * @param string            $description       Additional information about the test
      * @param ComparisonFailure $comparisonFailure
      *
+<<<<<<< HEAD
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws ExpectationFailedException
+=======
      * @throws ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @psalm-return never-return
      */
     protected function fail($other, $description, ComparisonFailure $comparisonFailure = null): void
     {
+<<<<<<< HEAD
+        $failureDescription = sprintf(
+=======
         $failureDescription = \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             'Failed asserting that %s.',
             $this->failureDescription($other)
         );
@@ -122,7 +148,11 @@ abstract class Constraint implements Countable, SelfDescribing
     }
 
     /**
+<<<<<<< HEAD
+     * Return additional failure description where needed.
+=======
      * Return additional failure description where needed
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * The function can be overridden to provide additional failure
      * information like a diff
@@ -135,7 +165,11 @@ abstract class Constraint implements Countable, SelfDescribing
     }
 
     /**
+<<<<<<< HEAD
+     * Returns the description of the failure.
+=======
      * Returns the description of the failure
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.

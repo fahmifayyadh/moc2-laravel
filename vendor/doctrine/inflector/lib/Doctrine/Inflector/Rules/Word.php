@@ -14,7 +14,11 @@ class Word
         $this->word = $word;
     }
 
+<<<<<<< HEAD
+    public function getWord(): string
+=======
     public function getWord() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->word;
     }

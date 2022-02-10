@@ -32,6 +32,21 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class Configuration
 {
+<<<<<<< HEAD
+    const COLOR_MODE_AUTO = 'auto';
+    const COLOR_MODE_FORCED = 'forced';
+    const COLOR_MODE_DISABLED = 'disabled';
+
+    const INTERACTIVE_MODE_AUTO = 'auto';
+    const INTERACTIVE_MODE_FORCED = 'forced';
+    const INTERACTIVE_MODE_DISABLED = 'disabled';
+
+    const VERBOSITY_QUIET = 'quiet';
+    const VERBOSITY_NORMAL = 'normal';
+    const VERBOSITY_VERBOSE = 'verbose';
+    const VERBOSITY_VERY_VERBOSE = 'very_verbose';
+    const VERBOSITY_DEBUG = 'debug';
+=======
     const COLOR_MODE_AUTO     = 'auto';
     const COLOR_MODE_FORCED   = 'forced';
     const COLOR_MODE_DISABLED = 'disabled';
@@ -45,6 +60,7 @@ class Configuration
     const VERBOSITY_VERBOSE      = 'verbose';
     const VERBOSITY_VERY_VERBOSE = 'very_verbose';
     const VERBOSITY_DEBUG        = 'debug';
+>>>>>>> parent of 31cfa1b1 (p)
 
     private static $AVAILABLE_OPTIONS = [
         'codeCleaner',
@@ -56,6 +72,10 @@ class Configuration
         'errorLoggingLevel',
         'forceArrayIndexes',
         'formatterStyles',
+<<<<<<< HEAD
+        'historyFile',
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         'historySize',
         'interactiveMode',
         'manualDbFile',
@@ -73,6 +93,10 @@ class Configuration
         'useUnicode',
         'verbosity',
         'warnOnMultipleConfigs',
+<<<<<<< HEAD
+        'yolo',
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     ];
 
     private $defaultIncludes;
@@ -98,7 +122,11 @@ class Configuration
     private $useUnicode;
     private $useTabCompletion;
     private $newMatchers = [];
+<<<<<<< HEAD
+    private $errorLoggingLevel = \E_ALL;
+=======
     private $errorLoggingLevel = E_ALL;
+>>>>>>> parent of 31cfa1b1 (p)
     private $warnOnMultipleConfigs = false;
     private $colorMode = self::COLOR_MODE_AUTO;
     private $interactiveMode = self::INTERACTIVE_MODE_AUTO;
@@ -107,6 +135,10 @@ class Configuration
     private $forceArrayIndexes = false;
     private $formatterStyles = [];
     private $verbosity = self::VERBOSITY_NORMAL;
+<<<<<<< HEAD
+    private $yolo = false;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
     // services
     private $readline;
@@ -119,6 +151,10 @@ class Configuration
     private $autoCompleter;
     private $checker;
     private $prompt;
+<<<<<<< HEAD
+    private $configPaths;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Construct a Configuration instance.
@@ -129,6 +165,11 @@ class Configuration
      */
     public function __construct(array $config = [])
     {
+<<<<<<< HEAD
+        $this->configPaths = new ConfigPaths();
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         // explicit configFile option
         if (isset($config['configFile'])) {
             $this->configFile = $config['configFile'];
@@ -138,7 +179,11 @@ class Configuration
 
         // legacy baseDir option
         if (isset($config['baseDir'])) {
+<<<<<<< HEAD
+            $msg = "The 'baseDir' configuration option is deprecated; ".
+=======
             $msg = "The 'baseDir' configuration option is deprecated; " .
+>>>>>>> parent of 31cfa1b1 (p)
                 "please specify 'configDir' and 'dataDir' options instead";
             throw new DeprecatedException($msg);
         }
@@ -168,7 +213,11 @@ class Configuration
      *
      * @return self
      */
+<<<<<<< HEAD
+    public static function fromInput(InputInterface $input): self
+=======
     public static function fromInput(InputInterface $input)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $config = new self(['configFile' => self::getConfigFileFromInput($input)]);
 
@@ -199,6 +248,14 @@ class Configuration
             }
         }
 
+<<<<<<< HEAD
+        // Handle --yolo
+        if (self::getOptionFromInput($input, ['yolo'])) {
+            $config->setYolo(true);
+        }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         return $config;
     }
 
@@ -226,7 +283,11 @@ class Configuration
      *
      * @return bool true if the option (or an alias) is present
      */
+<<<<<<< HEAD
+    private static function getOptionFromInput(InputInterface $input, array $names, array $otherParams = []): bool
+=======
     private static function getOptionFromInput(InputInterface $input, array $names, array $otherParams = [])
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // Best case, input is properly bound and validated.
         foreach ($names as $name) {
@@ -236,7 +297,11 @@ class Configuration
         }
 
         foreach ($names as $name) {
+<<<<<<< HEAD
+            $otherParams[] = '--'.$name;
+=======
             $otherParams[] = '--' . $name;
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         foreach ($otherParams as $name) {
@@ -321,6 +386,30 @@ class Configuration
      *
      * @return InputOption[]
      */
+<<<<<<< HEAD
+    public static function getInputOptions(): array
+    {
+        return [
+            new InputOption('config', 'c', InputOption::VALUE_REQUIRED, 'Use an alternate PsySH config file location.'),
+            new InputOption('cwd', null, InputOption::VALUE_REQUIRED, 'Use an alternate working directory.'),
+
+            new InputOption('color', null, InputOption::VALUE_NONE, 'Force colors in output.'),
+            new InputOption('no-color', null, InputOption::VALUE_NONE, 'Disable colors in output.'),
+            // --ansi and --no-ansi aliases to match Symfony, Composer, etc.
+            new InputOption('ansi', null, InputOption::VALUE_NONE, 'Force colors in output.'),
+            new InputOption('no-ansi', null, InputOption::VALUE_NONE, 'Disable colors in output.'),
+
+            new InputOption('quiet', 'q', InputOption::VALUE_NONE, 'Shhhhhh.'),
+            new InputOption('verbose', 'v|vv|vvv', InputOption::VALUE_OPTIONAL, 'Increase the verbosity of messages.', '0'),
+            new InputOption('interactive', 'i|a', InputOption::VALUE_NONE, 'Force PsySH to run in interactive mode.'),
+            new InputOption('no-interactive', 'n', InputOption::VALUE_NONE, 'Run PsySH without interactive input. Requires input from stdin.'),
+            // --interaction and --no-interaction aliases for compatibility with Symfony, Composer, etc
+            new InputOption('interaction', null, InputOption::VALUE_NONE, 'Force PsySH to run in interactive mode.'),
+            new InputOption('no-interaction', null, InputOption::VALUE_NONE, 'Run PsySH without interactive input. Requires input from stdin.'),
+            new InputOption('raw-output', 'r', InputOption::VALUE_NONE, 'Print var_export-style return values (for non-interactive input)'),
+
+            new InputOption('yolo', null, InputOption::VALUE_NONE, 'Run PsySH with minimal input validation. You probably don\'t want this.'),
+=======
     public static function getInputOptions()
     {
         return [
@@ -341,6 +430,7 @@ class Configuration
             new InputOption('interaction',    null,       InputOption::VALUE_NONE,     'Force PsySH to run in interactive mode.'),
             new InputOption('no-interaction', null,       InputOption::VALUE_NONE,     'Run PsySH without interactive input. Requires input from stdin.'),
             new InputOption('raw-output',     'r',        InputOption::VALUE_NONE,     'Print var_export-style return values (for non-interactive input)'),
+>>>>>>> parent of 31cfa1b1 (p)
         ];
     }
 
@@ -358,7 +448,11 @@ class Configuration
     {
         // feature detection
         $this->hasReadline = \function_exists('readline');
+<<<<<<< HEAD
+        $this->hasPcntl = ProcessForker::isSupported();
+=======
         $this->hasPcntl    = ProcessForker::isSupported();
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($configFile = $this->getConfigFile()) {
             $this->loadConfigFile($configFile);
@@ -367,6 +461,15 @@ class Configuration
         if (!$this->configFile && $localConfig = $this->getLocalConfigFile()) {
             $this->loadConfigFile($localConfig);
         }
+<<<<<<< HEAD
+
+        $this->configPaths->overrideDirs([
+            'configDir'  => $this->configDir,
+            'dataDir'    => $this->dataDir,
+            'runtimeDir' => $this->runtimeDir,
+        ]);
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -381,7 +484,11 @@ class Configuration
      *
      *     ~/.config/psysh/config.php
      *
+<<<<<<< HEAD
+     * @return string|null
+=======
      * @return string
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getConfigFile()
     {
@@ -389,12 +496,20 @@ class Configuration
             return $this->configFile;
         }
 
+<<<<<<< HEAD
+        $files = $this->configPaths->configFiles(['config.php', 'rc.php']);
+=======
         $files = ConfigPaths::getConfigFiles(['config.php', 'rc.php'], $this->configDir);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if (!empty($files)) {
             if ($this->warnOnMultipleConfigs && \count($files) > 1) {
                 $msg = \sprintf('Multiple configuration files found: %s. Using %s', \implode(', ', $files), $files[0]);
+<<<<<<< HEAD
+                \trigger_error($msg, \E_USER_NOTICE);
+=======
                 \trigger_error($msg, E_USER_NOTICE);
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             return $files[0];
@@ -407,11 +522,19 @@ class Configuration
      * Searches for a project specific config file `.psysh.php` in the current
      * working directory.
      *
+<<<<<<< HEAD
+     * @return string|null
+     */
+    public function getLocalConfigFile()
+    {
+        $localConfig = \getcwd().'/.psysh.php';
+=======
      * @return string
      */
     public function getLocalConfigFile()
     {
         $localConfig = \getcwd() . '/.psysh.php';
+>>>>>>> parent of 31cfa1b1 (p)
 
         if (@\is_file($localConfig)) {
             return $localConfig;
@@ -427,7 +550,11 @@ class Configuration
     {
         foreach (self::$AVAILABLE_OPTIONS as $option) {
             if (isset($options[$option])) {
+<<<<<<< HEAD
+                $method = 'set'.\ucfirst($option);
+=======
                 $method = 'set' . \ucfirst($option);
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->$method($options[$option]);
             }
         }
@@ -435,14 +562,22 @@ class Configuration
         // legacy `tabCompletion` option
         if (isset($options['tabCompletion'])) {
             $msg = '`tabCompletion` is deprecated; use `useTabCompletion` instead.';
+<<<<<<< HEAD
+            @\trigger_error($msg, \E_USER_DEPRECATED);
+=======
             @\trigger_error($msg, E_USER_DEPRECATED);
+>>>>>>> parent of 31cfa1b1 (p)
 
             $this->setUseTabCompletion($options['tabCompletion']);
         }
 
         foreach (['commands', 'matchers', 'casters'] as $option) {
             if (isset($options[$option])) {
+<<<<<<< HEAD
+                $method = 'add'.\ucfirst($option);
+=======
                 $method = 'add' . \ucfirst($option);
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->$method($options[$option]);
             }
         }
@@ -450,7 +585,11 @@ class Configuration
         // legacy `tabCompletionMatchers` option
         if (isset($options['tabCompletionMatchers'])) {
             $msg = '`tabCompletionMatchers` is deprecated; use `matchers` instead.';
+<<<<<<< HEAD
+            @\trigger_error($msg, \E_USER_DEPRECATED);
+=======
             @\trigger_error($msg, E_USER_DEPRECATED);
+>>>>>>> parent of 31cfa1b1 (p)
 
             $this->addMatchers($options['tabCompletionMatchers']);
         }
@@ -467,7 +606,11 @@ class Configuration
      *
      * @param string $file
      */
+<<<<<<< HEAD
+    public function loadConfigFile(string $file)
+=======
     public function loadConfigFile($file)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!\is_file($file)) {
             throw new \InvalidArgumentException(\sprintf('Invalid configuration file specified, %s does not exist', $file));
@@ -506,7 +649,11 @@ class Configuration
      *
      * @return array
      */
+<<<<<<< HEAD
+    public function getDefaultIncludes(): array
+=======
     public function getDefaultIncludes()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->defaultIncludes ?: [];
     }
@@ -516,15 +663,31 @@ class Configuration
      *
      * @param string $dir
      */
+<<<<<<< HEAD
+    public function setConfigDir(string $dir)
+    {
+        $this->configDir = (string) $dir;
+
+        $this->configPaths->overrideDirs([
+            'configDir'  => $this->configDir,
+            'dataDir'    => $this->dataDir,
+            'runtimeDir' => $this->runtimeDir,
+        ]);
+=======
     public function setConfigDir($dir)
     {
         $this->configDir = (string) $dir;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * Get the current configuration directory, if any is explicitly set.
      *
+<<<<<<< HEAD
+     * @return string|null
+=======
      * @return string
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getConfigDir()
     {
@@ -536,15 +699,31 @@ class Configuration
      *
      * @param string $dir
      */
+<<<<<<< HEAD
+    public function setDataDir(string $dir)
+    {
+        $this->dataDir = (string) $dir;
+
+        $this->configPaths->overrideDirs([
+            'configDir'  => $this->configDir,
+            'dataDir'    => $this->dataDir,
+            'runtimeDir' => $this->runtimeDir,
+        ]);
+=======
     public function setDataDir($dir)
     {
         $this->dataDir = (string) $dir;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * Get the current data directory, if any is explicitly set.
      *
+<<<<<<< HEAD
+     * @return string|null
+=======
      * @return string
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getDataDir()
     {
@@ -556,9 +735,21 @@ class Configuration
      *
      * @param string $dir
      */
+<<<<<<< HEAD
+    public function setRuntimeDir(string $dir)
+    {
+        $this->runtimeDir = (string) $dir;
+
+        $this->configPaths->overrideDirs([
+            'configDir'  => $this->configDir,
+            'dataDir'    => $this->dataDir,
+            'runtimeDir' => $this->runtimeDir,
+        ]);
+=======
     public function setRuntimeDir($dir)
     {
         $this->runtimeDir = (string) $dir;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -567,6 +758,23 @@ class Configuration
      * Defaults to  `/psysh` inside the system's temp dir unless explicitly
      * overridden.
      *
+<<<<<<< HEAD
+     * @throws RuntimeException if no temporary directory is set and it is not possible to create one
+     *
+     * @return string
+     */
+    public function getRuntimeDir(): string
+    {
+        $runtimeDir = $this->configPaths->runtimeDir();
+
+        if (!\is_dir($runtimeDir)) {
+            if (!@\mkdir($runtimeDir, 0700, true)) {
+                throw new RuntimeException(\sprintf('Unable to create PsySH runtime directory. Make sure PHP is able to write to %s in order to continue.', \dirname($runtimeDir)));
+            }
+        }
+
+        return $runtimeDir;
+=======
      * @return string
      */
     public function getRuntimeDir()
@@ -582,6 +790,7 @@ class Configuration
         }
 
         return $this->runtimeDir;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -589,7 +798,11 @@ class Configuration
      *
      * @param string $file
      */
+<<<<<<< HEAD
+    public function setHistoryFile(string $file)
+=======
     public function setHistoryFile($file)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->historyFile = ConfigPaths::touchFileWithMkdir($file);
     }
@@ -602,25 +815,41 @@ class Configuration
      *
      * @return string
      */
+<<<<<<< HEAD
+    public function getHistoryFile(): string
+=======
     public function getHistoryFile()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (isset($this->historyFile)) {
             return $this->historyFile;
         }
 
+<<<<<<< HEAD
+        $files = $this->configPaths->configFiles(['psysh_history', 'history']);
+=======
         $files = ConfigPaths::getConfigFiles(['psysh_history', 'history'], $this->configDir);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if (!empty($files)) {
             if ($this->warnOnMultipleConfigs && \count($files) > 1) {
                 $msg = \sprintf('Multiple history files found: %s. Using %s', \implode(', ', $files), $files[0]);
+<<<<<<< HEAD
+                \trigger_error($msg, \E_USER_NOTICE);
+=======
                 \trigger_error($msg, E_USER_NOTICE);
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             $this->setHistoryFile($files[0]);
         } else {
             // fallback: create our own history file
+<<<<<<< HEAD
+            $this->setHistoryFile($this->configPaths->currentConfigDir().'/psysh_history');
+=======
             $dir = $this->configDir ?: ConfigPaths::getCurrentConfigDir();
             $this->setHistoryFile($dir . '/psysh_history');
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this->historyFile;
@@ -631,7 +860,11 @@ class Configuration
      *
      * @param int $value
      */
+<<<<<<< HEAD
+    public function setHistorySize(int $value)
+=======
     public function setHistorySize($value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->historySize = (int) $value;
     }
@@ -651,7 +884,11 @@ class Configuration
      *
      * @param bool $value
      */
+<<<<<<< HEAD
+    public function setEraseDuplicates(bool $value)
+=======
     public function setEraseDuplicates($value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->eraseDuplicates = (bool) $value;
     }
@@ -659,7 +896,11 @@ class Configuration
     /**
      * Get whether readline erases old duplicate history entries.
      *
+<<<<<<< HEAD
+     * @return bool|null
+=======
      * @return bool
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getEraseDuplicates()
     {
@@ -678,9 +919,15 @@ class Configuration
      *
      * @return string Temporary file name
      */
+<<<<<<< HEAD
+    public function getTempFile(string $type, int $pid): string
+    {
+        return \tempnam($this->getRuntimeDir(), $type.'_'.$pid.'_');
+=======
     public function getTempFile($type, $pid)
     {
         return \tempnam($this->getRuntimeDir(), $type . '_' . $pid . '_');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -693,7 +940,11 @@ class Configuration
      *
      * @return string Pipe name
      */
+<<<<<<< HEAD
+    public function getPipe(string $type, int $pid): string
+=======
     public function getPipe($type, $pid)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \sprintf('%s/%s_%s', $this->getRuntimeDir(), $type, $pid);
     }
@@ -703,7 +954,11 @@ class Configuration
      *
      * @return bool True if Readline is available
      */
+<<<<<<< HEAD
+    public function hasReadline(): bool
+=======
     public function hasReadline()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->hasReadline;
     }
@@ -713,7 +968,11 @@ class Configuration
      *
      * @param bool $useReadline
      */
+<<<<<<< HEAD
+    public function setUseReadline(bool $useReadline)
+=======
     public function setUseReadline($useReadline)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->useReadline = (bool) $useReadline;
     }
@@ -726,7 +985,11 @@ class Configuration
      *
      * @return bool True if the current Shell should use Readline
      */
+<<<<<<< HEAD
+    public function useReadline(): bool
+=======
     public function useReadline()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return isset($this->useReadline) ? ($this->hasReadline && $this->useReadline) : $this->hasReadline;
     }
@@ -752,7 +1015,11 @@ class Configuration
      *
      * @return Readline\Readline
      */
+<<<<<<< HEAD
+    public function getReadline(): Readline\Readline
+=======
     public function getReadline()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->readline)) {
             $className = $this->getReadlineClass();
@@ -773,7 +1040,11 @@ class Configuration
      *
      * @return string
      */
+<<<<<<< HEAD
+    private function getReadlineClass(): string
+=======
     private function getReadlineClass()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->useReadline()) {
             if (Readline\GNUReadline::isSupported()) {
@@ -795,7 +1066,11 @@ class Configuration
      *
      * @param bool $useBracketedPaste
      */
+<<<<<<< HEAD
+    public function setUseBracketedPaste(bool $useBracketedPaste)
+=======
     public function setUseBracketedPaste($useBracketedPaste)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->useBracketedPaste = (bool) $useBracketedPaste;
     }
@@ -815,6 +1090,16 @@ class Configuration
      *
      * @return bool True if the shell should use bracketed paste
      */
+<<<<<<< HEAD
+    public function useBracketedPaste(): bool
+    {
+        $readlineClass = $this->getReadlineClass();
+
+        return $this->useBracketedPaste && $readlineClass::supportsBracketedPaste();
+
+        // @todo mebbe turn this on by default some day?
+        // return $readlineClass::supportsBracketedPaste() && $this->useBracketedPaste !== false;
+=======
     public function useBracketedPaste()
     {
         // For now, only the GNU readline implementation supports bracketed paste.
@@ -824,6 +1109,7 @@ class Configuration
 
         // @todo mebbe turn this on by default some day?
         // return isset($this->useBracketedPaste) ? ($supported && $this->useBracketedPaste) : $supported;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -831,7 +1117,11 @@ class Configuration
      *
      * @return bool True if Pcntl is available
      */
+<<<<<<< HEAD
+    public function hasPcntl(): bool
+=======
     public function hasPcntl()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->hasPcntl;
     }
@@ -841,7 +1131,11 @@ class Configuration
      *
      * @param bool $usePcntl
      */
+<<<<<<< HEAD
+    public function setUsePcntl(bool $usePcntl)
+=======
     public function setUsePcntl($usePcntl)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->usePcntl = (bool) $usePcntl;
     }
@@ -854,7 +1148,11 @@ class Configuration
      *
      * @return bool True if the current Shell should use Pcntl
      */
+<<<<<<< HEAD
+    public function usePcntl(): bool
+=======
     public function usePcntl()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return isset($this->usePcntl) ? ($this->hasPcntl && $this->usePcntl) : $this->hasPcntl;
     }
@@ -867,7 +1165,11 @@ class Configuration
      *
      * @return bool true if raw output is enabled
      */
+<<<<<<< HEAD
+    public function rawOutput(): bool
+=======
     public function rawOutput()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->rawOutput;
     }
@@ -877,7 +1179,11 @@ class Configuration
      *
      * @param bool $rawOutput
      */
+<<<<<<< HEAD
+    public function setRawOutput(bool $rawOutput)
+=======
     public function setRawOutput($rawOutput)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->rawOutput = (bool) $rawOutput;
     }
@@ -889,7 +1195,11 @@ class Configuration
      *
      * @param bool $requireSemicolons
      */
+<<<<<<< HEAD
+    public function setRequireSemicolons(bool $requireSemicolons)
+=======
     public function setRequireSemicolons($requireSemicolons)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->requireSemicolons = (bool) $requireSemicolons;
     }
@@ -903,7 +1213,11 @@ class Configuration
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public function requireSemicolons(): bool
+=======
     public function requireSemicolons()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->requireSemicolons;
     }
@@ -916,7 +1230,11 @@ class Configuration
      *
      * @param bool $useUnicode
      */
+<<<<<<< HEAD
+    public function setUseUnicode(bool $useUnicode)
+=======
     public function setUseUnicode($useUnicode)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->useUnicode = (bool) $useUnicode;
     }
@@ -929,7 +1247,11 @@ class Configuration
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public function useUnicode(): bool
+=======
     public function useUnicode()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (isset($this->useUnicode)) {
             return $this->useUnicode;
@@ -944,11 +1266,19 @@ class Configuration
      *
      * @see self::errorLoggingLevel
      *
+<<<<<<< HEAD
+     * @param int $errorLoggingLevel
+     */
+    public function setErrorLoggingLevel($errorLoggingLevel)
+    {
+        $this->errorLoggingLevel = (\E_ALL | \E_STRICT) & $errorLoggingLevel;
+=======
      * @param bool $errorLoggingLevel
      */
     public function setErrorLoggingLevel($errorLoggingLevel)
     {
         $this->errorLoggingLevel = (E_ALL | E_STRICT) & $errorLoggingLevel;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -965,7 +1295,11 @@ class Configuration
      *
      * @return int
      */
+<<<<<<< HEAD
+    public function errorLoggingLevel(): int
+=======
     public function errorLoggingLevel()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->errorLoggingLevel;
     }
@@ -987,21 +1321,53 @@ class Configuration
      *
      * @return CodeCleaner
      */
+<<<<<<< HEAD
+    public function getCodeCleaner(): CodeCleaner
+    {
+        if (!isset($this->cleaner)) {
+            $this->cleaner = new CodeCleaner(null, null, null, $this->yolo());
+=======
     public function getCodeCleaner()
     {
         if (!isset($this->cleaner)) {
             $this->cleaner = new CodeCleaner();
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this->cleaner;
     }
 
     /**
+<<<<<<< HEAD
+     * Enable or disable running PsySH without input validation.
+     *
+     * You don't want this.
+     */
+    public function setYolo($yolo)
+    {
+        $this->yolo = (bool) $yolo;
+    }
+
+    /**
+     * Check whether to disable input validation.
+     */
+    public function yolo(): bool
+    {
+        return $this->yolo;
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Enable or disable tab completion.
      *
      * @param bool $useTabCompletion
      */
+<<<<<<< HEAD
+    public function setUseTabCompletion(bool $useTabCompletion)
+=======
     public function setUseTabCompletion($useTabCompletion)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->useTabCompletion = (bool) $useTabCompletion;
     }
@@ -1011,7 +1377,11 @@ class Configuration
      *
      * @param bool $useTabCompletion
      */
+<<<<<<< HEAD
+    public function setTabCompletion(bool $useTabCompletion)
+=======
     public function setTabCompletion($useTabCompletion)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->setUseTabCompletion($useTabCompletion);
     }
@@ -1024,7 +1394,11 @@ class Configuration
      *
      * @return bool True if the current Shell should use tab completion
      */
+<<<<<<< HEAD
+    public function useTabCompletion(): bool
+=======
     public function useTabCompletion()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return isset($this->useTabCompletion) ? ($this->hasReadline && $this->useTabCompletion) : $this->hasReadline;
     }
@@ -1034,7 +1408,11 @@ class Configuration
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public function getTabCompletion(): bool
+=======
     public function getTabCompletion()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->useTabCompletion();
     }
@@ -1062,7 +1440,11 @@ class Configuration
      *
      * @return ShellOutput
      */
+<<<<<<< HEAD
+    public function getOutput(): ShellOutput
+=======
     public function getOutput()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->output)) {
             $this->setOutput(new ShellOutput(
@@ -1106,7 +1488,11 @@ class Configuration
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public function getInputInteractive(): bool
+=======
     public function getInputInteractive()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         switch ($this->interactiveMode()) {
             case self::INTERACTIVE_MODE_AUTO:
@@ -1153,7 +1539,11 @@ class Configuration
                 $this->pager = $pager;
             } elseif ($less = \exec('which less 2>/dev/null')) {
                 // check for the presence of less...
+<<<<<<< HEAD
+                $this->pager = $less.' -R -S -F -X';
+=======
                 $this->pager = $less . ' -R -S -F -X';
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 
@@ -1175,7 +1565,11 @@ class Configuration
      *
      * @return AutoCompleter
      */
+<<<<<<< HEAD
+    public function getAutoCompleter(): AutoCompleter
+=======
     public function getAutoCompleter()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->autoCompleter)) {
             $this->autoCompleter = new AutoCompleter();
@@ -1189,7 +1583,11 @@ class Configuration
      *
      * @return array
      */
+<<<<<<< HEAD
+    public function getTabCompletionMatchers(): array
+=======
     public function getTabCompletionMatchers()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return [];
     }
@@ -1284,7 +1682,11 @@ class Configuration
      *
      * @param string $filename
      */
+<<<<<<< HEAD
+    public function setManualDbFile(string $filename)
+=======
     public function setManualDbFile($filename)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->manualDbFile = (string) $filename;
     }
@@ -1292,7 +1694,11 @@ class Configuration
     /**
      * Get the current PHP manual database file.
      *
+<<<<<<< HEAD
+     * @return string|null Default: '~/.local/share/psysh/php_manual.sqlite'
+=======
      * @return string Default: '~/.local/share/psysh/php_manual.sqlite'
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getManualDbFile()
     {
@@ -1300,11 +1706,19 @@ class Configuration
             return $this->manualDbFile;
         }
 
+<<<<<<< HEAD
+        $files = $this->configPaths->dataFiles(['php_manual.sqlite']);
+        if (!empty($files)) {
+            if ($this->warnOnMultipleConfigs && \count($files) > 1) {
+                $msg = \sprintf('Multiple manual database files found: %s. Using %s', \implode(', ', $files), $files[0]);
+                \trigger_error($msg, \E_USER_NOTICE);
+=======
         $files = ConfigPaths::getDataFiles(['php_manual.sqlite'], $this->dataDir);
         if (!empty($files)) {
             if ($this->warnOnMultipleConfigs && \count($files) > 1) {
                 $msg = \sprintf('Multiple manual database files found: %s. Using %s', \implode(', ', $files), $files[0]);
                 \trigger_error($msg, E_USER_NOTICE);
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             return $this->manualDbFile = $files[0];
@@ -1314,7 +1728,11 @@ class Configuration
     /**
      * Get a PHP manual database connection.
      *
+<<<<<<< HEAD
+     * @return \PDO|null
+=======
      * @return \PDO
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getManualDb()
     {
@@ -1322,7 +1740,11 @@ class Configuration
             $dbFile = $this->getManualDbFile();
             if (\is_file($dbFile)) {
                 try {
+<<<<<<< HEAD
+                    $this->manualDb = new \PDO('sqlite:'.$dbFile);
+=======
                     $this->manualDb = new \PDO('sqlite:' . $dbFile);
+>>>>>>> parent of 31cfa1b1 (p)
                 } catch (\PDOException $e) {
                     if ($e->getMessage() === 'could not find driver') {
                         throw new RuntimeException('SQLite PDO driver not found', 0, $e);
@@ -1351,7 +1773,11 @@ class Configuration
      *
      * @return Presenter
      */
+<<<<<<< HEAD
+    public function getPresenter(): Presenter
+=======
     public function getPresenter()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->presenter)) {
             $this->presenter = new Presenter($this->getOutput()->getFormatter(), $this->forceArrayIndexes());
@@ -1367,7 +1793,11 @@ class Configuration
      *
      * @param bool $warnOnMultipleConfigs
      */
+<<<<<<< HEAD
+    public function setWarnOnMultipleConfigs(bool $warnOnMultipleConfigs)
+=======
     public function setWarnOnMultipleConfigs($warnOnMultipleConfigs)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->warnOnMultipleConfigs = (bool) $warnOnMultipleConfigs;
     }
@@ -1384,7 +1814,11 @@ class Configuration
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public function warnOnMultipleConfigs(): bool
+=======
     public function warnOnMultipleConfigs()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->warnOnMultipleConfigs;
     }
@@ -1394,7 +1828,11 @@ class Configuration
      *
      * @param string $colorMode
      */
+<<<<<<< HEAD
+    public function setColorMode(string $colorMode)
+=======
     public function setColorMode($colorMode)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $validColorModes = [
             self::COLOR_MODE_AUTO,
@@ -1403,8 +1841,12 @@ class Configuration
         ];
 
         if (!\in_array($colorMode, $validColorModes)) {
+<<<<<<< HEAD
+            throw new \InvalidArgumentException('Invalid color mode: '.$colorMode);
+=======
             // @todo Fix capitalization for 0.11.0
             throw new \InvalidArgumentException('invalid color mode: ' . $colorMode);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->colorMode = $colorMode;
@@ -1415,7 +1857,11 @@ class Configuration
      *
      * @return string
      */
+<<<<<<< HEAD
+    public function colorMode(): string
+=======
     public function colorMode()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->colorMode;
     }
@@ -1423,9 +1869,17 @@ class Configuration
     /**
      * Set the shell's interactive mode.
      *
+<<<<<<< HEAD
+     * @throws \InvalidArgumentException if interactive mode isn't disabled, forced, or auto
+     *
+     * @param string $interactiveMode
+     */
+    public function setInteractiveMode(string $interactiveMode)
+=======
      * @param string $interactiveMode
      */
     public function setInteractiveMode($interactiveMode)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $validInteractiveModes = [
             self::INTERACTIVE_MODE_AUTO,
@@ -1434,7 +1888,11 @@ class Configuration
         ];
 
         if (!\in_array($interactiveMode, $validInteractiveModes)) {
+<<<<<<< HEAD
+            throw new \InvalidArgumentException('Invalid interactive mode: '.$interactiveMode);
+=======
             throw new \InvalidArgumentException('Invalid interactive mode: ' . $interactiveMode);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->interactiveMode = $interactiveMode;
@@ -1445,7 +1903,11 @@ class Configuration
      *
      * @return string
      */
+<<<<<<< HEAD
+    public function interactiveMode(): string
+=======
     public function interactiveMode()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->interactiveMode;
     }
@@ -1467,7 +1929,11 @@ class Configuration
      *
      * @return Checker
      */
+<<<<<<< HEAD
+    public function getChecker(): Checker
+=======
     public function getChecker()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->checker)) {
             $interval = $this->getUpdateCheck();
@@ -1504,7 +1970,11 @@ class Configuration
      *
      * @return string
      */
+<<<<<<< HEAD
+    public function getUpdateCheck(): string
+=======
     public function getUpdateCheck()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return isset($this->updateCheck) ? $this->updateCheck : Checker::WEEKLY;
     }
@@ -1516,7 +1986,11 @@ class Configuration
      *
      * @param string $interval
      */
+<<<<<<< HEAD
+    public function setUpdateCheck(string $interval)
+=======
     public function setUpdateCheck($interval)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $validIntervals = [
             Checker::ALWAYS,
@@ -1527,8 +2001,12 @@ class Configuration
         ];
 
         if (!\in_array($interval, $validIntervals)) {
+<<<<<<< HEAD
+            throw new \InvalidArgumentException('Invalid update check interval: '.$interval);
+=======
             // @todo Fix capitalization for 0.11.0
             throw new \InvalidArgumentException('invalid update check interval: ' . $interval);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->updateCheck = $interval;
@@ -1541,9 +2019,13 @@ class Configuration
      */
     public function getUpdateCheckCacheFile()
     {
+<<<<<<< HEAD
+        return ConfigPaths::touchFileWithMkdir($this->configPaths->currentConfigDir().'/update_check.json');
+=======
         $dir = $this->configDir ?: ConfigPaths::getCurrentConfigDir();
 
         return ConfigPaths::touchFileWithMkdir($dir . '/update_check.json');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -1551,7 +2033,11 @@ class Configuration
      *
      * @param string $message
      */
+<<<<<<< HEAD
+    public function setStartupMessage(string $message)
+=======
     public function setStartupMessage($message)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->startupMessage = $message;
     }
@@ -1571,7 +2057,11 @@ class Configuration
      *
      * @param string $prompt
      */
+<<<<<<< HEAD
+    public function setPrompt(string $prompt)
+=======
     public function setPrompt($prompt)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->prompt = $prompt;
     }
@@ -1579,7 +2069,11 @@ class Configuration
     /**
      * Get the prompt.
      *
+<<<<<<< HEAD
+     * @return string|null
+=======
      * @return string
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getPrompt()
     {
@@ -1591,7 +2085,11 @@ class Configuration
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public function forceArrayIndexes(): bool
+=======
     public function forceArrayIndexes()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->forceArrayIndexes;
     }
@@ -1601,7 +2099,11 @@ class Configuration
      *
      * @param bool $forceArrayIndexes
      */
+<<<<<<< HEAD
+    public function setForceArrayIndexes(bool $forceArrayIndexes)
+=======
     public function setForceArrayIndexes($forceArrayIndexes)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->forceArrayIndexes = $forceArrayIndexes;
     }
@@ -1653,7 +2155,11 @@ class Configuration
      *
      * @return string
      */
+<<<<<<< HEAD
+    public function verbosity(): string
+=======
     public function verbosity()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->verbosity;
     }
@@ -1663,9 +2169,17 @@ class Configuration
      *
      * Accepts OutputInterface verbosity constants.
      *
+<<<<<<< HEAD
+     * @throws \InvalidArgumentException if verbosity level is invalid
+     *
+     * @param string $verbosity
+     */
+    public function setVerbosity(string $verbosity)
+=======
      * @param string $verbosity
      */
     public function setVerbosity($verbosity)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $validVerbosityLevels = [
             self::VERBOSITY_QUIET,
@@ -1676,7 +2190,11 @@ class Configuration
         ];
 
         if (!\in_array($verbosity, $validVerbosityLevels)) {
+<<<<<<< HEAD
+            throw new \InvalidArgumentException('Invalid verbosity level: '.$verbosity);
+=======
             throw new \InvalidArgumentException('Invalid verbosity level: ' . $verbosity);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->verbosity = $verbosity;
@@ -1691,7 +2209,11 @@ class Configuration
      *
      * @return int OutputInterface verbosity level
      */
+<<<<<<< HEAD
+    public function getOutputVerbosity(): int
+=======
     public function getOutputVerbosity()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         switch ($this->verbosity()) {
             case self::VERBOSITY_QUIET:
@@ -1715,7 +2237,11 @@ class Configuration
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public function inputIsPiped(): bool
+=======
     public function inputIsPiped()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->pipedInput === null) {
             $this->pipedInput = \defined('STDIN') && static::looksLikeAPipe(\STDIN);
@@ -1731,7 +2257,11 @@ class Configuration
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public function outputIsPiped(): bool
+=======
     public function outputIsPiped()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->pipedOutput === null) {
             $this->pipedOutput = static::looksLikeAPipe($this->getOutput()->getStream());
@@ -1747,7 +2277,11 @@ class Configuration
      *
      * @return bool
      */
+<<<<<<< HEAD
+    private static function looksLikeAPipe($stream): bool
+=======
     private static function looksLikeAPipe($stream)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (\function_exists('posix_isatty')) {
             return !\posix_isatty($stream);

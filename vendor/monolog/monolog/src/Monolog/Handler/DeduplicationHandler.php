@@ -12,6 +12,10 @@
 namespace Monolog\Handler;
 
 use Monolog\Logger;
+<<<<<<< HEAD
+use Psr\Log\LogLevel;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Simple handler wrapper that deduplicates log records across multiple requests
@@ -32,6 +36,13 @@ use Monolog\Logger;
  * same way.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+ * @phpstan-import-type LevelName from \Monolog\Logger
+ * @phpstan-import-type Level from \Monolog\Logger
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class DeduplicationHandler extends BufferHandler
 {
@@ -41,7 +52,11 @@ class DeduplicationHandler extends BufferHandler
     protected $deduplicationStore;
 
     /**
+<<<<<<< HEAD
+     * @var Level
+=======
      * @var int
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected $deduplicationLevel;
 
@@ -61,6 +76,11 @@ class DeduplicationHandler extends BufferHandler
      * @param string|int       $deduplicationLevel The minimum logging level for log records to be looked at for deduplication purposes
      * @param int              $time               The period (in seconds) during which duplicate entries should be suppressed after a given log is sent through
      * @param bool             $bubble             Whether the messages that are handled can bubble up the stack or not
+<<<<<<< HEAD
+     *
+     * @phpstan-param Level|LevelName|LogLevel::* $deduplicationLevel
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(HandlerInterface $handler, ?string $deduplicationStore = null, $deduplicationLevel = Logger::ERROR, int $time = 60, bool $bubble = true)
     {
@@ -100,6 +120,12 @@ class DeduplicationHandler extends BufferHandler
         }
     }
 
+<<<<<<< HEAD
+    /**
+     * @phpstan-param Record $record
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private function isDuplicate(array $record): bool
     {
         if (!file_exists($this->deduplicationStore)) {
@@ -166,6 +192,12 @@ class DeduplicationHandler extends BufferHandler
         $this->gc = false;
     }
 
+<<<<<<< HEAD
+    /**
+     * @phpstan-param Record $record
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private function appendRecord(array $record): void
     {
         file_put_contents($this->deduplicationStore, $record['datetime']->getTimestamp() . ':' . $record['level_name'] . ':' . preg_replace('{[\r\n].*}', '', $record['message']) . "\n", FILE_APPEND);

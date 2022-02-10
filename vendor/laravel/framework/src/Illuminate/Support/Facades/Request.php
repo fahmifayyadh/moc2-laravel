@@ -83,6 +83,12 @@ namespace Illuminate\Support\Facades;
  * @method static mixed offsetGet(string $offset)
  * @method static void offsetSet(string $offset, mixed $value)
  * @method static void offsetUnset(string $offset)
+<<<<<<< HEAD
+ * @method static array validate(array $rules, ...$params)
+ * @method static array validateWithBag(string $errorBag, array $rules, ...$params)
+ * @method static bool hasValidSignature(bool $absolute = true)
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  *
  * @see \Illuminate\Http\Request
  */

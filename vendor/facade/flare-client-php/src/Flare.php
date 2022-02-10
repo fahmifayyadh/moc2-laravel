@@ -2,6 +2,11 @@
 
 namespace Facade\FlareClient;
 
+<<<<<<< HEAD
+use Error;
+use ErrorException;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Exception;
 use Facade\FlareClient\Concerns\HasContext;
 use Facade\FlareClient\Context\ContextContextDetector;
@@ -12,6 +17,10 @@ use Facade\FlareClient\Glows\Recorder;
 use Facade\FlareClient\Http\Client;
 use Facade\FlareClient\Middleware\AddGlows;
 use Facade\FlareClient\Middleware\AnonymizeIp;
+<<<<<<< HEAD
+use Facade\FlareClient\Middleware\CensorRequestBodyFields;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Pipeline\Pipeline;
 use Throwable;
@@ -21,6 +30,42 @@ class Flare
     use HasContext;
 
     /** @var \Facade\FlareClient\Http\Client */
+<<<<<<< HEAD
+    protected $client;
+
+    /** @var \Facade\FlareClient\Api */
+    protected $api;
+
+    /** @var array */
+    protected $middleware = [];
+
+    /** @var \Facade\FlareClient\Glows\Recorder */
+    protected $recorder;
+
+    /** @var string */
+    protected $applicationPath;
+
+    /** @var \Illuminate\Contracts\Container\Container|null */
+    protected $container;
+
+    /** @var ContextDetectorInterface */
+    protected $contextDetector;
+
+    /** @var callable|null */
+    protected $previousExceptionHandler;
+
+    /** @var callable|null */
+    protected $previousErrorHandler;
+
+    /** @var callable|null */
+    protected $determineVersionCallable;
+
+    /** @var int|null */
+    protected $reportErrorLevels;
+
+    /** @var callable|null */
+    protected $filterExceptionsCallable;
+=======
     private $client;
 
     /** @var \Facade\FlareClient\Api */
@@ -46,6 +91,7 @@ class Flare
 
     /** @var callable|null */
     private $previousErrorHandler;
+>>>>>>> parent of 31cfa1b1 (p)
 
     public static function register(string $apiKey, string $apiSecret = null, ContextDetectorInterface $contextDetector = null, Container $container = null)
     {
@@ -54,6 +100,36 @@ class Flare
         return new static($client, $contextDetector, $container);
     }
 
+<<<<<<< HEAD
+    public function determineVersionUsing($determineVersionCallable)
+    {
+        $this->determineVersionCallable = $determineVersionCallable;
+    }
+
+    public function reportErrorLevels(int $reportErrorLevels)
+    {
+        $this->reportErrorLevels = $reportErrorLevels;
+    }
+
+    public function filterExceptionsUsing(callable $filterExceptionsCallable)
+    {
+        $this->filterExceptionsCallable = $filterExceptionsCallable;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function version()
+    {
+        if (! $this->determineVersionCallable) {
+            return null;
+        }
+
+        return ($this->determineVersionCallable)();
+    }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function __construct(Client $client, ContextDetectorInterface $contextDetector = null, Container $container = null, array $middleware = [])
     {
         $this->client = $client;
@@ -129,7 +205,11 @@ class Flare
 
     public function handleError($code, $message, $file = '', $line = 0)
     {
+<<<<<<< HEAD
+        $exception = new ErrorException($message, 0, $code, $file, $line);
+=======
         $exception = new \ErrorException($message, 0, $code, $file, $line);
+>>>>>>> parent of 31cfa1b1 (p)
 
         $this->report($exception);
 
@@ -151,8 +231,17 @@ class Flare
         return $this;
     }
 
+<<<<<<< HEAD
+    public function report(Throwable $throwable, callable $callback = null): ?Report
+    {
+        if (! $this->shouldSendReport($throwable)) {
+            return null;
+        }
+
+=======
     public function report(Throwable $throwable, callable $callback = null)
     {
+>>>>>>> parent of 31cfa1b1 (p)
         $report = $this->createReport($throwable);
 
         if (! is_null($callback)) {
@@ -160,6 +249,28 @@ class Flare
         }
 
         $this->sendReportToApi($report);
+<<<<<<< HEAD
+
+        return $report;
+    }
+
+    protected function shouldSendReport(Throwable $throwable): bool
+    {
+        if ($this->reportErrorLevels && $throwable instanceof Error) {
+            return $this->reportErrorLevels & $throwable->getCode();
+        }
+
+        if ($this->reportErrorLevels && $throwable instanceof ErrorException) {
+            return $this->reportErrorLevels & $throwable->getSeverity();
+        }
+
+        if ($this->filterExceptionsCallable && $throwable instanceof Exception) {
+            return call_user_func($this->filterExceptionsCallable, $throwable);
+        }
+
+        return true;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function reportMessage(string $message, string $logLevel, callable $callback = null)
@@ -205,7 +316,18 @@ class Flare
 
     public function anonymizeIp()
     {
+<<<<<<< HEAD
+        $this->registerMiddleware(new AnonymizeIp());
+
+        return $this;
+    }
+
+    public function censorRequestBodyFields(array $fieldNames)
+    {
+        $this->registerMiddleware(new CensorRequestBodyFields($fieldNames));
+=======
         $this->registerMiddleware(new AnonymizeIp);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $this;
     }
@@ -215,7 +337,12 @@ class Flare
         $report = Report::createForThrowable(
             $throwable,
             $this->contextDetector->detectCurrentContext(),
+<<<<<<< HEAD
+            $this->applicationPath,
+            $this->version()
+=======
             $this->applicationPath
+>>>>>>> parent of 31cfa1b1 (p)
         );
 
         return $this->applyMiddlewareToReport($report);
@@ -230,8 +357,11 @@ class Flare
             $this->applicationPath
         );
 
+<<<<<<< HEAD
+=======
         $report->groupByException();
 
+>>>>>>> parent of 31cfa1b1 (p)
         return $this->applyMiddlewareToReport($report);
     }
 

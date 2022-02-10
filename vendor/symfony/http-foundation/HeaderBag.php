@@ -133,9 +133,15 @@ class HeaderBag implements \IteratorAggregate, \Countable
     /**
      * Sets a header by name.
      *
+<<<<<<< HEAD
+     * @param string               $key     The key
+     * @param string|string[]|null $values  The value or an array of values
+     * @param bool                 $replace Whether to replace the actual value or not (true by default)
+=======
      * @param string          $key     The key
      * @param string|string[] $values  The value or an array of values
      * @param bool            $replace Whether to replace the actual value or not (true by default)
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function set($key, $values, $replace = true)
     {
@@ -228,8 +234,13 @@ class HeaderBag implements \IteratorAggregate, \Countable
     /**
      * Adds a custom Cache-Control directive.
      *
+<<<<<<< HEAD
+     * @param string      $key   The Cache-Control directive name
+     * @param bool|string $value The Cache-Control directive value
+=======
      * @param string $key   The Cache-Control directive name
      * @param mixed  $value The Cache-Control directive value
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function addCacheControlDirective($key, $value = true)
     {
@@ -255,11 +266,19 @@ class HeaderBag implements \IteratorAggregate, \Countable
      *
      * @param string $key The directive name
      *
+<<<<<<< HEAD
+     * @return bool|string|null The directive value if defined, null otherwise
+     */
+    public function getCacheControlDirective($key)
+    {
+        return $this->cacheControl[$key] ?? null;
+=======
      * @return mixed|null The directive value if defined, null otherwise
      */
     public function getCacheControlDirective($key)
     {
         return \array_key_exists($key, $this->cacheControl) ? $this->cacheControl[$key] : null;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -279,6 +298,10 @@ class HeaderBag implements \IteratorAggregate, \Countable
      *
      * @return \ArrayIterator An \ArrayIterator instance
      */
+<<<<<<< HEAD
+    #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function getIterator()
     {
         return new \ArrayIterator($this->headers);
@@ -289,6 +312,10 @@ class HeaderBag implements \IteratorAggregate, \Countable
      *
      * @return int The number of headers
      */
+<<<<<<< HEAD
+    #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function count()
     {
         return \count($this->headers);

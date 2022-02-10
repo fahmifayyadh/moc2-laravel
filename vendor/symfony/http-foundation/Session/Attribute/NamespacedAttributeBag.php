@@ -102,7 +102,11 @@ class NamespacedAttributeBag extends AttributeBag
     protected function &resolveAttributePath($name, $writeContext = false)
     {
         $array = &$this->attributes;
+<<<<<<< HEAD
+        $name = (str_starts_with($name, $this->namespaceCharacter)) ? substr($name, 1) : $name;
+=======
         $name = (0 === strpos($name, $this->namespaceCharacter)) ? substr($name, 1) : $name;
+>>>>>>> parent of 31cfa1b1 (p)
 
         // Check if there is anything to do, else return
         if (!$name) {

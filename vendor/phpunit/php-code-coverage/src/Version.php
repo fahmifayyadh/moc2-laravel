@@ -21,7 +21,11 @@ final class Version
     public static function id(): string
     {
         if (self::$version === null) {
+<<<<<<< HEAD
+            $version       = new VersionId('7.0.15', \dirname(__DIR__));
+=======
             $version       = new VersionId('7.0.10', \dirname(__DIR__));
+>>>>>>> parent of 31cfa1b1 (p)
             self::$version = $version->getVersion();
         }
 

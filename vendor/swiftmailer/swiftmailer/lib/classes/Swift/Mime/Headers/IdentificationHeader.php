@@ -9,6 +9,10 @@
  */
 
 use Egulias\EmailValidator\EmailValidator;
+<<<<<<< HEAD
+use Egulias\EmailValidator\Validation\MessageIDValidation;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Egulias\EmailValidator\Validation\RFCValidation;
 
 /**
@@ -96,7 +100,11 @@ class Swift_Mime_Headers_IdentificationHeader extends Swift_Mime_Headers_Abstrac
      */
     public function setId($id)
     {
+<<<<<<< HEAD
+        $this->setIds(\is_array($id) ? $id : [$id]);
+=======
         $this->setIds(is_array($id) ? $id : [$id]);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -108,7 +116,11 @@ class Swift_Mime_Headers_IdentificationHeader extends Swift_Mime_Headers_Abstrac
      */
     public function getId()
     {
+<<<<<<< HEAD
+        if (\count($this->ids) > 0) {
+=======
         if (count($this->ids) > 0) {
+>>>>>>> parent of 31cfa1b1 (p)
             return $this->ids[0];
         }
     }
@@ -179,7 +191,13 @@ class Swift_Mime_Headers_IdentificationHeader extends Swift_Mime_Headers_Abstrac
      */
     private function assertValidId($id)
     {
+<<<<<<< HEAD
+        $emailValidation = class_exists(MessageIDValidation::class) ? new MessageIDValidation() : new RFCValidation();
+
+        if (!$this->emailValidator->isValid($id, $emailValidation)) {
+=======
         if (!$this->emailValidator->isValid($id, new RFCValidation())) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Swift_RfcComplianceException('Invalid ID given <'.$id.'>');
         }
     }

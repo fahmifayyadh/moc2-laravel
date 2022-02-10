@@ -47,7 +47,11 @@ class Swift_Plugins_Loggers_ArrayLogger implements Swift_Plugins_Logger
     public function add($entry)
     {
         $this->log[] = $entry;
+<<<<<<< HEAD
+        while (\count($this->log) > $this->size) {
+=======
         while (count($this->log) > $this->size) {
+>>>>>>> parent of 31cfa1b1 (p)
             array_shift($this->log);
         }
     }

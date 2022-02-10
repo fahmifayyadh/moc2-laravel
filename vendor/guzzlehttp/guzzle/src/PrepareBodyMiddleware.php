@@ -1,13 +1,34 @@
 <?php
+<<<<<<< HEAD
+
+namespace GuzzleHttp;
+
+use GuzzleHttp\Promise\PromiseInterface;
+=======
 namespace GuzzleHttp;
 
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7;
+>>>>>>> parent of 31cfa1b1 (p)
 use Psr\Http\Message\RequestInterface;
 
 /**
  * Prepares requests that contain a body, adding the Content-Length,
  * Content-Type, and Expect headers.
+<<<<<<< HEAD
+ *
+ * @final
+ */
+class PrepareBodyMiddleware
+{
+    /**
+     * @var callable(RequestInterface, array): PromiseInterface
+     */
+    private $nextHandler;
+
+    /**
+     * @param callable(RequestInterface, array): PromiseInterface $nextHandler Next handler to invoke.
+=======
  */
 class PrepareBodyMiddleware
 {
@@ -16,12 +37,16 @@ class PrepareBodyMiddleware
 
     /**
      * @param callable $nextHandler Next handler to invoke.
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(callable $nextHandler)
     {
         $this->nextHandler = $nextHandler;
     }
 
+<<<<<<< HEAD
+    public function __invoke(RequestInterface $request, array $options): PromiseInterface
+=======
     /**
      * @param RequestInterface $request
      * @param array            $options
@@ -29,6 +54,7 @@ class PrepareBodyMiddleware
      * @return PromiseInterface
      */
     public function __invoke(RequestInterface $request, array $options)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $fn = $this->nextHandler;
 
@@ -42,7 +68,11 @@ class PrepareBodyMiddleware
         // Add a default content-type if possible.
         if (!$request->hasHeader('Content-Type')) {
             if ($uri = $request->getBody()->getMetadata('uri')) {
+<<<<<<< HEAD
+                if (is_string($uri) && $type = Psr7\MimeType::fromFilename($uri)) {
+=======
                 if ($type = Psr7\mimetype_from_filename($uri)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $modify['set_headers']['Content-Type'] = $type;
                 }
             }
@@ -63,11 +93,20 @@ class PrepareBodyMiddleware
         // Add the expect header if needed.
         $this->addExpectHeader($request, $options, $modify);
 
+<<<<<<< HEAD
+        return $fn(Psr7\Utils::modifyRequest($request, $modify), $options);
+=======
         return $fn(Psr7\modify_request($request, $modify), $options);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * Add expect header
+<<<<<<< HEAD
+     */
+    private function addExpectHeader(RequestInterface $request, array $options, array &$modify): void
+    {
+=======
      *
      * @return void
      */
@@ -76,12 +115,17 @@ class PrepareBodyMiddleware
         array $options,
         array &$modify
     ) {
+>>>>>>> parent of 31cfa1b1 (p)
         // Determine if the Expect header should be used
         if ($request->hasHeader('Expect')) {
             return;
         }
 
+<<<<<<< HEAD
+        $expect = $options['expect'] ?? null;
+=======
         $expect = isset($options['expect']) ? $options['expect'] : null;
+>>>>>>> parent of 31cfa1b1 (p)
 
         // Return if disabled or if you're not using HTTP/1.1 or HTTP/2.0
         if ($expect === false || $request->getProtocolVersion() < 1.1) {

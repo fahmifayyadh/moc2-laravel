@@ -9,12 +9,60 @@
  */
 namespace PHPUnit\Util\Annotation;
 
+<<<<<<< HEAD
+use const JSON_ERROR_NONE;
+use const PREG_OFFSET_CAPTURE;
+use function array_filter;
+use function array_key_exists;
+use function array_map;
+use function array_merge;
+use function array_pop;
+use function array_slice;
+use function array_values;
+use function constant;
+use function count;
+use function defined;
+use function explode;
+use function file;
+use function implode;
+use function is_array;
+use function is_int;
+use function is_numeric;
+use function is_string;
+use function json_decode;
+use function json_last_error;
+use function json_last_error_msg;
+use function preg_match;
+use function preg_match_all;
+use function preg_replace;
+use function preg_split;
+use function realpath;
+use function rtrim;
+use function sprintf;
+use function str_replace;
+use function strlen;
+use function strpos;
+use function strtolower;
+use function substr;
+use function substr_count;
+use function trim;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PharIo\Version\VersionConstraintParser;
 use PHPUnit\Framework\InvalidDataProviderException;
 use PHPUnit\Framework\SkippedTestError;
 use PHPUnit\Framework\Warning;
 use PHPUnit\Util\Exception;
 use PHPUnit\Util\InvalidDataSetException;
+<<<<<<< HEAD
+use ReflectionClass;
+use ReflectionException;
+use ReflectionFunctionAbstract;
+use ReflectionMethod;
+use Reflector;
+use Traversable;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * This is an abstraction around a PHPUnit-specific docBlock,
@@ -86,7 +134,11 @@ final class DocBlock
      */
     private $className;
 
+<<<<<<< HEAD
+    public static function ofClass(ReflectionClass $class): self
+=======
     public static function ofClass(\ReflectionClass $class): self
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $className = $class->getName();
 
@@ -105,7 +157,11 @@ final class DocBlock
     /**
      * @psalm-param class-string $classNameInHierarchy
      */
+<<<<<<< HEAD
+    public static function ofMethod(ReflectionMethod $method, string $classNameInHierarchy): self
+=======
     public static function ofMethod(\ReflectionMethod $method, string $classNameInHierarchy): self
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return new self(
             (string) $method->getDocComment(),
@@ -161,6 +217,17 @@ final class DocBlock
         $recordedSettings  = [];
         $extensionVersions = [];
         $recordedOffsets   = [
+<<<<<<< HEAD
+            '__FILE' => realpath($this->fileName),
+        ];
+
+        // Trim docblock markers, split it into lines and rewind offset to start of docblock
+        $lines = preg_replace(['#^/\*{2}#', '#\*/$#'], '', preg_split('/\r\n|\r|\n/', $this->docComment));
+        $offset -= count($lines);
+
+        foreach ($lines as $line) {
+            if (preg_match(self::REGEX_REQUIRES_OS, $line, $matches)) {
+=======
             '__FILE' => \realpath($this->fileName),
         ];
 
@@ -170,19 +237,29 @@ final class DocBlock
 
         foreach ($lines as $line) {
             if (\preg_match(self::REGEX_REQUIRES_OS, $line, $matches)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $requires[$matches['name']]        = $matches['value'];
                 $recordedOffsets[$matches['name']] = $offset;
             }
 
+<<<<<<< HEAD
+            if (preg_match(self::REGEX_REQUIRES_VERSION, $line, $matches)) {
+                $requires[$matches['name']] = [
+=======
             if (\preg_match(self::REGEX_REQUIRES_VERSION, $line, $matches)) {
                 $requires[$matches['name']]        = [
+>>>>>>> parent of 31cfa1b1 (p)
                     'version'  => $matches['version'],
                     'operator' => $matches['operator'],
                 ];
                 $recordedOffsets[$matches['name']] = $offset;
             }
 
+<<<<<<< HEAD
+            if (preg_match(self::REGEX_REQUIRES_VERSION_CONSTRAINT, $line, $matches)) {
+=======
             if (\preg_match(self::REGEX_REQUIRES_VERSION_CONSTRAINT, $line, $matches)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 if (!empty($requires[$matches['name']])) {
                     $offset++;
 
@@ -192,8 +269,13 @@ final class DocBlock
                 try {
                     $versionConstraintParser = new VersionConstraintParser;
 
+<<<<<<< HEAD
+                    $requires[$matches['name'] . '_constraint'] = [
+                        'constraint' => $versionConstraintParser->parse(trim($matches['constraint'])),
+=======
                     $requires[$matches['name'] . '_constraint']        = [
                         'constraint' => $versionConstraintParser->parse(\trim($matches['constraint'])),
+>>>>>>> parent of 31cfa1b1 (p)
                     ];
                     $recordedOffsets[$matches['name'] . '_constraint'] = $offset;
                 } catch (\PharIo\Version\Exception $e) {
@@ -202,12 +284,20 @@ final class DocBlock
                 }
             }
 
+<<<<<<< HEAD
+            if (preg_match(self::REGEX_REQUIRES_SETTING, $line, $matches)) {
+=======
             if (\preg_match(self::REGEX_REQUIRES_SETTING, $line, $matches)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $recordedSettings[$matches['setting']]               = $matches['value'];
                 $recordedOffsets['__SETTING_' . $matches['setting']] = $offset;
             }
 
+<<<<<<< HEAD
+            if (preg_match(self::REGEX_REQUIRES, $line, $matches)) {
+=======
             if (\preg_match(self::REGEX_REQUIRES, $line, $matches)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $name = $matches['name'] . 's';
 
                 if (!isset($requires[$name])) {
@@ -228,10 +318,17 @@ final class DocBlock
             $offset++;
         }
 
+<<<<<<< HEAD
+        return $this->parsedRequirements = array_merge(
+            $requires,
+            ['__OFFSET' => $recordedOffsets],
+            array_filter([
+=======
         return $this->parsedRequirements = \array_merge(
             $requires,
             ['__OFFSET' => $recordedOffsets],
             \array_filter([
+>>>>>>> parent of 31cfa1b1 (p)
                 'setting'            => $recordedSettings,
                 'extension_versions' => $extensionVersions,
             ])
@@ -250,9 +347,15 @@ final class DocBlock
      */
     public function expectedException()
     {
+<<<<<<< HEAD
+        $docComment = (string) substr($this->docComment, 3, -2);
+
+        if (1 !== preg_match(self::REGEX_EXPECTED_EXCEPTION, $docComment, $matches)) {
+=======
         $docComment = (string) \substr($this->docComment, 3, -2);
 
         if (1 !== \preg_match(self::REGEX_EXPECTED_EXCEPTION, $docComment, $matches)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
@@ -264,7 +367,11 @@ final class DocBlock
         $messageRegExp = '';
 
         if (isset($matches[2])) {
+<<<<<<< HEAD
+            $message = trim($matches[2]);
+=======
             $message = \trim($matches[2]);
+>>>>>>> parent of 31cfa1b1 (p)
         } elseif (isset($annotations['expectedExceptionMessage'])) {
             $message = $this->parseAnnotationContent($annotations['expectedExceptionMessage'][0]);
         }
@@ -279,10 +386,17 @@ final class DocBlock
             $code = $this->parseAnnotationContent($annotations['expectedExceptionCode'][0]);
         }
 
+<<<<<<< HEAD
+        if (is_numeric($code)) {
+            $code = (int) $code;
+        } elseif (is_string($code) && defined($code)) {
+            $code = (int) constant($code);
+=======
         if (\is_numeric($code)) {
             $code = (int) $code;
         } elseif (\is_string($code) && \defined($code)) {
             $code = (int) \constant($code);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return [
@@ -312,11 +426,19 @@ final class DocBlock
         }
 
         foreach ($data as $key => $value) {
+<<<<<<< HEAD
+            if (!is_array($value)) {
+                throw new InvalidDataSetException(
+                    sprintf(
+                        'Data set %s is invalid.',
+                        is_int($key) ? '#' . $key : '"' . $key . '"'
+=======
             if (!\is_array($value)) {
                 throw new InvalidDataSetException(
                     \sprintf(
                         'Data set %s is invalid.',
                         \is_int($key) ? '#' . $key : '"' . $key . '"'
+>>>>>>> parent of 31cfa1b1 (p)
                     )
                 );
             }
@@ -330,6 +452,18 @@ final class DocBlock
      */
     public function getInlineAnnotations(): array
     {
+<<<<<<< HEAD
+        $code        = file($this->fileName);
+        $lineNumber  = $this->startLine;
+        $startLine   = $this->startLine - 1;
+        $endLine     = $this->endLine - 1;
+        $codeLines   = array_slice($code, $startLine, $endLine - $startLine + 1);
+        $annotations = [];
+
+        foreach ($codeLines as $line) {
+            if (preg_match('#/\*\*?\s*@(?P<name>[A-Za-z_-]+)(?:[ \t]+(?P<value>.*?))?[ \t]*\r?\*/$#m', $line, $matches)) {
+                $annotations[strtolower($matches['name'])] = [
+=======
         $code        = \file($this->fileName);
         $lineNumber  = $this->startLine;
         $startLine   = $this->startLine - 1;
@@ -340,6 +474,7 @@ final class DocBlock
         foreach ($codeLines as $line) {
             if (\preg_match('#/\*\*?\s*@(?P<name>[A-Za-z_-]+)(?:[ \t]+(?P<value>.*?))?[ \t]*\r?\*/$#m', $line, $matches)) {
                 $annotations[\strtolower($matches['name'])] = [
+>>>>>>> parent of 31cfa1b1 (p)
                     'line'  => $lineNumber,
                     'value' => $matches['value'],
                 ];
@@ -358,28 +493,50 @@ final class DocBlock
 
     public function isHookToBeExecutedBeforeClass(): bool
     {
+<<<<<<< HEAD
+        return $this->isMethod &&
+            false !== strpos($this->docComment, '@beforeClass');
+=======
         return $this->isMethod
             && false !== \strpos($this->docComment, '@beforeClass');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function isHookToBeExecutedAfterClass(): bool
     {
+<<<<<<< HEAD
+        return $this->isMethod &&
+            false !== strpos($this->docComment, '@afterClass');
+=======
         return $this->isMethod
             && false !== \strpos($this->docComment, '@afterClass');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function isToBeExecutedBeforeTest(): bool
     {
+<<<<<<< HEAD
+        return 1 === preg_match('/@before\b/', $this->docComment);
+=======
         return 1 === \preg_match('/@before\b/', $this->docComment);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function isToBeExecutedAfterTest(): bool
     {
+<<<<<<< HEAD
+        return 1 === preg_match('/@after\b/', $this->docComment);
+    }
+
+    /**
+     * Parse annotation content to use constant/class constant values.
+=======
         return 1 === \preg_match('/@after\b/', $this->docComment);
     }
 
     /**
      * Parse annotation content to use constant/class constant values
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * Constants are specified using a starting '@'. For example: @ClassName::CONST_NAME
      *
@@ -387,9 +544,15 @@ final class DocBlock
      */
     private function parseAnnotationContent(string $message): string
     {
+<<<<<<< HEAD
+        if (defined($message) &&
+            (strpos($message, '::') !== false && substr_count($message, '::') + 1 === 2)) {
+            return constant($message);
+=======
         if (\defined($message) &&
             (\strpos($message, '::') !== false && \substr_count($message, '::') + 1 === 2)) {
             return \constant($message);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $message;
@@ -404,38 +567,64 @@ final class DocBlock
             $methodName = $this->name;
         }
 
+<<<<<<< HEAD
+        if (!preg_match_all(self::REGEX_DATA_PROVIDER, $docComment, $matches)) {
+=======
         if (!\preg_match_all(self::REGEX_DATA_PROVIDER, $docComment, $matches)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return null;
         }
 
         $result = [];
 
         foreach ($matches[1] as $match) {
+<<<<<<< HEAD
+            $dataProviderMethodNameNamespace = explode('\\', $match);
+            $leaf                            = explode('::', array_pop($dataProviderMethodNameNamespace));
+            $dataProviderMethodName          = array_pop($leaf);
+=======
             $dataProviderMethodNameNamespace = \explode('\\', $match);
             $leaf                            = \explode('::', \array_pop($dataProviderMethodNameNamespace));
             $dataProviderMethodName          = \array_pop($leaf);
+>>>>>>> parent of 31cfa1b1 (p)
 
             if (empty($dataProviderMethodNameNamespace)) {
                 $dataProviderMethodNameNamespace = '';
             } else {
+<<<<<<< HEAD
+                $dataProviderMethodNameNamespace = implode('\\', $dataProviderMethodNameNamespace) . '\\';
+=======
                 $dataProviderMethodNameNamespace = \implode('\\', $dataProviderMethodNameNamespace) . '\\';
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             if (empty($leaf)) {
                 $dataProviderClassName = $className;
             } else {
                 /** @psalm-var class-string $dataProviderClassName */
+<<<<<<< HEAD
+                $dataProviderClassName = $dataProviderMethodNameNamespace . array_pop($leaf);
+            }
+
+            try {
+                $dataProviderClass = new ReflectionClass($dataProviderClassName);
+=======
                 $dataProviderClassName = $dataProviderMethodNameNamespace . \array_pop($leaf);
             }
 
             try {
                 $dataProviderClass = new \ReflectionClass($dataProviderClassName);
+>>>>>>> parent of 31cfa1b1 (p)
 
                 $dataProviderMethod = $dataProviderClass->getMethod(
                     $dataProviderMethodName
                 );
                 // @codeCoverageIgnoreStart
+<<<<<<< HEAD
+            } catch (ReflectionException $e) {
+=======
             } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 throw new Exception(
                     $e->getMessage(),
                     (int) $e->getCode(),
@@ -456,16 +645,28 @@ final class DocBlock
                 $data = $dataProviderMethod->invoke($object, $methodName);
             }
 
+<<<<<<< HEAD
+            if ($data instanceof Traversable) {
+=======
             if ($data instanceof \Traversable) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $origData = $data;
                 $data     = [];
 
                 foreach ($origData as $key => $value) {
+<<<<<<< HEAD
+                    if (is_int($key)) {
+                        $data[] = $value;
+                    } elseif (array_key_exists($key, $data)) {
+                        throw new InvalidDataProviderException(
+                            sprintf(
+=======
                     if (\is_int($key)) {
                         $data[] = $value;
                     } elseif (\array_key_exists($key, $data)) {
                         throw new InvalidDataProviderException(
                             \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                                 'The key "%s" has already been defined in the data provider "%s".',
                                 $key,
                                 $match
@@ -477,8 +678,13 @@ final class DocBlock
                 }
             }
 
+<<<<<<< HEAD
+            if (is_array($data)) {
+                $result = array_merge($result, $data);
+=======
             if (\is_array($data)) {
                 $result = \array_merge($result, $data);
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 
@@ -492,6 +698,18 @@ final class DocBlock
     {
         $docComment = $this->cleanUpMultiLineAnnotation($docComment);
 
+<<<<<<< HEAD
+        if (!preg_match(self::REGEX_TEST_WITH, $docComment, $matches, PREG_OFFSET_CAPTURE)) {
+            return null;
+        }
+
+        $offset            = strlen($matches[0][0]) + $matches[0][1];
+        $annotationContent = substr($docComment, $offset);
+        $data              = [];
+
+        foreach (explode("\n", $annotationContent) as $candidateRow) {
+            $candidateRow = trim($candidateRow);
+=======
         if (!\preg_match(self::REGEX_TEST_WITH, $docComment, $matches, \PREG_OFFSET_CAPTURE)) {
             return null;
         }
@@ -502,16 +720,25 @@ final class DocBlock
 
         foreach (\explode("\n", $annotationContent) as $candidateRow) {
             $candidateRow = \trim($candidateRow);
+>>>>>>> parent of 31cfa1b1 (p)
 
             if ($candidateRow[0] !== '[') {
                 break;
             }
 
+<<<<<<< HEAD
+            $dataSet = json_decode($candidateRow, true);
+
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new Exception(
+                    'The data set for the @testWith annotation cannot be parsed: ' . json_last_error_msg()
+=======
             $dataSet = \json_decode($candidateRow, true);
 
             if (\json_last_error() !== \JSON_ERROR_NONE) {
                 throw new Exception(
                     'The data set for the @testWith annotation cannot be parsed: ' . \json_last_error_msg()
+>>>>>>> parent of 31cfa1b1 (p)
                 );
             }
 
@@ -528,17 +755,34 @@ final class DocBlock
     private function cleanUpMultiLineAnnotation(string $docComment): string
     {
         //removing initial '   * ' for docComment
+<<<<<<< HEAD
+        $docComment = str_replace("\r\n", "\n", $docComment);
+        $docComment = preg_replace('/' . '\n' . '\s*' . '\*' . '\s?' . '/', "\n", $docComment);
+        $docComment = (string) substr($docComment, 0, -1);
+
+        return rtrim($docComment, "\n");
+=======
         $docComment = \str_replace("\r\n", "\n", $docComment);
         $docComment = \preg_replace('/' . '\n' . '\s*' . '\*' . '\s?' . '/', "\n", $docComment);
         $docComment = (string) \substr($docComment, 0, -1);
 
         return \rtrim($docComment, "\n");
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /** @return array<string, array<int, string>> */
     private static function parseDocBlock(string $docBlock): array
     {
         // Strip away the docblock header and footer to ease parsing of one line annotations
+<<<<<<< HEAD
+        $docBlock    = (string) substr($docBlock, 3, -2);
+        $annotations = [];
+
+        if (preg_match_all('/@(?P<name>[A-Za-z_-]+)(?:[ \t]+(?P<value>.*?))?[ \t]*\r?$/m', $docBlock, $matches)) {
+            $numMatches = count($matches[0]);
+
+            for ($i = 0; $i < $numMatches; $i++) {
+=======
         $docBlock    = (string) \substr($docBlock, 3, -2);
         $annotations = [];
 
@@ -546,6 +790,7 @@ final class DocBlock
             $numMatches = \count($matches[0]);
 
             for ($i = 0; $i < $numMatches; ++$i) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $annotations[$matches['name'][$i]][] = (string) $matches['value'][$i];
             }
         }
@@ -553,6 +798,22 @@ final class DocBlock
         return $annotations;
     }
 
+<<<<<<< HEAD
+    /** @param ReflectionClass|ReflectionFunctionAbstract $reflector */
+    private static function extractAnnotationsFromReflector(Reflector $reflector): array
+    {
+        $annotations = [];
+
+        if ($reflector instanceof ReflectionClass) {
+            $annotations = array_merge(
+                $annotations,
+                ...array_map(
+                    static function (ReflectionClass $trait): array
+                    {
+                        return self::parseDocBlock((string) $trait->getDocComment());
+                    },
+                    array_values($reflector->getTraits())
+=======
     /** @param \ReflectionClass|\ReflectionFunctionAbstract $reflector */
     private static function extractAnnotationsFromReflector(\Reflector $reflector): array
     {
@@ -566,11 +827,16 @@ final class DocBlock
                         return self::parseDocBlock((string) $trait->getDocComment());
                     },
                     \array_values($reflector->getTraits())
+>>>>>>> parent of 31cfa1b1 (p)
                 )
             );
         }
 
+<<<<<<< HEAD
+        return array_merge(
+=======
         return \array_merge(
+>>>>>>> parent of 31cfa1b1 (p)
             $annotations,
             self::parseDocBlock((string) $reflector->getDocComment())
         );

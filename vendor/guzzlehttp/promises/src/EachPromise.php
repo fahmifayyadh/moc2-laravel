@@ -10,6 +10,11 @@ class EachPromise implements PromisorInterface
 {
     private $pending = [];
 
+<<<<<<< HEAD
+    private $nextPendingIndex = 0;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     /** @var \Iterator|null */
     private $iterable;
 
@@ -77,9 +82,13 @@ class EachPromise implements PromisorInterface
             $this->createPromise();
             /** @psalm-assert Promise $this->aggregate */
             $this->iterable->rewind();
+<<<<<<< HEAD
+            $this->refillPending();
+=======
             if (!$this->checkIfFinished()) {
                 $this->refillPending();
             }
+>>>>>>> parent of 31cfa1b1 (p)
         } catch (\Throwable $e) {
             /**
              * @psalm-suppress NullReference
@@ -105,6 +114,12 @@ class EachPromise implements PromisorInterface
     {
         $this->mutex = false;
         $this->aggregate = new Promise(function () {
+<<<<<<< HEAD
+            if ($this->checkIfFinished()) {
+                return;
+            }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             reset($this->pending);
             // Consume a potentially fluctuating list of promises while
             // ensuring that indexes are maintained (precluding array_shift).
@@ -121,6 +136,10 @@ class EachPromise implements PromisorInterface
         $clearFn = function () {
             $this->iterable = $this->concurrency = $this->pending = null;
             $this->onFulfilled = $this->onRejected = null;
+<<<<<<< HEAD
+            $this->nextPendingIndex = 0;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         };
 
         $this->aggregate->then($clearFn, $clearFn);
@@ -163,11 +182,17 @@ class EachPromise implements PromisorInterface
         $promise = Create::promiseFor($this->iterable->current());
         $key = $this->iterable->key();
 
+<<<<<<< HEAD
+        // Iterable keys may not be unique, so we use a counter to
+        // guarantee uniqueness
+        $idx = $this->nextPendingIndex++;
+=======
         // Iterable keys may not be unique, so we add the promises at the end
         // of the pending array and retrieve the array index being used
         $this->pending[] = null;
         end($this->pending);
         $idx = key($this->pending);
+>>>>>>> parent of 31cfa1b1 (p)
 
         $this->pending[$idx] = $promise->then(
             function ($value) use ($idx, $key) {

@@ -20,12 +20,20 @@ use phpDocumentor\Reflection\Type;
  *
  * @psalm-immutable
  */
+<<<<<<< HEAD
+class Integer implements Type
+=======
 final class Integer implements Type
+>>>>>>> parent of 31cfa1b1 (p)
 {
     /**
      * Returns a rendered output of the Type as it would be used in a DocBlock.
      */
+<<<<<<< HEAD
+    public function __toString(): string
+=======
     public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return 'int';
     }

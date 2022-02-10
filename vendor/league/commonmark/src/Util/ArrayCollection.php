@@ -41,6 +41,13 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
     public function __construct(array $elements = [])
     {
         $this->elements = $elements;
+<<<<<<< HEAD
+
+        if (self::class !== static::class) {
+            @\trigger_error('Extending the ArrayCollection class is deprecated in league/commonmark 1.6 and will not be allowed in 2.0', \E_USER_DEPRECATED);
+        }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -67,9 +74,14 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
      * Retrieve an external iterator
      *
      * @return \ArrayIterator<int|string, mixed>
+<<<<<<< HEAD
+     */
+    #[\ReturnTypeWillChange]
+=======
      *
      * @phpstan-return \ArrayIterator<TKey, TValue>
      */
+>>>>>>> parent of 31cfa1b1 (p)
     public function getIterator()
     {
         return new \ArrayIterator($this->elements);
@@ -249,6 +261,10 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
      *
      * @phpstan-return TValue|null
      */
+<<<<<<< HEAD
+    #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetGet($offset)
     {
         return $this->elements[$offset] ?? null;
@@ -265,6 +281,10 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
      * @phpstan-param TKey|null $offset
      * @phpstan-param TValue    $value
      */
+<<<<<<< HEAD
+    #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetSet($offset, $value)
     {
         if ($offset === null) {
@@ -283,6 +303,10 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
      *
      * @phpstan-param TKey $offset
      */
+<<<<<<< HEAD
+    #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetUnset($offset)
     {
         if (!\array_key_exists($offset, $this->elements)) {

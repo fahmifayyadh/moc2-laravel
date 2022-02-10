@@ -35,7 +35,13 @@ class FlowdockFormatter implements FormatterInterface
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+     *
+     * @return mixed[]
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function format(array $record): array
     {
@@ -69,7 +75,13 @@ class FlowdockFormatter implements FormatterInterface
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+     *
+     * @return mixed[][]
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function formatBatch(array $records): array
     {

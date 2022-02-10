@@ -37,7 +37,11 @@ class Esi extends AbstractSurrogate
      */
     public function addSurrogateControl(Response $response)
     {
+<<<<<<< HEAD
+        if (str_contains($response->getContent(), '<esi:include')) {
+=======
         if (false !== strpos($response->getContent(), '<esi:include')) {
+>>>>>>> parent of 31cfa1b1 (p)
             $response->headers->set('Surrogate-Control', 'content="ESI/1.0"');
         }
     }
@@ -97,7 +101,11 @@ class Esi extends AbstractSurrogate
 
             $chunks[$i] = sprintf('<?php echo $this->surrogate->handle($this, %s, %s, %s) ?>'."\n",
                 var_export($options['src'], true),
+<<<<<<< HEAD
+                var_export($options['alt'] ?? '', true),
+=======
                 var_export(isset($options['alt']) ? $options['alt'] : '', true),
+>>>>>>> parent of 31cfa1b1 (p)
                 isset($options['onerror']) && 'continue' === $options['onerror'] ? 'true' : 'false'
             );
             ++$i;

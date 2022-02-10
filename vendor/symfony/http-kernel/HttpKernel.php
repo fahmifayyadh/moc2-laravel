@@ -61,7 +61,11 @@ class HttpKernel implements HttpKernelInterface, TerminableInterface
     {
         $this->dispatcher = LegacyEventDispatcherProxy::decorate($dispatcher);
         $this->resolver = $resolver;
+<<<<<<< HEAD
+        $this->requestStack = $requestStack ?? new RequestStack();
+=======
         $this->requestStack = $requestStack ?: new RequestStack();
+>>>>>>> parent of 31cfa1b1 (p)
         $this->argumentResolver = $argumentResolver;
 
         if (null === $this->argumentResolver) {

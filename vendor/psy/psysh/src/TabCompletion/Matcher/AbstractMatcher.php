@@ -31,6 +31,10 @@ abstract class AbstractMatcher
     const T_CLONE = 'T_CLONE';
     const T_NS_SEPARATOR = 'T_NS_SEPARATOR';
     const T_STRING = 'T_STRING';
+<<<<<<< HEAD
+    const T_NAME_QUALIFIED = 'T_NAME_QUALIFIED';
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     const T_WHITESPACE = 'T_WHITESPACE';
     const T_AND_EQUAL = 'T_AND_EQUAL';
     const T_BOOLEAN_AND = 'T_BOOLEAN_AND';
@@ -49,7 +53,11 @@ abstract class AbstractMatcher
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public function hasMatched(array $tokens): bool
+=======
     public function hasMatched(array $tokens)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return false;
     }
@@ -61,7 +69,11 @@ abstract class AbstractMatcher
      *
      * @return string
      */
+<<<<<<< HEAD
+    protected function getInput(array $tokens): string
+=======
     protected function getInput(array $tokens)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $var = '';
         $firstToken = \array_pop($tokens);
@@ -79,18 +91,30 @@ abstract class AbstractMatcher
      *
      * @return string
      */
+<<<<<<< HEAD
+    protected function getNamespaceAndClass(array $tokens): string
+    {
+        $class = '';
+        while (self::hasToken(
+            [self::T_NS_SEPARATOR, self::T_STRING, self::T_NAME_QUALIFIED],
+=======
     protected function getNamespaceAndClass($tokens)
     {
         $class = '';
         while (self::hasToken(
             [self::T_NS_SEPARATOR, self::T_STRING],
+>>>>>>> parent of 31cfa1b1 (p)
             $token = \array_pop($tokens)
         )) {
             if (self::needCompleteClass($token)) {
                 continue;
             }
 
+<<<<<<< HEAD
+            $class = $token[1].$class;
+=======
             $class = $token[1] . $class;
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $class;
@@ -104,7 +128,11 @@ abstract class AbstractMatcher
      *
      * @return array The matches resulting from the query
      */
+<<<<<<< HEAD
+    abstract public function getMatches(array $tokens, array $info = []): array;
+=======
     abstract public function getMatches(array $tokens, array $info = []);
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Check whether $word starts with $prefix.
@@ -114,7 +142,11 @@ abstract class AbstractMatcher
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public static function startsWith(string $prefix, string $word): bool
+=======
     public static function startsWith($prefix, $word)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \preg_match(\sprintf('#^%s#', $prefix), $word);
     }
@@ -127,7 +159,11 @@ abstract class AbstractMatcher
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public static function hasSyntax($token, string $syntax = self::VAR_SYNTAX): bool
+=======
     public static function hasSyntax($token, $syntax = self::VAR_SYNTAX)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!\is_array($token)) {
             return false;
@@ -146,7 +182,11 @@ abstract class AbstractMatcher
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public static function tokenIs($token, string $which): bool
+=======
     public static function tokenIs($token, $which)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!\is_array($token)) {
             return false;
@@ -162,7 +202,11 @@ abstract class AbstractMatcher
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public static function isOperator($token): bool
+=======
     public static function isOperator($token)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!\is_string($token)) {
             return false;
@@ -171,7 +215,11 @@ abstract class AbstractMatcher
         return \strpos(self::MISC_OPERATORS, $token) !== false;
     }
 
+<<<<<<< HEAD
+    public static function needCompleteClass($token): bool
+=======
     public static function needCompleteClass($token)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \in_array($token[1], ['doc', 'ls', 'show']);
     }
@@ -184,7 +232,11 @@ abstract class AbstractMatcher
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public static function hasToken(array $coll, $token): bool
+=======
     public static function hasToken(array $coll, $token)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!\is_array($token)) {
             return false;

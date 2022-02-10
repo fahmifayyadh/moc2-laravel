@@ -9,6 +9,20 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
+use Carbon\CarbonInterface;
+
+/**
+ * This file is part of the Carbon package.
+ *
+ * (c) Brian Nesbitt <brian@nesbot.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /*
  * Authors:
  * - Philippe Vaucher
@@ -31,6 +45,71 @@
  * - zakse
  * - Janis Eglitis (janiseglitis)
  * - Guntars
+<<<<<<< HEAD
+ * - Juris Sudmalis
+ */
+$daysOfWeek = ['svētdiena', 'pirmdiena', 'otrdiena', 'trešdiena', 'ceturtdiena', 'piektdiena', 'sestdiena'];
+$daysOfWeekLocativum = ['svētdien', 'pirmdien', 'otrdien', 'trešdien', 'ceturtdien', 'piektdien', 'sestdien'];
+
+$transformDiff = function ($input) {
+    return strtr($input, [
+        // Nominative => "pirms/pēc" Dative
+        'gads' => 'gada',
+        'gadi' => 'gadiem',
+        'gadu' => 'gadiem',
+        'mēnesis' => 'mēneša',
+        'mēneši' => 'mēnešiem',
+        'mēnešu' => 'mēnešiem',
+        'nedēļa' => 'nedēļas',
+        'nedēļas' => 'nedēļām',
+        'nedēļu' => 'nedēļām',
+        'diena' => 'dienas',
+        'dienas' => 'dienām',
+        'dienu' => 'dienām',
+        'stunda' => 'stundas',
+        'stundas' => 'stundām',
+        'stundu' => 'stundām',
+        'minūte' => 'minūtes',
+        'minūtes' => 'minūtēm',
+        'minūšu' => 'minūtēm',
+        'sekunde' => 'sekundes',
+        'sekundes' => 'sekundēm',
+        'sekunžu' => 'sekundēm',
+    ]);
+};
+
+return [
+    'ago' => function ($time) use ($transformDiff) {
+        return 'pirms '.$transformDiff($time);
+    },
+    'from_now' => function ($time) use ($transformDiff) {
+        return 'pēc '.$transformDiff($time);
+    },
+
+    'year' => '0 gadu|:count gads|:count gadi',
+    'y' => ':count g.',
+    'a_year' => '{1}gads|0 gadu|:count gads|:count gadi',
+    'month' => '0 mēnešu|:count mēnesis|:count mēneši',
+    'm' => ':count mēn.',
+    'a_month' => '{1}mēnesis|0 mēnešu|:count mēnesis|:count mēneši',
+    'week' => '0 nedēļu|:count nedēļa|:count nedēļas',
+    'w' => ':count ned.',
+    'a_week' => '{1}nedēļa|0 nedēļu|:count nedēļa|:count nedēļas',
+    'day' => '0 dienu|:count diena|:count dienas',
+    'd' => ':count d.',
+    'a_day' => '{1}diena|0 dienu|:count diena|:count dienas',
+    'hour' => '0 stundu|:count stunda|:count stundas',
+    'h' => ':count st.',
+    'a_hour' => '{1}stunda|0 stundu|:count stunda|:count stundas',
+    'minute' => '0 minūšu|:count minūte|:count minūtes',
+    'min' => ':count min.',
+    'a_minute' => '{1}minūte|0 minūšu|:count minūte|:count minūtes',
+    'second' => '0 sekunžu|:count sekunde|:count sekundes',
+    's' => ':count sek.',
+    'a_second' => '{1}sekunde|0 sekunžu|:count sekunde|:count sekundes',
+
+    'after' => ':time vēlāk',
+=======
  */
 return [
     'year' => '0 gadiem|:count gads|:count gadiem',
@@ -61,6 +140,7 @@ return [
     'after' => ':time vēlāk',
     'before' => ':time pirms',
 
+>>>>>>> parent of 31cfa1b1 (p)
     'year_after' => '0 gadus|:count gadu|:count gadus',
     'a_year_after' => '{1}gadu|0 gadus|:count gadu|:count gadus',
     'month_after' => '0 mēnešus|:count mēnesi|:count mēnešus',
@@ -76,6 +156,10 @@ return [
     'second_after' => '0 sekundes|:count sekundi|:count sekundes',
     'a_second_after' => '{1}sekundi|0 sekundes|:count sekundi|:count sekundes',
 
+<<<<<<< HEAD
+    'before' => ':time agrāk',
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     'year_before' => '0 gadus|:count gadu|:count gadus',
     'a_year_before' => '{1}gadu|0 gadus|:count gadu|:count gadus',
     'month_before' => '0 mēnešus|:count mēnesi|:count mēnešus',
@@ -94,9 +178,20 @@ return [
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' un '],
+<<<<<<< HEAD
+
+    'diff_now' => 'tagad',
+    'diff_today' => 'šodien',
+    'diff_yesterday' => 'vakar',
+    'diff_before_yesterday' => 'aizvakar',
+    'diff_tomorrow' => 'rīt',
+    'diff_after_tomorrow' => 'parīt',
+
+=======
     'diff_now' => 'tagad',
     'diff_yesterday' => 'vakar',
     'diff_tomorrow' => 'rīt',
+>>>>>>> parent of 31cfa1b1 (p)
     'formats' => [
         'LT' => 'HH:mm',
         'LTS' => 'HH:mm:ss',
@@ -105,10 +200,36 @@ return [
         'LLL' => 'DD.MM.YYYY., HH:mm',
         'LLLL' => 'YYYY. [gada] D. MMMM, HH:mm',
     ],
+<<<<<<< HEAD
+
+    'calendar' => [
+        'sameDay' => '[šodien] [plkst.] LT',
+        'nextDay' => '[rīt] [plkst.] LT',
+        'nextWeek' => function (CarbonInterface $current, CarbonInterface $other) use ($daysOfWeekLocativum) {
+            if ($current->week !== $other->week) {
+                return '[nākošo] ['.$daysOfWeekLocativum[$current->dayOfWeek].'] [plkst.] LT';
+            }
+
+            return '['.$daysOfWeekLocativum[$current->dayOfWeek].'] [plkst.] LT';
+        },
+        'lastDay' => '[vakar] [plkst.] LT',
+        'lastWeek' => function (CarbonInterface $current) use ($daysOfWeekLocativum) {
+            return '[pagājušo] ['.$daysOfWeekLocativum[$current->dayOfWeek].'] [plkst.] LT';
+        },
+        'sameElse' => 'L',
+    ],
+
+    'weekdays' => $daysOfWeek,
+    'weekdays_short' => ['Sv.', 'P.', 'O.', 'T.', 'C.', 'Pk.', 'S.'],
+    'weekdays_min' => ['Sv.', 'P.', 'O.', 'T.', 'C.', 'Pk.', 'S.'],
+    'months' => ['janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī'],
+    'months_short' => ['janv.', 'febr.', 'martā', 'apr.', 'maijā', 'jūn.', 'jūl.', 'aug.', 'sept.', 'okt.', 'nov.', 'dec.'],
+=======
     'weekdays' => ['svētdiena', 'pirmdiena', 'otrdiena', 'trešdiena', 'ceturtdiena', 'piektdiena', 'sestdiena'],
     'weekdays_short' => ['Sv.', 'P.', 'O.', 'T.', 'C.', 'Pk.', 'S.'],
     'weekdays_min' => ['Sv.', 'P.', 'O.', 'T.', 'C.', 'Pk.', 'S.'],
     'months' => ['janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī'],
     'months_short' => ['Janv', 'Feb', 'Mar', 'Apr', 'Mai', 'Jūn', 'Jūl', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec'],
+>>>>>>> parent of 31cfa1b1 (p)
     'meridiem' => ['priekšpusdiena', 'pēcpusdiena'],
 ];

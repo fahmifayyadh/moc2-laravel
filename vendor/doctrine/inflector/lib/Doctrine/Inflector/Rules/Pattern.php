@@ -25,17 +25,29 @@ final class Pattern
         }
     }
 
+<<<<<<< HEAD
+    public function getPattern(): string
+=======
     public function getPattern() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->pattern;
     }
 
+<<<<<<< HEAD
+    public function getRegex(): string
+=======
     public function getRegex() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->regex;
     }
 
+<<<<<<< HEAD
+    public function matches(string $word): bool
+=======
     public function matches(string $word) : bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return preg_match($this->getRegex(), $word) === 1;
     }

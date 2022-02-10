@@ -1,4 +1,13 @@
 <?php
+<<<<<<< HEAD
+
+namespace GuzzleHttp\Exception;
+
+use Psr\Http\Client\ClientExceptionInterface;
+
+interface GuzzleException extends ClientExceptionInterface
+{
+=======
 namespace GuzzleHttp\Exception;
 
 use Throwable;
@@ -20,4 +29,5 @@ if (interface_exists(Throwable::class)) {
     interface GuzzleException
     {
     }
+>>>>>>> parent of 31cfa1b1 (p)
 }

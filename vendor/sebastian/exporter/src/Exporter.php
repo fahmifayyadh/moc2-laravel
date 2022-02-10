@@ -213,6 +213,13 @@ class Exporter
             return "$value.0";
         }
 
+<<<<<<< HEAD
+        if ($this->isClosedResource($value)) {
+            return 'resource (closed)';
+        }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         if (\is_resource($value)) {
             return \sprintf(
                 'resource(%d) of type (%s)',
@@ -300,4 +307,66 @@ class Exporter
 
         return \var_export($value, true);
     }
+<<<<<<< HEAD
+
+    /**
+     * Determines whether a variable represents a resource, either open or closed.
+     *
+     * @param mixed $actual The variable to test.
+     *
+     * @return bool
+     */
+    private function isResource($value)
+    {
+        return $value !== null
+            && \is_scalar($value) === false
+            && \is_array($value) === false
+            && \is_object($value) === false;
+    }
+
+    /**
+     * Determines whether a variable represents a closed resource.
+     *
+     * @param mixed $actual The variable to test.
+     *
+     * @return bool
+     */
+    private function isClosedResource($value)
+    {
+        /*
+         * PHP 7.2 introduced "resource (closed)".
+         */
+        if (\gettype($value) === 'resource (closed)') {
+            return true;
+        }
+
+        /*
+         * If gettype did not work, attempt to determine whether this is
+         * a closed resource in another way.
+         */
+        $isResource       = \is_resource($value);
+        $isNotNonResource = $this->isResource($value);
+
+        if ($isResource === false && $isNotNonResource === true) {
+            return true;
+        }
+
+        if ($isNotNonResource === true) {
+            try {
+                $resourceType = @\get_resource_type($value);
+
+                if ($resourceType === 'Unknown') {
+                    return true;
+                }
+            } catch (TypeError $e) {
+                // Ignore. Not a resource.
+            } catch (Exception $e) {
+                // Ignore. Not a resource.
+            }
+        }
+
+        return false;
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

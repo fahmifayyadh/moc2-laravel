@@ -13,6 +13,24 @@ use PhpParser\Node\Stmt\Use_;
 class BuilderFactory
 {
     /**
+<<<<<<< HEAD
+     * Creates an attribute node.
+     *
+     * @param string|Name $name Name of the attribute
+     * @param array       $args Attribute named arguments
+     *
+     * @return Node\Attribute
+     */
+    public function attribute($name, array $args = []) : Node\Attribute {
+        return new Node\Attribute(
+            BuilderHelpers::normalizeName($name),
+            $this->args($args)
+        );
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Creates a namespace builder.
      *
      * @param null|string|Node\Name $name Name of the namespace
@@ -57,6 +75,20 @@ class BuilderFactory
     }
 
     /**
+<<<<<<< HEAD
+     * Creates an enum builder.
+     *
+     * @param string $name Name of the enum
+     *
+     * @return Builder\Enum_ The created enum builder
+     */
+    public function enum(string $name) : Builder\Enum_ {
+        return new Builder\Enum_($name);
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Creates a trait use builder.
      *
      * @param Node\Name|string ...$traits Trait names
@@ -162,6 +194,32 @@ class BuilderFactory
     }
 
     /**
+<<<<<<< HEAD
+     * Creates a class constant builder.
+     *
+     * @param string|Identifier                          $name  Name
+     * @param Node\Expr|bool|null|int|float|string|array $value Value
+     *
+     * @return Builder\ClassConst The created use const builder
+     */
+    public function classConst($name, $value) : Builder\ClassConst {
+        return new Builder\ClassConst($name, $value);
+    }
+
+    /**
+     * Creates an enum case builder.
+     *
+     * @param string|Identifier $name  Name
+     *
+     * @return Builder\EnumCase The created use const builder
+     */
+    public function enumCase($name) : Builder\EnumCase {
+        return new Builder\EnumCase($name);
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Creates node a for a literal value.
      *
      * @param Expr|bool|null|int|float|string|array $value $value
@@ -198,12 +256,23 @@ class BuilderFactory
      */
     public function args(array $args) : array {
         $normalizedArgs = [];
+<<<<<<< HEAD
+        foreach ($args as $key => $arg) {
+            if (!($arg instanceof Arg)) {
+                $arg = new Arg(BuilderHelpers::normalizeValue($arg));
+            }
+            if (\is_string($key)) {
+                $arg->name = BuilderHelpers::normalizeIdentifier($key);
+            }
+            $normalizedArgs[] = $arg;
+=======
         foreach ($args as $arg) {
             if ($arg instanceof Arg) {
                 $normalizedArgs[] = $arg;
             } else {
                 $normalizedArgs[] = new Arg(BuilderHelpers::normalizeValue($arg));
             }
+>>>>>>> parent of 31cfa1b1 (p)
         }
         return $normalizedArgs;
     }
@@ -282,7 +351,11 @@ class BuilderFactory
     public function constFetch($name) : Expr\ConstFetch {
         return new Expr\ConstFetch(BuilderHelpers::normalizeName($name));
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> parent of 31cfa1b1 (p)
     /**
      * Creates a property fetch node.
      *

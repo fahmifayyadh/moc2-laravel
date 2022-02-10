@@ -11,14 +11,28 @@ namespace PHPUnit\Framework\Constraint;
 
 /**
  * Constraint that evaluates against a specified closure.
+<<<<<<< HEAD
+ *
+ * @psalm-template CallbackInput of mixed
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 final class Callback extends Constraint
 {
     /**
      * @var callable
+<<<<<<< HEAD
+     *
+     * @psalm-var callable(CallbackInput $input): bool
      */
     private $callback;
 
+    /** @psalm-param callable(CallbackInput $input): bool $callback */
+=======
+     */
+    private $callback;
+
+>>>>>>> parent of 31cfa1b1 (p)
     public function __construct(callable $callback)
     {
         $this->callback = $callback;
@@ -37,9 +51,18 @@ final class Callback extends Constraint
      * constraint is met, false otherwise.
      *
      * @param mixed $other value or object to evaluate
+<<<<<<< HEAD
+     *
+     * @psalm-param CallbackInput $other
+     */
+    protected function matches($other): bool
+    {
+        return ($this->callback)($other);
+=======
      */
     protected function matches($other): bool
     {
         return \call_user_func($this->callback, $other);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

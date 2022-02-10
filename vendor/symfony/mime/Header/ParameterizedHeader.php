@@ -23,7 +23,11 @@ final class ParameterizedHeader extends UnstructuredHeader
      *
      * @var string
      */
+<<<<<<< HEAD
+    public const TOKEN_REGEX = '(?:[\x21\x23-\x27\x2A\x2B\x2D\x2E\x30-\x39\x41-\x5A\x5E-\x7E]+)';
+=======
     const TOKEN_REGEX = '(?:[\x21\x23-\x27\x2A\x2B\x2D\x2E\x30-\x39\x41-\x5A\x5E-\x7E]+)';
+>>>>>>> parent of 31cfa1b1 (p)
 
     private $encoder;
     private $parameters = [];
@@ -102,7 +106,11 @@ final class ParameterizedHeader extends UnstructuredHeader
     }
 
     /**
+<<<<<<< HEAD
+     * Render an RFC 2047 compliant header parameter from the $name and $value.
+=======
      * Render a RFC 2047 compliant header parameter from the $name and $value.
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function createParameter(string $name, string $value): string
     {
@@ -123,6 +131,25 @@ final class ParameterizedHeader extends UnstructuredHeader
                 $maxValueLength = $this->getMaxLineLength() - \strlen($name.'*N*="";') - 1;
                 $firstLineOffset = \strlen($this->getCharset()."'".$this->getLanguage()."'");
             }
+<<<<<<< HEAD
+
+            if (\in_array($name, ['name', 'filename'], true) && 'form-data' === $this->getValue() && 'content-disposition' === strtolower($this->getName()) && preg_match('//u', $value)) {
+                // WHATWG HTML living standard 4.10.21.8 2 specifies:
+                // For field names and filenames for file fields, the result of the
+                // encoding in the previous bullet point must be escaped by replacing
+                // any 0x0A (LF) bytes with the byte sequence `%0A`, 0x0D (CR) with `%0D`
+                // and 0x22 (") with `%22`.
+                // The user agent must not perform any other escapes.
+                $value = str_replace(['"', "\r", "\n"], ['%22', '%0D', '%0A'], $value);
+
+                if (\strlen($value) <= $maxValueLength) {
+                    return $name.'="'.$value.'"';
+                }
+
+                $value = $origValue;
+            }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         // Encode if we need to
@@ -158,7 +185,11 @@ final class ParameterizedHeader extends UnstructuredHeader
      */
     private function getEndOfParameterValue(string $value, bool $encoded = false, bool $firstLine = false): string
     {
+<<<<<<< HEAD
+        $forceHttpQuoting = 'form-data' === $this->getValue() && 'content-disposition' === strtolower($this->getName());
+=======
         $forceHttpQuoting = 'content-disposition' === strtolower($this->getName()) && 'form-data' === $this->getValue();
+>>>>>>> parent of 31cfa1b1 (p)
         if ($forceHttpQuoting || !preg_match('/^'.self::TOKEN_REGEX.'$/D', $value)) {
             $value = '"'.$value.'"';
         }

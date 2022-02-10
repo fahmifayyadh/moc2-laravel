@@ -16,6 +16,10 @@ namespace League\CommonMark\Extension\Attributes\Parser;
 
 use League\CommonMark\Extension\Attributes\Node\AttributesInline;
 use League\CommonMark\Extension\Attributes\Util\AttributesHelper;
+<<<<<<< HEAD
+use League\CommonMark\Inline\Element\Text;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use League\CommonMark\Inline\Parser\InlineParserInterface;
 use League\CommonMark\InlineParserContext;
 
@@ -26,12 +30,20 @@ final class AttributesInlineParser implements InlineParserInterface
      */
     public function getCharacters(): array
     {
+<<<<<<< HEAD
+        return ['{'];
+=======
         return [' ', '{'];
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function parse(InlineParserContext $inlineContext): bool
     {
         $cursor = $inlineContext->getCursor();
+<<<<<<< HEAD
+
+        $char = (string) $cursor->peek(-1);
+=======
         if ($cursor->getNextNonSpaceCharacter() !== '{') {
             return false;
         }
@@ -40,12 +52,20 @@ final class AttributesInlineParser implements InlineParserInterface
         if ($char === '{') {
             $char = (string) $cursor->getCharacter($cursor->getPosition() - 1);
         }
+>>>>>>> parent of 31cfa1b1 (p)
 
         $attributes = AttributesHelper::parseAttributes($cursor);
         if ($attributes === []) {
             return false;
         }
 
+<<<<<<< HEAD
+        if ($char === ' ' && ($previousInline = $inlineContext->getContainer()->lastChild()) instanceof Text) {
+            $previousInline->setContent(\rtrim($previousInline->getContent(), ' '));
+        }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         if ($char === '') {
             $cursor->advanceToNextNonSpaceOrNewline();
         }

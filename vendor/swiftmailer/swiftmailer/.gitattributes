@@ -5,5 +5,12 @@
 *.priv -crlf
 *.txt -crlf
 
+<<<<<<< HEAD
+# ignore directories in the git-generated distributed .zip archive
+/doc/notes export-ignore
+/tests export-ignore
+/phpunit.xml.dist export-ignore
+=======
 # ignore /notes in the git-generated distributed .zip archive
 /doc/notes export-ignore
+>>>>>>> parent of 31cfa1b1 (p)

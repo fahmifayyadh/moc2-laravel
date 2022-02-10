@@ -23,6 +23,10 @@ use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
 use phpDocumentor\Reflection\Utils;
 use Webmozart\Assert\Assert;
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use function array_key_exists;
 use function explode;
 use function preg_match;
@@ -52,21 +56,33 @@ final class See extends BaseTag implements Factory\StaticMethod
         ?FqsenResolver $typeResolver = null,
         ?DescriptionFactory $descriptionFactory = null,
         ?TypeContext $context = null
+<<<<<<< HEAD
+    ): self {
+=======
     ) : self {
+>>>>>>> parent of 31cfa1b1 (p)
         Assert::notNull($descriptionFactory);
 
         $parts = Utils::pregSplit('/\s+/Su', $body, 2);
         $description = isset($parts[1]) ? $descriptionFactory->create($parts[1], $context) : null;
 
         // https://tools.ietf.org/html/rfc2396#section-3
+<<<<<<< HEAD
+        if (preg_match('#\w://\w#', $parts[0])) {
+=======
         if (preg_match('/\w:\/\/\w/i', $parts[0])) {
+>>>>>>> parent of 31cfa1b1 (p)
             return new static(new Url($parts[0]), $description);
         }
 
         return new static(new FqsenRef(self::resolveFqsen($parts[0], $typeResolver, $context)), $description);
     }
 
+<<<<<<< HEAD
+    private static function resolveFqsen(string $parts, ?FqsenResolver $fqsenResolver, ?TypeContext $context): Fqsen
+=======
     private static function resolveFqsen(string $parts, ?FqsenResolver $fqsenResolver, ?TypeContext $context) : Fqsen
+>>>>>>> parent of 31cfa1b1 (p)
     {
         Assert::notNull($fqsenResolver);
         $fqsenParts = explode('::', $parts);
@@ -82,7 +98,11 @@ final class See extends BaseTag implements Factory\StaticMethod
     /**
      * Returns the ref of this tag.
      */
+<<<<<<< HEAD
+    public function getReference(): Reference
+=======
     public function getReference() : Reference
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->refers;
     }
@@ -90,7 +110,11 @@ final class See extends BaseTag implements Factory\StaticMethod
     /**
      * Returns a string representation of this tag.
      */
+<<<<<<< HEAD
+    public function __toString(): string
+=======
     public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->description) {
             $description = $this->description->render();

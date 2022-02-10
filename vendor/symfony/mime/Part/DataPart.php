@@ -20,6 +20,12 @@ use Symfony\Component\Mime\MimeTypes;
  */
 class DataPart extends TextPart
 {
+<<<<<<< HEAD
+    /** @internal */
+    protected $_parent;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private static $mimeTypes;
 
     private $filename;
@@ -32,6 +38,21 @@ class DataPart extends TextPart
      */
     public function __construct($body, string $filename = null, string $contentType = null, string $encoding = null)
     {
+<<<<<<< HEAD
+        unset($this->_parent);
+
+        if (null === $contentType) {
+            $contentType = 'application/octet-stream';
+        }
+        [$this->mediaType, $subtype] = explode('/', $contentType);
+
+        parent::__construct($body, null, $subtype, $encoding);
+
+        if (null !== $filename) {
+            $this->filename = $filename;
+            $this->setName($filename);
+        }
+=======
         if (null === $contentType) {
             $contentType = 'application/octet-stream';
         }
@@ -41,13 +62,17 @@ class DataPart extends TextPart
 
         $this->filename = $filename;
         $this->setName($filename);
+>>>>>>> parent of 31cfa1b1 (p)
         $this->setDisposition('attachment');
     }
 
     public static function fromPath(string $path, string $name = null, string $contentType = null): self
     {
+<<<<<<< HEAD
+=======
         // FIXME: if file is not readable, exception?
 
+>>>>>>> parent of 31cfa1b1 (p)
         if (null === $contentType) {
             $ext = strtolower(substr($path, strrpos($path, '.') + 1));
             if (null === self::$mimeTypes) {
@@ -155,7 +180,17 @@ class DataPart extends TextPart
         $r->setValue($this, $this->_headers);
         unset($this->_headers);
 
+<<<<<<< HEAD
+        if (!\is_array($this->_parent)) {
+            throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
+        }
         foreach (['body', 'charset', 'subtype', 'disposition', 'name', 'encoding'] as $name) {
+            if (null !== $this->_parent[$name] && !\is_string($this->_parent[$name])) {
+                throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
+            }
+=======
+        foreach (['body', 'charset', 'subtype', 'disposition', 'name', 'encoding'] as $name) {
+>>>>>>> parent of 31cfa1b1 (p)
             $r = new \ReflectionProperty(TextPart::class, $name);
             $r->setAccessible(true);
             $r->setValue($this, $this->_parent[$name]);

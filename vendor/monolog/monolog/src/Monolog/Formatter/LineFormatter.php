@@ -25,9 +25,19 @@ class LineFormatter extends NormalizerFormatter
 {
     public const SIMPLE_FORMAT = "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n";
 
+<<<<<<< HEAD
+    /** @var string */
+    protected $format;
+    /** @var bool */
+    protected $allowInlineLineBreaks;
+    /** @var bool */
+    protected $ignoreEmptyContextAndExtra;
+    /** @var bool */
+=======
     protected $format;
     protected $allowInlineLineBreaks;
     protected $ignoreEmptyContextAndExtra;
+>>>>>>> parent of 31cfa1b1 (p)
     protected $includeStacktraces;
 
     /**
@@ -44,7 +54,11 @@ class LineFormatter extends NormalizerFormatter
         parent::__construct($dateFormat);
     }
 
+<<<<<<< HEAD
+    public function includeStacktraces(bool $include = true): void
+=======
     public function includeStacktraces(bool $include = true)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->includeStacktraces = $include;
         if ($this->includeStacktraces) {
@@ -52,18 +66,30 @@ class LineFormatter extends NormalizerFormatter
         }
     }
 
+<<<<<<< HEAD
+    public function allowInlineLineBreaks(bool $allow = true): void
+=======
     public function allowInlineLineBreaks(bool $allow = true)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->allowInlineLineBreaks = $allow;
     }
 
+<<<<<<< HEAD
+    public function ignoreEmptyContextAndExtra(bool $ignore = true): void
+=======
     public function ignoreEmptyContextAndExtra(bool $ignore = true)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->ignoreEmptyContextAndExtra = $ignore;
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function format(array $record): string
     {
@@ -106,6 +132,13 @@ class LineFormatter extends NormalizerFormatter
         // remove leftover %extra.xxx% and %context.xxx% if any
         if (false !== strpos($output, '%')) {
             $output = preg_replace('/%(?:extra|context)\..+?%/', '', $output);
+<<<<<<< HEAD
+            if (null === $output) {
+                $pcreErrorCode = preg_last_error();
+                throw new \RuntimeException('Failed to run preg_replace: ' . $pcreErrorCode . ' / ' . Utils::pcreLastErrorMessage($pcreErrorCode));
+            }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $output;
@@ -121,14 +154,23 @@ class LineFormatter extends NormalizerFormatter
         return $message;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param mixed $value
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function stringify($value): string
     {
         return $this->replaceNewlines($this->convertToString($value));
     }
 
+<<<<<<< HEAD
+=======
     /**
      * @suppress PhanParamSignatureMismatch
      */
+>>>>>>> parent of 31cfa1b1 (p)
     protected function normalizeException(\Throwable $e, int $depth = 0): string
     {
         $str = $this->formatException($e);
@@ -142,6 +184,12 @@ class LineFormatter extends NormalizerFormatter
         return $str;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param mixed $data
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function convertToString($data): string
     {
         if (null === $data || is_bool($data)) {

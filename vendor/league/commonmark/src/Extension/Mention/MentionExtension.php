@@ -12,6 +12,10 @@
 namespace League\CommonMark\Extension\Mention;
 
 use League\CommonMark\ConfigurableEnvironmentInterface;
+<<<<<<< HEAD
+use League\CommonMark\Exception\InvalidOptionException;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use League\CommonMark\Extension\ExtensionInterface;
 use League\CommonMark\Extension\Mention\Generator\MentionGeneratorInterface;
 
@@ -21,20 +25,59 @@ final class MentionExtension implements ExtensionInterface
     {
         $mentions = $environment->getConfig('mentions', []);
         foreach ($mentions as $name => $mention) {
+<<<<<<< HEAD
+            if (\array_key_exists('symbol', $mention)) {
+                @\trigger_error('The "mentions/*/symbol" configuration option is deprecated in league/commonmark 1.6; rename "symbol" to "prefix" for compatibility with 2.0', \E_USER_DEPRECATED);
+                $mention['prefix'] = $mention['symbol'];
+            }
+
+            if (\array_key_exists('pattern', $mention)) {
+                // v2.0 does not allow full regex patterns passed into the configuration
+                if (!self::isAValidPartialRegex($mention['pattern'])) {
+                    throw new InvalidOptionException(\sprintf('Option "mentions/%s/pattern" must not include starting/ending delimiters (like "/")', $name));
+                }
+
+                $mention['pattern'] = '/' . $mention['pattern'] . '/i';
+            } elseif (\array_key_exists('regex', $mention)) {
+                @\trigger_error('The "mentions/*/regex" configuration option is deprecated in league/commonmark 1.6; rename "regex" to "pattern" for compatibility with 2.0', \E_USER_DEPRECATED);
+                $mention['pattern'] = $mention['regex'];
+            }
+
+            foreach (['prefix', 'pattern', 'generator'] as $key) {
+=======
             foreach (['symbol', 'regex', 'generator'] as $key) {
+>>>>>>> parent of 31cfa1b1 (p)
                 if (empty($mention[$key])) {
                     throw new \RuntimeException("Missing \"$key\" from MentionParser configuration");
                 }
             }
             if ($mention['generator'] instanceof MentionGeneratorInterface) {
+<<<<<<< HEAD
+                $environment->addInlineParser(new MentionParser($mention['prefix'], $mention['pattern'], $mention['generator']));
+            } elseif (is_string($mention['generator'])) {
+                $environment->addInlineParser(MentionParser::createWithStringTemplate($mention['prefix'], $mention['pattern'], $mention['generator']));
+            } elseif (is_callable($mention['generator'])) {
+                $environment->addInlineParser(MentionParser::createWithCallback($mention['prefix'], $mention['pattern'], $mention['generator']));
+=======
                 $environment->addInlineParser(new MentionParser($mention['symbol'], $mention['regex'], $mention['generator']));
             } elseif (is_string($mention['generator'])) {
                 $environment->addInlineParser(MentionParser::createWithStringTemplate($mention['symbol'], $mention['regex'], $mention['generator']));
             } elseif (is_callable($mention['generator'])) {
                 $environment->addInlineParser(MentionParser::createWithCallback($mention['symbol'], $mention['regex'], $mention['generator']));
+>>>>>>> parent of 31cfa1b1 (p)
             } else {
                 throw new \RuntimeException(sprintf('The "generator" provided for the MentionParser configuration must be a string template, callable, or an object that implements %s.', MentionGeneratorInterface::class));
             }
         }
     }
+<<<<<<< HEAD
+
+    private static function isAValidPartialRegex(string $regex): bool
+    {
+        $regex = '/' . $regex . '/i';
+
+        return @\preg_match($regex, '') !== false;
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

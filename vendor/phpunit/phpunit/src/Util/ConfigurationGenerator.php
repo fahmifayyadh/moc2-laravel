@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Util;
 
+<<<<<<< HEAD
+use function str_replace;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
@@ -17,7 +22,11 @@ final class ConfigurationGenerator
     /**
      * @var string
      */
+<<<<<<< HEAD
+    private const TEMPLATE = <<<'EOT'
+=======
     private const TEMPLATE = <<<EOT
+>>>>>>> parent of 31cfa1b1 (p)
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/{phpunit_version}/phpunit.xsd"
@@ -27,10 +36,18 @@ final class ConfigurationGenerator
          beStrictAboutCoversAnnotation="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTodoAnnotatedTests="true"
+<<<<<<< HEAD
+         convertDeprecationsToExceptions="true"
+         verbose="true">
+    <testsuites>
+        <testsuite name="default">
+            <directory>{tests_directory}</directory>
+=======
          verbose="true">
     <testsuites>
         <testsuite name="default">
             <directory suffix="Test.php">{tests_directory}</directory>
+>>>>>>> parent of 31cfa1b1 (p)
         </testsuite>
     </testsuites>
 
@@ -45,7 +62,11 @@ EOT;
 
     public function generateDefaultConfiguration(string $phpunitVersion, string $bootstrapScript, string $testsDirectory, string $srcDirectory): string
     {
+<<<<<<< HEAD
+        return str_replace(
+=======
         return \str_replace(
+>>>>>>> parent of 31cfa1b1 (p)
             [
                 '{phpunit_version}',
                 '{bootstrap_script}',

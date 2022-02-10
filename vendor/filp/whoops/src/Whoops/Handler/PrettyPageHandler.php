@@ -27,6 +27,10 @@ class PrettyPageHandler extends Handler
     const EDITOR_ATOM = "atom";
     const EDITOR_ESPRESSO = "espresso";
     const EDITOR_XDEBUG = "xdebug";
+<<<<<<< HEAD
+    const EDITOR_NETBEANS = "netbeans";
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Search paths to be scanned for resources.
@@ -120,6 +124,10 @@ class PrettyPageHandler extends Handler
         "vscode"   => "vscode://file/%file:%line",
         "atom"     => "atom://core/open/file?filename=%file&line=%line",
         "espresso" => "x-espresso://open?filepath=%file&lines=%line",
+<<<<<<< HEAD
+        "netbeans" => "netbeans://open/?f=%file:%line",
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     ];
 
     /**
@@ -134,10 +142,17 @@ class PrettyPageHandler extends Handler
      */
     public function __construct()
     {
+<<<<<<< HEAD
+        if (ini_get('xdebug.file_link_format') || get_cfg_var('xdebug.file_link_format')) {
+            // Register editor using xdebug's file_link_format option.
+            $this->editors['xdebug'] = function ($file, $line) {
+                return str_replace(['%f', '%l'], [$file, $line], ini_get('xdebug.file_link_format') ?: get_cfg_var('xdebug.file_link_format'));
+=======
         if (ini_get('xdebug.file_link_format') || extension_loaded('xdebug')) {
             // Register editor using xdebug's file_link_format option.
             $this->editors['xdebug'] = function ($file, $line) {
                 return str_replace(['%f', '%l'], [$file, $line], ini_get('xdebug.file_link_format'));
+>>>>>>> parent of 31cfa1b1 (p)
             };
 
             // If xdebug is available, use it as default editor.
@@ -175,6 +190,11 @@ class PrettyPageHandler extends Handler
 
     /**
      * @return int|null
+<<<<<<< HEAD
+     *
+     * @throws \Exception
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function handle()
     {
@@ -198,7 +218,12 @@ class PrettyPageHandler extends Handler
         $templateFile = $this->getResource("views/layout.html.php");
         $cssFile      = $this->getResource("css/whoops.base.css");
         $zeptoFile    = $this->getResource("js/zepto.min.js");
+<<<<<<< HEAD
+        $prismJs = $this->getResource("js/prism.js");
+        $prismCss = $this->getResource("css/prism.css");
+=======
         $prettifyFile = $this->getResource("js/prettify.min.js");
+>>>>>>> parent of 31cfa1b1 (p)
         $clipboard    = $this->getResource("js/clipboard.min.js");
         $jsFile       = $this->getResource("js/whoops.base.js");
 
@@ -221,7 +246,12 @@ class PrettyPageHandler extends Handler
             // @todo: Asset compiler
             "stylesheet" => file_get_contents($cssFile),
             "zepto"      => file_get_contents($zeptoFile),
+<<<<<<< HEAD
+            "prismJs"   => file_get_contents($prismJs),
+            "prismCss"   => file_get_contents($prismCss),
+=======
             "prettify"   => file_get_contents($prettifyFile),
+>>>>>>> parent of 31cfa1b1 (p)
             "clipboard"  => file_get_contents($clipboard),
             "javascript" => file_get_contents($jsFile),
 
@@ -349,11 +379,19 @@ class PrettyPageHandler extends Handler
      * @param string $label
      * @param array  $data
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function addDataTable($label, array $data)
     {
         $this->extraTables[$label] = $data;
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -368,7 +406,11 @@ class PrettyPageHandler extends Handler
      *
      * @throws InvalidArgumentException If $callback is not callable
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function addDataTableCallback($label, /* callable */ $callback)
     {
@@ -387,6 +429,11 @@ class PrettyPageHandler extends Handler
                 return [];
             }
         };
+<<<<<<< HEAD
+
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -418,7 +465,11 @@ class PrettyPageHandler extends Handler
      *
      * @param bool|null $value
      *
+<<<<<<< HEAD
+     * @return bool|static
+=======
      * @return bool|null
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function handleUnconditionally($value = null)
     {
@@ -427,6 +478,10 @@ class PrettyPageHandler extends Handler
         }
 
         $this->handleUnconditionally = (bool) $value;
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -447,11 +502,19 @@ class PrettyPageHandler extends Handler
      * @param string          $identifier
      * @param string|callable $resolver
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function addEditor($identifier, $resolver)
     {
         $this->editors[$identifier] = $resolver;
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -469,7 +532,11 @@ class PrettyPageHandler extends Handler
      *
      * @throws InvalidArgumentException If invalid argument identifier provided
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setEditor($editor)
     {
@@ -481,6 +548,10 @@ class PrettyPageHandler extends Handler
         }
 
         $this->editor = $editor;
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -591,11 +662,19 @@ class PrettyPageHandler extends Handler
      *
      * @param string $title
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setPageTitle($title)
     {
         $this->pageTitle = (string) $title;
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -615,7 +694,11 @@ class PrettyPageHandler extends Handler
      *
      * @throws InvalidArgumentException If $path is not a valid directory
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function addResourcePath($path)
     {
@@ -626,6 +709,10 @@ class PrettyPageHandler extends Handler
         }
 
         array_unshift($this->searchPaths, $path);
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -633,11 +720,19 @@ class PrettyPageHandler extends Handler
      *
      * @param string|null $name
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function addCustomCss($name)
     {
         $this->customCss = $name;
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -645,11 +740,19 @@ class PrettyPageHandler extends Handler
      *
      * @param string|null $name
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function addCustomJs($name)
     {
         $this->customJs = $name;
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -718,11 +821,19 @@ class PrettyPageHandler extends Handler
      *
      * @param string $resourcesPath
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setResourcesPath($resourcesPath)
     {
         $this->addResourcePath($resourcesPath);
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -767,11 +878,19 @@ class PrettyPageHandler extends Handler
      * @param string $key             The key within the superglobal
      * @see hideSuperglobalKey
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function blacklist($superGlobalName, $key)
     {
         $this->blacklist[$superGlobalName][] = $key;
+<<<<<<< HEAD
+        return $this;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -779,7 +898,11 @@ class PrettyPageHandler extends Handler
      *
      * @param string $superGlobalName The name of the superglobal array, e.g. '_GET'
      * @param string $key             The key within the superglobal
+<<<<<<< HEAD
+     * @return static
+=======
      * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function hideSuperglobalKey($superGlobalName, $key)
     {
@@ -789,24 +912,42 @@ class PrettyPageHandler extends Handler
     /**
      * Checks all values within the given superGlobal array.
      *
+<<<<<<< HEAD
+     * Blacklisted values will be replaced by a equal length string containing
+     * only '*' characters for string values.
+     * Non-string values will be replaced with a fixed asterisk count.
+     * We intentionally dont rely on $GLOBALS as it depends on the 'auto_globals_jit' php.ini setting.
+     *
+     * @param array|\ArrayAccess  $superGlobal     One of the superglobal arrays
+=======
      * Blacklisted values will be replaced by a equal length string cointaining
      * only '*' characters. We intentionally dont rely on $GLOBALS as it
      * depends on the 'auto_globals_jit' php.ini setting.
      *
      * @param array  $superGlobal     One of the superglobal arrays
+>>>>>>> parent of 31cfa1b1 (p)
      * @param string $superGlobalName The name of the superglobal array, e.g. '_GET'
      *
      * @return array $values without sensitive data
      */
+<<<<<<< HEAD
+    private function masked($superGlobal, $superGlobalName)
+=======
     private function masked(array $superGlobal, $superGlobalName)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $blacklisted = $this->blacklist[$superGlobalName];
 
         $values = $superGlobal;
 
         foreach ($blacklisted as $key) {
+<<<<<<< HEAD
+            if (isset($superGlobal[$key])) {
+                $values[$key] = str_repeat('*', is_string($superGlobal[$key]) ? strlen($superGlobal[$key]) : 3);
+=======
             if (isset($superGlobal[$key]) && is_string($superGlobal[$key])) {
                 $values[$key] = str_repeat('*', strlen($superGlobal[$key]));
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 

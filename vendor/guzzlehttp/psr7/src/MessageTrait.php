@@ -1,7 +1,15 @@
 <?php
 
+<<<<<<< HEAD
+declare(strict_types=1);
+
 namespace GuzzleHttp\Psr7;
 
+use Psr\Http\Message\MessageInterface;
+=======
+namespace GuzzleHttp\Psr7;
+
+>>>>>>> parent of 31cfa1b1 (p)
 use Psr\Http\Message\StreamInterface;
 
 /**
@@ -9,10 +17,17 @@ use Psr\Http\Message\StreamInterface;
  */
 trait MessageTrait
 {
+<<<<<<< HEAD
+    /** @var array<string, string[]> Map of all registered headers, as original name => array of values */
+    private $headers = [];
+
+    /** @var array<string, string> Map of lowercase header name => original name at registration */
+=======
     /** @var array Map of all registered headers, as original name => array of values */
     private $headers = [];
 
     /** @var array Map of lowercase header name => original name at registration */
+>>>>>>> parent of 31cfa1b1 (p)
     private $headerNames  = [];
 
     /** @var string */
@@ -21,12 +36,20 @@ trait MessageTrait
     /** @var StreamInterface|null */
     private $stream;
 
+<<<<<<< HEAD
+    public function getProtocolVersion(): string
+=======
     public function getProtocolVersion()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->protocol;
     }
 
+<<<<<<< HEAD
+    public function withProtocolVersion($version): MessageInterface
+=======
     public function withProtocolVersion($version)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->protocol === $version) {
             return $this;
@@ -37,17 +60,29 @@ trait MessageTrait
         return $new;
     }
 
+<<<<<<< HEAD
+    public function getHeaders(): array
+=======
     public function getHeaders()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->headers;
     }
 
+<<<<<<< HEAD
+    public function hasHeader($header): bool
+=======
     public function hasHeader($header)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return isset($this->headerNames[strtolower($header)]);
     }
 
+<<<<<<< HEAD
+    public function getHeader($header): array
+=======
     public function getHeader($header)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $header = strtolower($header);
 
@@ -60,12 +95,20 @@ trait MessageTrait
         return $this->headers[$header];
     }
 
+<<<<<<< HEAD
+    public function getHeaderLine($header): string
+=======
     public function getHeaderLine($header)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return implode(', ', $this->getHeader($header));
     }
 
+<<<<<<< HEAD
+    public function withHeader($header, $value): MessageInterface
+=======
     public function withHeader($header, $value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->assertHeader($header);
         $value = $this->normalizeHeaderValue($value);
@@ -81,7 +124,11 @@ trait MessageTrait
         return $new;
     }
 
+<<<<<<< HEAD
+    public function withAddedHeader($header, $value): MessageInterface
+=======
     public function withAddedHeader($header, $value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->assertHeader($header);
         $value = $this->normalizeHeaderValue($value);
@@ -99,7 +146,11 @@ trait MessageTrait
         return $new;
     }
 
+<<<<<<< HEAD
+    public function withoutHeader($header): MessageInterface
+=======
     public function withoutHeader($header)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $normalized = strtolower($header);
 
@@ -115,7 +166,11 @@ trait MessageTrait
         return $new;
     }
 
+<<<<<<< HEAD
+    public function getBody(): StreamInterface
+=======
     public function getBody()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->stream) {
             $this->stream = Utils::streamFor('');
@@ -124,7 +179,11 @@ trait MessageTrait
         return $this->stream;
     }
 
+<<<<<<< HEAD
+    public function withBody(StreamInterface $body): MessageInterface
+=======
     public function withBody(StreamInterface $body)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($body === $this->stream) {
             return $this;
@@ -135,7 +194,14 @@ trait MessageTrait
         return $new;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param array<string|int, string|string[]> $headers
+     */
+    private function setHeaders(array $headers): void
+=======
     private function setHeaders(array $headers)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->headerNames = $this->headers = [];
         foreach ($headers as $header => $value) {
@@ -157,7 +223,16 @@ trait MessageTrait
         }
     }
 
+<<<<<<< HEAD
+    /**
+     * @param mixed $value
+     *
+     * @return string[]
+     */
+    private function normalizeHeaderValue($value): array
+=======
     private function normalizeHeaderValue($value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!is_array($value)) {
             return $this->trimHeaderValues([$value]);
@@ -178,13 +253,21 @@ trait MessageTrait
      * header-field = field-name ":" OWS field-value OWS
      * OWS          = *( SP / HTAB )
      *
+<<<<<<< HEAD
+     * @param mixed[] $values Header values
+=======
      * @param string[] $values Header values
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return string[] Trimmed header values
      *
      * @see https://tools.ietf.org/html/rfc7230#section-3.2.4
      */
+<<<<<<< HEAD
+    private function trimHeaderValues(array $values): array
+=======
     private function trimHeaderValues(array $values)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return array_map(function ($value) {
             if (!is_scalar($value) && null !== $value) {
@@ -198,7 +281,16 @@ trait MessageTrait
         }, array_values($values));
     }
 
+<<<<<<< HEAD
+    /**
+     * @see https://tools.ietf.org/html/rfc7230#section-3.2
+     *
+     * @param mixed $header
+     */
+    private function assertHeader($header): void
+=======
     private function assertHeader($header)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!is_string($header)) {
             throw new \InvalidArgumentException(sprintf(
@@ -207,8 +299,18 @@ trait MessageTrait
             ));
         }
 
+<<<<<<< HEAD
+        if (! preg_match('/^[a-zA-Z0-9\'`#$%&*+.^_|~!-]+$/', $header)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    '"%s" is not valid header name',
+                    $header
+                )
+            );
+=======
         if ($header === '') {
             throw new \InvalidArgumentException('Header name can not be empty.');
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 }

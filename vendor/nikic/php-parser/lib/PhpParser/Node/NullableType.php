@@ -2,9 +2,13 @@
 
 namespace PhpParser\Node;
 
+<<<<<<< HEAD
+class NullableType extends ComplexType
+=======
 use PhpParser\NodeAbstract;
 
 class NullableType extends NodeAbstract
+>>>>>>> parent of 31cfa1b1 (p)
 {
     /** @var Identifier|Name Type */
     public $type;

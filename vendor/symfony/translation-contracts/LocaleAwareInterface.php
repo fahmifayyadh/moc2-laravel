@@ -25,7 +25,11 @@ interface LocaleAwareInterface
     /**
      * Returns the current locale.
      *
+<<<<<<< HEAD
+     * @return string
+=======
      * @return string The locale
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getLocale();
 }

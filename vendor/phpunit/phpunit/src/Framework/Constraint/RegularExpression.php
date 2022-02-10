@@ -9,6 +9,12 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function preg_match;
+use function sprintf;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that asserts that the string it is evaluated for matches
  * a regular expression.
@@ -35,7 +41,11 @@ class RegularExpression extends Constraint
      */
     public function toString(): string
     {
+<<<<<<< HEAD
+        return sprintf(
+=======
         return \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             'matches PCRE pattern "%s"',
             $this->pattern
         );
@@ -49,6 +59,10 @@ class RegularExpression extends Constraint
      */
     protected function matches($other): bool
     {
+<<<<<<< HEAD
+        return preg_match($this->pattern, $other) > 0;
+=======
         return \preg_match($this->pattern, $other) > 0;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

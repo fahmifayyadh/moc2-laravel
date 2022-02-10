@@ -149,7 +149,11 @@ class ProgressIndicator
             self::$formats = self::initFormats();
         }
 
+<<<<<<< HEAD
+        return self::$formats[$name] ?? null;
+=======
         return isset(self::$formats[$name]) ? self::$formats[$name] : null;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -182,7 +186,11 @@ class ProgressIndicator
             self::$formatters = self::initPlaceholderFormatters();
         }
 
+<<<<<<< HEAD
+        return self::$formatters[$name] ?? null;
+=======
         return isset(self::$formatters[$name]) ? self::$formatters[$name] : null;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     private function display()
@@ -197,7 +205,11 @@ class ProgressIndicator
             }
 
             return $matches[0];
+<<<<<<< HEAD
+        }, $this->format ?? ''));
+=======
         }, $this->format));
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     private function determineBestFormat(): string

@@ -24,6 +24,10 @@ namespace phpDocumentor\Reflection\Types;
  *
  * @psalm-immutable
  */
+<<<<<<< HEAD
+class Array_ extends AbstractList
+=======
 final class Array_ extends AbstractList
+>>>>>>> parent of 31cfa1b1 (p)
 {
 }

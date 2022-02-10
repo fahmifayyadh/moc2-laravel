@@ -12,6 +12,10 @@
 namespace Monolog\Handler;
 
 use Monolog\Logger;
+<<<<<<< HEAD
+use Psr\Log\LogLevel;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Used for testing purposes.
@@ -64,6 +68,27 @@ use Monolog\Logger;
  * @method bool hasNoticeThatPasses($message)
  * @method bool hasInfoThatPasses($message)
  * @method bool hasDebugThatPasses($message)
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+ * @phpstan-import-type Level from \Monolog\Logger
+ * @phpstan-import-type LevelName from \Monolog\Logger
+ */
+class TestHandler extends AbstractProcessingHandler
+{
+    /** @var Record[] */
+    protected $records = [];
+    /** @var array<Level, Record[]> */
+    protected $recordsByLevel = [];
+    /** @var bool */
+    private $skipReset = false;
+
+    /**
+     * @return array
+     *
+     * @phpstan-return Record[]
+     */
+=======
  */
 class TestHandler extends AbstractProcessingHandler
 {
@@ -71,17 +96,30 @@ class TestHandler extends AbstractProcessingHandler
     protected $recordsByLevel = [];
     private $skipReset = false;
 
+>>>>>>> parent of 31cfa1b1 (p)
     public function getRecords()
     {
         return $this->records;
     }
 
+<<<<<<< HEAD
+    /**
+     * @return void
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function clear()
     {
         $this->records = [];
         $this->recordsByLevel = [];
     }
 
+<<<<<<< HEAD
+    /**
+     * @return void
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function reset()
     {
         if (!$this->skipReset) {
@@ -89,6 +127,12 @@ class TestHandler extends AbstractProcessingHandler
         }
     }
 
+<<<<<<< HEAD
+    /**
+     * @return void
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function setSkipReset(bool $skipReset)
     {
         $this->skipReset = $skipReset;
@@ -96,6 +140,11 @@ class TestHandler extends AbstractProcessingHandler
 
     /**
      * @param string|int $level Logging level value or name
+<<<<<<< HEAD
+     *
+     * @phpstan-param Level|LevelName|LogLevel::* $level
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function hasRecords($level): bool
     {
@@ -105,6 +154,12 @@ class TestHandler extends AbstractProcessingHandler
     /**
      * @param string|array $record Either a message string or an array containing message and optionally context keys that will be checked against all records
      * @param string|int   $level  Logging level value or name
+<<<<<<< HEAD
+     *
+     * @phpstan-param array{message: string, context?: mixed[]}|string $record
+     * @phpstan-param Level|LevelName|LogLevel::*                      $level
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function hasRecord($record, $level): bool
     {
@@ -126,6 +181,11 @@ class TestHandler extends AbstractProcessingHandler
 
     /**
      * @param string|int $level Logging level value or name
+<<<<<<< HEAD
+     *
+     * @phpstan-param Level|LevelName|LogLevel::* $level
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function hasRecordThatContains(string $message, $level): bool
     {
@@ -136,6 +196,11 @@ class TestHandler extends AbstractProcessingHandler
 
     /**
      * @param string|int $level Logging level value or name
+<<<<<<< HEAD
+     *
+     * @phpstan-param Level|LevelName|LogLevel::* $level
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function hasRecordThatMatches(string $regex, $level): bool
     {
@@ -145,10 +210,18 @@ class TestHandler extends AbstractProcessingHandler
     }
 
     /**
+<<<<<<< HEAD
+     * @param  string|int $level Logging level value or name
+     * @return bool
+     *
+     * @psalm-param callable(Record, int): mixed $predicate
+     * @phpstan-param Level|LevelName|LogLevel::* $level
+=======
      * @psalm-param callable(array, int): mixed $predicate
      *
      * @param string|int $level Logging level value or name
      * @return bool
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function hasRecordThatPasses(callable $predicate, $level)
     {
@@ -168,7 +241,11 @@ class TestHandler extends AbstractProcessingHandler
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function write(array $record): void
     {
@@ -176,15 +253,31 @@ class TestHandler extends AbstractProcessingHandler
         $this->records[] = $record;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param  string  $method
+     * @param  mixed[] $args
+     * @return bool
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function __call($method, $args)
     {
         if (preg_match('/(.*)(Debug|Info|Notice|Warning|Error|Critical|Alert|Emergency)(.*)/', $method, $matches) > 0) {
             $genericMethod = $matches[1] . ('Records' !== $matches[3] ? 'Record' : '') . $matches[3];
             $level = constant('Monolog\Logger::' . strtoupper($matches[2]));
+<<<<<<< HEAD
+            $callback = [$this, $genericMethod];
+            if (is_callable($callback)) {
+                $args[] = $level;
+
+                return call_user_func_array($callback, $args);
+=======
             if (method_exists($this, $genericMethod)) {
                 $args[] = $level;
 
                 return call_user_func_array([$this, $genericMethod], $args);
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 

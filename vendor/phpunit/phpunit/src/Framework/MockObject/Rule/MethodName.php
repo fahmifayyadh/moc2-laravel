@@ -9,6 +9,10 @@
  */
 namespace PHPUnit\Framework\MockObject\Rule;
 
+<<<<<<< HEAD
+use function is_string;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\InvalidArgumentException;
 use PHPUnit\Framework\MockObject\Invocation as BaseInvocation;
@@ -31,7 +35,11 @@ final class MethodName
      */
     public function __construct($constraint)
     {
+<<<<<<< HEAD
+        if (is_string($constraint)) {
+=======
         if (\is_string($constraint)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $constraint = new MethodNameConstraint($constraint);
         }
 

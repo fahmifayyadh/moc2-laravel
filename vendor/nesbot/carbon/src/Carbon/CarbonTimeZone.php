@@ -8,12 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon;
 
 use Carbon\Exceptions\InvalidCastException;
 use Carbon\Exceptions\InvalidTimeZoneException;
 use DateTimeInterface;
 use DateTimeZone;
+<<<<<<< HEAD
+use Throwable;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 class CarbonTimeZone extends DateTimeZone
 {
@@ -33,11 +41,19 @@ class CarbonTimeZone extends DateTimeZone
 
     protected static function getDateTimeZoneNameFromMixed($timezone)
     {
+<<<<<<< HEAD
+        if ($timezone === null) {
+            return date_default_timezone_get();
+        }
+
+        if (\is_string($timezone)) {
+=======
         if (is_null($timezone)) {
             return date_default_timezone_get();
         }
 
         if (is_string($timezone)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $timezone = preg_replace('/^\s*([+-]\d+)(\d{2})\s*$/', '$1:$2', $timezone);
         }
 
@@ -198,7 +214,11 @@ class CarbonTimeZone extends DateTimeZone
         // @codeCoverageIgnoreStart
         try {
             $offset = @$this->getOffset($date) ?: 0;
+<<<<<<< HEAD
+        } catch (Throwable $e) {
+=======
         } catch (\Throwable $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             $offset = 0;
         }
         // @codeCoverageIgnoreEnd

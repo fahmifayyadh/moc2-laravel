@@ -38,6 +38,15 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
 
     public function __construct(SessionStorageInterface $storage = null, AttributeBagInterface $attributes = null, FlashBagInterface $flashes = null)
     {
+<<<<<<< HEAD
+        $this->storage = $storage ?? new NativeSessionStorage();
+
+        $attributes = $attributes ?? new AttributeBag();
+        $this->attributeName = $attributes->getName();
+        $this->registerBag($attributes);
+
+        $flashes = $flashes ?? new FlashBag();
+=======
         $this->storage = $storage ?: new NativeSessionStorage();
 
         $attributes = $attributes ?: new AttributeBag();
@@ -45,6 +54,7 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
         $this->registerBag($attributes);
 
         $flashes = $flashes ?: new FlashBag();
+>>>>>>> parent of 31cfa1b1 (p)
         $this->flashName = $flashes->getName();
         $this->registerBag($flashes);
     }
@@ -126,6 +136,10 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      *
      * @return \ArrayIterator An \ArrayIterator instance
      */
+<<<<<<< HEAD
+    #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function getIterator()
     {
         return new \ArrayIterator($this->getAttributeBag()->all());
@@ -136,6 +150,10 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      *
      * @return int
      */
+<<<<<<< HEAD
+    #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function count()
     {
         return \count($this->getAttributeBag()->all());

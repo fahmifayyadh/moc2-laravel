@@ -25,8 +25,11 @@ interface Swift_Transport_IoBuffer extends Swift_InputByteStream, Swift_OutputBy
      * Perform any initialization needed, using the given $params.
      *
      * Parameters will vary depending upon the type of IoBuffer used.
+<<<<<<< HEAD
+=======
      *
      * @param array $params
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function initialize(array $params);
 

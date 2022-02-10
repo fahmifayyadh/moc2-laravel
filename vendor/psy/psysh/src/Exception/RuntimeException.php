@@ -25,7 +25,11 @@ class RuntimeException extends \RuntimeException implements Exception
      * @param int             $code     (default: 0)
      * @param \Exception|null $previous (default: null)
      */
+<<<<<<< HEAD
+    public function __construct(string $message = '', int $code = 0, \Exception $previous = null)
+=======
     public function __construct($message = '', $code = 0, \Exception $previous = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->rawMessage = $message;
         parent::__construct($message, $code, $previous);
@@ -36,7 +40,11 @@ class RuntimeException extends \RuntimeException implements Exception
      *
      * @return string
      */
+<<<<<<< HEAD
+    public function getRawMessage(): string
+=======
     public function getRawMessage()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->rawMessage;
     }

@@ -22,17 +22,29 @@ class Ruleset
         $this->irregular   = $irregular;
     }
 
+<<<<<<< HEAD
+    public function getRegular(): Transformations
+=======
     public function getRegular() : Transformations
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->regular;
     }
 
+<<<<<<< HEAD
+    public function getUninflected(): Patterns
+=======
     public function getUninflected() : Patterns
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->uninflected;
     }
 
+<<<<<<< HEAD
+    public function getIrregular(): Substitutions
+=======
     public function getIrregular() : Substitutions
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->irregular;
     }

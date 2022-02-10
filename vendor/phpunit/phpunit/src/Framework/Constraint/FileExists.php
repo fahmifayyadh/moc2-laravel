@@ -9,6 +9,12 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function file_exists;
+use function sprintf;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that checks if the file(name) that it is evaluated for exists.
  *
@@ -32,11 +38,19 @@ final class FileExists extends Constraint
      */
     protected function matches($other): bool
     {
+<<<<<<< HEAD
+        return file_exists($other);
+    }
+
+    /**
+     * Returns the description of the failure.
+=======
         return \file_exists($other);
     }
 
     /**
      * Returns the description of the failure
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -45,7 +59,11 @@ final class FileExists extends Constraint
      */
     protected function failureDescription($other): string
     {
+<<<<<<< HEAD
+        return sprintf(
+=======
         return \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             'file "%s" exists',
             $other
         );

@@ -10,7 +10,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
+        "php": ">=7.0",
+=======
         "php": "^7.0",
+>>>>>>> parent of 31cfa1b1 (p)
         "sebastian/object-reflector": "^1.1.1",
         "sebastian/recursion-context": "^3.0"
     },

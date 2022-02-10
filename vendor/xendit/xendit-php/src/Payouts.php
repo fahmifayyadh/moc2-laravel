@@ -45,7 +45,11 @@ class Payouts
      */
     public static function createReqParams()
     {
+<<<<<<< HEAD
+        return ['external_id', 'amount', 'email'];
+=======
         return ['external_id', 'amount'];
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -57,12 +61,21 @@ class Payouts
      * 'id'=> string,
      * 'external_id'=> string,
      * 'amount'=> int,
+<<<<<<< HEAD
+=======
      * 'passcode'=> string,
+>>>>>>> parent of 31cfa1b1 (p)
      * 'merchant_name'=> string,
      * 'status'=> 'ISSUED' || 'DISBURSING' || 'VOIDED' || 'LOCKED'
      *            || 'COMPLETED' || 'FAILED',
      * 'expiration_timestamp'=> string,
+<<<<<<< HEAD
+     * 'created'=> string',
+     * 'email'=> string,
+     * 'payout_url'=> string
+=======
      * 'created'=> string'
+>>>>>>> parent of 31cfa1b1 (p)
      * ]
      * @throws Exceptions\ApiException
      */

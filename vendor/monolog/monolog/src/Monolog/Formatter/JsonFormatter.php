@@ -19,12 +19,31 @@ use Throwable;
  * This can be useful to log to databases or remote APIs
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class JsonFormatter extends NormalizerFormatter
 {
     public const BATCH_MODE_JSON = 1;
     public const BATCH_MODE_NEWLINES = 2;
 
+<<<<<<< HEAD
+    /** @var self::BATCH_MODE_* */
+    protected $batchMode;
+    /** @var bool */
+    protected $appendNewline;
+    /** @var bool */
+    protected $ignoreEmptyContextAndExtra;
+    /** @var bool */
+    protected $includeStacktraces = false;
+
+    /**
+     * @param self::BATCH_MODE_* $batchMode
+     */
+=======
     protected $batchMode;
     protected $appendNewline;
     protected $ignoreEmptyContextAndExtra;
@@ -34,11 +53,17 @@ class JsonFormatter extends NormalizerFormatter
      */
     protected $includeStacktraces = false;
 
+>>>>>>> parent of 31cfa1b1 (p)
     public function __construct(int $batchMode = self::BATCH_MODE_JSON, bool $appendNewline = true, bool $ignoreEmptyContextAndExtra = false)
     {
         $this->batchMode = $batchMode;
         $this->appendNewline = $appendNewline;
         $this->ignoreEmptyContextAndExtra = $ignoreEmptyContextAndExtra;
+<<<<<<< HEAD
+
+        parent::__construct();
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -62,9 +87,13 @@ class JsonFormatter extends NormalizerFormatter
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
      *
      * @suppress PhanTypeComparisonToArray
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function format(array $record): string
     {
@@ -89,7 +118,11 @@ class JsonFormatter extends NormalizerFormatter
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function formatBatch(array $records): string
     {
@@ -103,6 +136,12 @@ class JsonFormatter extends NormalizerFormatter
         }
     }
 
+<<<<<<< HEAD
+    /**
+     * @return void
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function includeStacktraces(bool $include = true)
     {
         $this->includeStacktraces = $include;
@@ -110,6 +149,11 @@ class JsonFormatter extends NormalizerFormatter
 
     /**
      * Return a JSON-encoded array of records.
+<<<<<<< HEAD
+     *
+     * @phpstan-param Record[] $records
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function formatBatchJson(array $records): string
     {
@@ -119,6 +163,11 @@ class JsonFormatter extends NormalizerFormatter
     /**
      * Use new lines to separate records instead of a
      * JSON-encoded array.
+<<<<<<< HEAD
+     *
+     * @phpstan-param Record[] $records
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function formatBatchNewlines(array $records): string
     {
@@ -163,6 +212,13 @@ class JsonFormatter extends NormalizerFormatter
             return $normalized;
         }
 
+<<<<<<< HEAD
+        if ($data instanceof \DateTimeInterface) {
+            return $this->formatDate($data);
+        }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         if ($data instanceof Throwable) {
             return $this->normalizeException($data, $depth);
         }
@@ -177,6 +233,11 @@ class JsonFormatter extends NormalizerFormatter
     /**
      * Normalizes given exception with or without its own stack trace based on
      * `includeStacktraces` property.
+<<<<<<< HEAD
+     *
+     * {@inheritDoc}
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function normalizeException(Throwable $e, int $depth = 0): array
     {

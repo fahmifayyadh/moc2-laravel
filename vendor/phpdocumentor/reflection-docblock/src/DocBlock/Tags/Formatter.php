@@ -20,5 +20,9 @@ interface Formatter
     /**
      * Formats a tag into a string representation according to a specific format, such as Markdown.
      */
+<<<<<<< HEAD
+    public function format(Tag $tag): string;
+=======
     public function format(Tag $tag) : string;
+>>>>>>> parent of 31cfa1b1 (p)
 }

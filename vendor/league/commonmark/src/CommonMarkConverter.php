@@ -17,7 +17,11 @@ namespace League\CommonMark;
 /**
  * Converts CommonMark-compatible Markdown to HTML.
  */
+<<<<<<< HEAD
+class CommonMarkConverter extends MarkdownConverter
+=======
 class CommonMarkConverter extends Converter
+>>>>>>> parent of 31cfa1b1 (p)
 {
     /**
      * The currently-installed version.
@@ -27,10 +31,14 @@ class CommonMarkConverter extends Converter
      * @deprecated in 1.5.0 and will be removed from 2.0.0.
      *   Use \Composer\InstalledVersions provided by composer-runtime-api instead.
      */
+<<<<<<< HEAD
+    public const VERSION = '1.6.7';
+=======
     public const VERSION = '1.5.6';
 
     /** @var EnvironmentInterface */
     protected $environment;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Create a new commonmark converter instance.
@@ -42,12 +50,20 @@ class CommonMarkConverter extends Converter
     {
         if ($environment === null) {
             $environment = Environment::createCommonMarkEnvironment();
+<<<<<<< HEAD
+        } else {
+            @\trigger_error(\sprintf('Passing an $environment into the "%s" constructor is deprecated in 1.6 and will not be supported in 2.0; use MarkdownConverter instead. See https://commonmark.thephpleague.com/2.0/upgrading/consumers/#commonmarkconverter-and-githubflavoredmarkdownconverter-constructors for more details.', self::class), \E_USER_DEPRECATED);
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($environment instanceof ConfigurableEnvironmentInterface) {
             $environment->mergeConfig($config);
         }
 
+<<<<<<< HEAD
+        parent::__construct($environment);
+=======
         $this->environment = $environment;
 
         parent::__construct(new DocParser($environment), new HtmlRenderer($environment));
@@ -56,5 +72,6 @@ class CommonMarkConverter extends Converter
     public function getEnvironment(): EnvironmentInterface
     {
         return $this->environment;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

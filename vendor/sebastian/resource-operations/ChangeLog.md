@@ -2,6 +2,15 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
+## [2.0.2] - 2020-11-30
+
+### Changed
+
+* Changed PHP version constraint in `composer.json` from `^7.1` to `>=7.1`
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 ## [2.0.1] - 2018-10-04
 
 ### Fixed
@@ -22,5 +31,9 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial release
 
+<<<<<<< HEAD
+[2.0.2]: https://github.com/sebastianbergmann/comparator/compare/2.0.1...2.0.2
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 [2.0.1]: https://github.com/sebastianbergmann/comparator/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sebastianbergmann/comparator/compare/1.0.0...2.0.0

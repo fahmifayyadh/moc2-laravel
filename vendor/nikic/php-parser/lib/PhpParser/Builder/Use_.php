@@ -39,7 +39,11 @@ class Use_ implements Builder
     /**
      * Returns the built node.
      *
+<<<<<<< HEAD
+     * @return Stmt\Use_ The built node
+=======
      * @return Node The built node
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getNode() : Node {
         return new Stmt\Use_([

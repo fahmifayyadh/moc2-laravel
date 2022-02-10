@@ -26,13 +26,24 @@ use Monolog\Formatter\FormatterInterface;
  *
  * @author Bryan Davis <bd808@wikimedia.org>
  * @author Kunal Mehta <legoktm@gmail.com>
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+ * @phpstan-import-type Level from \Monolog\Logger
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class SamplingHandler extends AbstractHandler implements ProcessableHandlerInterface, FormattableHandlerInterface
 {
     use ProcessableHandlerTrait;
 
     /**
+<<<<<<< HEAD
+     * @var HandlerInterface|callable
+     * @phpstan-var HandlerInterface|callable(Record|array{level: Level}|null, HandlerInterface): HandlerInterface
+=======
      * @var callable|HandlerInterface $handler
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected $handler;
 
@@ -42,7 +53,11 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
     protected $factor;
 
     /**
+<<<<<<< HEAD
+     * @psalm-param HandlerInterface|callable(Record|array{level: Level}|null, HandlerInterface): HandlerInterface $handler
+=======
      * @psalm-param HandlerInterface|callable(array, HandlerInterface): HandlerInterface $handler
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @param callable|HandlerInterface $handler Handler or factory callable($record|null, $samplingHandler).
      * @param int                       $factor  Sample factor (e.g. 10 means every ~10th record is sampled)
@@ -67,6 +82,10 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
     {
         if ($this->isHandling($record) && mt_rand(1, $this->factor) === 1) {
             if ($this->processors) {
+<<<<<<< HEAD
+                /** @var Record $record */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
                 $record = $this->processRecord($record);
             }
 
@@ -81,6 +100,11 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
      *
      * If the handler was provided as a factory callable, this will trigger the handler's instantiation.
      *
+<<<<<<< HEAD
+     * @phpstan-param Record|array{level: Level}|null $record
+     *
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * @return HandlerInterface
      */
     public function getHandler(array $record = null)
@@ -96,6 +120,33 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+     */
+    public function setFormatter(FormatterInterface $formatter): HandlerInterface
+    {
+        $handler = $this->getHandler();
+        if ($handler instanceof FormattableHandlerInterface) {
+            $handler->setFormatter($formatter);
+
+            return $this;
+        }
+
+        throw new \UnexpectedValueException('The nested handler of type '.get_class($handler).' does not support formatters.');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFormatter(): FormatterInterface
+    {
+        $handler = $this->getHandler();
+        if ($handler instanceof FormattableHandlerInterface) {
+            return $handler->getFormatter();
+        }
+
+        throw new \UnexpectedValueException('The nested handler of type '.get_class($handler).' does not support formatters.');
+=======
      * {@inheritdoc}
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
@@ -111,5 +162,6 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
     public function getFormatter(): FormatterInterface
     {
         return $this->getHandler()->getFormatter();
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

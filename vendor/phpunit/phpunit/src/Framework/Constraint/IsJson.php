@@ -9,6 +9,13 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function json_decode;
+use function json_last_error;
+use function sprintf;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that asserts that a string is valid JSON.
  */
@@ -34,9 +41,15 @@ final class IsJson extends Constraint
             return false;
         }
 
+<<<<<<< HEAD
+        json_decode($other);
+
+        if (json_last_error()) {
+=======
         \json_decode($other);
 
         if (\json_last_error()) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
@@ -44,7 +57,11 @@ final class IsJson extends Constraint
     }
 
     /**
+<<<<<<< HEAD
+     * Returns the description of the failure.
+=======
      * Returns the description of the failure
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -59,12 +76,21 @@ final class IsJson extends Constraint
             return 'an empty string is valid JSON';
         }
 
+<<<<<<< HEAD
+        json_decode($other);
+        $error = JsonMatchesErrorMessageProvider::determineJsonError(
+            (string) json_last_error()
+        );
+
+        return sprintf(
+=======
         \json_decode($other);
         $error = JsonMatchesErrorMessageProvider::determineJsonError(
             (string) \json_last_error()
         );
 
         return \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             '%s is valid JSON (%s)',
             $this->exporter()->shortenedExport($other),
             $error

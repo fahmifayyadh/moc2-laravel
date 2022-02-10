@@ -372,6 +372,8 @@ header {
   font: 14px "Inconsolata", "Fira Mono", "Source Code Pro", Monaco, Consolas, "Lucida Console", monospace;
 }
 
+<<<<<<< HEAD
+=======
 /* prettify code style
 Uses the Doxy theme as a base */
 pre .str, code .str { color: #BCD42A; }  /* string  */
@@ -415,6 +417,7 @@ pre:not(.prettyprinted) {
   padding-left: 60px;
 }
 
+>>>>>>> parent of 31cfa1b1 (p)
 #plain-exception {
   display: none;
 }

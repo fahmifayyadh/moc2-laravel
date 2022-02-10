@@ -19,11 +19,21 @@ use Monolog\Logger;
  * @author Eric Clemmons (@ericclemmons) <eric@uxdriven.com>
  * @author Christophe Coevoet <stof@notk.org>
  * @author Kirill chEbba Chebunin <iam@chebba.org>
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type Level from \Monolog\Logger
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class WildfireFormatter extends NormalizerFormatter
 {
     /**
      * Translates Monolog log levels to Wildfire levels.
+<<<<<<< HEAD
+     *
+     * @var array<Level, string>
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $logLevels = [
         Logger::DEBUG     => 'LOG',
@@ -37,7 +47,24 @@ class WildfireFormatter extends NormalizerFormatter
     ];
 
     /**
+<<<<<<< HEAD
+     * @param string|null $dateFormat The format of the timestamp: one supported by DateTime::format
+     */
+    public function __construct(?string $dateFormat = null)
+    {
+        parent::__construct($dateFormat);
+
+        // http headers do not like non-ISO-8559-1 characters
+        $this->removeJsonEncodeOption(JSON_UNESCAPED_UNICODE);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return string
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function format(array $record): string
     {
@@ -52,6 +79,10 @@ class WildfireFormatter extends NormalizerFormatter
             unset($record['extra']['line']);
         }
 
+<<<<<<< HEAD
+        /** @var mixed[] $record */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         $record = $this->normalize($record);
         $message = ['message' => $record['message']];
         $handleError = false;
@@ -96,7 +127,13 @@ class WildfireFormatter extends NormalizerFormatter
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+     *
+     * @phpstan-return never
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function formatBatch(array $records)
     {
@@ -104,8 +141,14 @@ class WildfireFormatter extends NormalizerFormatter
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+     *
+     * @return null|scalar|array<array|scalar|null>|object
+=======
      * {@inheritdoc}
      * @suppress PhanTypeMismatchReturn
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function normalize($data, int $depth = 0)
     {

@@ -167,7 +167,15 @@ class RequestMatcher implements RequestMatcherInterface
         }
 
         foreach ($this->attributes as $key => $pattern) {
+<<<<<<< HEAD
+            $requestAttribute = $request->attributes->get($key);
+            if (!\is_string($requestAttribute)) {
+                return false;
+            }
+            if (!preg_match('{'.$pattern.'}', $requestAttribute)) {
+=======
             if (!preg_match('{'.$pattern.'}', $request->attributes->get($key))) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return false;
             }
         }

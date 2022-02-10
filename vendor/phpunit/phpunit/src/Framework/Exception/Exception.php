@@ -9,7 +9,15 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
+use function array_keys;
+use function get_object_vars;
 use PHPUnit\Util\Filter;
+use RuntimeException;
+use Throwable;
+=======
+use PHPUnit\Util\Filter;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Base class for all PHPUnit Framework exceptions.
@@ -33,20 +41,32 @@ use PHPUnit\Util\Filter;
  *
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
+<<<<<<< HEAD
+class Exception extends RuntimeException implements \PHPUnit\Exception
+=======
 class Exception extends \RuntimeException implements \PHPUnit\Exception
+>>>>>>> parent of 31cfa1b1 (p)
 {
     /**
      * @var array
      */
     protected $serializableTrace;
 
+<<<<<<< HEAD
+    public function __construct($message = '', $code = 0, Throwable $previous = null)
+=======
     public function __construct($message = '', $code = 0, \Throwable $previous = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         parent::__construct($message, $code, $previous);
 
         $this->serializableTrace = $this->getTrace();
 
+<<<<<<< HEAD
+        foreach (array_keys($this->serializableTrace) as $key) {
+=======
         foreach (\array_keys($this->serializableTrace) as $key) {
+>>>>>>> parent of 31cfa1b1 (p)
             unset($this->serializableTrace[$key]['args']);
         }
     }
@@ -64,7 +84,11 @@ class Exception extends \RuntimeException implements \PHPUnit\Exception
 
     public function __sleep(): array
     {
+<<<<<<< HEAD
+        return array_keys(get_object_vars($this));
+=======
         return \array_keys(\get_object_vars($this));
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

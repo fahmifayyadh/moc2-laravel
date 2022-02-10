@@ -21,10 +21,32 @@ use Symfony\Component\Console\Exception\LogicException;
  */
 class InputOption
 {
+<<<<<<< HEAD
+    /**
+     * Do not accept input for the option (e.g. --yell). This is the default behavior of options.
+     */
+    public const VALUE_NONE = 1;
+
+    /**
+     * A value must be passed when the option is used (e.g. --iterations=5 or -i5).
+     */
+    public const VALUE_REQUIRED = 2;
+
+    /**
+     * The option may or may not have a value (e.g. --yell or --yell=loud).
+     */
+    public const VALUE_OPTIONAL = 4;
+
+    /**
+     * The option accepts multiple values (e.g. --dir=/foo --dir=/bar).
+     */
+    public const VALUE_IS_ARRAY = 8;
+=======
     const VALUE_NONE = 1;
     const VALUE_REQUIRED = 2;
     const VALUE_OPTIONAL = 4;
     const VALUE_IS_ARRAY = 8;
+>>>>>>> parent of 31cfa1b1 (p)
 
     private $name;
     private $shortcut;
@@ -33,17 +55,29 @@ class InputOption
     private $description;
 
     /**
+<<<<<<< HEAD
+     * @param string                           $name        The option name
+     * @param string|array|null                $shortcut    The shortcuts, can be null, a string of shortcuts delimited by | or an array of shortcuts
+     * @param int|null                         $mode        The option mode: One of the VALUE_* constants
+     * @param string                           $description A description text
+     * @param string|bool|int|float|array|null $default     The default value (must be null for self::VALUE_NONE)
+=======
      * @param string                        $name        The option name
      * @param string|array|null             $shortcut    The shortcuts, can be null, a string of shortcuts delimited by | or an array of shortcuts
      * @param int|null                      $mode        The option mode: One of the VALUE_* constants
      * @param string                        $description A description text
      * @param string|string[]|int|bool|null $default     The default value (must be null for self::VALUE_NONE)
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws InvalidArgumentException If option mode is invalid or incompatible
      */
     public function __construct(string $name, $shortcut = null, int $mode = null, string $description = '', $default = null)
     {
+<<<<<<< HEAD
+        if (str_starts_with($name, '--')) {
+=======
         if (0 === strpos($name, '--')) {
+>>>>>>> parent of 31cfa1b1 (p)
             $name = substr($name, 2);
         }
 
@@ -147,11 +181,15 @@ class InputOption
     }
 
     /**
+<<<<<<< HEAD
+     * @param string|bool|int|float|array|null $default
+=======
      * Sets the default value.
      *
      * @param string|string[]|int|bool|null $default The default value
      *
      * @throws LogicException When incorrect default value is given
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setDefault($default = null)
     {
@@ -173,7 +211,11 @@ class InputOption
     /**
      * Returns the default value.
      *
+<<<<<<< HEAD
+     * @return string|bool|int|float|array|null
+=======
      * @return string|string[]|int|bool|null The default value
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getDefault()
     {

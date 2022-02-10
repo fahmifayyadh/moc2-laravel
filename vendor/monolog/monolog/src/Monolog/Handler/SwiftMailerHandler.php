@@ -21,6 +21,23 @@ use Swift;
  * SwiftMailerHandler uses Swift_Mailer to send the emails
  *
  * @author Gyula Sallai
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+ */
+class SwiftMailerHandler extends MailHandler
+{
+    /** @var \Swift_Mailer */
+    protected $mailer;
+    /** @var Swift_Message|callable(string, Record[]): Swift_Message */
+    private $messageTemplate;
+
+    /**
+     * @psalm-param Swift_Message|callable(string, Record[]): Swift_Message $message
+     *
+     * @param \Swift_Mailer          $mailer  The mailer to use
+     * @param callable|Swift_Message $message An example message for real messages, only the body will be replaced
+=======
  */
 class SwiftMailerHandler extends MailHandler
 {
@@ -34,6 +51,7 @@ class SwiftMailerHandler extends MailHandler
      * @param callable|Swift_Message $message An example message for real messages, only the body will be replaced
      * @param string|int             $level   The minimum logging level at which this handler will be triggered
      * @param bool                   $bubble  Whether the messages that are handled can bubble up the stack or not
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(\Swift_Mailer $mailer, $message, $level = Logger::ERROR, bool $bubble = true)
     {
@@ -44,7 +62,11 @@ class SwiftMailerHandler extends MailHandler
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function send(string $content, array $records): void
     {
@@ -67,6 +89,11 @@ class SwiftMailerHandler extends MailHandler
      * @param  string        $content formatted email body to be sent
      * @param  array         $records Log records that formed the content
      * @return Swift_Message
+<<<<<<< HEAD
+     *
+     * @phpstan-param Record[] $records
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function buildMessage(string $content, array $records): Swift_Message
     {
@@ -93,9 +120,17 @@ class SwiftMailerHandler extends MailHandler
         }
 
         $message->setBody($content, $mime);
+<<<<<<< HEAD
+        /** @phpstan-ignore-next-line */
         if (version_compare(Swift::VERSION, '6.0.0', '>=')) {
             $message->setDate(new \DateTimeImmutable());
         } else {
+            /** @phpstan-ignore-next-line */
+=======
+        if (version_compare(Swift::VERSION, '6.0.0', '>=')) {
+            $message->setDate(new \DateTimeImmutable());
+        } else {
+>>>>>>> parent of 31cfa1b1 (p)
             $message->setDate(time());
         }
 

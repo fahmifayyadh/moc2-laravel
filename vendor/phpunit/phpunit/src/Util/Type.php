@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Util;
 
+<<<<<<< HEAD
+use Throwable;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
@@ -41,7 +46,11 @@ final class Type
     {
         try {
             $clone = clone $object;
+<<<<<<< HEAD
+        } catch (Throwable $t) {
+=======
         } catch (\Throwable $t) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 

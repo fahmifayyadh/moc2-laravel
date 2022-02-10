@@ -36,6 +36,11 @@ class RateLimiter
      */
     public function tooManyAttempts($key, $maxAttempts)
     {
+<<<<<<< HEAD
+        $key = $this->cleanRateLimiterKey($key);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         if ($this->attempts($key) >= $maxAttempts) {
             if ($this->cache->has($key.':timer')) {
                 return true;
@@ -56,6 +61,11 @@ class RateLimiter
      */
     public function hit($key, $decaySeconds = 60)
     {
+<<<<<<< HEAD
+        $key = $this->cleanRateLimiterKey($key);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         $this->cache->add(
             $key.':timer', $this->availableAt($decaySeconds), $decaySeconds
         );
@@ -79,6 +89,11 @@ class RateLimiter
      */
     public function attempts($key)
     {
+<<<<<<< HEAD
+        $key = $this->cleanRateLimiterKey($key);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         return $this->cache->get($key, 0);
     }
 
@@ -90,6 +105,11 @@ class RateLimiter
      */
     public function resetAttempts($key)
     {
+<<<<<<< HEAD
+        $key = $this->cleanRateLimiterKey($key);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         return $this->cache->forget($key);
     }
 
@@ -102,6 +122,11 @@ class RateLimiter
      */
     public function retriesLeft($key, $maxAttempts)
     {
+<<<<<<< HEAD
+        $key = $this->cleanRateLimiterKey($key);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         $attempts = $this->attempts($key);
 
         return $maxAttempts - $attempts;
@@ -115,6 +140,11 @@ class RateLimiter
      */
     public function clear($key)
     {
+<<<<<<< HEAD
+        $key = $this->cleanRateLimiterKey($key);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         $this->resetAttempts($key);
 
         $this->cache->forget($key.':timer');
@@ -128,6 +158,24 @@ class RateLimiter
      */
     public function availableIn($key)
     {
+<<<<<<< HEAD
+        $key = $this->cleanRateLimiterKey($key);
+
         return $this->cache->get($key.':timer') - $this->currentTime();
     }
+
+    /**
+     * Clean the rate limiter key from unicode characters.
+     *
+     * @param  string  $key
+     * @return string
+     */
+    public function cleanRateLimiterKey($key)
+    {
+        return preg_replace('/&([a-z])[a-z]+;/i', '$1', htmlentities($key));
+    }
+=======
+        return $this->cache->get($key.':timer') - $this->currentTime();
+    }
+>>>>>>> parent of 31cfa1b1 (p)
 }

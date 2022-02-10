@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function is_finite;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that accepts finite.
  */
@@ -30,6 +35,10 @@ final class IsFinite extends Constraint
      */
     protected function matches($other): bool
     {
+<<<<<<< HEAD
+        return is_finite($other);
+=======
         return \is_finite($other);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

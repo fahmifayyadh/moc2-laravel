@@ -71,6 +71,19 @@ class Reflector
      */
     public static function getReturnType(\ReflectionMethod $method, $withoutNullable = false)
     {
+<<<<<<< HEAD
+        $type = $method->getReturnType();
+
+        if (is_null($type) && method_exists($method, 'getTentativeReturnType')) {
+            $type = $method->getTentativeReturnType();
+        }
+
+        if (is_null($type)) {
+            return null;
+        }
+
+        $typeHint = self::typeToString($type, $method->getDeclaringClass());
+=======
         if (!$method->hasReturnType()) {
             return null;
         }
@@ -78,11 +91,51 @@ class Reflector
         $type = $method->getReturnType();
         $declaringClass = $method->getDeclaringClass();
         $typeHint = self::typeToString($type, $declaringClass);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return (!$withoutNullable && $type->allowsNull()) ? self::formatNullableType($typeHint) : $typeHint;
     }
 
     /**
+<<<<<<< HEAD
+     * Compute the string representation for the simplest return type.
+     *
+     * @param \ReflectionParameter $param
+     *
+     * @return string|null
+     */
+    public static function getSimplestReturnType(\ReflectionMethod $method)
+    {
+        $type = $method->getReturnType();
+
+        if (is_null($type) && method_exists($method, 'getTentativeReturnType')) {
+            $type = $method->getTentativeReturnType();
+        }
+
+        if (is_null($type) || $type->allowsNull()) {
+            return null;
+        }
+
+        $typeInformation = self::getTypeInformation($type, $method->getDeclaringClass());
+
+        // return the first primitive type hint
+        foreach ($typeInformation as $info) {
+            if ($info['isPrimitive']) {
+                return $info['typeHint'];
+            }
+        }
+
+        // if no primitive type, return the first type
+        foreach ($typeInformation as $info) {
+            return $info['typeHint'];
+        }
+
+        return null;
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Get the string representation of the given type.
      *
      * @param \ReflectionType $type
@@ -92,19 +145,73 @@ class Reflector
      */
     private static function typeToString(\ReflectionType $type, \ReflectionClass $declaringClass)
     {
+<<<<<<< HEAD
+        return \implode('|', \array_map(function (array $typeInformation) {
+            return $typeInformation['typeHint'];
+        }, self::getTypeInformation($type, $declaringClass)));
+    }
+
+    /**
+     * Get the string representation of the given type.
+     *
+     * @param \ReflectionType  $type
+     * @param \ReflectionClass $declaringClass
+     *
+     * @return list<array{typeHint: string, isPrimitive: bool}>
+     */
+    private static function getTypeInformation(\ReflectionType $type, \ReflectionClass $declaringClass)
+    {
+        // PHP 8 union types can be recursively processed
+        if ($type instanceof \ReflectionUnionType) {
+            $types = [];
+
+            foreach ($type->getTypes() as $innterType) {
+                foreach (self::getTypeInformation($innterType, $declaringClass) as $info) {
+                    if ($info['typeHint'] === 'null' && $info['isPrimitive']) {
+                        continue;
+                    }
+
+                    $types[] = $info;
+                }
+            }
+
+            return $types;
+=======
         // PHP 8 union types can be recursively processed
         if ($type instanceof \ReflectionUnionType) {
             return \implode('|', \array_map(function (\ReflectionType $type) use ($declaringClass) {
                 return self::typeToString($type, $declaringClass);
             }, $type->getTypes()));
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         // $type must be an instance of \ReflectionNamedType
         $typeHint = $type->getName();
 
+<<<<<<< HEAD
+        // builtins can be returned as is
+        if ($type->isBuiltin()) {
+            return [
+                [
+                    'typeHint' => $typeHint,
+                    'isPrimitive' => in_array($typeHint, ['array', 'bool', 'int', 'float', 'null', 'object', 'string']),
+                ],
+            ];
+        }
+
+        // 'static' can be returned as is
+        if ($typeHint === 'static') {
+            return [
+                [
+                    'typeHint' => $typeHint,
+                    'isPrimitive' => false,
+                ],
+            ];
+=======
         // builtins and 'static' can be returned as is
         if (($type->isBuiltin() || $typeHint === 'static')) {
             return $typeHint;
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         // 'self' needs to be resolved to the name of the declaring class
@@ -118,14 +225,26 @@ class Reflector
         }
 
         // class names need prefixing with a slash
+<<<<<<< HEAD
+        return [
+            [
+                'typeHint' => sprintf('\\%s', $typeHint),
+                'isPrimitive' => false,
+            ],
+        ];
+=======
         return sprintf('\\%s', $typeHint);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * Format the given type as a nullable type.
      *
+<<<<<<< HEAD
+=======
      * This method MUST only be called on PHP 7.1+.
      *
+>>>>>>> parent of 31cfa1b1 (p)
      * @param string $typeHint
      *
      * @return string

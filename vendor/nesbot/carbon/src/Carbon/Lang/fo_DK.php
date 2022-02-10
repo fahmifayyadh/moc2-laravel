@@ -8,6 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 return array_replace_recursive(require __DIR__.'/fo.php', [
     'formats' => [
         'L' => 'DD.MM.yy',

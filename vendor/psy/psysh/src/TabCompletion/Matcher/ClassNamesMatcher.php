@@ -23,10 +23,17 @@ class ClassNamesMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function getMatches(array $tokens, array $info = []): array
+    {
+        $class = $this->getNamespaceAndClass($tokens);
+        if ($class !== '' && $class[0] === '\\') {
+=======
     public function getMatches(array $tokens, array $info = [])
     {
         $class = $this->getNamespaceAndClass($tokens);
         if (\strlen($class) > 0 && $class[0] === '\\') {
+>>>>>>> parent of 31cfa1b1 (p)
             $class = \substr($class, 1, \strlen($class));
         }
         $quotedClass = \preg_quote($class);
@@ -51,9 +58,15 @@ class ClassNamesMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function hasMatched(array $tokens): bool
+    {
+        $token = \array_pop($tokens);
+=======
     public function hasMatched(array $tokens)
     {
         $token     = \array_pop($tokens);
+>>>>>>> parent of 31cfa1b1 (p)
         $prevToken = \array_pop($tokens);
 
         $blacklistedTokens = [

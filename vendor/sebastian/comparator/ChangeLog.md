@@ -2,6 +2,15 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
+## [3.0.3] - 2020-11-30
+
+### Changed
+
+* Changed PHP version constraint in `composer.json` from `^7.1` to `>=7.1`
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 ## [3.0.2] - 2018-07-12
 
 ### Changed
@@ -50,6 +59,10 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 * Added `SebastianBergmann\Comparator\Factory::reset()` to unregister all non-default comparators
 * Added support for `phpunit/phpunit-mock-objects` version `^5.0`
 
+<<<<<<< HEAD
+[3.0.3]: https://github.com/sebastianbergmann/comparator/compare/3.0.2...3.0.3
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 [3.0.2]: https://github.com/sebastianbergmann/comparator/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/sebastianbergmann/comparator/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/sebastianbergmann/comparator/compare/2.1.3...3.0.0

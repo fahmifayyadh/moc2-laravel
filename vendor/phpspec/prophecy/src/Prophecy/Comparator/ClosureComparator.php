@@ -21,13 +21,21 @@ use SebastianBergmann\Comparator\ComparisonFailure;
  */
 final class ClosureComparator extends Comparator
 {
+<<<<<<< HEAD
+    public function accepts($expected, $actual): bool
+=======
     public function accepts($expected, $actual)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return is_object($expected) && $expected instanceof \Closure
             && is_object($actual) && $actual instanceof \Closure;
     }
 
+<<<<<<< HEAD
+    public function assertEquals($expected, $actual, $delta = 0.0, $canonicalize = false, $ignoreCase = false, array &$processed = array()): void
+=======
     public function assertEquals($expected, $actual, $delta = 0.0, $canonicalize = false, $ignoreCase = false, array &$processed = array())
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($expected !== $actual) {
             throw new ComparisonFailure(

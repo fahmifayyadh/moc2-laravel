@@ -141,8 +141,13 @@ class XliffFileDumper extends FileDumper
         $xliff->setAttribute('trgLang', str_replace('_', '-', $messages->getLocale()));
 
         $xliffFile = $xliff->appendChild($dom->createElement('file'));
+<<<<<<< HEAD
+        if (str_ends_with($domain, MessageCatalogue::INTL_DOMAIN_SUFFIX)) {
+            $xliffFile->setAttribute('id', substr($domain, 0, -\strlen(MessageCatalogue::INTL_DOMAIN_SUFFIX)).'.'.$messages->getLocale());
+=======
         if (MessageCatalogue::INTL_DOMAIN_SUFFIX === substr($domain, -($suffixLength = \strlen(MessageCatalogue::INTL_DOMAIN_SUFFIX)))) {
             $xliffFile->setAttribute('id', substr($domain, 0, -$suffixLength).'.'.$messages->getLocale());
+>>>>>>> parent of 31cfa1b1 (p)
         } else {
             $xliffFile->setAttribute('id', $domain.'.'.$messages->getLocale());
         }
@@ -150,11 +155,19 @@ class XliffFileDumper extends FileDumper
         foreach ($messages->all($domain) as $source => $target) {
             $translation = $dom->createElement('unit');
             $translation->setAttribute('id', strtr(substr(base64_encode(hash('sha256', $source, true)), 0, 7), '/+', '._'));
+<<<<<<< HEAD
+
+            if (\strlen($source) <= 80) {
+                $translation->setAttribute('name', $source);
+            }
+
+=======
             $name = $source;
             if (\strlen($source) > 80) {
                 $name = substr(md5($source), -7);
             }
             $translation->setAttribute('name', $name);
+>>>>>>> parent of 31cfa1b1 (p)
             $metadata = $messages->getMetadata($source, $domain);
 
             // Add notes section
@@ -162,7 +175,11 @@ class XliffFileDumper extends FileDumper
                 $notesElement = $dom->createElement('notes');
                 foreach ($metadata['notes'] as $note) {
                     $n = $dom->createElement('note');
+<<<<<<< HEAD
+                    $n->appendChild($dom->createTextNode($note['content'] ?? ''));
+=======
                     $n->appendChild($dom->createTextNode(isset($note['content']) ? $note['content'] : ''));
+>>>>>>> parent of 31cfa1b1 (p)
                     unset($note['content']);
 
                     foreach ($note as $name => $value) {
@@ -198,6 +215,10 @@ class XliffFileDumper extends FileDumper
 
     private function hasMetadataArrayInfo(string $key, array $metadata = null): bool
     {
+<<<<<<< HEAD
+        return is_iterable($metadata[$key] ?? null);
+=======
         return null !== $metadata && \array_key_exists($key, $metadata) && ($metadata[$key] instanceof \Traversable || \is_array($metadata[$key]));
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

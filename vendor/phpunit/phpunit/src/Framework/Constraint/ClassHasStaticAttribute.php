@@ -9,7 +9,14 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function sprintf;
 use PHPUnit\Framework\Exception;
+use ReflectionClass;
+use ReflectionException;
+=======
+use PHPUnit\Framework\Exception;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Constraint that asserts that the class it is evaluated for has a given
@@ -24,7 +31,11 @@ final class ClassHasStaticAttribute extends ClassHasAttribute
      */
     public function toString(): string
     {
+<<<<<<< HEAD
+        return sprintf(
+=======
         return \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             'has static attribute "%s"',
             $this->attributeName()
         );
@@ -39,13 +50,21 @@ final class ClassHasStaticAttribute extends ClassHasAttribute
     protected function matches($other): bool
     {
         try {
+<<<<<<< HEAD
+            $class = new ReflectionClass($other);
+=======
             $class = new \ReflectionClass($other);
+>>>>>>> parent of 31cfa1b1 (p)
 
             if ($class->hasProperty($this->attributeName())) {
                 return $class->getProperty($this->attributeName())->isStatic();
             }
             // @codeCoverageIgnoreStart
+<<<<<<< HEAD
+        } catch (ReflectionException $e) {
+=======
         } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception(
                 $e->getMessage(),
                 (int) $e->getCode(),

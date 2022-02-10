@@ -65,6 +65,18 @@ class ClassConst extends Node\Stmt
         return (bool) ($this->flags & Class_::MODIFIER_PRIVATE);
     }
 
+<<<<<<< HEAD
+    /**
+     * Whether constant is final.
+     *
+     * @return bool
+     */
+    public function isFinal() : bool {
+        return (bool) ($this->flags & Class_::MODIFIER_FINAL);
+    }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function getType() : string {
         return 'Stmt_ClassConst';
     }

@@ -20,11 +20,19 @@ use phpDocumentor\Reflection\TypeResolver;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
 use phpDocumentor\Reflection\Utils;
 use Webmozart\Assert\Assert;
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use function array_shift;
 use function array_unshift;
 use function implode;
 use function strpos;
 use function substr;
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use const PREG_SPLIT_DELIM_CAPTURE;
 
 /**
@@ -61,7 +69,11 @@ final class Param extends TagWithType implements Factory\StaticMethod
         ?TypeResolver $typeResolver = null,
         ?DescriptionFactory $descriptionFactory = null,
         ?TypeContext $context = null
+<<<<<<< HEAD
+    ): self {
+=======
     ) : self {
+>>>>>>> parent of 31cfa1b1 (p)
         Assert::stringNotEmpty($body);
         Assert::notNull($typeResolver);
         Assert::notNull($descriptionFactory);
@@ -114,7 +126,11 @@ final class Param extends TagWithType implements Factory\StaticMethod
     /**
      * Returns the variable's name.
      */
+<<<<<<< HEAD
+    public function getVariableName(): ?string
+=======
     public function getVariableName() : ?string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->variableName;
     }
@@ -122,7 +138,11 @@ final class Param extends TagWithType implements Factory\StaticMethod
     /**
      * Returns whether this tag is variadic.
      */
+<<<<<<< HEAD
+    public function isVariadic(): bool
+=======
     public function isVariadic() : bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->isVariadic;
     }
@@ -130,7 +150,11 @@ final class Param extends TagWithType implements Factory\StaticMethod
     /**
      * Returns whether this tag is passed by reference.
      */
+<<<<<<< HEAD
+    public function isReference(): bool
+=======
     public function isReference() : bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->isReference;
     }
@@ -138,7 +162,11 @@ final class Param extends TagWithType implements Factory\StaticMethod
     /**
      * Returns a string representation for this tag.
      */
+<<<<<<< HEAD
+    public function __toString(): string
+=======
     public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->description) {
             $description = $this->description->render();
@@ -159,7 +187,11 @@ final class Param extends TagWithType implements Factory\StaticMethod
             . ($description !== '' ? ($type !== '' || $variableName !== '' ? ' ' : '') . $description : '');
     }
 
+<<<<<<< HEAD
+    private static function strStartsWithVariable(string $str): bool
+=======
     private static function strStartsWithVariable(string $str) : bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return strpos($str, '$') === 0
                ||

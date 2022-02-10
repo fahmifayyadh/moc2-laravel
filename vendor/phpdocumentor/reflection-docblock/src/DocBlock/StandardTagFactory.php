@@ -39,6 +39,10 @@ use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
 use Webmozart\Assert\Assert;
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use function array_merge;
 use function array_slice;
 use function call_user_func_array;
@@ -137,7 +141,11 @@ final class StandardTagFactory implements TagFactory
         $this->addService($fqsenResolver, FqsenResolver::class);
     }
 
+<<<<<<< HEAD
+    public function create(string $tagLine, ?TypeContext $context = null): Tag
+=======
     public function create(string $tagLine, ?TypeContext $context = null) : Tag
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$context) {
             $context = new TypeContext('');
@@ -151,17 +159,29 @@ final class StandardTagFactory implements TagFactory
     /**
      * @param mixed $value
      */
+<<<<<<< HEAD
+    public function addParameter(string $name, $value): void
+=======
     public function addParameter(string $name, $value) : void
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->serviceLocator[$name] = $value;
     }
 
+<<<<<<< HEAD
+    public function addService(object $service, ?string $alias = null): void
+=======
     public function addService(object $service, ?string $alias = null) : void
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->serviceLocator[$alias ?: get_class($service)] = $service;
     }
 
+<<<<<<< HEAD
+    public function registerTagHandler(string $tagName, string $handler): void
+=======
     public function registerTagHandler(string $tagName, string $handler) : void
+>>>>>>> parent of 31cfa1b1 (p)
     {
         Assert::stringNotEmpty($tagName);
         Assert::classExists($handler);
@@ -181,7 +201,11 @@ final class StandardTagFactory implements TagFactory
      *
      * @return string[]
      */
+<<<<<<< HEAD
+    private function extractTagParts(string $tagLine): array
+=======
     private function extractTagParts(string $tagLine) : array
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $matches = [];
         if (!preg_match('/^@(' . self::REGEX_TAGNAME . ')((?:[\s\(\{])\s*([^\s].*)|$)/us', $tagLine, $matches)) {
@@ -201,7 +225,11 @@ final class StandardTagFactory implements TagFactory
      * Creates a new tag object with the given name and body or returns null if the tag name was recognized but the
      * body was invalid.
      */
+<<<<<<< HEAD
+    private function createTag(string $body, string $name, TypeContext $context): Tag
+=======
     private function createTag(string $body, string $name, TypeContext $context) : Tag
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $handlerClassName = $this->findHandlerClassName($name, $context);
         $arguments        = $this->getArgumentsForParametersFromWiring(
@@ -226,7 +254,11 @@ final class StandardTagFactory implements TagFactory
      *
      * @return class-string<Tag>
      */
+<<<<<<< HEAD
+    private function findHandlerClassName(string $tagName, TypeContext $context): string
+=======
     private function findHandlerClassName(string $tagName, TypeContext $context) : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $handlerClassName = Generic::class;
         if (isset($this->tagHandlerMappings[$tagName])) {
@@ -251,7 +283,11 @@ final class StandardTagFactory implements TagFactory
      * @return mixed[] A series of values that can be passed to the Factory Method of the tag whose parameters
      *     is provided with this method.
      */
+<<<<<<< HEAD
+    private function getArgumentsForParametersFromWiring(array $parameters, array $locator): array
+=======
     private function getArgumentsForParametersFromWiring(array $parameters, array $locator) : array
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $arguments = [];
         foreach ($parameters as $parameter) {
@@ -292,7 +328,11 @@ final class StandardTagFactory implements TagFactory
      *
      * @return ReflectionParameter[]
      */
+<<<<<<< HEAD
+    private function fetchParametersForHandlerFactoryMethod(string $handlerClassName): array
+=======
     private function fetchParametersForHandlerFactoryMethod(string $handlerClassName) : array
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!isset($this->tagHandlerParameterCache[$handlerClassName])) {
             $methodReflection                                  = new ReflectionMethod($handlerClassName, 'create');
@@ -319,7 +359,11 @@ final class StandardTagFactory implements TagFactory
         TypeContext $context,
         string $tagName,
         string $tagBody
+<<<<<<< HEAD
+    ): array {
+=======
     ) : array {
+>>>>>>> parent of 31cfa1b1 (p)
         return array_merge(
             $this->serviceLocator,
             [
@@ -335,7 +379,11 @@ final class StandardTagFactory implements TagFactory
      *
      * @todo this method should be populated once we implement Annotation notation support.
      */
+<<<<<<< HEAD
+    private function isAnnotation(string $tagContent): bool
+=======
     private function isAnnotation(string $tagContent) : bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // 1. Contains a namespace separator
         // 2. Contains parenthesis

@@ -12,21 +12,40 @@
 namespace Monolog\Handler\FingersCrossed;
 
 use Monolog\Logger;
+<<<<<<< HEAD
+use Psr\Log\LogLevel;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Error level based activation strategy.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type Level from \Monolog\Logger
+ * @phpstan-import-type LevelName from \Monolog\Logger
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class ErrorLevelActivationStrategy implements ActivationStrategyInterface
 {
     /**
+<<<<<<< HEAD
+     * @var Level
+=======
      * @var int
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $actionLevel;
 
     /**
      * @param int|string $actionLevel Level or name or value
+<<<<<<< HEAD
+     *
+     * @phpstan-param Level|LevelName|LogLevel::* $actionLevel
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct($actionLevel)
     {

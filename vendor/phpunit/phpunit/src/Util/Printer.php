@@ -9,6 +9,28 @@
  */
 namespace PHPUnit\Util;
 
+<<<<<<< HEAD
+use const ENT_SUBSTITUTE;
+use const PHP_SAPI;
+use function assert;
+use function count;
+use function dirname;
+use function explode;
+use function fclose;
+use function fflush;
+use function flush;
+use function fopen;
+use function fsockopen;
+use function fwrite;
+use function htmlspecialchars;
+use function is_resource;
+use function is_string;
+use function sprintf;
+use function str_replace;
+use function strncmp;
+use function strpos;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Exception;
 
 /**
@@ -46,12 +68,32 @@ class Printer
             return;
         }
 
+<<<<<<< HEAD
+        if (is_string($out) === false) {
+=======
         if (\is_string($out) === false) {
+>>>>>>> parent of 31cfa1b1 (p)
             $this->out = $out;
 
             return;
         }
 
+<<<<<<< HEAD
+        if (strpos($out, 'socket://') === 0) {
+            $out = explode(':', str_replace('socket://', '', $out));
+
+            if (count($out) !== 2) {
+                throw new Exception;
+            }
+
+            $this->out = fsockopen($out[0], $out[1]);
+        } else {
+            if (strpos($out, 'php://') === false && !Filesystem::createDirectory(dirname($out))) {
+                throw new Exception(sprintf('Directory "%s" was not created', dirname($out)));
+            }
+
+            $this->out = fopen($out, 'wt');
+=======
         if (\strpos($out, 'socket://') === 0) {
             $out = \explode(':', \str_replace('socket://', '', $out));
 
@@ -66,12 +108,23 @@ class Printer
             }
 
             $this->out = \fopen($out, 'wt');
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->outTarget = $out;
     }
 
     /**
+<<<<<<< HEAD
+     * Flush buffer and close output if it's not to a PHP stream.
+     */
+    public function flush(): void
+    {
+        if ($this->out && strncmp($this->outTarget, 'php://', 6) !== 0) {
+            assert(is_resource($this->out));
+
+            fclose($this->out);
+=======
      * Flush buffer and close output if it's not to a PHP stream
      */
     public function flush(): void
@@ -80,6 +133,7 @@ class Printer
             \assert(\is_resource($this->out));
 
             \fclose($this->out);
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -93,27 +147,46 @@ class Printer
     public function incrementalFlush(): void
     {
         if ($this->out) {
+<<<<<<< HEAD
+            assert(is_resource($this->out));
+
+            fflush($this->out);
+        } else {
+            flush();
+=======
             \assert(\is_resource($this->out));
 
             \fflush($this->out);
         } else {
             \flush();
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
     public function write(string $buffer): void
     {
         if ($this->out) {
+<<<<<<< HEAD
+            assert(is_resource($this->out));
+
+            fwrite($this->out, $buffer);
+=======
             \assert(\is_resource($this->out));
 
             \fwrite($this->out, $buffer);
+>>>>>>> parent of 31cfa1b1 (p)
 
             if ($this->autoFlush) {
                 $this->incrementalFlush();
             }
         } else {
+<<<<<<< HEAD
+            if (PHP_SAPI !== 'cli' && PHP_SAPI !== 'phpdbg') {
+                $buffer = htmlspecialchars($buffer, ENT_SUBSTITUTE);
+=======
             if (\PHP_SAPI !== 'cli' && \PHP_SAPI !== 'phpdbg') {
                 $buffer = \htmlspecialchars($buffer, \ENT_SUBSTITUTE);
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             print $buffer;

@@ -3,7 +3,11 @@
 /**
  * This file is part of the Carbon package.
  *
+<<<<<<< HEAD
+ * (c) Brian Nesbitt <brian@nesbot.com>
+=======
  * (c) Ahmed Ali <ajaaibu@gmail.com>
+>>>>>>> parent of 31cfa1b1 (p)
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.

@@ -69,7 +69,11 @@ HELP
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+<<<<<<< HEAD
+        $depth = $input->getOption('depth');
+=======
         $depth  = $input->getOption('depth');
+>>>>>>> parent of 31cfa1b1 (p)
         $target = $this->resolveCode($input->getArgument('target'));
         $output->page($this->presenter->present($target, $depth, $input->getOption('all') ? Presenter::VERBOSE : 0));
 
@@ -87,9 +91,15 @@ HELP
      *
      * @return mixed
      */
+<<<<<<< HEAD
+    protected function resolveTarget(string $name)
+    {
+        @\trigger_error('`resolveTarget` is deprecated; use `resolveCode` instead.', \E_USER_DEPRECATED);
+=======
     protected function resolveTarget($name)
     {
         @\trigger_error('`resolveTarget` is deprecated; use `resolveCode` instead.', E_USER_DEPRECATED);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $this->resolveCode($name);
     }

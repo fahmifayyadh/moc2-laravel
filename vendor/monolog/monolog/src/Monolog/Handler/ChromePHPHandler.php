@@ -22,6 +22,11 @@ use Monolog\Utils;
  * This also works out of the box with Firefox 43+
  *
  * @author Christophe Coevoet <stof@notk.org>
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class ChromePHPHandler extends AbstractProcessingHandler
 {
@@ -42,6 +47,10 @@ class ChromePHPHandler extends AbstractProcessingHandler
      */
     protected const USER_AGENT_REGEX = '{\b(?:Chrome/\d+(?:\.\d+)*|HeadlessChrome|Firefox/(?:4[3-9]|[5-9]\d|\d{3,})(?:\.\d)*)\b}';
 
+<<<<<<< HEAD
+    /** @var bool */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected static $initialized = false;
 
     /**
@@ -53,18 +62,28 @@ class ChromePHPHandler extends AbstractProcessingHandler
      */
     protected static $overflowed = false;
 
+<<<<<<< HEAD
+    /** @var mixed[] */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected static $json = [
         'version' => self::VERSION,
         'columns' => ['label', 'log', 'backtrace', 'type'],
         'rows' => [],
     ];
 
+<<<<<<< HEAD
+    /** @var bool */
+    protected static $sendHeaders = true;
+
+=======
     protected static $sendHeaders = true;
 
     /**
      * @param string|int $level  The minimum logging level at which this handler will be triggered
      * @param bool       $bubble Whether the messages that are handled can bubble up the stack or not
      */
+>>>>>>> parent of 31cfa1b1 (p)
     public function __construct($level = Logger::DEBUG, bool $bubble = true)
     {
         parent::__construct($level, $bubble);
@@ -74,7 +93,11 @@ class ChromePHPHandler extends AbstractProcessingHandler
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function handleBatch(array $records): void
     {
@@ -88,7 +111,13 @@ class ChromePHPHandler extends AbstractProcessingHandler
             if ($record['level'] < $this->level) {
                 continue;
             }
+<<<<<<< HEAD
+            /** @var Record $message */
+            $message = $this->processRecord($record);
+            $messages[] = $message;
+=======
             $messages[] = $this->processRecord($record);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (!empty($messages)) {
@@ -145,7 +174,11 @@ class ChromePHPHandler extends AbstractProcessingHandler
             self::$json['request_uri'] = $_SERVER['REQUEST_URI'] ?? '';
         }
 
+<<<<<<< HEAD
+        $json = Utils::jsonEncode(self::$json, Utils::DEFAULT_JSON_FLAGS & ~JSON_UNESCAPED_UNICODE, true);
+=======
         $json = Utils::jsonEncode(self::$json, null, true);
+>>>>>>> parent of 31cfa1b1 (p)
         $data = base64_encode(utf8_encode($json));
         if (strlen($data) > 3 * 1024) {
             self::$overflowed = true;

@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+5.2.0
+-----
+
+ * Add support for DKIM
+ * Deprecated `Address::fromString()`, use `Address::create()` instead
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 4.4.0
 -----
 

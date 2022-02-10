@@ -16,6 +16,10 @@ use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassConst;
 use PhpParser\Node\Stmt\ClassMethod;
+<<<<<<< HEAD
+use PhpParser\Node\Stmt\Enum_;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Namespace_;
 use PhpParser\Node\Stmt\Property;
@@ -60,7 +64,11 @@ abstract class ParserAbstract implements Parser
 
     /** @var int[] Map of states to a displacement into the $action table. The corresponding action for this
      *             state/symbol pair is $action[$actionBase[$state] + $symbol]. If $actionBase[$state] is 0, the
+<<<<<<< HEAD
+     *             action is defaulted, i.e. $actionDefault[$state] should be used instead. */
+=======
                    action is defaulted, i.e. $actionDefault[$state] should be used instead. */
+>>>>>>> parent of 31cfa1b1 (p)
     protected $actionBase;
     /** @var int[] Table of actions. Indexed according to $actionBase comment. */
     protected $action;
@@ -219,10 +227,14 @@ abstract class ParserAbstract implements Parser
                         ));
                     }
 
+<<<<<<< HEAD
+                    // Allow productions to access the start attributes of the lookahead token.
+=======
                     // This is necessary to assign some meaningful attributes to /* empty */ productions. They'll get
                     // the attributes of the next token, even though they don't contain it themselves.
                     $this->startAttributeStack[$stackPos+1] = $startAttributes;
                     $this->endAttributeStack[$stackPos+1] = $endAttributes;
+>>>>>>> parent of 31cfa1b1 (p)
                     $this->lookaheadStartAttributes = $startAttributes;
 
                     //$this->traceRead($symbol);
@@ -294,7 +306,12 @@ abstract class ParserAbstract implements Parser
 
                     /* Goto - shift nonterminal */
                     $lastEndAttributes = $this->endAttributeStack[$stackPos];
+<<<<<<< HEAD
+                    $ruleLength = $this->ruleToLength[$rule];
+                    $stackPos -= $ruleLength;
+=======
                     $stackPos -= $this->ruleToLength[$rule];
+>>>>>>> parent of 31cfa1b1 (p)
                     $nonTerminal = $this->ruleToNonTerminal[$rule];
                     $idx = $this->gotoBase[$nonTerminal] + $stateStack[$stackPos];
                     if ($idx >= 0 && $idx < $this->gotoTableSize && $this->gotoCheck[$idx] === $nonTerminal) {
@@ -307,6 +324,13 @@ abstract class ParserAbstract implements Parser
                     $stateStack[$stackPos]     = $state;
                     $this->semStack[$stackPos] = $this->semValue;
                     $this->endAttributeStack[$stackPos] = $lastEndAttributes;
+<<<<<<< HEAD
+                    if ($ruleLength === 0) {
+                        // Empty productions use the start attributes of the lookahead token.
+                        $this->startAttributeStack[$stackPos] = $this->lookaheadStartAttributes;
+                    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
                 } else {
                     /* error */
                     switch ($this->errorState) {
@@ -340,6 +364,10 @@ abstract class ParserAbstract implements Parser
 
                             // We treat the error symbol as being empty, so we reset the end attributes
                             // to the end attributes of the last non-error symbol
+<<<<<<< HEAD
+                            $this->startAttributeStack[$stackPos] = $this->lookaheadStartAttributes;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
                             $this->endAttributeStack[$stackPos] = $this->endAttributeStack[$stackPos - 1];
                             $this->endAttributes = $this->endAttributeStack[$stackPos - 1];
                             break;
@@ -659,6 +687,10 @@ abstract class ParserAbstract implements Parser
             'null'     => true,
             'false'    => true,
             'mixed'    => true,
+<<<<<<< HEAD
+            'never'    => true,
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         ];
 
         if (!$name->isUnqualified()) {
@@ -909,6 +941,19 @@ abstract class ParserAbstract implements Parser
         }
     }
 
+<<<<<<< HEAD
+    private function checkClassName($name, $namePos) {
+        if (null !== $name && $name->isSpecialClassName()) {
+            $this->emitError(new Error(
+                sprintf('Cannot use \'%s\' as class name as it is reserved', $name),
+                $this->getAttributesAt($namePos)
+            ));
+        }
+    }
+
+    private function checkImplementedInterfaces(array $interfaces) {
+        foreach ($interfaces as $interface) {
+=======
     protected function checkClass(Class_ $node, $namePos) {
         if (null !== $node->name && $node->name->isSpecialClassName()) {
             $this->emitError(new Error(
@@ -925,6 +970,7 @@ abstract class ParserAbstract implements Parser
         }
 
         foreach ($node->implements as $interface) {
+>>>>>>> parent of 31cfa1b1 (p)
             if ($interface->isSpecialClassName()) {
                 $this->emitError(new Error(
                     sprintf('Cannot use \'%s\' as interface name as it is reserved', $interface),
@@ -934,6 +980,29 @@ abstract class ParserAbstract implements Parser
         }
     }
 
+<<<<<<< HEAD
+    protected function checkClass(Class_ $node, $namePos) {
+        $this->checkClassName($node->name, $namePos);
+
+        if ($node->extends && $node->extends->isSpecialClassName()) {
+            $this->emitError(new Error(
+                sprintf('Cannot use \'%s\' as class name as it is reserved', $node->extends),
+                $node->extends->getAttributes()
+            ));
+        }
+
+        $this->checkImplementedInterfaces($node->implements);
+    }
+
+    protected function checkInterface(Interface_ $node, $namePos) {
+        $this->checkClassName($node->name, $namePos);
+        $this->checkImplementedInterfaces($node->extends);
+    }
+
+    protected function checkEnum(Enum_ $node, $namePos) {
+        $this->checkClassName($node->name, $namePos);
+        $this->checkImplementedInterfaces($node->implements);
+=======
     protected function checkInterface(Interface_ $node, $namePos) {
         if (null !== $node->name && $node->name->isSpecialClassName()) {
             $this->emitError(new Error(
@@ -950,6 +1019,7 @@ abstract class ParserAbstract implements Parser
                 ));
             }
         }
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     protected function checkClassMethod(ClassMethod $node, $modifierPos) {
@@ -972,6 +1042,15 @@ abstract class ParserAbstract implements Parser
                     break;
             }
         }
+<<<<<<< HEAD
+
+        if ($node->flags & Class_::MODIFIER_READONLY) {
+            $this->emitError(new Error(
+                sprintf('Method %s() cannot be readonly', $node->name),
+                $this->getAttributesAt($modifierPos)));
+        }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     protected function checkClassConst(ClassConst $node, $modifierPos) {
@@ -985,9 +1064,15 @@ abstract class ParserAbstract implements Parser
                 "Cannot use 'abstract' as constant modifier",
                 $this->getAttributesAt($modifierPos)));
         }
+<<<<<<< HEAD
+        if ($node->flags & Class_::MODIFIER_READONLY) {
+            $this->emitError(new Error(
+                "Cannot use 'readonly' as constant modifier",
+=======
         if ($node->flags & Class_::MODIFIER_FINAL) {
             $this->emitError(new Error(
                 "Cannot use 'final' as constant modifier",
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->getAttributesAt($modifierPos)));
         }
     }

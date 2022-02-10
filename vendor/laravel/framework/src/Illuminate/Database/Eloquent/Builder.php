@@ -7,6 +7,10 @@ use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Concerns\BuildsQueries;
+<<<<<<< HEAD
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Pagination\Paginator;
@@ -509,7 +513,11 @@ class Builder
     public function value($column)
     {
         if ($result = $this->first([$column])) {
+<<<<<<< HEAD
+            return $result->{Str::afterLast($column, '.')};
+=======
             return $result->{$column};
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -919,7 +927,11 @@ class Builder
             // messed up when adding scopes. Then we'll return back out the builder.
             $builder = $builder->callScope(
                 [$this->model, 'scope'.ucfirst($scope)],
+<<<<<<< HEAD
+                Arr::wrap($parameters)
+=======
                 (array) $parameters
+>>>>>>> parent of 31cfa1b1 (p)
             );
         }
 
@@ -1143,7 +1155,19 @@ class Builder
     protected function createSelectWithConstraint($name)
     {
         return [explode(':', $name)[0], static function ($query) use ($name) {
+<<<<<<< HEAD
+            $query->select(array_map(static function ($column) use ($query) {
+                if (Str::contains($column, '.')) {
+                    return $column;
+                }
+
+                return $query instanceof BelongsToMany
+                        ? $query->getRelated()->getTable().'.'.$column
+                        : $column;
+            }, explode(',', explode(':', $name)[1])));
+=======
             $query->select(explode(',', explode(':', $name)[1]));
+>>>>>>> parent of 31cfa1b1 (p)
         }];
     }
 

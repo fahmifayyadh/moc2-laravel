@@ -21,9 +21,15 @@ use Symfony\Component\Console\Exception\LogicException;
  */
 class InputArgument
 {
+<<<<<<< HEAD
+    public const REQUIRED = 1;
+    public const OPTIONAL = 2;
+    public const IS_ARRAY = 4;
+=======
     const REQUIRED = 1;
     const OPTIONAL = 2;
     const IS_ARRAY = 4;
+>>>>>>> parent of 31cfa1b1 (p)
 
     private $name;
     private $mode;
@@ -31,10 +37,17 @@ class InputArgument
     private $description;
 
     /**
+<<<<<<< HEAD
+     * @param string                           $name        The argument name
+     * @param int|null                         $mode        The argument mode: self::REQUIRED or self::OPTIONAL
+     * @param string                           $description A description text
+     * @param string|bool|int|float|array|null $default     The default value (for self::OPTIONAL mode only)
+=======
      * @param string               $name        The argument name
      * @param int|null             $mode        The argument mode: self::REQUIRED or self::OPTIONAL
      * @param string               $description A description text
      * @param string|string[]|null $default     The default value (for self::OPTIONAL mode only)
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws InvalidArgumentException When argument mode is not valid
      */
@@ -86,7 +99,11 @@ class InputArgument
     /**
      * Sets the default value.
      *
+<<<<<<< HEAD
+     * @param string|bool|int|float|array|null $default
+=======
      * @param string|string[]|null $default The default value
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws LogicException When incorrect default value is given
      */
@@ -110,7 +127,11 @@ class InputArgument
     /**
      * Returns the default value.
      *
+<<<<<<< HEAD
+     * @return string|bool|int|float|array|null
+=======
      * @return string|string[]|null The default value
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getDefault()
     {

@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function array_key_exists;
+use function is_array;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use ArrayAccess;
 
 /**
@@ -52,8 +57,13 @@ final class ArrayHasKey extends Constraint
      */
     protected function matches($other): bool
     {
+<<<<<<< HEAD
+        if (is_array($other)) {
+            return array_key_exists($this->key, $other);
+=======
         if (\is_array($other)) {
             return \array_key_exists($this->key, $other);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($other instanceof ArrayAccess) {
@@ -64,7 +74,11 @@ final class ArrayHasKey extends Constraint
     }
 
     /**
+<<<<<<< HEAD
+     * Returns the description of the failure.
+=======
      * Returns the description of the failure
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.

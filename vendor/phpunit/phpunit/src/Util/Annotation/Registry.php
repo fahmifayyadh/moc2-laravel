@@ -9,7 +9,15 @@
  */
 namespace PHPUnit\Util\Annotation;
 
+<<<<<<< HEAD
+use function array_key_exists;
 use PHPUnit\Util\Exception;
+use ReflectionClass;
+use ReflectionException;
+use ReflectionMethod;
+=======
+use PHPUnit\Util\Exception;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Reflection information, and therefore DocBlock information, is static within
@@ -43,14 +51,24 @@ final class Registry
      */
     public function forClassName(string $class): DocBlock
     {
+<<<<<<< HEAD
+        if (array_key_exists($class, $this->classDocBlocks)) {
+=======
         if (\array_key_exists($class, $this->classDocBlocks)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return $this->classDocBlocks[$class];
         }
 
         try {
+<<<<<<< HEAD
+            $reflection = new ReflectionClass($class);
+            // @codeCoverageIgnoreStart
+        } catch (ReflectionException $e) {
+=======
             $reflection = new \ReflectionClass($class);
             // @codeCoverageIgnoreStart
         } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -73,9 +91,15 @@ final class Registry
         }
 
         try {
+<<<<<<< HEAD
+            $reflection = new ReflectionMethod($classInHierarchy, $method);
+            // @codeCoverageIgnoreStart
+        } catch (ReflectionException $e) {
+=======
             $reflection = new \ReflectionMethod($classInHierarchy, $method);
             // @codeCoverageIgnoreStart
         } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception(
                 $e->getMessage(),
                 (int) $e->getCode(),

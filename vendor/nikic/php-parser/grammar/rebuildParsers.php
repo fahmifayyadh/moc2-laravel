@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+require __DIR__ . '/phpyLang.php';
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 $grammarFileToName = [
     __DIR__ . '/php5.y' => 'Php5',
     __DIR__ . '/php7.y' => 'Php7',
@@ -23,6 +28,8 @@ $options = array_flip($argv);
 $optionDebug = isset($options['--debug']);
 $optionKeepTmpGrammar = isset($options['--keep-tmp-grammar']);
 
+<<<<<<< HEAD
+=======
 ///////////////////////////////
 /// Utility regex constants ///
 ///////////////////////////////
@@ -38,6 +45,7 @@ const LIB = '(?(DEFINE)
 const PARAMS = '\[(?<params>[^[\]]*+(?:\[(?&params)\][^[\]]*+)*+)\]';
 const ARGS   = '\((?<args>[^()]*+(?:\((?&args)\)[^()]*+)*+)\)';
 
+>>>>>>> parent of 31cfa1b1 (p)
 ///////////////////
 /// Main script ///
 ///////////////////
@@ -49,10 +57,14 @@ foreach ($grammarFileToName as $grammarFile => $name) {
 
     $grammarCode = file_get_contents($grammarFile);
     $grammarCode = str_replace('%tokens', $tokens, $grammarCode);
+<<<<<<< HEAD
+    $grammarCode = preprocessGrammar($grammarCode);
+=======
 
     $grammarCode = resolveNodes($grammarCode);
     $grammarCode = resolveMacros($grammarCode);
     $grammarCode = resolveStackAccess($grammarCode);
+>>>>>>> parent of 31cfa1b1 (p)
 
     file_put_contents($tmpGrammarFile, $grammarCode);
 
@@ -77,6 +89,11 @@ foreach ($grammarFileToName as $grammarFile => $name) {
     }
 }
 
+<<<<<<< HEAD
+////////////////////////////////
+/// Utility helper functions ///
+////////////////////////////////
+=======
 ///////////////////////////////
 /// Preprocessing functions ///
 ///////////////////////////////
@@ -222,6 +239,7 @@ function removeTrailingWhitespace($code) {
     $lines = array_map('rtrim', $lines);
     return implode("\n", $lines);
 }
+>>>>>>> parent of 31cfa1b1 (p)
 
 function ensureDirExists($dir) {
     if (!is_dir($dir)) {
@@ -237,6 +255,8 @@ function execCmd($cmd) {
     }
     return $output;
 }
+<<<<<<< HEAD
+=======
 
 //////////////////////////////
 /// Regex helper functions ///
@@ -259,3 +279,4 @@ function magicSplit($regex, $string) {
 
     return $pieces;
 }
+>>>>>>> parent of 31cfa1b1 (p)

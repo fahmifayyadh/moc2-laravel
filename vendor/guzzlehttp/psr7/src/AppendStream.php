@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+declare(strict_types=1);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
@@ -9,13 +14,27 @@ use Psr\Http\Message\StreamInterface;
  *
  * This is a read-only stream decorator.
  */
+<<<<<<< HEAD
+final class AppendStream implements StreamInterface
+=======
 class AppendStream implements StreamInterface
+>>>>>>> parent of 31cfa1b1 (p)
 {
     /** @var StreamInterface[] Streams being decorated */
     private $streams = [];
 
+<<<<<<< HEAD
+    /** @var bool */
+    private $seekable = true;
+
+    /** @var int */
+    private $current = 0;
+
+    /** @var int */
+=======
     private $seekable = true;
     private $current = 0;
+>>>>>>> parent of 31cfa1b1 (p)
     private $pos = 0;
 
     /**
@@ -29,12 +48,24 @@ class AppendStream implements StreamInterface
         }
     }
 
+<<<<<<< HEAD
+    public function __toString(): string
+=======
     public function __toString()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         try {
             $this->rewind();
             return $this->getContents();
+<<<<<<< HEAD
+        } catch (\Throwable $e) {
+            if (\PHP_VERSION_ID >= 70400) {
+                throw $e;
+            }
+            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string) $e), E_USER_ERROR);
+=======
         } catch (\Exception $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             return '';
         }
     }
@@ -46,7 +77,11 @@ class AppendStream implements StreamInterface
      *
      * @throws \InvalidArgumentException if the stream is not readable
      */
+<<<<<<< HEAD
+    public function addStream(StreamInterface $stream): void
+=======
     public function addStream(StreamInterface $stream)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$stream->isReadable()) {
             throw new \InvalidArgumentException('Each stream must be readable');
@@ -60,17 +95,26 @@ class AppendStream implements StreamInterface
         $this->streams[] = $stream;
     }
 
+<<<<<<< HEAD
+    public function getContents(): string
+=======
     public function getContents()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return Utils::copyToString($this);
     }
 
     /**
      * Closes each attached stream.
+<<<<<<< HEAD
+     */
+    public function close(): void
+=======
      *
      * {@inheritdoc}
      */
     public function close()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->pos = $this->current = 0;
         $this->seekable = true;
@@ -86,8 +130,11 @@ class AppendStream implements StreamInterface
      * Detaches each attached stream.
      *
      * Returns null as it's not clear which underlying stream resource to return.
+<<<<<<< HEAD
+=======
      *
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function detach()
     {
@@ -103,7 +150,11 @@ class AppendStream implements StreamInterface
         return null;
     }
 
+<<<<<<< HEAD
+    public function tell(): int
+=======
     public function tell()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->pos;
     }
@@ -113,10 +164,15 @@ class AppendStream implements StreamInterface
      *
      * If any of the streams do not return a valid number, then the size of the
      * append stream cannot be determined and null is returned.
+<<<<<<< HEAD
+     */
+    public function getSize(): ?int
+=======
      *
      * {@inheritdoc}
      */
     public function getSize()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $size = 0;
 
@@ -131,24 +187,37 @@ class AppendStream implements StreamInterface
         return $size;
     }
 
+<<<<<<< HEAD
+    public function eof(): bool
+=======
     public function eof()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return !$this->streams ||
             ($this->current >= count($this->streams) - 1 &&
              $this->streams[$this->current]->eof());
     }
 
+<<<<<<< HEAD
+    public function rewind(): void
+=======
     public function rewind()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->seek(0);
     }
 
     /**
      * Attempts to seek to the given position. Only supports SEEK_SET.
+<<<<<<< HEAD
+     */
+    public function seek($offset, $whence = SEEK_SET): void
+=======
      *
      * {@inheritdoc}
      */
     public function seek($offset, $whence = SEEK_SET)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->seekable) {
             throw new \RuntimeException('This AppendStream is not seekable');
@@ -179,10 +248,15 @@ class AppendStream implements StreamInterface
 
     /**
      * Reads from all of the appended streams until the length is met or EOF.
+<<<<<<< HEAD
+     */
+    public function read($length): string
+=======
      *
      * {@inheritdoc}
      */
     public function read($length)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $buffer = '';
         $total = count($this->streams) - 1;
@@ -202,8 +276,12 @@ class AppendStream implements StreamInterface
 
             $result = $this->streams[$this->current]->read($remaining);
 
+<<<<<<< HEAD
+            if ($result === '') {
+=======
             // Using a loose comparison here to match on '', false, and null
             if ($result == null) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $progressToNext = true;
                 continue;
             }
@@ -217,26 +295,50 @@ class AppendStream implements StreamInterface
         return $buffer;
     }
 
+<<<<<<< HEAD
+    public function isReadable(): bool
+=======
     public function isReadable()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }
 
+<<<<<<< HEAD
+    public function isWritable(): bool
+=======
     public function isWritable()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return false;
     }
 
+<<<<<<< HEAD
+    public function isSeekable(): bool
+=======
     public function isSeekable()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->seekable;
     }
 
+<<<<<<< HEAD
+    public function write($string): int
+=======
     public function write($string)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         throw new \RuntimeException('Cannot write to an AppendStream');
     }
 
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     *
+     * @return mixed
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function getMetadata($key = null)
     {
         return $key ? null : [];

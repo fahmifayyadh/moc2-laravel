@@ -21,6 +21,12 @@
  * - Xavi
  * - qcardona
  */
+<<<<<<< HEAD
+
+use Carbon\CarbonInterface;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 return [
     'year' => ':count any|:count anys',
     'a_year' => 'un any|:count anys',
@@ -69,6 +75,21 @@ return [
         'LLLL' => 'dddd D MMMM [de] YYYY [a les] H:mm',
     ],
     'calendar' => [
+<<<<<<< HEAD
+        'sameDay' => function (CarbonInterface $current) {
+            return '[avui a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
+        },
+        'nextDay' => function (CarbonInterface $current) {
+            return '[demà a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
+        },
+        'nextWeek' => function (CarbonInterface $current) {
+            return 'dddd [a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
+        },
+        'lastDay' => function (CarbonInterface $current) {
+            return '[ahir a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
+        },
+        'lastWeek' => function (CarbonInterface $current) {
+=======
         'sameDay' => function (\Carbon\CarbonInterface $current) {
             return '[avui a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
         },
@@ -82,6 +103,7 @@ return [
             return '[ahir a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
         },
         'lastWeek' => function (\Carbon\CarbonInterface $current) {
+>>>>>>> parent of 31cfa1b1 (p)
             return '[el] dddd [passat a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
         },
         'sameElse' => 'L',

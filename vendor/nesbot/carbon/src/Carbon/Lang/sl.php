@@ -29,6 +29,12 @@
  * - Lovro Tramšek (Lovro1107)
  * - burut13
  */
+<<<<<<< HEAD
+
+use Carbon\CarbonInterface;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 return [
     'year' => ':count leto|:count leti|:count leta|:count let',
     'y' => ':count leto|:count leti|:count leta|:count let',
@@ -96,7 +102,11 @@ return [
         'nextDay' => '[jutri ob] LT',
         'nextWeek' => 'dddd [ob] LT',
         'lastDay' => '[včeraj ob] LT',
+<<<<<<< HEAD
+        'lastWeek' => function (CarbonInterface $date) {
+=======
         'lastWeek' => function (\Carbon\CarbonInterface $date) {
+>>>>>>> parent of 31cfa1b1 (p)
             switch ($date->dayOfWeek) {
                 case 0:
                     return '[preteklo] [nedeljo] [ob] LT';

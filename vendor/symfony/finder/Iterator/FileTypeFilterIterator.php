@@ -18,8 +18,13 @@ namespace Symfony\Component\Finder\Iterator;
  */
 class FileTypeFilterIterator extends \FilterIterator
 {
+<<<<<<< HEAD
+    public const ONLY_FILES = 1;
+    public const ONLY_DIRECTORIES = 2;
+=======
     const ONLY_FILES = 1;
     const ONLY_DIRECTORIES = 2;
+>>>>>>> parent of 31cfa1b1 (p)
 
     private $mode;
 
@@ -39,6 +44,10 @@ class FileTypeFilterIterator extends \FilterIterator
      *
      * @return bool true if the value should be kept, false otherwise
      */
+<<<<<<< HEAD
+    #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function accept()
     {
         $fileinfo = $this->current();

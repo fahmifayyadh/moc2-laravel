@@ -18,6 +18,11 @@
 
 namespace PhpOption;
 
+<<<<<<< HEAD
+use Traversable;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * @template T
  *
@@ -41,7 +46,11 @@ final class LazyOption extends Option
      *
      * @return LazyOption<S>
      */
+<<<<<<< HEAD
+    public static function create($callback, array $arguments = []): self
+=======
     public static function create($callback, array $arguments = [])
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return new self($callback, $arguments);
     }
@@ -60,12 +69,20 @@ final class LazyOption extends Option
         $this->arguments = $arguments;
     }
 
+<<<<<<< HEAD
+    public function isDefined(): bool
+=======
     public function isDefined()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->option()->isDefined();
     }
 
+<<<<<<< HEAD
+    public function isEmpty(): bool
+=======
     public function isEmpty()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->option()->isEmpty();
     }
@@ -135,7 +152,14 @@ final class LazyOption extends Option
         return $this->option()->reject($value);
     }
 
+<<<<<<< HEAD
+    /**
+     * @return Traversable<T>
+     */
+    public function getIterator(): Traversable
+=======
     public function getIterator()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->option()->getIterator();
     }
@@ -153,7 +177,11 @@ final class LazyOption extends Option
     /**
      * @return Option<T>
      */
+<<<<<<< HEAD
+    private function option(): Option
+=======
     private function option()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (null === $this->option) {
             /** @var mixed */

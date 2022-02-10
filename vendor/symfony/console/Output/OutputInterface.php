@@ -20,6 +20,17 @@ use Symfony\Component\Console\Formatter\OutputFormatterInterface;
  */
 interface OutputInterface
 {
+<<<<<<< HEAD
+    public const VERBOSITY_QUIET = 16;
+    public const VERBOSITY_NORMAL = 32;
+    public const VERBOSITY_VERBOSE = 64;
+    public const VERBOSITY_VERY_VERBOSE = 128;
+    public const VERBOSITY_DEBUG = 256;
+
+    public const OUTPUT_NORMAL = 1;
+    public const OUTPUT_RAW = 2;
+    public const OUTPUT_PLAIN = 4;
+=======
     const VERBOSITY_QUIET = 16;
     const VERBOSITY_NORMAL = 32;
     const VERBOSITY_VERBOSE = 64;
@@ -29,6 +40,7 @@ interface OutputInterface
     const OUTPUT_NORMAL = 1;
     const OUTPUT_RAW = 2;
     const OUTPUT_PLAIN = 4;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Writes a message to the output.

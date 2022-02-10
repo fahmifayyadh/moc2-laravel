@@ -214,7 +214,11 @@ class Mockery
      */
     public static function fetchMock($name)
     {
+<<<<<<< HEAD
+        return self::getContainer()->fetchMock($name);
+=======
         return self::$_container->fetchMock($name);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -398,7 +402,11 @@ class Mockery
     /**
      * Return instance of CONTAINS matcher.
      *
+<<<<<<< HEAD
+     * @param mixed $args
+=======
      * @param array ...$args
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return \Mockery\Matcher\Contains
      */
@@ -662,10 +670,29 @@ class Mockery
             return array('...');
         }
 
+<<<<<<< HEAD
+        $defaultFormatter = function ($object, $nesting) {
+            return array('properties' => self::extractInstancePublicProperties($object, $nesting));
+        };
+
+        $class = get_class($object);
+
+        $formatter = self::getConfiguration()->getObjectFormatter($class, $defaultFormatter);
+
+        $array = array(
+          'class' => $class,
+          'identity' => '#' . md5(spl_object_hash($object))
+        );
+
+        $array = array_merge($array, $formatter($object, $nesting));
+
+        return $array;
+=======
         return array(
             'class' => get_class($object),
             'properties' => self::extractInstancePublicProperties($object, $nesting)
         );
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -685,7 +712,15 @@ class Mockery
         foreach ($properties as $publicProperty) {
             if (!$publicProperty->isStatic()) {
                 $name = $publicProperty->getName();
+<<<<<<< HEAD
+                try {
+                    $cleanedProperties[$name] = self::cleanupNesting($object->$name, $nesting);
+                } catch (\Exception $exception) {
+                    $cleanedProperties[$name] = $exception->getMessage();
+                }
+=======
                 $cleanedProperties[$name] = self::cleanupNesting($object->$name, $nesting);
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 
@@ -870,7 +905,11 @@ class Mockery
             $parRefMethod = $parRef->getMethod($method);
             $parRefMethodRetType = Reflector::getReturnType($parRefMethod, true);
 
+<<<<<<< HEAD
+            if ($parRefMethodRetType !== null && $parRefMethodRetType !== 'mixed') {
+=======
             if ($parRefMethodRetType !== null) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $nameBuilder = new MockNameBuilder();
                 $nameBuilder->addPart('\\' . $newMockName);
                 $mock = self::namedMock($nameBuilder->build(), $parRefMethodRetType);

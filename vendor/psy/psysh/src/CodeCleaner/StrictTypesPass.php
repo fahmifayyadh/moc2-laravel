@@ -32,12 +32,15 @@ class StrictTypesPass extends CodeCleanerPass
     const EXCEPTION_MESSAGE = 'strict_types declaration must have 0 or 1 as its value';
 
     private $strictTypes = false;
+<<<<<<< HEAD
+=======
     private $atLeastPhp7;
 
     public function __construct()
     {
         $this->atLeastPhp7 = \version_compare(PHP_VERSION, '7.0', '>=');
     }
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * If this is a standalone strict types declaration, remember it for later.
@@ -51,10 +54,13 @@ class StrictTypesPass extends CodeCleanerPass
      */
     public function beforeTraverse(array $nodes)
     {
+<<<<<<< HEAD
+=======
         if (!$this->atLeastPhp7) {
             return; // @codeCoverageIgnore
         }
 
+>>>>>>> parent of 31cfa1b1 (p)
         $prependStrictTypes = $this->strictTypes;
 
         foreach ($nodes as $node) {
@@ -65,7 +71,11 @@ class StrictTypesPass extends CodeCleanerPass
                     if ($declareKey === 'strict_types') {
                         $value = $declare->value;
                         if (!$value instanceof LNumber || ($value->value !== 0 && $value->value !== 1)) {
+<<<<<<< HEAD
+                            throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, \E_ERROR, null, $node->getLine());
+=======
                             throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, E_ERROR, null, $node->getLine());
+>>>>>>> parent of 31cfa1b1 (p)
                         }
 
                         $this->strictTypes = $value->value === 1;

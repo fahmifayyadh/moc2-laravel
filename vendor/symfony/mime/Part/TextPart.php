@@ -23,11 +23,23 @@ use Symfony\Component\Mime\Header\Headers;
  */
 class TextPart extends AbstractPart
 {
+<<<<<<< HEAD
+    /** @internal */
+    protected $_headers;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private static $encoders = [];
 
     private $body;
     private $charset;
     private $subtype;
+<<<<<<< HEAD
+    /**
+     * @var ?string
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private $disposition;
     private $name;
     private $encoding;
@@ -36,8 +48,15 @@ class TextPart extends AbstractPart
     /**
      * @param resource|string $body
      */
+<<<<<<< HEAD
+    public function __construct($body, ?string $charset = 'utf-8', string $subtype = 'plain', string $encoding = null)
+    {
+        unset($this->_headers);
+
+=======
     public function __construct($body, ?string $charset = 'utf-8', $subtype = 'plain', string $encoding = null)
     {
+>>>>>>> parent of 31cfa1b1 (p)
         parent::__construct();
 
         if (!\is_string($body) && !\is_resource($body)) {
@@ -86,7 +105,11 @@ class TextPart extends AbstractPart
      *
      * @return $this
      */
+<<<<<<< HEAD
+    public function setName(string $name)
+=======
     public function setName($name)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->name = $name;
 

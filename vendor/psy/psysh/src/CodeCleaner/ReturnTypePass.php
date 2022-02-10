@@ -36,7 +36,11 @@ class ReturnTypePass extends CodeCleanerPass
 
     public function __construct()
     {
+<<<<<<< HEAD
+        $this->atLeastPhp71 = \version_compare(\PHP_VERSION, '7.1', '>=');
+=======
         $this->atLeastPhp71 = \version_compare(PHP_VERSION, '7.1', '>=');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -79,7 +83,11 @@ class ReturnTypePass extends CodeCleanerPass
             }
 
             if ($msg !== null) {
+<<<<<<< HEAD
+                throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getLine());
+=======
                 throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
     }
@@ -98,12 +106,20 @@ class ReturnTypePass extends CodeCleanerPass
         }
     }
 
+<<<<<<< HEAD
+    private function isFunctionNode(Node $node): bool
+=======
     private function isFunctionNode(Node $node)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $node instanceof Function_ || $node instanceof Closure;
     }
 
+<<<<<<< HEAD
+    private function typeName(Node $node): string
+=======
     private function typeName(Node $node)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($node instanceof NullableType) {
             return \strtolower($node->type->name);

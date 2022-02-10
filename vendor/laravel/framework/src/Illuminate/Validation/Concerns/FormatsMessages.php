@@ -336,6 +336,13 @@ trait FormatsMessages
             return $value ? 'true' : 'false';
         }
 
+<<<<<<< HEAD
+        if (is_null($value)) {
+            return 'empty';
+        }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         return $value;
     }
 

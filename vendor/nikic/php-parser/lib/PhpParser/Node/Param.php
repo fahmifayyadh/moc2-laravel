@@ -6,7 +6,11 @@ use PhpParser\NodeAbstract;
 
 class Param extends NodeAbstract
 {
+<<<<<<< HEAD
+    /** @var null|Identifier|Name|ComplexType Type declaration */
+=======
     /** @var null|Identifier|Name|NullableType|UnionType Type declaration */
+>>>>>>> parent of 31cfa1b1 (p)
     public $type;
     /** @var bool Whether parameter is passed by reference */
     public $byRef;
@@ -24,6 +28,16 @@ class Param extends NodeAbstract
     /**
      * Constructs a parameter node.
      *
+<<<<<<< HEAD
+     * @param Expr\Variable|Expr\Error                $var        Parameter variable
+     * @param null|Expr                               $default    Default value
+     * @param null|string|Identifier|Name|ComplexType $type       Type declaration
+     * @param bool                                    $byRef      Whether is passed by reference
+     * @param bool                                    $variadic   Whether this is a variadic argument
+     * @param array                                   $attributes Additional attributes
+     * @param int                                     $flags      Optional visibility flags
+     * @param AttributeGroup[]                        $attrGroups PHP attribute groups
+=======
      * @param Expr\Variable|Expr\Error                           $var        Parameter variable
      * @param null|Expr                                          $default    Default value
      * @param null|string|Identifier|Name|NullableType|UnionType $type       Type declaration
@@ -32,6 +46,7 @@ class Param extends NodeAbstract
      * @param array                                              $attributes Additional attributes
      * @param int                                                $flags      Optional visibility flags
      * @param AttributeGroup[]                                   $attrGroups PHP attribute groups
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(
         $var, Expr $default = null, $type = null,

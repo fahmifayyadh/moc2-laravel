@@ -31,7 +31,11 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      *
      * @var string
      */
+<<<<<<< HEAD
+    const VERSION = '6.20.44';
+=======
     const VERSION = '6.19.1';
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * The base path for the Laravel installation.
@@ -230,7 +234,11 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function afterLoadingEnvironment(Closure $callback)
     {
+<<<<<<< HEAD
+        $this->afterBootstrapping(
+=======
         return $this->afterBootstrapping(
+>>>>>>> parent of 31cfa1b1 (p)
             LoadEnvironmentVariables::class, $callback
         );
     }
@@ -333,7 +341,11 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     /**
      * Get the base path of the Laravel installation.
      *
+<<<<<<< HEAD
+     * @param  string  $path
+=======
      * @param  string  $path Optionally, a path to append to the base path
+>>>>>>> parent of 31cfa1b1 (p)
      * @return string
      */
     public function basePath($path = '')
@@ -344,7 +356,11 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     /**
      * Get the path to the bootstrap directory.
      *
+<<<<<<< HEAD
+     * @param  string  $path
+=======
      * @param  string  $path Optionally, a path to append to the bootstrap path
+>>>>>>> parent of 31cfa1b1 (p)
      * @return string
      */
     public function bootstrapPath($path = '')
@@ -355,7 +371,11 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     /**
      * Get the path to the application configuration files.
      *
+<<<<<<< HEAD
+     * @param  string  $path
+=======
      * @param  string  $path Optionally, a path to append to the config path
+>>>>>>> parent of 31cfa1b1 (p)
      * @return string
      */
     public function configPath($path = '')
@@ -366,7 +386,11 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     /**
      * Get the path to the database directory.
      *
+<<<<<<< HEAD
+     * @param  string  $path
+=======
      * @param  string  $path Optionally, a path to append to the database path
+>>>>>>> parent of 31cfa1b1 (p)
      * @return string
      */
     public function databasePath($path = '')

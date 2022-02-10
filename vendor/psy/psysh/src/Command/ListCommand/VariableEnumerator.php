@@ -45,7 +45,11 @@ class VariableEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null): array
+=======
     protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // only list variables when no Reflector is present.
         if ($reflector !== null || $target !== null) {
@@ -57,7 +61,11 @@ class VariableEnumerator extends Enumerator
             return [];
         }
 
+<<<<<<< HEAD
+        $showAll = $input->getOption('all');
+=======
         $showAll   = $input->getOption('all');
+>>>>>>> parent of 31cfa1b1 (p)
         $variables = $this->prepareVariables($this->getVariables($showAll));
 
         if (empty($variables)) {
@@ -76,7 +84,11 @@ class VariableEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
+    protected function getVariables(bool $showAll): array
+=======
     protected function getVariables($showAll)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $scopeVars = $this->context->getAll();
         \uksort($scopeVars, function ($a, $b) {
@@ -117,13 +129,21 @@ class VariableEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
+    protected function prepareVariables(array $variables): array
+=======
     protected function prepareVariables(array $variables)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // My kingdom for a generator.
         $ret = [];
         foreach ($variables as $name => $val) {
             if ($this->showItem($name)) {
+<<<<<<< HEAD
+                $fname = '$'.$name;
+=======
                 $fname = '$' . $name;
+>>>>>>> parent of 31cfa1b1 (p)
                 $ret[$fname] = [
                     'name'  => $fname,
                     'style' => \in_array($name, self::$specialNames) ? self::IS_PRIVATE : self::IS_PUBLIC,

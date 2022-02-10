@@ -5,19 +5,33 @@ namespace PhpParser\Node\Expr;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 
+<<<<<<< HEAD
+class FuncCall extends CallLike
+{
+    /** @var Node\Name|Expr Function name */
+    public $name;
+    /** @var array<Node\Arg|Node\VariadicPlaceholder> Arguments */
+=======
 class FuncCall extends Expr
 {
     /** @var Node\Name|Expr Function name */
     public $name;
     /** @var Node\Arg[] Arguments */
+>>>>>>> parent of 31cfa1b1 (p)
     public $args;
 
     /**
      * Constructs a function call node.
      *
+<<<<<<< HEAD
+     * @param Node\Name|Expr                           $name       Function name
+     * @param array<Node\Arg|Node\VariadicPlaceholder> $args       Arguments
+     * @param array                                    $attributes Additional attributes
+=======
      * @param Node\Name|Expr $name       Function name
      * @param Node\Arg[]     $args       Arguments
      * @param array          $attributes Additional attributes
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct($name, array $args = [], array $attributes = []) {
         $this->attributes = $attributes;
@@ -32,4 +46,11 @@ class FuncCall extends Expr
     public function getType() : string {
         return 'Expr_FuncCall';
     }
+<<<<<<< HEAD
+
+    public function getRawArgs(): array {
+        return $this->args;
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

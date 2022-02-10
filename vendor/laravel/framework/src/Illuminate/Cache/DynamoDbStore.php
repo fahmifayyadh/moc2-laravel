@@ -525,4 +525,17 @@ class DynamoDbStore implements LockProvider, Store
     {
         $this->prefix = ! empty($prefix) ? $prefix.':' : '';
     }
+<<<<<<< HEAD
+
+    /**
+     * Get the DynamoDb Client instance.
+     *
+     * @return DynamoDbClient
+     */
+    public function getClient()
+    {
+        return $this->dynamo;
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

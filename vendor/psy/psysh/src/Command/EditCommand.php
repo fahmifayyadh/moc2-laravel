@@ -115,7 +115,11 @@ class EditCommand extends Command implements ContextAware
      *
      * @return bool
      */
+<<<<<<< HEAD
+    private function shouldExecuteFile(bool $execOption, bool $noExecOption, string $filePath = null): bool
+=======
     private function shouldExecuteFile($execOption, $noExecOption, $filePath)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($execOption) {
             return true;
@@ -136,11 +140,19 @@ class EditCommand extends Command implements ContextAware
      *
      * @throws \InvalidArgumentException If the variable is not found in the current context
      */
+<<<<<<< HEAD
+    private function extractFilePath(string $fileArgument = null)
+    {
+        // If the file argument was a variable, get it from the context
+        if ($fileArgument !== null &&
+            $fileArgument !== '' &&
+=======
     private function extractFilePath($fileArgument)
     {
         // If the file argument was a variable, get it from the context
         if ($fileArgument !== null &&
             \strlen($fileArgument) > 0 &&
+>>>>>>> parent of 31cfa1b1 (p)
             $fileArgument[0] === '$') {
             $fileArgument = $this->context->get(\preg_replace('/^\$/', '', $fileArgument));
         }
@@ -156,13 +168,21 @@ class EditCommand extends Command implements ContextAware
      *
      * @throws \UnexpectedValueException if file_get_contents on $filePath returns false instead of a string
      */
+<<<<<<< HEAD
+    private function editFile(string $filePath, bool $shouldRemoveFile): string
+=======
     private function editFile($filePath, $shouldRemoveFile)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $escapedFilePath = \escapeshellarg($filePath);
         $editor = (isset($_SERVER['EDITOR']) && $_SERVER['EDITOR']) ? $_SERVER['EDITOR'] : 'nano';
 
         $pipes = [];
+<<<<<<< HEAD
+        $proc = \proc_open("{$editor} {$escapedFilePath}", [\STDIN, \STDOUT, \STDERR], $pipes);
+=======
         $proc = \proc_open("{$editor} {$escapedFilePath}", [STDIN, STDOUT, STDERR], $pipes);
+>>>>>>> parent of 31cfa1b1 (p)
         \proc_close($proc);
 
         $editedContent = @\file_get_contents($filePath);

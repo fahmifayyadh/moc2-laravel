@@ -2,6 +2,17 @@
 
 All notable changes to Tokenizer are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
+
+## [1.2.1] - 2021-07-28
+
+### Fixed
+
+* [#13](https://github.com/theseer/tokenizer/issues/13): Fatal error when tokenizing files that contain only a single empty line
+
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 ## [1.2.0] - 2020-07-13
 
 This release is now PHP 8.0 compliant.

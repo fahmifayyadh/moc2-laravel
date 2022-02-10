@@ -18,12 +18,20 @@ final class Substitution
         $this->to   = $to;
     }
 
+<<<<<<< HEAD
+    public function getFrom(): Word
+=======
     public function getFrom() : Word
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->from;
     }
 
+<<<<<<< HEAD
+    public function getTo(): Word
+=======
     public function getTo() : Word
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->to;
     }

@@ -8,9 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+
 namespace Carbon\Traits;
 
 use Closure;
+use Generator;
+=======
+namespace Carbon\Traits;
+
+use Closure;
+>>>>>>> parent of 31cfa1b1 (p)
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
@@ -63,6 +71,15 @@ trait Mixin
      */
     public static function mixin($mixin)
     {
+<<<<<<< HEAD
+        \is_string($mixin) && trait_exists($mixin)
+            ? self::loadMixinTrait($mixin)
+            : self::loadMixinClass($mixin);
+    }
+
+    /**
+     * @param object|string $mixin
+=======
         is_string($mixin) && trait_exists($mixin)
             ? static::loadMixinTrait($mixin)
             : static::loadMixinClass($mixin);
@@ -70,6 +87,7 @@ trait Mixin
 
     /**
      * @param string $mixin
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws ReflectionException
      */
@@ -95,6 +113,46 @@ trait Mixin
      */
     private static function loadMixinTrait($trait)
     {
+<<<<<<< HEAD
+        $context = eval(self::getAnonymousClassCodeForTrait($trait));
+        $className = \get_class($context);
+
+        foreach (self::getMixableMethods($context) as $name) {
+            $closureBase = Closure::fromCallable([$context, $name]);
+
+            static::macro($name, function () use ($closureBase, $className) {
+                /** @phpstan-ignore-next-line */
+                $context = isset($this) ? $this->cast($className) : new $className();
+
+                try {
+                    // @ is required to handle error if not converted into exceptions
+                    $closure = @$closureBase->bindTo($context);
+                } catch (Throwable $throwable) { // @codeCoverageIgnore
+                    $closure = $closureBase; // @codeCoverageIgnore
+                }
+
+                // in case of errors not converted into exceptions
+                $closure = $closure ?: $closureBase;
+
+                return $closure(...\func_get_args());
+            });
+        }
+    }
+
+    private static function getAnonymousClassCodeForTrait(string $trait)
+    {
+        return 'return new class() extends '.static::class.' {use '.$trait.';};';
+    }
+
+    private static function getMixableMethods(self $context): Generator
+    {
+        foreach (get_class_methods($context) as $name) {
+            if (method_exists(static::class, $name)) {
+                continue;
+            }
+
+            yield $name;
+=======
         $baseClass = static::class;
         $context = eval('return new class() extends '.$baseClass.' {use '.$trait.';};');
         $className = get_class($context);
@@ -117,6 +175,7 @@ trait Mixin
 
                 return $closure(...func_get_args());
             });
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -152,6 +211,19 @@ trait Mixin
     }
 
     /**
+<<<<<<< HEAD
+     * Return the current context from inside a macro callee or a null if static.
+     *
+     * @return static|null
+     */
+    protected static function context()
+    {
+        return end(static::$macroContextStack) ?: null;
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Return the current context from inside a macro callee or a new one if static.
      *
      * @return static

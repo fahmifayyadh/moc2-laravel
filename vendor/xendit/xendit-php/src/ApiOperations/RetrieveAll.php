@@ -29,9 +29,16 @@ trait RetrieveAll
      *
      * @return array
      */
+<<<<<<< HEAD
+    public static function retrieveAll($params = [])
+    {
+        $url = static::classUrl();
+        return static::_request('GET', $url, $params);
+=======
     public static function retrieveAll()
     {
         $url = static::classUrl();
         return static::_request('GET', $url, []);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

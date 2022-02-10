@@ -1,6 +1,10 @@
 <?php
 /* ===========================================================================
+<<<<<<< HEAD
+ * Copyright (c) 2018-2021 Zindex Software
+=======
  * Copyright (c) 2018-2019 Zindex Software
+>>>>>>> parent of 31cfa1b1 (p)
  *
  * Licensed under the MIT License
  * =========================================================================== */
@@ -94,7 +98,11 @@ class SerializableClosure implements Serializable
     public function getReflector()
     {
         if ($this->reflector === null) {
+<<<<<<< HEAD
+            $this->reflector = new ReflectionClosure($this->closure);
+=======
             $this->reflector = new ReflectionClosure($this->closure, $this->code);
+>>>>>>> parent of 31cfa1b1 (p)
             $this->code = null;
         }
 

@@ -25,6 +25,10 @@ Zepto(function($) {
    * highlight the current line
    */
   var renderCurrentCodeblock = function(id) {
+<<<<<<< HEAD
+    Prism.highlightAll();
+    highlightCurrentLine();
+=======
 
     // remove previous codeblocks so we only render the active one
     $('.code-block').removeClass('prettyprint');
@@ -39,6 +43,7 @@ Zepto(function($) {
 
     prettyPrint(highlightCurrentLine);
 
+>>>>>>> parent of 31cfa1b1 (p)
   }
 
   /*
@@ -47,10 +52,13 @@ Zepto(function($) {
    */
 
   var highlightCurrentLine = function() {
+<<<<<<< HEAD
+=======
     var activeLineNumber = +($activeLine.find('.frame-line').text());
     var $lines           = $activeFrame.find('.linenums li');
     var firstLine        = +($lines.first().val());
 
+>>>>>>> parent of 31cfa1b1 (p)
     // We show more code than needed, purely for proper syntax highlighting
     // Let’s hide a big chunk of that code and then scroll the remaining block
     $activeFrame.find('.code-block').first().css({
@@ -58,6 +66,13 @@ Zepto(function($) {
       overflow: 'hidden',
     });
 
+<<<<<<< HEAD
+    var line = $activeFrame.find('.code-block .line-highlight').first()[0];
+    line.scrollIntoView();
+    line.parentElement.scrollTop -= 180;
+
+    $container.scrollTop(0);
+=======
     var $offset = $($lines[activeLineNumber - firstLine - 10]);
     if ($offset.length > 0) {
       $offset[0].scrollIntoView();
@@ -69,6 +84,7 @@ Zepto(function($) {
 
     $container.scrollTop(0);
 
+>>>>>>> parent of 31cfa1b1 (p)
   }
 
   /*
@@ -100,7 +116,11 @@ Zepto(function($) {
 
   var clipboard = new Clipboard('.clipboard');
   var showTooltip = function(elem, msg) {
+<<<<<<< HEAD
+    elem.classList.add('tooltipped', 'tooltipped-s');
+=======
     elem.setAttribute('class', 'clipboard tooltipped tooltipped-s');
+>>>>>>> parent of 31cfa1b1 (p)
     elem.setAttribute('aria-label', msg);
   };
 
@@ -117,7 +137,11 @@ Zepto(function($) {
   var btn = document.querySelector('.clipboard');
 
   btn.addEventListener('mouseleave', function(e) {
+<<<<<<< HEAD
+    e.currentTarget.classList.remove('tooltipped', 'tooltipped-s');
+=======
     e.currentTarget.setAttribute('class', 'clipboard');
+>>>>>>> parent of 31cfa1b1 (p)
     e.currentTarget.removeAttribute('aria-label');
   });
 

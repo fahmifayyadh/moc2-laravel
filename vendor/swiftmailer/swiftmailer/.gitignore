@@ -1,5 +1,9 @@
 /.php_cs.cache
 /.phpunit
+<<<<<<< HEAD
+/.phpunit.result.cache
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /build/*
 /composer.lock
 /phpunit.xml

@@ -1,10 +1,26 @@
 <?php
 
+<<<<<<< HEAD
+/**
+ * This file is part of the Carbon package.
+ *
+ * (c) Brian Nesbitt <brian@nesbot.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Cli;
 
 class Invoker
 {
+<<<<<<< HEAD
+    public const CLI_CLASS_NAME = 'Carbon\\Cli';
+=======
     const CLI_CLASS_NAME = 'Carbon\\Cli';
+>>>>>>> parent of 31cfa1b1 (p)
 
     protected function runWithCli(string $className, array $parameters): bool
     {

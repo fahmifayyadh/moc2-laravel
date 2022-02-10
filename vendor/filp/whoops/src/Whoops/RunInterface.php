@@ -91,6 +91,18 @@ interface RunInterface
     public function sendHttpCode($code = null);
 
     /**
+<<<<<<< HEAD
+     * Should Whoops exit with a specific code on the CLI if possible?
+     * Whoops will exit with 1 by default, but you can specify something else.
+     *
+     * @param int $code
+     * @return int
+     */
+    public function sendExitCode($code = null);
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Should Whoops push output directly to the client?
      * If this is false, output will be returned by handleException
      *

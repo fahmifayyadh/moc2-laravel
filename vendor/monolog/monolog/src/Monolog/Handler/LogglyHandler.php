@@ -15,6 +15,10 @@ use Monolog\Logger;
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Formatter\LogglyFormatter;
 use function array_key_exists;
+<<<<<<< HEAD
+use CurlHandle;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Sends errors to Loggly.
@@ -32,6 +36,20 @@ class LogglyHandler extends AbstractProcessingHandler
     /**
      * Caches the curl handlers for every given endpoint.
      *
+<<<<<<< HEAD
+     * @var resource[]|CurlHandle[]
+     */
+    protected $curlHandlers = [];
+
+    /** @var string */
+    protected $token;
+
+    /** @var string[] */
+    protected $tag = [];
+
+    /**
+     * @param string $token API token supplied by Loggly
+=======
      * @var array
      */
     protected $curlHandlers = [];
@@ -44,6 +62,7 @@ class LogglyHandler extends AbstractProcessingHandler
      * @param string     $token  API token supplied by Loggly
      * @param string|int $level  The minimum logging level to trigger this handler
      * @param bool       $bubble Whether or not messages that are handled should bubble up the stack.
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws MissingExtensionException If the curl extension is missing
      */
@@ -63,12 +82,20 @@ class LogglyHandler extends AbstractProcessingHandler
      *
      * @param string $endpoint
      *
+<<<<<<< HEAD
+     * @return resource|CurlHandle
+=======
      * @return resource
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function getCurlHandler(string $endpoint)
     {
         if (!array_key_exists($endpoint, $this->curlHandlers)) {
+<<<<<<< HEAD
+            $this->curlHandlers[$endpoint] = $this->loadCurlHandle($endpoint);
+=======
             $this->curlHandlers[$endpoint] = $this->loadCurlHandler($endpoint);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this->curlHandlers[$endpoint];
@@ -79,9 +106,15 @@ class LogglyHandler extends AbstractProcessingHandler
      *
      * @param string $endpoint
      *
+<<<<<<< HEAD
+     * @return resource|CurlHandle
+     */
+    private function loadCurlHandle(string $endpoint)
+=======
      * @return resource
      */
     private function loadCurlHandler(string $endpoint)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $url = sprintf("https://%s/%s/%s/", static::HOST, $endpoint, $this->token);
 

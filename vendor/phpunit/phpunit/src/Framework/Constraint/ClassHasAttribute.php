@@ -9,7 +9,16 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function get_class;
+use function is_object;
+use function sprintf;
 use PHPUnit\Framework\Exception;
+use ReflectionClass;
+use ReflectionException;
+=======
+use PHPUnit\Framework\Exception;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Constraint that asserts that the class it is evaluated for has a given
@@ -34,7 +43,11 @@ class ClassHasAttribute extends Constraint
      */
     public function toString(): string
     {
+<<<<<<< HEAD
+        return sprintf(
+=======
         return \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             'has attribute "%s"',
             $this->attributeName
         );
@@ -49,9 +62,15 @@ class ClassHasAttribute extends Constraint
     protected function matches($other): bool
     {
         try {
+<<<<<<< HEAD
+            return (new ReflectionClass($other))->hasProperty($this->attributeName);
+            // @codeCoverageIgnoreStart
+        } catch (ReflectionException $e) {
+=======
             return (new \ReflectionClass($other))->hasProperty($this->attributeName);
             // @codeCoverageIgnoreStart
         } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -62,7 +81,11 @@ class ClassHasAttribute extends Constraint
     }
 
     /**
+<<<<<<< HEAD
+     * Returns the description of the failure.
+=======
      * Returns the description of the failure
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -71,10 +94,17 @@ class ClassHasAttribute extends Constraint
      */
     protected function failureDescription($other): string
     {
+<<<<<<< HEAD
+        return sprintf(
+            '%sclass "%s" %s',
+            is_object($other) ? 'object of ' : '',
+            is_object($other) ? get_class($other) : $other,
+=======
         return \sprintf(
             '%sclass "%s" %s',
             \is_object($other) ? 'object of ' : '',
             \is_object($other) ? \get_class($other) : $other,
+>>>>>>> parent of 31cfa1b1 (p)
             $this->toString()
         );
     }

@@ -17,8 +17,11 @@ interface Swift_KeyCache_KeyCacheInputStream extends Swift_InputByteStream
 {
     /**
      * Set the KeyCache to wrap.
+<<<<<<< HEAD
+=======
      *
      * @param Swift_KeyCache $keyCache
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setKeyCache(Swift_KeyCache $keyCache);
 
@@ -38,8 +41,11 @@ interface Swift_KeyCache_KeyCacheInputStream extends Swift_InputByteStream
 
     /**
      * Specify a stream to write through for each write().
+<<<<<<< HEAD
+=======
      *
      * @param Swift_InputByteStream $is
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setWriteThroughStream(Swift_InputByteStream $is);
 

@@ -9,9 +9,24 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
+use function array_map;
+use function implode;
+use function is_object;
+use function ltrim;
+use function sprintf;
+use function strpos;
+use function strtolower;
+use function substr;
 use PHPUnit\Framework\SelfDescribing;
 use PHPUnit\Util\Type;
 use SebastianBergmann\Exporter\Exporter;
+use stdClass;
+=======
+use PHPUnit\Framework\SelfDescribing;
+use PHPUnit\Util\Type;
+use SebastianBergmann\Exporter\Exporter;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -61,6 +76,16 @@ final class Invocation implements SelfDescribing
         $this->object      = $object;
         $this->proxiedCall = $proxiedCall;
 
+<<<<<<< HEAD
+        $returnType = ltrim($returnType, ': ');
+
+        if (strtolower($methodName) === '__tostring') {
+            $returnType = 'string';
+        }
+
+        if (strpos($returnType, '?') === 0) {
+            $returnType                 = substr($returnType, 1);
+=======
         $returnType = \ltrim($returnType, ': ');
 
         if (\strtolower($methodName) === '__tostring') {
@@ -69,6 +94,7 @@ final class Invocation implements SelfDescribing
 
         if (\strpos($returnType, '?') === 0) {
             $returnType                 = \substr($returnType, 1);
+>>>>>>> parent of 31cfa1b1 (p)
             $this->isReturnTypeNullable = true;
         }
 
@@ -79,7 +105,11 @@ final class Invocation implements SelfDescribing
         }
 
         foreach ($this->parameters as $key => $value) {
+<<<<<<< HEAD
+            if (is_object($value)) {
+=======
             if (\is_object($value)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->parameters[$key] = $this->cloneObject($value);
             }
         }
@@ -111,7 +141,11 @@ final class Invocation implements SelfDescribing
             return;
         }
 
+<<<<<<< HEAD
+        switch (strtolower($this->returnType)) {
+=======
         switch (\strtolower($this->returnType)) {
+>>>>>>> parent of 31cfa1b1 (p)
             case '':
             case 'void':
                 return;
@@ -132,18 +166,33 @@ final class Invocation implements SelfDescribing
                 return [];
 
             case 'object':
+<<<<<<< HEAD
+                return new stdClass;
+
+            case 'callable':
+            case 'closure':
+                return static function (): void
+                {
+=======
                 return new \stdClass;
 
             case 'callable':
             case 'closure':
                 return function (): void {
+>>>>>>> parent of 31cfa1b1 (p)
                 };
 
             case 'traversable':
             case 'generator':
             case 'iterable':
+<<<<<<< HEAD
+                $generator = static function ()
+                {
+                    yield from [];
+=======
                 $generator = static function () {
                     yield;
+>>>>>>> parent of 31cfa1b1 (p)
                 };
 
                 return $generator();
@@ -159,6 +208,15 @@ final class Invocation implements SelfDescribing
     {
         $exporter = new Exporter;
 
+<<<<<<< HEAD
+        return sprintf(
+            '%s::%s(%s)%s',
+            $this->className,
+            $this->methodName,
+            implode(
+                ', ',
+                array_map(
+=======
         return \sprintf(
             '%s::%s(%s)%s',
             $this->className,
@@ -166,11 +224,16 @@ final class Invocation implements SelfDescribing
             \implode(
                 ', ',
                 \array_map(
+>>>>>>> parent of 31cfa1b1 (p)
                     [$exporter, 'shortenedExport'],
                     $this->parameters
                 )
             ),
+<<<<<<< HEAD
+            $this->returnType ? sprintf(': %s', $this->returnType) : ''
+=======
             $this->returnType ? \sprintf(': %s', $this->returnType) : ''
+>>>>>>> parent of 31cfa1b1 (p)
         );
     }
 

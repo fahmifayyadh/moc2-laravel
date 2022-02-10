@@ -17,10 +17,15 @@ namespace Prophecy\Exception;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
+<<<<<<< HEAD
+interface Exception extends \Throwable
+{
+=======
 interface Exception
 {
     /**
      * @return string
      */
     public function getMessage();
+>>>>>>> parent of 31cfa1b1 (p)
 }

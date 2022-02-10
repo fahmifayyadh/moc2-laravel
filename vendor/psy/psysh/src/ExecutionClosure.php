@@ -45,6 +45,8 @@ class ExecutionClosure
                 }
 
                 throw $_e;
+<<<<<<< HEAD
+=======
             } catch (\Exception $_e) {
                 // Clean up on our way out.
                 if (\ob_get_level() > 0) {
@@ -52,6 +54,7 @@ class ExecutionClosure
                 }
 
                 throw $_e;
+>>>>>>> parent of 31cfa1b1 (p)
             } finally {
                 // Won't be needing this anymore
                 \restore_error_handler();

@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function sprintf;
+use Exception;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Util\RegularExpression as RegularExpressionUtil;
 
 final class ExceptionMessageRegularExpression extends Constraint
@@ -34,8 +39,13 @@ final class ExceptionMessageRegularExpression extends Constraint
      *
      * @param \PHPUnit\Framework\Exception $other
      *
+<<<<<<< HEAD
+     * @throws \PHPUnit\Framework\Exception
+     * @throws Exception
+=======
      * @throws \Exception
      * @throws \PHPUnit\Framework\Exception
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function matches($other): bool
     {
@@ -51,7 +61,11 @@ final class ExceptionMessageRegularExpression extends Constraint
     }
 
     /**
+<<<<<<< HEAD
+     * Returns the description of the failure.
+=======
      * Returns the description of the failure
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -60,7 +74,11 @@ final class ExceptionMessageRegularExpression extends Constraint
      */
     protected function failureDescription($other): string
     {
+<<<<<<< HEAD
+        return sprintf(
+=======
         return \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             "exception message '%s' matches '%s'",
             $other->getMessage(),
             $this->expectedMessageRegExp

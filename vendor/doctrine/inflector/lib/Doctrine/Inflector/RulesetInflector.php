@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Doctrine\Inflector;
 
 use Doctrine\Inflector\Rules\Ruleset;
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use function array_merge;
 
 /**
@@ -26,7 +30,11 @@ class RulesetInflector implements WordInflector
         $this->rulesets = array_merge([$ruleset], $rulesets);
     }
 
+<<<<<<< HEAD
+    public function inflect(string $word): string
+=======
     public function inflect(string $word) : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($word === '') {
             return '';

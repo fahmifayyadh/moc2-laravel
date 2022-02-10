@@ -52,10 +52,17 @@ class Swift_ByteStream_ArrayByteStream implements Swift_InputByteStream, Swift_O
      */
     public function __construct($stack = null)
     {
+<<<<<<< HEAD
+        if (\is_array($stack)) {
+            $this->array = $stack;
+            $this->arraySize = \count($stack);
+        } elseif (\is_string($stack)) {
+=======
         if (is_array($stack)) {
             $this->array = $stack;
             $this->arraySize = count($stack);
         } elseif (is_string($stack)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $this->write($stack);
         } else {
             $this->array = [];
@@ -102,7 +109,11 @@ class Swift_ByteStream_ArrayByteStream implements Swift_InputByteStream, Swift_O
         foreach ($to_add as $value) {
             $this->array[] = $value;
         }
+<<<<<<< HEAD
+        $this->arraySize = \count($this->array);
+=======
         $this->arraySize = count($this->array);
+>>>>>>> parent of 31cfa1b1 (p)
 
         foreach ($this->mirrors as $stream) {
             $stream->write($bytes);

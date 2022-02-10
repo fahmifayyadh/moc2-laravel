@@ -9,8 +9,19 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function array_replace_recursive;
+use function is_array;
+use function iterator_to_array;
+use function var_export;
+use ArrayObject;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\Comparator\ComparisonFailure;
+use Traversable;
+=======
+use PHPUnit\Framework\ExpectationFailedException;
+use SebastianBergmann\Comparator\ComparisonFailure;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Constraint that asserts that the array it is evaluated for has a specified subset.
@@ -41,7 +52,11 @@ final class ArraySubset extends Constraint
     }
 
     /**
+<<<<<<< HEAD
+     * Evaluates the constraint for parameter $other.
+=======
      * Evaluates the constraint for parameter $other
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -50,8 +65,13 @@ final class ArraySubset extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
+<<<<<<< HEAD
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws ExpectationFailedException
+=======
      * @throws ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
@@ -60,7 +80,11 @@ final class ArraySubset extends Constraint
         $other        = $this->toArray($other);
         $this->subset = $this->toArray($this->subset);
 
+<<<<<<< HEAD
+        $patched = array_replace_recursive($other, $this->subset);
+=======
         $patched = \array_replace_recursive($other, $this->subset);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($this->strict) {
             $result = $other === $patched;
@@ -76,8 +100,13 @@ final class ArraySubset extends Constraint
             $f = new ComparisonFailure(
                 $patched,
                 $other,
+<<<<<<< HEAD
+                var_export($patched, true),
+                var_export($other, true)
+=======
                 \var_export($patched, true),
                 \var_export($other, true)
+>>>>>>> parent of 31cfa1b1 (p)
             );
 
             $this->fail($other, $description, $f);
@@ -95,7 +124,11 @@ final class ArraySubset extends Constraint
     }
 
     /**
+<<<<<<< HEAD
+     * Returns the description of the failure.
+=======
      * Returns the description of the failure
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -111,6 +144,18 @@ final class ArraySubset extends Constraint
 
     private function toArray(iterable $other): array
     {
+<<<<<<< HEAD
+        if (is_array($other)) {
+            return $other;
+        }
+
+        if ($other instanceof ArrayObject) {
+            return $other->getArrayCopy();
+        }
+
+        if ($other instanceof Traversable) {
+            return iterator_to_array($other);
+=======
         if (\is_array($other)) {
             return $other;
         }
@@ -121,6 +166,7 @@ final class ArraySubset extends Constraint
 
         if ($other instanceof \Traversable) {
             return \iterator_to_array($other);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         // Keep BC even if we know that array would not be the expected one

@@ -4,6 +4,10 @@ namespace Facade\Ignition\Solutions;
 
 use Facade\IgnitionContracts\RunnableSolution;
 use Illuminate\Support\Facades\Blade;
+<<<<<<< HEAD
+use Illuminate\Support\Str;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 class MakeViewVariableOptionalSolution implements RunnableSolution
 {
@@ -71,8 +75,29 @@ class MakeViewVariableOptionalSolution implements RunnableSolution
         }
     }
 
+<<<<<<< HEAD
+    protected function isSafePath(string $path): bool
+    {
+        if (!Str::startsWith($path, ['/', './'])) {
+            return false;
+        }
+        if (!Str::endsWith($path, '.blade.php')) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function makeOptional(array $parameters = [])
     {
+        if (!$this->isSafePath($parameters['viewFile'])) {
+            return false;
+        }
+
+=======
+    public function makeOptional(array $parameters = [])
+    {
+>>>>>>> parent of 31cfa1b1 (p)
         $originalContents = file_get_contents($parameters['viewFile']);
         $newContents = str_replace('$'.$parameters['variableName'], '$'.$parameters['variableName']." ?? ''", $originalContents);
 

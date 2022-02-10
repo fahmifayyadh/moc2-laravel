@@ -8,10 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+
+namespace Carbon\Traits;
+
+use Carbon\CarbonInterface;
+use Carbon\CarbonTimeZone;
+use Closure;
+use DateTimeImmutable;
+use DateTimeInterface;
+use InvalidArgumentException;
+use Throwable;
+=======
 namespace Carbon\Traits;
 
 use Closure;
 use DateTimeImmutable;
+>>>>>>> parent of 31cfa1b1 (p)
 
 trait Test
 {
@@ -38,6 +51,12 @@ trait Test
      * Note the timezone parameter was left out of the examples above and
      * has no affect as the mock value will be returned regardless of its value.
      *
+<<<<<<< HEAD
+     * Only the moment is mocked with setTestNow(), the timezone will still be the one passed
+     * as parameter of date_default_timezone_get() as a fallback (see setTestNowAndTimezone()).
+     *
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * To clear the test instance call this method using the default
      * parameter of null.
      *
@@ -51,7 +70,46 @@ trait Test
             $testNow = null;
         }
 
+<<<<<<< HEAD
+        static::$testNow = \is_string($testNow) ? static::parse($testNow) : $testNow;
+    }
+
+    /**
+     * Set a Carbon instance (real or mock) to be returned when a "now"
+     * instance is created.  The provided instance will be returned
+     * specifically under the following conditions:
+     *   - A call to the static now() method, ex. Carbon::now()
+     *   - When a null (or blank string) is passed to the constructor or parse(), ex. new Carbon(null)
+     *   - When the string "now" is passed to the constructor or parse(), ex. new Carbon('now')
+     *   - When a string containing the desired time is passed to Carbon::parse().
+     *
+     * It will also align default timezone (e.g. call date_default_timezone_set()) with
+     * the second argument or if null, with the timezone of the given date object.
+     *
+     * To clear the test instance call this method using the default
+     * parameter of null.
+     *
+     * /!\ Use this method for unit tests only.
+     *
+     * @param Closure|static|string|false|null $testNow real or mock Carbon instance
+     */
+    public static function setTestNowAndTimezone($testNow = null, $tz = null)
+    {
+        $useDateInstanceTimezone = $testNow instanceof DateTimeInterface;
+
+        if ($useDateInstanceTimezone) {
+            self::setDefaultTimezone($testNow->getTimezone()->getName(), $testNow);
+        }
+
+        static::setTestNow($testNow);
+
+        if (!$useDateInstanceTimezone) {
+            $now = static::getMockedTestNow(\func_num_args() === 1 ? null : $tz);
+            self::setDefaultTimezone($now->tzName, $now);
+        }
+=======
         static::$testNow = is_string($testNow) ? static::parse($testNow) : $testNow;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -61,14 +119,28 @@ trait Test
      *
      * /!\ Use this method for unit tests only.
      *
+<<<<<<< HEAD
+     * @param Closure|static|string|false|null $testNow  real or mock Carbon instance
+     * @param Closure|null                     $callback
+     *
+     * @return mixed
+=======
      * @param Closure|static|string|false|null $testNow real or mock Carbon instance
      * @param Closure|null $callback
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public static function withTestNow($testNow = null, $callback = null)
     {
         static::setTestNow($testNow);
+<<<<<<< HEAD
+        $result = $callback();
+        static::setTestNow();
+
+        return $result;
+=======
         $callback();
         static::setTestNow();
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -94,6 +166,8 @@ trait Test
     }
 
     /**
+<<<<<<< HEAD
+=======
      * Return the given timezone and set it to the test instance if not null.
      * If null, get the timezone from the test instance and return it.
      *
@@ -115,6 +189,7 @@ trait Test
     }
 
     /**
+>>>>>>> parent of 31cfa1b1 (p)
      * Get the mocked date passed in setTestNow() and if it's a Closure, execute it.
      *
      * @param string|\DateTimeZone $tz
@@ -134,20 +209,64 @@ trait Test
         }
         /* @var \Carbon\CarbonImmutable|\Carbon\Carbon|null $testNow */
 
+<<<<<<< HEAD
+        return $testNow instanceof CarbonInterface
+            ? $testNow->avoidMutation()->tz($tz)
+            : $testNow;
+    }
+
+    protected static function mockConstructorParameters(&$time, $tz)
+=======
         return $testNow;
     }
 
     protected static function mockConstructorParameters(&$time, &$tz)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         /** @var \Carbon\CarbonImmutable|\Carbon\Carbon $testInstance */
         $testInstance = clone static::getMockedTestNow($tz);
 
+<<<<<<< HEAD
+=======
         $tz = static::handleMockTimezone($tz, $testInstance);
 
+>>>>>>> parent of 31cfa1b1 (p)
         if (static::hasRelativeKeywords($time)) {
             $testInstance = $testInstance->modify($time);
         }
 
+<<<<<<< HEAD
+        $time = $testInstance instanceof self
+            ? $testInstance->rawFormat(static::MOCK_DATETIME_FORMAT)
+            : $testInstance->format(static::MOCK_DATETIME_FORMAT);
+    }
+
+    private static function setDefaultTimezone($timezone, DateTimeInterface $date = null)
+    {
+        $previous = null;
+        $success = false;
+
+        try {
+            $success = date_default_timezone_set($timezone);
+        } catch (Throwable $exception) {
+            $previous = $exception;
+        }
+
+        if (!$success) {
+            $suggestion = @CarbonTimeZone::create($timezone)->toRegionName($date);
+
+            throw new InvalidArgumentException(
+                "Timezone ID '$timezone' is invalid".
+                ($suggestion && $suggestion !== $timezone ? ", did you mean '$suggestion'?" : '.')."\n".
+                "It must be one of the IDs from DateTimeZone::listIdentifiers(),\n".
+                'For the record, hours/minutes offset are relevant only for a particular moment, '.
+                'but not as a default timezone.',
+                0,
+                $previous
+            );
+        }
+=======
         $time = $testInstance instanceof self ? $testInstance->rawFormat(static::MOCK_DATETIME_FORMAT) : $testInstance->format(static::MOCK_DATETIME_FORMAT);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

@@ -25,8 +25,21 @@ class OutputFormatter implements WrappableOutputFormatterInterface
     private $styles = [];
     private $styleStack;
 
+<<<<<<< HEAD
+    public function __clone()
+    {
+        $this->styleStack = clone $this->styleStack;
+        foreach ($this->styles as $key => $value) {
+            $this->styles[$key] = clone $value;
+        }
+    }
+
+    /**
+     * Escapes "<" and ">" special chars in given text.
+=======
     /**
      * Escapes "<" special char in given text.
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @param string $text Text to escape
      *
@@ -34,7 +47,11 @@ class OutputFormatter implements WrappableOutputFormatterInterface
      */
     public static function escape($text)
     {
+<<<<<<< HEAD
+        $text = preg_replace('/([^\\\\]|^)([<>])/', '$1\\\\$2', $text);
+=======
         $text = preg_replace('/([^\\\\]?)</', '$1\\<', $text);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return self::escapeTrailingBackslash($text);
     }
@@ -46,7 +63,11 @@ class OutputFormatter implements WrappableOutputFormatterInterface
      */
     public static function escapeTrailingBackslash(string $text): string
     {
+<<<<<<< HEAD
+        if (str_ends_with($text, '\\')) {
+=======
         if ('\\' === substr($text, -1)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $len = \strlen($text);
             $text = rtrim($text, '\\');
             $text = str_replace("\0", '', $text);
@@ -136,9 +157,16 @@ class OutputFormatter implements WrappableOutputFormatterInterface
     {
         $offset = 0;
         $output = '';
+<<<<<<< HEAD
+        $openTagRegex = '[a-z](?:[^\\\\<>]*+ | \\\\.)*';
+        $closeTagRegex = '[a-z][^<>]*+';
+        $currentLineLength = 0;
+        preg_match_all("#<(($openTagRegex) | /($closeTagRegex)?)>#ix", $message, $matches, \PREG_OFFSET_CAPTURE);
+=======
         $tagRegex = '[a-z][^<>]*+';
         $currentLineLength = 0;
         preg_match_all("#<(($tagRegex) | /($tagRegex)?)>#ix", $message, $matches, \PREG_OFFSET_CAPTURE);
+>>>>>>> parent of 31cfa1b1 (p)
         foreach ($matches[0] as $i => $match) {
             $pos = $match[1];
             $text = $match[0];
@@ -155,7 +183,11 @@ class OutputFormatter implements WrappableOutputFormatterInterface
             if ($open = '/' != $text[1]) {
                 $tag = $matches[1][$i][0];
             } else {
+<<<<<<< HEAD
+                $tag = $matches[3][$i][0] ?? '';
+=======
                 $tag = isset($matches[3][$i][0]) ? $matches[3][$i][0] : '';
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             if (!$open && !$tag) {
@@ -172,11 +204,15 @@ class OutputFormatter implements WrappableOutputFormatterInterface
 
         $output .= $this->applyCurrentStyle(substr($message, $offset), $output, $width, $currentLineLength);
 
+<<<<<<< HEAD
+        return strtr($output, ["\0" => '\\', '\\<' => '<', '\\>' => '>']);
+=======
         if (false !== strpos($output, "\0")) {
             return strtr($output, ["\0" => '\\', '\\<' => '<']);
         }
 
         return str_replace('\\<', '<', $output);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -210,7 +246,12 @@ class OutputFormatter implements WrappableOutputFormatterInterface
             } elseif ('bg' == $match[0]) {
                 $style->setBackground(strtolower($match[1]));
             } elseif ('href' === $match[0]) {
+<<<<<<< HEAD
+                $url = preg_replace('{\\\\([<>])}', '$1', $match[1]);
+                $style->setHref($url);
+=======
                 $style->setHref($match[1]);
+>>>>>>> parent of 31cfa1b1 (p)
             } elseif ('options' === $match[0]) {
                 preg_match_all('([^,;]+)', strtolower($match[1]), $options);
                 $options = array_shift($options);

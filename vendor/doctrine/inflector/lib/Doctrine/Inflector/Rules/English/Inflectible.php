@@ -14,7 +14,11 @@ class Inflectible
     /**
      * @return Transformation[]
      */
+<<<<<<< HEAD
+    public static function getSingular(): iterable
+=======
     public static function getSingular() : iterable
+>>>>>>> parent of 31cfa1b1 (p)
     {
         yield new Transformation(new Pattern('(s)tatuses$'), '\1\2tatus');
         yield new Transformation(new Pattern('(s)tatus$'), '\1\2tatus');
@@ -62,7 +66,11 @@ class Inflectible
     /**
      * @return Transformation[]
      */
+<<<<<<< HEAD
+    public static function getPlural(): iterable
+=======
     public static function getPlural() : iterable
+>>>>>>> parent of 31cfa1b1 (p)
     {
         yield new Transformation(new Pattern('(s)tatus$'), '\1\2tatuses');
         yield new Transformation(new Pattern('(quiz)$'), '\1zes');
@@ -94,7 +102,11 @@ class Inflectible
     /**
      * @return Substitution[]
      */
+<<<<<<< HEAD
+    public static function getIrregular(): iterable
+=======
     public static function getIrregular() : iterable
+>>>>>>> parent of 31cfa1b1 (p)
     {
         yield new Substitution(new Word('atlas'), new Word('atlases'));
         yield new Substitution(new Word('axe'), new Word('axes'));

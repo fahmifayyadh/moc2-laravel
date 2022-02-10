@@ -15,5 +15,9 @@ namespace phpDocumentor\Reflection;
 
 interface PseudoType extends Type
 {
+<<<<<<< HEAD
+    public function underlyingType(): Type;
+=======
     public function underlyingType() : Type;
+>>>>>>> parent of 31cfa1b1 (p)
 }

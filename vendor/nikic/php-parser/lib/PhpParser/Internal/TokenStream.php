@@ -46,7 +46,12 @@ class TokenStream
      * @return bool
      */
     public function haveBraces(int $startPos, int $endPos) : bool {
+<<<<<<< HEAD
+        return ($this->haveTokenImmediatelyBefore($startPos, '{')
+                || $this->haveTokenImmediatelyBefore($startPos, T_CURLY_OPEN))
+=======
         return $this->haveTokenImmediatelyBefore($startPos, '{')
+>>>>>>> parent of 31cfa1b1 (p)
             && $this->haveTokenImmediatelyAfter($endPos, '}');
     }
 
@@ -201,6 +206,10 @@ class TokenStream
 
     public function haveBracesInRange(int $startPos, int $endPos) {
         return $this->haveTokenInRange($startPos, $endPos, '{')
+<<<<<<< HEAD
+            || $this->haveTokenInRange($startPos, $endPos, T_CURLY_OPEN)
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             || $this->haveTokenInRange($startPos, $endPos, '}');
     }
 

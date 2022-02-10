@@ -30,11 +30,26 @@ class HoaConsole implements Readline
     /**
      * @return bool
      */
+<<<<<<< HEAD
+    public static function isSupported(): bool
+=======
     public static function isSupported()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \class_exists(Console::class, true);
     }
 
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+    public static function supportsBracketedPaste(): bool
+    {
+        return false;
+    }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function __construct()
     {
         $this->hoaReadline = new HoaReadline();
@@ -48,7 +63,11 @@ class HoaConsole implements Readline
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function addHistory(string $line): bool
+=======
     public function addHistory($line)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->hoaReadline->addHistory($line);
 
@@ -58,7 +77,11 @@ class HoaConsole implements Readline
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function clearHistory(): bool
+=======
     public function clearHistory()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->hoaReadline->clearHistory();
 
@@ -68,7 +91,11 @@ class HoaConsole implements Readline
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function listHistory(): array
+=======
     public function listHistory()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $i = 0;
         $list = [];
@@ -82,7 +109,11 @@ class HoaConsole implements Readline
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function readHistory(): bool
+=======
     public function readHistory()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }
@@ -92,9 +123,15 @@ class HoaConsole implements Readline
      *
      * @throws BreakException if user hits Ctrl+D
      *
+<<<<<<< HEAD
+     * @return false|string
+     */
+    public function readline(string $prompt = null)
+=======
      * @return string
      */
     public function readline($prompt = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->lastPrompt = $prompt;
 
@@ -114,7 +151,11 @@ class HoaConsole implements Readline
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function writeHistory(): bool
+=======
     public function writeHistory()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }

@@ -11,14 +11,21 @@
  * @link     https://api.xendit.co
  */
 
+<<<<<<< HEAD
+=======
 use Dotenv\Dotenv;
+>>>>>>> parent of 31cfa1b1 (p)
 use Xendit\Xendit;
 
 require 'vendor/autoload.php';
 
+<<<<<<< HEAD
+Xendit::setApiKey('SECRET_API_KEY');
+=======
 $dotenv = Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 Xendit::setApiKey(getenv('SECRET_API_KEY'));
+>>>>>>> parent of 31cfa1b1 (p)
 
 $params = [
     'external_id' => 'demo_147580196270',
@@ -34,7 +41,14 @@ var_dump($createRecurring);
 
 $id = $createRecurring['id'];
 
+<<<<<<< HEAD
+$retrieveParams = [
+    'for-user-id' => '<enter user id>'
+];
+$getRecurring = \Xendit\Recurring::retrieve($id, $retrieveParams);
+=======
 $getRecurring = \Xendit\Recurring::retrieve($id);
+>>>>>>> parent of 31cfa1b1 (p)
 var_dump($getRecurring);
 
 $editRecurring = \Xendit\Recurring::update($id, ['amount' => 10000]);

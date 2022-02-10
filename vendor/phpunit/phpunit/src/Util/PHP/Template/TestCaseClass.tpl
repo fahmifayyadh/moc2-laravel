@@ -60,7 +60,11 @@ function __phpunit_run_isolated_test()
 
     ini_set('xdebug.scream', '0');
     @rewind(STDOUT); /* @ as not every STDOUT target stream is rewindable */
+<<<<<<< HEAD
+    if ($stdout = @stream_get_contents(STDOUT)) {
+=======
     if ($stdout = stream_get_contents(STDOUT)) {
+>>>>>>> parent of 31cfa1b1 (p)
         $output = $stdout . $output;
         $streamMetaData = stream_get_meta_data(STDOUT);
         if (!empty($streamMetaData['stream_type']) && 'STDIO' === $streamMetaData['stream_type']) {

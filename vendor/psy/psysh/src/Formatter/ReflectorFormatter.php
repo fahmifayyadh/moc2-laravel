@@ -21,5 +21,9 @@ interface ReflectorFormatter
      *
      * @return string
      */
+<<<<<<< HEAD
+    public static function format(\Reflector $reflector): string;
+=======
     public static function format(\Reflector $reflector);
+>>>>>>> parent of 31cfa1b1 (p)
 }

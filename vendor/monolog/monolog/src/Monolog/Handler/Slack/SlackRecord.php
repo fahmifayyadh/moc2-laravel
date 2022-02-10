@@ -23,6 +23,12 @@ use Monolog\Formatter\FormatterInterface;
  * @author Haralan Dobrev <hkdobrev@gmail.com>
  * @see    https://api.slack.com/incoming-webhooks
  * @see    https://api.slack.com/docs/message-attachments
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type FormattedRecord from \Monolog\Handler\AbstractProcessingHandler
+ * @phpstan-import-type Record from \Monolog\Logger
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class SlackRecord
 {
@@ -72,12 +78,20 @@ class SlackRecord
 
     /**
      * Dot separated list of fields to exclude from slack message. E.g. ['context.field1', 'extra.field2']
+<<<<<<< HEAD
+     * @var string[]
+=======
      * @var array
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $excludeFields;
 
     /**
+<<<<<<< HEAD
+     * @var ?FormatterInterface
+=======
      * @var FormatterInterface
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $formatter;
 
@@ -86,6 +100,12 @@ class SlackRecord
      */
     private $normalizerFormatter;
 
+<<<<<<< HEAD
+    /**
+     * @param string[] $excludeFields
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function __construct(
         ?string $channel = null,
         ?string $username = null,
@@ -114,6 +134,12 @@ class SlackRecord
     /**
      * Returns required data in format that Slack
      * is expecting.
+<<<<<<< HEAD
+     *
+     * @phpstan-param FormattedRecord $record
+     * @phpstan-return mixed[]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getSlackData(array $record): array
     {
@@ -129,6 +155,10 @@ class SlackRecord
         }
 
         if ($this->formatter && !$this->useAttachment) {
+<<<<<<< HEAD
+            /** @phpstan-ignore-next-line */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             $message = $this->formatter->format($record);
         } else {
             $message = $record['message'];
@@ -208,9 +238,18 @@ class SlackRecord
 
     /**
      * Stringifies an array of key/value pairs to be used in attachment fields
+<<<<<<< HEAD
+     *
+     * @param mixed[] $fields
      */
     public function stringify(array $fields): string
     {
+        /** @var Record $fields */
+=======
+     */
+    public function stringify(array $fields): string
+    {
+>>>>>>> parent of 31cfa1b1 (p)
         $normalized = $this->normalizerFormatter->format($fields);
 
         $hasSecondDimension = count(array_filter($normalized, 'is_array'));
@@ -226,7 +265,11 @@ class SlackRecord
      *
      * @param ?string $channel
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return SlackHandler
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setChannel(?string $channel = null): self
     {
@@ -240,7 +283,11 @@ class SlackRecord
      *
      * @param ?string $username
      *
+<<<<<<< HEAD
+     * @return static
+=======
      * @return SlackHandler
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setUsername(?string $username = null): self
     {
@@ -285,6 +332,12 @@ class SlackRecord
         return $this;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param string[] $excludeFields
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function excludeFields(array $excludeFields = []): self
     {
         $this->excludeFields = $excludeFields;
@@ -302,7 +355,13 @@ class SlackRecord
     /**
      * Generates attachment field
      *
+<<<<<<< HEAD
+     * @param string|mixed[] $value
+     *
+     * @return array{title: string, value: string, short: false}
+=======
      * @param string|array $value
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function generateAttachmentField(string $title, $value): array
     {
@@ -319,11 +378,26 @@ class SlackRecord
 
     /**
      * Generates a collection of attachment fields from array
+<<<<<<< HEAD
+     *
+     * @param mixed[] $data
+     *
+     * @return array<array{title: string, value: string, short: false}>
+     */
+    private function generateAttachmentFields(array $data): array
+    {
+        /** @var Record $data */
+        $normalized = $this->normalizerFormatter->format($data);
+
+        $fields = array();
+        foreach ($normalized as $key => $value) {
+=======
      */
     private function generateAttachmentFields(array $data): array
     {
         $fields = array();
         foreach ($this->normalizerFormatter->format($data) as $key => $value) {
+>>>>>>> parent of 31cfa1b1 (p)
             $fields[] = $this->generateAttachmentField((string) $key, $value);
         }
 
@@ -332,6 +406,13 @@ class SlackRecord
 
     /**
      * Get a copy of record with fields excluded according to $this->excludeFields
+<<<<<<< HEAD
+     *
+     * @phpstan-param FormattedRecord $record
+     *
+     * @return mixed[]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function removeExcludedFields(array $record): array
     {

@@ -23,11 +23,19 @@ class FunctionsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function getMatches(array $tokens, array $info = []): array
+    {
+        $func = $this->getInput($tokens);
+
+        $functions = \get_defined_functions();
+=======
     public function getMatches(array $tokens, array $info = [])
     {
         $func = $this->getInput($tokens);
 
         $functions    = \get_defined_functions();
+>>>>>>> parent of 31cfa1b1 (p)
         $allFunctions = \array_merge($functions['user'], $functions['internal']);
 
         return \array_filter($allFunctions, function ($function) use ($func) {
@@ -38,9 +46,15 @@ class FunctionsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function hasMatched(array $tokens): bool
+    {
+        $token = \array_pop($tokens);
+=======
     public function hasMatched(array $tokens)
     {
         $token     = \array_pop($tokens);
+>>>>>>> parent of 31cfa1b1 (p)
         $prevToken = \array_pop($tokens);
 
         switch (true) {

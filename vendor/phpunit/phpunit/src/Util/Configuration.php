@@ -9,8 +9,49 @@
  */
 namespace PHPUnit\Util;
 
+<<<<<<< HEAD
+use const DIRECTORY_SEPARATOR;
+use const PATH_SEPARATOR;
+use const PHP_VERSION;
+use function assert;
+use function constant;
+use function count;
+use function define;
+use function defined;
+use function dirname;
+use function explode;
+use function file_exists;
+use function file_get_contents;
+use function getenv;
+use function implode;
+use function in_array;
+use function ini_get;
+use function ini_set;
+use function is_numeric;
+use function libxml_clear_errors;
+use function libxml_get_errors;
+use function libxml_use_internal_errors;
+use function preg_match;
+use function putenv;
+use function realpath;
+use function sprintf;
+use function stream_resolve_include_path;
+use function strlen;
+use function strpos;
+use function strtolower;
+use function strtoupper;
+use function substr;
+use function trim;
+use function version_compare;
+use DOMDocument;
+use DOMElement;
+use DOMNodeList;
+use DOMXPath;
+use LibXMLError;
+=======
 use DOMElement;
 use DOMXPath;
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Runner\TestSuiteSorter;
@@ -29,7 +70,11 @@ final class Configuration
     private static $instances = [];
 
     /**
+<<<<<<< HEAD
+     * @var DOMDocument
+=======
      * @var \DOMDocument
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $document;
 
@@ -44,7 +89,11 @@ final class Configuration
     private $filename;
 
     /**
+<<<<<<< HEAD
+     * @var LibXMLError[]
+=======
      * @var \LibXMLError[]
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $errors = [];
 
@@ -55,11 +104,19 @@ final class Configuration
      */
     public static function getInstance(string $filename): self
     {
+<<<<<<< HEAD
+        $realPath = realpath($filename);
+
+        if ($realPath === false) {
+            throw new Exception(
+                sprintf(
+=======
         $realPath = \realpath($filename);
 
         if ($realPath === false) {
             throw new Exception(
                 \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Could not read "%s".',
                     $filename
                 )
@@ -96,7 +153,11 @@ final class Configuration
 
     public function hasValidationErrors(): bool
     {
+<<<<<<< HEAD
+        return count($this->errors) > 0;
+=======
         return \count($this->errors) > 0;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function getValidationErrors(): array
@@ -107,7 +168,11 @@ final class Configuration
             if (!isset($result[$error->line])) {
                 $result[$error->line] = [];
             }
+<<<<<<< HEAD
+            $result[$error->line][] = trim($error->message);
+=======
             $result[$error->line][] = \trim($error->message);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $result;
@@ -236,7 +301,11 @@ final class Configuration
         $result = [];
 
         foreach ($this->xpath->query('logging/log') as $log) {
+<<<<<<< HEAD
+            assert($log instanceof DOMElement);
+=======
             \assert($log instanceof DOMElement);
+>>>>>>> parent of 31cfa1b1 (p)
 
             $type   = (string) $log->getAttribute('type');
             $target = (string) $log->getAttribute('target');
@@ -318,7 +387,11 @@ final class Configuration
         }
 
         foreach ($this->xpath->query('php/ini') as $ini) {
+<<<<<<< HEAD
+            assert($ini instanceof DOMElement);
+=======
             \assert($ini instanceof DOMElement);
+>>>>>>> parent of 31cfa1b1 (p)
 
             $name  = (string) $ini->getAttribute('name');
             $value = (string) $ini->getAttribute('value');
@@ -327,7 +400,11 @@ final class Configuration
         }
 
         foreach ($this->xpath->query('php/const') as $const) {
+<<<<<<< HEAD
+            assert($const instanceof DOMElement);
+=======
             \assert($const instanceof  DOMElement);
+>>>>>>> parent of 31cfa1b1 (p)
 
             $name  = (string) $const->getAttribute('name');
             $value = (string) $const->getAttribute('value');
@@ -337,7 +414,11 @@ final class Configuration
 
         foreach (['var', 'env', 'post', 'get', 'cookie', 'server', 'files', 'request'] as $array) {
             foreach ($this->xpath->query('php/' . $array) as $var) {
+<<<<<<< HEAD
+                assert($var instanceof DOMElement);
+=======
                 \assert($var instanceof DOMElement);
+>>>>>>> parent of 31cfa1b1 (p)
 
                 $name     = (string) $var->getAttribute('name');
                 $value    = (string) $var->getAttribute('value');
@@ -372,27 +453,60 @@ final class Configuration
         $configuration = $this->getPHPConfiguration();
 
         if (!empty($configuration['include_path'])) {
+<<<<<<< HEAD
+            ini_set(
+                'include_path',
+                implode(PATH_SEPARATOR, $configuration['include_path']) .
+                PATH_SEPARATOR .
+                ini_get('include_path')
+=======
             \ini_set(
                 'include_path',
                 \implode(\PATH_SEPARATOR, $configuration['include_path']) .
                 \PATH_SEPARATOR .
                 \ini_get('include_path')
+>>>>>>> parent of 31cfa1b1 (p)
             );
         }
 
         foreach ($configuration['ini'] as $name => $data) {
             $value = $data['value'];
 
+<<<<<<< HEAD
+            if (defined($value)) {
+                $value = (string) constant($value);
+            }
+
+            ini_set($name, $value);
+=======
             if (\defined($value)) {
                 $value = (string) \constant($value);
             }
 
             \ini_set($name, $value);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         foreach ($configuration['const'] as $name => $data) {
             $value = $data['value'];
 
+<<<<<<< HEAD
+            if (!defined($name)) {
+                define($name, $value);
+            }
+        }
+
+        foreach ($configuration['var'] as $name => $data) {
+            $GLOBALS[$name] = $data['value'];
+        }
+
+        foreach ($configuration['server'] as $name => $data) {
+            $_SERVER[$name] = $data['value'];
+        }
+
+        foreach (['post', 'get', 'cookie', 'files', 'request'] as $array) {
+            $target = &$GLOBALS['_' . strtoupper($array)];
+=======
             if (!\defined($name)) {
                 \define($name, $value);
             }
@@ -418,6 +532,7 @@ final class Configuration
 
                     break;
             }
+>>>>>>> parent of 31cfa1b1 (p)
 
             foreach ($configuration[$array] as $name => $data) {
                 $target[$name] = $data['value'];
@@ -428,11 +543,19 @@ final class Configuration
             $value = $data['value'];
             $force = $data['force'] ?? false;
 
+<<<<<<< HEAD
+            if ($force || getenv($name) === false) {
+                putenv("{$name}={$value}");
+            }
+
+            $value = getenv($name);
+=======
             if ($force || \getenv($name) === false) {
                 \putenv("{$name}={$value}");
             }
 
             $value = \getenv($name);
+>>>>>>> parent of 31cfa1b1 (p)
 
             if (!isset($_ENV[$name])) {
                 $_ENV[$name] = $value;
@@ -512,7 +635,11 @@ final class Configuration
         if ($root->hasAttribute('convertDeprecationsToExceptions')) {
             $result['convertDeprecationsToExceptions'] = $this->getBoolean(
                 (string) $root->getAttribute('convertDeprecationsToExceptions'),
+<<<<<<< HEAD
+                false
+=======
                 true
+>>>>>>> parent of 31cfa1b1 (p)
             );
         }
 
@@ -793,7 +920,11 @@ final class Configuration
         }
 
         if ($root->hasAttribute('executionOrder')) {
+<<<<<<< HEAD
+            foreach (explode(',', $root->getAttribute('executionOrder')) as $order) {
+=======
             foreach (\explode(',', $root->getAttribute('executionOrder')) as $order) {
+>>>>>>> parent of 31cfa1b1 (p)
                 switch ($order) {
                     case 'default':
                         $result['executionOrder']        = TestSuiteSorter::ORDER_DEFAULT;
@@ -902,6 +1033,19 @@ final class Configuration
 
     private function validateConfigurationAgainstSchema(): void
     {
+<<<<<<< HEAD
+        $original    = libxml_use_internal_errors(true);
+        $xsdFilename = __DIR__ . '/../../phpunit.xsd';
+
+        if (defined('__PHPUNIT_PHAR_ROOT__')) {
+            $xsdFilename = __PHPUNIT_PHAR_ROOT__ . '/phpunit.xsd';
+        }
+
+        $this->document->schemaValidateSource(file_get_contents($xsdFilename));
+        $this->errors = libxml_get_errors();
+        libxml_clear_errors();
+        libxml_use_internal_errors($original);
+=======
         $original    = \libxml_use_internal_errors(true);
         $xsdFilename = __DIR__ . '/../../phpunit.xsd';
 
@@ -913,13 +1057,20 @@ final class Configuration
         $this->errors = \libxml_get_errors();
         \libxml_clear_errors();
         \libxml_use_internal_errors($original);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * Collects and returns the configuration arguments from the PHPUnit
+<<<<<<< HEAD
+     * XML configuration.
+     */
+    private function getConfigurationArguments(DOMNodeList $nodes): array
+=======
      * XML configuration
      */
     private function getConfigurationArguments(\DOMNodeList $nodes): array
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $arguments = [];
 
@@ -976,12 +1127,21 @@ final class Configuration
         }
 
         $fileIteratorFacade = new FileIteratorFacade;
+<<<<<<< HEAD
+        $testSuiteFilter    = $testSuiteFilter ? explode(',', $testSuiteFilter) : [];
+
+        foreach ($testSuiteNode->getElementsByTagName('directory') as $directoryNode) {
+            assert($directoryNode instanceof DOMElement);
+
+            if (!empty($testSuiteFilter) && !in_array($directoryNode->parentNode->getAttribute('name'), $testSuiteFilter, true)) {
+=======
         $testSuiteFilter    = $testSuiteFilter ? \explode(',', $testSuiteFilter) : [];
 
         foreach ($testSuiteNode->getElementsByTagName('directory') as $directoryNode) {
             \assert($directoryNode instanceof DOMElement);
 
             if (!empty($testSuiteFilter) && !\in_array($directoryNode->parentNode->getAttribute('name'), $testSuiteFilter)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 continue;
             }
 
@@ -1006,9 +1166,15 @@ final class Configuration
         }
 
         foreach ($testSuiteNode->getElementsByTagName('file') as $fileNode) {
+<<<<<<< HEAD
+            assert($fileNode instanceof DOMElement);
+
+            if (!empty($testSuiteFilter) && !in_array($fileNode->parentNode->getAttribute('name'), $testSuiteFilter, true)) {
+=======
             \assert($fileNode instanceof DOMElement);
 
             if (!empty($testSuiteFilter) && !\in_array($fileNode->parentNode->getAttribute('name'), $testSuiteFilter)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 continue;
             }
 
@@ -1040,7 +1206,11 @@ final class Configuration
 
     private function satisfiesPhpVersion(DOMElement $node): bool
     {
+<<<<<<< HEAD
+        $phpVersion         = PHP_VERSION;
+=======
         $phpVersion         = \PHP_VERSION;
+>>>>>>> parent of 31cfa1b1 (p)
         $phpVersionOperator = '>=';
 
         if ($node->hasAttribute('phpVersion')) {
@@ -1051,13 +1221,21 @@ final class Configuration
             $phpVersionOperator = (string) $node->getAttribute('phpVersionOperator');
         }
 
+<<<<<<< HEAD
+        return version_compare(PHP_VERSION, $phpVersion, (new VersionComparisonOperator($phpVersionOperator))->asString());
+=======
         return \version_compare(\PHP_VERSION, $phpVersion, (new VersionComparisonOperator($phpVersionOperator))->asString());
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
      * if $value is 'false' or 'true', this returns the value that $value represents.
      * Otherwise, returns $default, which may be a string in rare cases.
+<<<<<<< HEAD
+     * See PHPUnit\Util\ConfigurationTest::testPHPConfigurationIsReadCorrectly.
+=======
      * See PHPUnit\Util\ConfigurationTest::testPHPConfigurationIsReadCorrectly
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @param bool|string $default
      *
@@ -1065,11 +1243,19 @@ final class Configuration
      */
     private function getBoolean(string $value, $default)
     {
+<<<<<<< HEAD
+        if (strtolower($value) === 'false') {
+            return false;
+        }
+
+        if (strtolower($value) === 'true') {
+=======
         if (\strtolower($value) === 'false') {
             return false;
         }
 
         if (\strtolower($value) === 'true') {
+>>>>>>> parent of 31cfa1b1 (p)
             return true;
         }
 
@@ -1078,7 +1264,11 @@ final class Configuration
 
     private function getInteger(string $value, int $default): int
     {
+<<<<<<< HEAD
+        if (is_numeric($value)) {
+=======
         if (\is_numeric($value)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return (int) $value;
         }
 
@@ -1090,7 +1280,11 @@ final class Configuration
         $directories = [];
 
         foreach ($this->xpath->query($query) as $directoryNode) {
+<<<<<<< HEAD
+            assert($directoryNode instanceof DOMElement);
+=======
             \assert($directoryNode instanceof DOMElement);
+>>>>>>> parent of 31cfa1b1 (p)
 
             $directoryPath = (string) $directoryNode->textContent;
 
@@ -1129,9 +1323,15 @@ final class Configuration
 
     private function toAbsolutePath(string $path, bool $useIncludePath = false): string
     {
+<<<<<<< HEAD
+        $path = trim($path);
+
+        if (strpos($path, '/') === 0) {
+=======
         $path = \trim($path);
 
         if (\strpos($path, '/') === 0) {
+>>>>>>> parent of 31cfa1b1 (p)
             return $path;
         }
 
@@ -1143,6 +1343,21 @@ final class Configuration
         //  - C:\windows
         //  - C:/windows
         //  - c:/windows
+<<<<<<< HEAD
+        if (defined('PHP_WINDOWS_VERSION_BUILD') &&
+            ($path[0] === '\\' || (strlen($path) >= 3 && preg_match('#^[A-Z]\:[/\\\]#i', substr($path, 0, 3))))) {
+            return $path;
+        }
+
+        if (strpos($path, '://') !== false) {
+            return $path;
+        }
+
+        $file = dirname($this->filename) . DIRECTORY_SEPARATOR . $path;
+
+        if ($useIncludePath && !file_exists($file)) {
+            $includePathFile = stream_resolve_include_path($path);
+=======
         if (\defined('PHP_WINDOWS_VERSION_BUILD') &&
             ($path[0] === '\\' || (\strlen($path) >= 3 && \preg_match('#^[A-Z]\:[/\\\]#i', \substr($path, 0, 3))))) {
             return $path;
@@ -1156,6 +1371,7 @@ final class Configuration
 
         if ($useIncludePath && !\file_exists($file)) {
             $includePathFile = \stream_resolve_include_path($path);
+>>>>>>> parent of 31cfa1b1 (p)
 
             if ($includePathFile) {
                 $file = $includePathFile;

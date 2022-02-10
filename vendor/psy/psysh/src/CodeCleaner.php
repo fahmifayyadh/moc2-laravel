@@ -25,6 +25,10 @@ use Psy\CodeCleaner\FunctionContextPass;
 use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 use Psy\CodeCleaner\ImplicitReturnPass;
 use Psy\CodeCleaner\InstanceOfPass;
+<<<<<<< HEAD
+use Psy\CodeCleaner\IssetPass;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Psy\CodeCleaner\LabelContextPass;
 use Psy\CodeCleaner\LeavePsyshAlonePass;
 use Psy\CodeCleaner\ListPass;
@@ -37,7 +41,10 @@ use Psy\CodeCleaner\ReturnTypePass;
 use Psy\CodeCleaner\StrictTypesPass;
 use Psy\CodeCleaner\UseStatementPass;
 use Psy\CodeCleaner\ValidClassNamePass;
+<<<<<<< HEAD
+=======
 use Psy\CodeCleaner\ValidConstantPass;
+>>>>>>> parent of 31cfa1b1 (p)
 use Psy\CodeCleaner\ValidConstructorPass;
 use Psy\CodeCleaner\ValidFunctionNamePass;
 use Psy\Exception\ParseErrorException;
@@ -48,6 +55,10 @@ use Psy\Exception\ParseErrorException;
  */
 class CodeCleaner
 {
+<<<<<<< HEAD
+    private $yolo = false;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private $parser;
     private $printer;
     private $traverser;
@@ -59,6 +70,21 @@ class CodeCleaner
      * @param Parser|null        $parser    A PhpParser Parser instance. One will be created if not explicitly supplied
      * @param Printer|null       $printer   A PhpParser Printer instance. One will be created if not explicitly supplied
      * @param NodeTraverser|null $traverser A PhpParser NodeTraverser instance. One will be created if not explicitly supplied
+<<<<<<< HEAD
+     * @param bool               $yolo      run without input validation
+     */
+    public function __construct(Parser $parser = null, Printer $printer = null, NodeTraverser $traverser = null, bool $yolo = false)
+    {
+        $this->yolo = $yolo;
+
+        if ($parser === null) {
+            $parserFactory = new ParserFactory();
+            $parser = $parserFactory->createParser();
+        }
+
+        $this->parser = $parser;
+        $this->printer = $printer ?: new Printer();
+=======
      */
     public function __construct(Parser $parser = null, Printer $printer = null, NodeTraverser $traverser = null)
     {
@@ -69,6 +95,7 @@ class CodeCleaner
 
         $this->parser    = $parser;
         $this->printer   = $printer ?: new Printer();
+>>>>>>> parent of 31cfa1b1 (p)
         $this->traverser = $traverser ?: new NodeTraverser();
 
         foreach ($this->getDefaultPasses() as $pass) {
@@ -77,14 +104,38 @@ class CodeCleaner
     }
 
     /**
+<<<<<<< HEAD
+     * Check whether this CodeCleaner is in YOLO mode.
+     *
+     * @return bool
+     */
+    public function yolo(): bool
+    {
+        return $this->yolo;
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Get default CodeCleaner passes.
      *
      * @return array
      */
+<<<<<<< HEAD
+    private function getDefaultPasses(): array
+    {
+        if ($this->yolo) {
+            return $this->getYoloPasses();
+        }
+
+        $useStatementPass = new UseStatementPass();
+        $namespacePass = new NamespacePass($this);
+=======
     private function getDefaultPasses()
     {
         $useStatementPass = new UseStatementPass();
         $namespacePass    = new NamespacePass($this);
+>>>>>>> parent of 31cfa1b1 (p)
 
         // Try to add implicit `use` statements and an implicit namespace,
         // based on the file in which the `debug` call was made.
@@ -100,6 +151,10 @@ class CodeCleaner
             new FunctionContextPass(),
             new FunctionReturnInWriteContextPass(),
             new InstanceOfPass(),
+<<<<<<< HEAD
+            new IssetPass(),
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             new LabelContextPass(),
             new LeavePsyshAlonePass(),
             new ListPass(),
@@ -120,12 +175,48 @@ class CodeCleaner
 
             // Namespace-aware validation (which depends on aforementioned shenanigans)
             new ValidClassNamePass(),
+<<<<<<< HEAD
+=======
             new ValidConstantPass(),
+>>>>>>> parent of 31cfa1b1 (p)
             new ValidFunctionNamePass(),
         ];
     }
 
     /**
+<<<<<<< HEAD
+     * A set of code cleaner passes that don't try to do any validation, and
+     * only do minimal rewriting to make things work inside the REPL.
+     *
+     * This list should stay in sync with the "rewriting shenanigans" in
+     * getDefaultPasses above.
+     *
+     * @return array
+     */
+    private function getYoloPasses(): array
+    {
+        $useStatementPass = new UseStatementPass();
+        $namespacePass = new NamespacePass($this);
+
+        // Try to add implicit `use` statements and an implicit namespace,
+        // based on the file in which the `debug` call was made.
+        $this->addImplicitDebugContext([$useStatementPass, $namespacePass]);
+
+        return [
+            new LeavePsyshAlonePass(),
+            $useStatementPass,        // must run before the namespace pass
+            new ExitPass(),
+            new ImplicitReturnPass(),
+            new MagicConstantsPass(),
+            $namespacePass,           // must run after the implicit return pass
+            new RequirePass(),
+            new StrictTypesPass(),
+        ];
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * "Warm up" code cleaner passes when we're coming from a debug call.
      *
      * This is useful, for example, for `UseStatementPass` and `NamespacePass`
@@ -161,8 +252,11 @@ class CodeCleaner
             $traverser->traverse($stmts);
         } catch (\Throwable $e) {
             // Don't care.
+<<<<<<< HEAD
+=======
         } catch (\Exception $e) {
             // Still don't care.
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -173,7 +267,11 @@ class CodeCleaner
      */
     private static function getDebugFile()
     {
+<<<<<<< HEAD
+        $trace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS);
+=======
         $trace = \debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+>>>>>>> parent of 31cfa1b1 (p)
 
         foreach (\array_reverse($trace) as $stackFrame) {
             if (!self::isDebugCall($stackFrame)) {
@@ -197,9 +295,15 @@ class CodeCleaner
      *
      * @return bool
      */
+<<<<<<< HEAD
+    private static function isDebugCall(array $stackFrame): bool
+    {
+        $class = isset($stackFrame['class']) ? $stackFrame['class'] : null;
+=======
     private static function isDebugCall(array $stackFrame)
     {
         $class    = isset($stackFrame['class']) ? $stackFrame['class'] : null;
+>>>>>>> parent of 31cfa1b1 (p)
         $function = isset($stackFrame['function']) ? $stackFrame['function'] : null;
 
         return ($class === null && $function === 'Psy\\debug') ||
@@ -216,9 +320,15 @@ class CodeCleaner
      *
      * @return string|false Cleaned PHP code, False if the input is incomplete
      */
+<<<<<<< HEAD
+    public function clean(array $codeLines, bool $requireSemicolons = false)
+    {
+        $stmts = $this->parse('<?php '.\implode(\PHP_EOL, $codeLines).\PHP_EOL, $requireSemicolons);
+=======
     public function clean(array $codeLines, $requireSemicolons = false)
     {
         $stmts = $this->parse('<?php ' . \implode(PHP_EOL, $codeLines) . PHP_EOL, $requireSemicolons);
+>>>>>>> parent of 31cfa1b1 (p)
         if ($stmts === false) {
             return false;
         }
@@ -227,13 +337,22 @@ class CodeCleaner
         $stmts = $this->traverser->traverse($stmts);
 
         // Work around https://github.com/nikic/PHP-Parser/issues/399
+<<<<<<< HEAD
+        $oldLocale = \setlocale(\LC_NUMERIC, 0);
+        \setlocale(\LC_NUMERIC, 'C');
+=======
         $oldLocale = \setlocale(LC_NUMERIC, 0);
         \setlocale(LC_NUMERIC, 'C');
+>>>>>>> parent of 31cfa1b1 (p)
 
         $code = $this->printer->prettyPrint($stmts);
 
         // Now put the locale back
+<<<<<<< HEAD
+        \setlocale(\LC_NUMERIC, $oldLocale);
+=======
         \setlocale(LC_NUMERIC, $oldLocale);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $code;
     }
@@ -273,7 +392,11 @@ class CodeCleaner
      *
      * @return array|false A set of statements, or false if incomplete
      */
+<<<<<<< HEAD
+    protected function parse(string $code, bool $requireSemicolons = false)
+=======
     protected function parse($code, $requireSemicolons = false)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         try {
             return $this->parser->parse($code);
@@ -300,14 +423,22 @@ class CodeCleaner
 
             try {
                 // Unexpected EOF, try again with an implicit semicolon
+<<<<<<< HEAD
+                return $this->parser->parse($code.';');
+=======
                 return $this->parser->parse($code . ';');
+>>>>>>> parent of 31cfa1b1 (p)
             } catch (\PhpParser\Error $e) {
                 return false;
             }
         }
     }
 
+<<<<<<< HEAD
+    private function parseErrorIsEOF(\PhpParser\Error $e): bool
+=======
     private function parseErrorIsEOF(\PhpParser\Error $e)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $msg = $e->getRawMessage();
 
@@ -326,27 +457,44 @@ class CodeCleaner
      *
      * @return bool
      */
+<<<<<<< HEAD
+    private function parseErrorIsUnclosedString(\PhpParser\Error $e, string $code): bool
+=======
     private function parseErrorIsUnclosedString(\PhpParser\Error $e, $code)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($e->getRawMessage() !== 'Syntax error, unexpected T_ENCAPSED_AND_WHITESPACE') {
             return false;
         }
 
         try {
+<<<<<<< HEAD
+            $this->parser->parse($code."';");
+        } catch (\Throwable $e) {
+=======
             $this->parser->parse($code . "';");
         } catch (\Exception $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
         return true;
     }
 
+<<<<<<< HEAD
+    private function parseErrorIsUnterminatedComment(\PhpParser\Error $e, $code): bool
+=======
     private function parseErrorIsUnterminatedComment(\PhpParser\Error $e, $code)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $e->getRawMessage() === 'Unterminated comment';
     }
 
+<<<<<<< HEAD
+    private function parseErrorIsTrailingComma(\PhpParser\Error $e, $code): bool
+=======
     private function parseErrorIsTrailingComma(\PhpParser\Error $e, $code)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return ($e->getRawMessage() === 'A trailing comma is not allowed here') && (\substr(\rtrim($code), -1) === ',');
     }

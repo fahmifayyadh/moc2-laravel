@@ -21,9 +21,12 @@ class Swift_Events_SimpleEventDispatcher implements Swift_Events_EventDispatcher
     /** Event listeners bound to this dispatcher */
     private $listeners = [];
 
+<<<<<<< HEAD
+=======
     /** Listeners queued to have an Event bubbled up the stack to them */
     private $bubbleQueue = [];
 
+>>>>>>> parent of 31cfa1b1 (p)
     /**
      * Create a new EventDispatcher.
      */
@@ -115,13 +118,38 @@ class Swift_Events_SimpleEventDispatcher implements Swift_Events_EventDispatcher
      */
     public function dispatchEvent(Swift_Events_EventObject $evt, $target)
     {
+<<<<<<< HEAD
+        $bubbleQueue = $this->prepareBubbleQueue($evt);
+        $this->bubble($bubbleQueue, $evt, $target);
+=======
         $this->prepareBubbleQueue($evt);
         $this->bubble($evt, $target);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /** Queue listeners on a stack ready for $evt to be bubbled up it */
     private function prepareBubbleQueue(Swift_Events_EventObject $evt)
     {
+<<<<<<< HEAD
+        $bubbleQueue = [];
+        $evtClass = \get_class($evt);
+        foreach ($this->listeners as $listener) {
+            if (\array_key_exists($evtClass, $this->eventMap)
+                && ($listener instanceof $this->eventMap[$evtClass])) {
+                $bubbleQueue[] = $listener;
+            }
+        }
+
+        return $bubbleQueue;
+    }
+
+    /** Bubble $evt up the stack calling $target() on each listener */
+    private function bubble(array &$bubbleQueue, Swift_Events_EventObject $evt, $target)
+    {
+        if (!$evt->bubbleCancelled() && $listener = array_shift($bubbleQueue)) {
+            $listener->$target($evt);
+            $this->bubble($bubbleQueue, $evt, $target);
+=======
         $this->bubbleQueue = [];
         $evtClass = get_class($evt);
         foreach ($this->listeners as $listener) {
@@ -138,6 +166,7 @@ class Swift_Events_SimpleEventDispatcher implements Swift_Events_EventDispatcher
         if (!$evt->bubbleCancelled() && $listener = array_shift($this->bubbleQueue)) {
             $listener->$target($evt);
             $this->bubble($evt, $target);
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 }

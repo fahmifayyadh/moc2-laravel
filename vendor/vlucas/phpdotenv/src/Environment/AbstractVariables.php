@@ -4,6 +4,10 @@ namespace Dotenv\Environment;
 
 use Dotenv\Environment\Adapter\ArrayAdapter;
 use InvalidArgumentException;
+<<<<<<< HEAD
+use ReturnTypeWillChange;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * This is the abstract variables implementation.
@@ -159,6 +163,10 @@ abstract class AbstractVariables implements VariablesInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    #[ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetExists($offset)
     {
         return $this->has($offset);
@@ -167,6 +175,10 @@ abstract class AbstractVariables implements VariablesInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    #[ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetGet($offset)
     {
         return $this->get($offset);
@@ -175,6 +187,10 @@ abstract class AbstractVariables implements VariablesInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    #[ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetSet($offset, $value)
     {
         $this->set($offset, $value);
@@ -183,6 +199,10 @@ abstract class AbstractVariables implements VariablesInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    #[ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetUnset($offset)
     {
         $this->clear($offset);

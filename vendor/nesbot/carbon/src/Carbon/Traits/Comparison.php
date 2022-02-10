@@ -8,6 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Traits;
 
 use BadMethodCallException;
@@ -31,6 +35,15 @@ use InvalidArgumentException;
  */
 trait Comparison
 {
+<<<<<<< HEAD
+    /** @var bool */
+    protected $endOfTime = false;
+
+    /** @var bool */
+    protected $startOfTime = false;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     /**
      * Determines if the instance is equal to another
      *
@@ -68,7 +81,11 @@ trait Comparison
      */
     public function equalTo($date): bool
     {
+<<<<<<< HEAD
+        return $this == $this->resolveCarbon($date);
+=======
         return $this == $date;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -148,7 +165,11 @@ trait Comparison
      */
     public function greaterThan($date): bool
     {
+<<<<<<< HEAD
+        return $this > $this->resolveCarbon($date);
+=======
         return $this > $date;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -249,7 +270,11 @@ trait Comparison
      */
     public function lessThan($date): bool
     {
+<<<<<<< HEAD
+        return $this < $this->resolveCarbon($date);
+=======
         return $this < $date;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -441,7 +466,11 @@ trait Comparison
      */
     public function isWeekend()
     {
+<<<<<<< HEAD
+        return \in_array($this->dayOfWeek, static::$weekendDays);
+=======
         return in_array($this->dayOfWeek, static::$weekendDays);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -616,7 +645,11 @@ trait Comparison
 
         if (!isset($units[$unit])) {
             if (isset($this->$unit)) {
+<<<<<<< HEAD
+                return $this->resolveCarbon($date)->$unit === $this->$unit;
+=======
                 return $this->$unit === $this->resolveCarbon($date)->$unit;
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             if ($this->localStrictModeEnabled ?? static::isStrictModeEnabled()) {
@@ -710,8 +743,13 @@ trait Comparison
      */
     public function isDayOfWeek($dayOfWeek)
     {
+<<<<<<< HEAD
+        if (\is_string($dayOfWeek) && \defined($constant = static::class.'::'.strtoupper($dayOfWeek))) {
+            $dayOfWeek = \constant($constant);
+=======
         if (is_string($dayOfWeek) && defined($constant = static::class.'::'.strtoupper($dayOfWeek))) {
             $dayOfWeek = constant($constant);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this->dayOfWeek === $dayOfWeek;
@@ -943,7 +981,11 @@ trait Comparison
         $tester = trim($tester);
 
         if (preg_match('/^\d+$/', $tester)) {
+<<<<<<< HEAD
+            return $this->year === (int) $tester;
+=======
             return $this->year === intval($tester);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (preg_match('/^\d{3,}-\d{1,2}$/', $tester)) {
@@ -958,9 +1000,15 @@ trait Comparison
 
         /* @var CarbonInterface $max */
         $median = static::parse('5555-06-15 12:30:30.555555')->modify($modifier);
+<<<<<<< HEAD
+        $current = $this->avoidMutation();
+        /* @var CarbonInterface $other */
+        $other = $this->avoidMutation()->modify($modifier);
+=======
         $current = $this->copy();
         /* @var CarbonInterface $other */
         $other = $this->copy()->modify($modifier);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($current->eq($other)) {
             return true;
@@ -995,7 +1043,11 @@ trait Comparison
         ];
 
         foreach ($units as $unit => [$minimum, $startUnit]) {
+<<<<<<< HEAD
+            if ($minimum === $median->$unit) {
+=======
             if ($median->$unit === $minimum) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $current = $current->startOf($startUnit);
 
                 break;
@@ -1040,4 +1092,27 @@ trait Comparison
 
         return (bool) @preg_match('/^'.$regex.'$/', $date);
     }
+<<<<<<< HEAD
+
+    /**
+     * Returns true if the date was created using CarbonImmutable::startOfTime()
+     *
+     * @return bool
+     */
+    public function isStartOfTime(): bool
+    {
+        return $this->startOfTime ?? false;
+    }
+
+    /**
+     * Returns true if the date was created using CarbonImmutable::endOfTime()
+     *
+     * @return bool
+     */
+    public function isEndOfTime(): bool
+    {
+        return $this->endOfTime ?? false;
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

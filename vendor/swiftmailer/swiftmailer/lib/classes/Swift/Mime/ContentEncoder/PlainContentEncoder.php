@@ -37,7 +37,11 @@ class Swift_Mime_ContentEncoder_PlainContentEncoder implements Swift_Mime_Conten
      * Creates a new PlainContentEncoder with $name (probably 7bit or 8bit).
      *
      * @param string $name
+<<<<<<< HEAD
+     * @param bool   $canonical if canonicalization transformation should be done
+=======
      * @param bool   $canonical If canonicalization transformation should be done.
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct($name, $canonical = false)
     {
@@ -84,7 +88,11 @@ class Swift_Mime_ContentEncoder_PlainContentEncoder implements Swift_Mime_Conten
 
             $is->write($wrapped);
         }
+<<<<<<< HEAD
+        if (\strlen($leftOver)) {
+=======
         if (strlen($leftOver)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $is->write($leftOver);
         }
     }
@@ -134,8 +142,13 @@ class Swift_Mime_ContentEncoder_PlainContentEncoder implements Swift_Mime_Conten
             $chunks = preg_split('/(?<=\s)/', $originalLine);
 
             foreach ($chunks as $chunk) {
+<<<<<<< HEAD
+                if (0 != \strlen($currentLine)
+                    && \strlen($currentLine.$chunk) > $length) {
+=======
                 if (0 != strlen($currentLine)
                     && strlen($currentLine.$chunk) > $length) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $lines[] = '';
                     $currentLine = &$lines[$lineCount++];
                 }

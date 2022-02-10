@@ -18,6 +18,14 @@ namespace Monolog\Handler;
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  * @author Christophe Coevoet <stof@notk.org>
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type LevelName from \Monolog\Logger
+ * @phpstan-import-type Level from \Monolog\Logger
+ * @phpstan-import-type Record from \Monolog\Logger
+ * @phpstan-type FormattedRecord array{message: string, context: mixed[], level: Level, level_name: LevelName, channel: string, datetime: \DateTimeImmutable, extra: mixed[], formatted: mixed}
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 abstract class AbstractProcessingHandler extends AbstractHandler implements ProcessableHandlerInterface, FormattableHandlerInterface
 {
@@ -25,7 +33,11 @@ abstract class AbstractProcessingHandler extends AbstractHandler implements Proc
     use FormattableHandlerTrait;
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function handle(array $record): bool
     {
@@ -34,6 +46,10 @@ abstract class AbstractProcessingHandler extends AbstractHandler implements Proc
         }
 
         if ($this->processors) {
+<<<<<<< HEAD
+            /** @var Record $record */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             $record = $this->processRecord($record);
         }
 
@@ -46,9 +62,20 @@ abstract class AbstractProcessingHandler extends AbstractHandler implements Proc
 
     /**
      * Writes the record down to the log of the implementing handler
+<<<<<<< HEAD
+     *
+     * @phpstan-param FormattedRecord $record
      */
     abstract protected function write(array $record): void;
 
+    /**
+     * @return void
+     */
+=======
+     */
+    abstract protected function write(array $record): void;
+
+>>>>>>> parent of 31cfa1b1 (p)
     public function reset()
     {
         parent::reset();

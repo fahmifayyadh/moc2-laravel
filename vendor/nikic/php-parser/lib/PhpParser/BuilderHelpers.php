@@ -2,13 +2,20 @@
 
 namespace PhpParser;
 
+<<<<<<< HEAD
+use PhpParser\Node\ComplexType;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\NullableType;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+<<<<<<< HEAD
+=======
 use PhpParser\Node\UnionType;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * This class defines helpers used in the implementation of builders. Don't use it directly.
@@ -27,7 +34,13 @@ final class BuilderHelpers
     public static function normalizeNode($node) : Node {
         if ($node instanceof Builder) {
             return $node->getNode();
+<<<<<<< HEAD
+        }
+
+        if ($node instanceof Node) {
+=======
         } elseif ($node instanceof Node) {
+>>>>>>> parent of 31cfa1b1 (p)
             return $node;
         }
 
@@ -102,7 +115,31 @@ final class BuilderHelpers
      * @return Name The normalized name
      */
     public static function normalizeName($name) : Name {
+<<<<<<< HEAD
+        if ($name instanceof Name) {
+            return $name;
+        }
+
+        if (is_string($name)) {
+            if (!$name) {
+                throw new \LogicException('Name cannot be empty');
+            }
+
+            if ($name[0] === '\\') {
+                return new Name\FullyQualified(substr($name, 1));
+            }
+
+            if (0 === strpos($name, 'namespace\\')) {
+                return new Name\Relative(substr($name, strlen('namespace\\')));
+            }
+
+            return new Name($name);
+        }
+
+        throw new \LogicException('Name must be a string or an instance of Node\Name');
+=======
         return self::normalizeNameCommon($name, false);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -113,6 +150,19 @@ final class BuilderHelpers
      * @return Name|Expr The normalized name or expression
      */
     public static function normalizeNameOrExpr($name) {
+<<<<<<< HEAD
+        if ($name instanceof Expr) {
+            return $name;
+        }
+
+        if (!is_string($name) && !($name instanceof Name)) {
+            throw new \LogicException(
+                'Name must be a string or an instance of Node\Name or Node\Expr'
+            );
+        }
+
+        return self::normalizeName($name);
+=======
         return self::normalizeNameCommon($name, true);
     }
 
@@ -151,6 +201,7 @@ final class BuilderHelpers
         } else {
             throw new \LogicException('Name must be a string or an instance of Node\Name');
         }
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -159,18 +210,31 @@ final class BuilderHelpers
      * In particular, builtin types become Identifiers, custom types become Names and nullables
      * are wrapped in NullableType nodes.
      *
+<<<<<<< HEAD
+     * @param string|Name|Identifier|ComplexType $type The type to normalize
+     *
+     * @return Name|Identifier|ComplexType The normalized type
+=======
      * @param string|Name|Identifier|NullableType|UnionType $type The type to normalize
      *
      * @return Name|Identifier|NullableType|UnionType The normalized type
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public static function normalizeType($type) {
         if (!is_string($type)) {
             if (
                 !$type instanceof Name && !$type instanceof Identifier &&
+<<<<<<< HEAD
+                !$type instanceof ComplexType
+            ) {
+                throw new \LogicException(
+                    'Type must be a string, or an instance of Name, Identifier or ComplexType'
+=======
                 !$type instanceof NullableType && !$type instanceof UnionType
             ) {
                 throw new \LogicException(
                     'Type must be a string, or an instance of Name, Identifier, NullableType or UnionType'
+>>>>>>> parent of 31cfa1b1 (p)
                 );
             }
             return $type;
@@ -183,7 +247,11 @@ final class BuilderHelpers
         }
 
         $builtinTypes = [
+<<<<<<< HEAD
+            'array', 'callable', 'string', 'int', 'float', 'bool', 'iterable', 'void', 'object', 'mixed', 'never',
+=======
             'array', 'callable', 'string', 'int', 'float', 'bool', 'iterable', 'void', 'object', 'mixed'
+>>>>>>> parent of 31cfa1b1 (p)
         ];
 
         $lowerType = strtolower($type);
@@ -193,12 +261,20 @@ final class BuilderHelpers
             $type = self::normalizeName($type);
         }
 
+<<<<<<< HEAD
+        $notNullableTypes = [
+            'void', 'mixed', 'never',
+        ];
+        if ($nullable && in_array((string) $type, $notNullableTypes)) {
+            throw new \LogicException(sprintf('%s type cannot be nullable', $type));
+=======
         if ($nullable && (string) $type === 'void') {
             throw new \LogicException('void type cannot be nullable');
         }
 
         if ($nullable && (string) $type === 'mixed') {
             throw new \LogicException('mixed type cannot be nullable');
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $nullable ? new NullableType($type) : $type;
@@ -215,6 +291,35 @@ final class BuilderHelpers
     public static function normalizeValue($value) : Expr {
         if ($value instanceof Node\Expr) {
             return $value;
+<<<<<<< HEAD
+        }
+
+        if (is_null($value)) {
+            return new Expr\ConstFetch(
+                new Name('null')
+            );
+        }
+
+        if (is_bool($value)) {
+            return new Expr\ConstFetch(
+                new Name($value ? 'true' : 'false')
+            );
+        }
+
+        if (is_int($value)) {
+            return new Scalar\LNumber($value);
+        }
+
+        if (is_float($value)) {
+            return new Scalar\DNumber($value);
+        }
+
+        if (is_string($value)) {
+            return new Scalar\String_($value);
+        }
+
+        if (is_array($value)) {
+=======
         } elseif (is_null($value)) {
             return new Expr\ConstFetch(
                 new Name('null')
@@ -230,6 +335,7 @@ final class BuilderHelpers
         } elseif (is_string($value)) {
             return new Scalar\String_($value);
         } elseif (is_array($value)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $items = [];
             $lastKey = -1;
             foreach ($value as $itemKey => $itemValue) {
@@ -248,9 +354,15 @@ final class BuilderHelpers
             }
 
             return new Expr\Array_($items);
+<<<<<<< HEAD
+        }
+
+        throw new \LogicException('Invalid value');
+=======
         } else {
             throw new \LogicException('Invalid value');
         }
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -263,11 +375,41 @@ final class BuilderHelpers
     public static function normalizeDocComment($docComment) : Comment\Doc {
         if ($docComment instanceof Comment\Doc) {
             return $docComment;
+<<<<<<< HEAD
+        }
+
+        if (is_string($docComment)) {
+            return new Comment\Doc($docComment);
+        }
+
+        throw new \LogicException('Doc comment must be a string or an instance of PhpParser\Comment\Doc');
+    }
+
+    /**
+     * Normalizes a attribute: Converts attribute to the Attribute Group if needed.
+     *
+     * @param Node\Attribute|Node\AttributeGroup $attribute
+     *
+     * @return Node\AttributeGroup The Attribute Group
+     */
+    public static function normalizeAttribute($attribute) : Node\AttributeGroup
+    {
+        if ($attribute instanceof Node\AttributeGroup) {
+            return $attribute;
+        }
+
+        if (!($attribute instanceof Node\Attribute)) {
+            throw new \LogicException('Attribute must be an instance of PhpParser\Node\Attribute or PhpParser\Node\AttributeGroup');
+        }
+
+        return new Node\AttributeGroup([$attribute]);
+=======
         } elseif (is_string($docComment)) {
             return new Comment\Doc($docComment);
         } else {
             throw new \LogicException('Doc comment must be a string or an instance of PhpParser\Comment\Doc');
         }
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

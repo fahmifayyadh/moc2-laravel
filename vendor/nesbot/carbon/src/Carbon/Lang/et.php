@@ -31,6 +31,25 @@
  * - João Magalhães
  * - Ingmar
  * - Illimar Tambek
+<<<<<<< HEAD
+ * - Mihkel
+ */
+return [
+    'year' => ':count aasta|:count aastat',
+    'y' => ':count a',
+    'month' => ':count kuu|:count kuud',
+    'm' => ':count k',
+    'week' => ':count nädal|:count nädalat',
+    'w' => ':count näd',
+    'day' => ':count päev|:count päeva',
+    'd' => ':count p',
+    'hour' => ':count tund|:count tundi',
+    'h' => ':count t',
+    'minute' => ':count minut|:count minutit',
+    'min' => ':count min',
+    'second' => ':count sekund|:count sekundit',
+    's' => ':count s',
+=======
  */
 return [
     'year' => ':count aasta|:count aastat',
@@ -47,6 +66,7 @@ return [
     'min' => ':count minut|:count minutit',
     'second' => ':count sekund|:count sekundit',
     's' => ':count sekund|:count sekundit',
+>>>>>>> parent of 31cfa1b1 (p)
     'ago' => ':time tagasi',
     'from_now' => ':time pärast',
     'after' => ':time pärast',

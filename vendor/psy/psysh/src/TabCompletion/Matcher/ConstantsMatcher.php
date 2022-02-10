@@ -23,7 +23,11 @@ class ConstantsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function getMatches(array $tokens, array $info = []): array
+=======
     public function getMatches(array $tokens, array $info = [])
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $const = $this->getInput($tokens);
 
@@ -35,9 +39,15 @@ class ConstantsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    public function hasMatched(array $tokens): bool
+    {
+        $token = \array_pop($tokens);
+=======
     public function hasMatched(array $tokens)
     {
         $token     = \array_pop($tokens);
+>>>>>>> parent of 31cfa1b1 (p)
         $prevToken = \array_pop($tokens);
 
         switch (true) {

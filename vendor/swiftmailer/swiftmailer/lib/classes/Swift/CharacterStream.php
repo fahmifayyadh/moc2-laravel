@@ -28,8 +28,11 @@ interface Swift_CharacterStream
 
     /**
      * Set the CharacterReaderFactory for multi charset support.
+<<<<<<< HEAD
+=======
      *
      * @param Swift_CharacterReaderFactory $factory
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setCharacterReaderFactory(Swift_CharacterReaderFactory $factory);
 

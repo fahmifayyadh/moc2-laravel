@@ -17,7 +17,11 @@ class MergeConflictSolutionProvider implements HasSolutionsForThrowable
             return false;
         }
 
+<<<<<<< HEAD
+        if (! $this->hasMergeConflictExceptionMessage($throwable)) {
+=======
         if (! Str::startsWith($throwable->getMessage(), 'syntax error, unexpected \'<<\'')) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
@@ -58,4 +62,22 @@ class MergeConflictSolutionProvider implements HasSolutionsForThrowable
 
         return $branch;
     }
+<<<<<<< HEAD
+
+    protected function hasMergeConflictExceptionMessage(Throwable $throwable): bool
+    {
+        // For PHP 7.x and below
+        if (Str::startsWith($throwable->getMessage(), 'syntax error, unexpected \'<<\'')) {
+            return true;
+        }
+
+        // For PHP 8+
+        if (Str::startsWith($throwable->getMessage(), 'syntax error, unexpected token "<<"')) {
+            return true;
+        }
+
+        return false;
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

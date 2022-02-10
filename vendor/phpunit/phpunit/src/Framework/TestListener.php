@@ -9,6 +9,38 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
+use Throwable;
+
+/**
+ * This interface, as well as the associated mechanism for extending PHPUnit,
+ * will be removed in PHPUnit 10. There is no alternative available in this
+ * version of PHPUnit.
+ *
+ * @deprecated
+ * @see https://github.com/sebastianbergmann/phpunit/issues/4676
+ */
+interface TestListener
+{
+    public function addError(Test $test, Throwable $t, float $time): void;
+
+    public function addWarning(Test $test, Warning $e, float $time): void;
+
+    public function addFailure(Test $test, AssertionFailedError $e, float $time): void;
+
+    public function addIncompleteTest(Test $test, Throwable $t, float $time): void;
+
+    public function addRiskyTest(Test $test, Throwable $t, float $time): void;
+
+    public function addSkippedTest(Test $test, Throwable $t, float $time): void;
+
+    public function startTestSuite(TestSuite $suite): void;
+
+    public function endTestSuite(TestSuite $suite): void;
+
+    public function startTest(Test $test): void;
+
+=======
 /**
  * @deprecated Use the `TestHook` interfaces instead
  */
@@ -78,5 +110,6 @@ interface TestListener
      *
      * @deprecated Use `AfterTestHook::executeAfterTest` instead
      */
+>>>>>>> parent of 31cfa1b1 (p)
     public function endTest(Test $test, float $time): void;
 }

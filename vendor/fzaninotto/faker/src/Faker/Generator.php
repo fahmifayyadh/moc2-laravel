@@ -289,4 +289,12 @@ class Generator
     {
         $this->seed();
     }
+<<<<<<< HEAD
+
+    public function __wakeup()
+    {
+        $this->formatters = [];
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

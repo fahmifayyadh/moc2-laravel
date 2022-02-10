@@ -44,7 +44,11 @@ class Context
      *
      * @return mixed
      */
+<<<<<<< HEAD
+    public function get(string $name)
+=======
     public function get($name)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         switch ($name) {
             case '_':
@@ -87,7 +91,11 @@ class Context
                 break;
         }
 
+<<<<<<< HEAD
+        throw new \InvalidArgumentException('Unknown variable: $'.$name);
+=======
         throw new \InvalidArgumentException('Unknown variable: $' . $name);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -95,7 +103,11 @@ class Context
      *
      * @return array
      */
+<<<<<<< HEAD
+    public function getAll(): array
+=======
     public function getAll()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \array_merge($this->scopeVariables, $this->getSpecialVariables());
     }
@@ -105,7 +117,11 @@ class Context
      *
      * @return array
      */
+<<<<<<< HEAD
+    public function getSpecialVariables(): array
+=======
     public function getSpecialVariables()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $vars = [
             '_' => $this->returnValue,
@@ -198,7 +214,11 @@ class Context
      *
      * @param string $lastStdout
      */
+<<<<<<< HEAD
+    public function setLastStdout(string $lastStdout)
+=======
     public function setLastStdout($lastStdout)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->lastStdout = $lastStdout;
     }
@@ -288,7 +308,11 @@ class Context
      *
      * @return array
      */
+<<<<<<< HEAD
+    public function getCommandScopeVariables(): array
+=======
     public function getCommandScopeVariables()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->commandScopeVariables;
     }
@@ -301,7 +325,11 @@ class Context
      *
      * @return array Array of unused variable names
      */
+<<<<<<< HEAD
+    public function getUnusedCommandScopeVariableNames(): array
+=======
     public function getUnusedCommandScopeVariableNames()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \array_diff(self::$commandScopeNames, \array_keys($this->commandScopeVariables));
     }
@@ -313,7 +341,11 @@ class Context
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public static function isSpecialVariableName(string $name): bool
+=======
     public static function isSpecialVariableName($name)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \in_array($name, self::$specialNames) || \in_array($name, self::$commandScopeNames);
     }

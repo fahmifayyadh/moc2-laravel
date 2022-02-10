@@ -26,9 +26,15 @@ use Psy\Util\Mirror;
  */
 abstract class ReflectingCommand extends Command implements ContextAware
 {
+<<<<<<< HEAD
+    const CLASS_OR_FUNC = '/^[\\\\\w]+$/';
+    const CLASS_MEMBER = '/^([\\\\\w]+)::(\w+)$/';
+    const CLASS_STATIC = '/^([\\\\\w]+)::\$(\w+)$/';
+=======
     const CLASS_OR_FUNC   = '/^[\\\\\w]+$/';
     const CLASS_MEMBER    = '/^([\\\\\w]+)::(\w+)$/';
     const CLASS_STATIC    = '/^([\\\\\w]+)::\$(\w+)$/';
+>>>>>>> parent of 31cfa1b1 (p)
     const INSTANCE_MEMBER = '/^(\$\w+)(::|->)(\w+)$/';
 
     /**
@@ -57,10 +63,17 @@ abstract class ReflectingCommand extends Command implements ContextAware
      *
      * @return array (class or instance name, member name, kind)
      */
+<<<<<<< HEAD
+    protected function getTarget(string $valueName): array
+    {
+        $valueName = \trim($valueName);
+        $matches = [];
+=======
     protected function getTarget($valueName)
     {
         $valueName = \trim($valueName);
         $matches   = [];
+>>>>>>> parent of 31cfa1b1 (p)
         switch (true) {
             case \preg_match(self::CLASS_OR_FUNC, $valueName, $matches):
                 return [$this->resolveName($matches[0], true), null, 0];
@@ -95,7 +108,11 @@ abstract class ReflectingCommand extends Command implements ContextAware
      *
      * @return string
      */
+<<<<<<< HEAD
+    protected function resolveName(string $name, bool $includeFunctions = false): string
+=======
     protected function resolveName($name, $includeFunctions = false)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $shell = $this->getApplication();
 
@@ -110,7 +127,11 @@ abstract class ReflectingCommand extends Command implements ContextAware
             }
 
             $msg = \sprintf('Cannot use "%s" when no class scope is active', \strtolower($name));
+<<<<<<< HEAD
+            throw new ErrorException($msg, 0, \E_USER_ERROR, "eval()'d code", 1);
+=======
             throw new ErrorException($msg, 0, E_USER_ERROR, "eval()'d code", 1);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (\substr($name, 0, 1) === '\\') {
@@ -120,17 +141,25 @@ abstract class ReflectingCommand extends Command implements ContextAware
         // Check $name against the current namespace and use statements.
         if (self::couldBeClassName($name)) {
             try {
+<<<<<<< HEAD
+                $name = $this->resolveCode($name.'::class');
+=======
                 $maybeAlias = $this->resolveCode($name . '::class');
                 if ($maybeAlias !== $name) {
                     return $maybeAlias;
                 }
+>>>>>>> parent of 31cfa1b1 (p)
             } catch (RuntimeException $e) {
                 // /shrug
             }
         }
 
         if ($namespace = $shell->getNamespace()) {
+<<<<<<< HEAD
+            $fullName = $namespace.'\\'.$name;
+=======
             $fullName = $namespace . '\\' . $name;
+>>>>>>> parent of 31cfa1b1 (p)
 
             if (\class_exists($fullName) || \interface_exists($fullName) || ($includeFunctions && \function_exists($fullName))) {
                 return $fullName;
@@ -143,10 +172,17 @@ abstract class ReflectingCommand extends Command implements ContextAware
     /**
      * Check whether a given name could be a class name.
      */
+<<<<<<< HEAD
+    protected function couldBeClassName(string $name): bool
+    {
+        // Regex based on https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class
+        return \preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*(\\\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*)*$/', $name) === 1;
+=======
     protected function couldBeClassName($name)
     {
         // Regex based on https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class
         return \preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*(\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*)*$/', $name);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -156,7 +192,11 @@ abstract class ReflectingCommand extends Command implements ContextAware
      *
      * @return array (value, Reflector)
      */
+<<<<<<< HEAD
+    protected function getTargetAndReflector(string $valueName): array
+=======
     protected function getTargetAndReflector($valueName)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         list($value, $member, $kind) = $this->getTarget($valueName);
 
@@ -172,16 +212,28 @@ abstract class ReflectingCommand extends Command implements ContextAware
      *
      * @return mixed Variable value
      */
+<<<<<<< HEAD
+    protected function resolveCode(string $code)
+    {
+        try {
+            $value = $this->getApplication()->execute($code, true);
+        } catch (\Throwable $e) {
+=======
     protected function resolveCode($code)
     {
         try {
             $value = $this->getApplication()->execute($code, true);
         } catch (\Exception $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             // Swallow all exceptions?
         }
 
         if (!isset($value) || $value instanceof NoReturnValue) {
+<<<<<<< HEAD
+            throw new RuntimeException('Unknown target: '.$code);
+=======
             throw new RuntimeException('Unknown target: ' . $code);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $value;
@@ -196,7 +248,11 @@ abstract class ReflectingCommand extends Command implements ContextAware
      *
      * @return object Variable instance
      */
+<<<<<<< HEAD
+    private function resolveObject(string $code)
+=======
     private function resolveObject($code)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $value = $this->resolveCode($code);
 
@@ -214,9 +270,15 @@ abstract class ReflectingCommand extends Command implements ContextAware
      *
      * @return mixed Variable instance
      */
+<<<<<<< HEAD
+    protected function resolveInstance(string $name)
+    {
+        @\trigger_error('`resolveInstance` is deprecated; use `resolveCode` instead.', \E_USER_DEPRECATED);
+=======
     protected function resolveInstance($name)
     {
         @\trigger_error('`resolveInstance` is deprecated; use `resolveCode` instead.', E_USER_DEPRECATED);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $this->resolveCode($name);
     }
@@ -228,7 +290,11 @@ abstract class ReflectingCommand extends Command implements ContextAware
      *
      * @return mixed
      */
+<<<<<<< HEAD
+    protected function getScopeVariable(string $name)
+=======
     protected function getScopeVariable($name)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->context->get($name);
     }
@@ -238,7 +304,11 @@ abstract class ReflectingCommand extends Command implements ContextAware
      *
      * @return array
      */
+<<<<<<< HEAD
+    protected function getScopeVariables(): array
+=======
     protected function getScopeVariables()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->context->getAll();
     }
@@ -288,7 +358,11 @@ abstract class ReflectingCommand extends Command implements ContextAware
                 if ($fileName = $reflector->getExecutingFile()) {
                     $vars['__file'] = $fileName;
                     $vars['__line'] = $reflector->getExecutingLine();
+<<<<<<< HEAD
+                    $vars['__dir'] = \dirname($fileName);
+=======
                     $vars['__dir']  = \dirname($fileName);
+>>>>>>> parent of 31cfa1b1 (p)
                 }
                 break;
 
@@ -303,7 +377,11 @@ abstract class ReflectingCommand extends Command implements ContextAware
                 // no line for these, but this'll do
                 if ($fileName = $reflector->getDeclaringClass()->getFileName()) {
                     $vars['__file'] = $fileName;
+<<<<<<< HEAD
+                    $vars['__dir'] = \dirname($fileName);
+=======
                     $vars['__dir']  = \dirname($fileName);
+>>>>>>> parent of 31cfa1b1 (p)
                 }
                 break;
 
@@ -318,7 +396,11 @@ abstract class ReflectingCommand extends Command implements ContextAware
             if ($fileName = $reflector->getFileName()) {
                 $vars['__file'] = $fileName;
                 $vars['__line'] = $reflector->getStartLine();
+<<<<<<< HEAD
+                $vars['__dir'] = \dirname($fileName);
+=======
                 $vars['__dir']  = \dirname($fileName);
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 

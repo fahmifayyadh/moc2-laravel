@@ -38,6 +38,10 @@ final class Php73
             return \PHP_INT_SIZE === 4 ? $ns : (int) $ns;
         }
 
+<<<<<<< HEAD
+        return [$s, (int) $ns];
+=======
         return array($s, (int) $ns);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

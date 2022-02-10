@@ -9,6 +9,15 @@
  */
 namespace PHPUnit\Util;
 
+<<<<<<< HEAD
+use const DIRECTORY_SEPARATOR;
+use function class_exists;
+use function defined;
+use function dirname;
+use function strpos;
+use function sys_get_temp_dir;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Composer\Autoload\ClassLoader;
 use DeepCopy\DeepCopy;
 use Doctrine\Instantiator\Instantiator;
@@ -20,6 +29,11 @@ use phpDocumentor\Reflection\Project;
 use phpDocumentor\Reflection\Type;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophet;
+<<<<<<< HEAD
+use ReflectionClass;
+use ReflectionException;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeUnitReverseLookup\Wizard;
 use SebastianBergmann\Comparator\Comparator;
@@ -158,14 +172,22 @@ final class Blacklist
      */
     public function isBlacklisted(string $file): bool
     {
+<<<<<<< HEAD
+        if (defined('PHPUNIT_TESTSUITE')) {
+=======
         if (\defined('PHPUNIT_TESTSUITE')) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
         $this->initialize();
 
         foreach (self::$directories as $directory) {
+<<<<<<< HEAD
+            if (strpos($file, $directory) === 0) {
+=======
             if (\strpos($file, $directory) === 0) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return true;
             }
         }
@@ -182,14 +204,24 @@ final class Blacklist
             self::$directories = [];
 
             foreach (self::$blacklistedClassNames as $className => $parent) {
+<<<<<<< HEAD
+                if (!class_exists($className)) {
+=======
                 if (!\class_exists($className)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     continue;
                 }
 
                 try {
+<<<<<<< HEAD
+                    $directory = (new ReflectionClass($className))->getFileName();
+                    // @codeCoverageIgnoreStart
+                } catch (ReflectionException $e) {
+=======
                     $directory = (new \ReflectionClass($className))->getFileName();
                     // @codeCoverageIgnoreStart
                 } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                     throw new Exception(
                         $e->getMessage(),
                         (int) $e->getCode(),
@@ -199,17 +231,28 @@ final class Blacklist
                 // @codeCoverageIgnoreEnd
 
                 for ($i = 0; $i < $parent; $i++) {
+<<<<<<< HEAD
+                    $directory = dirname($directory);
+=======
                     $directory = \dirname($directory);
+>>>>>>> parent of 31cfa1b1 (p)
                 }
 
                 self::$directories[] = $directory;
             }
 
             // Hide process isolation workaround on Windows.
+<<<<<<< HEAD
+            if (DIRECTORY_SEPARATOR === '\\') {
+                // tempnam() prefix is limited to first 3 chars.
+                // @see https://php.net/manual/en/function.tempnam.php
+                self::$directories[] = sys_get_temp_dir() . '\\PHP';
+=======
             if (\DIRECTORY_SEPARATOR === '\\') {
                 // tempnam() prefix is limited to first 3 chars.
                 // @see https://php.net/manual/en/function.tempnam.php
                 self::$directories[] = \sys_get_temp_dir() . '\\PHP';
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
     }

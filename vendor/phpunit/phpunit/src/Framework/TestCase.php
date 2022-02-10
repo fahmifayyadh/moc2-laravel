@@ -9,11 +9,70 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
+use const LC_ALL;
+use const LC_COLLATE;
+use const LC_CTYPE;
+use const LC_MESSAGES;
+use const LC_MONETARY;
+use const LC_NUMERIC;
+use const LC_TIME;
+use const PATHINFO_FILENAME;
+use const PHP_EOL;
+use const PHP_URL_PATH;
+use function array_filter;
+use function array_flip;
+use function array_keys;
+use function array_merge;
+use function array_unique;
+use function array_values;
+use function assert;
+use function basename;
+use function call_user_func;
+use function chdir;
+use function class_exists;
+use function clearstatcache;
+use function count;
+use function defined;
+use function explode;
+use function get_class;
+use function get_include_path;
+use function getcwd;
+use function implode;
+use function in_array;
+use function ini_set;
+use function is_array;
+use function is_int;
+use function is_object;
+use function is_string;
+use function libxml_clear_errors;
+use function method_exists;
+use function ob_end_clean;
+use function ob_get_contents;
+use function ob_get_level;
+use function ob_start;
+use function parse_url;
+use function pathinfo;
+use function preg_replace;
+use function serialize;
+use function setlocale;
+use function sprintf;
+use function strlen;
+use function strpos;
+use function substr;
+use function trim;
+use function var_export;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use DeepCopy\DeepCopy;
 use PHPUnit\Framework\Constraint\Exception as ExceptionConstraint;
 use PHPUnit\Framework\Constraint\ExceptionCode;
 use PHPUnit\Framework\Constraint\ExceptionMessage;
 use PHPUnit\Framework\Constraint\ExceptionMessageRegularExpression;
+<<<<<<< HEAD
+use PHPUnit\Framework\Constraint\LogicalOr;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Error\Deprecated;
 use PHPUnit\Framework\Error\Error;
 use PHPUnit\Framework\Error\Notice;
@@ -46,6 +105,11 @@ use Prophecy\Exception\Prediction\PredictionException;
 use Prophecy\Prophecy\MethodProphecy;
 use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Prophet;
+<<<<<<< HEAD
+use ReflectionClass;
+use ReflectionException;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use SebastianBergmann\Comparator\Comparator;
 use SebastianBergmann\Comparator\Factory as ComparatorFactory;
 use SebastianBergmann\Diff\Differ;
@@ -54,10 +118,19 @@ use SebastianBergmann\GlobalState\Blacklist;
 use SebastianBergmann\GlobalState\Restorer;
 use SebastianBergmann\GlobalState\Snapshot;
 use SebastianBergmann\ObjectEnumerator\Enumerator;
+<<<<<<< HEAD
+use Text_Template;
+use Throwable;
+
+abstract class TestCase extends Assert implements SelfDescribing, Test
+{
+    private const LOCALE_CATEGORIES = [LC_ALL, LC_COLLATE, LC_CTYPE, LC_MONETARY, LC_NUMERIC, LC_TIME];
+=======
 
 abstract class TestCase extends Assert implements SelfDescribing, Test
 {
     private const LOCALE_CATEGORIES = [\LC_ALL, \LC_COLLATE, \LC_CTYPE, \LC_MONETARY, \LC_NUMERIC, \LC_TIME];
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var ?bool
@@ -375,7 +448,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         return new ReturnSelfStub;
     }
 
+<<<<<<< HEAD
+    public static function throwException(Throwable $exception): ExceptionStub
+=======
     public static function throwException(\Throwable $exception): ExceptionStub
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return new ExceptionStub($exception);
     }
@@ -423,6 +500,27 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
+<<<<<<< HEAD
+     * Performs assertions shared by all tests of a test case.
+     *
+     * This method is called between setUp() and test.
+     */
+    protected function assertPreConditions(): void
+    {
+    }
+
+    /**
+     * Performs assertions shared by all tests of a test case.
+     *
+     * This method is called between test and tearDown().
+     */
+    protected function assertPostConditions(): void
+    {
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * This method is called after each test.
      */
     protected function tearDown(): void
@@ -438,9 +536,15 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     public function toString(): string
     {
         try {
+<<<<<<< HEAD
+            $class = new ReflectionClass($this);
+            // @codeCoverageIgnoreStart
+        } catch (ReflectionException $e) {
+=======
             $class = new \ReflectionClass($this);
             // @codeCoverageIgnoreStart
         } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -449,7 +553,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         }
         // @codeCoverageIgnoreEnd
 
+<<<<<<< HEAD
+        $buffer = sprintf(
+=======
         $buffer = \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             '%s::%s',
             $class->name,
             $this->getName(false)
@@ -523,7 +631,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     public function expectExceptionObject(\Exception $exception): void
     {
+<<<<<<< HEAD
+        $this->expectException(get_class($exception));
+=======
         $this->expectException(\get_class($exception));
+>>>>>>> parent of 31cfa1b1 (p)
         $this->expectExceptionMessage($exception->getMessage());
         $this->expectExceptionCode($exception->getCode());
     }
@@ -619,14 +731,22 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      * Runs the test case and collects the results in a TestResult object.
      * If no TestResult object is passed a new one will be created.
      *
+<<<<<<< HEAD
+=======
      * @throws CodeCoverageException
      * @throws UtilException
+>>>>>>> parent of 31cfa1b1 (p)
      * @throws \SebastianBergmann\CodeCoverage\CoveredCodeNotExecutedException
      * @throws \SebastianBergmann\CodeCoverage\InvalidArgumentException
      * @throws \SebastianBergmann\CodeCoverage\MissingCoversAnnotationException
      * @throws \SebastianBergmann\CodeCoverage\RuntimeException
      * @throws \SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+<<<<<<< HEAD
+     * @throws CodeCoverageException
+     * @throws UtilException
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function run(TestResult $result = null): TestResult
     {
@@ -648,9 +768,15 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $runEntireClass = $this->runClassInSeparateProcess && !$this->runTestInSeparateProcess;
 
             try {
+<<<<<<< HEAD
+                $class = new ReflectionClass($this);
+                // @codeCoverageIgnoreStart
+            } catch (ReflectionException $e) {
+=======
                 $class = new \ReflectionClass($this);
                 // @codeCoverageIgnoreStart
             } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 throw new Exception(
                     $e->getMessage(),
                     (int) $e->getCode(),
@@ -660,11 +786,19 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             // @codeCoverageIgnoreEnd
 
             if ($runEntireClass) {
+<<<<<<< HEAD
+                $template = new Text_Template(
+                    __DIR__ . '/../Util/PHP/Template/TestCaseClass.tpl'
+                );
+            } else {
+                $template = new Text_Template(
+=======
                 $template = new \Text_Template(
                     __DIR__ . '/../Util/PHP/Template/TestCaseClass.tpl'
                 );
             } else {
                 $template = new \Text_Template(
+>>>>>>> parent of 31cfa1b1 (p)
                     __DIR__ . '/../Util/PHP/Template/TestCaseMethod.tpl'
                 );
             }
@@ -678,7 +812,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                 $constants = '';
 
                 if (!empty($GLOBALS['__PHPUNIT_BOOTSTRAP'])) {
+<<<<<<< HEAD
+                    $globals = '$GLOBALS[\'__PHPUNIT_BOOTSTRAP\'] = ' . var_export($GLOBALS['__PHPUNIT_BOOTSTRAP'], true) . ";\n";
+=======
                     $globals = '$GLOBALS[\'__PHPUNIT_BOOTSTRAP\'] = ' . \var_export($GLOBALS['__PHPUNIT_BOOTSTRAP'], true) . ";\n";
+>>>>>>> parent of 31cfa1b1 (p)
                 } else {
                     $globals = '';
                 }
@@ -694,14 +832,24 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $isStrictAboutTodoAnnotatedTests            = $result->isStrictAboutTodoAnnotatedTests() ? 'true' : 'false';
             $isStrictAboutResourceUsageDuringSmallTests = $result->isStrictAboutResourceUsageDuringSmallTests() ? 'true' : 'false';
 
+<<<<<<< HEAD
+            if (defined('PHPUNIT_COMPOSER_INSTALL')) {
+                $composerAutoload = var_export(PHPUNIT_COMPOSER_INSTALL, true);
+=======
             if (\defined('PHPUNIT_COMPOSER_INSTALL')) {
                 $composerAutoload = \var_export(PHPUNIT_COMPOSER_INSTALL, true);
+>>>>>>> parent of 31cfa1b1 (p)
             } else {
                 $composerAutoload = '\'\'';
             }
 
+<<<<<<< HEAD
+            if (defined('__PHPUNIT_PHAR__')) {
+                $phar = var_export(__PHPUNIT_PHAR__, true);
+=======
             if (\defined('__PHPUNIT_PHAR__')) {
                 $phar = \var_export(__PHPUNIT_PHAR__, true);
+>>>>>>> parent of 31cfa1b1 (p)
             } else {
                 $phar = '\'\'';
             }
@@ -712,11 +860,19 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                 $codeCoverageFilter = null;
             }
 
+<<<<<<< HEAD
+            $data               = var_export(serialize($this->data), true);
+            $dataName           = var_export($this->dataName, true);
+            $dependencyInput    = var_export(serialize($this->dependencyInput), true);
+            $includePath        = var_export(get_include_path(), true);
+            $codeCoverageFilter = var_export(serialize($codeCoverageFilter), true);
+=======
             $data               = \var_export(\serialize($this->data), true);
             $dataName           = \var_export($this->dataName, true);
             $dependencyInput    = \var_export(\serialize($this->dependencyInput), true);
             $includePath        = \var_export(\get_include_path(), true);
             $codeCoverageFilter = \var_export(\serialize($codeCoverageFilter), true);
+>>>>>>> parent of 31cfa1b1 (p)
             // must do these fixes because TestCaseMethod.tpl has unserialize('{data}') in it, and we can't break BC
             // the lines above used to use addcslashes() rather than var_export(), which breaks null byte escape sequences
             $data               = "'." . $data . ".'";
@@ -779,7 +935,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     public function getMockBuilder($className): MockBuilder
     {
+<<<<<<< HEAD
+        if (!is_string($className)) {
+=======
         if (!\is_string($className)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $this->addWarning('Passing an array of interface names to getMockBuilder() for creating a test double that implements multiple interfaces is deprecated and will no longer be supported in PHPUnit 9.');
         }
 
@@ -811,7 +971,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     public function doubledTypes(): array
     {
+<<<<<<< HEAD
+        return array_unique($this->doubledTypes);
+=======
         return \array_unique($this->doubledTypes);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -836,7 +1000,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     public function getAnnotations(): array
     {
         return TestUtil::parseTestMethodAnnotations(
+<<<<<<< HEAD
+            static::class,
+=======
             \get_class($this),
+>>>>>>> parent of 31cfa1b1 (p)
             $this->name
         );
     }
@@ -865,7 +1033,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     public function getSize(): int
     {
         return TestUtil::getSize(
+<<<<<<< HEAD
+            static::class,
+=======
             \get_class($this),
+>>>>>>> parent of 31cfa1b1 (p)
             $this->getName(false)
         );
     }
@@ -919,7 +1091,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             return $this->output;
         }
 
+<<<<<<< HEAD
+        return (string) ob_get_contents();
+=======
         return (string) \ob_get_contents();
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -951,7 +1127,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     public function hasExpectationOnOutput(): bool
     {
+<<<<<<< HEAD
+        return is_string($this->outputExpectedString) || is_string($this->outputExpectedRegex) || $this->outputRetrievedForAssertion;
+=======
         return \is_string($this->outputExpectedString) || \is_string($this->outputExpectedRegex) || $this->outputRetrievedForAssertion;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -997,7 +1177,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
+<<<<<<< HEAD
+     * @throws Throwable
+=======
      * @throws \Throwable
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @internal This method is not covered by the backward compatibility promise for PHPUnit
      */
@@ -1007,10 +1191,17 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
         $this->snapshotGlobalState();
         $this->startOutputBuffering();
+<<<<<<< HEAD
+        clearstatcache();
+        $currentWorkingDirectory = getcwd();
+
+        $hookMethods = TestUtil::getHookMethods(static::class);
+=======
         \clearstatcache();
         $currentWorkingDirectory = \getcwd();
 
         $hookMethods = TestUtil::getHookMethods(\get_class($this));
+>>>>>>> parent of 31cfa1b1 (p)
 
         $hasMetRequirements = false;
 
@@ -1020,7 +1211,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
             if ($this->inIsolation) {
                 foreach ($hookMethods['beforeClass'] as $method) {
+<<<<<<< HEAD
+                    $this->{$method}();
+=======
                     $this->$method();
+>>>>>>> parent of 31cfa1b1 (p)
                 }
             }
 
@@ -1028,7 +1223,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $this->setDoesNotPerformAssertionsFromAnnotation();
 
             foreach ($hookMethods['before'] as $method) {
+<<<<<<< HEAD
+                $this->{$method}();
+=======
                 $this->$method();
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             $this->assertPreConditions();
@@ -1038,9 +1237,15 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
             if (!empty($this->warnings)) {
                 throw new Warning(
+<<<<<<< HEAD
+                    implode(
+                        "\n",
+                        array_unique($this->warnings)
+=======
                     \implode(
                         "\n",
                         \array_unique($this->warnings)
+>>>>>>> parent of 31cfa1b1 (p)
                     )
                 );
             }
@@ -1061,7 +1266,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         } catch (PredictionException $e) {
             $this->status        = BaseTestRunner::STATUS_FAILURE;
             $this->statusMessage = $e->getMessage();
+<<<<<<< HEAD
+        } catch (Throwable $_e) {
+=======
         } catch (\Throwable $_e) {
+>>>>>>> parent of 31cfa1b1 (p)
             $e                   = $_e;
             $this->status        = BaseTestRunner::STATUS_ERROR;
             $this->statusMessage = $_e->getMessage();
@@ -1075,16 +1284,28 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         try {
             if ($hasMetRequirements) {
                 foreach ($hookMethods['after'] as $method) {
+<<<<<<< HEAD
+                    $this->{$method}();
+=======
                     $this->$method();
+>>>>>>> parent of 31cfa1b1 (p)
                 }
 
                 if ($this->inIsolation) {
                     foreach ($hookMethods['afterClass'] as $method) {
+<<<<<<< HEAD
+                        $this->{$method}();
+                    }
+                }
+            }
+        } catch (Throwable $_e) {
+=======
                         $this->$method();
                     }
                 }
             }
         } catch (\Throwable $_e) {
+>>>>>>> parent of 31cfa1b1 (p)
             $e = $e ?? $_e;
         }
 
@@ -1099,17 +1320,28 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $this->statusMessage = $_e->getMessage();
         }
 
+<<<<<<< HEAD
+        clearstatcache();
+
+        if ($currentWorkingDirectory !== getcwd()) {
+            chdir($currentWorkingDirectory);
+=======
         \clearstatcache();
 
         if ($currentWorkingDirectory !== \getcwd()) {
             \chdir($currentWorkingDirectory);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->restoreGlobalState();
         $this->unregisterCustomComparators();
         $this->cleanupIniSettings();
         $this->cleanupLocaleSettings();
+<<<<<<< HEAD
+        libxml_clear_errors();
+=======
         \libxml_clear_errors();
+>>>>>>> parent of 31cfa1b1 (p)
 
         // Perform assertion on output.
         if (!isset($e)) {
@@ -1119,7 +1351,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                 } elseif ($this->outputExpectedString !== null) {
                     $this->assertEquals($this->outputExpectedString, $this->output);
                 }
+<<<<<<< HEAD
+            } catch (Throwable $_e) {
+=======
             } catch (\Throwable $_e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $e = $_e;
             }
         }
@@ -1165,7 +1401,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     public function hasDependencies(): bool
     {
+<<<<<<< HEAD
+        return count($this->dependencies) > 0;
+=======
         return \count($this->dependencies) > 0;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -1335,7 +1575,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     public function dataDescription(): string
     {
+<<<<<<< HEAD
+        return is_string($this->dataName) ? $this->dataName : '';
+=======
         return \is_string($this->dataName) ? $this->dataName : '';
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -1356,6 +1600,18 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         $buffer = '';
 
         if (!empty($this->data)) {
+<<<<<<< HEAD
+            if (is_int($this->dataName)) {
+                $buffer .= sprintf(' with data set #%d', $this->dataName);
+            } else {
+                $buffer .= sprintf(' with data set "%s"', $this->dataName);
+            }
+
+            if ($includeData) {
+                $exporter = new Exporter;
+
+                $buffer .= sprintf(' (%s)', $exporter->shortenedRecursiveExport($this->data));
+=======
             if (\is_int($this->dataName)) {
                 $buffer .= \sprintf(' with data set #%d', $this->dataName);
             } else {
@@ -1366,6 +1622,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
             if ($includeData) {
                 $buffer .= \sprintf(' (%s)', $exporter->shortenedRecursiveExport($this->data));
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 
@@ -1393,6 +1650,17 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     /**
      * Override to run the test and assert its state.
      *
+<<<<<<< HEAD
+     * @throws \SebastianBergmann\ObjectEnumerator\InvalidArgumentException
+     * @throws AssertionFailedError
+     * @throws Exception
+     * @throws ExpectationFailedException
+     * @throws Throwable
+     */
+    protected function runTest()
+    {
+        if (trim($this->name) === '') {
+=======
      * @throws AssertionFailedError
      * @throws Exception
      * @throws ExpectationFailedException
@@ -1402,29 +1670,58 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     protected function runTest()
     {
         if (\trim($this->name) === '') {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception(
                 'PHPUnit\Framework\TestCase::$name must be a non-blank string.'
             );
         }
 
+<<<<<<< HEAD
+        $testArguments = array_merge($this->data, $this->dependencyInput);
+=======
         $testArguments = \array_merge($this->data, $this->dependencyInput);
+>>>>>>> parent of 31cfa1b1 (p)
 
         $this->registerMockObjectsFromTestArguments($testArguments);
 
         try {
+<<<<<<< HEAD
+            $testResult = $this->{$this->name}(...array_values($testArguments));
+        } catch (Throwable $exception) {
+=======
             $testResult = $this->{$this->name}(...\array_values($testArguments));
         } catch (\Throwable $exception) {
+>>>>>>> parent of 31cfa1b1 (p)
             if (!$this->checkExceptionExpectations($exception)) {
                 throw $exception;
             }
 
             if ($this->expectedException !== null) {
+<<<<<<< HEAD
+                if ($this->expectedException === Error::class) {
+                    $this->assertThat(
+                        $exception,
+                        LogicalOr::fromConstraints(
+                            new ExceptionConstraint(Error::class),
+                            new ExceptionConstraint(\Error::class)
+                        )
+                    );
+                } else {
+                    $this->assertThat(
+                        $exception,
+                        new ExceptionConstraint(
+                            $this->expectedException
+                        )
+                    );
+                }
+=======
                 $this->assertThat(
                     $exception,
                     new ExceptionConstraint(
                         $this->expectedException
                     )
                 );
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             if ($this->expectedExceptionMessage !== null) {
@@ -1455,7 +1752,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             }
 
             if ($this->deprecatedExpectExceptionMessageRegExpUsed) {
+<<<<<<< HEAD
+                $this->addWarning('expectExceptionMessageRegExp() is deprecated in PHPUnit 8 and will be removed in PHPUnit 9. Use expectExceptionMessageMatches() instead.');
+=======
                 $this->addWarning('expectExceptionMessageRegExp() is deprecated in PHPUnit 8 and will be removed in PHPUnit 9.');
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             return;
@@ -1472,7 +1773,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $this->numAssertions++;
 
             throw new AssertionFailedError(
+<<<<<<< HEAD
+                sprintf(
+=======
                 \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Failed asserting that exception with message "%s" is thrown',
                     $this->expectedExceptionMessage
                 )
@@ -1481,7 +1786,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $this->numAssertions++;
 
             throw new AssertionFailedError(
+<<<<<<< HEAD
+                sprintf(
+=======
                 \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Failed asserting that exception with message matching "%s" is thrown',
                     $this->expectedExceptionMessageRegExp
                 )
@@ -1490,7 +1799,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $this->numAssertions++;
 
             throw new AssertionFailedError(
+<<<<<<< HEAD
+                sprintf(
+=======
                 \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Failed asserting that exception with code "%s" is thrown',
                     $this->expectedExceptionCode
                 )
@@ -1509,13 +1822,21 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     protected function iniSet(string $varName, string $newValue): void
     {
+<<<<<<< HEAD
+        $currentValue = ini_set($varName, $newValue);
+=======
         $currentValue = \ini_set($varName, $newValue);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($currentValue !== false) {
             $this->iniSettings[$varName] = $currentValue;
         } else {
             throw new Exception(
+<<<<<<< HEAD
+                sprintf(
+=======
                 \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'INI setting "%s" could not be set to "%s".',
                     $varName,
                     $newValue
@@ -1532,12 +1853,33 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     protected function setLocale(...$args): void
     {
+<<<<<<< HEAD
+        if (count($args) < 2) {
+=======
         if (\count($args) < 2) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception;
         }
 
         [$category, $locale] = $args;
 
+<<<<<<< HEAD
+        if (defined('LC_MESSAGES')) {
+            $categories[] = LC_MESSAGES;
+        }
+
+        if (!in_array($category, self::LOCALE_CATEGORIES, true)) {
+            throw new Exception;
+        }
+
+        if (!is_array($locale) && !is_string($locale)) {
+            throw new Exception;
+        }
+
+        $this->locale[$category] = setlocale($category, 0);
+
+        $result = setlocale(...$args);
+=======
         if (\defined('LC_MESSAGES')) {
             $categories[] = \LC_MESSAGES;
         }
@@ -1553,6 +1895,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         $this->locale[$category] = \setlocale($category, 0);
 
         $result = \setlocale(...$args);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($result === false) {
             throw new Exception(
@@ -1586,7 +1929,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     protected function createMock($originalClassName): MockObject
     {
+<<<<<<< HEAD
+        if (!is_string($originalClassName)) {
+=======
         if (!\is_string($originalClassName)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $this->addWarning('Passing an array of interface names to createMock() for creating a test double that implements multiple interfaces is deprecated and will no longer be supported in PHPUnit 9.');
         }
 
@@ -1630,6 +1977,21 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     protected function createPartialMock($originalClassName, array $methods): MockObject
     {
+<<<<<<< HEAD
+        if (!is_string($originalClassName)) {
+            $this->addWarning('Passing an array of interface names to createPartialMock() for creating a test double that implements multiple interfaces is deprecated and will no longer be supported in PHPUnit 9.');
+        }
+
+        $class_names = is_array($originalClassName) ? $originalClassName : [$originalClassName];
+
+        foreach ($class_names as $class_name) {
+            $reflection = new ReflectionClass($class_name);
+
+            $mockedMethodsThatDontExist = array_filter(
+                $methods,
+                static function (string $method) use ($reflection)
+                {
+=======
         if (!\is_string($originalClassName)) {
             $this->addWarning('Passing an array of interface names to createPartialMock() for creating a test double that implements multiple interfaces is deprecated and will no longer be supported in PHPUnit 9.');
         }
@@ -1642,15 +2004,22 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $mockedMethodsThatDontExist = \array_filter(
                 $methods,
                 static function (string $method) use ($reflection) {
+>>>>>>> parent of 31cfa1b1 (p)
                     return !$reflection->hasMethod($method);
                 }
             );
 
             if ($mockedMethodsThatDontExist) {
                 $this->addWarning(
+<<<<<<< HEAD
+                    sprintf(
+                        'createPartialMock called with method(s) %s that do not exist in %s. This will not be allowed in future versions of PHPUnit.',
+                        implode(', ', $mockedMethodsThatDontExist),
+=======
                     \sprintf(
                         'createPartialMock called with method(s) %s that do not exist in %s. This will not be allowed in future versions of PHPUnit.',
                         \implode(', ', $mockedMethodsThatDontExist),
+>>>>>>> parent of 31cfa1b1 (p)
                         $class_name
                     )
                 );
@@ -1711,7 +2080,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $cloneArguments
         );
 
+<<<<<<< HEAD
+        return get_class($mock);
+=======
         return \get_class($mock);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -1769,11 +2142,19 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         $this->recordDoubledType('SoapClient');
 
         if ($originalClassName === '') {
+<<<<<<< HEAD
+            $fileName          = pathinfo(basename(parse_url($wsdlFile, PHP_URL_PATH)), PATHINFO_FILENAME);
+            $originalClassName = preg_replace('/\W/', '', $fileName);
+        }
+
+        if (!class_exists($originalClassName)) {
+=======
             $fileName          = \pathinfo(\basename(\parse_url($wsdlFile, \PHP_URL_PATH)), \PATHINFO_FILENAME);
             $originalClassName = \preg_replace('/\W/', '', $fileName);
         }
 
         if (!\class_exists($originalClassName)) {
+>>>>>>> parent of 31cfa1b1 (p)
             eval(
                 $this->getMockObjectGenerator()->generateClassFromWsdl(
                     $wsdlFile,
@@ -1867,7 +2248,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     protected function prophesize($classOrInterface = null): ObjectProphecy
     {
+<<<<<<< HEAD
+        if (is_string($classOrInterface)) {
+=======
         if (\is_string($classOrInterface)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $this->recordDoubledType($classOrInterface);
         }
 
@@ -1885,6 +2270,13 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
+<<<<<<< HEAD
+     * This method is called when a test method did not execute successfully.
+     *
+     * @throws Throwable
+     */
+    protected function onNotSuccessfulTest(Throwable $t): void
+=======
      * Performs assertions shared by all tests of a test case.
      *
      * This method is called between setUp() and test.
@@ -1908,6 +2300,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      * @throws \Throwable
      */
     protected function onNotSuccessfulTest(\Throwable $t): void
+>>>>>>> parent of 31cfa1b1 (p)
     {
         throw $t;
     }
@@ -1920,7 +2313,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
         try {
             $expectedException = TestUtil::getExpectedException(
+<<<<<<< HEAD
+                static::class,
+=======
                 \get_class($this),
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->name
             );
 
@@ -1944,6 +2341,15 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
+<<<<<<< HEAD
+     * @throws SkippedTestError
+     * @throws SyntheticSkippedError
+     * @throws Warning
+     */
+    private function checkRequirements(): void
+    {
+        if (!$this->name || !method_exists($this, $this->name)) {
+=======
      * @throws Warning
      * @throws SkippedTestError
      * @throws SyntheticSkippedError
@@ -1951,21 +2357,34 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     private function checkRequirements(): void
     {
         if (!$this->name || !\method_exists($this, $this->name)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return;
         }
 
         $missingRequirements = TestUtil::getMissingRequirements(
+<<<<<<< HEAD
+            static::class,
+=======
             \get_class($this),
+>>>>>>> parent of 31cfa1b1 (p)
             $this->name
         );
 
         if (!empty($missingRequirements)) {
+<<<<<<< HEAD
+            $this->markTestSkipped(implode(PHP_EOL, $missingRequirements));
+=======
             $this->markTestSkipped(\implode(\PHP_EOL, $missingRequirements));
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
     /**
+<<<<<<< HEAD
+     * @throws Throwable
+=======
      * @throws \Throwable
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function verifyMockObjects(): void
     {
@@ -1986,9 +2405,15 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                 foreach ($this->prophet->getProphecies() as $objectProphecy) {
                     foreach ($objectProphecy->getMethodProphecies() as $methodProphecies) {
                         foreach ($methodProphecies as $methodProphecy) {
+<<<<<<< HEAD
+                            assert($methodProphecy instanceof MethodProphecy);
+
+                            $this->numAssertions += count($methodProphecy->getCheckedPredictions());
+=======
                             \assert($methodProphecy instanceof MethodProphecy);
 
                             $this->numAssertions += \count($methodProphecy->getCheckedPredictions());
+>>>>>>> parent of 31cfa1b1 (p)
                         }
                     }
                 }
@@ -1999,6 +2424,20 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     private function handleDependencies(): bool
     {
         if (!empty($this->dependencies) && !$this->inIsolation) {
+<<<<<<< HEAD
+            $passed     = $this->result->passed();
+            $passedKeys = array_keys($passed);
+
+            foreach ($passedKeys as $key => $value) {
+                $pos = strpos($value, ' with data set');
+
+                if ($pos !== false) {
+                    $passedKeys[$key] = substr($value, 0, $pos);
+                }
+            }
+
+            $passedKeys = array_flip(array_unique($passedKeys));
+=======
             $className  = \get_class($this);
             $passed     = $this->result->passed();
             $passedKeys = \array_keys($passed);
@@ -2012,6 +2451,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             }
 
             $passedKeys = \array_flip(\array_unique($passedKeys));
+>>>>>>> parent of 31cfa1b1 (p)
 
             foreach ($this->dependencies as $dependency) {
                 $deepClone    = false;
@@ -2023,6 +2463,26 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                     return false;
                 }
 
+<<<<<<< HEAD
+                if (strpos($dependency, 'clone ') === 0) {
+                    $deepClone  = true;
+                    $dependency = substr($dependency, strlen('clone '));
+                } elseif (strpos($dependency, '!clone ') === 0) {
+                    $deepClone  = false;
+                    $dependency = substr($dependency, strlen('!clone '));
+                }
+
+                if (strpos($dependency, 'shallowClone ') === 0) {
+                    $shallowClone = true;
+                    $dependency   = substr($dependency, strlen('shallowClone '));
+                } elseif (strpos($dependency, '!shallowClone ') === 0) {
+                    $shallowClone = false;
+                    $dependency   = substr($dependency, strlen('!shallowClone '));
+                }
+
+                if (strpos($dependency, '::') === false) {
+                    $dependency = static::class . '::' . $dependency;
+=======
                 if (\strpos($dependency, 'clone ') === 0) {
                     $deepClone  = true;
                     $dependency = \substr($dependency, \strlen('clone '));
@@ -2041,6 +2501,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
                 if (\strpos($dependency, '::') === false) {
                     $dependency = $className . '::' . $dependency;
+>>>>>>> parent of 31cfa1b1 (p)
                 }
 
                 if (!isset($passedKeys[$dependency])) {
@@ -2096,7 +2557,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         $this->result->addError(
             $this,
             new SkippedTestError(
+<<<<<<< HEAD
+                'This method has an invalid @depends annotation.'
+=======
                 \sprintf('This method has an invalid @depends annotation.')
+>>>>>>> parent of 31cfa1b1 (p)
             ),
             0
         );
@@ -2113,7 +2578,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         $this->result->addError(
             $this,
             new SkippedTestError(
+<<<<<<< HEAD
+                sprintf(
+=======
                 \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'This test depends on "%s" to pass.',
                     $dependency
                 )
@@ -2133,7 +2602,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         $this->result->addWarning(
             $this,
             new Warning(
+<<<<<<< HEAD
+                sprintf(
+=======
                 \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'This test depends on "%s" which does not exist.',
                     $dependency
                 )
@@ -2158,10 +2631,17 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
     private function startOutputBuffering(): void
     {
+<<<<<<< HEAD
+        ob_start();
+
+        $this->outputBufferingActive = true;
+        $this->outputBufferingLevel  = ob_get_level();
+=======
         \ob_start();
 
         $this->outputBufferingActive = true;
         $this->outputBufferingLevel  = \ob_get_level();
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -2169,9 +2649,15 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     private function stopOutputBuffering(): void
     {
+<<<<<<< HEAD
+        if (ob_get_level() !== $this->outputBufferingLevel) {
+            while (ob_get_level() >= $this->outputBufferingLevel) {
+                ob_end_clean();
+=======
         if (\ob_get_level() !== $this->outputBufferingLevel) {
             while (\ob_get_level() >= $this->outputBufferingLevel) {
                 \ob_end_clean();
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             throw new RiskyTestError(
@@ -2179,6 +2665,18 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             );
         }
 
+<<<<<<< HEAD
+        $this->output = ob_get_contents();
+
+        if ($this->outputCallback !== false) {
+            $this->output = (string) call_user_func($this->outputCallback, $this->output);
+        }
+
+        ob_end_clean();
+
+        $this->outputBufferingActive = false;
+        $this->outputBufferingLevel  = ob_get_level();
+=======
         $this->output = \ob_get_contents();
 
         if ($this->outputCallback !== false) {
@@ -2189,6 +2687,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
         $this->outputBufferingActive = false;
         $this->outputBufferingLevel  = \ob_get_level();
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     private function snapshotGlobalState(): void
@@ -2202,8 +2701,13 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
+<<<<<<< HEAD
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws RiskyTestError
+=======
      * @throws RiskyTestError
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function restoreGlobalState(): void
     {
@@ -2247,7 +2751,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $blacklist->addGlobalVariable($globalVariable);
         }
 
+<<<<<<< HEAD
+        if (!defined('PHPUNIT_TESTSUITE')) {
+=======
         if (!\defined('PHPUNIT_TESTSUITE')) {
+>>>>>>> parent of 31cfa1b1 (p)
             $blacklist->addClassNamePrefix('PHPUnit');
             $blacklist->addClassNamePrefix('SebastianBergmann\CodeCoverage');
             $blacklist->addClassNamePrefix('SebastianBergmann\FileIterator');
@@ -2258,6 +2766,10 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $blacklist->addClassNamePrefix('Text_Template');
             $blacklist->addClassNamePrefix('Doctrine\Instantiator');
             $blacklist->addClassNamePrefix('Prophecy');
+<<<<<<< HEAD
+            $blacklist->addStaticAttribute(ComparatorFactory::class, 'instance');
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
             foreach ($this->backupStaticAttributesBlacklist as $class => $attributes) {
                 foreach ($attributes as $attribute) {
@@ -2281,8 +2793,13 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     }
 
     /**
+<<<<<<< HEAD
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws RiskyTestError
+=======
      * @throws RiskyTestError
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function compareGlobalStateSnapshots(Snapshot $before, Snapshot $after): void
     {
@@ -2353,11 +2870,19 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             }
         }
 
+<<<<<<< HEAD
+        if (!is_array($this->testResult) && !is_object($this->testResult)) {
+            return true;
+        }
+
+        return !in_array($mock, $enumerator->enumerate($this->testResult), true);
+=======
         if (!\is_array($this->testResult) && !\is_object($this->testResult)) {
             return true;
         }
 
         return !\in_array($mock, $enumerator->enumerate($this->testResult), true);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -2381,7 +2906,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                     }
 
                     $this->registerMockObject($testArgument);
+<<<<<<< HEAD
+                } elseif (is_array($testArgument) && !in_array($testArgument, $visited, true)) {
+=======
                 } elseif (\is_array($testArgument) && !\in_array($testArgument, $visited, true)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $visited[] = $testArgument;
 
                     $this->registerMockObjectsFromTestArguments(
@@ -2416,7 +2945,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     private function cleanupIniSettings(): void
     {
         foreach ($this->iniSettings as $varName => $oldValue) {
+<<<<<<< HEAD
+            ini_set($varName, $oldValue);
+=======
             \ini_set($varName, $oldValue);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->iniSettings = [];
@@ -2425,7 +2958,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     private function cleanupLocaleSettings(): void
     {
         foreach ($this->locale as $category => $locale) {
+<<<<<<< HEAD
+            setlocale($category, $locale);
+=======
             \setlocale($category, $locale);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->locale = [];
@@ -2434,7 +2971,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     /**
      * @throws Exception
      */
+<<<<<<< HEAD
+    private function checkExceptionExpectations(Throwable $throwable): bool
+=======
     private function checkExceptionExpectations(\Throwable $throwable): bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $result = false;
 
@@ -2446,11 +2987,19 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             $result = false;
         }
 
+<<<<<<< HEAD
+        if (is_string($this->expectedException)) {
+            try {
+                $reflector = new ReflectionClass($this->expectedException);
+                // @codeCoverageIgnoreStart
+            } catch (ReflectionException $e) {
+=======
         if (\is_string($this->expectedException)) {
             try {
                 $reflector = new \ReflectionClass($this->expectedException);
                 // @codeCoverageIgnoreStart
             } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 throw new Exception(
                     $e->getMessage(),
                     (int) $e->getCode(),
@@ -2480,6 +3029,15 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     private function recordDoubledType($originalClassName): void
     {
+<<<<<<< HEAD
+        if (is_string($originalClassName)) {
+            $this->doubledTypes[] = $originalClassName;
+        }
+
+        if (is_array($originalClassName)) {
+            foreach ($originalClassName as $_originalClassName) {
+                if (is_string($_originalClassName)) {
+=======
         if (\is_string($originalClassName)) {
             $this->doubledTypes[] = $originalClassName;
         }
@@ -2487,6 +3045,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         if (\is_array($originalClassName)) {
             foreach ($originalClassName as $_originalClassName) {
                 if (\is_string($_originalClassName)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $this->doubledTypes[] = $_originalClassName;
                 }
             }
@@ -2495,15 +3054,26 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
     private function isCallableTestMethod(string $dependency): bool
     {
+<<<<<<< HEAD
+        [$className, $methodName] = explode('::', $dependency);
+
+        if (!class_exists($className)) {
+=======
         [$className, $methodName] = \explode('::', $dependency);
 
         if (!\class_exists($className)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
         try {
+<<<<<<< HEAD
+            $class = new ReflectionClass($className);
+        } catch (ReflectionException $e) {
+=======
             $class = new \ReflectionClass($className);
         } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
@@ -2517,7 +3087,11 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
         try {
             $method = $class->getMethod($methodName);
+<<<<<<< HEAD
+        } catch (ReflectionException $e) {
+=======
         } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 

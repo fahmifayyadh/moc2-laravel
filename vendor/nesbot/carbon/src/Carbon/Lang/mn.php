@@ -5,11 +5,16 @@
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
  *
+<<<<<<< HEAD
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+=======
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @translator Batmandakh Erdenebileg <batmandakh.e@icloud.com>
+>>>>>>> parent of 31cfa1b1 (p)
  */
 
 /*

@@ -12,7 +12,24 @@ name collision (reported as a PHP fatal error). The methods reserved by
 Mockery are:
 
 * ``shouldReceive()``
+<<<<<<< HEAD
+* ``shouldNotReceive()``
+* ``allows()``
+* ``expects()``
+* ``shouldAllowMockingMethod()``
+* ``shouldIgnoreMissing()``
+* ``asUndefined()``
+* ``shouldAllowMockingProtectedMethods()``
+* ``makePartial()``
+* ``byDefault()``
+* ``shouldHaveReceived()``
+* ``shouldHaveBeenCalled()``
+* ``shouldNotHaveReceived()``
+* ``shouldNotHaveBeenCalled()``
+
+=======
 * ``shouldBeStrict()``
+>>>>>>> parent of 31cfa1b1 (p)
 
 In addition, all mocks utilise a set of added methods and protected properties
 which cannot exist on the class or object being mocked. These are far less

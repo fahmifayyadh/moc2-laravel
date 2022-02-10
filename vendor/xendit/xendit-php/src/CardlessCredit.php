@@ -56,4 +56,31 @@ class CardlessCredit
             'callback_url'
         ];
     }
+<<<<<<< HEAD
+
+    /**
+     * Calculate payment types
+     *
+     * @param array $params user's parameters
+     *
+     * @return array
+     *
+     * @throws ApiException
+     */
+    public static function calculatePaymentTypes($params = [])
+    {
+        $requiredParams = [
+            'cardless_credit_type',
+            'amount',
+            'items',
+        ];
+
+        self::validateParams($params, $requiredParams);
+
+        $url = static::classUrl() . '/payment-types';
+
+        return static::_request('POST', $url, $params);
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

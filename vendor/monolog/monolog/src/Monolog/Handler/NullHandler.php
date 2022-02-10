@@ -12,6 +12,10 @@
 namespace Monolog\Handler;
 
 use Monolog\Logger;
+<<<<<<< HEAD
+use Psr\Log\LogLevel;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Blackhole
@@ -20,6 +24,12 @@ use Monolog\Logger;
  * to put on top of an existing stack to override it temporarily.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
+ *
+ * @phpstan-import-type Level from \Monolog\Logger
+ * @phpstan-import-type LevelName from \Monolog\Logger
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class NullHandler extends Handler
 {
@@ -30,6 +40,11 @@ class NullHandler extends Handler
 
     /**
      * @param string|int $level The minimum logging level at which this handler will be triggered
+<<<<<<< HEAD
+     *
+     * @phpstan-param Level|LevelName|LogLevel::* $level
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct($level = Logger::DEBUG)
     {
@@ -37,7 +52,11 @@ class NullHandler extends Handler
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function isHandling(array $record): bool
     {
@@ -45,7 +64,11 @@ class NullHandler extends Handler
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function handle(array $record): bool
     {

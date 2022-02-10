@@ -18,8 +18,11 @@ interface Swift_Signers_BodySigner extends Swift_Signer
     /**
      * Change the Swift_Signed_Message to apply the singing.
      *
+<<<<<<< HEAD
+=======
      * @param Swift_Message $message
      *
+>>>>>>> parent of 31cfa1b1 (p)
      * @return self
      */
     public function signMessage(Swift_Message $message);

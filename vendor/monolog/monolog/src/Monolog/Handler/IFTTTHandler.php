@@ -27,6 +27,23 @@ use Monolog\Utils;
  */
 class IFTTTHandler extends AbstractProcessingHandler
 {
+<<<<<<< HEAD
+    /** @var string */
+    private $eventName;
+    /** @var string */
+    private $secretKey;
+
+    /**
+     * @param string $eventName The name of the IFTTT Maker event that should be triggered
+     * @param string $secretKey A valid IFTTT secret key
+     */
+    public function __construct(string $eventName, string $secretKey, $level = Logger::ERROR, bool $bubble = true)
+    {
+        if (!extension_loaded('curl')) {
+            throw new MissingExtensionException('The curl extension is needed to use the IFTTTHandler');
+        }
+
+=======
     private $eventName;
     private $secretKey;
 
@@ -38,6 +55,7 @@ class IFTTTHandler extends AbstractProcessingHandler
      */
     public function __construct(string $eventName, string $secretKey, $level = Logger::ERROR, bool $bubble = true)
     {
+>>>>>>> parent of 31cfa1b1 (p)
         $this->eventName = $eventName;
         $this->secretKey = $secretKey;
 
@@ -45,7 +63,11 @@ class IFTTTHandler extends AbstractProcessingHandler
     }
 
     /**
+<<<<<<< HEAD
+     * {@inheritDoc}
+=======
      * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function write(array $record): void
     {

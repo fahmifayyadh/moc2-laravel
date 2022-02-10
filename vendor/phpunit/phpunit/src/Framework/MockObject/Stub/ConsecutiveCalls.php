@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Framework\MockObject\Stub;
 
+<<<<<<< HEAD
+use function array_shift;
+use function sprintf;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\MockObject\Invocation;
 use SebastianBergmann\Exporter\Exporter;
 
@@ -34,7 +39,11 @@ final class ConsecutiveCalls implements Stub
 
     public function invoke(Invocation $invocation)
     {
+<<<<<<< HEAD
+        $this->value = array_shift($this->stack);
+=======
         $this->value = \array_shift($this->stack);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($this->value instanceof Stub) {
             $this->value = $this->value->invoke($invocation);
@@ -47,7 +56,11 @@ final class ConsecutiveCalls implements Stub
     {
         $exporter = new Exporter;
 
+<<<<<<< HEAD
+        return sprintf(
+=======
         return \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             'return user-specified value %s',
             $exporter->export($this->value)
         );

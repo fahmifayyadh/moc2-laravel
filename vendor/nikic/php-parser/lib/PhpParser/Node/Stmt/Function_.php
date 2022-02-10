@@ -5,9 +5,12 @@ namespace PhpParser\Node\Stmt;
 use PhpParser\Node;
 use PhpParser\Node\FunctionLike;
 
+<<<<<<< HEAD
+=======
 /**
  * @property Node\Name $namespacedName Namespaced name (if using NameResolver)
  */
+>>>>>>> parent of 31cfa1b1 (p)
 class Function_ extends Node\Stmt implements FunctionLike
 {
     /** @var bool Whether function returns by reference */
@@ -16,13 +19,23 @@ class Function_ extends Node\Stmt implements FunctionLike
     public $name;
     /** @var Node\Param[] Parameters */
     public $params;
+<<<<<<< HEAD
+    /** @var null|Node\Identifier|Node\Name|Node\ComplexType Return type */
+=======
     /** @var null|Node\Identifier|Node\Name|Node\NullableType|Node\UnionType Return type */
+>>>>>>> parent of 31cfa1b1 (p)
     public $returnType;
     /** @var Node\Stmt[] Statements */
     public $stmts;
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public $attrGroups;
 
+<<<<<<< HEAD
+    /** @var Node\Name Namespaced name (if using NameResolver) */
+    public $namespacedName;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     /**
      * Constructs a function node.
      *

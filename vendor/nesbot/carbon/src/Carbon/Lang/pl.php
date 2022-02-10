@@ -25,11 +25,23 @@
  * - Peter (UnrulyNatives)
  * - Qrzysio
  * - Jan (aso824)
+<<<<<<< HEAD
+ * - diverpl
+ */
+
+use Carbon\CarbonInterface;
+
+return [
+    'year' => ':count rok|:count lata|:count lat',
+    'a_year' => 'rok|:count lata|:count lat',
+    'y' => ':count r|:count l|:count l',
+=======
  */
 return [
     'year' => ':count rok|:count lata|:count lat',
     'a_year' => 'rok|:count lata|:count lat',
     'y' => ':count r|:count l',
+>>>>>>> parent of 31cfa1b1 (p)
     'month' => ':count miesiąc|:count miesiące|:count miesięcy',
     'a_month' => 'miesiąc|:count miesiące|:count miesięcy',
     'm' => ':count mies.',
@@ -44,12 +56,26 @@ return [
     'h' => ':count godz.',
     'minute' => ':count minuta|:count minuty|:count minut',
     'a_minute' => 'minuta|:count minuty|:count minut',
+<<<<<<< HEAD
+    'min' => ':count min',
+=======
     'min' => ':count min.',
+>>>>>>> parent of 31cfa1b1 (p)
     'second' => ':count sekunda|:count sekundy|:count sekund',
     'a_second' => '{1}kilka sekund|:count sekunda|:count sekundy|:count sekund',
     's' => ':count sek.',
     'ago' => ':time temu',
+<<<<<<< HEAD
+    'from_now' => static function ($time) {
+        return 'za '.strtr($time, [
+            'godzina' => 'godzinę',
+            'minuta' => 'minutę',
+            'sekunda' => 'sekundę',
+        ]);
+    },
+=======
     'from_now' => 'za :time',
+>>>>>>> parent of 31cfa1b1 (p)
     'after' => ':time po',
     'before' => ':time przed',
     'diff_now' => 'przed chwilą',
@@ -72,7 +98,11 @@ return [
     'calendar' => [
         'sameDay' => '[Dziś o] LT',
         'nextDay' => '[Jutro o] LT',
+<<<<<<< HEAD
+        'nextWeek' => function (CarbonInterface $date) {
+=======
         'nextWeek' => function (\Carbon\CarbonInterface $date) {
+>>>>>>> parent of 31cfa1b1 (p)
             switch ($date->dayOfWeek) {
                 case 0:
                     return '[W niedzielę o] LT';
@@ -87,7 +117,11 @@ return [
             }
         },
         'lastDay' => '[Wczoraj o] LT',
+<<<<<<< HEAD
+        'lastWeek' => function (CarbonInterface $date) {
+=======
         'lastWeek' => function (\Carbon\CarbonInterface $date) {
+>>>>>>> parent of 31cfa1b1 (p)
             switch ($date->dayOfWeek) {
                 case 0:
                     return '[W zeszłą niedzielę o] LT';

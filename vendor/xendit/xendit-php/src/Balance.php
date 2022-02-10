@@ -63,10 +63,18 @@ class Balance
      * ]
      * @throws Exceptions\ApiException
      */
+<<<<<<< HEAD
+    public static function getBalance($account_type = null, $params = [])
+    {
+        self::validateAccountType($account_type);
+        $url = '/balance?account_type=' . $account_type;
+        return static::_request('GET', $url, $params);
+=======
     public static function getBalance($account_type = null)
     {
         self::validateAccountType($account_type);
         $url = '/balance?account_type=' . $account_type;
         return static::_request('GET', $url);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

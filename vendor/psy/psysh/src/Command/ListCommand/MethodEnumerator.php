@@ -21,7 +21,11 @@ class MethodEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null): array
+=======
     protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // only list methods when a Reflector is present.
         if ($reflector === null) {
@@ -38,9 +42,15 @@ class MethodEnumerator extends Enumerator
             return [];
         }
 
+<<<<<<< HEAD
+        $showAll = $input->getOption('all');
+        $noInherit = $input->getOption('no-inherit');
+        $methods = $this->prepareMethods($this->getMethods($showAll, $reflector, $noInherit));
+=======
         $showAll   = $input->getOption('all');
         $noInherit = $input->getOption('no-inherit');
         $methods   = $this->prepareMethods($this->getMethods($showAll, $reflector, $noInherit));
+>>>>>>> parent of 31cfa1b1 (p)
 
         if (empty($methods)) {
             return [];
@@ -61,7 +71,11 @@ class MethodEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
+    protected function getMethods(bool $showAll, \Reflector $reflector, bool $noInherit = false): array
+=======
     protected function getMethods($showAll, \Reflector $reflector, $noInherit = false)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $className = $reflector->getName();
 
@@ -78,7 +92,11 @@ class MethodEnumerator extends Enumerator
             }
         }
 
+<<<<<<< HEAD
+        \ksort($methods, \SORT_NATURAL | \SORT_FLAG_CASE);
+=======
         \ksort($methods, SORT_NATURAL | SORT_FLAG_CASE);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $methods;
     }
@@ -90,7 +108,11 @@ class MethodEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
+    protected function prepareMethods(array $methods): array
+=======
     protected function prepareMethods(array $methods)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // My kingdom for a generator.
         $ret = [];
@@ -115,7 +137,11 @@ class MethodEnumerator extends Enumerator
      *
      * @return string
      */
+<<<<<<< HEAD
+    protected function getKindLabel(\ReflectionClass $reflector): string
+=======
     protected function getKindLabel(\ReflectionClass $reflector)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($reflector->isInterface()) {
             return 'Interface Methods';
@@ -133,7 +159,11 @@ class MethodEnumerator extends Enumerator
      *
      * @return string
      */
+<<<<<<< HEAD
+    private function getVisibilityStyle(\ReflectionMethod $method): string
+=======
     private function getVisibilityStyle(\ReflectionMethod $method)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($method->isPublic()) {
             return self::IS_PUBLIC;

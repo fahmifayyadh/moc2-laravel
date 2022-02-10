@@ -22,6 +22,10 @@ use Ramsey\Uuid\Codec\CodecInterface;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
+<<<<<<< HEAD
+use ReturnTypeWillChange;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Represents a universally unique identifier (UUID), according to RFC 4122.
@@ -224,18 +228,38 @@ class Uuid implements UuidInterface
      * @return string
      * @link http://php.net/manual/en/class.serializable.php
      */
+<<<<<<< HEAD
+    #[ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function serialize()
     {
         return $this->toString();
     }
 
     /**
+<<<<<<< HEAD
+     * @return array{string: string}
+     */
+    #[ReturnTypeWillChange]
+    public function __serialize()
+    {
+        return ['string' => $this->toString()];
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Re-constructs the object from its serialized form.
      *
      * @param string $serialized
      * @link http://php.net/manual/en/class.serializable.php
      * @throws InvalidUuidStringException
      */
+<<<<<<< HEAD
+    #[ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function unserialize($serialized)
     {
         $uuid = self::fromString($serialized);
@@ -244,6 +268,26 @@ class Uuid implements UuidInterface
         $this->fields = $uuid->fields;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param array{string: string} $serialized
+     * @return void
+     * @throws InvalidUuidStringException
+     */
+    #[ReturnTypeWillChange]
+    public function __unserialize(array $serialized)
+    {
+        // @codeCoverageIgnoreStart
+        if (!isset($serialized['string'])) {
+            throw new InvalidUuidStringException();
+        }
+        // @codeCoverageIgnoreEnd
+
+        $this->unserialize($serialized['string']);
+    }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function compareTo(UuidInterface $other)
     {
         if ($this->getMostSignificantBitsHex() < $other->getMostSignificantBitsHex()) {

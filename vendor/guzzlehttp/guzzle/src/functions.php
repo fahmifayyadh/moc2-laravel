@@ -1,4 +1,23 @@
 <?php
+<<<<<<< HEAD
+
+namespace GuzzleHttp;
+
+/**
+ * Debug function used to describe the provided value type and class.
+ *
+ * @param mixed $input Any type of variable to describe the type of. This
+ *                     parameter misses a typehint because of that.
+ *
+ * @return string Returns a string containing the type of the variable and
+ *                if a class is provided, the class name.
+ *
+ * @deprecated describe_type will be removed in guzzlehttp/guzzle:8.0. Use Utils::describeType instead.
+ */
+function describe_type($input): string
+{
+    return Utils::describeType($input);
+=======
 namespace GuzzleHttp;
 
 use GuzzleHttp\Handler\CurlHandler;
@@ -51,12 +70,22 @@ function describe_type($input)
             // normalize float vs double
             return str_replace('double(', 'float(', rtrim(ob_get_clean()));
     }
+>>>>>>> parent of 31cfa1b1 (p)
 }
 
 /**
  * Parses an array of header lines into an associative array of headers.
  *
  * @param iterable $lines Header lines array of strings in the following
+<<<<<<< HEAD
+ *                        format: "Name: Value"
+ *
+ * @deprecated headers_from_lines will be removed in guzzlehttp/guzzle:8.0. Use Utils::headersFromLines instead.
+ */
+function headers_from_lines(iterable $lines): array
+{
+    return Utils::headersFromLines($lines);
+=======
  *                     format: "Name: Value"
  * @return array
  */
@@ -72,6 +101,7 @@ function headers_from_lines($lines)
     }
 
     return $headers;
+>>>>>>> parent of 31cfa1b1 (p)
 }
 
 /**
@@ -80,6 +110,14 @@ function headers_from_lines($lines)
  * @param mixed $value Optional value
  *
  * @return resource
+<<<<<<< HEAD
+ *
+ * @deprecated debug_resource will be removed in guzzlehttp/guzzle:8.0. Use Utils::debugResource instead.
+ */
+function debug_resource($value = null)
+{
+    return Utils::debugResource($value);
+=======
  */
 function debug_resource($value = null)
 {
@@ -90,6 +128,7 @@ function debug_resource($value = null)
     }
 
     return fopen('php://output', 'w');
+>>>>>>> parent of 31cfa1b1 (p)
 }
 
 /**
@@ -97,6 +136,27 @@ function debug_resource($value = null)
  *
  * The returned handler is not wrapped by any default middlewares.
  *
+<<<<<<< HEAD
+ * @throws \RuntimeException if no viable Handler is available.
+ *
+ * @return callable(\Psr\Http\Message\RequestInterface, array): \GuzzleHttp\Promise\PromiseInterface Returns the best handler for the given system.
+ *
+ * @deprecated choose_handler will be removed in guzzlehttp/guzzle:8.0. Use Utils::chooseHandler instead.
+ */
+function choose_handler(): callable
+{
+    return Utils::chooseHandler();
+}
+
+/**
+ * Get the default User-Agent string to use with Guzzle.
+ *
+ * @deprecated default_user_agent will be removed in guzzlehttp/guzzle:8.0. Use Utils::defaultUserAgent instead.
+ */
+function default_user_agent(): string
+{
+    return Utils::defaultUserAgent();
+=======
  * @return callable Returns the best handler for the given system.
  * @throws \RuntimeException if no viable Handler is available.
  */
@@ -141,6 +201,7 @@ function default_user_agent()
     }
 
     return $defaultAgent;
+>>>>>>> parent of 31cfa1b1 (p)
 }
 
 /**
@@ -154,6 +215,15 @@ function default_user_agent()
  *
  * Note: the result of this function is cached for subsequent calls.
  *
+<<<<<<< HEAD
+ * @throws \RuntimeException if no bundle can be found.
+ *
+ * @deprecated default_ca_bundle will be removed in guzzlehttp/guzzle:8.0. This function is not needed in PHP 5.6+.
+ */
+function default_ca_bundle(): string
+{
+    return Utils::defaultCaBundle();
+=======
  * @return string
  * @throws \RuntimeException if no bundle can be found.
  */
@@ -212,12 +282,20 @@ request option. See http://curl.haxx.se/docs/sslcerts.html for more
 information.
 EOT
     );
+>>>>>>> parent of 31cfa1b1 (p)
 }
 
 /**
  * Creates an associative array of lowercase header names to the actual
  * header casing.
  *
+<<<<<<< HEAD
+ * @deprecated normalize_header_keys will be removed in guzzlehttp/guzzle:8.0. Use Utils::normalizeHeaderKeys instead.
+ */
+function normalize_header_keys(array $headers): array
+{
+    return Utils::normalizeHeaderKeys($headers);
+=======
  * @param array $headers
  *
  * @return array
@@ -230,6 +308,7 @@ function normalize_header_keys(array $headers)
     }
 
     return $result;
+>>>>>>> parent of 31cfa1b1 (p)
 }
 
 /**
@@ -246,6 +325,18 @@ function normalize_header_keys(array $headers)
  * 3. The area starts with "." and the area is the last part of the host. e.g.
  *    '.mit.edu' will match any host that ends with '.mit.edu'.
  *
+<<<<<<< HEAD
+ * @param string   $host         Host to check against the patterns.
+ * @param string[] $noProxyArray An array of host patterns.
+ *
+ * @throws Exception\InvalidArgumentException
+ *
+ * @deprecated is_host_in_noproxy will be removed in guzzlehttp/guzzle:8.0. Use Utils::isHostInNoProxy instead.
+ */
+function is_host_in_noproxy(string $host, array $noProxyArray): bool
+{
+    return Utils::isHostInNoProxy($host, $noProxyArray);
+=======
  * @param string $host         Host to check against the patterns.
  * @param array  $noProxyArray An array of host patterns.
  *
@@ -283,17 +374,34 @@ function is_host_in_noproxy($host, array $noProxyArray)
     }
 
     return false;
+>>>>>>> parent of 31cfa1b1 (p)
 }
 
 /**
  * Wrapper for json_decode that throws when an error occurs.
  *
  * @param string $json    JSON data to parse
+<<<<<<< HEAD
+ * @param bool   $assoc   When true, returned objects will be converted
+=======
  * @param bool $assoc     When true, returned objects will be converted
+>>>>>>> parent of 31cfa1b1 (p)
  *                        into associative arrays.
  * @param int    $depth   User specified recursion depth.
  * @param int    $options Bitmask of JSON decode options.
  *
+<<<<<<< HEAD
+ * @return object|array|string|int|float|bool|null
+ *
+ * @throws Exception\InvalidArgumentException if the JSON cannot be decoded.
+ *
+ * @link https://www.php.net/manual/en/function.json-decode.php
+ * @deprecated json_decode will be removed in guzzlehttp/guzzle:8.0. Use Utils::jsonDecode instead.
+ */
+function json_decode(string $json, bool $assoc = false, int $depth = 512, int $options = 0)
+{
+    return Utils::jsonDecode($json, $assoc, $depth, $options);
+=======
  * @return mixed
  * @throws Exception\InvalidArgumentException if the JSON cannot be decoded.
  * @link http://www.php.net/manual/en/function.json-decode.php
@@ -308,12 +416,26 @@ function json_decode($json, $assoc = false, $depth = 512, $options = 0)
     }
 
     return $data;
+>>>>>>> parent of 31cfa1b1 (p)
 }
 
 /**
  * Wrapper for JSON encoding that throws when an error occurs.
  *
  * @param mixed $value   The value being encoded
+<<<<<<< HEAD
+ * @param int   $options JSON encode option bitmask
+ * @param int   $depth   Set the maximum depth. Must be greater than zero.
+ *
+ * @throws Exception\InvalidArgumentException if the JSON cannot be encoded.
+ *
+ * @link https://www.php.net/manual/en/function.json-encode.php
+ * @deprecated json_encode will be removed in guzzlehttp/guzzle:8.0. Use Utils::jsonEncode instead.
+ */
+function json_encode($value, int $options = 0, int $depth = 512): string
+{
+    return Utils::jsonEncode($value, $options, $depth);
+=======
  * @param int    $options JSON encode option bitmask
  * @param int    $depth   Set the maximum depth. Must be greater than zero.
  *
@@ -331,4 +453,5 @@ function json_encode($value, $options = 0, $depth = 512)
     }
 
     return $json;
+>>>>>>> parent of 31cfa1b1 (p)
 }

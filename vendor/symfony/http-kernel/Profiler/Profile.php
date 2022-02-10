@@ -156,11 +156,15 @@ class Profile
      */
     public function getTime()
     {
+<<<<<<< HEAD
+        return $this->time ?? 0;
+=======
         if (null === $this->time) {
             return 0;
         }
 
         return $this->time;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

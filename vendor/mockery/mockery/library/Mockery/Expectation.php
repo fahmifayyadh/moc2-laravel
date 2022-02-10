@@ -389,6 +389,15 @@ class Expectation implements ExpectationInterface
                 return true;
             }
         }
+<<<<<<< HEAD
+        if (is_object($expected)) {
+            $matcher = \Mockery::getConfiguration()->getDefaultMatcher(get_class($expected));
+            if ($matcher !== null) {
+                $expected = new $matcher($expected);
+            }
+        }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         if ($expected instanceof \Mockery\Matcher\MatcherAbstract) {
             return $expected->match($actual);
         }
@@ -565,7 +574,11 @@ class Expectation implements ExpectationInterface
     public function andReturnArg($index)
     {
         if (!is_int($index) || $index < 0) {
+<<<<<<< HEAD
+            throw new \InvalidArgumentException("Invalid argument index supplied. Index must be a non-negative integer.");
+=======
             throw new \InvalidArgumentException("Invalid argument index supplied. Index must be a positive integer.");
+>>>>>>> parent of 31cfa1b1 (p)
         }
         $closure = function (...$args) use ($index) {
             if (array_key_exists($index, $args)) {
@@ -665,6 +678,28 @@ class Expectation implements ExpectationInterface
     }
 
     /**
+<<<<<<< HEAD
+     * Sets up a closure that will yield each of the provided args
+     *
+     * @param mixed ...$args
+     * @return self
+     */
+    public function andYield(...$args)
+    {
+        $this->_closureQueue = [
+            static function () use ($args) {
+                foreach ($args as $arg) {
+                    yield $arg;
+                }
+            },
+        ];
+
+        return $this;
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Alias to andSet(). Allows the natural English construct
      * - set('foo', 'bar')->andReturn('bar')
      *
@@ -703,7 +738,16 @@ class Expectation implements ExpectationInterface
             throw new \InvalidArgumentException('The passed Times limit should be an integer value');
         }
         $this->_countValidators[$this->_countValidatorClass] = new $this->_countValidatorClass($this, $limit);
+<<<<<<< HEAD
+
+        if ('Mockery\CountValidator\Exact' !== $this->_countValidatorClass) {
+            $this->_countValidatorClass = 'Mockery\CountValidator\Exact';
+            unset($this->_countValidators[$this->_countValidatorClass]);
+        }
+
+=======
         $this->_countValidatorClass = 'Mockery\CountValidator\Exact';
+>>>>>>> parent of 31cfa1b1 (p)
         return $this;
     }
 

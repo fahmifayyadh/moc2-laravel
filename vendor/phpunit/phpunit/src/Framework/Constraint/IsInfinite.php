@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function is_infinite;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that accepts infinite.
  */
@@ -30,6 +35,10 @@ final class IsInfinite extends Constraint
      */
     protected function matches($other): bool
     {
+<<<<<<< HEAD
+        return is_infinite($other);
+=======
         return \is_infinite($other);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

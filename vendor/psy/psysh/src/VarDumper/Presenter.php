@@ -33,6 +33,11 @@ class Presenter
     ];
     private $styles = [
         'num'       => 'number',
+<<<<<<< HEAD
+        'integer'   => 'integer',
+        'float'     => 'float',
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         'const'     => 'const',
         'str'       => 'string',
         'cchr'      => 'default',
@@ -49,14 +54,23 @@ class Presenter
     public function __construct(OutputFormatter $formatter, $forceArrayIndexes = false)
     {
         // Work around https://github.com/symfony/symfony/issues/23572
+<<<<<<< HEAD
+        $oldLocale = \setlocale(\LC_NUMERIC, 0);
+        \setlocale(\LC_NUMERIC, 'C');
+=======
         $oldLocale = \setlocale(LC_NUMERIC, 0);
         \setlocale(LC_NUMERIC, 'C');
+>>>>>>> parent of 31cfa1b1 (p)
 
         $this->dumper = new Dumper($formatter, $forceArrayIndexes);
         $this->dumper->setStyles($this->styles);
 
         // Now put the locale back
+<<<<<<< HEAD
+        \setlocale(\LC_NUMERIC, $oldLocale);
+=======
         \setlocale(LC_NUMERIC, $oldLocale);
+>>>>>>> parent of 31cfa1b1 (p)
 
         $this->cloner = new Cloner();
         $this->cloner->addCasters(['*' => function ($obj, array $a, Stub $stub, $isNested, $filter = 0) {
@@ -91,7 +105,11 @@ class Presenter
      *
      * @return string
      */
+<<<<<<< HEAD
+    public function presentRef($value): string
+=======
     public function presentRef($value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->present($value, 0);
     }
@@ -107,7 +125,11 @@ class Presenter
      *
      * @return string
      */
+<<<<<<< HEAD
+    public function present($value, int $depth = null, int $options = 0): string
+=======
     public function present($value, $depth = null, $options = 0)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $data = $this->cloner->cloneVar($value, !($options & self::VERBOSE) ? Caster::EXCLUDE_VERBOSE : 0);
 
@@ -116,21 +138,36 @@ class Presenter
         }
 
         // Work around https://github.com/symfony/symfony/issues/23572
+<<<<<<< HEAD
+        $oldLocale = \setlocale(\LC_NUMERIC, 0);
+        \setlocale(\LC_NUMERIC, 'C');
+=======
         $oldLocale = \setlocale(LC_NUMERIC, 0);
         \setlocale(LC_NUMERIC, 'C');
+>>>>>>> parent of 31cfa1b1 (p)
 
         $output = '';
         $this->dumper->dump($data, function ($line, $depth) use (&$output) {
             if ($depth >= 0) {
                 if ('' !== $output) {
+<<<<<<< HEAD
+                    $output .= \PHP_EOL;
+                }
+                $output .= \str_repeat('  ', $depth).$line;
+=======
                     $output .= PHP_EOL;
                 }
                 $output .= \str_repeat('  ', $depth) . $line;
+>>>>>>> parent of 31cfa1b1 (p)
             }
         });
 
         // Now put the locale back
+<<<<<<< HEAD
+        \setlocale(\LC_NUMERIC, $oldLocale);
+=======
         \setlocale(LC_NUMERIC, $oldLocale);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return OutputFormatter::escape($output);
     }

@@ -86,15 +86,26 @@ class Swift_CharacterStream_ArrayCharacterStream implements Swift_CharacterStrea
         $startLength = $this->charReader->getInitialByteSize();
         while (false !== $bytes = $os->read($startLength)) {
             $c = [];
+<<<<<<< HEAD
+            for ($i = 0, $len = \strlen($bytes); $i < $len; ++$i) {
+                $c[] = self::$byteMap[$bytes[$i]];
+            }
+            $size = \count($c);
+=======
             for ($i = 0, $len = strlen($bytes); $i < $len; ++$i) {
                 $c[] = self::$byteMap[$bytes[$i]];
             }
             $size = count($c);
+>>>>>>> parent of 31cfa1b1 (p)
             $need = $this->charReader
                 ->validateByteSequence($c, $size);
             if ($need > 0 &&
                 false !== $bytes = $os->read($need)) {
+<<<<<<< HEAD
+                for ($i = 0, $len = \strlen($bytes); $i < $len; ++$i) {
+=======
                 for ($i = 0, $len = strlen($bytes); $i < $len; ++$i) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $c[] = self::$byteMap[$bytes[$i]];
                 }
             }
@@ -204,7 +215,11 @@ class Swift_CharacterStream_ArrayCharacterStream implements Swift_CharacterStrea
                 $new = $this->reloadBuffer($fp, 100);
                 if ($new) {
                     $buffer = array_merge($buf, $new);
+<<<<<<< HEAD
+                    $buf_len = \count($buffer);
+=======
                     $buf_len = count($buffer);
+>>>>>>> parent of 31cfa1b1 (p)
                     $buf_pos = 0;
                 } else {
                     $has_datas = false;
@@ -224,7 +239,11 @@ class Swift_CharacterStream_ArrayCharacterStream implements Swift_CharacterStrea
 
                         if ($new) {
                             $buffer = array_merge($buffer, $new);
+<<<<<<< HEAD
+                            $buf_len = \count($buffer);
+=======
                             $buf_len = count($buffer);
+>>>>>>> parent of 31cfa1b1 (p)
                         }
                     }
                     for ($i = 0; $i < $need && isset($buffer[$buf_pos]); ++$i) {
@@ -268,7 +287,11 @@ class Swift_CharacterStream_ArrayCharacterStream implements Swift_CharacterStrea
     {
         if (!feof($fp) && false !== ($bytes = fread($fp, $len))) {
             $buf = [];
+<<<<<<< HEAD
+            for ($i = 0, $len = \strlen($bytes); $i < $len; ++$i) {
+=======
             for ($i = 0, $len = strlen($bytes); $i < $len; ++$i) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $buf[] = self::$byteMap[$bytes[$i]];
             }
 
@@ -283,7 +306,11 @@ class Swift_CharacterStream_ArrayCharacterStream implements Swift_CharacterStrea
         if (!isset(self::$charMap)) {
             self::$charMap = [];
             for ($byte = 0; $byte < 256; ++$byte) {
+<<<<<<< HEAD
+                self::$charMap[$byte] = \chr($byte);
+=======
                 self::$charMap[$byte] = chr($byte);
+>>>>>>> parent of 31cfa1b1 (p)
             }
             self::$byteMap = array_flip(self::$charMap);
         }

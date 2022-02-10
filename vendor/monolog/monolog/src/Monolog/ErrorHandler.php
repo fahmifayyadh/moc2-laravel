@@ -25,6 +25,32 @@ use Psr\Log\LogLevel;
  */
 class ErrorHandler
 {
+<<<<<<< HEAD
+    /** @var LoggerInterface */
+    private $logger;
+
+    /** @var ?callable */
+    private $previousExceptionHandler = null;
+    /** @var array<class-string, LogLevel::*> an array of class name to LogLevel::* constant mapping */
+    private $uncaughtExceptionLevelMap = [];
+
+    /** @var callable|true|null */
+    private $previousErrorHandler = null;
+    /** @var array<int, LogLevel::*> an array of E_* constant to LogLevel::* constant mapping */
+    private $errorLevelMap = [];
+    /** @var bool */
+    private $handleOnlyReportedErrors = true;
+
+    /** @var bool */
+    private $hasFatalErrorHandler = false;
+    /** @var LogLevel::* */
+    private $fatalLevel = LogLevel::ALERT;
+    /** @var ?string */
+    private $reservedMemory = null;
+    /** @var ?mixed */
+    private $lastFatalTrace;
+    /** @var int[] */
+=======
     private $logger;
 
     private $previousExceptionHandler;
@@ -38,6 +64,7 @@ class ErrorHandler
     private $fatalLevel;
     private $reservedMemory;
     private $lastFatalTrace;
+>>>>>>> parent of 31cfa1b1 (p)
     private static $fatalErrors = [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR];
 
     public function __construct(LoggerInterface $logger)
@@ -50,14 +77,25 @@ class ErrorHandler
      *
      * By default it will handle errors, exceptions and fatal errors
      *
+<<<<<<< HEAD
+     * @param  LoggerInterface                        $logger
+     * @param  array<int, LogLevel::*>|false          $errorLevelMap     an array of E_* constant to LogLevel::* constant mapping, or false to disable error handling
+     * @param  array<class-string, LogLevel::*>|false $exceptionLevelMap an array of class name to LogLevel::* constant mapping, or false to disable exception handling
+     * @param  LogLevel::*|null|false                 $fatalLevel        a LogLevel::* constant, null to use the default LogLevel::ALERT or false to disable fatal error handling
+=======
      * @param  LoggerInterface   $logger
      * @param  array|false       $errorLevelMap     an array of E_* constant to LogLevel::* constant mapping, or false to disable error handling
      * @param  array|false       $exceptionLevelMap an array of class name to LogLevel::* constant mapping, or false to disable exception handling
      * @param  string|null|false $fatalLevel        a LogLevel::* constant, null to use the default LogLevel::ALERT or false to disable fatal error handling
+>>>>>>> parent of 31cfa1b1 (p)
      * @return ErrorHandler
      */
     public static function register(LoggerInterface $logger, $errorLevelMap = [], $exceptionLevelMap = [], $fatalLevel = null): self
     {
+<<<<<<< HEAD
+        /** @phpstan-ignore-next-line */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         $handler = new static($logger);
         if ($errorLevelMap !== false) {
             $handler->registerErrorHandler($errorLevelMap);
@@ -72,9 +110,21 @@ class ErrorHandler
         return $handler;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param  array<class-string, LogLevel::*> $levelMap an array of class name to LogLevel::* constant mapping
+     * @return $this
+     */
+    public function registerExceptionHandler(array $levelMap = [], bool $callPrevious = true): self
+    {
+        $prev = set_exception_handler(function (\Throwable $e): void {
+            $this->handleException($e);
+        });
+=======
     public function registerExceptionHandler($levelMap = [], $callPrevious = true): self
     {
         $prev = set_exception_handler([$this, 'handleException']);
+>>>>>>> parent of 31cfa1b1 (p)
         $this->uncaughtExceptionLevelMap = $levelMap;
         foreach ($this->defaultExceptionLevelMap() as $class => $level) {
             if (!isset($this->uncaughtExceptionLevelMap[$class])) {
@@ -88,12 +138,25 @@ class ErrorHandler
         return $this;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param  array<int, LogLevel::*> $levelMap an array of E_* constant to LogLevel::* constant mapping
+     * @return $this
+     */
+    public function registerErrorHandler(array $levelMap = [], bool $callPrevious = true, int $errorTypes = -1, bool $handleOnlyReportedErrors = true): self
+=======
     public function registerErrorHandler(array $levelMap = [], $callPrevious = true, $errorTypes = -1, $handleOnlyReportedErrors = true): self
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $prev = set_error_handler([$this, 'handleError'], $errorTypes);
         $this->errorLevelMap = array_replace($this->defaultErrorLevelMap(), $levelMap);
         if ($callPrevious) {
             $this->previousErrorHandler = $prev ?: true;
+<<<<<<< HEAD
+        } else {
+            $this->previousErrorHandler = null;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->handleOnlyReportedErrors = $handleOnlyReportedErrors;
@@ -102,20 +165,35 @@ class ErrorHandler
     }
 
     /**
+<<<<<<< HEAD
+     * @param LogLevel::*|null $level              a LogLevel::* constant, null to use the default LogLevel::ALERT
+     * @param int              $reservedMemorySize Amount of KBs to reserve in memory so that it can be freed when handling fatal errors giving Monolog some room in memory to get its job done
+=======
      * @param string|null $level              a LogLevel::* constant, null to use the default LogLevel::ALERT or false to disable fatal error handling
      * @param int         $reservedMemorySize Amount of KBs to reserve in memory so that it can be freed when handling fatal errors giving Monolog some room in memory to get its job done
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function registerFatalHandler($level = null, int $reservedMemorySize = 20): self
     {
         register_shutdown_function([$this, 'handleFatalError']);
 
         $this->reservedMemory = str_repeat(' ', 1024 * $reservedMemorySize);
+<<<<<<< HEAD
+        $this->fatalLevel = null === $level ? LogLevel::ALERT : $level;
+=======
         $this->fatalLevel = $level;
+>>>>>>> parent of 31cfa1b1 (p)
         $this->hasFatalErrorHandler = true;
 
         return $this;
     }
 
+<<<<<<< HEAD
+    /**
+     * @return array<class-string, LogLevel::*>
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function defaultExceptionLevelMap(): array
     {
         return [
@@ -124,6 +202,12 @@ class ErrorHandler
         ];
     }
 
+<<<<<<< HEAD
+    /**
+     * @return array<int, LogLevel::*>
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function defaultErrorLevelMap(): array
     {
         return [
@@ -146,10 +230,16 @@ class ErrorHandler
     }
 
     /**
+<<<<<<< HEAD
+     * @phpstan-return never
+     */
+    private function handleException(\Throwable $e): void
+=======
      * @private
      * @param \Exception $e
      */
     public function handleException($e)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $level = LogLevel::ERROR;
         foreach ($this->uncaughtExceptionLevelMap as $class => $candidate) {
@@ -178,11 +268,21 @@ class ErrorHandler
 
     /**
      * @private
+<<<<<<< HEAD
+     *
+     * @param mixed[] $context
+     */
+    public function handleError(int $code, string $message, string $file = '', int $line = 0, array $context = []): bool
+    {
+        if ($this->handleOnlyReportedErrors && !(error_reporting() & $code)) {
+            return false;
+=======
      */
     public function handleError($code, $message, $file = '', $line = 0, $context = [])
     {
         if ($this->handleOnlyReportedErrors && !(error_reporting() & $code)) {
             return;
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         // fatal error codes are ignored if a fatal error handler is present as well to avoid duplicate log entries
@@ -198,7 +298,11 @@ class ErrorHandler
         if ($this->previousErrorHandler === true) {
             return false;
         } elseif ($this->previousErrorHandler) {
+<<<<<<< HEAD
+            return (bool) ($this->previousErrorHandler)($code, $message, $file, $line, $context);
+=======
             return ($this->previousErrorHandler)($code, $message, $file, $line, $context);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return true;
@@ -207,14 +311,22 @@ class ErrorHandler
     /**
      * @private
      */
+<<<<<<< HEAD
+    public function handleFatalError(): void
+=======
     public function handleFatalError()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->reservedMemory = '';
 
         $lastError = error_get_last();
         if ($lastError && in_array($lastError['type'], self::$fatalErrors, true)) {
             $this->logger->log(
+<<<<<<< HEAD
+                $this->fatalLevel,
+=======
                 $this->fatalLevel === null ? LogLevel::ALERT : $this->fatalLevel,
+>>>>>>> parent of 31cfa1b1 (p)
                 'Fatal Error ('.self::codeToString($lastError['type']).'): '.$lastError['message'],
                 ['code' => $lastError['type'], 'message' => $lastError['message'], 'file' => $lastError['file'], 'line' => $lastError['line'], 'trace' => $this->lastFatalTrace]
             );
@@ -227,6 +339,12 @@ class ErrorHandler
         }
     }
 
+<<<<<<< HEAD
+    /**
+     * @param int $code
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private static function codeToString($code): string
     {
         switch ($code) {

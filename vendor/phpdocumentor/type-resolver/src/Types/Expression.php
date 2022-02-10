@@ -36,7 +36,11 @@ final class Expression implements Type
     /**
      * Returns the value for the keys of this array.
      */
+<<<<<<< HEAD
+    public function getValueType(): Type
+=======
     public function getValueType() : Type
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->valueType;
     }
@@ -44,7 +48,11 @@ final class Expression implements Type
     /**
      * Returns a rendered output of the Type as it would be used in a DocBlock.
      */
+<<<<<<< HEAD
+    public function __toString(): string
+=======
     public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return '(' . $this->valueType . ')';
     }

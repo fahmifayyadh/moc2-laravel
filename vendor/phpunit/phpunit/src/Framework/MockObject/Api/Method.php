@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
+use function call_user_func_array;
+use function func_get_args;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\MockObject\Rule\AnyInvokedCount;
 
 /**
@@ -20,9 +25,15 @@ trait Method
     {
         $expects = $this->expects(new AnyInvokedCount);
 
+<<<<<<< HEAD
+        return call_user_func_array(
+            [$expects, 'method'],
+            func_get_args()
+=======
         return \call_user_func_array(
             [$expects, 'method'],
             \func_get_args()
+>>>>>>> parent of 31cfa1b1 (p)
         );
     }
 }

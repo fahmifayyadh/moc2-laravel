@@ -12,16 +12,30 @@ abstract class KeywordEmulator extends TokenEmulator
         return strpos(strtolower($code), $this->getKeywordString()) !== false;
     }
 
+<<<<<<< HEAD
+    protected function isKeywordContext(array $tokens, int $pos): bool
+    {
+        $previousNonSpaceToken = $this->getPreviousNonSpaceToken($tokens, $pos);
+        return $previousNonSpaceToken === null || $previousNonSpaceToken[0] !== \T_OBJECT_OPERATOR;
+    }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function emulate(string $code, array $tokens): array
     {
         $keywordString = $this->getKeywordString();
         foreach ($tokens as $i => $token) {
+<<<<<<< HEAD
+            if ($token[0] === T_STRING && strtolower($token[1]) === $keywordString
+                    && $this->isKeywordContext($tokens, $i)) {
+=======
             if ($token[0] === T_STRING && strtolower($token[1]) === $keywordString) {
                 $previousNonSpaceToken = $this->getPreviousNonSpaceToken($tokens, $i);
                 if ($previousNonSpaceToken !== null && $previousNonSpaceToken[0] === \T_OBJECT_OPERATOR) {
                     continue;
                 }
 
+>>>>>>> parent of 31cfa1b1 (p)
                 $tokens[$i][0] = $this->getKeywordToken();
             }
         }

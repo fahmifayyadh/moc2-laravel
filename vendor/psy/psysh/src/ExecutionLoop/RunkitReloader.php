@@ -28,9 +28,16 @@ class RunkitReloader extends AbstractListener
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public static function isSupported(): bool
+    {
+        // runkit_import was removed in runkit7-4.0.0a1
+        return \extension_loaded('runkit') || \extension_loaded('runkit7') && \function_exists('runkit_import');
+=======
     public static function isSupported()
     {
         return \extension_loaded('runkit');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -50,7 +57,11 @@ class RunkitReloader extends AbstractListener
      * @param Shell  $shell
      * @param string $input
      */
+<<<<<<< HEAD
+    public function onInput(Shell $shell, string $input)
+=======
     public function onInput(Shell $shell, $input)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->reload($shell);
     }
@@ -101,14 +112,30 @@ class RunkitReloader extends AbstractListener
         // }
 
         foreach ($modified as $file) {
+<<<<<<< HEAD
+            $flags = (
+=======
             runkit_import($file, (
+>>>>>>> parent of 31cfa1b1 (p)
                 RUNKIT_IMPORT_FUNCTIONS |
                 RUNKIT_IMPORT_CLASSES |
                 RUNKIT_IMPORT_CLASS_METHODS |
                 RUNKIT_IMPORT_CLASS_CONSTS |
                 RUNKIT_IMPORT_CLASS_PROPS |
                 RUNKIT_IMPORT_OVERRIDE
+<<<<<<< HEAD
+            );
+
+            // these two const cannot be used with RUNKIT_IMPORT_OVERRIDE  in runkit7
+            if (\extension_loaded('runkit7')) {
+                $flags &= ~RUNKIT_IMPORT_CLASS_PROPS & ~RUNKIT_IMPORT_CLASS_STATIC_PROPS;
+                runkit7_import($file, $flags);
+            } else {
+                runkit_import($file, $flags);
+            }
+=======
             ));
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -121,12 +148,20 @@ class RunkitReloader extends AbstractListener
      *
      * @return bool
      */
+<<<<<<< HEAD
+    private function lintFile(string $file): bool
+=======
     private function lintFile($file)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // first try to parse it
         try {
             $this->parser->parse(\file_get_contents($file));
+<<<<<<< HEAD
+        } catch (\Throwable $e) {
+=======
         } catch (\Exception $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 

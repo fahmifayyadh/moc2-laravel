@@ -80,10 +80,14 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
                 $fp = $this->getHandle($nsKey, $itemKey, self::POSITION_END);
                 break;
             default:
+<<<<<<< HEAD
+                throw new Swift_SwiftException('Invalid mode ['.$mode.'] used to set nsKey='.$nsKey.', itemKey='.$itemKey);
+=======
                 throw new Swift_SwiftException(
                     'Invalid mode ['.$mode.'] used to set nsKey='.
                     $nsKey.', itemKey='.$itemKey
                     );
+>>>>>>> parent of 31cfa1b1 (p)
                 break;
         }
         fwrite($fp, $string);
@@ -112,10 +116,14 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
                 $fp = $this->getHandle($nsKey, $itemKey, self::POSITION_END);
                 break;
             default:
+<<<<<<< HEAD
+                throw new Swift_SwiftException('Invalid mode ['.$mode.'] used to set nsKey='.$nsKey.', itemKey='.$itemKey);
+=======
                 throw new Swift_SwiftException(
                     'Invalid mode ['.$mode.'] used to set nsKey='.
                     $nsKey.', itemKey='.$itemKey
                     );
+>>>>>>> parent of 31cfa1b1 (p)
                 break;
         }
         while (false !== $bytes = $os->read(8192)) {
@@ -224,7 +232,11 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
      */
     public function clearAll($nsKey)
     {
+<<<<<<< HEAD
+        if (\array_key_exists($nsKey, $this->keys)) {
+=======
         if (array_key_exists($nsKey, $this->keys)) {
+>>>>>>> parent of 31cfa1b1 (p)
             foreach ($this->keys[$nsKey] as $itemKey => $null) {
                 $this->clearKey($nsKey, $itemKey);
             }
@@ -292,4 +304,12 @@ class Swift_KeyCache_DiskKeyCache implements Swift_KeyCache
             $this->clearAll($nsKey);
         }
     }
+<<<<<<< HEAD
+
+    public function __wakeup()
+    {
+        $this->keys = [];
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

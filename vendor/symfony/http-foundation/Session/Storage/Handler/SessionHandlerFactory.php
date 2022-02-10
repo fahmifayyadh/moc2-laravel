@@ -47,6 +47,20 @@ class SessionHandlerFactory
 
             case !\is_string($connection):
                 throw new \InvalidArgumentException(sprintf('Unsupported Connection: "%s".', \get_class($connection)));
+<<<<<<< HEAD
+            case str_starts_with($connection, 'file://'):
+                $savePath = substr($connection, 7);
+
+                return new StrictSessionHandler(new NativeFileSessionHandler('' === $savePath ? null : $savePath));
+
+            case str_starts_with($connection, 'redis:'):
+            case str_starts_with($connection, 'rediss:'):
+            case str_starts_with($connection, 'memcached:'):
+                if (!class_exists(AbstractAdapter::class)) {
+                    throw new \InvalidArgumentException(sprintf('Unsupported DSN "%s". Try running "composer require symfony/cache".', $connection));
+                }
+                $handlerClass = str_starts_with($connection, 'memcached:') ? MemcachedSessionHandler::class : RedisSessionHandler::class;
+=======
             case 0 === strpos($connection, 'file://'):
                 return new StrictSessionHandler(new NativeFileSessionHandler(substr($connection, 7)));
 
@@ -57,17 +71,33 @@ class SessionHandlerFactory
                     throw new \InvalidArgumentException(sprintf('Unsupported DSN "%s". Try running "composer require symfony/cache".', $connection));
                 }
                 $handlerClass = 0 === strpos($connection, 'memcached:') ? MemcachedSessionHandler::class : RedisSessionHandler::class;
+>>>>>>> parent of 31cfa1b1 (p)
                 $connection = AbstractAdapter::createConnection($connection, ['lazy' => true]);
 
                 return new $handlerClass($connection);
 
+<<<<<<< HEAD
+            case str_starts_with($connection, 'pdo_oci://'):
+=======
             case 0 === strpos($connection, 'pdo_oci://'):
+>>>>>>> parent of 31cfa1b1 (p)
                 if (!class_exists(DriverManager::class)) {
                     throw new \InvalidArgumentException(sprintf('Unsupported DSN "%s". Try running "composer require doctrine/dbal".', $connection));
                 }
                 $connection = DriverManager::getConnection(['url' => $connection])->getWrappedConnection();
                 // no break;
 
+<<<<<<< HEAD
+            case str_starts_with($connection, 'mssql://'):
+            case str_starts_with($connection, 'mysql://'):
+            case str_starts_with($connection, 'mysql2://'):
+            case str_starts_with($connection, 'pgsql://'):
+            case str_starts_with($connection, 'postgres://'):
+            case str_starts_with($connection, 'postgresql://'):
+            case str_starts_with($connection, 'sqlsrv://'):
+            case str_starts_with($connection, 'sqlite://'):
+            case str_starts_with($connection, 'sqlite3://'):
+=======
             case 0 === strpos($connection, 'mssql://'):
             case 0 === strpos($connection, 'mysql://'):
             case 0 === strpos($connection, 'mysql2://'):
@@ -77,6 +107,7 @@ class SessionHandlerFactory
             case 0 === strpos($connection, 'sqlsrv://'):
             case 0 === strpos($connection, 'sqlite://'):
             case 0 === strpos($connection, 'sqlite3://'):
+>>>>>>> parent of 31cfa1b1 (p)
                 return new PdoSessionHandler($connection);
         }
 

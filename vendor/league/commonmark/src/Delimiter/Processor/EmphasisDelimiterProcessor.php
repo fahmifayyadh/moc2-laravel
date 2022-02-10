@@ -64,14 +64,22 @@ final class EmphasisDelimiterProcessor implements DelimiterProcessorInterface, C
 
         // Calculate actual number of delimiters used from this closer
         if ($opener->getLength() >= 2 && $closer->getLength() >= 2) {
+<<<<<<< HEAD
+            if ($this->enableStrong()) {
+=======
             if ($this->config && $this->config->get('enable_strong', true)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return 2;
             }
 
             return 0;
         }
 
+<<<<<<< HEAD
+        if ($this->enableEm()) {
+=======
         if ($this->config && $this->config->get('enable_em', true)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return 1;
         }
 
@@ -102,4 +110,39 @@ final class EmphasisDelimiterProcessor implements DelimiterProcessorInterface, C
     {
         $this->config = $configuration;
     }
+<<<<<<< HEAD
+
+    private function enableStrong(): bool
+    {
+        if ($this->config === null) {
+            return false;
+        }
+
+        $deprecatedEnableStrong = $this->config->get('enable_strong', ConfigurationInterface::MISSING);
+        if ($deprecatedEnableStrong !== ConfigurationInterface::MISSING) {
+            @\trigger_error('The "enable_strong" configuration option is deprecated in league/commonmark 1.6 and will be replaced with "commonmark > enable_strong" in 2.0', \E_USER_DEPRECATED);
+        } else {
+            $deprecatedEnableStrong = true;
+        }
+
+        return $this->config->get('commonmark/enable_strong', $deprecatedEnableStrong);
+    }
+
+    private function enableEm(): bool
+    {
+        if ($this->config === null) {
+            return false;
+        }
+
+        $deprecatedEnableEm = $this->config->get('enable_em', ConfigurationInterface::MISSING);
+        if ($deprecatedEnableEm !== ConfigurationInterface::MISSING) {
+            @\trigger_error('The "enable_em" configuration option is deprecated in league/commonmark 1.6 and will be replaced with "commonmark > enable_em" in 2.0', \E_USER_DEPRECATED);
+        } else {
+            $deprecatedEnableEm = true;
+        }
+
+        return $this->config->get('commonmark/enable_em', $deprecatedEnableEm);
+    }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

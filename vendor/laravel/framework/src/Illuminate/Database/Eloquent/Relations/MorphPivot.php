@@ -139,6 +139,11 @@ class MorphPivot extends Pivot
      */
     protected function newQueryForCollectionRestoration(array $ids)
     {
+<<<<<<< HEAD
+        $ids = array_values($ids);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         if (! Str::contains($ids[0], ':')) {
             return parent::newQueryForRestoration($ids);
         }

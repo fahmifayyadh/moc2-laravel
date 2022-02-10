@@ -8,6 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Traits;
 
 use Carbon\CarbonInterface;
@@ -15,6 +19,10 @@ use Carbon\Exceptions\InvalidTypeException;
 use Carbon\Exceptions\NotLocaleAwareException;
 use Carbon\Language;
 use Carbon\Translator;
+<<<<<<< HEAD
+use Carbon\TranslatorStrongTypeInterface;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Closure;
 use Symfony\Component\Translation\TranslatorBagInterface;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -168,12 +176,20 @@ trait Localization
      *
      * @return string
      */
+<<<<<<< HEAD
+    public static function getTranslationMessageWith($translator, string $key, ?string $locale = null, ?string $default = null)
+=======
     public static function getTranslationMessageWith($translator, string $key, string $locale = null, string $default = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!($translator instanceof TranslatorBagInterface && $translator instanceof TranslatorInterface)) {
             throw new InvalidTypeException(
                 'Translator does not implement '.TranslatorInterface::class.' and '.TranslatorBagInterface::class.'. '.
+<<<<<<< HEAD
+                (\is_object($translator) ? \get_class($translator) : \gettype($translator)).' has been given.'
+=======
                 (is_object($translator) ? get_class($translator) : gettype($translator)).' has been given.'
+>>>>>>> parent of 31cfa1b1 (p)
             );
         }
 
@@ -181,7 +197,11 @@ trait Localization
             $locale = $translator->getLocale();
         }
 
+<<<<<<< HEAD
+        $result = self::getFromCatalogue($translator, $translator->getCatalogue($locale), $key);
+=======
         $result = $translator->getCatalogue($locale)->get($key);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $result === $key ? $default : $result;
     }
@@ -196,7 +216,11 @@ trait Localization
      *
      * @return string
      */
+<<<<<<< HEAD
+    public function getTranslationMessage(string $key, ?string $locale = null, ?string $default = null, $translator = null)
+=======
     public function getTranslationMessage(string $key, string $locale = null, string $default = null, $translator = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return static::getTranslationMessageWith($translator ?: $this->getLocalTranslator(), $key, $locale, $default);
     }
@@ -237,6 +261,17 @@ trait Localization
     /**
      * Translate using translation string or callback available.
      *
+<<<<<<< HEAD
+     * @param string                                                  $key
+     * @param array                                                   $parameters
+     * @param string|int|float|null                                   $number
+     * @param \Symfony\Component\Translation\TranslatorInterface|null $translator
+     * @param bool                                                    $altNumbers
+     *
+     * @return string
+     */
+    public function translate(string $key, array $parameters = [], $number = null, ?TranslatorInterface $translator = null, bool $altNumbers = false): string
+=======
      * @param string                                             $key
      * @param array                                              $parameters
      * @param null                                               $number
@@ -245,6 +280,7 @@ trait Localization
      * @return string
      */
     public function translate(string $key, array $parameters = [], $number = null, TranslatorInterface $translator = null, bool $altNumbers = false): string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $translation = static::translateWith($translator ?: $this->getLocalTranslator(), $key, $parameters, $number);
 
@@ -302,7 +338,11 @@ trait Localization
             return $result;
         }
 
+<<<<<<< HEAD
+        return (string) $number;
+=======
         return "$number";
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -387,7 +427,11 @@ trait Localization
                     'second',
                 ], $messages, $key) : [],
                 $mode & CarbonInterface::TRANSLATE_MERIDIEM ? array_map(function ($hour) use ($meridiem) {
+<<<<<<< HEAD
+                    if (\is_array($meridiem)) {
+=======
                     if (is_array($meridiem)) {
+>>>>>>> parent of 31cfa1b1 (p)
                         return $meridiem[$hour < 12 ? 0 : 1];
                     }
 
@@ -396,11 +440,19 @@ trait Localization
             );
         }
 
+<<<<<<< HEAD
+        return substr(preg_replace_callback('/(?<=[\d\s+.\/,_-])('.implode('|', $fromTranslations).')(?=[\d\s+.\/,_-])/iu', function ($match) use ($fromTranslations, $toTranslations) {
+            [$chunk] = $match;
+
+            foreach ($fromTranslations as $index => $word) {
+                if (preg_match("/^$word\$/iu", $chunk)) {
+=======
         return substr(preg_replace_callback('/(?<=[\d\s+.\/,_-])('.implode('|', $fromTranslations).')(?=[\d\s+.\/,_-])/i', function ($match) use ($fromTranslations, $toTranslations) {
             [$chunk] = $match;
 
             foreach ($fromTranslations as $index => $word) {
                 if (preg_match("/^$word\$/i", $chunk)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     return $toTranslations[$index] ?? '';
                 }
             }
@@ -535,7 +587,11 @@ trait Localization
     public static function executeWithLocale($locale, $func)
     {
         $currentLocale = static::getLocale();
+<<<<<<< HEAD
+        $result = $func(static::setLocale($locale) ? static::getLocale() : false, static::translator());
+=======
         $result = call_user_func($func, static::setLocale($locale) ? static::getLocale() : false, static::translator());
+>>>>>>> parent of 31cfa1b1 (p)
         static::setLocale($currentLocale);
 
         return $result;
@@ -582,7 +638,13 @@ trait Localization
             }
 
             foreach (['ago', 'from_now', 'before', 'after'] as $key) {
+<<<<<<< HEAD
+                if ($translator instanceof TranslatorBagInterface &&
+                    self::getFromCatalogue($translator, $translator->getCatalogue($newLocale), $key) instanceof Closure
+                ) {
+=======
                 if ($translator instanceof TranslatorBagInterface && $translator->getCatalogue($newLocale)->get($key) instanceof Closure) {
+>>>>>>> parent of 31cfa1b1 (p)
                     continue;
                 }
 
@@ -706,7 +768,11 @@ trait Localization
      */
     protected function getTranslatorLocale($translator = null): ?string
     {
+<<<<<<< HEAD
+        if (\func_num_args() === 0) {
+=======
         if (func_num_args() === 0) {
+>>>>>>> parent of 31cfa1b1 (p)
             $translator = $this->getLocalTranslator();
         }
 
@@ -724,7 +790,11 @@ trait Localization
      */
     protected static function getLocaleAwareTranslator($translator = null)
     {
+<<<<<<< HEAD
+        if (\func_num_args() === 0) {
+=======
         if (func_num_args() === 0) {
+>>>>>>> parent of 31cfa1b1 (p)
             $translator = static::translator();
         }
 
@@ -736,6 +806,22 @@ trait Localization
     }
 
     /**
+<<<<<<< HEAD
+     * @param mixed                                                    $translator
+     * @param \Symfony\Component\Translation\MessageCatalogueInterface $catalogue
+     *
+     * @return mixed
+     */
+    private static function getFromCatalogue($translator, $catalogue, string $id, string $domain = 'messages')
+    {
+        return $translator instanceof TranslatorStrongTypeInterface
+            ? $translator->getFromCatalogue($catalogue, $id, $domain) // @codeCoverageIgnore
+            : $catalogue->get($id, $domain);
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Return the word cleaned from its translation codes.
      *
      * @param string $word
@@ -774,7 +860,11 @@ trait Localization
             $parts = explode('|', $message);
 
             return $key === 'to'
+<<<<<<< HEAD
+                ? self::cleanWordFromTranslationString(end($parts))
+=======
                 ? static::cleanWordFromTranslationString(end($parts))
+>>>>>>> parent of 31cfa1b1 (p)
                 : '(?:'.implode('|', array_map([static::class, 'cleanWordFromTranslationString'], $parts)).')';
         }, $keys);
     }
@@ -792,7 +882,11 @@ trait Localization
     {
         $filler = '>>DO NOT REPLACE<<';
 
+<<<<<<< HEAD
+        if (\is_array($translation)) {
+=======
         if (is_array($translation)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return array_pad($translation, $length, $filler);
         }
 

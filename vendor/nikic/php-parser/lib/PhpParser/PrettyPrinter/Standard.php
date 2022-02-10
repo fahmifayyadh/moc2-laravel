@@ -33,6 +33,13 @@ class Standard extends PrettyPrinterAbstract
              . $this->p($node->value);
     }
 
+<<<<<<< HEAD
+    protected function pVariadicPlaceholder(Node\VariadicPlaceholder $node) {
+        return '...';
+    }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function pConst(Node\Const_ $node) {
         return $node->name . ' = ' . $this->p($node->value);
     }
@@ -45,6 +52,13 @@ class Standard extends PrettyPrinterAbstract
         return $this->pImplode($node->types, '|');
     }
 
+<<<<<<< HEAD
+    protected function pIntersectionType(Node\IntersectionType $node) {
+        return $this->pImplode($node->types, '&');
+    }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function pIdentifier(Node\Identifier $node) {
         return $node->name;
     }
@@ -727,6 +741,17 @@ class Standard extends PrettyPrinterAbstract
              . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
     }
 
+<<<<<<< HEAD
+    protected function pStmt_Enum(Stmt\Enum_ $node) {
+        return $this->pAttrGroups($node->attrGroups)
+             . 'enum ' . $node->name
+             . ($node->scalarType ? " : $node->scalarType" : '')
+             . (!empty($node->implements) ? ' implements ' . $this->pCommaSeparated($node->implements) : '')
+             . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
+    }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function pStmt_Class(Stmt\Class_ $node) {
         return $this->pClassCommon($node, ' ' . $node->name);
     }
@@ -737,6 +762,16 @@ class Standard extends PrettyPrinterAbstract
              . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
     }
 
+<<<<<<< HEAD
+    protected function pStmt_EnumCase(Stmt\EnumCase $node) {
+        return $this->pAttrGroups($node->attrGroups)
+             . 'case ' . $node->name
+             . ($node->expr ? ' = ' . $this->p($node->expr) : '')
+             . ';';
+    }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function pStmt_TraitUse(Stmt\TraitUse $node) {
         return 'use ' . $this->pCommaSeparated($node->traits)
              . (empty($node->adaptations)
@@ -984,6 +1019,29 @@ class Standard extends PrettyPrinterAbstract
             $escaped = addcslashes($string, "\n\r\t\f\v$" . $quote . "\\");
         }
 
+<<<<<<< HEAD
+        // Escape control characters and non-UTF-8 characters.
+        // Regex based on https://stackoverflow.com/a/11709412/385378.
+        $regex = '/(
+              [\x00-\x08\x0E-\x1F] # Control characters
+            | [\xC0-\xC1] # Invalid UTF-8 Bytes
+            | [\xF5-\xFF] # Invalid UTF-8 Bytes
+            | \xE0(?=[\x80-\x9F]) # Overlong encoding of prior code point
+            | \xF0(?=[\x80-\x8F]) # Overlong encoding of prior code point
+            | [\xC2-\xDF](?![\x80-\xBF]) # Invalid UTF-8 Sequence Start
+            | [\xE0-\xEF](?![\x80-\xBF]{2}) # Invalid UTF-8 Sequence Start
+            | [\xF0-\xF4](?![\x80-\xBF]{3}) # Invalid UTF-8 Sequence Start
+            | (?<=[\x00-\x7F\xF5-\xFF])[\x80-\xBF] # Invalid UTF-8 Sequence Middle
+            | (?<![\xC2-\xDF]|[\xE0-\xEF]|[\xE0-\xEF][\x80-\xBF]|[\xF0-\xF4]|[\xF0-\xF4][\x80-\xBF]|[\xF0-\xF4][\x80-\xBF]{2})[\x80-\xBF] # Overlong Sequence
+            | (?<=[\xE0-\xEF])[\x80-\xBF](?![\x80-\xBF]) # Short 3 byte sequence
+            | (?<=[\xF0-\xF4])[\x80-\xBF](?![\x80-\xBF]{2}) # Short 4 byte sequence
+            | (?<=[\xF0-\xF4][\x80-\xBF])[\x80-\xBF](?![\x80-\xBF]) # Short 4 byte sequence (2)
+        )/x';
+        return preg_replace_callback($regex, function ($matches) {
+            assert(strlen($matches[0]) === 1);
+            $hex = dechex(ord($matches[0]));;
+            return '\\x' . str_pad($hex, 2, '0', \STR_PAD_LEFT);
+=======
         // Escape other control characters
         return preg_replace_callback('/([\0-\10\16-\37])(?=([0-7]?))/', function ($matches) {
             $oct = decoct(ord($matches[1]));
@@ -992,6 +1050,7 @@ class Standard extends PrettyPrinterAbstract
                 return '\\' . str_pad($oct, 3, '0', \STR_PAD_LEFT);
             }
             return '\\' . $oct;
+>>>>>>> parent of 31cfa1b1 (p)
         }, $escaped);
     }
 
@@ -1040,7 +1099,11 @@ class Standard extends PrettyPrinterAbstract
      * @param Node[] $nodes
      * @return bool
      */
+<<<<<<< HEAD
+    protected function hasNodeWithComments(array $nodes) {
+=======
     private function hasNodeWithComments(array $nodes) {
+>>>>>>> parent of 31cfa1b1 (p)
         foreach ($nodes as $node) {
             if ($node && $node->getComments()) {
                 return true;
@@ -1049,7 +1112,11 @@ class Standard extends PrettyPrinterAbstract
         return false;
     }
 
+<<<<<<< HEAD
+    protected function pMaybeMultiline(array $nodes, bool $trailingComma = false) {
+=======
     private function pMaybeMultiline(array $nodes, bool $trailingComma = false) {
+>>>>>>> parent of 31cfa1b1 (p)
         if (!$this->hasNodeWithComments($nodes)) {
             return $this->pCommaSeparated($nodes);
         } else {
@@ -1057,7 +1124,11 @@ class Standard extends PrettyPrinterAbstract
         }
     }
 
+<<<<<<< HEAD
+    protected function pAttrGroups(array $nodes, bool $inline = false): string {
+=======
     private function pAttrGroups(array $nodes, bool $inline = false): string {
+>>>>>>> parent of 31cfa1b1 (p)
         $result = '';
         $sep = $inline ? ' ' : $this->nl;
         foreach ($nodes as $node) {

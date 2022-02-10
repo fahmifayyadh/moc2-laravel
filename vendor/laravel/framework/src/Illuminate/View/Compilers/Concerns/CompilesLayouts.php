@@ -2,8 +2,11 @@
 
 namespace Illuminate\View\Compilers\Concerns;
 
+<<<<<<< HEAD
+=======
 use Illuminate\View\Factory as ViewFactory;
 
+>>>>>>> parent of 31cfa1b1 (p)
 trait CompilesLayouts
 {
     /**
@@ -50,7 +53,13 @@ trait CompilesLayouts
      */
     protected function compileParent()
     {
+<<<<<<< HEAD
+        $escapedLastSection = strtr($this->lastSection, ['\\' => '\\\\', "'" => "\\'"]);
+
+        return "<?php echo \Illuminate\View\Factory::parentPlaceholder('{$escapedLastSection}'); ?>";
+=======
         return ViewFactory::parentPlaceholder($this->lastSection ?: '');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

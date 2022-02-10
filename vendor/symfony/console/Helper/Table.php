@@ -374,6 +374,10 @@ class Table
 
         $isHeader = !$this->horizontal;
         $isFirstRow = $this->horizontal;
+<<<<<<< HEAD
+        $hasTitle = (bool) $this->headerTitle;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         foreach ($rows as $row) {
             if ($divider === $row) {
                 $isHeader = false;
@@ -391,12 +395,22 @@ class Table
             }
 
             if ($isHeader || $isFirstRow) {
+<<<<<<< HEAD
+                $this->renderRowSeparator(
+                    $isHeader ? self::SEPARATOR_TOP : self::SEPARATOR_TOP_BOTTOM,
+                    $hasTitle ? $this->headerTitle : null,
+                    $hasTitle ? $this->style->getHeaderTitleFormat() : null
+                );
+                $isFirstRow = false;
+                $hasTitle = false;
+=======
                 if ($isFirstRow) {
                     $this->renderRowSeparator(self::SEPARATOR_TOP_BOTTOM);
                     $isFirstRow = false;
                 } else {
                     $this->renderRowSeparator(self::SEPARATOR_TOP, $this->headerTitle, $this->style->getHeaderTitleFormat());
                 }
+>>>>>>> parent of 31cfa1b1 (p)
             }
             if ($this->horizontal) {
                 $this->renderRow($row, $this->style->getCellRowFormat(), $this->style->getCellHeaderFormat());
@@ -430,6 +444,15 @@ class Table
 
         $crossings = $this->style->getCrossingChars();
         if (self::SEPARATOR_MID === $type) {
+<<<<<<< HEAD
+            [$horizontal, $leftChar, $midChar, $rightChar] = [$borders[2], $crossings[8], $crossings[0], $crossings[4]];
+        } elseif (self::SEPARATOR_TOP === $type) {
+            [$horizontal, $leftChar, $midChar, $rightChar] = [$borders[0], $crossings[1], $crossings[2], $crossings[3]];
+        } elseif (self::SEPARATOR_TOP_BOTTOM === $type) {
+            [$horizontal, $leftChar, $midChar, $rightChar] = [$borders[0], $crossings[9], $crossings[10], $crossings[11]];
+        } else {
+            [$horizontal, $leftChar, $midChar, $rightChar] = [$borders[0], $crossings[7], $crossings[6], $crossings[5]];
+=======
             list($horizontal, $leftChar, $midChar, $rightChar) = [$borders[2], $crossings[8], $crossings[0], $crossings[4]];
         } elseif (self::SEPARATOR_TOP === $type) {
             list($horizontal, $leftChar, $midChar, $rightChar) = [$borders[0], $crossings[1], $crossings[2], $crossings[3]];
@@ -437,6 +460,7 @@ class Table
             list($horizontal, $leftChar, $midChar, $rightChar) = [$borders[0], $crossings[9], $crossings[10], $crossings[11]];
         } else {
             list($horizontal, $leftChar, $midChar, $rightChar) = [$borders[0], $crossings[7], $crossings[6], $crossings[5]];
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $markup = $leftChar;
@@ -454,7 +478,11 @@ class Table
                 $formattedTitle = sprintf($titleFormat, Helper::substr($title, 0, $limit - $formatLength - 3).'...');
             }
 
+<<<<<<< HEAD
+            $titleStart = intdiv($markupLength - $titleLength, 2);
+=======
             $titleStart = ($markupLength - $titleLength) / 2;
+>>>>>>> parent of 31cfa1b1 (p)
             if (false === mb_detect_encoding($markup, null, true)) {
                 $markup = substr_replace($markup, $formattedTitle, $titleStart, $titleLength);
             } else {
@@ -503,7 +531,11 @@ class Table
      */
     private function renderCell(array $row, int $column, string $cellFormat): string
     {
+<<<<<<< HEAD
+        $cell = $row[$column] ?? '';
+=======
         $cell = isset($row[$column]) ? $row[$column] : '';
+>>>>>>> parent of 31cfa1b1 (p)
         $width = $this->effectiveColumnWidths[$column];
         if ($cell instanceof TableCell && $cell->getColspan() > 1) {
             // add the width of the following columns(numbers of colspan).
@@ -561,7 +593,11 @@ class Table
                 if (isset($this->columnMaxWidths[$column]) && Helper::strlenWithoutDecoration($formatter, $cell) > $this->columnMaxWidths[$column]) {
                     $cell = $formatter->formatAndWrap($cell, $this->columnMaxWidths[$column] * $colspan);
                 }
+<<<<<<< HEAD
+                if (!strstr($cell ?? '', "\n")) {
+=======
                 if (!strstr($cell, "\n")) {
+>>>>>>> parent of 31cfa1b1 (p)
                     continue;
                 }
                 $escaped = implode("\n", array_map([OutputFormatter::class, 'escapeTrailingBackslash'], explode("\n", $cell)));
@@ -585,11 +621,19 @@ class Table
 
         return new TableRows(function () use ($rows, $unmergedRows): \Traversable {
             foreach ($rows as $rowKey => $row) {
+<<<<<<< HEAD
+                yield $row instanceof TableSeparator ? $row : $this->fillCells($row);
+
+                if (isset($unmergedRows[$rowKey])) {
+                    foreach ($unmergedRows[$rowKey] as $row) {
+                        yield $row instanceof TableSeparator ? $row : $this->fillCells($row);
+=======
                 yield $this->fillCells($row);
 
                 if (isset($unmergedRows[$rowKey])) {
                     foreach ($unmergedRows[$rowKey] as $unmergedRow) {
                         yield $this->fillCells($unmergedRow);
+>>>>>>> parent of 31cfa1b1 (p)
                     }
                 }
             }
@@ -637,7 +681,11 @@ class Table
                 // create a two dimensional array (rowspan x colspan)
                 $unmergedRows = array_replace_recursive(array_fill($line + 1, $nbLines, []), $unmergedRows);
                 foreach ($unmergedRows as $unmergedRowKey => $unmergedRow) {
+<<<<<<< HEAD
+                    $value = $lines[$unmergedRowKey - $line] ?? '';
+=======
                     $value = isset($lines[$unmergedRowKey - $line]) ? $lines[$unmergedRowKey - $line] : '';
+>>>>>>> parent of 31cfa1b1 (p)
                     $unmergedRows[$unmergedRowKey][$column] = new TableCell($value, ['colspan' => $cell->getColspan()]);
                     if ($nbLines === $unmergedRowKey - $line) {
                         break;
@@ -670,7 +718,11 @@ class Table
     /**
      * fill cells for a row that contains colspan > 1.
      */
+<<<<<<< HEAD
+    private function fillCells(iterable $row)
+=======
     private function fillCells($row)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $newRow = [];
 
@@ -775,7 +827,11 @@ class Table
             $cellWidth = Helper::strlenWithoutDecoration($this->output->getFormatter(), $cell);
         }
 
+<<<<<<< HEAD
+        $columnWidth = $this->columnWidths[$column] ?? 0;
+=======
         $columnWidth = isset($this->columnWidths[$column]) ? $this->columnWidths[$column] : 0;
+>>>>>>> parent of 31cfa1b1 (p)
         $cellWidth = max($cellWidth, $columnWidth);
 
         return isset($this->columnMaxWidths[$column]) ? min($this->columnMaxWidths[$column], $cellWidth) : $cellWidth;

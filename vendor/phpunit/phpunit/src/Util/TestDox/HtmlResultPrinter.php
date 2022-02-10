@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Util\TestDox;
 
+<<<<<<< HEAD
+use function sprintf;
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
@@ -17,7 +22,11 @@ final class HtmlResultPrinter extends ResultPrinter
     /**
      * @var string
      */
+<<<<<<< HEAD
+    private const PAGE_HEADER = <<<'EOT'
+=======
     private const PAGE_HEADER = <<<EOT
+>>>>>>> parent of 31cfa1b1 (p)
 <!doctype html>
 <html lang="en">
     <head>
@@ -29,6 +38,11 @@ final class HtmlResultPrinter extends ResultPrinter
                 font-variant-ligatures: common-ligatures;
                 font-kerning: normal;
                 margin-left: 2em;
+<<<<<<< HEAD
+                background-color: #ffffff;
+                color: #000000;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             body > ul > li {
@@ -53,7 +67,11 @@ EOT;
     /**
      * @var string
      */
+<<<<<<< HEAD
+    private const CLASS_HEADER = <<<'EOT'
+=======
     private const CLASS_HEADER = <<<EOT
+>>>>>>> parent of 31cfa1b1 (p)
 
         <h2 id="%s">%s</h2>
         <ul>
@@ -63,14 +81,22 @@ EOT;
     /**
      * @var string
      */
+<<<<<<< HEAD
+    private const CLASS_FOOTER = <<<'EOT'
+=======
     private const CLASS_FOOTER = <<<EOT
+>>>>>>> parent of 31cfa1b1 (p)
         </ul>
 EOT;
 
     /**
      * @var string
      */
+<<<<<<< HEAD
+    private const PAGE_FOOTER = <<<'EOT'
+=======
     private const PAGE_FOOTER = <<<EOT
+>>>>>>> parent of 31cfa1b1 (p)
 
     </body>
 </html>
@@ -90,7 +116,11 @@ EOT;
     protected function startClass(string $name): void
     {
         $this->write(
+<<<<<<< HEAD
+            sprintf(
+=======
             \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                 self::CLASS_HEADER,
                 $name,
                 $this->currentTestClassPrettified
@@ -104,7 +134,11 @@ EOT;
     protected function onTest($name, bool $success = true): void
     {
         $this->write(
+<<<<<<< HEAD
+            sprintf(
+=======
             \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                 "            <li style=\"color: %s;\">%s %s</li>\n",
                 $success ? '#555753' : '#ef2929',
                 $success ? '✓' : '❌',

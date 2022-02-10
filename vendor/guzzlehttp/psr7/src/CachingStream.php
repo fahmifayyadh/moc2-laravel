@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+declare(strict_types=1);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
@@ -8,7 +13,11 @@ use Psr\Http\Message\StreamInterface;
  * Stream decorator that can cache previously read bytes from a sequentially
  * read stream.
  */
+<<<<<<< HEAD
+final class CachingStream implements StreamInterface
+=======
 class CachingStream implements StreamInterface
+>>>>>>> parent of 31cfa1b1 (p)
 {
     use StreamDecoratorTrait;
 
@@ -21,7 +30,11 @@ class CachingStream implements StreamInterface
     /**
      * We will treat the buffer object as the body of the stream
      *
+<<<<<<< HEAD
+     * @param StreamInterface $stream Stream to cache. The cursor is assumed to be at the beginning of the stream.
+=======
      * @param StreamInterface $stream Stream to cache
+>>>>>>> parent of 31cfa1b1 (p)
      * @param StreamInterface $target Optionally specify where data is cached
      */
     public function __construct(
@@ -29,6 +42,23 @@ class CachingStream implements StreamInterface
         StreamInterface $target = null
     ) {
         $this->remoteStream = $stream;
+<<<<<<< HEAD
+        $this->stream = $target ?: new Stream(Utils::tryFopen('php://temp', 'r+'));
+    }
+
+    public function getSize(): ?int
+    {
+        $remoteSize = $this->remoteStream->getSize();
+
+        if (null === $remoteSize) {
+            return null;
+        }
+
+        return max($this->stream->getSize(), $remoteSize);
+    }
+
+    public function rewind(): void
+=======
         $this->stream = $target ?: new Stream(fopen('php://temp', 'r+'));
     }
 
@@ -38,10 +68,20 @@ class CachingStream implements StreamInterface
     }
 
     public function rewind()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->seek(0);
     }
 
+<<<<<<< HEAD
+    public function seek($offset, $whence = SEEK_SET): void
+    {
+        if ($whence === SEEK_SET) {
+            $byte = $offset;
+        } elseif ($whence === SEEK_CUR) {
+            $byte = $offset + $this->tell();
+        } elseif ($whence === SEEK_END) {
+=======
     public function seek($offset, $whence = SEEK_SET)
     {
         if ($whence == SEEK_SET) {
@@ -49,6 +89,7 @@ class CachingStream implements StreamInterface
         } elseif ($whence == SEEK_CUR) {
             $byte = $offset + $this->tell();
         } elseif ($whence == SEEK_END) {
+>>>>>>> parent of 31cfa1b1 (p)
             $size = $this->remoteStream->getSize();
             if ($size === null) {
                 $size = $this->cacheEntireStream();
@@ -73,7 +114,11 @@ class CachingStream implements StreamInterface
         }
     }
 
+<<<<<<< HEAD
+    public function read($length): string
+=======
     public function read($length)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // Perform a regular read on any previously read data from the buffer
         $data = $this->stream->read($length);
@@ -102,7 +147,11 @@ class CachingStream implements StreamInterface
         return $data;
     }
 
+<<<<<<< HEAD
+    public function write($string): int
+=======
     public function write($string)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // When appending to the end of the currently read stream, you'll want
         // to skip bytes from being read from the remote stream to emulate
@@ -116,7 +165,11 @@ class CachingStream implements StreamInterface
         return $this->stream->write($string);
     }
 
+<<<<<<< HEAD
+    public function eof(): bool
+=======
     public function eof()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->stream->eof() && $this->remoteStream->eof();
     }
@@ -124,12 +177,22 @@ class CachingStream implements StreamInterface
     /**
      * Close both the remote stream and buffer stream
      */
+<<<<<<< HEAD
+    public function close(): void
+    {
+        $this->remoteStream->close();
+        $this->stream->close();
+    }
+
+    private function cacheEntireStream(): int
+=======
     public function close()
     {
         $this->remoteStream->close() && $this->stream->close();
     }
 
     private function cacheEntireStream()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $target = new FnStream(['write' => 'strlen']);
         Utils::copyToStream($this, $target);

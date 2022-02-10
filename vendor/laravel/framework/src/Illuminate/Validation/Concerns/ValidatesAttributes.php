@@ -59,7 +59,11 @@ trait ValidatesAttributes
 
         if ($url = parse_url($value, PHP_URL_HOST)) {
             try {
+<<<<<<< HEAD
+                return count(dns_get_record($url.'.', DNS_A | DNS_AAAA)) > 0;
+=======
                 return count(dns_get_record($url, DNS_A | DNS_AAAA)) > 0;
+>>>>>>> parent of 31cfa1b1 (p)
             } catch (Exception $e) {
                 return false;
             }
@@ -248,7 +252,11 @@ trait ValidatesAttributes
     {
         try {
             if ($this->isTestingRelativeDateTime($value)) {
+<<<<<<< HEAD
+                return @Date::parse($value) ?: null;
+=======
                 return Date::parse($value);
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             return date_create($value) ?: null;
@@ -486,7 +494,11 @@ trait ValidatesAttributes
 
         $length = strlen((string) $value);
 
+<<<<<<< HEAD
+        return ! preg_match('/[^0-9.]/', $value)
+=======
         return ! preg_match('/[^0-9]/', $value)
+>>>>>>> parent of 31cfa1b1 (p)
                     && $length >= $parameters[0] && $length <= $parameters[1];
     }
 
@@ -1054,7 +1066,11 @@ trait ValidatesAttributes
      */
     public function validateImage($attribute, $value)
     {
+<<<<<<< HEAD
+        return $this->validateMimes($attribute, $value, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp']);
+=======
         return $this->validateMimes($attribute, $value, ['jpeg', 'png', 'gif', 'bmp', 'svg', 'webp']);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -1160,7 +1176,15 @@ trait ValidatesAttributes
      */
     public function validateJson($attribute, $value)
     {
+<<<<<<< HEAD
+        if (is_array($value)) {
+            return false;
+        }
+
+        if (! is_scalar($value) && ! is_null($value) && ! method_exists($value, '__toString')) {
+=======
         if (! is_scalar($value) && ! method_exists($value, '__toString')) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
@@ -1206,6 +1230,13 @@ trait ValidatesAttributes
             return false;
         }
 
+<<<<<<< HEAD
+        if (in_array('jpg', $parameters) || in_array('jpeg', $parameters)) {
+            $parameters = array_unique(array_merge($parameters, ['jpg', 'jpeg']));
+        }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         return $value->getPath() !== '' && in_array($value->guessExtension(), $parameters);
     }
 
@@ -1246,7 +1277,11 @@ trait ValidatesAttributes
         }
 
         $phpExtensions = [
+<<<<<<< HEAD
+            'php', 'php3', 'php4', 'php5', 'phtml', 'phar',
+=======
             'php', 'php3', 'php4', 'php5', 'phtml',
+>>>>>>> parent of 31cfa1b1 (p)
         ];
 
         return ($value instanceof UploadedFile)
@@ -1412,9 +1447,19 @@ trait ValidatesAttributes
     {
         $this->requireParameterCount(2, $parameters, 'required_if');
 
+<<<<<<< HEAD
+        if (! Arr::has($this->data, $parameters[0])) {
+            return true;
+        }
+
+        [$values, $other] = $this->prepareValuesAndOther($parameters);
+
+        if (in_array($other, $values, is_bool($other) || is_null($other))) {
+=======
         [$values, $other] = $this->prepareValuesAndOther($parameters);
 
         if (in_array($other, $values)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return $this->validateRequired($attribute, $value);
         }
 
@@ -1433,9 +1478,19 @@ trait ValidatesAttributes
     {
         $this->requireParameterCount(2, $parameters, 'exclude_if');
 
+<<<<<<< HEAD
+        if (! Arr::has($this->data, $parameters[0])) {
+            return true;
+        }
+
+        [$values, $other] = $this->prepareValuesAndOther($parameters);
+
+        return ! in_array($other, $values, is_bool($other) || is_null($other));
+=======
         [$values, $other] = $this->prepareValuesAndOther($parameters);
 
         return ! in_array($other, $values);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -1452,7 +1507,32 @@ trait ValidatesAttributes
 
         [$values, $other] = $this->prepareValuesAndOther($parameters);
 
+<<<<<<< HEAD
+        return in_array($other, $values, is_bool($other) || is_null($other));
+    }
+
+    /**
+     * Validate that an attribute exists when another attribute does not have a given value.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @param  mixed  $parameters
+     * @return bool
+     */
+    public function validateRequiredUnless($attribute, $value, $parameters)
+    {
+        $this->requireParameterCount(2, $parameters, 'required_unless');
+
+        [$values, $other] = $this->prepareValuesAndOther($parameters);
+
+        if (! in_array($other, $values, is_bool($other) || is_null($other))) {
+            return $this->validateRequired($attribute, $value);
+        }
+
+        return true;
+=======
         return in_array($other, $values);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -1467,14 +1547,39 @@ trait ValidatesAttributes
 
         $values = array_slice($parameters, 1);
 
+<<<<<<< HEAD
+        if ($this->shouldConvertToBoolean($parameters[0]) || is_bool($other)) {
+            $values = $this->convertValuesToBoolean($values);
+        }
+
+        if (is_null($other)) {
+            $values = $this->convertValuesToNull($values);
+        }
+
+=======
         if (is_bool($other)) {
             $values = $this->convertValuesToBoolean($values);
         }
 
+>>>>>>> parent of 31cfa1b1 (p)
         return [$values, $other];
     }
 
     /**
+<<<<<<< HEAD
+     * Check if parameter should be converted to boolean.
+     *
+     * @param  string  $parameter
+     * @return bool
+     */
+    protected function shouldConvertToBoolean($parameter)
+    {
+        return in_array('boolean', Arr::get($this->rules, $parameter, []));
+    }
+
+    /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Convert the given values to boolean if they are string "true" / "false".
      *
      * @param  array  $values
@@ -1494,6 +1599,18 @@ trait ValidatesAttributes
     }
 
     /**
+<<<<<<< HEAD
+     * Convert the given values to null if they are string "null".
+     *
+     * @param  array  $values
+     * @return array
+     */
+    protected function convertValuesToNull($values)
+    {
+        return array_map(function ($value) {
+            return Str::lower($value) === 'null' ? null : $value;
+        }, $values);
+=======
      * Validate that an attribute exists when another attribute does not have a given value.
      *
      * @param  string  $attribute
@@ -1512,6 +1629,7 @@ trait ValidatesAttributes
         }
 
         return true;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -1889,7 +2007,10 @@ trait ValidatesAttributes
      *
      * @param  string  $attribute
      * @param  string  $rule
+<<<<<<< HEAD
+=======
      *
+>>>>>>> parent of 31cfa1b1 (p)
      * @return void
      */
     protected function shouldBeNumeric($attribute, $rule)

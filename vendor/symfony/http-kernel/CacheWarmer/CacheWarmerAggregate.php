@@ -102,7 +102,13 @@ class CacheWarmerAggregate implements CacheWarmerInterface
 
                 if (file_exists($this->deprecationLogsFilepath)) {
                     $previousLogs = unserialize(file_get_contents($this->deprecationLogsFilepath));
+<<<<<<< HEAD
+                    if (\is_array($previousLogs)) {
+                        $collectedLogs = array_merge($previousLogs, $collectedLogs);
+                    }
+=======
                     $collectedLogs = array_merge($previousLogs, $collectedLogs);
+>>>>>>> parent of 31cfa1b1 (p)
                 }
 
                 file_put_contents($this->deprecationLogsFilepath, serialize(array_values($collectedLogs)));

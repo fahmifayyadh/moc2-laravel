@@ -833,7 +833,11 @@ class Application implements ResetInterface
     private function finishRenderThrowableOrException(OutputInterface $output): void
     {
         if (null !== $this->runningCommand) {
+<<<<<<< HEAD
+            $output->writeln(sprintf('<info>%s</info>', OutputFormatter::escape(sprintf($this->runningCommand->getSynopsis(), $this->getName()))), OutputInterface::VERBOSITY_QUIET);
+=======
             $output->writeln(sprintf('<info>%s</info>', sprintf($this->runningCommand->getSynopsis(), $this->getName())), OutputInterface::VERBOSITY_QUIET);
+>>>>>>> parent of 31cfa1b1 (p)
             $output->writeln('', OutputInterface::VERBOSITY_QUIET);
         }
     }
@@ -877,7 +881,11 @@ class Application implements ResetInterface
                 $len = 0;
             }
 
+<<<<<<< HEAD
+            if (str_contains($message, "@anonymous\0")) {
+=======
             if (false !== strpos($message, "@anonymous\0")) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $message = preg_replace_callback('/[a-zA-Z_\x7f-\xff][\\\\a-zA-Z0-9_\x7f-\xff]*+@anonymous\x00.*?\.php(?:0x?|:[0-9]++\$)[0-9a-fA-F]++/', function ($m) {
                     return class_exists($m[0], false) ? (get_parent_class($m[0]) ?: key(class_implements($m[0])) ?: 'class').'@anonymous' : $m[0];
                 }, $message);
@@ -925,11 +933,19 @@ class Application implements ResetInterface
                 ]);
 
                 for ($i = 0, $count = \count($trace); $i < $count; ++$i) {
+<<<<<<< HEAD
+                    $class = $trace[$i]['class'] ?? '';
+                    $type = $trace[$i]['type'] ?? '';
+                    $function = $trace[$i]['function'] ?? '';
+                    $file = $trace[$i]['file'] ?? 'n/a';
+                    $line = $trace[$i]['line'] ?? 'n/a';
+=======
                     $class = isset($trace[$i]['class']) ? $trace[$i]['class'] : '';
                     $type = isset($trace[$i]['type']) ? $trace[$i]['type'] : '';
                     $function = isset($trace[$i]['function']) ? $trace[$i]['function'] : '';
                     $file = isset($trace[$i]['file']) ? $trace[$i]['file'] : 'n/a';
                     $line = isset($trace[$i]['line']) ? $trace[$i]['line'] : 'n/a';
+>>>>>>> parent of 31cfa1b1 (p)
 
                     $output->writeln(sprintf(' %s%s at <info>%s:%s</info>', $class, $function ? $type.$function.'()' : '', $file, $line), OutputInterface::VERBOSITY_QUIET);
                 }
@@ -1155,7 +1171,11 @@ class Application implements ResetInterface
                 }
 
                 $lev = levenshtein($subname, $parts[$i]);
+<<<<<<< HEAD
+                if ($lev <= \strlen($subname) / 3 || '' !== $subname && str_contains($parts[$i], $subname)) {
+=======
                 if ($lev <= \strlen($subname) / 3 || '' !== $subname && false !== strpos($parts[$i], $subname)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $alternatives[$collectionName] = $exists ? $alternatives[$collectionName] + $lev : $lev;
                 } elseif ($exists) {
                     $alternatives[$collectionName] += $threshold;
@@ -1165,7 +1185,11 @@ class Application implements ResetInterface
 
         foreach ($collection as $item) {
             $lev = levenshtein($name, $item);
+<<<<<<< HEAD
+            if ($lev <= \strlen($name) / 3 || str_contains($item, $name)) {
+=======
             if ($lev <= \strlen($name) / 3 || false !== strpos($item, $name)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $alternatives[$item] = isset($alternatives[$item]) ? $alternatives[$item] - $lev : $lev;
             }
         }

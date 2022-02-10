@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<?php declare(strict_types = 1);
+=======
 <?php
+>>>>>>> parent of 31cfa1b1 (p)
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,12 +11,33 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+=======
 
+>>>>>>> parent of 31cfa1b1 (p)
 namespace PharIo\Manifest;
 
 use PharIo\Version\Version;
 
 class Manifest {
+<<<<<<< HEAD
+    /** @var ApplicationName */
+    private $name;
+
+    /** @var Version */
+    private $version;
+
+    /** @var Type */
+    private $type;
+
+    /** @var CopyrightInformation */
+    private $copyrightInformation;
+
+    /** @var RequirementCollection */
+    private $requirements;
+
+    /** @var BundledComponentCollection */
+=======
     /**
      * @var ApplicationName
      */
@@ -41,6 +66,7 @@ class Manifest {
     /**
      * @var BundledComponentCollection
      */
+>>>>>>> parent of 31cfa1b1 (p)
     private $bundledComponents;
 
     public function __construct(ApplicationName $name, Version $version, Type $type, CopyrightInformation $copyrightInformation, RequirementCollection $requirements, BundledComponentCollection $bundledComponents) {
@@ -52,6 +78,45 @@ class Manifest {
         $this->bundledComponents    = $bundledComponents;
     }
 
+<<<<<<< HEAD
+    public function getName(): ApplicationName {
+        return $this->name;
+    }
+
+    public function getVersion(): Version {
+        return $this->version;
+    }
+
+    public function getType(): Type {
+        return $this->type;
+    }
+
+    public function getCopyrightInformation(): CopyrightInformation {
+        return $this->copyrightInformation;
+    }
+
+    public function getRequirements(): RequirementCollection {
+        return $this->requirements;
+    }
+
+    public function getBundledComponents(): BundledComponentCollection {
+        return $this->bundledComponents;
+    }
+
+    public function isApplication(): bool {
+        return $this->type->isApplication();
+    }
+
+    public function isLibrary(): bool {
+        return $this->type->isLibrary();
+    }
+
+    public function isExtension(): bool {
+        return $this->type->isExtension();
+    }
+
+    public function isExtensionFor(ApplicationName $application, Version $version = null): bool {
+=======
     /**
      * @return ApplicationName
      */
@@ -122,6 +187,7 @@ class Manifest {
      * @return bool
      */
     public function isExtensionFor(ApplicationName $application, Version $version = null) {
+>>>>>>> parent of 31cfa1b1 (p)
         if (!$this->isExtension()) {
             return false;
         }

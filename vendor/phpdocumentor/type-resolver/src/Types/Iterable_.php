@@ -23,7 +23,11 @@ final class Iterable_ extends AbstractList
     /**
      * Returns a rendered output of the Type as it would be used in a DocBlock.
      */
+<<<<<<< HEAD
+    public function __toString(): string
+=======
     public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->keyType) {
             return 'iterable<' . $this->keyType . ',' . $this->valueType . '>';

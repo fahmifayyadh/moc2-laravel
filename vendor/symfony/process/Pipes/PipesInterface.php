@@ -20,7 +20,11 @@ namespace Symfony\Component\Process\Pipes;
  */
 interface PipesInterface
 {
+<<<<<<< HEAD
+    public const CHUNK_SIZE = 16384;
+=======
     const CHUNK_SIZE = 16384;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Returns an array of descriptors for the use of proc_open.

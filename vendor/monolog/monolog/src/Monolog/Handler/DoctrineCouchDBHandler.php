@@ -23,6 +23,10 @@ use Doctrine\CouchDB\CouchDBClient;
  */
 class DoctrineCouchDBHandler extends AbstractProcessingHandler
 {
+<<<<<<< HEAD
+    /** @var CouchDBClient */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private $client;
 
     public function __construct(CouchDBClient $client, $level = Logger::DEBUG, bool $bubble = true)

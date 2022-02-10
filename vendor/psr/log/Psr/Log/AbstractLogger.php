@@ -14,8 +14,13 @@ abstract class AbstractLogger implements LoggerInterface
     /**
      * System is unusable.
      *
+<<<<<<< HEAD
+     * @param string  $message
+     * @param mixed[] $context
+=======
      * @param string $message
      * @param array  $context
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return void
      */
@@ -30,8 +35,13 @@ abstract class AbstractLogger implements LoggerInterface
      * Example: Entire website down, database unavailable, etc. This should
      * trigger the SMS alerts and wake you up.
      *
+<<<<<<< HEAD
+     * @param string  $message
+     * @param mixed[] $context
+=======
      * @param string $message
      * @param array  $context
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return void
      */
@@ -45,8 +55,13 @@ abstract class AbstractLogger implements LoggerInterface
      *
      * Example: Application component unavailable, unexpected exception.
      *
+<<<<<<< HEAD
+     * @param string  $message
+     * @param mixed[] $context
+=======
      * @param string $message
      * @param array  $context
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return void
      */
@@ -59,8 +74,13 @@ abstract class AbstractLogger implements LoggerInterface
      * Runtime errors that do not require immediate action but should typically
      * be logged and monitored.
      *
+<<<<<<< HEAD
+     * @param string  $message
+     * @param mixed[] $context
+=======
      * @param string $message
      * @param array  $context
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return void
      */
@@ -75,8 +95,13 @@ abstract class AbstractLogger implements LoggerInterface
      * Example: Use of deprecated APIs, poor use of an API, undesirable things
      * that are not necessarily wrong.
      *
+<<<<<<< HEAD
+     * @param string  $message
+     * @param mixed[] $context
+=======
      * @param string $message
      * @param array  $context
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return void
      */
@@ -88,8 +113,13 @@ abstract class AbstractLogger implements LoggerInterface
     /**
      * Normal but significant events.
      *
+<<<<<<< HEAD
+     * @param string  $message
+     * @param mixed[] $context
+=======
      * @param string $message
      * @param array  $context
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return void
      */
@@ -103,8 +133,13 @@ abstract class AbstractLogger implements LoggerInterface
      *
      * Example: User logs in, SQL logs.
      *
+<<<<<<< HEAD
+     * @param string  $message
+     * @param mixed[] $context
+=======
      * @param string $message
      * @param array  $context
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return void
      */
@@ -116,8 +151,13 @@ abstract class AbstractLogger implements LoggerInterface
     /**
      * Detailed debug information.
      *
+<<<<<<< HEAD
+     * @param string  $message
+     * @param mixed[] $context
+=======
      * @param string $message
      * @param array  $context
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return void
      */

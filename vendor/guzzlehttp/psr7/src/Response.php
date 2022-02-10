@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+declare(strict_types=1);
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\ResponseInterface;
@@ -12,8 +17,13 @@ class Response implements ResponseInterface
 {
     use MessageTrait;
 
+<<<<<<< HEAD
+    /** Map of standard HTTP status code/reason phrases */
+    private const PHRASES = [
+=======
     /** @var array Map of standard HTTP status code/reason phrases */
     private static $phrases = [
+>>>>>>> parent of 31cfa1b1 (p)
         100 => 'Continue',
         101 => 'Switching Protocols',
         102 => 'Processing',
@@ -34,6 +44,10 @@ class Response implements ResponseInterface
         305 => 'Use Proxy',
         306 => 'Switch Proxy',
         307 => 'Temporary Redirect',
+<<<<<<< HEAD
+        308 => 'Permanent Redirect',
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         400 => 'Bad Request',
         401 => 'Unauthorized',
         402 => 'Payment Required',
@@ -71,10 +85,25 @@ class Response implements ResponseInterface
         506 => 'Variant Also Negotiates',
         507 => 'Insufficient Storage',
         508 => 'Loop Detected',
+<<<<<<< HEAD
+        510 => 'Not Extended',
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         511 => 'Network Authentication Required',
     ];
 
     /** @var string */
+<<<<<<< HEAD
+    private $reasonPhrase;
+
+    /** @var int */
+    private $statusCode;
+
+    /**
+     * @param int                                  $status  Status code
+     * @param array<string, string|string[]>       $headers Response headers
+     * @param string|resource|StreamInterface|null $body    Response body
+=======
     private $reasonPhrase = '';
 
     /** @var int */
@@ -84,10 +113,19 @@ class Response implements ResponseInterface
      * @param int                                  $status  Status code
      * @param array                                $headers Response headers
      * @param string|null|resource|StreamInterface $body    Response body
+>>>>>>> parent of 31cfa1b1 (p)
      * @param string                               $version Protocol version
      * @param string|null                          $reason  Reason phrase (when empty a default will be used based on the status code)
      */
     public function __construct(
+<<<<<<< HEAD
+        int $status = 200,
+        array $headers = [],
+        $body = null,
+        string $version = '1.1',
+        string $reason = null
+    ) {
+=======
         $status = 200,
         array $headers = [],
         $body = null,
@@ -96,6 +134,7 @@ class Response implements ResponseInterface
     ) {
         $this->assertStatusCodeIsInteger($status);
         $status = (int) $status;
+>>>>>>> parent of 31cfa1b1 (p)
         $this->assertStatusCodeRange($status);
 
         $this->statusCode = $status;
@@ -105,8 +144,13 @@ class Response implements ResponseInterface
         }
 
         $this->setHeaders($headers);
+<<<<<<< HEAD
+        if ($reason == '' && isset(self::PHRASES[$this->statusCode])) {
+            $this->reasonPhrase = self::PHRASES[$this->statusCode];
+=======
         if ($reason == '' && isset(self::$phrases[$this->statusCode])) {
             $this->reasonPhrase = self::$phrases[$this->statusCode];
+>>>>>>> parent of 31cfa1b1 (p)
         } else {
             $this->reasonPhrase = (string) $reason;
         }
@@ -114,17 +158,29 @@ class Response implements ResponseInterface
         $this->protocol = $version;
     }
 
+<<<<<<< HEAD
+    public function getStatusCode(): int
+=======
     public function getStatusCode()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->statusCode;
     }
 
+<<<<<<< HEAD
+    public function getReasonPhrase(): string
+=======
     public function getReasonPhrase()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->reasonPhrase;
     }
 
+<<<<<<< HEAD
+    public function withStatus($code, $reasonPhrase = ''): ResponseInterface
+=======
     public function withStatus($code, $reasonPhrase = '')
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->assertStatusCodeIsInteger($code);
         $code = (int) $code;
@@ -132,21 +188,37 @@ class Response implements ResponseInterface
 
         $new = clone $this;
         $new->statusCode = $code;
+<<<<<<< HEAD
+        if ($reasonPhrase == '' && isset(self::PHRASES[$new->statusCode])) {
+            $reasonPhrase = self::PHRASES[$new->statusCode];
+=======
         if ($reasonPhrase == '' && isset(self::$phrases[$new->statusCode])) {
             $reasonPhrase = self::$phrases[$new->statusCode];
+>>>>>>> parent of 31cfa1b1 (p)
         }
         $new->reasonPhrase = (string) $reasonPhrase;
         return $new;
     }
 
+<<<<<<< HEAD
+    /**
+     * @param mixed $statusCode
+     */
+    private function assertStatusCodeIsInteger($statusCode): void
+=======
     private function assertStatusCodeIsInteger($statusCode)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (filter_var($statusCode, FILTER_VALIDATE_INT) === false) {
             throw new \InvalidArgumentException('Status code must be an integer value.');
         }
     }
 
+<<<<<<< HEAD
+    private function assertStatusCodeRange(int $statusCode): void
+=======
     private function assertStatusCodeRange($statusCode)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($statusCode < 100 || $statusCode >= 600) {
             throw new \InvalidArgumentException('Status code must be an integer value between 1xx and 5xx.');

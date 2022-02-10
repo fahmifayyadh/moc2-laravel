@@ -23,7 +23,11 @@ interface Listener
      *
      * @return bool
      */
+<<<<<<< HEAD
+    public static function isSupported(): bool;
+=======
     public static function isSupported();
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Called once before the REPL session starts.
@@ -49,7 +53,11 @@ interface Listener
      *
      * @return string|null User input override
      */
+<<<<<<< HEAD
+    public function onInput(Shell $shell, string $input);
+=======
     public function onInput(Shell $shell, $input);
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Called before executing user code.
@@ -65,7 +73,11 @@ interface Listener
      *
      * @return string|null User code override
      */
+<<<<<<< HEAD
+    public function onExecute(Shell $shell, string $code);
+=======
     public function onExecute(Shell $shell, $code);
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Called at the end of each loop.

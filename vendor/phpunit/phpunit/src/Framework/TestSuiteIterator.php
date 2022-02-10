@@ -9,10 +9,21 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
+use function assert;
+use function count;
+use RecursiveIterator;
+
+/**
+ * @internal This class is not covered by the backward compatibility promise for PHPUnit
+ */
+final class TestSuiteIterator implements RecursiveIterator
+=======
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 final class TestSuiteIterator implements \RecursiveIterator
+>>>>>>> parent of 31cfa1b1 (p)
 {
     /**
      * @var int
@@ -36,7 +47,11 @@ final class TestSuiteIterator implements \RecursiveIterator
 
     public function valid(): bool
     {
+<<<<<<< HEAD
+        return $this->position < count($this->tests);
+=======
         return $this->position < \count($this->tests);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function key(): int
@@ -67,7 +82,11 @@ final class TestSuiteIterator implements \RecursiveIterator
 
         $current = $this->current();
 
+<<<<<<< HEAD
+        assert($current instanceof TestSuite);
+=======
         \assert($current instanceof TestSuite);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return new self($current);
     }

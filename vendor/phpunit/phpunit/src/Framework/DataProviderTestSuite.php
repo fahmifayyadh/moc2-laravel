@@ -9,6 +9,11 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
+use function count;
+use function explode;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Util\Test as TestUtil;
 
 /**
@@ -44,17 +49,29 @@ final class DataProviderTestSuite extends TestSuite
 
     public function hasDependencies(): bool
     {
+<<<<<<< HEAD
+        return count($this->dependencies) > 0;
+    }
+
+    /**
+     * Returns the size of the each test created using the data provider(s).
+=======
         return \count($this->dependencies) > 0;
     }
 
     /**
      * Returns the size of the each test created using the data provider(s)
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function getSize(): int
     {
+<<<<<<< HEAD
+        [$className, $methodName] = explode('::', $this->getName());
+=======
         [$className, $methodName] = \explode('::', $this->getName());
+>>>>>>> parent of 31cfa1b1 (p)
 
         return TestUtil::getSize($className, $methodName);
     }

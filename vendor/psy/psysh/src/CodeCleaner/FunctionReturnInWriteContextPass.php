@@ -19,6 +19,10 @@ use PhpParser\Node\Expr\Isset_;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Stmt\Unset_;
+<<<<<<< HEAD
+use PhpParser\Node\VariadicPlaceholder;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Psy\Exception\FatalErrorException;
 
 /**
@@ -45,8 +49,17 @@ class FunctionReturnInWriteContextPass extends CodeCleanerPass
         if ($node instanceof Array_ || $this->isCallNode($node)) {
             $items = $node instanceof Array_ ? $node->items : $node->args;
             foreach ($items as $item) {
+<<<<<<< HEAD
+                if ($item instanceof VariadicPlaceholder) {
+                    continue;
+                }
+
+                if ($item && $item->byRef && $this->isCallNode($item->value)) {
+                    throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, \E_ERROR, null, $node->getLine());
+=======
                 if ($item && $item->byRef && $this->isCallNode($item->value)) {
                     throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, E_ERROR, null, $node->getLine());
+>>>>>>> parent of 31cfa1b1 (p)
                 }
             }
         } elseif ($node instanceof Isset_ || $node instanceof Unset_) {
@@ -56,6 +69,16 @@ class FunctionReturnInWriteContextPass extends CodeCleanerPass
                 }
 
                 $msg = $node instanceof Isset_ ? self::ISSET_MESSAGE : self::EXCEPTION_MESSAGE;
+<<<<<<< HEAD
+                throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getLine());
+            }
+        } elseif ($node instanceof Assign && $this->isCallNode($node->var)) {
+            throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, \E_ERROR, null, $node->getLine());
+        }
+    }
+
+    private function isCallNode(Node $node): bool
+=======
                 throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
             }
         } elseif ($node instanceof Assign && $this->isCallNode($node->var)) {
@@ -64,6 +87,7 @@ class FunctionReturnInWriteContextPass extends CodeCleanerPass
     }
 
     private function isCallNode(Node $node)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $node instanceof FuncCall || $node instanceof MethodCall || $node instanceof StaticCall;
     }

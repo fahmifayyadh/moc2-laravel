@@ -9,6 +9,10 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
+use function count;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\ExpectationFailedException;
 
 /**
@@ -28,7 +32,11 @@ abstract class Composite extends Constraint
     }
 
     /**
+<<<<<<< HEAD
+     * Evaluates the constraint for parameter $other.
+=======
      * Evaluates the constraint for parameter $other
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -37,8 +45,13 @@ abstract class Composite extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
+<<<<<<< HEAD
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws ExpectationFailedException
+=======
      * @throws ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
@@ -58,7 +71,11 @@ abstract class Composite extends Constraint
      */
     public function count(): int
     {
+<<<<<<< HEAD
+        return count($this->innerConstraint);
+=======
         return \count($this->innerConstraint);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     protected function innerConstraint(): Constraint

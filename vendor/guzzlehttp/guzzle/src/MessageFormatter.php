@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp;
 
 use Psr\Http\Message\MessageInterface;
@@ -31,6 +35,27 @@ use Psr\Http\Message\ResponseInterface;
  * - {res_headers}:    Response headers
  * - {req_body}:       Request body
  * - {res_body}:       Response body
+<<<<<<< HEAD
+ *
+ * @final
+ */
+class MessageFormatter implements MessageFormatterInterface
+{
+    /**
+     * Apache Common Log Format.
+     *
+     * @link https://httpd.apache.org/docs/2.4/logs.html#common
+     *
+     * @var string
+     */
+    public const CLF = "{hostname} {req_header_User-Agent} - [{date_common_log}] \"{method} {target} HTTP/{version}\" {code} {res_header_Content-Length}";
+    public const DEBUG = ">>>>>>>>\n{request}\n<<<<<<<<\n{response}\n--------\n{error}";
+    public const SHORT = '[{ts}] "{method} {target} HTTP/{version}" {code}';
+
+    /**
+     * @var string Template used to format log messages
+     */
+=======
  */
 class MessageFormatter
 {
@@ -44,12 +69,17 @@ class MessageFormatter
     const SHORT = '[{ts}] "{method} {target} HTTP/{version}" {code}';
 
     /** @var string Template used to format log messages */
+>>>>>>> parent of 31cfa1b1 (p)
     private $template;
 
     /**
      * @param string $template Log message template
      */
+<<<<<<< HEAD
+    public function __construct(?string $template = self::CLF)
+=======
     public function __construct($template = self::CLF)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->template = $template ?: self::CLF;
     }
@@ -57,6 +87,18 @@ class MessageFormatter
     /**
      * Returns a formatted message string.
      *
+<<<<<<< HEAD
+     * @param RequestInterface       $request  Request that was sent
+     * @param ResponseInterface|null $response Response that was received
+     * @param \Throwable|null        $error    Exception that was received
+     */
+    public function format(RequestInterface $request, ?ResponseInterface $response = null, ?\Throwable $error = null): string
+    {
+        $cache = [];
+
+        /** @var string */
+        return \preg_replace_callback(
+=======
      * @param RequestInterface  $request  Request that was sent
      * @param ResponseInterface $response Response that was received
      * @param \Exception        $error    Exception that was received
@@ -71,6 +113,7 @@ class MessageFormatter
         $cache = [];
 
         return preg_replace_callback(
+>>>>>>> parent of 31cfa1b1 (p)
             '/{\s*([A-Za-z_\-\.0-9]+)\s*}/',
             function (array $matches) use ($request, $response, $error, &$cache) {
                 if (isset($cache[$matches[1]])) {
@@ -80,6 +123,15 @@ class MessageFormatter
                 $result = '';
                 switch ($matches[1]) {
                     case 'request':
+<<<<<<< HEAD
+                        $result = Psr7\Message::toString($request);
+                        break;
+                    case 'response':
+                        $result = $response ? Psr7\Message::toString($response) : '';
+                        break;
+                    case 'req_headers':
+                        $result = \trim($request->getMethod()
+=======
                         $result = Psr7\str($request);
                         break;
                     case 'response':
@@ -87,13 +139,18 @@ class MessageFormatter
                         break;
                     case 'req_headers':
                         $result = trim($request->getMethod()
+>>>>>>> parent of 31cfa1b1 (p)
                                 . ' ' . $request->getRequestTarget())
                             . ' HTTP/' . $request->getProtocolVersion() . "\r\n"
                             . $this->headers($request);
                         break;
                     case 'res_headers':
                         $result = $response ?
+<<<<<<< HEAD
+                            \sprintf(
+=======
                             sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                                 'HTTP/%s %d %s',
                                 $response->getProtocolVersion(),
                                 $response->getStatusCode(),
@@ -102,6 +159,31 @@ class MessageFormatter
                             : 'NULL';
                         break;
                     case 'req_body':
+<<<<<<< HEAD
+                        $result = $request->getBody()->__toString();
+                        break;
+                    case 'res_body':
+                        if (!$response instanceof ResponseInterface) {
+                            $result = 'NULL';
+                            break;
+                        }
+
+                        $body = $response->getBody();
+
+                        if (!$body->isSeekable()) {
+                            $result = 'RESPONSE_NOT_LOGGEABLE';
+                            break;
+                        }
+
+                        $result = $response->getBody()->__toString();
+                        break;
+                    case 'ts':
+                    case 'date_iso_8601':
+                        $result = \gmdate('c');
+                        break;
+                    case 'date_common_log':
+                        $result = \date('d/M/Y:H:i:s O');
+=======
                         $result = $request->getBody();
                         break;
                     case 'res_body':
@@ -113,6 +195,7 @@ class MessageFormatter
                         break;
                     case 'date_common_log':
                         $result = date('d/M/Y:H:i:s O');
+>>>>>>> parent of 31cfa1b1 (p)
                         break;
                     case 'method':
                         $result = $request->getMethod();
@@ -122,7 +205,11 @@ class MessageFormatter
                         break;
                     case 'uri':
                     case 'url':
+<<<<<<< HEAD
+                        $result = $request->getUri()->__toString();
+=======
                         $result = $request->getUri();
+>>>>>>> parent of 31cfa1b1 (p)
                         break;
                     case 'target':
                         $result = $request->getRequestTarget();
@@ -139,7 +226,11 @@ class MessageFormatter
                         $result = $request->getHeaderLine('Host');
                         break;
                     case 'hostname':
+<<<<<<< HEAD
+                        $result = \gethostname();
+=======
                         $result = gethostname();
+>>>>>>> parent of 31cfa1b1 (p)
                         break;
                     case 'code':
                         $result = $response ? $response->getStatusCode() : 'NULL';
@@ -152,11 +243,19 @@ class MessageFormatter
                         break;
                     default:
                         // handle prefixed dynamic headers
+<<<<<<< HEAD
+                        if (\strpos($matches[1], 'req_header_') === 0) {
+                            $result = $request->getHeaderLine(\substr($matches[1], 11));
+                        } elseif (\strpos($matches[1], 'res_header_') === 0) {
+                            $result = $response
+                                ? $response->getHeaderLine(\substr($matches[1], 11))
+=======
                         if (strpos($matches[1], 'req_header_') === 0) {
                             $result = $request->getHeaderLine(substr($matches[1], 11));
                         } elseif (strpos($matches[1], 'res_header_') === 0) {
                             $result = $response
                                 ? $response->getHeaderLine(substr($matches[1], 11))
+>>>>>>> parent of 31cfa1b1 (p)
                                 : 'NULL';
                         }
                 }
@@ -170,6 +269,17 @@ class MessageFormatter
 
     /**
      * Get headers from message as string
+<<<<<<< HEAD
+     */
+    private function headers(MessageInterface $message): string
+    {
+        $result = '';
+        foreach ($message->getHeaders() as $name => $values) {
+            $result .= $name . ': ' . \implode(', ', $values) . "\r\n";
+        }
+
+        return \trim($result);
+=======
      *
      * @return string
      */
@@ -181,5 +291,6 @@ class MessageFormatter
         }
 
         return trim($result);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

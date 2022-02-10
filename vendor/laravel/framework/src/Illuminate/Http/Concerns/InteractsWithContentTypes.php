@@ -31,7 +31,11 @@ trait InteractsWithContentTypes
      */
     public function isJson()
     {
+<<<<<<< HEAD
+        return Str::contains($this->header('CONTENT_TYPE') ?? '', ['/json', '+json']);
+=======
         return Str::contains($this->header('CONTENT_TYPE'), ['/json', '+json']);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

@@ -5,6 +5,10 @@ namespace Illuminate\Routing;
 use BadMethodCallException;
 use Closure;
 use Illuminate\Support\Arr;
+<<<<<<< HEAD
+use Illuminate\Support\Reflector;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use InvalidArgumentException;
 
 /**
@@ -167,6 +171,18 @@ class RouteRegistrar
             $action = ['uses' => $action];
         }
 
+<<<<<<< HEAD
+        if (is_array($action) &&
+            ! Arr::isAssoc($action) &&
+            Reflector::isCallable($action)) {
+            $action = [
+                'uses' => $action[0].'@'.$action[1],
+                'controller' => $action[0].'@'.$action[1],
+            ];
+        }
+
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         return array_merge($this->attributes, $action);
     }
 

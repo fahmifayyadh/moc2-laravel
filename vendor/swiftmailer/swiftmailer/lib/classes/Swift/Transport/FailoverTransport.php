@@ -33,7 +33,11 @@ class Swift_Transport_FailoverTransport extends Swift_Transport_LoadBalancedTran
      */
     public function ping()
     {
+<<<<<<< HEAD
+        $maxTransports = \count($this->transports);
+=======
         $maxTransports = count($this->transports);
+>>>>>>> parent of 31cfa1b1 (p)
         for ($i = 0; $i < $maxTransports
             && $transport = $this->getNextTransport(); ++$i) {
             if ($transport->ping()) {
@@ -43,7 +47,11 @@ class Swift_Transport_FailoverTransport extends Swift_Transport_LoadBalancedTran
             }
         }
 
+<<<<<<< HEAD
+        return \count($this->transports) > 0;
+=======
         return count($this->transports) > 0;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -58,7 +66,11 @@ class Swift_Transport_FailoverTransport extends Swift_Transport_LoadBalancedTran
      */
     public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
     {
+<<<<<<< HEAD
+        $maxTransports = \count($this->transports);
+=======
         $maxTransports = count($this->transports);
+>>>>>>> parent of 31cfa1b1 (p)
         $sent = 0;
         $this->lastUsedTransport = null;
 
@@ -79,10 +91,15 @@ class Swift_Transport_FailoverTransport extends Swift_Transport_LoadBalancedTran
             }
         }
 
+<<<<<<< HEAD
+        if (0 == \count($this->transports)) {
+            throw new Swift_TransportException('All Transports in FailoverTransport failed, or no Transports available');
+=======
         if (0 == count($this->transports)) {
             throw new Swift_TransportException(
                 'All Transports in FailoverTransport failed, or no Transports available'
                 );
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $sent;

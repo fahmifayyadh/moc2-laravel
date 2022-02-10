@@ -9,9 +9,18 @@
  */
 namespace PHPUnit;
 
+<<<<<<< HEAD
+use Throwable;
+
+/**
+ * @internal This class is not covered by the backward compatibility promise for PHPUnit
+ */
+interface Exception extends Throwable
+=======
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 interface Exception extends \Throwable
+>>>>>>> parent of 31cfa1b1 (p)
 {
 }

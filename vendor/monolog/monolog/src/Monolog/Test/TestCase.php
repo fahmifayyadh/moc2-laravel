@@ -17,15 +17,34 @@ use Monolog\Formatter\FormatterInterface;
 
 /**
  * Lets you easily generate log records and a dummy formatter for testing purposes
+<<<<<<< HEAD
+ *
+ * @author Jordi Boggiano <j.boggiano@seld.be>
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+ * @phpstan-import-type Level from \Monolog\Logger
+=======
  * *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
+<<<<<<< HEAD
+     * @param mixed[] $context
+     *
+     * @return array Record
+     *
+     * @phpstan-param  Level $level
+     * @phpstan-return Record
+     */
+    protected function getRecord(int $level = Logger::WARNING, string $message = 'test', array $context = []): array
+=======
      * @return array Record
      */
     protected function getRecord($level = Logger::WARNING, $message = 'test', array $context = []): array
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return [
             'message' => (string) $message,
@@ -38,6 +57,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
         ];
     }
 
+<<<<<<< HEAD
+    /**
+     * @phpstan-return Record[]
+     */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function getMultipleRecords(): array
     {
         return [
@@ -49,9 +74,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
         ];
     }
 
+<<<<<<< HEAD
+=======
     /**
      * @suppress PhanTypeMismatchReturn
      */
+>>>>>>> parent of 31cfa1b1 (p)
     protected function getIdentityFormatter(): FormatterInterface
     {
         $formatter = $this->createMock(FormatterInterface::class);
