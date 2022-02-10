@@ -21,7 +21,11 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class XmlReaderCaster
 {
+<<<<<<< HEAD
     private const NODE_TYPES = [
+=======
+    private static $nodeTypes = [
+>>>>>>> parent of 31cfa1b1 (p)
         \XMLReader::NONE => 'NONE',
         \XMLReader::ELEMENT => 'ELEMENT',
         \XMLReader::ATTRIBUTE => 'ATTRIBUTE',
@@ -44,6 +48,7 @@ class XmlReaderCaster
 
     public static function castXmlReader(\XMLReader $reader, array $a, Stub $stub, $isNested)
     {
+<<<<<<< HEAD
         try {
             $properties = [
                 'LOADDTD' => @$reader->getParserProperty(\XMLReader::LOADDTD),
@@ -60,11 +65,17 @@ class XmlReaderCaster
             ];
         }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         $props = Caster::PREFIX_VIRTUAL.'parserProperties';
         $info = [
             'localName' => $reader->localName,
             'prefix' => $reader->prefix,
+<<<<<<< HEAD
             'nodeType' => new ConstStub(self::NODE_TYPES[$reader->nodeType], $reader->nodeType),
+=======
+            'nodeType' => new ConstStub(self::$nodeTypes[$reader->nodeType], $reader->nodeType),
+>>>>>>> parent of 31cfa1b1 (p)
             'depth' => $reader->depth,
             'isDefault' => $reader->isDefault,
             'isEmptyElement' => \XMLReader::NONE === $reader->nodeType ? null : $reader->isEmptyElement,
@@ -73,7 +84,16 @@ class XmlReaderCaster
             'value' => $reader->value,
             'namespaceURI' => $reader->namespaceURI,
             'baseURI' => $reader->baseURI ? new LinkStub($reader->baseURI) : $reader->baseURI,
+<<<<<<< HEAD
             $props => $properties,
+=======
+            $props => [
+                'LOADDTD' => $reader->getParserProperty(\XMLReader::LOADDTD),
+                'DEFAULTATTRS' => $reader->getParserProperty(\XMLReader::DEFAULTATTRS),
+                'VALIDATE' => $reader->getParserProperty(\XMLReader::VALIDATE),
+                'SUBST_ENTITIES' => $reader->getParserProperty(\XMLReader::SUBST_ENTITIES),
+            ],
+>>>>>>> parent of 31cfa1b1 (p)
         ];
 
         if ($info[$props] = Caster::filter($info[$props], Caster::EXCLUDE_EMPTY, [], $count)) {

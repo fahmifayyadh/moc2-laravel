@@ -58,7 +58,11 @@ class CommandsMatcher extends AbstractMatcher
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected function isCommand(string $name): bool
+=======
+    protected function isCommand($name)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \in_array($name, $this->commands);
     }
@@ -70,7 +74,11 @@ class CommandsMatcher extends AbstractMatcher
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected function matchCommand(string $name): bool
+=======
+    protected function matchCommand($name)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         foreach ($this->commands as $cmd) {
             if ($this->startsWith($name, $cmd)) {
@@ -84,7 +92,11 @@ class CommandsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getMatches(array $tokens, array $info = []): array
+=======
+    public function getMatches(array $tokens, array $info = [])
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $input = $this->getInput($tokens);
 
@@ -96,7 +108,11 @@ class CommandsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function hasMatched(array $tokens): bool
+=======
+    public function hasMatched(array $tokens)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         /* $openTag */ \array_shift($tokens);
         $command = \array_shift($tokens);

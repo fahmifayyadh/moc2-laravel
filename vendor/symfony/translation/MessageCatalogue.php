@@ -27,7 +27,12 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
     private $parent;
 
     /**
+<<<<<<< HEAD
      * @param array $messages An array of messages classified by domain
+=======
+     * @param string $locale   The locale
+     * @param array  $messages An array of messages classified by domain
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(?string $locale, array $messages = [])
     {
@@ -53,10 +58,18 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
     public function getDomains()
     {
         $domains = [];
+<<<<<<< HEAD
 
         foreach ($this->messages as $domain => $messages) {
             if (str_ends_with($domain, self::INTL_DOMAIN_SUFFIX)) {
                 $domain = substr($domain, 0, -\strlen(self::INTL_DOMAIN_SUFFIX));
+=======
+        $suffixLength = \strlen(self::INTL_DOMAIN_SUFFIX);
+
+        foreach ($this->messages as $domain => $messages) {
+            if (\strlen($domain) > $suffixLength && false !== $i = strpos($domain, self::INTL_DOMAIN_SUFFIX, -$suffixLength)) {
+                $domain = substr($domain, 0, $i);
+>>>>>>> parent of 31cfa1b1 (p)
             }
             $domains[$domain] = $domain;
         }
@@ -71,7 +84,11 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
     {
         if (null !== $domain) {
             // skip messages merge if intl-icu requested explicitly
+<<<<<<< HEAD
             if (str_ends_with($domain, self::INTL_DOMAIN_SUFFIX)) {
+=======
+            if (false !== strpos($domain, self::INTL_DOMAIN_SUFFIX)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return $this->messages[$domain] ?? [];
             }
 
@@ -79,10 +96,18 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
         }
 
         $allMessages = [];
+<<<<<<< HEAD
 
         foreach ($this->messages as $domain => $messages) {
             if (str_ends_with($domain, self::INTL_DOMAIN_SUFFIX)) {
                 $domain = substr($domain, 0, -\strlen(self::INTL_DOMAIN_SUFFIX));
+=======
+        $suffixLength = \strlen(self::INTL_DOMAIN_SUFFIX);
+
+        foreach ($this->messages as $domain => $messages) {
+            if (\strlen($domain) > $suffixLength && false !== $i = strpos($domain, self::INTL_DOMAIN_SUFFIX, -$suffixLength)) {
+                $domain = substr($domain, 0, $i);
+>>>>>>> parent of 31cfa1b1 (p)
                 $allMessages[$domain] = $messages + ($allMessages[$domain] ?? []);
             } else {
                 $allMessages[$domain] = ($allMessages[$domain] ?? []) + $messages;
@@ -163,7 +188,12 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
             $this->messages[$domain] = [];
         }
         $intlDomain = $domain;
+<<<<<<< HEAD
         if (!str_ends_with($domain, self::INTL_DOMAIN_SUFFIX)) {
+=======
+        $suffixLength = \strlen(self::INTL_DOMAIN_SUFFIX);
+        if (\strlen($domain) > $suffixLength && false !== strpos($domain, self::INTL_DOMAIN_SUFFIX, -$suffixLength)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $intlDomain .= self::INTL_DOMAIN_SUFFIX;
         }
         foreach ($messages as $id => $message) {

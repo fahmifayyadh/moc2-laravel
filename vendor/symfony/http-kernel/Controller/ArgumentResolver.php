@@ -36,7 +36,11 @@ final class ArgumentResolver implements ArgumentResolverInterface
 
     public function __construct(ArgumentMetadataFactoryInterface $argumentMetadataFactory = null, iterable $argumentValueResolvers = [])
     {
+<<<<<<< HEAD
         $this->argumentMetadataFactory = $argumentMetadataFactory ?? new ArgumentMetadataFactory();
+=======
+        $this->argumentMetadataFactory = $argumentMetadataFactory ?: new ArgumentMetadataFactory();
+>>>>>>> parent of 31cfa1b1 (p)
         $this->argumentValueResolvers = $argumentValueResolvers ?: self::getDefaultArgumentValueResolvers();
     }
 

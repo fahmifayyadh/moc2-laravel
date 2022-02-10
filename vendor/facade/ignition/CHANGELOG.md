@@ -2,6 +2,7 @@
 
 All notable changes to `ignition` will be documented in this file
 
+<<<<<<< HEAD
 ## 1.18.0 - 2021-08-02
 
 - disable executing solutions on non-local environments or from non-local IP addresses on version 1.x (#404)
@@ -18,6 +19,8 @@ All notable changes to `ignition` will be documented in this file
 
 do not use, tagged on the wrong branch
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 ## 1.16.3 - 2020-07-13
 
 - do not use missing package solution provider by default (closes #179)

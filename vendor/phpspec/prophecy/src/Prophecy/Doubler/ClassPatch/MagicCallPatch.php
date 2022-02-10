@@ -11,7 +11,10 @@
 
 namespace Prophecy\Doubler\ClassPatch;
 
+<<<<<<< HEAD
 use Prophecy\Doubler\Generator\Node\ArgumentNode;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Prophecy\Doubler\Generator\Node\ClassNode;
 use Prophecy\Doubler\Generator\Node\MethodNode;
 use Prophecy\PhpDocumentor\ClassAndInterfaceTagRetriever;
@@ -26,8 +29,11 @@ use Prophecy\PhpDocumentor\MethodTagRetrieverInterface;
  */
 class MagicCallPatch implements ClassPatchInterface
 {
+<<<<<<< HEAD
     const MAGIC_METHODS_WITH_ARGUMENTS = ['__call', '__callStatic', '__get', '__isset', '__set', '__set_state', '__unserialize', '__unset'];
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private $tagRetriever;
 
     public function __construct(MethodTagRetrieverInterface $tagRetriever = null)
@@ -74,6 +80,7 @@ class MagicCallPatch implements ClassPatchInterface
 
                     if (!$reflectionClass->hasMethod($methodName)) {
                         $methodNode = new MethodNode($methodName);
+<<<<<<< HEAD
 
                         // only magic methods can have a contract that needs to be enforced
                         if (in_array($methodName, self::MAGIC_METHODS_WITH_ARGUMENTS)) {
@@ -83,6 +90,8 @@ class MagicCallPatch implements ClassPatchInterface
                             }
                         }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
                         $methodNode->setStatic($tag->isStatic());
                         $node->addMethod($methodNode);
                     }
@@ -103,3 +112,7 @@ class MagicCallPatch implements ClassPatchInterface
         return 50;
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 31cfa1b1 (p)

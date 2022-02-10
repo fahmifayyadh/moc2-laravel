@@ -30,7 +30,11 @@ class ThrowUpException extends \Exception implements Exception
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getRawMessage(): string
+=======
+    public function getRawMessage()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->getPrevious()->getMessage();
     }
@@ -40,9 +44,15 @@ class ThrowUpException extends \Exception implements Exception
      *
      * @param \Throwable $throwable
      *
+<<<<<<< HEAD
      * @return self
      */
     public static function fromThrowable($throwable): self
+=======
+     * @return ThrowUpException
+     */
+    public static function fromThrowable($throwable)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($throwable instanceof \Error) {
             $throwable = ErrorException::fromError($throwable);

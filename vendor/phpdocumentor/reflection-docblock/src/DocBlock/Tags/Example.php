@@ -15,7 +15,10 @@ namespace phpDocumentor\Reflection\DocBlock\Tags;
 
 use phpDocumentor\Reflection\DocBlock\Tag;
 use Webmozart\Assert\Assert;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use function array_key_exists;
 use function preg_match;
 use function rawurlencode;
@@ -67,7 +70,11 @@ final class Example implements Tag, Factory\StaticMethod
         $this->isURI = $isURI;
     }
 
+<<<<<<< HEAD
     public function getContent(): string
+=======
+    public function getContent() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->content === null || $this->content === '') {
             $filePath = $this->filePath;
@@ -83,12 +90,20 @@ final class Example implements Tag, Factory\StaticMethod
         return $this->content;
     }
 
+<<<<<<< HEAD
     public function getDescription(): ?string
+=======
+    public function getDescription() : ?string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->content;
     }
 
+<<<<<<< HEAD
     public static function create(string $body): ?Tag
+=======
+    public static function create(string $body) : ?Tag
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // File component: File path in quotes or File URI / Source information
         if (!preg_match('/^\s*(?:(\"[^\"]+\")|(\S+))(?:\s+(.*))?$/sux', $body, $matches)) {
@@ -138,7 +153,11 @@ final class Example implements Tag, Factory\StaticMethod
      * @return string Path to a file to use as an example.
      *     May also be an absolute URI.
      */
+<<<<<<< HEAD
     public function getFilePath(): string
+=======
+    public function getFilePath() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return trim($this->filePath, '"');
     }
@@ -146,9 +165,15 @@ final class Example implements Tag, Factory\StaticMethod
     /**
      * Returns a string representation for this tag.
      */
+<<<<<<< HEAD
     public function __toString(): string
     {
         $filePath = $this->filePath;
+=======
+    public function __toString() : string
+    {
+        $filePath = (string) $this->filePath;
+>>>>>>> parent of 31cfa1b1 (p)
         $isDefaultLine = $this->startingLine === 1 && $this->lineCount === 0;
         $startingLine = !$isDefaultLine ? (string) $this->startingLine : '';
         $lineCount = !$isDefaultLine ? (string) $this->lineCount : '';
@@ -169,27 +194,47 @@ final class Example implements Tag, Factory\StaticMethod
     /**
      * Returns true if the provided URI is relative or contains a complete scheme (and thus is absolute).
      */
+<<<<<<< HEAD
     private function isUriRelative(string $uri): bool
+=======
+    private function isUriRelative(string $uri) : bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return strpos($uri, ':') === false;
     }
 
+<<<<<<< HEAD
     public function getStartingLine(): int
+=======
+    public function getStartingLine() : int
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->startingLine;
     }
 
+<<<<<<< HEAD
     public function getLineCount(): int
+=======
+    public function getLineCount() : int
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->lineCount;
     }
 
+<<<<<<< HEAD
     public function getName(): string
+=======
+    public function getName() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return 'example';
     }
 
+<<<<<<< HEAD
     public function render(?Formatter $formatter = null): string
+=======
+    public function render(?Formatter $formatter = null) : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($formatter === null) {
             $formatter = new Formatter\PassthroughFormatter();

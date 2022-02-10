@@ -8,7 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Exceptions;
 
 use Exception;
@@ -25,7 +28,11 @@ class NotLocaleAwareException extends BaseInvalidArgumentException implements In
      */
     public function __construct($object, $code = 0, Exception $previous = null)
     {
+<<<<<<< HEAD
         $dump = \is_object($object) ? \get_class($object) : \gettype($object);
+=======
+        $dump = is_object($object) ? get_class($object) : gettype($object);
+>>>>>>> parent of 31cfa1b1 (p)
 
         parent::__construct("$dump does neither implements Symfony\Contracts\Translation\LocaleAwareInterface nor getLocale() method.", $code, $previous);
     }

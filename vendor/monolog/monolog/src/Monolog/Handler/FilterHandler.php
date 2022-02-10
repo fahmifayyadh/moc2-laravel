@@ -14,7 +14,10 @@ namespace Monolog\Handler;
 use Monolog\Logger;
 use Monolog\ResettableInterface;
 use Monolog\Formatter\FormatterInterface;
+<<<<<<< HEAD
 use Psr\Log\LogLevel;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Simple handler wrapper that filters records based on a list of levels
@@ -23,10 +26,13 @@ use Psr\Log\LogLevel;
  *
  * @author Hennadiy Verkh
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
  * @phpstan-import-type Level from \Monolog\Logger
  * @phpstan-import-type LevelName from \Monolog\Logger
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class FilterHandler extends Handler implements ProcessableHandlerInterface, ResettableInterface, FormattableHandlerInterface
 {
@@ -35,8 +41,12 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     /**
      * Handler or factory callable($record, $this)
      *
+<<<<<<< HEAD
      * @var callable|HandlerInterface
      * @phpstan-var callable(?Record, HandlerInterface): HandlerInterface|HandlerInterface
+=======
+     * @var callable|\Monolog\Handler\HandlerInterface
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected $handler;
 
@@ -44,7 +54,10 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
      * Minimum level for logs that are passed to handler
      *
      * @var int[]
+<<<<<<< HEAD
      * @phpstan-var array<Level, int>
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected $acceptedLevels;
 
@@ -56,15 +69,22 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     protected $bubble;
 
     /**
+<<<<<<< HEAD
      * @psalm-param HandlerInterface|callable(?Record, HandlerInterface): HandlerInterface $handler
+=======
+     * @psalm-param HandlerInterface|callable(?array, HandlerInterface): HandlerInterface $handler
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @param callable|HandlerInterface $handler        Handler or factory callable($record|null, $filterHandler).
      * @param int|array                 $minLevelOrList A list of levels to accept or a minimum level if maxLevel is provided
      * @param int|string                $maxLevel       Maximum level to accept, only used if $minLevelOrList is not an array
      * @param bool                      $bubble         Whether the messages that are handled can bubble up the stack or not
+<<<<<<< HEAD
      *
      * @phpstan-param Level|LevelName|LogLevel::*|array<Level|LevelName|LogLevel::*> $minLevelOrList
      * @phpstan-param Level|LevelName|LogLevel::* $maxLevel
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct($handler, $minLevelOrList = Logger::DEBUG, $maxLevel = Logger::EMERGENCY, bool $bubble = true)
     {
@@ -77,9 +97,12 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
         }
     }
 
+<<<<<<< HEAD
     /**
      * @phpstan-return array<int, Level>
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function getAcceptedLevels(): array
     {
         return array_flip($this->acceptedLevels);
@@ -88,9 +111,12 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     /**
      * @param int|string|array $minLevelOrList A list of levels to accept or a minimum level or level name if maxLevel is provided
      * @param int|string       $maxLevel       Maximum level or level name to accept, only used if $minLevelOrList is not an array
+<<<<<<< HEAD
      *
      * @phpstan-param Level|LevelName|LogLevel::*|array<Level|LevelName|LogLevel::*> $minLevelOrList
      * @phpstan-param Level|LevelName|LogLevel::*                                    $maxLevel
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setAcceptedLevels($minLevelOrList = Logger::DEBUG, $maxLevel = Logger::EMERGENCY): self
     {
@@ -109,7 +135,11 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function isHandling(array $record): bool
     {
@@ -117,7 +147,11 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function handle(array $record): bool
     {
@@ -126,7 +160,10 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
         }
 
         if ($this->processors) {
+<<<<<<< HEAD
             /** @var Record $record */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             $record = $this->processRecord($record);
         }
 
@@ -136,7 +173,11 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function handleBatch(array $records): void
     {
@@ -158,8 +199,11 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
      * If the handler was provided as a factory callable, this will trigger the handler's instantiation.
      *
      * @return HandlerInterface
+<<<<<<< HEAD
      *
      * @phpstan-param Record $record
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getHandler(array $record = null)
     {
@@ -174,6 +218,7 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
@@ -199,14 +244,34 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
         }
 
         throw new \UnexpectedValueException('The nested handler of type '.get_class($handler).' does not support formatters.');
+=======
+     * {@inheritdoc}
+     */
+    public function setFormatter(FormatterInterface $formatter): HandlerInterface
+    {
+        $this->getHandler()->setFormatter($formatter);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFormatter(): FormatterInterface
+    {
+        return $this->getHandler()->getFormatter();
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function reset()
     {
         $this->resetProcessors();
+<<<<<<< HEAD
 
         if ($this->getHandler() instanceof ResettableInterface) {
             $this->getHandler()->reset();
         }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

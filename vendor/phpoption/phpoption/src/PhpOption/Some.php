@@ -45,17 +45,29 @@ final class Some extends Option
      *
      * @return Some<U>
      */
+<<<<<<< HEAD
     public static function create($value): self
+=======
+    public static function create($value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return new self($value);
     }
 
+<<<<<<< HEAD
     public function isDefined(): bool
+=======
+    public function isDefined()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }
 
+<<<<<<< HEAD
     public function isEmpty(): bool
+=======
+    public function isEmpty()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return false;
     }
@@ -149,10 +161,14 @@ final class Some extends Option
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * @return ArrayIterator<int, T>
      */
     public function getIterator(): ArrayIterator
+=======
+    public function getIterator()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return new ArrayIterator([$this->value]);
     }

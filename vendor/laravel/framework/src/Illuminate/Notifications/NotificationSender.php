@@ -171,7 +171,11 @@ class NotificationSender
      * Queue the given notification instances.
      *
      * @param  mixed  $notifiables
+<<<<<<< HEAD
      * @param  \Illuminate\Notifications\Notification  $notification
+=======
+     * @param  array[\Illuminate\Notifications\Channels\Notification]  $notification
+>>>>>>> parent of 31cfa1b1 (p)
      * @return void
      */
     protected function queueNotification($notifiables, $notification)

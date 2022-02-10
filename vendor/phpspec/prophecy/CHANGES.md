@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1.15.0 / 2021/12/08
 ===================
 
@@ -26,6 +27,8 @@
 
 * [fixed] MethodNotFoundException sometimes thrown with wrong class attached [@ciaranmcnulty]
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 1.12.1 / 2020/10/29
 ===================
 

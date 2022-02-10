@@ -47,9 +47,13 @@ abstract class AbstractPipes implements PipesInterface
     public function close()
     {
         foreach ($this->pipes as $pipe) {
+<<<<<<< HEAD
             if (\is_resource($pipe)) {
                 fclose($pipe);
             }
+=======
+            fclose($pipe);
+>>>>>>> parent of 31cfa1b1 (p)
         }
         $this->pipes = [];
     }
@@ -135,7 +139,11 @@ abstract class AbstractPipes implements PipesInterface
             }
 
             if ($input) {
+<<<<<<< HEAD
                 while (true) {
+=======
+                for (;;) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $data = fread($input, self::CHUNK_SIZE);
                     if (!isset($data[0])) {
                         break;
@@ -173,7 +181,11 @@ abstract class AbstractPipes implements PipesInterface
     /**
      * @internal
      */
+<<<<<<< HEAD
     public function handleError(int $type, string $msg)
+=======
+    public function handleError($type, $msg)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->lastError = $msg;
     }

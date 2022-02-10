@@ -23,6 +23,7 @@ use Symfony\Polyfill\Intl\Idn\Resources\unidata\Regex;
  */
 final class Idn
 {
+<<<<<<< HEAD
     public const ERROR_EMPTY_LABEL = 1;
     public const ERROR_LABEL_TOO_LONG = 2;
     public const ERROR_DOMAIN_NAME_TOO_LONG = 4;
@@ -62,6 +63,39 @@ final class Idn
     public const INITIAL_N = 128;
     public const DELIMITER = '-';
     public const MAX_INT = 2147483647;
+=======
+    const ERROR_EMPTY_LABEL = 1;
+    const ERROR_LABEL_TOO_LONG = 2;
+    const ERROR_DOMAIN_NAME_TOO_LONG = 4;
+    const ERROR_LEADING_HYPHEN = 8;
+    const ERROR_TRAILING_HYPHEN = 0x10;
+    const ERROR_HYPHEN_3_4 = 0x20;
+    const ERROR_LEADING_COMBINING_MARK = 0x40;
+    const ERROR_DISALLOWED = 0x80;
+    const ERROR_PUNYCODE = 0x100;
+    const ERROR_LABEL_HAS_DOT = 0x200;
+    const ERROR_INVALID_ACE_LABEL = 0x400;
+    const ERROR_BIDI = 0x800;
+    const ERROR_CONTEXTJ = 0x1000;
+    const ERROR_CONTEXTO_PUNCTUATION = 0x2000;
+    const ERROR_CONTEXTO_DIGITS = 0x4000;
+
+    const INTL_IDNA_VARIANT_2003 = 0;
+    const INTL_IDNA_VARIANT_UTS46 = 1;
+
+    const MAX_DOMAIN_SIZE = 253;
+    const MAX_LABEL_SIZE = 63;
+
+    const BASE = 36;
+    const TMIN = 1;
+    const TMAX = 26;
+    const SKEW = 38;
+    const DAMP = 700;
+    const INITIAL_BIAS = 72;
+    const INITIAL_N = 128;
+    const DELIMITER = '-';
+    const MAX_INT = 2147483647;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Contains the numeric value of a basic code point (for use in representing integers) in the
@@ -69,7 +103,11 @@ final class Idn
      *
      * @var array<int, int>
      */
+<<<<<<< HEAD
     private static $basicToDigit = [
+=======
+    private static $basicToDigit = array(
+>>>>>>> parent of 31cfa1b1 (p)
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 
@@ -93,7 +131,11 @@ final class Idn
 
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+<<<<<<< HEAD
     ];
+=======
+    );
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var array<int, int>
@@ -145,6 +187,7 @@ final class Idn
      *
      * @return string|false
      */
+<<<<<<< HEAD
     public static function idn_to_ascii($domainName, $options = self::IDNA_DEFAULT, $variant = self::INTL_IDNA_VARIANT_UTS46, &$idna_info = [])
     {
         if (\PHP_VERSION_ID >= 70200 && self::INTL_IDNA_VARIANT_2003 === $variant) {
@@ -159,6 +202,22 @@ final class Idn
             'Transitional_Processing' => self::INTL_IDNA_VARIANT_2003 === $variant || 0 === ($options & self::IDNA_NONTRANSITIONAL_TO_ASCII),
             'VerifyDnsLength' => true,
         ];
+=======
+    public static function idn_to_ascii($domainName, $options = IDNA_DEFAULT, $variant = self::INTL_IDNA_VARIANT_UTS46, &$idna_info = array())
+    {
+        if (\PHP_VERSION_ID >= 70200 && self::INTL_IDNA_VARIANT_2003 === $variant) {
+            @trigger_error('idn_to_ascii(): INTL_IDNA_VARIANT_2003 is deprecated', E_USER_DEPRECATED);
+        }
+
+        $options = array(
+            'CheckHyphens' => true,
+            'CheckBidi' => self::INTL_IDNA_VARIANT_2003 === $variant || 0 !== ($options & \IDNA_CHECK_BIDI),
+            'CheckJoiners' => self::INTL_IDNA_VARIANT_UTS46 === $variant && 0 !== ($options & \IDNA_CHECK_CONTEXTJ),
+            'UseSTD3ASCIIRules' => 0 !== ($options & \IDNA_USE_STD3_RULES),
+            'Transitional_Processing' => self::INTL_IDNA_VARIANT_2003 === $variant || 0 === ($options & \IDNA_NONTRANSITIONAL_TO_ASCII),
+            'VerifyDnsLength' => true,
+        );
+>>>>>>> parent of 31cfa1b1 (p)
         $info = new Info();
         $labels = self::process((string) $domainName, $options, $info);
 
@@ -179,11 +238,19 @@ final class Idn
             self::validateDomainAndLabelLength($labels, $info);
         }
 
+<<<<<<< HEAD
         $idna_info = [
             'result' => implode('.', $labels),
             'isTransitionalDifferent' => $info->transitionalDifferent,
             'errors' => $info->errors,
         ];
+=======
+        $idna_info = array(
+            'result' => implode('.', $labels),
+            'isTransitionalDifferent' => $info->transitionalDifferent,
+            'errors' => $info->errors,
+        );
+>>>>>>> parent of 31cfa1b1 (p)
 
         return 0 === $info->errors ? $idna_info['result'] : false;
     }
@@ -198,6 +265,7 @@ final class Idn
      *
      * @return string|false
      */
+<<<<<<< HEAD
     public static function idn_to_utf8($domainName, $options = self::IDNA_DEFAULT, $variant = self::INTL_IDNA_VARIANT_UTS46, &$idna_info = [])
     {
         if (\PHP_VERSION_ID >= 70200 && self::INTL_IDNA_VARIANT_2003 === $variant) {
@@ -217,6 +285,27 @@ final class Idn
             'isTransitionalDifferent' => $info->transitionalDifferent,
             'errors' => $info->errors,
         ];
+=======
+    public static function idn_to_utf8($domainName, $options = IDNA_DEFAULT, $variant = self::INTL_IDNA_VARIANT_UTS46, &$idna_info = array())
+    {
+        if (\PHP_VERSION_ID >= 70200 && self::INTL_IDNA_VARIANT_2003 === $variant) {
+            @trigger_error('idn_to_utf8(): INTL_IDNA_VARIANT_2003 is deprecated', E_USER_DEPRECATED);
+        }
+
+        $info = new Info();
+        $labels = self::process((string) $domainName, array(
+            'CheckHyphens' => true,
+            'CheckBidi' => self::INTL_IDNA_VARIANT_2003 === $variant || 0 !== ($options & \IDNA_CHECK_BIDI),
+            'CheckJoiners' => self::INTL_IDNA_VARIANT_UTS46 === $variant && 0 !== ($options & \IDNA_CHECK_CONTEXTJ),
+            'UseSTD3ASCIIRules' => 0 !== ($options & \IDNA_USE_STD3_RULES),
+            'Transitional_Processing' => self::INTL_IDNA_VARIANT_2003 === $variant || 0 === ($options & \IDNA_NONTRANSITIONAL_TO_UNICODE),
+        ), $info);
+        $idna_info = array(
+            'result' => implode('.', $labels),
+            'isTransitionalDifferent' => $info->transitionalDifferent,
+            'errors' => $info->errors,
+        );
+>>>>>>> parent of 31cfa1b1 (p)
 
         return 0 === $info->errors ? $idna_info['result'] : false;
     }
@@ -251,7 +340,11 @@ final class Idn
             // If RegExpMatch((Joining_Type:{L,D})(Joining_Type:T)*\u200C(Joining_Type:T)*(Joining_Type:{R,D})) Then
             // True;
             // Generated RegExp = ([Joining_Type:{L,D}][Joining_Type:T]*\u200C[Joining_Type:T]*)[Joining_Type:{R,D}]
+<<<<<<< HEAD
             if (0x200C === $codePoint && 1 === preg_match(Regex::ZWNJ, $label, $matches, \PREG_OFFSET_CAPTURE, $offset)) {
+=======
+            if (0x200C === $codePoint && 1 === preg_match(Regex::ZWNJ, $label, $matches, PREG_OFFSET_CAPTURE, $offset)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $offset += \strlen($matches[1][0]);
 
                 continue;
@@ -328,7 +421,11 @@ final class Idn
         if ($checkForEmptyLabels && '' === $domain) {
             $info->errors |= self::ERROR_EMPTY_LABEL;
 
+<<<<<<< HEAD
             return [$domain];
+=======
+            return array($domain);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         // Step 1. Map each code point in the domain name string
@@ -578,7 +675,11 @@ final class Idn
         $lastDelimIndex = strrpos($input, self::DELIMITER);
         $b = false === $lastDelimIndex ? 0 : $lastDelimIndex;
         $inputLength = \strlen($input);
+<<<<<<< HEAD
         $output = [];
+=======
+        $output = array();
+>>>>>>> parent of 31cfa1b1 (p)
         $bytes = array_map('ord', str_split($input));
 
         for ($j = 0; $j < $b; ++$j) {
@@ -644,7 +745,11 @@ final class Idn
 
             $n += intdiv($i, $outPlusOne);
             $i %= $outPlusOne;
+<<<<<<< HEAD
             array_splice($output, $i++, 0, [mb_chr($n, 'utf-8')]);
+=======
+            array_splice($output, $i++, 0, array(mb_chr($n, 'utf-8')));
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return implode('', $output);
@@ -703,9 +808,13 @@ final class Idn
             foreach ($iter as $codePoint) {
                 if ($codePoint < $n && 0 === ++$delta) {
                     throw new Exception('Integer overflow');
+<<<<<<< HEAD
                 }
 
                 if ($codePoint === $n) {
+=======
+                } elseif ($codePoint === $n) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $q = $delta;
 
                     for ($k = self::BASE; /* no condition */; $k += self::BASE) {
@@ -795,7 +904,11 @@ final class Idn
         $lowerBoundary = 0x80;
         $upperBoundary = 0xBF;
         $codePoint = 0;
+<<<<<<< HEAD
         $codePoints = [];
+=======
+        $codePoints = array();
+>>>>>>> parent of 31cfa1b1 (p)
         $length = \strlen($input);
 
         for ($i = 0; $i < $length; ++$i) {
@@ -889,6 +1002,7 @@ final class Idn
         }
 
         if (isset(self::$mapped[$codePoint])) {
+<<<<<<< HEAD
             return ['status' => 'mapped', 'mapping' => self::$mapped[$codePoint]];
         }
 
@@ -902,6 +1016,21 @@ final class Idn
 
         if (isset(self::$disallowed[$codePoint]) || DisallowedRanges::inRange($codePoint)) {
             return ['status' => 'disallowed'];
+=======
+            return array('status' => 'mapped', 'mapping' => self::$mapped[$codePoint]);
+        }
+
+        if (isset(self::$ignored[$codePoint])) {
+            return array('status' => 'ignored');
+        }
+
+        if (isset(self::$deviation[$codePoint])) {
+            return array('status' => 'deviation', 'mapping' => self::$deviation[$codePoint]);
+        }
+
+        if (isset(self::$disallowed[$codePoint]) || DisallowedRanges::inRange($codePoint)) {
+            return array('status' => 'disallowed');
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $isDisallowedMapped = isset(self::$disallowed_STD3_mapped[$codePoint]);
@@ -914,6 +1043,7 @@ final class Idn
             }
 
             if ($isDisallowedMapped) {
+<<<<<<< HEAD
                 return ['status' => $status, 'mapping' => self::$disallowed_STD3_mapped[$codePoint]];
             }
 
@@ -921,5 +1051,14 @@ final class Idn
         }
 
         return ['status' => 'valid'];
+=======
+                return array('status' => $status, 'mapping' => self::$disallowed_STD3_mapped[$codePoint]);
+            }
+
+            return array('status' => $status);
+        }
+
+        return array('status' => 'valid');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

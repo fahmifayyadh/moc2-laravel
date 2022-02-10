@@ -6,24 +6,37 @@ use PhpParser\Error;
 use PhpParser\ErrorHandler;
 use PhpParser\Lexer;
 use PhpParser\Lexer\TokenEmulator\AttributeEmulator;
+<<<<<<< HEAD
 use PhpParser\Lexer\TokenEmulator\EnumTokenEmulator;
 use PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
 use PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator;
+=======
+use PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
+>>>>>>> parent of 31cfa1b1 (p)
 use PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
 use PhpParser\Lexer\TokenEmulator\FnTokenEmulator;
 use PhpParser\Lexer\TokenEmulator\MatchTokenEmulator;
 use PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator;
 use PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator;
+<<<<<<< HEAD
 use PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
 use PhpParser\Lexer\TokenEmulator\ReverseEmulator;
 use PhpParser\Lexer\TokenEmulator\TokenEmulator;
+=======
+use PhpParser\Lexer\TokenEmulator\ReverseEmulator;
+use PhpParser\Lexer\TokenEmulator\TokenEmulator;
+use PhpParser\Parser\Tokens;
+>>>>>>> parent of 31cfa1b1 (p)
 
 class Emulative extends Lexer
 {
     const PHP_7_3 = '7.3dev';
     const PHP_7_4 = '7.4dev';
     const PHP_8_0 = '8.0dev';
+<<<<<<< HEAD
     const PHP_8_1 = '8.1dev';
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
     /** @var mixed[] Patches used to reverse changes introduced in the code */
     private $patches = [];
@@ -37,11 +50,19 @@ class Emulative extends Lexer
     /**
      * @param mixed[] $options Lexer options. In addition to the usual options,
      *                         accepts a 'phpVersion' string that specifies the
+<<<<<<< HEAD
      *                         version to emulate. Defaults to newest supported.
      */
     public function __construct(array $options = [])
     {
         $this->targetPhpVersion = $options['phpVersion'] ?? Emulative::PHP_8_1;
+=======
+     *                         version to emulated. Defaults to newest supported.
+     */
+    public function __construct(array $options = [])
+    {
+        $this->targetPhpVersion = $options['phpVersion'] ?? Emulative::PHP_8_0;
+>>>>>>> parent of 31cfa1b1 (p)
         unset($options['phpVersion']);
 
         parent::__construct($options);
@@ -54,9 +75,12 @@ class Emulative extends Lexer
             new NumericLiteralSeparatorEmulator(),
             new NullsafeTokenEmulator(),
             new AttributeEmulator(),
+<<<<<<< HEAD
             new EnumTokenEmulator(),
             new ReadonlyTokenEmulator(),
             new ExplicitOctalEmulator(),
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         ];
 
         // Collect emulators that are relevant for the PHP version we're running

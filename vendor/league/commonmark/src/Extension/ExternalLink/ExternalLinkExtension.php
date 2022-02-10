@@ -19,6 +19,10 @@ final class ExternalLinkExtension implements ExtensionInterface
 {
     public function register(ConfigurableEnvironmentInterface $environment)
     {
+<<<<<<< HEAD
         $environment->addEventListener(DocumentParsedEvent::class, new ExternalLinkProcessor($environment), -50);
+=======
+        $environment->addEventListener(DocumentParsedEvent::class, new ExternalLinkProcessor($environment));
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

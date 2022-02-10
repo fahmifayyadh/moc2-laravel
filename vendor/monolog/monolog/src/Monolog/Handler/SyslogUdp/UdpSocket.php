@@ -12,7 +12,10 @@
 namespace Monolog\Handler\SyslogUdp;
 
 use Monolog\Utils;
+<<<<<<< HEAD
 use Socket;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 class UdpSocket
 {
@@ -22,13 +25,18 @@ class UdpSocket
     protected $ip;
     /** @var int */
     protected $port;
+<<<<<<< HEAD
     /** @var resource|Socket|null */
+=======
+    /** @var resource|null */
+>>>>>>> parent of 31cfa1b1 (p)
     protected $socket;
 
     public function __construct(string $ip, int $port = 514)
     {
         $this->ip = $ip;
         $this->port = $port;
+<<<<<<< HEAD
         $domain = AF_INET;
         $protocol = SOL_UDP;
         // Check if we are using unix sockets.
@@ -44,6 +52,11 @@ class UdpSocket
      * @param  string $header
      * @return void
      */
+=======
+        $this->socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
+    }
+
+>>>>>>> parent of 31cfa1b1 (p)
     public function write($line, $header = "")
     {
         $this->send($this->assembleMessage($line, $header));
@@ -51,7 +64,11 @@ class UdpSocket
 
     public function close(): void
     {
+<<<<<<< HEAD
         if (is_resource($this->socket) || $this->socket instanceof Socket) {
+=======
+        if (is_resource($this->socket)) {
+>>>>>>> parent of 31cfa1b1 (p)
             socket_close($this->socket);
             $this->socket = null;
         }
@@ -59,7 +76,11 @@ class UdpSocket
 
     protected function send(string $chunk): void
     {
+<<<<<<< HEAD
         if (!is_resource($this->socket) && !$this->socket instanceof Socket) {
+=======
+        if (!is_resource($this->socket)) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new \RuntimeException('The UdpSocket to '.$this->ip.':'.$this->port.' has been closed and can not be written to anymore');
         }
         socket_sendto($this->socket, $chunk, strlen($chunk), $flags = 0, $this->ip, $this->port);

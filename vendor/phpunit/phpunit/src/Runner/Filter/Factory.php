@@ -9,12 +9,18 @@
  */
 namespace PHPUnit\Runner\Filter;
 
+<<<<<<< HEAD
 use function sprintf;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use FilterIterator;
 use InvalidArgumentException;
 use Iterator;
 use PHPUnit\Framework\TestSuite;
+<<<<<<< HEAD
 use RecursiveFilterIterator;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use ReflectionClass;
 
 /**
@@ -32,9 +38,15 @@ final class Factory
      */
     public function addFilter(ReflectionClass $filter, $args): void
     {
+<<<<<<< HEAD
         if (!$filter->isSubclassOf(RecursiveFilterIterator::class)) {
             throw new InvalidArgumentException(
                 sprintf(
+=======
+        if (!$filter->isSubclassOf(\RecursiveFilterIterator::class)) {
+            throw new InvalidArgumentException(
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Class "%s" does not extend RecursiveFilterIterator',
                     $filter->name
                 )

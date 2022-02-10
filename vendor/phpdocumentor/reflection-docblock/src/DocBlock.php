@@ -14,7 +14,10 @@ declare(strict_types=1);
 namespace phpDocumentor\Reflection;
 
 use phpDocumentor\Reflection\DocBlock\Tag;
+<<<<<<< HEAD
 use phpDocumentor\Reflection\DocBlock\Tags\TagWithType;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Webmozart\Assert\Assert;
 
 final class DocBlock
@@ -69,12 +72,20 @@ final class DocBlock
         $this->isTemplateStart = $isTemplateStart;
     }
 
+<<<<<<< HEAD
     public function getSummary(): string
+=======
+    public function getSummary() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->summary;
     }
 
+<<<<<<< HEAD
     public function getDescription(): DocBlock\Description
+=======
+    public function getDescription() : DocBlock\Description
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->description;
     }
@@ -82,7 +93,11 @@ final class DocBlock
     /**
      * Returns the current context.
      */
+<<<<<<< HEAD
     public function getContext(): ?Types\Context
+=======
+    public function getContext() : ?Types\Context
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->context;
     }
@@ -90,7 +105,11 @@ final class DocBlock
     /**
      * Returns the current location.
      */
+<<<<<<< HEAD
     public function getLocation(): ?Location
+=======
+    public function getLocation() : ?Location
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->location;
     }
@@ -114,7 +133,11 @@ final class DocBlock
      *
      * @see self::isTemplateEnd() for the check whether a closing marker was provided.
      */
+<<<<<<< HEAD
     public function isTemplateStart(): bool
+=======
+    public function isTemplateStart() : bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->isTemplateStart;
     }
@@ -124,7 +147,11 @@ final class DocBlock
      *
      * @see self::isTemplateStart() for a more complete description of the Docblock Template functionality.
      */
+<<<<<<< HEAD
     public function isTemplateEnd(): bool
+=======
+    public function isTemplateEnd() : bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->isTemplateEnd;
     }
@@ -134,7 +161,11 @@ final class DocBlock
      *
      * @return Tag[]
      */
+<<<<<<< HEAD
     public function getTags(): array
+=======
+    public function getTags() : array
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->tags;
     }
@@ -147,7 +178,11 @@ final class DocBlock
      *
      * @return Tag[]
      */
+<<<<<<< HEAD
     public function getTagsByName(string $name): array
+=======
+    public function getTagsByName(string $name) : array
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $result = [];
 
@@ -163,6 +198,7 @@ final class DocBlock
     }
 
     /**
+<<<<<<< HEAD
      * Returns an array of tags with type matching the given name. If no tags are found
      * an empty array is returned.
      *
@@ -186,11 +222,17 @@ final class DocBlock
     }
 
     /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Checks if a tag of a certain type is present in this DocBlock.
      *
      * @param string $name Tag name to check for.
      */
+<<<<<<< HEAD
     public function hasTag(string $name): bool
+=======
+    public function hasTag(string $name) : bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         foreach ($this->getTags() as $tag) {
             if ($tag->getName() === $name) {
@@ -206,7 +248,11 @@ final class DocBlock
      *
      * @param Tag $tagToRemove The tag to remove.
      */
+<<<<<<< HEAD
     public function removeTag(Tag $tagToRemove): void
+=======
+    public function removeTag(Tag $tagToRemove) : void
+>>>>>>> parent of 31cfa1b1 (p)
     {
         foreach ($this->tags as $key => $tag) {
             if ($tag === $tagToRemove) {
@@ -221,7 +267,11 @@ final class DocBlock
      *
      * @param Tag $tag The tag to add.
      */
+<<<<<<< HEAD
     private function addTag(Tag $tag): void
+=======
+    private function addTag(Tag $tag) : void
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->tags[] = $tag;
     }

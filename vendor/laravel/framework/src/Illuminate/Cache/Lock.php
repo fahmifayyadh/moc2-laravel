@@ -98,7 +98,11 @@ abstract class Lock implements LockContract
      *
      * @param  int  $seconds
      * @param  callable|null  $callback
+<<<<<<< HEAD
      * @return mixed
+=======
+     * @return bool
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws \Illuminate\Contracts\Cache\LockTimeoutException
      */

@@ -320,9 +320,19 @@ class UrlGenerator implements UrlGeneratorContract
      */
     public function signedRoute($name, $parameters = [], $expiration = null, $absolute = true)
     {
+<<<<<<< HEAD
         $this->ensureSignedRouteParametersAreNotReserved(
             $parameters = $this->formatParameters($parameters)
         );
+=======
+        $parameters = $this->formatParameters($parameters);
+
+        if (array_key_exists('signature', $parameters)) {
+            throw new InvalidArgumentException(
+                '"Signature" is a reserved parameter when generating signed routes. Please rename your route parameter.'
+            );
+        }
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($expiration) {
             $parameters = $parameters + ['expires' => $this->availableAt($expiration)];
@@ -338,6 +348,7 @@ class UrlGenerator implements UrlGeneratorContract
     }
 
     /**
+<<<<<<< HEAD
      * Ensure the given signed route parameters are not reserved.
      *
      * @param  mixed  $parameters
@@ -359,6 +370,8 @@ class UrlGenerator implements UrlGeneratorContract
     }
 
     /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Create a temporary signed route URL for a named route.
      *
      * @param  string  $name

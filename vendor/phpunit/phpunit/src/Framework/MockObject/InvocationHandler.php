@@ -9,13 +9,19 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
 use function sprintf;
 use function strtolower;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Exception;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
+<<<<<<< HEAD
 use Throwable;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -43,7 +49,11 @@ final class InvocationHandler
     private $returnValueGeneration;
 
     /**
+<<<<<<< HEAD
      * @var Throwable
+=======
+     * @var \Throwable
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $deferredError;
 
@@ -146,14 +156,22 @@ final class InvocationHandler
 
         if (!$this->returnValueGeneration) {
             $exception = new ExpectationFailedException(
+<<<<<<< HEAD
                 sprintf(
+=======
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Return value inference disabled and no expectation set up for %s::%s()',
                     $invocation->getClassName(),
                     $invocation->getMethodName()
                 )
             );
 
+<<<<<<< HEAD
             if (strtolower($invocation->getMethodName()) === '__tostring') {
+=======
+            if (\strtolower($invocation->getMethodName()) === '__tostring') {
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->deferredError = $exception;
 
                 return '';

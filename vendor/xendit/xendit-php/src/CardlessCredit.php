@@ -56,6 +56,7 @@ class CardlessCredit
             'callback_url'
         ];
     }
+<<<<<<< HEAD
 
     /**
      * Calculate payment types
@@ -80,4 +81,6 @@ class CardlessCredit
 
         return static::_request('POST', $url, $params);
     }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

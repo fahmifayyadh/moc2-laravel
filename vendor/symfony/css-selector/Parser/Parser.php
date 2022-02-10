@@ -31,7 +31,11 @@ class Parser implements ParserInterface
 
     public function __construct(Tokenizer $tokenizer = null)
     {
+<<<<<<< HEAD
         $this->tokenizer = $tokenizer ?? new Tokenizer();
+=======
+        $this->tokenizer = $tokenizer ?: new Tokenizer();
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -79,12 +83,20 @@ class Parser implements ParserInterface
                 return [2, 0];
             case 'n' === $joined:
                 return [1, 0];
+<<<<<<< HEAD
             case !str_contains($joined, 'n'):
+=======
+            case false === strpos($joined, 'n'):
+>>>>>>> parent of 31cfa1b1 (p)
                 return [0, $int($joined)];
         }
 
         $split = explode('n', $joined);
+<<<<<<< HEAD
         $first = $split[0] ?? null;
+=======
+        $first = isset($split[0]) ? $split[0] : null;
+>>>>>>> parent of 31cfa1b1 (p)
 
         return [
             $first ? ('-' === $first || '+' === $first ? $int($first.'1') : $int($first)) : 1,
@@ -113,7 +125,11 @@ class Parser implements ParserInterface
 
     private function parserSelectorNode(TokenStream $stream): Node\SelectorNode
     {
+<<<<<<< HEAD
         [$result, $pseudoElement] = $this->parseSimpleSelector($stream);
+=======
+        list($result, $pseudoElement) = $this->parseSimpleSelector($stream);
+>>>>>>> parent of 31cfa1b1 (p)
 
         while (true) {
             $stream->skipWhitespace();
@@ -134,7 +150,11 @@ class Parser implements ParserInterface
                 $combinator = ' ';
             }
 
+<<<<<<< HEAD
             [$nextSelector, $pseudoElement] = $this->parseSimpleSelector($stream);
+=======
+            list($nextSelector, $pseudoElement) = $this->parseSimpleSelector($stream);
+>>>>>>> parent of 31cfa1b1 (p)
             $result = new Node\CombinedSelectorNode($result, $combinator, $nextSelector);
         }
 
@@ -209,7 +229,11 @@ class Parser implements ParserInterface
                         throw SyntaxErrorException::nestedNot();
                     }
 
+<<<<<<< HEAD
                     [$argument, $argumentPseudoElement] = $this->parseSimpleSelector($stream, true);
+=======
+                    list($argument, $argumentPseudoElement) = $this->parseSimpleSelector($stream, true);
+>>>>>>> parent of 31cfa1b1 (p)
                     $next = $stream->getNext();
 
                     if (null !== $argumentPseudoElement) {

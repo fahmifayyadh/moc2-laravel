@@ -41,7 +41,12 @@ class PsrLogMessageProcessor implements ProcessorInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param  array $record
+     * @return array
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __invoke(array $record): array
     {
@@ -69,7 +74,11 @@ class PsrLogMessageProcessor implements ProcessorInterface
             } elseif (is_object($val)) {
                 $replacements[$placeholder] = '[object '.Utils::getClass($val).']';
             } elseif (is_array($val)) {
+<<<<<<< HEAD
                 $replacements[$placeholder] = 'array'.Utils::jsonEncode($val, null, true);
+=======
+                $replacements[$placeholder] = 'array'.@json_encode($val);
+>>>>>>> parent of 31cfa1b1 (p)
             } else {
                 $replacements[$placeholder] = '['.gettype($val).']';
             }

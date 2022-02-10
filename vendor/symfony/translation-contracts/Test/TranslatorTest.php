@@ -30,6 +30,7 @@ use Symfony\Contracts\Translation\TranslatorTrait;
  */
 class TranslatorTest extends TestCase
 {
+<<<<<<< HEAD
     private $defaultLocale;
 
     protected function setUp(): void
@@ -46,6 +47,8 @@ class TranslatorTest extends TestCase
     /**
      * @return TranslatorInterface
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function getTranslator()
     {
         return new class() implements TranslatorInterface {
@@ -69,17 +72,25 @@ class TranslatorTest extends TestCase
     public function testTransChoiceWithExplicitLocale($expected, $id, $number)
     {
         $translator = $this->getTranslator();
+<<<<<<< HEAD
+=======
+        $translator->setLocale('en');
+>>>>>>> parent of 31cfa1b1 (p)
 
         $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number]));
     }
 
     /**
+<<<<<<< HEAD
      * @requires extension intl
      *
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * @dataProvider getTransChoiceTests
      */
     public function testTransChoiceWithDefaultLocale($expected, $id, $number)
     {
+<<<<<<< HEAD
         $translator = $this->getTranslator();
 
         $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number]));
@@ -92,6 +103,11 @@ class TranslatorTest extends TestCase
     {
         $translator = $this->getTranslator();
         $translator->setLocale('en_US_POSIX');
+=======
+        \Locale::setDefault('en');
+
+        $translator = $this->getTranslator();
+>>>>>>> parent of 31cfa1b1 (p)
 
         $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number]));
     }
@@ -99,6 +115,10 @@ class TranslatorTest extends TestCase
     public function testGetSetLocale()
     {
         $translator = $this->getTranslator();
+<<<<<<< HEAD
+=======
+        $translator->setLocale('en');
+>>>>>>> parent of 31cfa1b1 (p)
 
         $this->assertEquals('en', $translator->getLocale());
     }
@@ -167,11 +187,19 @@ class TranslatorTest extends TestCase
     /**
      * @dataProvider getChooseTests
      */
+<<<<<<< HEAD
     public function testChoose($expected, $id, $number, $locale = null)
     {
         $translator = $this->getTranslator();
 
         $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number], null, $locale));
+=======
+    public function testChoose($expected, $id, $number)
+    {
+        $translator = $this->getTranslator();
+
+        $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number]));
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function testReturnMessageIfExactlyOneStandardRuleIsGiven()
@@ -186,7 +214,11 @@ class TranslatorTest extends TestCase
      */
     public function testThrowExceptionIfMatchingMessageCannotBeFound($id, $number)
     {
+<<<<<<< HEAD
         $this->expectException(\InvalidArgumentException::class);
+=======
+        $this->expectException('InvalidArgumentException');
+>>>>>>> parent of 31cfa1b1 (p)
         $translator = $this->getTranslator();
 
         $translator->trans($id, ['%count%' => $number]);
@@ -280,6 +312,7 @@ class TranslatorTest extends TestCase
             ['', '|', 1],
             // Empty plural set (3 plural forms) from a .PO file
             ['', '||', 1],
+<<<<<<< HEAD
 
             // Floating values
             ['1.5 liters', '%count% liter|%count% liters', 1.5],
@@ -292,6 +325,8 @@ class TranslatorTest extends TestCase
             ['-1.5 degré', '%count% degré|%count% degrés', -1.5, 'fr'],
             ['-2 degrees', '%count% degree|%count% degrees', -2],
             ['-2 degrés', '%count% degré|%count% degrés', -2],
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         ];
     }
 
@@ -324,7 +359,11 @@ class TranslatorTest extends TestCase
     {
         return [
             ['1', ['ay', 'bo', 'cgg', 'dz', 'id', 'ja', 'jbo', 'ka', 'kk', 'km', 'ko', 'ky']],
+<<<<<<< HEAD
             ['2', ['nl', 'fr', 'en', 'de', 'de_GE', 'hy', 'hy_AM', 'en_US_POSIX']],
+=======
+            ['2', ['nl', 'fr', 'en', 'de', 'de_GE', 'hy', 'hy_AM']],
+>>>>>>> parent of 31cfa1b1 (p)
             ['3', ['be', 'bs', 'cs', 'hr']],
             ['4', ['cy', 'mt', 'sl']],
             ['6', ['ar']],

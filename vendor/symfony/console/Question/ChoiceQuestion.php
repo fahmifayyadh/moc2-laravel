@@ -131,18 +131,30 @@ class ChoiceQuestion extends Question
         return function ($selected) use ($choices, $errorMessage, $multiselect, $isAssoc) {
             if ($multiselect) {
                 // Check for a separated comma values
+<<<<<<< HEAD
                 if (!preg_match('/^[^,]+(?:,[^,]+)*$/', (string) $selected, $matches)) {
                     throw new InvalidArgumentException(sprintf($errorMessage, $selected));
                 }
 
                 $selectedChoices = explode(',', (string) $selected);
+=======
+                if (!preg_match('/^[^,]+(?:,[^,]+)*$/', $selected, $matches)) {
+                    throw new InvalidArgumentException(sprintf($errorMessage, $selected));
+                }
+
+                $selectedChoices = explode(',', $selected);
+>>>>>>> parent of 31cfa1b1 (p)
             } else {
                 $selectedChoices = [$selected];
             }
 
             if ($this->isTrimmable()) {
                 foreach ($selectedChoices as $k => $v) {
+<<<<<<< HEAD
                     $selectedChoices[$k] = trim((string) $v);
+=======
+                    $selectedChoices[$k] = trim($v);
+>>>>>>> parent of 31cfa1b1 (p)
                 }
             }
 

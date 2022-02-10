@@ -16,7 +16,11 @@
         "sort-packages": true
     },
     "require": {
+<<<<<<< HEAD
         "php": ">=7.2",
+=======
+        "php": "^7.2",
+>>>>>>> parent of 31cfa1b1 (p)
         "sebastian/object-reflector": "^1.1.1",
         "sebastian/recursion-context": "^3.0"
     },

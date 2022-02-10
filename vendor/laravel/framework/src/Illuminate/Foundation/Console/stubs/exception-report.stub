@@ -9,7 +9,11 @@ class DummyClass extends Exception
     /**
      * Report the exception.
      *
+<<<<<<< HEAD
      * @return bool|null
+=======
+     * @return void
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function report()
     {

@@ -1,11 +1,19 @@
 <?php
 /* ===========================================================================
+<<<<<<< HEAD
  * Copyright (c) 2018-2021 Zindex Software
+=======
+ * Copyright (c) 2018-2019 Zindex Software
+>>>>>>> parent of 31cfa1b1 (p)
  *
  * Licensed under the MIT License
  * =========================================================================== */
 
+<<<<<<< HEAD
 require_once __DIR__ . '/functions.php';
+=======
+require_once 'functions.php';
+>>>>>>> parent of 31cfa1b1 (p)
 
 spl_autoload_register(function($class){
    

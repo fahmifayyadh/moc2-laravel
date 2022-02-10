@@ -239,7 +239,11 @@ class UploadedFile extends File
     /**
      * Returns the maximum size of an uploaded file as configured in php.ini.
      *
+<<<<<<< HEAD
      * @return int|float The maximum size of an uploaded file in bytes (returns float if size > PHP_INT_MAX)
+=======
+     * @return int The maximum size of an uploaded file in bytes
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public static function getMaxFilesize()
     {
@@ -251,10 +255,15 @@ class UploadedFile extends File
 
     /**
      * Returns the given size from an ini value in bytes.
+<<<<<<< HEAD
      *
      * @return int|float Returns float if size > PHP_INT_MAX
      */
     private static function parseFilesize(string $size)
+=======
+     */
+    private static function parseFilesize($size): int
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ('' === $size) {
             return 0;
@@ -263,9 +272,15 @@ class UploadedFile extends File
         $size = strtolower($size);
 
         $max = ltrim($size, '+');
+<<<<<<< HEAD
         if (str_starts_with($max, '0x')) {
             $max = \intval($max, 16);
         } elseif (str_starts_with($max, '0')) {
+=======
+        if (0 === strpos($max, '0x')) {
+            $max = \intval($max, 16);
+        } elseif (0 === strpos($max, '0')) {
+>>>>>>> parent of 31cfa1b1 (p)
             $max = \intval($max, 8);
         } else {
             $max = (int) $max;
@@ -303,7 +318,11 @@ class UploadedFile extends File
 
         $errorCode = $this->error;
         $maxFilesize = \UPLOAD_ERR_INI_SIZE === $errorCode ? self::getMaxFilesize() / 1024 : 0;
+<<<<<<< HEAD
         $message = $errors[$errorCode] ?? 'The file "%s" was not uploaded due to an unknown error.';
+=======
+        $message = isset($errors[$errorCode]) ? $errors[$errorCode] : 'The file "%s" was not uploaded due to an unknown error.';
+>>>>>>> parent of 31cfa1b1 (p)
 
         return sprintf($message, $this->getClientOriginalName(), $maxFilesize);
     }

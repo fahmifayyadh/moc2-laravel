@@ -46,7 +46,11 @@ class ParseCommand extends Command implements ContextAware, PresenterAware
     public function __construct($name = null)
     {
         $this->parserFactory = new ParserFactory();
+<<<<<<< HEAD
         $this->parsers = [];
+=======
+        $this->parsers       = [];
+>>>>>>> parent of 31cfa1b1 (p)
 
         parent::__construct($name);
     }
@@ -72,12 +76,21 @@ class ParseCommand extends Command implements ContextAware, PresenterAware
         $this->presenter->addCasters([
             Node::class => function (Node $node, array $a) {
                 $a = [
+<<<<<<< HEAD
                     Caster::PREFIX_VIRTUAL.'type'       => $node->getType(),
                     Caster::PREFIX_VIRTUAL.'attributes' => $node->getAttributes(),
                 ];
 
                 foreach ($node->getSubNodeNames() as $name) {
                     $a[Caster::PREFIX_VIRTUAL.$name] = $node->$name;
+=======
+                    Caster::PREFIX_VIRTUAL . 'type'       => $node->getType(),
+                    Caster::PREFIX_VIRTUAL . 'attributes' => $node->getAttributes(),
+                ];
+
+                foreach ($node->getSubNodeNames() as $name) {
+                    $a[Caster::PREFIX_VIRTUAL . $name] = $node->$name;
+>>>>>>> parent of 31cfa1b1 (p)
                 }
 
                 return $a;
@@ -90,6 +103,7 @@ class ParseCommand extends Command implements ContextAware, PresenterAware
      */
     protected function configure()
     {
+<<<<<<< HEAD
         $kindMsg = 'One of PhpParser\\ParserFactory constants: '
             .\implode(', ', ParserFactory::getPossibleKinds())
             ." (default is based on current interpreter's version).";
@@ -101,6 +115,25 @@ class ParseCommand extends Command implements ContextAware, PresenterAware
             new InputOption('depth', '', InputOption::VALUE_REQUIRED, 'Depth to parse.', 10),
             new InputOption('kind', '', InputOption::VALUE_REQUIRED, $kindMsg, $this->parserFactory->getDefaultKind()),
         ])
+=======
+        $definition = [
+            new CodeArgument('code', CodeArgument::REQUIRED, 'PHP code to parse.'),
+            new InputOption('depth', '', InputOption::VALUE_REQUIRED, 'Depth to parse.', 10),
+        ];
+
+        if ($this->parserFactory->hasKindsSupport()) {
+            $msg = 'One of PhpParser\\ParserFactory constants: '
+                . \implode(', ', ParserFactory::getPossibleKinds())
+                . " (default is based on current interpreter's version).";
+            $defaultKind = $this->parserFactory->getDefaultKind();
+
+            $definition[] = new InputOption('kind', '', InputOption::VALUE_REQUIRED, $msg, $defaultKind);
+        }
+
+        $this
+            ->setName('parse')
+            ->setDefinition($definition)
+>>>>>>> parent of 31cfa1b1 (p)
             ->setDescription('Parse PHP code and show the abstract syntax tree.')
             ->setHelp(
                 <<<'HELP'
@@ -123,12 +156,21 @@ HELP
     {
         $code = $input->getArgument('code');
         if (\strpos($code, '<?') === false) {
+<<<<<<< HEAD
             $code = '<?php '.$code;
         }
 
         $parserKind = $input->getOption('kind');
         $depth = $input->getOption('depth');
         $nodes = $this->parse($this->getParser($parserKind), $code);
+=======
+            $code = '<?php ' . $code;
+        }
+
+        $parserKind = $this->parserFactory->hasKindsSupport() ? $input->getOption('kind') : null;
+        $depth      = $input->getOption('depth');
+        $nodes      = $this->parse($this->getParser($parserKind), $code);
+>>>>>>> parent of 31cfa1b1 (p)
         $output->page($this->presenter->present($nodes, $depth));
 
         $this->context->setReturnValue($nodes);
@@ -144,7 +186,11 @@ HELP
      *
      * @return array Statements
      */
+<<<<<<< HEAD
     private function parse(Parser $parser, string $code): array
+=======
+    private function parse(Parser $parser, $code)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         try {
             return $parser->parse($code);
@@ -154,7 +200,11 @@ HELP
             }
 
             // If we got an unexpected EOF, let's try it again with a semicolon.
+<<<<<<< HEAD
             return $parser->parse($code.';');
+=======
+            return $parser->parse($code . ';');
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -165,7 +215,11 @@ HELP
      *
      * @return Parser
      */
+<<<<<<< HEAD
     private function getParser(string $kind = null): Parser
+=======
+    private function getParser($kind = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!\array_key_exists($kind, $this->parsers)) {
             $this->parsers[$kind] = $this->parserFactory->createParser($kind);

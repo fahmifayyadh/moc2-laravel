@@ -18,7 +18,11 @@ class Swift_CharacterReader_Utf8Reader implements Swift_CharacterReader
 {
     /** Pre-computed for optimization */
     private static $length_map = [
+<<<<<<< HEAD
         // N=0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+=======
+        // N=0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,
+>>>>>>> parent of 31cfa1b1 (p)
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 0x0N
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 0x1N
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 0x2N
@@ -34,7 +38,11 @@ class Swift_CharacterReader_Utf8Reader implements Swift_CharacterReader
         2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, // 0xCN
         2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, // 0xDN
         3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, // 0xEN
+<<<<<<< HEAD
         4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 0, 0, // 0xFN
+=======
+        4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 0, 0,  // 0xFN
+>>>>>>> parent of 31cfa1b1 (p)
     ];
 
     private static $s_length_map = [
@@ -88,8 +96,13 @@ class Swift_CharacterReader_Utf8Reader implements Swift_CharacterReader
             $currentMap['p'] = $currentMap['i'] = [];
         }
 
+<<<<<<< HEAD
         $strlen = \strlen($string);
         $charPos = \count($currentMap['p']);
+=======
+        $strlen = strlen($string);
+        $charPos = count($currentMap['p']);
+>>>>>>> parent of 31cfa1b1 (p)
         $foundChars = 0;
         $invalid = false;
         for ($i = 0; $i < $strlen; ++$i) {

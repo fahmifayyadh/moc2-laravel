@@ -34,7 +34,11 @@ interface ExpectationInterface
     public function getMock();
 
     /**
+<<<<<<< HEAD
      * @param mixed $args
+=======
+     * @param array ...$args
+>>>>>>> parent of 31cfa1b1 (p)
      * @return self
      */
     public function andReturn(...$args);

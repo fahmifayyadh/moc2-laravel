@@ -37,6 +37,7 @@ class ErrorException extends \ErrorException implements Exception
         }
 
         switch ($severity) {
+<<<<<<< HEAD
             case \E_STRICT:
                 $type = 'Strict error';
                 break;
@@ -59,6 +60,30 @@ class ErrorException extends \ErrorException implements Exception
                 break;
 
             case \E_RECOVERABLE_ERROR:
+=======
+            case E_STRICT:
+                $type = 'Strict error';
+                break;
+
+            case E_NOTICE:
+            case E_USER_NOTICE:
+                $type = 'Notice';
+                break;
+
+            case E_WARNING:
+            case E_CORE_WARNING:
+            case E_COMPILE_WARNING:
+            case E_USER_WARNING:
+                $type = 'Warning';
+                break;
+
+            case E_DEPRECATED:
+            case E_USER_DEPRECATED:
+                $type = 'Deprecated';
+                break;
+
+            case E_RECOVERABLE_ERROR:
+>>>>>>> parent of 31cfa1b1 (p)
                 $type = 'Recoverable fatal error';
                 break;
 
@@ -67,7 +92,11 @@ class ErrorException extends \ErrorException implements Exception
                 break;
         }
 
+<<<<<<< HEAD
         $message = \sprintf('PHP %s:  %s%s on line %d', $type, $message, $filename ? ' in '.$filename : '', $lineno);
+=======
+        $message = \sprintf('PHP %s:  %s%s on line %d', $type, $message, $filename ? ' in ' . $filename : '', $lineno);
+>>>>>>> parent of 31cfa1b1 (p)
         parent::__construct($message, $code, $severity, $filename, $lineno, $previous);
     }
 
@@ -76,7 +105,11 @@ class ErrorException extends \ErrorException implements Exception
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getRawMessage(): string
+=======
+    public function getRawMessage()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->rawMessage;
     }
@@ -88,7 +121,11 @@ class ErrorException extends \ErrorException implements Exception
      *
      *     set_error_handler([ErrorException::class, 'throwException']);
      *
+<<<<<<< HEAD
      * @throws self
+=======
+     * @throws ErrorException
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @param int    $errno   Error type
      * @param string $errstr  Message
@@ -105,9 +142,15 @@ class ErrorException extends \ErrorException implements Exception
      *
      * @param \Error $e
      *
+<<<<<<< HEAD
      * @return self
      */
     public static function fromError(\Error $e): self
+=======
+     * @return ErrorException
+     */
+    public static function fromError(\Error $e)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return new self($e->getMessage(), $e->getCode(), 1, $e->getFile(), $e->getLine(), $e);
     }

@@ -22,7 +22,11 @@ class WizardTest extends TestCase
      */
     private $wizard;
 
+<<<<<<< HEAD
     protected function setUp(): void
+=======
+    protected function setUp()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->wizard = new Wizard;
     }

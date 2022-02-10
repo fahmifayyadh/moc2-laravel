@@ -40,8 +40,11 @@ final class Configuration implements ConfigurationInterface
     public function get(?string $key = null, $default = null)
     {
         if ($key === null) {
+<<<<<<< HEAD
             @\trigger_error('Calling Configuration::get() without a $key is deprecated in league/commonmark 1.6 and will not be allowed in 2.0', \E_USER_DEPRECATED);
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             return $this->config;
         }
 
@@ -59,10 +62,13 @@ final class Configuration implements ConfigurationInterface
 
     public function set(string $key, $value = null)
     {
+<<<<<<< HEAD
         if (\func_num_args() === 1) {
             @\trigger_error('Calling Configuration::set() without a $value is deprecated in league/commonmark 1.6 and will not be allowed in 2.0', \E_USER_DEPRECATED);
         }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         // accept a/b/c as ['a']['b']['c']
         if (\strpos($key, '/')) {
             $this->setByPath($key, $value);
@@ -71,11 +77,14 @@ final class Configuration implements ConfigurationInterface
         $this->config[$key] = $value;
     }
 
+<<<<<<< HEAD
     public function exists(string $key): bool
     {
         return $this->getConfigByPath($key, self::MISSING) !== self::MISSING;
     }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     /**
      * @param string      $keyPath
      * @param string|null $default

@@ -10,6 +10,7 @@
  */
 
 // load new map
+<<<<<<< HEAD
 $data = json_decode(file_get_contents('https://cdn.jsdelivr.net/gh/jshttp/mime-db@v1.49.0/db.json'), true);
 $new = [];
 foreach ($data as $mimeType => $mimeTypeInformation) {
@@ -20,6 +21,20 @@ foreach ($data as $mimeType => $mimeTypeInformation) {
 }
 
 $xml = simplexml_load_string(file_get_contents('https://gitlab.freedesktop.org/xdg/shared-mime-info/-/raw/master/data/freedesktop.org.xml.in'));
+=======
+$data = file_get_contents('https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types');
+$new = [];
+foreach (explode("\n", $data) as $line) {
+    if (!$line || '#' == $line[0]) {
+        continue;
+    }
+    $mimeType = substr($line, 0, strpos($line, "\t"));
+    $extensions = explode(' ', substr($line, strrpos($line, "\t") + 1));
+    $new[$mimeType] = $extensions;
+}
+
+$xml = simplexml_load_string(file_get_contents('https://raw.github.com/minad/mimemagic/master/script/freedesktop.org.xml'));
+>>>>>>> parent of 31cfa1b1 (p)
 foreach ($xml as $node) {
     $exts = [];
     foreach ($node->glob as $glob) {
@@ -60,11 +75,24 @@ foreach (explode("\n", $data) as $line) {
     $current[$matches[1]] = explode("', '", $matches[2]);
 }
 
+<<<<<<< HEAD
 $data = $pre;
+=======
+// we merge the 2 maps (we never remove old mime types)
+$map = array_replace_recursive($current, $new);
+ksort($map);
+
+$data = $pre;
+foreach ($map as $mimeType => $exts) {
+    $data .= sprintf("        '%s' => ['%s'],\n", $mimeType, implode("', '", array_unique($exts)));
+}
+$data .= $post;
+>>>>>>> parent of 31cfa1b1 (p)
 
 // reverse map
 // we prefill the extensions with some preferences for content-types
 $exts = [
+<<<<<<< HEAD
     'asice' => ['application/vnd.etsi.asic-e+zip'],
     'bz2' => ['application/x-bz2'],
     'csv' => ['text/csv'],
@@ -97,11 +125,66 @@ $exts = [
     'tar' => ['application/x-tar'],
     'tif' => ['image/tiff'],
     'ttf' => ['application/x-font-truetype'],
+=======
+    'aif' => ['audio/x-aiff'],
+    'aiff' => ['audio/x-aiff'],
+    'aps' => ['application/postscript'],
+    'avi' => ['video/avi'],
+    'bmp' => ['image/bmp'],
+    'bz2' => ['application/x-bz2'],
+    'css' => ['text/css'],
+    'csv' => ['text/csv'],
+    'dmg' => ['application/x-apple-diskimage'],
+    'doc' => ['application/msword'],
+    'docx' => ['application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    'eml' => ['message/rfc822'],
+    'exe' => ['application/x-ms-dos-executable'],
+    'flv' => ['video/x-flv'],
+    'gif' => ['image/gif'],
+    'gz' => ['application/x-gzip'],
+    'hqx' => ['application/stuffit'],
+    'htm' => ['text/html'],
+    'html' => ['text/html'],
+    'jar' => ['application/x-java-archive'],
+    'jpeg' => ['image/jpeg'],
+    'jpg' => ['image/jpeg'],
+    'js' => ['text/javascript'],
+    'm3u' => ['audio/x-mpegurl'],
+    'm4a' => ['audio/mp4'],
+    'mdb' => ['application/x-msaccess'],
+    'mid' => ['audio/midi'],
+    'midi' => ['audio/midi'],
+    'mov' => ['video/quicktime'],
+    'mp3' => ['audio/mpeg'],
+    'mp4' => ['video/mp4'],
+    'mpeg' => ['video/mpeg'],
+    'mpg' => ['video/mpeg'],
+    'ogg' => ['audio/ogg'],
+    'pdf' => ['application/pdf'],
+    'php' => ['application/x-php'],
+    'php3' => ['application/x-php'],
+    'php4' => ['application/x-php'],
+    'php5' => ['application/x-php'],
+    'png' => ['image/png'],
+    'ppt' => ['application/vnd.ms-powerpoint'],
+    'pptx' => ['application/vnd.openxmlformats-officedocument.presentationml.presentation'],
+    'ps' => ['application/postscript'],
+    'rar' => ['application/x-rar-compressed'],
+    'rtf' => ['application/rtf'],
+    'sit' => ['application/x-stuffit'],
+    'svg' => ['image/svg+xml'],
+    'tar' => ['application/x-tar'],
+    'tif' => ['image/tiff'],
+    'tiff' => ['image/tiff'],
+    'ttf' => ['application/x-font-truetype'],
+    'txt' => ['text/plain'],
+>>>>>>> parent of 31cfa1b1 (p)
     'vcf' => ['text/x-vcard'],
     'wav' => ['audio/wav'],
     'wma' => ['audio/x-ms-wma'],
     'wmv' => ['audio/x-ms-wmv'],
     'xls' => ['application/vnd.ms-excel'],
+<<<<<<< HEAD
     'zip' => ['application/zip'],
 ];
 
@@ -133,6 +216,14 @@ foreach ($map as $mimeType => $extensions) {
             continue;
         }
 
+=======
+    'xlsx' => ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
+    'xml' => ['application/xml'],
+    'zip' => ['application/zip'],
+];
+foreach ($map as $mimeType => $extensions) {
+    foreach ($extensions as $extension) {
+>>>>>>> parent of 31cfa1b1 (p)
         $exts[$extension][] = $mimeType;
     }
 }

@@ -15,7 +15,10 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
+<<<<<<< HEAD
 use PhpParser\Node\VariadicPlaceholder;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Psy\Exception\FatalErrorException;
 
 /**
@@ -43,12 +46,17 @@ class CallTimePassByReferencePass extends CodeCleanerPass
         }
 
         foreach ($node->args as $arg) {
+<<<<<<< HEAD
             if ($arg instanceof VariadicPlaceholder) {
                 continue;
             }
 
             if ($arg->byRef) {
                 throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, \E_ERROR, null, $node->getLine());
+=======
+            if ($arg->byRef) {
+                throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, E_ERROR, null, $node->getLine());
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
     }

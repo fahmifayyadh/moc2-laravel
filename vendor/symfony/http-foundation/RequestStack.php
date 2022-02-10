@@ -94,6 +94,14 @@ class RequestStack
     {
         $pos = \count($this->requests) - 2;
 
+<<<<<<< HEAD
         return $this->requests[$pos] ?? null;
+=======
+        if (!isset($this->requests[$pos])) {
+            return null;
+        }
+
+        return $this->requests[$pos];
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

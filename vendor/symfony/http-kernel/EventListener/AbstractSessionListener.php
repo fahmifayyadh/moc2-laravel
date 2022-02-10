@@ -37,7 +37,11 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 abstract class AbstractSessionListener implements EventSubscriberInterface
 {
+<<<<<<< HEAD
     public const NO_AUTO_CACHE_CONTROL_HEADER = 'Symfony-Session-NoAutoCacheControl';
+=======
+    const NO_AUTO_CACHE_CONTROL_HEADER = 'Symfony-Session-NoAutoCacheControl';
+>>>>>>> parent of 31cfa1b1 (p)
 
     protected $container;
     private $sessionUsageStack = [];
@@ -53,6 +57,7 @@ abstract class AbstractSessionListener implements EventSubscriberInterface
             return;
         }
 
+<<<<<<< HEAD
         $request = $event->getRequest();
         if (!$request->hasSession()) {
             $sess = null;
@@ -60,6 +65,19 @@ abstract class AbstractSessionListener implements EventSubscriberInterface
         }
 
         $session = $this->container && $this->container->has('initialized_session') ? $this->container->get('initialized_session') : null;
+=======
+        $session = null;
+        $request = $event->getRequest();
+        if ($request->hasSession()) {
+            // no-op
+        } elseif (method_exists($request, 'setSessionFactory')) {
+            $request->setSessionFactory(function () { return $this->getSession(); });
+        } elseif ($session = $this->getSession()) {
+            $request->setSession($session);
+        }
+
+        $session = $session ?? ($this->container && $this->container->has('initialized_session') ? $this->container->get('initialized_session') : null);
+>>>>>>> parent of 31cfa1b1 (p)
         $this->sessionUsageStack[] = $session instanceof Session ? $session->getUsageIndex() : 0;
     }
 

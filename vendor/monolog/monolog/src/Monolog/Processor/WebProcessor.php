@@ -19,7 +19,11 @@ namespace Monolog\Processor;
 class WebProcessor implements ProcessorInterface
 {
     /**
+<<<<<<< HEAD
      * @var array<string, mixed>|\ArrayAccess<string, mixed>
+=======
+     * @var array|\ArrayAccess
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected $serverData;
 
@@ -28,7 +32,11 @@ class WebProcessor implements ProcessorInterface
      *
      * Array is structured as [key in record.extra => key in $serverData]
      *
+<<<<<<< HEAD
      * @var array<string, string>
+=======
+     * @var array
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected $extraFields = [
         'url'         => 'REQUEST_URI',
@@ -39,8 +47,13 @@ class WebProcessor implements ProcessorInterface
     ];
 
     /**
+<<<<<<< HEAD
      * @param array<string, mixed>|\ArrayAccess<string, mixed>|null $serverData  Array or object w/ ArrayAccess that provides access to the $_SERVER data
      * @param array<string, string>|null                            $extraFields Field names and the related key inside $serverData to be added. If not provided it defaults to: url, ip, http_method, server, referrer
+=======
+     * @param array|\ArrayAccess|null $serverData  Array or object w/ ArrayAccess that provides access to the $_SERVER data
+     * @param array|null              $extraFields Field names and the related key inside $serverData to be added. If not provided it defaults to: url, ip, http_method, server, referrer
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct($serverData = null, array $extraFields = null)
     {
@@ -69,9 +82,12 @@ class WebProcessor implements ProcessorInterface
         }
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritDoc}
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function __invoke(array $record): array
     {
         // skip processing if for some reason request data
@@ -92,10 +108,13 @@ class WebProcessor implements ProcessorInterface
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * @param  mixed[] $extra
      * @return mixed[]
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     private function appendExtraFields(array $extra): array
     {
         foreach ($this->extraFields as $extraName => $serverName) {

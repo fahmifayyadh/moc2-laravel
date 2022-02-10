@@ -12,11 +12,18 @@
 namespace Symfony\Contracts\Service;
 
 use Psr\Container\ContainerInterface;
+<<<<<<< HEAD
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
 /**
  * Implementation of ServiceSubscriberInterface that determines subscribed services from
  * method return types. Service ids are available as "ClassName::methodName".
+=======
+
+/**
+ * Implementation of ServiceSubscriberInterface that determines subscribed services from
+ * private method return types. Service ids are available as "ClassName::methodName".
+>>>>>>> parent of 31cfa1b1 (p)
  *
  * @author Kevin Bond <kevinbond@gmail.com>
  */
@@ -25,9 +32,12 @@ trait ServiceSubscriberTrait
     /** @var ContainerInterface */
     protected $container;
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public static function getSubscribedServices(): array
     {
         static $services;
@@ -37,6 +47,7 @@ trait ServiceSubscriberTrait
         }
 
         $services = \is_callable(['parent', __FUNCTION__]) ? parent::getSubscribedServices() : [];
+<<<<<<< HEAD
         $attributeOptIn = false;
 
         if (\PHP_VERSION_ID >= 80000) {
@@ -91,6 +102,16 @@ trait ServiceSubscriberTrait
                 }
 
                 $services[self::class.'::'.$method->name] = '?'.($returnType instanceof \ReflectionNamedType ? $returnType->getName() : $returnType);
+=======
+
+        foreach ((new \ReflectionClass(self::class))->getMethods() as $method) {
+            if ($method->isStatic() || $method->isAbstract() || $method->isGenerator() || $method->isInternal() || $method->getNumberOfRequiredParameters()) {
+                continue;
+            }
+
+            if (self::class === $method->getDeclaringClass()->name && ($returnType = $method->getReturnType()) && !$returnType->isBuiltin()) {
+                $services[self::class.'::'.$method->name] = '?'.($returnType instanceof \ReflectionNamedType ? $returnType->getName() : $type);
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 
@@ -99,8 +120,11 @@ trait ServiceSubscriberTrait
 
     /**
      * @required
+<<<<<<< HEAD
      *
      * @return ContainerInterface|null
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setContainer(ContainerInterface $container)
     {

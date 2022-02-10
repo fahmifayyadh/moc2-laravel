@@ -34,8 +34,11 @@ interface ConfigurableEnvironmentInterface extends EnvironmentInterface
      * @param array<string, mixed> $config
      *
      * @return void
+<<<<<<< HEAD
      *
      * @deprecated in 1.6 and will be removed in 2.0; use mergeConfig() instead
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setConfig(array $config = []);
 

@@ -21,7 +21,11 @@ class GlobalVariableEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null): array
+=======
+    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // only list globals when no Reflector is present.
         if ($reflector !== null || $target !== null) {
@@ -49,7 +53,11 @@ class GlobalVariableEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     protected function getGlobals(): array
+=======
+    protected function getGlobals()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         global $GLOBALS;
 
@@ -71,14 +79,22 @@ class GlobalVariableEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     protected function prepareGlobals(array $globals): array
+=======
+    protected function prepareGlobals($globals)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // My kingdom for a generator.
         $ret = [];
 
         foreach ($globals as $name => $value) {
             if ($this->showItem($name)) {
+<<<<<<< HEAD
                 $fname = '$'.$name;
+=======
+                $fname = '$' . $name;
+>>>>>>> parent of 31cfa1b1 (p)
                 $ret[$fname] = [
                     'name'  => $fname,
                     'style' => self::IS_GLOBAL,

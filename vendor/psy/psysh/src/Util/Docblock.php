@@ -82,10 +82,17 @@ class Docblock
      *
      * @param string $comment The docblock
      */
+<<<<<<< HEAD
     protected function setComment(string $comment)
     {
         $this->desc = '';
         $this->tags = [];
+=======
+    protected function setComment($comment)
+    {
+        $this->desc    = '';
+        $this->tags    = [];
+>>>>>>> parent of 31cfa1b1 (p)
         $this->comment = $comment;
 
         $this->parseComment($comment);
@@ -98,7 +105,11 @@ class Docblock
      *
      * @return int Prefix length
      */
+<<<<<<< HEAD
     protected static function prefixLength(array $lines): int
+=======
+    protected static function prefixLength(array $lines)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // find only lines with interesting things
         $lines = \array_filter($lines, function ($line) {
@@ -109,7 +120,11 @@ class Docblock
         \sort($lines);
 
         $first = \reset($lines);
+<<<<<<< HEAD
         $last = \end($lines);
+=======
+        $last  = \end($lines);
+>>>>>>> parent of 31cfa1b1 (p)
 
         // Special case for single-line comments
         if (\count($lines) === 1) {
@@ -132,7 +147,11 @@ class Docblock
      *
      * @param string $comment The docblock
      */
+<<<<<<< HEAD
     protected function parseComment(string $comment)
+=======
+    protected function parseComment($comment)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         // Strip the opening and closing tags of the docblock
         $comment = \substr($comment, 3, -2);
@@ -169,7 +188,11 @@ class Docblock
                 $this->desc = $body;
             } else {
                 // This block is tagged
+<<<<<<< HEAD
                 $tag = \substr(self::strTag($body), 1);
+=======
+                $tag  = \substr(self::strTag($body), 1);
+>>>>>>> parent of 31cfa1b1 (p)
                 $body = \ltrim(\substr($body, \strlen($tag) + 2));
 
                 if (isset(self::$vectors[$tag])) {
@@ -201,7 +224,11 @@ class Docblock
      *
      * @return bool
      */
+<<<<<<< HEAD
     public function hasTag(string $tag): bool
+=======
+    public function hasTag($tag)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \is_array($this->tags) && \array_key_exists($tag, $this->tags);
     }
@@ -213,7 +240,11 @@ class Docblock
      *
      * @return array
      */
+<<<<<<< HEAD
     public function tag(string $tag): array
+=======
+    public function tag($tag)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->hasTag($tag) ? $this->tags[$tag] : null;
     }
@@ -225,7 +256,11 @@ class Docblock
      *
      * @return bool
      */
+<<<<<<< HEAD
     public static function isTagged(string $str): bool
+=======
+    public static function isTagged($str)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return isset($str[1]) && $str[0] === '@' && !\preg_match('/[^A-Za-z]/', $str[1]);
     }
@@ -237,7 +272,11 @@ class Docblock
      *
      * @return string|null
      */
+<<<<<<< HEAD
     public static function strTag(string $str)
+=======
+    public static function strTag($str)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (\preg_match('/^@[a-z0-9_]+/', $str, $matches)) {
             return $matches[0];

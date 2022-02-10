@@ -18,9 +18,15 @@ namespace Symfony\Component\HttpFoundation;
  */
 class Cookie
 {
+<<<<<<< HEAD
     public const SAMESITE_NONE = 'none';
     public const SAMESITE_LAX = 'lax';
     public const SAMESITE_STRICT = 'strict';
+=======
+    const SAMESITE_NONE = 'none';
+    const SAMESITE_LAX = 'lax';
+    const SAMESITE_STRICT = 'strict';
+>>>>>>> parent of 31cfa1b1 (p)
 
     protected $name;
     protected $value;
@@ -35,8 +41,13 @@ class Cookie
     private $secureDefault = false;
 
     private static $reservedCharsList = "=,; \t\r\n\v\f";
+<<<<<<< HEAD
     private const RESERVED_CHARS_FROM = ['=', ',', ';', ' ', "\t", "\r", "\n", "\v", "\f"];
     private const RESERVED_CHARS_TO = ['%3D', '%2C', '%3B', '%20', '%09', '%0D', '%0A', '%0B', '%0C'];
+=======
+    private static $reservedCharsFrom = ['=', ',', ';', ' ', "\t", "\r", "\n", "\v", "\f"];
+    private static $reservedCharsTo = ['%3D', '%2C', '%3B', '%20', '%09', '%0D', '%0A', '%0B', '%0C'];
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Creates cookie from raw header string.
@@ -149,7 +160,11 @@ class Cookie
         if ($this->isRaw()) {
             $str = $this->getName();
         } else {
+<<<<<<< HEAD
             $str = str_replace(self::RESERVED_CHARS_FROM, self::RESERVED_CHARS_TO, $this->getName());
+=======
+            $str = str_replace(self::$reservedCharsFrom, self::$reservedCharsTo, $this->getName());
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $str .= '=';

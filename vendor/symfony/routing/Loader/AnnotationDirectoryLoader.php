@@ -54,7 +54,11 @@ class AnnotationDirectoryLoader extends AnnotationFileLoader
         });
 
         foreach ($files as $file) {
+<<<<<<< HEAD
             if (!$file->isFile() || !str_ends_with($file->getFilename(), '.php')) {
+=======
+            if (!$file->isFile() || '.php' !== substr($file->getFilename(), -4)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 continue;
             }
 

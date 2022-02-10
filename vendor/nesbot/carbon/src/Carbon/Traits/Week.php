@@ -8,7 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Traits;
 
 /**
@@ -28,7 +31,11 @@ namespace Carbon\Traits;
  * @method static addWeeks(int $weeks = 1)
  * @method static copy()
  * @method static dayOfYear(int $dayOfYear)
+<<<<<<< HEAD
  * @method string getTranslationMessage(string $key, ?string $locale = null, ?string $default = null, $translator = null)
+=======
+ * @method string getTranslationMessage(string $key, string $locale = null, string $default = null, $translator = null)
+>>>>>>> parent of 31cfa1b1 (p)
  * @method static next(int|string $day = null)
  * @method static startOfWeek(int $day = 1)
  * @method static subWeeks(int $weeks = 1)
@@ -76,7 +83,11 @@ trait Week
             $year = (int) round($year);
 
             if ($this->weekYear(null, $dayOfWeek, $dayOfYear) === $year) {
+<<<<<<< HEAD
                 return $this->avoidMutation();
+=======
+                return $this->copy();
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             $week = $this->week(null, $dayOfWeek, $dayOfYear);
@@ -104,13 +115,21 @@ trait Week
 
         $year = $this->year;
         $day = $this->dayOfYear;
+<<<<<<< HEAD
         $date = $this->avoidMutation()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+=======
+        $date = $this->copy()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($date->year === $year && $day < $date->dayOfYear) {
             return $year - 1;
         }
 
+<<<<<<< HEAD
         $date = $this->avoidMutation()->addYear()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+=======
+        $date = $this->copy()->addYear()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($date->year === $year && $day >= $date->dayOfYear) {
             return $year + 1;
@@ -152,12 +171,20 @@ trait Week
         $dayOfWeek = $dayOfWeek ?? $this->getTranslationMessage('first_day_of_week') ?? 0;
         $dayOfYear = $dayOfYear ?? $this->getTranslationMessage('day_of_first_week_of_year') ?? 1;
         $year = $this->year;
+<<<<<<< HEAD
         $start = $this->avoidMutation()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+=======
+        $start = $this->copy()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+>>>>>>> parent of 31cfa1b1 (p)
         $startDay = $start->dayOfYear;
         if ($start->year !== $year) {
             $startDay -= $start->daysInYear;
         }
+<<<<<<< HEAD
         $end = $this->avoidMutation()->addYear()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+=======
+        $end = $this->copy()->addYear()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+>>>>>>> parent of 31cfa1b1 (p)
         $endDay = $end->dayOfYear;
         if ($end->year !== $year) {
             $endDay += $this->daysInYear;
@@ -187,8 +214,13 @@ trait Week
             return $date->addWeeks(round($week) - $this->week(null, $dayOfWeek, $dayOfYear));
         }
 
+<<<<<<< HEAD
         $start = $date->avoidMutation()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
         $end = $date->avoidMutation()->startOfWeek($dayOfWeek);
+=======
+        $start = $date->copy()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+        $end = $date->copy()->startOfWeek($dayOfWeek);
+>>>>>>> parent of 31cfa1b1 (p)
         if ($start > $end) {
             $start = $start->subWeeks(26)->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
         }

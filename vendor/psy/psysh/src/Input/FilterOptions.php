@@ -31,12 +31,21 @@ class FilterOptions
      *
      * @return InputOption[]
      */
+<<<<<<< HEAD
     public static function getOptions(): array
     {
         return [
             new InputOption('grep', 'G', InputOption::VALUE_REQUIRED, 'Limit to items matching the given pattern (string or regex).'),
             new InputOption('insensitive', 'i', InputOption::VALUE_NONE, 'Case-insensitive search (requires --grep).'),
             new InputOption('invert', 'v', InputOption::VALUE_NONE, 'Inverted search (requires --grep).'),
+=======
+    public static function getOptions()
+    {
+        return [
+            new InputOption('grep',        'G', InputOption::VALUE_REQUIRED, 'Limit to items matching the given pattern (string or regex).'),
+            new InputOption('insensitive', 'i', InputOption::VALUE_NONE,     'Case-insensitive search (requires --grep).'),
+            new InputOption('invert',      'v', InputOption::VALUE_NONE,     'Inverted search (requires --grep).'),
+>>>>>>> parent of 31cfa1b1 (p)
         ];
     }
 
@@ -56,7 +65,11 @@ class FilterOptions
         }
 
         if (!$this->stringIsRegex($pattern)) {
+<<<<<<< HEAD
             $pattern = '/'.\preg_quote($pattern, '/').'/';
+=======
+            $pattern = '/' . \preg_quote($pattern, '/') . '/';
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($insensitive = $input->getOption('insensitive')) {
@@ -65,10 +78,17 @@ class FilterOptions
 
         $this->validateRegex($pattern);
 
+<<<<<<< HEAD
         $this->filter = true;
         $this->pattern = $pattern;
         $this->insensitive = $insensitive;
         $this->invert = $input->getOption('invert');
+=======
+        $this->filter      = true;
+        $this->pattern     = $pattern;
+        $this->insensitive = $insensitive;
+        $this->invert      = $input->getOption('invert');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -76,7 +96,11 @@ class FilterOptions
      *
      * @return bool
      */
+<<<<<<< HEAD
     public function hasFilter(): bool
+=======
+    public function hasFilter()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->filter;
     }
@@ -89,7 +113,11 @@ class FilterOptions
      *
      * @return bool
      */
+<<<<<<< HEAD
     public function match(string $string, array &$matches = null): bool
+=======
+    public function match($string, array &$matches = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->filter === false || (\preg_match($this->pattern, $string, $matches) xor $this->invert);
     }
@@ -106,7 +134,11 @@ class FilterOptions
         if (!$input->getOption('grep')) {
             foreach (['invert', 'insensitive'] as $option) {
                 if ($input->getOption($option)) {
+<<<<<<< HEAD
                     throw new RuntimeException('--'.$option.' does not make sense without --grep');
+=======
+                    throw new RuntimeException('--' . $option . ' does not make sense without --grep');
+>>>>>>> parent of 31cfa1b1 (p)
                 }
             }
         }
@@ -119,7 +151,11 @@ class FilterOptions
      *
      * @return bool
      */
+<<<<<<< HEAD
     private function stringIsRegex(string $string): bool
+=======
+    private function stringIsRegex($string)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \substr($string, 0, 1) === '/' && \substr($string, -1) === '/' && \strlen($string) >= 3;
     }
@@ -131,7 +167,11 @@ class FilterOptions
      *
      * @param string $pattern
      */
+<<<<<<< HEAD
     private function validateRegex(string $pattern)
+=======
+    private function validateRegex($pattern)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         \set_error_handler([ErrorException::class, 'throwException']);
         try {

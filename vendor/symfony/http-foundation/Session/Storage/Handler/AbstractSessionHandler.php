@@ -31,7 +31,10 @@ abstract class AbstractSessionHandler implements \SessionHandlerInterface, \Sess
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function open($savePath, $sessionName)
     {
         $this->sessionName = $sessionName;
@@ -67,7 +70,10 @@ abstract class AbstractSessionHandler implements \SessionHandlerInterface, \Sess
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function validateId($sessionId)
     {
         $this->prefetchData = $this->read($sessionId);
@@ -88,7 +94,10 @@ abstract class AbstractSessionHandler implements \SessionHandlerInterface, \Sess
     /**
      * @return string
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function read($sessionId)
     {
         if (null !== $this->prefetchId) {
@@ -112,7 +121,10 @@ abstract class AbstractSessionHandler implements \SessionHandlerInterface, \Sess
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function write($sessionId, $data)
     {
         if (null === $this->igbinaryEmptyData) {
@@ -130,7 +142,10 @@ abstract class AbstractSessionHandler implements \SessionHandlerInterface, \Sess
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function destroy($sessionId)
     {
         if (!headers_sent() && filter_var(ini_get('session.use_cookies'), \FILTER_VALIDATE_BOOLEAN)) {

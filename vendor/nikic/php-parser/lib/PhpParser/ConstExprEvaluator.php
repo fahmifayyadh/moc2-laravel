@@ -2,7 +2,10 @@
 
 namespace PhpParser;
 
+<<<<<<< HEAD
 use function array_merge;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 
@@ -151,8 +154,11 @@ class ConstExprEvaluator
         foreach ($expr->items as $item) {
             if (null !== $item->key) {
                 $array[$this->evaluate($item->key)] = $this->evaluate($item->value);
+<<<<<<< HEAD
             } elseif ($item->unpack) {
                 $array = array_merge($array, $this->evaluate($item->value));
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             } else {
                 $array[] = $this->evaluate($item->value);
             }

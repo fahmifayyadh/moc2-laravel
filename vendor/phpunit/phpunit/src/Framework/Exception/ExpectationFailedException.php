@@ -9,7 +9,10 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
 use Exception;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use SebastianBergmann\Comparator\ComparisonFailure;
 
 /**
@@ -28,7 +31,11 @@ final class ExpectationFailedException extends AssertionFailedError
      */
     protected $comparisonFailure;
 
+<<<<<<< HEAD
     public function __construct(string $message, ComparisonFailure $comparisonFailure = null, Exception $previous = null)
+=======
+    public function __construct(string $message, ComparisonFailure $comparisonFailure = null, \Exception $previous = null)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->comparisonFailure = $comparisonFailure;
 

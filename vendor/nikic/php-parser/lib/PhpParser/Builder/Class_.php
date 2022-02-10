@@ -4,7 +4,10 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
+<<<<<<< HEAD
 use PhpParser\Node;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
@@ -21,9 +24,12 @@ class Class_ extends Declaration
     protected $properties = [];
     protected $methods = [];
 
+<<<<<<< HEAD
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     /**
      * Creates a class builder.
      *
@@ -111,6 +117,7 @@ class Class_ extends Declaration
     }
 
     /**
+<<<<<<< HEAD
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -124,6 +131,8 @@ class Class_ extends Declaration
     }
 
     /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Returns the built class node.
      *
      * @return Stmt\Class_ The built class node
@@ -134,7 +143,10 @@ class Class_ extends Declaration
             'extends' => $this->extends,
             'implements' => $this->implements,
             'stmts' => array_merge($this->uses, $this->constants, $this->properties, $this->methods),
+<<<<<<< HEAD
             'attrGroups' => $this->attributeGroups,
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         ], $this->attributes);
     }
 }

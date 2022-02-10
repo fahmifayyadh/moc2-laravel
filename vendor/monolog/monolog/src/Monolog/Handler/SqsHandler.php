@@ -41,7 +41,13 @@ class SqsHandler extends AbstractProcessingHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * Writes the record down to the log of the implementing handler.
+     *
+     * @param array $record
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function write(array $record): void
     {

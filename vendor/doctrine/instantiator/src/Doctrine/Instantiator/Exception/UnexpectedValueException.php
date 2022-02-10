@@ -5,7 +5,10 @@ namespace Doctrine\Instantiator\Exception;
 use Exception;
 use ReflectionClass;
 use UnexpectedValueException as BaseUnexpectedValueException;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use function sprintf;
 
 /**
@@ -13,6 +16,7 @@ use function sprintf;
  */
 class UnexpectedValueException extends BaseUnexpectedValueException implements ExceptionInterface
 {
+<<<<<<< HEAD
     /**
      * @template T of object
      * @phpstan-param ReflectionClass<T> $reflectionClass
@@ -21,6 +25,12 @@ class UnexpectedValueException extends BaseUnexpectedValueException implements E
         ReflectionClass $reflectionClass,
         Exception $exception
     ): self {
+=======
+    public static function fromSerializationTriggeredException(
+        ReflectionClass $reflectionClass,
+        Exception $exception
+    ) : self {
+>>>>>>> parent of 31cfa1b1 (p)
         return new self(
             sprintf(
                 'An exception was raised while trying to instantiate an instance of "%s" via un-serialization',
@@ -31,17 +41,24 @@ class UnexpectedValueException extends BaseUnexpectedValueException implements E
         );
     }
 
+<<<<<<< HEAD
     /**
      * @template T of object
      * @phpstan-param ReflectionClass<T> $reflectionClass
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public static function fromUncleanUnSerialization(
         ReflectionClass $reflectionClass,
         string $errorString,
         int $errorCode,
         string $errorFile,
         int $errorLine
+<<<<<<< HEAD
     ): self {
+=======
+    ) : self {
+>>>>>>> parent of 31cfa1b1 (p)
         return new self(
             sprintf(
                 'Could not produce an instance of "%s" via un-serialization, since an error was triggered '

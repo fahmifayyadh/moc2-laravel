@@ -56,11 +56,17 @@ abstract class TypeNodeAbstract
 
             //  built in types
             case 'self':
+<<<<<<< HEAD
             case 'static':
             case 'array':
             case 'callable':
             case 'bool':
             case 'false':
+=======
+            case 'array':
+            case 'callable':
+            case 'bool':
+>>>>>>> parent of 31cfa1b1 (p)
             case 'float':
             case 'int':
             case 'string':
@@ -79,6 +85,7 @@ abstract class TypeNodeAbstract
     protected function guardIsValidType()
     {
         if ($this->types == ['null' => 'null']) {
+<<<<<<< HEAD
             throw new DoubleException('Type cannot be standalone null');
         }
 
@@ -88,6 +95,9 @@ abstract class TypeNodeAbstract
 
         if ($this->types == ['false' => 'false', 'null' => 'null']) {
             throw new DoubleException('Type cannot be nullable false');
+=======
+            throw new DoubleException('Argument type cannot be standalone null');
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (\PHP_VERSION_ID >= 80000 && isset($this->types['mixed']) && count($this->types) !== 1) {

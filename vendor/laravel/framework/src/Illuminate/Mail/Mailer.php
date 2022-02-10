@@ -325,7 +325,11 @@ class Mailer implements MailerContract, MailQueueContract
     protected function addContent($message, $view, $plain, $raw, $data)
     {
         if (isset($view)) {
+<<<<<<< HEAD
             $message->setBody($this->renderView($view, $data) ?: ' ', 'text/html');
+=======
+            $message->setBody($this->renderView($view, $data), 'text/html');
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (isset($plain)) {
@@ -371,7 +375,11 @@ class Mailer implements MailerContract, MailQueueContract
     /**
      * Queue a new e-mail message for sending.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Mail\Mailable|string|array  $view
+=======
+     * @param  \Illuminate\Contracts\Mail\Mailable  $view
+>>>>>>> parent of 31cfa1b1 (p)
      * @param  string|null  $queue
      * @return mixed
      *

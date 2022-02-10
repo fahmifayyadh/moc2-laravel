@@ -251,7 +251,11 @@ class Inspector
             return $traces;
         }
 
+<<<<<<< HEAD
         if (!extension_loaded('xdebug') || !function_exists('xdebug_is_enabled') || !xdebug_is_enabled()) {
+=======
+        if (!extension_loaded('xdebug') || !xdebug_is_enabled()) {
+>>>>>>> parent of 31cfa1b1 (p)
             return $traces;
         }
 

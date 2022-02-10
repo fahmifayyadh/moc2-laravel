@@ -123,10 +123,13 @@ abstract class DataCollector implements DataCollectorInterface
     public function __wakeup()
     {
         if (__CLASS__ !== $c = (new \ReflectionMethod($this, 'unserialize'))->getDeclaringClass()->name) {
+<<<<<<< HEAD
             if (\is_object($this->data)) {
                 throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
             }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             @trigger_error(sprintf('Implementing the "%s::unserialize()" method is deprecated since Symfony 4.3, store all the serialized state in the "data" property instead.', $c), \E_USER_DEPRECATED);
             $this->unserialize($this->data);
         }

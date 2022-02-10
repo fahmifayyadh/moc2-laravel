@@ -32,7 +32,11 @@ return [
     'a_second' => '{1}пӗр-ик ҫеккунт|:count ҫеккунт',
     'ago' => ':time каялла',
     'from_now' => function ($time) {
+<<<<<<< HEAD
         return $time.(preg_match('/сехет$/u', $time) ? 'рен' : (preg_match('/ҫул/u', $time) ? 'тан' : 'ран'));
+=======
+        return $time.(preg_match('/сехет$/', $time) ? 'рен' : (preg_match('/ҫул/', $time) ? 'тан' : 'ран'));
+>>>>>>> parent of 31cfa1b1 (p)
     },
     'diff_yesterday' => 'Ӗнер',
     'diff_today' => 'Паян',

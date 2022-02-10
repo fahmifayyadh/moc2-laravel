@@ -69,7 +69,10 @@ class InputStream implements \IteratorAggregate
     /**
      * @return \Traversable
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function getIterator()
     {
         $this->open = true;

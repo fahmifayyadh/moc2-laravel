@@ -84,7 +84,11 @@ interface LegacyMockInterface
 
     /**
      * @param null|string $method
+<<<<<<< HEAD
      * @param null|array|Closure $args
+=======
+     * @param null $args
+>>>>>>> parent of 31cfa1b1 (p)
      * @return mixed
      */
     public function shouldHaveReceived($method, $args = null);
@@ -96,7 +100,11 @@ interface LegacyMockInterface
 
     /**
      * @param null|string $method
+<<<<<<< HEAD
      * @param null|array|Closure $args
+=======
+     * @param null $args
+>>>>>>> parent of 31cfa1b1 (p)
      * @return mixed
      */
     public function shouldNotHaveReceived($method, $args = null);

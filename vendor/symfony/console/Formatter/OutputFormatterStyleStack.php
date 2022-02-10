@@ -28,7 +28,11 @@ class OutputFormatterStyleStack implements ResetInterface
 
     public function __construct(OutputFormatterStyleInterface $emptyStyle = null)
     {
+<<<<<<< HEAD
         $this->emptyStyle = $emptyStyle ?? new OutputFormatterStyle();
+=======
+        $this->emptyStyle = $emptyStyle ?: new OutputFormatterStyle();
+>>>>>>> parent of 31cfa1b1 (p)
         $this->reset();
     }
 

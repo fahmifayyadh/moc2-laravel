@@ -9,12 +9,16 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
 use function array_diff;
 use function array_merge;
 use function sprintf;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
+=======
+use PHPUnit\Framework\TestCase;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * @psalm-template MockedType
@@ -201,14 +205,22 @@ final class MockBuilder
         if ($methods === null) {
             $this->methods = $methods;
         } else {
+<<<<<<< HEAD
             $this->methods = array_merge($this->methods ?? [], $methods);
+=======
+            $this->methods = \array_merge($this->methods ?? [], $methods);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Specifies the subset of methods to mock, requiring each to exist in the class.
+=======
+     * Specifies the subset of methods to mock, requiring each to exist in the class
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @param string[] $methods
      *
@@ -225,9 +237,15 @@ final class MockBuilder
         }
 
         try {
+<<<<<<< HEAD
             $reflector = new ReflectionClass($this->type);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
+=======
+            $reflector = new \ReflectionClass($this->type);
+            // @codeCoverageIgnoreStart
+        } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new RuntimeException(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -239,7 +257,11 @@ final class MockBuilder
         foreach ($methods as $method) {
             if (!$reflector->hasMethod($method)) {
                 throw new RuntimeException(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                         'Trying to set mock method "%s" with onlyMethods, but it does not exist in class "%s". Use addMethods() for methods that don\'t exist in the class.',
                         $method,
                         $this->type
@@ -248,13 +270,21 @@ final class MockBuilder
             }
         }
 
+<<<<<<< HEAD
         $this->methods = array_merge($this->methods ?? [], $methods);
+=======
+        $this->methods = \array_merge($this->methods ?? [], $methods);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Specifies methods that don't exist in the class which you want to mock.
+=======
+     * Specifies methods that don't exist in the class which you want to mock
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @param string[] $methods
      *
@@ -271,9 +301,15 @@ final class MockBuilder
         }
 
         try {
+<<<<<<< HEAD
             $reflector = new ReflectionClass($this->type);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
+=======
+            $reflector = new \ReflectionClass($this->type);
+            // @codeCoverageIgnoreStart
+        } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new RuntimeException(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -285,7 +321,11 @@ final class MockBuilder
         foreach ($methods as $method) {
             if ($reflector->hasMethod($method)) {
                 throw new RuntimeException(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                         'Trying to set mock method "%s" with addMethods(), but it exists in class "%s". Use onlyMethods() for methods that exist in the class.',
                         $method,
                         $this->type
@@ -294,7 +334,11 @@ final class MockBuilder
             }
         }
 
+<<<<<<< HEAD
         $this->methods = array_merge($this->methods ?? [], $methods);
+=======
+        $this->methods = \array_merge($this->methods ?? [], $methods);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $this;
     }
@@ -305,7 +349,11 @@ final class MockBuilder
     public function setMethodsExcept(array $methods = []): self
     {
         return $this->setMethods(
+<<<<<<< HEAD
             array_diff(
+=======
+            \array_diff(
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->generator->getClassMethods($this->type),
                 $methods
             )

@@ -72,26 +72,51 @@ abstract class Descriptor implements DescriptorInterface
 
     /**
      * Describes an InputArgument instance.
+<<<<<<< HEAD
+=======
+     *
+     * @return string|mixed
+>>>>>>> parent of 31cfa1b1 (p)
      */
     abstract protected function describeInputArgument(InputArgument $argument, array $options = []);
 
     /**
      * Describes an InputOption instance.
+<<<<<<< HEAD
+=======
+     *
+     * @return string|mixed
+>>>>>>> parent of 31cfa1b1 (p)
      */
     abstract protected function describeInputOption(InputOption $option, array $options = []);
 
     /**
      * Describes an InputDefinition instance.
+<<<<<<< HEAD
+=======
+     *
+     * @return string|mixed
+>>>>>>> parent of 31cfa1b1 (p)
      */
     abstract protected function describeInputDefinition(InputDefinition $definition, array $options = []);
 
     /**
      * Describes a Command instance.
+<<<<<<< HEAD
+=======
+     *
+     * @return string|mixed
+>>>>>>> parent of 31cfa1b1 (p)
      */
     abstract protected function describeCommand(Command $command, array $options = []);
 
     /**
      * Describes an Application instance.
+<<<<<<< HEAD
+=======
+     *
+     * @return string|mixed
+>>>>>>> parent of 31cfa1b1 (p)
      */
     abstract protected function describeApplication(Application $application, array $options = []);
 }

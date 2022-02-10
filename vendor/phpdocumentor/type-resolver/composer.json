@@ -14,8 +14,12 @@
         "phpdocumentor/reflection-common": "^2.0"
     },
     "require-dev": {
+<<<<<<< HEAD
         "ext-tokenizer": "*",
         "psalm/phar": "^4.8"
+=======
+        "ext-tokenizer": "*"
+>>>>>>> parent of 31cfa1b1 (p)
     },
     "autoload": {
         "psr-4": {

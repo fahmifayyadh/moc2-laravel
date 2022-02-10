@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
 use const DIRECTORY_SEPARATOR;
 use const PHP_EOL;
 use const PHP_MAJOR_VERSION;
@@ -57,6 +58,11 @@ use SoapFault;
 use Text_Template;
 use Throwable;
 use Traversable;
+=======
+use Doctrine\Instantiator\Exception\ExceptionInterface as InstantiatorException;
+use Doctrine\Instantiator\Instantiator;
+use PHPUnit\Framework\InvalidArgumentException;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -85,7 +91,11 @@ final class Generator
     private static $cache = [];
 
     /**
+<<<<<<< HEAD
      * @var Text_Template[]
+=======
+     * @var \Text_Template[]
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private static $templates = [];
 
@@ -99,11 +109,19 @@ final class Generator
      */
     public function getMock($type, $methods = [], array $arguments = [], string $mockClassName = '', bool $callOriginalConstructor = true, bool $callOriginalClone = true, bool $callAutoload = true, bool $cloneArguments = true, bool $callOriginalMethods = false, object $proxyTarget = null, bool $allowMockingUnknownTypes = true, bool $returnValueGeneration = true): MockObject
     {
+<<<<<<< HEAD
         if (!is_array($type) && !is_string($type)) {
             throw InvalidArgumentException::create(1, 'array or string');
         }
 
         if (!is_array($methods) && null !== $methods) {
+=======
+        if (!\is_array($type) && !\is_string($type)) {
+            throw InvalidArgumentException::create(1, 'array or string');
+        }
+
+        if (!\is_array($methods) && null !== $methods) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw InvalidArgumentException::create(2, 'array');
         }
 
@@ -111,11 +129,18 @@ final class Generator
             $type = 'Iterator';
         }
 
+<<<<<<< HEAD
         if (is_array($type)) {
             $type = array_unique(
                 array_map(
                     static function ($type)
                     {
+=======
+        if (\is_array($type)) {
+            $type = \array_unique(
+                \array_map(
+                    static function ($type) {
+>>>>>>> parent of 31cfa1b1 (p)
                         if ($type === 'Traversable' ||
                             $type === '\\Traversable' ||
                             $type === '\\Iterator') {
@@ -130,21 +155,36 @@ final class Generator
         }
 
         if (!$allowMockingUnknownTypes) {
+<<<<<<< HEAD
             if (is_array($type)) {
                 foreach ($type as $_type) {
                     if (!class_exists($_type, $callAutoload) &&
                         !interface_exists($_type, $callAutoload)) {
                         throw new RuntimeException(
                             sprintf(
+=======
+            if (\is_array($type)) {
+                foreach ($type as $_type) {
+                    if (!\class_exists($_type, $callAutoload) &&
+                        !\interface_exists($_type, $callAutoload)) {
+                        throw new RuntimeException(
+                            \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                                 'Cannot stub or mock class or interface "%s" which does not exist',
                                 $_type
                             )
                         );
                     }
                 }
+<<<<<<< HEAD
             } elseif (!class_exists($type, $callAutoload) && !interface_exists($type, $callAutoload)) {
                 throw new RuntimeException(
                     sprintf(
+=======
+            } elseif (!\class_exists($type, $callAutoload) && !\interface_exists($type, $callAutoload)) {
+                throw new RuntimeException(
+                    \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                         'Cannot stub or mock class or interface "%s" which does not exist',
                         $type
                     )
@@ -154,9 +194,15 @@ final class Generator
 
         if (null !== $methods) {
             foreach ($methods as $method) {
+<<<<<<< HEAD
                 if (!preg_match('~[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*~', (string) $method)) {
                     throw new RuntimeException(
                         sprintf(
+=======
+                if (!\preg_match('~[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*~', (string) $method)) {
+                    throw new RuntimeException(
+                        \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                             'Cannot stub or mock method with invalid name "%s"',
                             $method
                         )
@@ -164,22 +210,39 @@ final class Generator
                 }
             }
 
+<<<<<<< HEAD
             if ($methods !== array_unique($methods)) {
                 throw new RuntimeException(
                     sprintf(
                         'Cannot stub or mock using a method list that contains duplicates: "%s" (duplicate: "%s")',
                         implode(', ', $methods),
                         implode(', ', array_unique(array_diff_assoc($methods, array_unique($methods))))
+=======
+            if ($methods !== \array_unique($methods)) {
+                throw new RuntimeException(
+                    \sprintf(
+                        'Cannot stub or mock using a method list that contains duplicates: "%s" (duplicate: "%s")',
+                        \implode(', ', $methods),
+                        \implode(', ', \array_unique(\array_diff_assoc($methods, \array_unique($methods))))
+>>>>>>> parent of 31cfa1b1 (p)
                     )
                 );
             }
         }
 
+<<<<<<< HEAD
         if ($mockClassName !== '' && class_exists($mockClassName, false)) {
             try {
                 $reflector = new ReflectionClass($mockClassName);
                 // @codeCoverageIgnoreStart
             } catch (ReflectionException $e) {
+=======
+        if ($mockClassName !== '' && \class_exists($mockClassName, false)) {
+            try {
+                $reflector = new \ReflectionClass($mockClassName);
+                // @codeCoverageIgnoreStart
+            } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 throw new RuntimeException(
                     $e->getMessage(),
                     (int) $e->getCode(),
@@ -190,7 +253,11 @@ final class Generator
 
             if (!$reflector->implementsInterface(MockObject::class)) {
                 throw new RuntimeException(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                         'Class "%s" already exists.',
                         $mockClassName
                     )
@@ -229,7 +296,11 @@ final class Generator
     /**
      * Returns a mock object for the specified abstract class with all abstract
      * methods of the class mocked. Concrete methods to mock can be specified with
+<<<<<<< HEAD
      * the $mockedMethods parameter.
+=======
+     * the $mockedMethods parameter
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @psalm-template RealInstanceType of object
      * @psalm-param class-string<RealInstanceType> $originalClassName
@@ -239,12 +310,21 @@ final class Generator
      */
     public function getMockForAbstractClass(string $originalClassName, array $arguments = [], string $mockClassName = '', bool $callOriginalConstructor = true, bool $callOriginalClone = true, bool $callAutoload = true, array $mockedMethods = null, bool $cloneArguments = true): MockObject
     {
+<<<<<<< HEAD
         if (class_exists($originalClassName, $callAutoload) ||
             interface_exists($originalClassName, $callAutoload)) {
             try {
                 $reflector = new ReflectionClass($originalClassName);
                 // @codeCoverageIgnoreStart
             } catch (ReflectionException $e) {
+=======
+        if (\class_exists($originalClassName, $callAutoload) ||
+            \interface_exists($originalClassName, $callAutoload)) {
+            try {
+                $reflector = new \ReflectionClass($originalClassName);
+                // @codeCoverageIgnoreStart
+            } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 throw new RuntimeException(
                     $e->getMessage(),
                     (int) $e->getCode(),
@@ -256,7 +336,11 @@ final class Generator
             $methods = $mockedMethods;
 
             foreach ($reflector->getMethods() as $method) {
+<<<<<<< HEAD
                 if ($method->isAbstract() && !in_array($method->getName(), $methods ?? [], true)) {
+=======
+                if ($method->isAbstract() && !\in_array($method->getName(), $methods ?? [], true)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     $methods[] = $method->getName();
                 }
             }
@@ -278,7 +362,11 @@ final class Generator
         }
 
         throw new RuntimeException(
+<<<<<<< HEAD
             sprintf('Class "%s" does not exist.', $originalClassName)
+=======
+            \sprintf('Class "%s" does not exist.', $originalClassName)
+>>>>>>> parent of 31cfa1b1 (p)
         );
     }
 
@@ -291,9 +379,15 @@ final class Generator
      */
     public function getMockForTrait(string $traitName, array $arguments = [], string $mockClassName = '', bool $callOriginalConstructor = true, bool $callOriginalClone = true, bool $callAutoload = true, array $mockedMethods = null, bool $cloneArguments = true): MockObject
     {
+<<<<<<< HEAD
         if (!trait_exists($traitName, $callAutoload)) {
             throw new RuntimeException(
                 sprintf(
+=======
+        if (!\trait_exists($traitName, $callAutoload)) {
+            throw new RuntimeException(
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Trait "%s" does not exist.',
                     $traitName
                 )
@@ -329,9 +423,15 @@ final class Generator
      */
     public function getObjectForTrait(string $traitName, string $traitClassName = '', bool $callAutoload = true, bool $callOriginalConstructor = false, array $arguments = []): object
     {
+<<<<<<< HEAD
         if (!trait_exists($traitName, $callAutoload)) {
             throw new RuntimeException(
                 sprintf(
+=======
+        if (!\trait_exists($traitName, $callAutoload)) {
+            throw new RuntimeException(
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Trait "%s" does not exist.',
                     $traitName
                 )
@@ -368,8 +468,13 @@ final class Generator
 
     public function generate($type, array $methods = null, string $mockClassName = '', bool $callOriginalClone = true, bool $callAutoload = true, bool $cloneArguments = true, bool $callOriginalMethods = false): MockClass
     {
+<<<<<<< HEAD
         if (is_array($type)) {
             sort($type);
+=======
+        if (\is_array($type)) {
+            \sort($type);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($mockClassName !== '') {
@@ -384,12 +489,21 @@ final class Generator
             );
         }
 
+<<<<<<< HEAD
         $key = md5(
             is_array($type) ? implode('_', $type) : $type .
             serialize($methods) .
             serialize($callOriginalClone) .
             serialize($cloneArguments) .
             serialize($callOriginalMethods)
+=======
+        $key = \md5(
+            \is_array($type) ? \implode('_', $type) : $type .
+            \serialize($methods) .
+            \serialize($callOriginalClone) .
+            \serialize($cloneArguments) .
+            \serialize($callOriginalMethods)
+>>>>>>> parent of 31cfa1b1 (p)
         );
 
         if (!isset(self::$cache[$key])) {
@@ -412,12 +526,17 @@ final class Generator
      */
     public function generateClassFromWsdl(string $wsdlFile, string $className, array $methods = [], array $options = []): string
     {
+<<<<<<< HEAD
         if (!extension_loaded('soap')) {
+=======
+        if (!\extension_loaded('soap')) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new RuntimeException(
                 'The SOAP extension is required to generate a mock object from WSDL.'
             );
         }
 
+<<<<<<< HEAD
         $options = array_merge($options, ['cache_wsdl' => WSDL_CACHE_NONE]);
 
         try {
@@ -425,6 +544,15 @@ final class Generator
             $_methods = array_unique($client->__getFunctions());
             unset($client);
         } catch (SoapFault $e) {
+=======
+        $options  = \array_merge($options, ['cache_wsdl' => \WSDL_CACHE_NONE]);
+
+        try {
+            $client   = new \SoapClient($wsdlFile, $options);
+            $_methods = \array_unique($client->__getFunctions());
+            unset($client);
+        } catch (\SoapFault $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new RuntimeException(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -432,12 +560,17 @@ final class Generator
             );
         }
 
+<<<<<<< HEAD
         sort($_methods);
+=======
+        \sort($_methods);
+>>>>>>> parent of 31cfa1b1 (p)
 
         $methodTemplate = $this->getTemplate('wsdl_method.tpl');
         $methodsBuffer  = '';
 
         foreach ($_methods as $method) {
+<<<<<<< HEAD
             preg_match_all('/[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*\(/', $method, $matches, PREG_OFFSET_CAPTURE);
             $lastFunction = array_pop($matches[0]);
             $nameStart    = $lastFunction[1];
@@ -458,12 +591,32 @@ final class Generator
                     }
 
                     $args[$i] = substr($args[$i], $parameterStart);
+=======
+            \preg_match_all('/[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*\(/', $method, $matches, \PREG_OFFSET_CAPTURE);
+            $lastFunction = \array_pop($matches[0]);
+            $nameStart    = $lastFunction[1];
+            $nameEnd      = $nameStart + \strlen($lastFunction[0]) - 1;
+            $name         = \str_replace('(', '', $lastFunction[0]);
+
+            if (empty($methods) || \in_array($name, $methods, true)) {
+                $args = \explode(
+                    ',',
+                    \str_replace(')', '', \substr($method, $nameEnd + 1))
+                );
+
+                foreach (\range(0, \count($args) - 1) as $i) {
+                    $args[$i] = \substr($args[$i], \strpos($args[$i], '$'));
+>>>>>>> parent of 31cfa1b1 (p)
                 }
 
                 $methodTemplate->setVar(
                     [
                         'method_name' => $name,
+<<<<<<< HEAD
                         'arguments'   => implode(', ', $args),
+=======
+                        'arguments'   => \implode(', ', $args),
+>>>>>>> parent of 31cfa1b1 (p)
                     ]
                 );
 
@@ -482,10 +635,17 @@ final class Generator
         $classTemplate = $this->getTemplate('wsdl_class.tpl');
         $namespace     = '';
 
+<<<<<<< HEAD
         if (strpos($className, '\\') !== false) {
             $parts     = explode('\\', $className);
             $className = array_pop($parts);
             $namespace = 'namespace ' . implode('\\', $parts) . ';' . "\n\n";
+=======
+        if (\strpos($className, '\\') !== false) {
+            $parts     = \explode('\\', $className);
+            $className = \array_pop($parts);
+            $namespace = 'namespace ' . \implode('\\', $parts) . ';' . "\n\n";
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $classTemplate->setVar(
@@ -509,9 +669,15 @@ final class Generator
     public function getClassMethods(string $className): array
     {
         try {
+<<<<<<< HEAD
             $class = new ReflectionClass($className);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
+=======
+            $class = new \ReflectionClass($className);
+            // @codeCoverageIgnoreStart
+        } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new RuntimeException(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -539,9 +705,15 @@ final class Generator
     public function mockClassMethods(string $className, bool $callOriginalMethods, bool $cloneArguments): array
     {
         try {
+<<<<<<< HEAD
             $class = new ReflectionClass($className);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
+=======
+            $class = new \ReflectionClass($className);
+            // @codeCoverageIgnoreStart
+        } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new RuntimeException(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -569,9 +741,15 @@ final class Generator
     public function mockInterfaceMethods(string $interfaceName, bool $cloneArguments): array
     {
         try {
+<<<<<<< HEAD
             $class = new ReflectionClass($interfaceName);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
+=======
+            $class = new \ReflectionClass($interfaceName);
+            // @codeCoverageIgnoreStart
+        } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new RuntimeException(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -592,14 +770,23 @@ final class Generator
     /**
      * @psalm-param class-string $interfaceName
      *
+<<<<<<< HEAD
      * @return ReflectionMethod[]
+=======
+     * @return \ReflectionMethod[]
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function userDefinedInterfaceMethods(string $interfaceName): array
     {
         try {
             // @codeCoverageIgnoreStart
+<<<<<<< HEAD
             $interface = new ReflectionClass($interfaceName);
         } catch (ReflectionException $e) {
+=======
+            $interface = new \ReflectionClass($interfaceName);
+        } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new RuntimeException(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -626,6 +813,7 @@ final class Generator
         $className = $mockClass->generate();
 
         if ($callOriginalConstructor) {
+<<<<<<< HEAD
             if (count($arguments) === 0) {
                 $object = new $className;
             } else {
@@ -633,6 +821,15 @@ final class Generator
                     $class = new ReflectionClass($className);
                     // @codeCoverageIgnoreStart
                 } catch (ReflectionException $e) {
+=======
+            if (\count($arguments) === 0) {
+                $object = new $className;
+            } else {
+                try {
+                    $class = new \ReflectionClass($className);
+                    // @codeCoverageIgnoreStart
+                } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                     throw new RuntimeException(
                         $e->getMessage(),
                         (int) $e->getCode(),
@@ -652,6 +849,7 @@ final class Generator
         }
 
         if ($callOriginalMethods) {
+<<<<<<< HEAD
             if (!is_object($proxyTarget)) {
                 if (count($arguments) === 0) {
                     $proxyTarget = new $type;
@@ -660,6 +858,16 @@ final class Generator
                         $class = new ReflectionClass($type);
                         // @codeCoverageIgnoreStart
                     } catch (ReflectionException $e) {
+=======
+            if (!\is_object($proxyTarget)) {
+                if (\count($arguments) === 0) {
+                    $proxyTarget = new $type;
+                } else {
+                    try {
+                        $class = new \ReflectionClass($type);
+                        // @codeCoverageIgnoreStart
+                    } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                         throw new RuntimeException(
                             $e->getMessage(),
                             (int) $e->getCode(),
@@ -698,6 +906,7 @@ final class Generator
         $class                = null;
         $mockMethods          = new MockMethodSet;
 
+<<<<<<< HEAD
         if (is_array($type)) {
             $interfaceMethods = [];
 
@@ -705,6 +914,15 @@ final class Generator
                 if (!interface_exists($_type, $callAutoload)) {
                     throw new RuntimeException(
                         sprintf(
+=======
+        if (\is_array($type)) {
+            $interfaceMethods = [];
+
+            foreach ($type as $_type) {
+                if (!\interface_exists($_type, $callAutoload)) {
+                    throw new RuntimeException(
+                        \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                             'Interface "%s" does not exist.',
                             $_type
                         )
@@ -714,9 +932,15 @@ final class Generator
                 $additionalInterfaces[] = $_type;
 
                 try {
+<<<<<<< HEAD
                     $typeClass = new ReflectionClass($_type);
                     // @codeCoverageIgnoreStart
                 } catch (ReflectionException $e) {
+=======
+                    $typeClass = new \ReflectionClass($_type);
+                    // @codeCoverageIgnoreStart
+                } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                     throw new RuntimeException(
                         $e->getMessage(),
                         (int) $e->getCode(),
@@ -726,9 +950,15 @@ final class Generator
                 // @codeCoverageIgnoreEnd
 
                 foreach ($this->getClassMethods($_type) as $method) {
+<<<<<<< HEAD
                     if (in_array($method, $interfaceMethods, true)) {
                         throw new RuntimeException(
                             sprintf(
+=======
+                    if (\in_array($method, $interfaceMethods, true)) {
+                        throw new RuntimeException(
+                            \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                                 'Duplicate method "%s" not allowed.',
                                 $method
                             )
@@ -738,7 +968,11 @@ final class Generator
                     try {
                         $methodReflection = $typeClass->getMethod($method);
                         // @codeCoverageIgnoreStart
+<<<<<<< HEAD
                     } catch (ReflectionException $e) {
+=======
+                    } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                         throw new RuntimeException(
                             $e->getMessage(),
                             (int) $e->getCode(),
@@ -766,9 +1000,15 @@ final class Generator
             'Mock_'
         );
 
+<<<<<<< HEAD
         if (class_exists($mockClassName['fullClassName'], $callAutoload)) {
             $isClass = true;
         } elseif (interface_exists($mockClassName['fullClassName'], $callAutoload)) {
+=======
+        if (\class_exists($mockClassName['fullClassName'], $callAutoload)) {
+            $isClass = true;
+        } elseif (\interface_exists($mockClassName['fullClassName'], $callAutoload)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $isInterface = true;
         }
 
@@ -786,9 +1026,15 @@ final class Generator
             $mockedCloneMethod = true;
         } else {
             try {
+<<<<<<< HEAD
                 $class = new ReflectionClass($mockClassName['fullClassName']);
                 // @codeCoverageIgnoreStart
             } catch (ReflectionException $e) {
+=======
+                $class = new \ReflectionClass($mockClassName['fullClassName']);
+                // @codeCoverageIgnoreStart
+            } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 throw new RuntimeException(
                     $e->getMessage(),
                     (int) $e->getCode(),
@@ -799,7 +1045,11 @@ final class Generator
 
             if ($class->isFinal()) {
                 throw new RuntimeException(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                         'Class "%s" is declared "final" and cannot be mocked.',
                         $mockClassName['fullClassName']
                     )
@@ -807,15 +1057,26 @@ final class Generator
             }
 
             // @see https://github.com/sebastianbergmann/phpunit/issues/2995
+<<<<<<< HEAD
             if ($isInterface && $class->implementsInterface(Throwable::class)) {
                 $actualClassName        = Exception::class;
+=======
+            if ($isInterface && $class->implementsInterface(\Throwable::class)) {
+                $actualClassName        = \Exception::class;
+>>>>>>> parent of 31cfa1b1 (p)
                 $additionalInterfaces[] = $class->getName();
                 $isInterface            = false;
 
                 try {
+<<<<<<< HEAD
                     $class = new ReflectionClass($actualClassName);
                     // @codeCoverageIgnoreStart
                 } catch (ReflectionException $e) {
+=======
+                    $class = new \ReflectionClass($actualClassName);
+                    // @codeCoverageIgnoreStart
+                } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                     throw new RuntimeException(
                         $e->getMessage(),
                         (int) $e->getCode(),
@@ -831,7 +1092,11 @@ final class Generator
                         try {
                             $classMethod = $class->getMethod($methodName);
                             // @codeCoverageIgnoreStart
+<<<<<<< HEAD
                         } catch (ReflectionException $e) {
+=======
+                        } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                             throw new RuntimeException(
                                 $e->getMessage(),
                                 (int) $e->getCode(),
@@ -858,6 +1123,7 @@ final class Generator
             }
 
             // @see https://github.com/sebastianbergmann/phpunit-mock-objects/issues/103
+<<<<<<< HEAD
             if ($isInterface && $class->implementsInterface(Traversable::class) &&
                 !$class->implementsInterface(Iterator::class) &&
                 !$class->implementsInterface(IteratorAggregate::class)) {
@@ -865,6 +1131,15 @@ final class Generator
 
                 $mockMethods->addMethods(
                     ...$this->mockClassMethods(Iterator::class, $callOriginalMethods, $cloneArguments)
+=======
+            if ($isInterface && $class->implementsInterface(\Traversable::class) &&
+                !$class->implementsInterface(\Iterator::class) &&
+                !$class->implementsInterface(\IteratorAggregate::class)) {
+                $additionalInterfaces[] = \Iterator::class;
+
+                $mockMethods->addMethods(
+                    ...$this->mockClassMethods(\Iterator::class, $callOriginalMethods, $cloneArguments)
+>>>>>>> parent of 31cfa1b1 (p)
                 );
             }
 
@@ -872,7 +1147,11 @@ final class Generator
                 try {
                     $cloneMethod = $class->getMethod('__clone');
                     // @codeCoverageIgnoreStart
+<<<<<<< HEAD
                 } catch (ReflectionException $e) {
+=======
+                } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                     throw new RuntimeException(
                         $e->getMessage(),
                         (int) $e->getCode(),
@@ -905,13 +1184,21 @@ final class Generator
             );
         }
 
+<<<<<<< HEAD
         if (is_array($explicitMethods)) {
+=======
+        if (\is_array($explicitMethods)) {
+>>>>>>> parent of 31cfa1b1 (p)
             foreach ($explicitMethods as $methodName) {
                 if ($class !== null && $class->hasMethod($methodName)) {
                     try {
                         $method = $class->getMethod($methodName);
                         // @codeCoverageIgnoreStart
+<<<<<<< HEAD
                     } catch (ReflectionException $e) {
+=======
+                    } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                         throw new RuntimeException(
                             $e->getMessage(),
                             (int) $e->getCode(),
@@ -948,17 +1235,29 @@ final class Generator
         $method = '';
 
         if (!$mockMethods->hasMethod('method') && (!isset($class) || !$class->hasMethod('method'))) {
+<<<<<<< HEAD
             $method = PHP_EOL . '    use \PHPUnit\Framework\MockObject\Method;';
+=======
+            $method = \PHP_EOL . '    use \PHPUnit\Framework\MockObject\Method;';
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $cloneTrait = '';
 
         if ($mockedCloneMethod) {
+<<<<<<< HEAD
             $cloneTrait = PHP_EOL . '    use \PHPUnit\Framework\MockObject\MockedCloneMethod;';
         }
 
         if ($unmockedCloneMethod) {
             $cloneTrait = PHP_EOL . '    use \PHPUnit\Framework\MockObject\UnmockedCloneMethod;';
+=======
+            $cloneTrait = \PHP_EOL . '    use \PHPUnit\Framework\MockObject\MockedCloneMethod;';
+        }
+
+        if ($unmockedCloneMethod) {
+            $cloneTrait = \PHP_EOL . '    use \PHPUnit\Framework\MockObject\UnmockedCloneMethod;';
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $classTemplate->setVar(
@@ -970,10 +1269,17 @@ final class Generator
                     $isInterface,
                     $additionalInterfaces
                 ),
+<<<<<<< HEAD
                 'clone'           => $cloneTrait,
                 'mock_class_name' => $mockClassName['className'],
                 'mocked_methods'  => $mockedMethods,
                 'method'          => $method,
+=======
+                'clone'             => $cloneTrait,
+                'mock_class_name'   => $mockClassName['className'],
+                'mocked_methods'    => $mockedMethods,
+                'method'            => $method,
+>>>>>>> parent of 31cfa1b1 (p)
             ]
         );
 
@@ -989,6 +1295,7 @@ final class Generator
      */
     private function generateClassName($type, string $className, string $prefix): array
     {
+<<<<<<< HEAD
         if (is_array($type)) {
             $type = implode('_', $type);
         }
@@ -1002,6 +1309,21 @@ final class Generator
         if (count($classNameParts) > 1) {
             $type          = array_pop($classNameParts);
             $namespaceName = implode('\\', $classNameParts);
+=======
+        if (\is_array($type)) {
+            $type = \implode('_', $type);
+        }
+
+        if ($type[0] === '\\') {
+            $type = \substr($type, 1);
+        }
+
+        $classNameParts = \explode('\\', $type);
+
+        if (\count($classNameParts) > 1) {
+            $type          = \array_pop($classNameParts);
+            $namespaceName = \implode('\\', $classNameParts);
+>>>>>>> parent of 31cfa1b1 (p)
             $fullClassName = $namespaceName . '\\' . $type;
         } else {
             $namespaceName = '';
@@ -1011,8 +1333,13 @@ final class Generator
         if ($className === '') {
             do {
                 $className = $prefix . $type . '_' .
+<<<<<<< HEAD
                              substr(md5((string) mt_rand()), 0, 8);
             } while (class_exists($className, false));
+=======
+                             \substr(\md5((string) \mt_rand()), 0, 8);
+            } while (\class_exists($className, false));
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return [
@@ -1028,16 +1355,27 @@ final class Generator
         $buffer = 'class ';
 
         $additionalInterfaces[] = MockObject::class;
+<<<<<<< HEAD
         $interfaces             = implode(', ', $additionalInterfaces);
 
         if ($isInterface) {
             $buffer .= sprintf(
+=======
+        $interfaces             = \implode(', ', $additionalInterfaces);
+
+        if ($isInterface) {
+            $buffer .= \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                 '%s implements %s',
                 $mockClassName['className'],
                 $interfaces
             );
 
+<<<<<<< HEAD
             if (!in_array($mockClassName['originalClassName'], $additionalInterfaces, true)) {
+=======
+            if (!\in_array($mockClassName['originalClassName'], $additionalInterfaces, true)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $buffer .= ', ';
 
                 if (!empty($mockClassName['namespaceName'])) {
@@ -1047,7 +1385,11 @@ final class Generator
                 $buffer .= $mockClassName['originalClassName'];
             }
         } else {
+<<<<<<< HEAD
             $buffer .= sprintf(
+=======
+            $buffer .= \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                 '%s extends %s%s implements %s',
                 $mockClassName['className'],
                 !empty($mockClassName['namespaceName']) ? $mockClassName['namespaceName'] . '\\' : '',
@@ -1059,7 +1401,11 @@ final class Generator
         return $buffer;
     }
 
+<<<<<<< HEAD
     private function canMockMethod(ReflectionMethod $method): bool
+=======
+    private function canMockMethod(\ReflectionMethod $method): bool
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return !($this->isConstructor($method) || $method->isFinal() || $method->isPrivate() || $this->isMethodNameBlacklisted($method->getName()));
     }
@@ -1069,12 +1415,21 @@ final class Generator
         return isset(self::BLACKLISTED_METHOD_NAMES[$name]);
     }
 
+<<<<<<< HEAD
     private function getTemplate(string $template): Text_Template
     {
         $filename = __DIR__ . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $template;
 
         if (!isset(self::$templates[$filename])) {
             self::$templates[$filename] = new Text_Template($filename);
+=======
+    private function getTemplate(string $template): \Text_Template
+    {
+        $filename = __DIR__ . \DIRECTORY_SEPARATOR . 'Generator' . \DIRECTORY_SEPARATOR . $template;
+
+        if (!isset(self::$templates[$filename])) {
+            self::$templates[$filename] = new \Text_Template($filename);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return self::$templates[$filename];
@@ -1083,19 +1438,33 @@ final class Generator
     /**
      * @see https://github.com/sebastianbergmann/phpunit/issues/4139#issuecomment-605409765
      */
+<<<<<<< HEAD
     private function isConstructor(ReflectionMethod $method): bool
     {
         $methodName = strtolower($method->getName());
+=======
+    private function isConstructor(\ReflectionMethod $method): bool
+    {
+        $methodName = \strtolower($method->getName());
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($methodName === '__construct') {
             return true;
         }
 
+<<<<<<< HEAD
         if (PHP_MAJOR_VERSION >= 8) {
             return false;
         }
 
         $className = strtolower($method->getDeclaringClass()->getName());
+=======
+        if (\PHP_MAJOR_VERSION >= 8) {
+            return false;
+        }
+
+        $className  = \strtolower($method->getDeclaringClass()->getName());
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $methodName === $className;
     }

@@ -20,7 +20,10 @@ use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
 use phpDocumentor\Reflection\Utils;
 use Webmozart\Assert\Assert;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use function array_key_exists;
 use function explode;
 
@@ -49,7 +52,11 @@ final class Uses extends BaseTag implements Factory\StaticMethod
         ?FqsenResolver $resolver = null,
         ?DescriptionFactory $descriptionFactory = null,
         ?TypeContext $context = null
+<<<<<<< HEAD
     ): self {
+=======
+    ) : self {
+>>>>>>> parent of 31cfa1b1 (p)
         Assert::notNull($resolver);
         Assert::notNull($descriptionFactory);
 
@@ -61,7 +68,11 @@ final class Uses extends BaseTag implements Factory\StaticMethod
         );
     }
 
+<<<<<<< HEAD
     private static function resolveFqsen(string $parts, ?FqsenResolver $fqsenResolver, ?TypeContext $context): Fqsen
+=======
+    private static function resolveFqsen(string $parts, ?FqsenResolver $fqsenResolver, ?TypeContext $context) : Fqsen
+>>>>>>> parent of 31cfa1b1 (p)
     {
         Assert::notNull($fqsenResolver);
         $fqsenParts = explode('::', $parts);
@@ -77,7 +88,11 @@ final class Uses extends BaseTag implements Factory\StaticMethod
     /**
      * Returns the structural element this tag refers to.
      */
+<<<<<<< HEAD
     public function getReference(): Fqsen
+=======
+    public function getReference() : Fqsen
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->refers;
     }
@@ -85,7 +100,11 @@ final class Uses extends BaseTag implements Factory\StaticMethod
     /**
      * Returns a string representation of this tag.
      */
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->description) {
             $description = $this->description->render();

@@ -213,10 +213,13 @@ class Exporter
             return "$value.0";
         }
 
+<<<<<<< HEAD
         if ($this->isClosedResource($value)) {
             return 'resource (closed)';
         }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         if (\is_resource($value)) {
             return \sprintf(
                 'resource(%d) of type (%s)',
@@ -304,6 +307,7 @@ class Exporter
 
         return \var_export($value, true);
     }
+<<<<<<< HEAD
 
     /**
      * Determines whether a variable represents a resource, either open or closed.
@@ -363,4 +367,6 @@ class Exporter
 
         return false;
     }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

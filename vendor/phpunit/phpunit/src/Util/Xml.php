@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Util;
 
+<<<<<<< HEAD
 use const ENT_QUOTES;
 use function assert;
 use function chdir;
@@ -28,14 +29,19 @@ use function preg_replace;
 use function settype;
 use function sprintf;
 use function strlen;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use DOMCharacterData;
 use DOMDocument;
 use DOMElement;
 use DOMNode;
 use DOMText;
 use PHPUnit\Framework\Exception;
+<<<<<<< HEAD
 use ReflectionClass;
 use ReflectionException;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -71,8 +77,13 @@ final class Xml
             return $actual;
         }
 
+<<<<<<< HEAD
         if (!is_string($actual)) {
             throw new Exception('Could not load XML from ' . gettype($actual));
+=======
+        if (!\is_string($actual)) {
+            throw new Exception('Could not load XML from ' . \gettype($actual));
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($actual === '') {
@@ -81,16 +92,27 @@ final class Xml
 
         // Required for XInclude on Windows.
         if ($xinclude) {
+<<<<<<< HEAD
             $cwd = getcwd();
             @chdir(dirname($filename));
+=======
+            $cwd = \getcwd();
+            @\chdir(\dirname($filename));
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $document                     = new DOMDocument;
         $document->preserveWhiteSpace = false;
 
+<<<<<<< HEAD
         $internal  = libxml_use_internal_errors(true);
         $message   = '';
         $reporting = error_reporting(0);
+=======
+        $internal  = \libxml_use_internal_errors(true);
+        $message   = '';
+        $reporting = \error_reporting(0);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($filename !== '') {
             // Required for XInclude
@@ -107,6 +129,7 @@ final class Xml
             $document->xinclude();
         }
 
+<<<<<<< HEAD
         foreach (libxml_get_errors() as $error) {
             $message .= "\n" . $error->message;
         }
@@ -116,12 +139,27 @@ final class Xml
 
         if (isset($cwd)) {
             @chdir($cwd);
+=======
+        foreach (\libxml_get_errors() as $error) {
+            $message .= "\n" . $error->message;
+        }
+
+        \libxml_use_internal_errors($internal);
+        \error_reporting($reporting);
+
+        if (isset($cwd)) {
+            @\chdir($cwd);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($loaded === false || ($strict && $message !== '')) {
             if ($filename !== '') {
                 throw new Exception(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                         'Could not load "%s".%s',
                         $filename,
                         $message !== '' ? "\n" . $message : ''
@@ -146,6 +184,7 @@ final class Xml
      */
     public static function loadFile(string $filename, bool $isHtml = false, bool $xinclude = false, bool $strict = false): DOMDocument
     {
+<<<<<<< HEAD
         $reporting = error_reporting(0);
         $contents  = file_get_contents($filename);
 
@@ -154,6 +193,16 @@ final class Xml
         if ($contents === false) {
             throw new Exception(
                 sprintf(
+=======
+        $reporting = \error_reporting(0);
+        $contents  = \file_get_contents($filename);
+
+        \error_reporting($reporting);
+
+        if ($contents === false) {
+            throw new Exception(
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Could not read "%s".',
                     $filename
                 )
@@ -175,7 +224,11 @@ final class Xml
     }
 
     /**
+<<<<<<< HEAD
      * Escapes a string for the use in XML documents.
+=======
+     * Escapes a string for the use in XML documents
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * Any Unicode character is allowed, excluding the surrogate blocks, FFFE,
      * and FFFF (not even as character reference).
@@ -184,12 +237,21 @@ final class Xml
      */
     public static function prepareString(string $string): string
     {
+<<<<<<< HEAD
         return preg_replace(
             '/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f]/',
             '',
             htmlspecialchars(
                 self::convertToUtf8($string),
                 ENT_QUOTES
+=======
+        return \preg_replace(
+            '/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f]/',
+            '',
+            \htmlspecialchars(
+                self::convertToUtf8($string),
+                \ENT_QUOTES
+>>>>>>> parent of 31cfa1b1 (p)
             )
         );
     }
@@ -240,11 +302,19 @@ final class Xml
                     }
 
                     try {
+<<<<<<< HEAD
                         assert(class_exists($className));
 
                         $variable = (new ReflectionClass($className))->newInstanceArgs($constructorArgs);
                         // @codeCoverageIgnoreStart
                     } catch (ReflectionException $e) {
+=======
+                        \assert(\class_exists($className));
+
+                        $variable = (new \ReflectionClass($className))->newInstanceArgs($constructorArgs);
+                        // @codeCoverageIgnoreStart
+                    } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                         throw new Exception(
                             $e->getMessage(),
                             (int) $e->getCode(),
@@ -268,7 +338,11 @@ final class Xml
             case 'string':
                 $variable = $element->textContent;
 
+<<<<<<< HEAD
                 settype($variable, $element->tagName);
+=======
+                \settype($variable, $element->tagName);
+>>>>>>> parent of 31cfa1b1 (p)
 
                 break;
         }
@@ -279,7 +353,11 @@ final class Xml
     private static function convertToUtf8(string $string): string
     {
         if (!self::isUtf8($string)) {
+<<<<<<< HEAD
             $string = mb_convert_encoding($string, 'UTF-8');
+=======
+            $string = \mb_convert_encoding($string, 'UTF-8');
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $string;
@@ -287,6 +365,7 @@ final class Xml
 
     private static function isUtf8(string $string): bool
     {
+<<<<<<< HEAD
         $length = strlen($string);
 
         for ($i = 0; $i < $length; $i++) {
@@ -297,13 +376,29 @@ final class Xml
             } elseif ((ord($string[$i]) & 0xF0) === 0xE0) {
                 $n = 2;
             } elseif ((ord($string[$i]) & 0xF0) === 0xF0) {
+=======
+        $length = \strlen($string);
+
+        for ($i = 0; $i < $length; $i++) {
+            if (\ord($string[$i]) < 0x80) {
+                $n = 0;
+            } elseif ((\ord($string[$i]) & 0xE0) === 0xC0) {
+                $n = 1;
+            } elseif ((\ord($string[$i]) & 0xF0) === 0xE0) {
+                $n = 2;
+            } elseif ((\ord($string[$i]) & 0xF0) === 0xF0) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $n = 3;
             } else {
                 return false;
             }
 
             for ($j = 0; $j < $n; $j++) {
+<<<<<<< HEAD
                 if ((++$i === $length) || ((ord($string[$i]) & 0xC0) !== 0x80)) {
+=======
+                if ((++$i === $length) || ((\ord($string[$i]) & 0xC0) !== 0x80)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     return false;
                 }
             }

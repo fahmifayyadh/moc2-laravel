@@ -17,11 +17,19 @@ namespace Symfony\Component\HttpKernel\Exception;
 class UnsupportedMediaTypeHttpException extends HttpException
 {
     /**
+<<<<<<< HEAD
      * @param string|null     $message  The internal exception message
      * @param \Throwable|null $previous The previous exception
      * @param int             $code     The internal exception code
      */
     public function __construct(?string $message = '', \Throwable $previous = null, int $code = 0, array $headers = [])
+=======
+     * @param string     $message  The internal exception message
+     * @param \Throwable $previous The previous exception
+     * @param int        $code     The internal exception code
+     */
+    public function __construct(string $message = null, \Throwable $previous = null, int $code = 0, array $headers = [])
+>>>>>>> parent of 31cfa1b1 (p)
     {
         parent::__construct(415, $message, $previous, $headers, $code);
     }

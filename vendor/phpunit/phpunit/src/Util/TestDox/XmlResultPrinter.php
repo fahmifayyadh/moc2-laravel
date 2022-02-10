@@ -9,9 +9,12 @@
  */
 namespace PHPUnit\Util\TestDox;
 
+<<<<<<< HEAD
 use function array_filter;
 use function get_class;
 use function implode;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use DOMDocument;
 use DOMElement;
 use PHPUnit\Framework\AssertionFailedError;
@@ -22,9 +25,12 @@ use PHPUnit\Framework\TestListener;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\Warning;
 use PHPUnit\Util\Printer;
+<<<<<<< HEAD
 use ReflectionClass;
 use ReflectionException;
 use Throwable;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -47,7 +53,11 @@ final class XmlResultPrinter extends Printer implements TestListener
     private $prettifier;
 
     /**
+<<<<<<< HEAD
      * @var null|Throwable
+=======
+     * @var null|\Throwable
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $exception;
 
@@ -82,7 +92,11 @@ final class XmlResultPrinter extends Printer implements TestListener
     /**
      * An error occurred.
      */
+<<<<<<< HEAD
     public function addError(Test $test, Throwable $t, float $time): void
+=======
+    public function addError(Test $test, \Throwable $t, float $time): void
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->exception = $t;
     }
@@ -105,21 +119,33 @@ final class XmlResultPrinter extends Printer implements TestListener
     /**
      * Incomplete test.
      */
+<<<<<<< HEAD
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
+=======
+    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
+>>>>>>> parent of 31cfa1b1 (p)
     {
     }
 
     /**
      * Risky test.
      */
+<<<<<<< HEAD
     public function addRiskyTest(Test $test, Throwable $t, float $time): void
+=======
+    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
+>>>>>>> parent of 31cfa1b1 (p)
     {
     }
 
     /**
      * Skipped test.
      */
+<<<<<<< HEAD
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
+=======
+    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
+>>>>>>> parent of 31cfa1b1 (p)
     {
     }
 
@@ -156,24 +182,40 @@ final class XmlResultPrinter extends Printer implements TestListener
             return;
         }
 
+<<<<<<< HEAD
         $groups = array_filter(
             $test->getGroups(),
             static function ($group)
             {
+=======
+        $groups = \array_filter(
+            $test->getGroups(),
+            static function ($group) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return !($group === 'small' || $group === 'medium' || $group === 'large');
             }
         );
 
         $testNode = $this->document->createElement('test');
 
+<<<<<<< HEAD
         $testNode->setAttribute('className', get_class($test));
         $testNode->setAttribute('methodName', $test->getName());
         $testNode->setAttribute('prettifiedClassName', $this->prettifier->prettifyTestClass(get_class($test)));
+=======
+        $testNode->setAttribute('className', \get_class($test));
+        $testNode->setAttribute('methodName', $test->getName());
+        $testNode->setAttribute('prettifiedClassName', $this->prettifier->prettifyTestClass(\get_class($test)));
+>>>>>>> parent of 31cfa1b1 (p)
         $testNode->setAttribute('prettifiedMethodName', $this->prettifier->prettifyTestCase($test));
         $testNode->setAttribute('status', (string) $test->getStatus());
         $testNode->setAttribute('time', (string) $time);
         $testNode->setAttribute('size', (string) $test->getSize());
+<<<<<<< HEAD
         $testNode->setAttribute('groups', implode(',', $groups));
+=======
+        $testNode->setAttribute('groups', \implode(',', $groups));
+>>>>>>> parent of 31cfa1b1 (p)
 
         foreach ($groups as $group) {
             $groupNode = $this->document->createElement('group');
@@ -209,7 +251,11 @@ final class XmlResultPrinter extends Printer implements TestListener
             $testNode->appendChild($testDoubleNode);
         }
 
+<<<<<<< HEAD
         $inlineAnnotations = \PHPUnit\Util\Test::getInlineAnnotations(get_class($test), $test->getName(false));
+=======
+        $inlineAnnotations = \PHPUnit\Util\Test::getInlineAnnotations(\get_class($test), $test->getName(false));
+>>>>>>> parent of 31cfa1b1 (p)
 
         if (isset($inlineAnnotations['given'], $inlineAnnotations['when'], $inlineAnnotations['then'])) {
             $testNode->setAttribute('given', $inlineAnnotations['given']['value']);
@@ -228,9 +274,15 @@ final class XmlResultPrinter extends Printer implements TestListener
             }
 
             try {
+<<<<<<< HEAD
                 $file = (new ReflectionClass($test))->getFileName();
                 // @codeCoverageIgnoreStart
             } catch (ReflectionException $e) {
+=======
+                $file = (new \ReflectionClass($test))->getFileName();
+                // @codeCoverageIgnoreStart
+            } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 throw new Exception(
                     $e->getMessage(),
                     (int) $e->getCode(),

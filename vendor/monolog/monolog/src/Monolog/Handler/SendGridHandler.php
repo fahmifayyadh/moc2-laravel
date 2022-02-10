@@ -40,7 +40,11 @@ class SendGridHandler extends MailHandler
 
     /**
      * The email addresses to which the message will be sent
+<<<<<<< HEAD
      * @var string[]
+=======
+     * @var array
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected $to;
 
@@ -51,6 +55,7 @@ class SendGridHandler extends MailHandler
     protected $subject;
 
     /**
+<<<<<<< HEAD
      * @param string          $apiUser The SendGrid API User
      * @param string          $apiKey  The SendGrid API Key
      * @param string          $from    The sender of the email
@@ -63,6 +68,18 @@ class SendGridHandler extends MailHandler
             throw new MissingExtensionException('The curl extension is needed to use the SendGridHandler');
         }
 
+=======
+     * @param string       $apiUser The SendGrid API User
+     * @param string       $apiKey  The SendGrid API Key
+     * @param string       $from    The sender of the email
+     * @param string|array $to      The recipients of the email
+     * @param string       $subject The subject of the mail
+     * @param int|string   $level   The minimum logging level at which this handler will be triggered
+     * @param bool         $bubble  Whether the messages that are handled can bubble up the stack or not
+     */
+    public function __construct(string $apiUser, string $apiKey, string $from, $to, string $subject, $level = Logger::ERROR, bool $bubble = true)
+    {
+>>>>>>> parent of 31cfa1b1 (p)
         parent::__construct($level, $bubble);
         $this->apiUser = $apiUser;
         $this->apiKey = $apiKey;
@@ -72,7 +89,11 @@ class SendGridHandler extends MailHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function send(string $content, array $records): void
     {

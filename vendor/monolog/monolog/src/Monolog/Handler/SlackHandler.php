@@ -21,8 +21,11 @@ use Monolog\Handler\Slack\SlackRecord;
  *
  * @author Greg Kedzierski <greg@gregkedzierski.com>
  * @see    https://api.slack.com/
+<<<<<<< HEAD
  *
  * @phpstan-import-type FormattedRecord from AbstractProcessingHandler
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class SlackHandler extends SocketHandler
 {
@@ -44,9 +47,17 @@ class SlackHandler extends SocketHandler
      * @param  string|null               $username               Name of a bot
      * @param  bool                      $useAttachment          Whether the message should be added to Slack as attachment (plain text otherwise)
      * @param  string|null               $iconEmoji              The emoji name to use (or null)
+<<<<<<< HEAD
      * @param  bool                      $useShortAttachment     Whether the context/extra messages added to Slack as attachments are in a short style
      * @param  bool                      $includeContextAndExtra Whether the attachment should include context and extra data
      * @param  string[]                  $excludeFields          Dot separated list of fields to exclude from slack message. E.g. ['context.field1', 'extra.field2']
+=======
+     * @param  int                       $level                  The minimum logging level at which this handler will be triggered
+     * @param  bool                      $bubble                 Whether the messages that are handled can bubble up the stack or not
+     * @param  bool                      $useShortAttachment     Whether the the context/extra messages added to Slack as attachments are in a short style
+     * @param  bool                      $includeContextAndExtra Whether the attachment should include context and extra data
+     * @param  array                     $excludeFields          Dot separated list of fields to exclude from slack message. E.g. ['context.field1', 'extra.field2']
+>>>>>>> parent of 31cfa1b1 (p)
      * @throws MissingExtensionException If no OpenSSL PHP extension configured
      */
     public function __construct(
@@ -91,7 +102,11 @@ class SlackHandler extends SocketHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function generateDataStream(array $record): string
     {
@@ -102,8 +117,11 @@ class SlackHandler extends SocketHandler
 
     /**
      * Builds the body of API call
+<<<<<<< HEAD
      *
      * @phpstan-param FormattedRecord $record
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function buildContent(array $record): string
     {
@@ -112,10 +130,13 @@ class SlackHandler extends SocketHandler
         return http_build_query($dataArray);
     }
 
+<<<<<<< HEAD
     /**
      * @phpstan-param FormattedRecord $record
      * @return string[]
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function prepareContentData(array $record): array
     {
         $dataArray = $this->slackRecord->getSlackData($record);
@@ -143,7 +164,11 @@ class SlackHandler extends SocketHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected function write(array $record): void
     {
@@ -230,9 +255,12 @@ class SlackHandler extends SocketHandler
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * @param string[] $excludeFields
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function excludeFields(array $excludeFields): self
     {
         $this->slackRecord->excludeFields($excludeFields);

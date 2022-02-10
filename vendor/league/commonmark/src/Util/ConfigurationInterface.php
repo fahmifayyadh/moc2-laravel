@@ -14,6 +14,7 @@ namespace League\CommonMark\Util;
 interface ConfigurationInterface
 {
     /**
+<<<<<<< HEAD
      * @internal
      *
      * @deprecated
@@ -21,6 +22,8 @@ interface ConfigurationInterface
     public const MISSING = '833f2700-af8d-49d4-9171-4b5f12d3bfbc';
 
     /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Merge an existing array into the current configuration
      *
      * @param array<string, mixed> $config

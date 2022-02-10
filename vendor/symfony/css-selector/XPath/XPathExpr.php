@@ -43,9 +43,12 @@ class XPathExpr
         return $this->element;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function addCondition(string $condition): self
     {
         $this->condition = $this->condition ? sprintf('(%s) and (%s)', $this->condition, $condition) : $condition;
@@ -58,9 +61,12 @@ class XPathExpr
         return $this->condition;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function addNameTest(): self
     {
         if ('*' !== $this->element) {
@@ -71,9 +77,12 @@ class XPathExpr
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function addStarPrefix(): self
     {
         $this->path .= '*/';

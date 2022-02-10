@@ -75,6 +75,7 @@ return [
         'sameElse' => 'L',
     ],
     'meridiem' => function ($hour) {
+<<<<<<< HEAD
         if ($hour < 1) {
             return 'tengah malam';
         }
@@ -87,6 +88,14 @@ return [
             return 'tengah hari';
         }
 
+=======
+        if ($hour < 11) {
+            return 'pagi';
+        }
+        if ($hour < 15) {
+            return 'tengahari';
+        }
+>>>>>>> parent of 31cfa1b1 (p)
         if ($hour < 19) {
             return 'petang';
         }

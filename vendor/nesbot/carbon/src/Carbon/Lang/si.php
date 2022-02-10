@@ -33,7 +33,11 @@ return [
     'a_second' => '{1}තත්පර කිහිපයකට|තත්පර :count',
     'ago' => ':time කට පෙර',
     'from_now' => function ($time) {
+<<<<<<< HEAD
         if (preg_match('/දින \d/u', $time)) {
+=======
+        if (preg_match('/දින \d+/', $time)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return $time.' න්';
         }
 
@@ -41,7 +45,11 @@ return [
     },
     'before' => ':time කට පෙර',
     'after' => function ($time) {
+<<<<<<< HEAD
         if (preg_match('/දින \d/u', $time)) {
+=======
+        if (preg_match('/දින \d+/', $time)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return $time.' න්';
         }
 

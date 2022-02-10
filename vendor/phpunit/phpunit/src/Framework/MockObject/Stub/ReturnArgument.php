@@ -9,7 +9,10 @@
  */
 namespace PHPUnit\Framework\MockObject\Stub;
 
+<<<<<<< HEAD
 use function sprintf;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\MockObject\Invocation;
 
 /**
@@ -36,6 +39,10 @@ final class ReturnArgument implements Stub
 
     public function toString(): string
     {
+<<<<<<< HEAD
         return sprintf('return argument #%d', $this->argumentIndex);
+=======
+        return \sprintf('return argument #%d', $this->argumentIndex);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

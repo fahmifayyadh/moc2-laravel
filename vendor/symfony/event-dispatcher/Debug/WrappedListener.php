@@ -52,7 +52,11 @@ class WrappedListener
             $this->pretty = $this->name.'::'.$listener[1];
         } elseif ($listener instanceof \Closure) {
             $r = new \ReflectionFunction($listener);
+<<<<<<< HEAD
             if (str_contains($r->name, '{closure}')) {
+=======
+            if (false !== strpos($r->name, '{closure}')) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->pretty = $this->name = 'closure';
             } elseif ($class = $r->getClosureScopeClass()) {
                 $this->name = $class->name;

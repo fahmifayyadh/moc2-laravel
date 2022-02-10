@@ -22,7 +22,11 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class PdoCaster
 {
+<<<<<<< HEAD
     private const PDO_ATTRIBUTES = [
+=======
+    private static $pdoAttributes = [
+>>>>>>> parent of 31cfa1b1 (p)
         'CASE' => [
             \PDO::CASE_LOWER => 'LOWER',
             \PDO::CASE_NATURAL => 'NATURAL',
@@ -65,7 +69,11 @@ class PdoCaster
         $errmode = $c->getAttribute(\PDO::ATTR_ERRMODE);
         $c->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
+<<<<<<< HEAD
         foreach (self::PDO_ATTRIBUTES as $k => $v) {
+=======
+        foreach (self::$pdoAttributes as $k => $v) {
+>>>>>>> parent of 31cfa1b1 (p)
             if (!isset($k[0])) {
                 $k = $v;
                 $v = [];

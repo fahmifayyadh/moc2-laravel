@@ -111,7 +111,11 @@ class Swift_Transport_SendmailTransport extends Swift_Transport_AbstractSmtpTran
             }
 
             if (false === strpos($command, ' -f')) {
+<<<<<<< HEAD
                 $command .= ' -f'.escapeshellarg($this->getReversePath($message) ?? '');
+=======
+                $command .= ' -f'.escapeshellarg($this->getReversePath($message));
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             $buffer->initialize(array_merge($this->params, ['command' => $command]));
@@ -122,9 +126,15 @@ class Swift_Transport_SendmailTransport extends Swift_Transport_AbstractSmtpTran
                 $buffer->setWriteTranslations(["\r\n" => "\n"]);
             }
 
+<<<<<<< HEAD
             $count = \count((array) $message->getTo())
                 + \count((array) $message->getCc())
                 + \count((array) $message->getBcc())
+=======
+            $count = count((array) $message->getTo())
+                + count((array) $message->getCc())
+                + count((array) $message->getBcc())
+>>>>>>> parent of 31cfa1b1 (p)
                 ;
             $message->toByteStream($buffer);
             $buffer->flushBuffers();

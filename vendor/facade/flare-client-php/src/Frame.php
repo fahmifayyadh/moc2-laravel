@@ -7,6 +7,7 @@ use Facade\FlareClient\Stacktrace\Codesnippet;
 class Frame
 {
     /** @var string */
+<<<<<<< HEAD
     protected $file;
 
     /** @var int */
@@ -17,6 +18,18 @@ class Frame
 
     /** @var string */
     protected $class;
+=======
+    private $file;
+
+    /** @var int */
+    private $lineNumber;
+
+    /** @var string */
+    private $method;
+
+    /** @var string */
+    private $class;
+>>>>>>> parent of 31cfa1b1 (p)
 
     public function __construct(
         string $file,

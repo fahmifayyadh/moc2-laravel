@@ -9,10 +9,13 @@
  */
 namespace PHPUnit\Framework\MockObject\Rule;
 
+<<<<<<< HEAD
 use function count;
 use function gettype;
 use function is_iterable;
 use function sprintf;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\IsEqual;
 use PHPUnit\Framework\ExpectationFailedException;
@@ -40,12 +43,21 @@ final class ConsecutiveParameters implements ParametersRule
     public function __construct(array $parameterGroups)
     {
         foreach ($parameterGroups as $index => $parameters) {
+<<<<<<< HEAD
             if (!is_iterable($parameters)) {
                 throw new InvalidParameterGroupException(
                     sprintf(
                         'Parameter group #%d must be an array or Traversable, got %s',
                         $index,
                         gettype($parameters)
+=======
+            if (!\is_iterable($parameters)) {
+                throw new InvalidParameterGroupException(
+                    \sprintf(
+                        'Parameter group #%d must be an array or Traversable, got %s',
+                        $index,
+                        \gettype($parameters)
+>>>>>>> parent of 31cfa1b1 (p)
                     )
                 );
             }
@@ -66,13 +78,22 @@ final class ConsecutiveParameters implements ParametersRule
     }
 
     /**
+<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
+=======
+     * @throws ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function apply(BaseInvocation $invocation): void
     {
         $this->invocations[] = $invocation;
+<<<<<<< HEAD
         $callIndex           = count($this->invocations) - 1;
+=======
+        $callIndex           = \count($this->invocations) - 1;
+>>>>>>> parent of 31cfa1b1 (p)
 
         $this->verifyInvocation($invocation, $callIndex);
     }
@@ -89,12 +110,21 @@ final class ConsecutiveParameters implements ParametersRule
     }
 
     /**
+<<<<<<< HEAD
      * Verify a single invocation.
      *
      * @param int $callIndex
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
+=======
+     * Verify a single invocation
+     *
+     * @param int $callIndex
+     *
+     * @throws ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function verifyInvocation(BaseInvocation $invocation, $callIndex): void
     {
@@ -111,9 +141,15 @@ final class ConsecutiveParameters implements ParametersRule
 
         $parameters = $this->parameterGroups[$callIndex];
 
+<<<<<<< HEAD
         if (count($invocation->getParameters()) < count($parameters)) {
             throw new ExpectationFailedException(
                 sprintf(
+=======
+        if (\count($invocation->getParameters()) < \count($parameters)) {
+            throw new ExpectationFailedException(
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Parameter count for invocation %s is too low.',
                     $invocation->toString()
                 )
@@ -123,7 +159,11 @@ final class ConsecutiveParameters implements ParametersRule
         foreach ($parameters as $i => $parameter) {
             $parameter->evaluate(
                 $invocation->getParameters()[$i],
+<<<<<<< HEAD
                 sprintf(
+=======
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Parameter %s for invocation #%d %s does not match expected ' .
                     'value.',
                     $i,

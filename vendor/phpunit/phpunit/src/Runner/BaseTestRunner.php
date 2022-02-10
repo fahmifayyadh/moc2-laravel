@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Runner;
 
+<<<<<<< HEAD
 use function is_dir;
 use function is_file;
 use PHPUnit\Framework\Exception;
@@ -16,6 +17,11 @@ use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestSuite;
 use ReflectionClass;
 use ReflectionException;
+=======
+use PHPUnit\Framework\Exception;
+use PHPUnit\Framework\Test;
+use PHPUnit\Framework\TestSuite;
+>>>>>>> parent of 31cfa1b1 (p)
 use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
 
 /**
@@ -26,17 +32,29 @@ abstract class BaseTestRunner
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_UNKNOWN = -1;
+=======
+    public const STATUS_UNKNOWN    = -1;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_PASSED = 0;
+=======
+    public const STATUS_PASSED     = 0;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_SKIPPED = 1;
+=======
+    public const STATUS_SKIPPED    = 1;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var int
@@ -46,27 +64,47 @@ abstract class BaseTestRunner
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_FAILURE = 3;
+=======
+    public const STATUS_FAILURE    = 3;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_ERROR = 4;
+=======
+    public const STATUS_ERROR      = 4;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_RISKY = 5;
+=======
+    public const STATUS_RISKY      = 5;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_WARNING = 6;
+=======
+    public const STATUS_WARNING    = 6;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * @var string
      */
+<<<<<<< HEAD
     public const SUITE_METHODNAME = 'suite';
+=======
+    public const SUITE_METHODNAME  = 'suite';
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Returns the loader to be used.
@@ -87,7 +125,11 @@ abstract class BaseTestRunner
      */
     public function getTest(string $suiteClassName, string $suiteClassFile = '', $suffixes = ''): ?Test
     {
+<<<<<<< HEAD
         if (empty($suiteClassFile) && is_dir($suiteClassName) && !is_file($suiteClassName . '.php')) {
+=======
+        if (empty($suiteClassFile) && \is_dir($suiteClassName) && !\is_file($suiteClassName . '.php')) {
+>>>>>>> parent of 31cfa1b1 (p)
             /** @var string[] $files */
             $files = (new FileIteratorFacade)->getFilesAsArray(
                 $suiteClassName,
@@ -123,7 +165,11 @@ abstract class BaseTestRunner
             }
 
             $test = $suiteMethod->invoke(null, $testClass->getName());
+<<<<<<< HEAD
         } catch (ReflectionException $e) {
+=======
+        } catch (\ReflectionException $e) {
+>>>>>>> parent of 31cfa1b1 (p)
             try {
                 $test = new TestSuite($testClass);
             } catch (Exception $e) {
@@ -140,7 +186,11 @@ abstract class BaseTestRunner
     /**
      * Returns the loaded ReflectionClass for a suite name.
      */
+<<<<<<< HEAD
     protected function loadSuiteClass(string $suiteClassName, string $suiteClassFile = ''): ReflectionClass
+=======
+    protected function loadSuiteClass(string $suiteClassName, string $suiteClassFile = ''): \ReflectionClass
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->getLoader()->load($suiteClassName, $suiteClassFile);
     }

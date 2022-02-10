@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Util\PHP;
 
+<<<<<<< HEAD
 use const DIRECTORY_SEPARATOR;
 use const PHP_SAPI;
 use function array_keys;
@@ -25,6 +26,8 @@ use function strrpos;
 use function substr;
 use function trim;
 use function unserialize;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use __PHP_Incomplete_Class;
 use ErrorException;
 use PHPUnit\Framework\AssertionFailedError;
@@ -73,7 +76,11 @@ abstract class AbstractPhpProcess
 
     public static function factory(): self
     {
+<<<<<<< HEAD
         if (DIRECTORY_SEPARATOR === '\\') {
+=======
+        if (\DIRECTORY_SEPARATOR === '\\') {
+>>>>>>> parent of 31cfa1b1 (p)
             return new WindowsPhpProcess;
         }
 
@@ -104,7 +111,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Sets the input string to be sent via STDIN.
+=======
+     * Sets the input string to be sent via STDIN
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setStdin(string $stdin): void
     {
@@ -112,7 +123,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Returns the input string to be sent via STDIN.
+=======
+     * Returns the input string to be sent via STDIN
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getStdin(): string
     {
@@ -120,7 +135,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Sets the string of arguments to pass to the php job.
+=======
+     * Sets the string of arguments to pass to the php job
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setArgs(string $args): void
     {
@@ -128,7 +147,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Returns the string of arguments to pass to the php job.
+=======
+     * Returns the string of arguments to pass to the php job
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getArgs(): string
     {
@@ -136,7 +159,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Sets the array of environment variables to start the child process with.
+=======
+     * Sets the array of environment variables to start the child process with
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @param array<string, string> $env
      */
@@ -146,7 +173,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Returns the array of environment variables to start the child process with.
+=======
+     * Returns the array of environment variables to start the child process with
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getEnv(): array
     {
@@ -154,7 +185,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Sets the amount of seconds to wait before timing out.
+=======
+     * Sets the amount of seconds to wait before timing out
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setTimeout(int $timeout): void
     {
@@ -162,7 +197,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Returns the amount of seconds to wait before timing out.
+=======
+     * Returns the amount of seconds to wait before timing out
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getTimeout(): int
     {
@@ -196,6 +235,7 @@ abstract class AbstractPhpProcess
         $command = $this->runtime->getBinary();
 
         if ($this->runtime->hasPCOV()) {
+<<<<<<< HEAD
             $settings = array_merge(
                 $settings,
                 $this->runtime->getCurrentSettings(
@@ -207,13 +247,30 @@ abstract class AbstractPhpProcess
                 $settings,
                 $this->runtime->getCurrentSettings(
                     array_keys(ini_get_all('xdebug'))
+=======
+            $settings = \array_merge(
+                $settings,
+                $this->runtime->getCurrentSettings(
+                    \array_keys(\ini_get_all('pcov'))
+                )
+            );
+        } elseif ($this->runtime->hasXdebug()) {
+            $settings = \array_merge(
+                $settings,
+                $this->runtime->getCurrentSettings(
+                    \array_keys(\ini_get_all('xdebug'))
+>>>>>>> parent of 31cfa1b1 (p)
                 )
             );
         }
 
         $command .= $this->settingsToParameters($settings);
 
+<<<<<<< HEAD
         if (PHP_SAPI === 'phpdbg') {
+=======
+        if (\PHP_SAPI === 'phpdbg') {
+>>>>>>> parent of 31cfa1b1 (p)
             $command .= ' -qrr';
 
             if (!$file) {
@@ -222,7 +279,11 @@ abstract class AbstractPhpProcess
         }
 
         if ($file) {
+<<<<<<< HEAD
             $command .= ' ' . escapeshellarg($file);
+=======
+            $command .= ' ' . \escapeshellarg($file);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($this->args) {
@@ -249,7 +310,11 @@ abstract class AbstractPhpProcess
         $buffer = '';
 
         foreach ($settings as $setting) {
+<<<<<<< HEAD
             $buffer .= ' -d ' . escapeshellarg($setting);
+=======
+            $buffer .= ' -d ' . \escapeshellarg($setting);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $buffer;
@@ -267,6 +332,7 @@ abstract class AbstractPhpProcess
         if (!empty($stderr)) {
             $result->addError(
                 $test,
+<<<<<<< HEAD
                 new Exception(trim($stderr)),
                 $time
             );
@@ -277,17 +343,37 @@ abstract class AbstractPhpProcess
                  */
                 static function ($errno, $errstr, $errfile, $errline): void
                 {
+=======
+                new Exception(\trim($stderr)),
+                $time
+            );
+        } else {
+            \set_error_handler(
+                /**
+                 * @throws ErrorException
+                 */
+                static function ($errno, $errstr, $errfile, $errline): void {
+>>>>>>> parent of 31cfa1b1 (p)
                     throw new ErrorException($errstr, $errno, $errno, $errfile, $errline);
                 }
             );
 
             try {
+<<<<<<< HEAD
                 if (strpos($stdout, "#!/usr/bin/env php\n") === 0) {
                     $stdout = substr($stdout, 19);
                 }
 
                 $childResult = unserialize(str_replace("#!/usr/bin/env php\n", '', $stdout));
                 restore_error_handler();
+=======
+                if (\strpos($stdout, "#!/usr/bin/env php\n") === 0) {
+                    $stdout = \substr($stdout, 19);
+                }
+
+                $childResult = \unserialize(\str_replace("#!/usr/bin/env php\n", '', $stdout));
+                \restore_error_handler();
+>>>>>>> parent of 31cfa1b1 (p)
 
                 if ($childResult === false) {
                     $result->addFailure(
@@ -297,12 +383,20 @@ abstract class AbstractPhpProcess
                     );
                 }
             } catch (ErrorException $e) {
+<<<<<<< HEAD
                 restore_error_handler();
+=======
+                \restore_error_handler();
+>>>>>>> parent of 31cfa1b1 (p)
                 $childResult = false;
 
                 $result->addError(
                     $test,
+<<<<<<< HEAD
                     new Exception(trim($stdout), 0, $e),
+=======
+                    new Exception(\trim($stdout), 0, $e),
+>>>>>>> parent of 31cfa1b1 (p)
                     $time
                 );
             }
@@ -318,7 +412,11 @@ abstract class AbstractPhpProcess
                 $test->addToAssertionCount($childResult['numAssertions']);
 
                 $childResult = $childResult['result'];
+<<<<<<< HEAD
                 assert($childResult instanceof TestResult);
+=======
+                \assert($childResult instanceof  TestResult);
+>>>>>>> parent of 31cfa1b1 (p)
 
                 if ($result->getCollectCodeCoverageInformation()) {
                     $result->getCodeCoverage()->merge(
@@ -394,12 +492,20 @@ abstract class AbstractPhpProcess
             $exceptionArray = [];
 
             foreach ((array) $exception as $key => $value) {
+<<<<<<< HEAD
                 $key                  = substr($key, strrpos($key, "\0") + 1);
+=======
+                $key                  = \substr($key, \strrpos($key, "\0") + 1);
+>>>>>>> parent of 31cfa1b1 (p)
                 $exceptionArray[$key] = $value;
             }
 
             $exception = new SyntheticError(
+<<<<<<< HEAD
                 sprintf(
+=======
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     '%s: %s',
                     $exceptionArray['_PHP_Incomplete_Class_Name'],
                     $exceptionArray['message']

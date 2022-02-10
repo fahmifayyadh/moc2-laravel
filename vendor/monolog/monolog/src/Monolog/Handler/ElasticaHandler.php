@@ -11,7 +11,10 @@
 
 namespace Monolog\Handler;
 
+<<<<<<< HEAD
 use Elastica\Document;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Formatter\ElasticaFormatter;
 use Monolog\Logger;
@@ -26,7 +29,11 @@ use Elastica\Exception\ExceptionInterface;
  *    $client = new \Elastica\Client();
  *    $options = array(
  *        'index' => 'elastic_index_name',
+<<<<<<< HEAD
  *        'type' => 'elastic_doc_type', Types have been removed in Elastica 7
+=======
+ *        'type' => 'elastic_doc_type',
+>>>>>>> parent of 31cfa1b1 (p)
  *    );
  *    $handler = new ElasticaHandler($client, $options);
  *    $log = new Logger('application');
@@ -42,13 +49,24 @@ class ElasticaHandler extends AbstractProcessingHandler
     protected $client;
 
     /**
+<<<<<<< HEAD
      * @var mixed[] Handler config options
+=======
+     * @var array Handler config options
+>>>>>>> parent of 31cfa1b1 (p)
      */
     protected $options = [];
 
     /**
+<<<<<<< HEAD
      * @param Client  $client  Elastica Client object
      * @param mixed[] $options Handler configuration
+=======
+     * @param Client     $client  Elastica Client object
+     * @param array      $options Handler configuration
+     * @param int|string $level   The minimum logging level at which this handler will be triggered
+     * @param bool       $bubble  Whether the messages that are handled can bubble up the stack or not
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function __construct(Client $client, array $options = [], $level = Logger::DEBUG, bool $bubble = true)
     {
@@ -73,7 +91,11 @@ class ElasticaHandler extends AbstractProcessingHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
     {
@@ -84,9 +106,12 @@ class ElasticaHandler extends AbstractProcessingHandler
         throw new \InvalidArgumentException('ElasticaHandler is only compatible with ElasticaFormatter');
     }
 
+<<<<<<< HEAD
     /**
      * @return mixed[]
      */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function getOptions(): array
     {
         return $this->options;
@@ -101,7 +126,11 @@ class ElasticaHandler extends AbstractProcessingHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function handleBatch(array $records): void
     {
@@ -111,9 +140,12 @@ class ElasticaHandler extends AbstractProcessingHandler
 
     /**
      * Use Elasticsearch bulk API to send list of documents
+<<<<<<< HEAD
      *
      * @param Document[] $documents
      *
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * @throws \RuntimeException
      */
     protected function bulkSend(array $documents): void

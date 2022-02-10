@@ -94,7 +94,11 @@ HTML
 
     private function extractDate(array $context, string $format = 'r'): string
     {
+<<<<<<< HEAD
         return date($format, (int) $context['timestamp']);
+=======
+        return date($format, $context['timestamp']);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     private function renderTags(array $tags): string

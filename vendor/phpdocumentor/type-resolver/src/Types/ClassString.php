@@ -14,7 +14,10 @@ declare(strict_types=1);
 namespace phpDocumentor\Reflection\Types;
 
 use phpDocumentor\Reflection\Fqsen;
+<<<<<<< HEAD
 use phpDocumentor\Reflection\PseudoType;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use phpDocumentor\Reflection\Type;
 
 /**
@@ -22,7 +25,11 @@ use phpDocumentor\Reflection\Type;
  *
  * @psalm-immutable
  */
+<<<<<<< HEAD
 final class ClassString extends String_ implements PseudoType
+=======
+final class ClassString implements Type
+>>>>>>> parent of 31cfa1b1 (p)
 {
     /** @var Fqsen|null */
     private $fqsen;
@@ -35,6 +42,7 @@ final class ClassString extends String_ implements PseudoType
         $this->fqsen = $fqsen;
     }
 
+<<<<<<< HEAD
     public function underlyingType(): Type
     {
         return new String_();
@@ -44,6 +52,12 @@ final class ClassString extends String_ implements PseudoType
      * Returns the FQSEN associated with this object.
      */
     public function getFqsen(): ?Fqsen
+=======
+    /**
+     * Returns the FQSEN associated with this object.
+     */
+    public function getFqsen() : ?Fqsen
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->fqsen;
     }
@@ -51,7 +65,11 @@ final class ClassString extends String_ implements PseudoType
     /**
      * Returns a rendered output of the Type as it would be used in a DocBlock.
      */
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->fqsen === null) {
             return 'class-string';

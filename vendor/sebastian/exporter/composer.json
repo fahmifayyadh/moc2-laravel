@@ -32,11 +32,19 @@
     },
     "prefer-stable": true,
     "require": {
+<<<<<<< HEAD
         "php": ">=7.0",
         "sebastian/recursion-context": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.5",
+=======
+        "php": "^7.0",
+        "sebastian/recursion-context": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0",
+>>>>>>> parent of 31cfa1b1 (p)
         "ext-mbstring": "*"
     },
     "autoload": {

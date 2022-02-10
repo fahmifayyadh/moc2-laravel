@@ -68,6 +68,7 @@ class Configuration
     }
 
     /**
+<<<<<<< HEAD
      * Custom object formatters
      *
      * @var array
@@ -82,6 +83,8 @@ class Configuration
     protected $_defaultMatchers = array();
 
     /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Set boolean to allow/prevent mocking of non-existent methods
      *
      * @param bool $flag
@@ -225,6 +228,7 @@ class Configuration
     {
         return $this->_reflectionCacheEnabled;
     }
+<<<<<<< HEAD
 
     public function setObjectFormatter($class, $formatterCallback)
     {
@@ -280,4 +284,6 @@ class Configuration
         }
         return null;
     }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

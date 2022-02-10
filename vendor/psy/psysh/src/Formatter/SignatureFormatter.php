@@ -31,7 +31,11 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return string Formatted signature
      */
+<<<<<<< HEAD
     public static function format(\Reflector $reflector): string
+=======
+    public static function format(\Reflector $reflector)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         switch (true) {
             case $reflector instanceof \ReflectionFunction:
@@ -56,7 +60,11 @@ class SignatureFormatter implements ReflectorFormatter
                 return self::formatConstant($reflector);
 
             default:
+<<<<<<< HEAD
                 throw new \InvalidArgumentException('Unexpected Reflector class: '.\get_class($reflector));
+=======
+                throw new \InvalidArgumentException('Unexpected Reflector class: ' . \get_class($reflector));
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -67,7 +75,11 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return string Formatted name
      */
+<<<<<<< HEAD
     public static function formatName(\Reflector $reflector): string
+=======
+    public static function formatName(\Reflector $reflector)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $reflector->getName();
     }
@@ -79,8 +91,21 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return string Formatted modifiers
      */
+<<<<<<< HEAD
     private static function formatModifiers(\Reflector $reflector): string
     {
+=======
+    private static function formatModifiers(\Reflector $reflector)
+    {
+        if ($reflector instanceof \ReflectionClass && $reflector->isTrait()) {
+            // For some reason, PHP 5.x returns `abstract public` modifiers for
+            // traits. Let's just ignore that business entirely.
+            if (\version_compare(PHP_VERSION, '7.0.0', '<')) {
+                return '';
+            }
+        }
+
+>>>>>>> parent of 31cfa1b1 (p)
         return \implode(' ', \array_map(function ($modifier) {
             return \sprintf('<keyword>%s</keyword>', $modifier);
         }, \Reflection::getModifierNames($reflector->getModifiers())));
@@ -93,7 +118,11 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return string Formatted signature
      */
+<<<<<<< HEAD
     private static function formatClass(\ReflectionClass $reflector): string
+=======
+    private static function formatClass(\ReflectionClass $reflector)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $chunks = [];
 
@@ -134,7 +163,11 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return string Formatted signature
      */
+<<<<<<< HEAD
     private static function formatClassConstant($reflector): string
+=======
+    private static function formatClassConstant($reflector)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $value = $reflector->getValue();
         $style = self::getTypeStyle($value);
@@ -155,7 +188,11 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return string Formatted signature
      */
+<<<<<<< HEAD
     private static function formatConstant(ReflectionConstant_ $reflector): string
+=======
+    private static function formatConstant($reflector)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $value = $reflector->getValue();
         $style = self::getTypeStyle($value);
@@ -176,13 +213,21 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return string
      */
+<<<<<<< HEAD
     private static function getTypeStyle($value): string
+=======
+    private static function getTypeStyle($value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (\is_int($value) || \is_float($value)) {
             return 'number';
         } elseif (\is_string($value)) {
             return 'string';
+<<<<<<< HEAD
         } elseif (\is_bool($value) || $value === null) {
+=======
+        } elseif (\is_bool($value) || \is_null($value)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return 'bool';
         } else {
             return 'strong'; // @codeCoverageIgnore
@@ -196,7 +241,11 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return string Formatted signature
      */
+<<<<<<< HEAD
     private static function formatProperty(\ReflectionProperty $reflector): string
+=======
+    private static function formatProperty(\ReflectionProperty $reflector)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \sprintf(
             '%s <strong>$%s</strong>',
@@ -212,6 +261,7 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return string Formatted signature
      */
+<<<<<<< HEAD
     private static function formatFunction(\ReflectionFunctionAbstract $reflector): string
     {
         return \sprintf(
@@ -220,10 +270,20 @@ class SignatureFormatter implements ReflectorFormatter
             self::formatName($reflector),
             \implode(', ', self::formatFunctionParams($reflector)),
             self::formatFunctionReturnType($reflector)
+=======
+    private static function formatFunction(\ReflectionFunctionAbstract $reflector)
+    {
+        return \sprintf(
+            '<keyword>function</keyword> %s<function>%s</function>(%s)',
+            $reflector->returnsReference() ? '&' : '',
+            self::formatName($reflector),
+            \implode(', ', self::formatFunctionParams($reflector))
+>>>>>>> parent of 31cfa1b1 (p)
         );
     }
 
     /**
+<<<<<<< HEAD
      * Format a function signature's return type (if available).
      *
      * @param \ReflectionFunctionAbstract $reflector
@@ -240,13 +300,19 @@ class SignatureFormatter implements ReflectorFormatter
     }
 
     /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Format a method signature.
      *
      * @param \ReflectionMethod $reflector
      *
      * @return string Formatted signature
      */
+<<<<<<< HEAD
     private static function formatMethod(\ReflectionMethod $reflector): string
+=======
+    private static function formatMethod(\ReflectionMethod $reflector)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return \sprintf(
             '%s %s',
@@ -262,12 +328,17 @@ class SignatureFormatter implements ReflectorFormatter
      *
      * @return array
      */
+<<<<<<< HEAD
     private static function formatFunctionParams(\ReflectionFunctionAbstract $reflector): array
+=======
+    private static function formatFunctionParams(\ReflectionFunctionAbstract $reflector)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $params = [];
         foreach ($reflector->getParameters() as $param) {
             $hint = '';
             try {
+<<<<<<< HEAD
                 if (\method_exists($param, 'getType')) {
                     $hint = self::formatReflectionType($param->getType());
                 } else {
@@ -278,6 +349,14 @@ class SignatureFormatter implements ReflectorFormatter
                     }
                 }
             } catch (\Throwable $e) {
+=======
+                if ($param->isArray()) {
+                    $hint = '<keyword>array</keyword> ';
+                } elseif ($class = $param->getClass()) {
+                    $hint = \sprintf('<class>%s</class> ', $class->getName());
+                }
+            } catch (\Exception $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 // sometimes we just don't know...
                 // bad class names, or autoloaded classes that haven't been loaded yet, or whathaveyou.
                 // come to think of it, the only time I've seen this is with the intl extension.
@@ -285,22 +364,39 @@ class SignatureFormatter implements ReflectorFormatter
                 // Hax: we'll try to extract it :P
 
                 // @codeCoverageIgnoreStart
+<<<<<<< HEAD
                 $chunks = \explode('$'.$param->getName(), (string) $param);
                 $chunks = \explode(' ', \trim($chunks[0]));
                 $guess = \end($chunks);
 
                 $hint = \sprintf('<urgent>%s</urgent>', OutputFormatter::escape($guess));
+=======
+                $chunks = \explode('$' . $param->getName(), (string) $param);
+                $chunks = \explode(' ', \trim($chunks[0]));
+                $guess  = \end($chunks);
+
+                $hint = \sprintf('<urgent>%s</urgent> ', $guess);
+>>>>>>> parent of 31cfa1b1 (p)
                 // @codeCoverageIgnoreEnd
             }
 
             if ($param->isOptional()) {
                 if (!$param->isDefaultValueAvailable()) {
+<<<<<<< HEAD
                     $value = 'unknown';
                     $typeStyle = 'urgent';
                 } else {
                     $value = $param->getDefaultValue();
                     $typeStyle = self::getTypeStyle($value);
                     $value = \is_array($value) ? '[]' : ($value === null ? 'null' : \var_export($value, true));
+=======
+                    $value     = 'unknown';
+                    $typeStyle = 'urgent';
+                } else {
+                    $value     = $param->getDefaultValue();
+                    $typeStyle = self::getTypeStyle($value);
+                    $value     = \is_array($value) ? '[]' : (\is_null($value) ? 'null' : \var_export($value, true));
+>>>>>>> parent of 31cfa1b1 (p)
                 }
                 $default = \sprintf(' = <%s>%s</%s>', $typeStyle, OutputFormatter::escape($value), $typeStyle);
             } else {
@@ -308,10 +404,16 @@ class SignatureFormatter implements ReflectorFormatter
             }
 
             $params[] = \sprintf(
+<<<<<<< HEAD
                 '%s%s%s<strong>$%s</strong>%s',
                 $param->isPassedByReference() ? '&' : '',
                 $hint,
                 $hint !== '' ? ' ' : '',
+=======
+                '%s%s<strong>$%s</strong>%s',
+                $param->isPassedByReference() ? '&' : '',
+                $hint,
+>>>>>>> parent of 31cfa1b1 (p)
                 $param->getName(),
                 $default
             );
@@ -319,6 +421,7 @@ class SignatureFormatter implements ReflectorFormatter
 
         return $params;
     }
+<<<<<<< HEAD
 
     /**
      * Print function param or return type(s).
@@ -348,4 +451,6 @@ class SignatureFormatter implements ReflectorFormatter
 
         return \implode('|', $formattedTypes);
     }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

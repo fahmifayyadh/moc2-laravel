@@ -34,7 +34,11 @@ class FileProfilerStorage implements ProfilerStorageInterface
      */
     public function __construct(string $dsn)
     {
+<<<<<<< HEAD
         if (!str_starts_with($dsn, 'file:')) {
+=======
+        if (0 !== strpos($dsn, 'file:')) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new \RuntimeException(sprintf('Please check your configuration. You are trying to use FileStorage with an invalid dsn "%s". The expected format is "file:/path/to/the/storage/folder".', $dsn));
         }
         $this->folder = substr($dsn, 5);
@@ -61,10 +65,17 @@ class FileProfilerStorage implements ProfilerStorageInterface
         $result = [];
         while (\count($result) < $limit && $line = $this->readLineFromFile($file)) {
             $values = str_getcsv($line);
+<<<<<<< HEAD
             [$csvToken, $csvIp, $csvMethod, $csvUrl, $csvTime, $csvParent, $csvStatusCode] = $values;
             $csvTime = (int) $csvTime;
 
             if ($ip && !str_contains($csvIp, $ip) || $url && !str_contains($csvUrl, $url) || $method && !str_contains($csvMethod, $method) || $statusCode && !str_contains($csvStatusCode, $statusCode)) {
+=======
+            list($csvToken, $csvIp, $csvMethod, $csvUrl, $csvTime, $csvParent, $csvStatusCode) = $values;
+            $csvTime = (int) $csvTime;
+
+            if ($ip && false === strpos($csvIp, $ip) || $url && false === strpos($csvUrl, $url) || $method && false === strpos($csvMethod, $method) || $statusCode && false === strpos($csvStatusCode, $statusCode)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 continue;
             }
 

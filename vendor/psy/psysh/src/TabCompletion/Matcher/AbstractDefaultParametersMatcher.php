@@ -18,7 +18,11 @@ abstract class AbstractDefaultParametersMatcher extends AbstractContextAwareMatc
      *
      * @return array
      */
+<<<<<<< HEAD
     public function getDefaultParameterCompletion(array $reflectionParameters): array
+=======
+    public function getDefaultParameterCompletion(array $reflectionParameters)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $parametersProcessed = [];
 
@@ -36,7 +40,11 @@ abstract class AbstractDefaultParametersMatcher extends AbstractContextAwareMatc
             return [];
         }
 
+<<<<<<< HEAD
         return [\implode(', ', $parametersProcessed).')'];
+=======
+        return [\implode(', ', $parametersProcessed) . ')'];
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -48,7 +56,11 @@ abstract class AbstractDefaultParametersMatcher extends AbstractContextAwareMatc
      *
      * @return string
      */
+<<<<<<< HEAD
     private function valueToShortString($value): string
+=======
+    private function valueToShortString($value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!\is_array($value)) {
             return \json_encode($value);
@@ -62,7 +74,11 @@ abstract class AbstractDefaultParametersMatcher extends AbstractContextAwareMatc
         foreach ($value as $key => $item) {
             $allSequential = $allSequential && \is_numeric($key) && $key === \count($chunksSequential);
 
+<<<<<<< HEAD
             $keyString = $this->valueToShortString($key);
+=======
+            $keyString  = $this->valueToShortString($key);
+>>>>>>> parent of 31cfa1b1 (p)
             $itemString = $this->valueToShortString($item);
 
             $chunks[] = "{$keyString} => {$itemString}";
@@ -71,6 +87,10 @@ abstract class AbstractDefaultParametersMatcher extends AbstractContextAwareMatc
 
         $chunksToImplode = $allSequential ? $chunksSequential : $chunks;
 
+<<<<<<< HEAD
         return '['.\implode(', ', $chunksToImplode).']';
+=======
+        return '[' . \implode(', ', $chunksToImplode) . ']';
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

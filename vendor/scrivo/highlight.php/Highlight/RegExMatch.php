@@ -59,7 +59,10 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function getIterator()
     {
         return new \ArrayIterator($this->data);
@@ -68,7 +71,10 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetExists($offset)
     {
         return isset($this->data[$offset]);
@@ -77,7 +83,10 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetGet($offset)
     {
         return $this->data[$offset];
@@ -86,7 +95,10 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetSet($offset, $value)
     {
         throw new \LogicException(__CLASS__ . ' instances are read-only.');
@@ -95,7 +107,10 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function offsetUnset($offset)
     {
         throw new \LogicException(__CLASS__ . ' instances are read-only.');
@@ -106,7 +121,10 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
      *
      * @return int
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function count()
     {
         return count($this->data);

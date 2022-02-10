@@ -9,8 +9,11 @@
  */
 namespace PHPUnit\Util\PHP;
 
+<<<<<<< HEAD
 use const PHP_MAJOR_VERSION;
 use function tmpfile;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Exception;
 
 /**
@@ -22,11 +25,15 @@ final class WindowsPhpProcess extends DefaultPhpProcess
 {
     public function getCommand(array $settings, string $file = null): string
     {
+<<<<<<< HEAD
         if (PHP_MAJOR_VERSION < 8) {
             return '"' . parent::getCommand($settings, $file) . '"';
         }
 
         return parent::getCommand($settings, $file);
+=======
+        return '"' . parent::getCommand($settings, $file) . '"';
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -34,7 +41,11 @@ final class WindowsPhpProcess extends DefaultPhpProcess
      */
     protected function getHandles(): array
     {
+<<<<<<< HEAD
         if (false === $stdout_handle = tmpfile()) {
+=======
+        if (false === $stdout_handle = \tmpfile()) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception(
                 'A temporary file could not be created; verify that your TEMP environment variable is writable'
             );

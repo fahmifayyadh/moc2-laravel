@@ -1,7 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 declare(strict_types=1);
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp\Psr7;
 
 final class Query
@@ -16,8 +19,15 @@ final class Query
      *
      * @param string   $str         Query string to parse
      * @param int|bool $urlEncoding How the query string is encoded
+<<<<<<< HEAD
      */
     public static function parse(string $str, $urlEncoding = true): array
+=======
+     *
+     * @return array
+     */
+    public static function parse($str, $urlEncoding = true)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $result = [];
 
@@ -27,16 +37,24 @@ final class Query
 
         if ($urlEncoding === true) {
             $decoder = function ($value) {
+<<<<<<< HEAD
                 return rawurldecode(str_replace('+', ' ', (string) $value));
+=======
+                return rawurldecode(str_replace('+', ' ', $value));
+>>>>>>> parent of 31cfa1b1 (p)
             };
         } elseif ($urlEncoding === PHP_QUERY_RFC3986) {
             $decoder = 'rawurldecode';
         } elseif ($urlEncoding === PHP_QUERY_RFC1738) {
             $decoder = 'urldecode';
         } else {
+<<<<<<< HEAD
             $decoder = function ($str) {
                 return $str;
             };
+=======
+            $decoder = function ($str) { return $str; };
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         foreach (explode('&', $str) as $kvp) {
@@ -67,17 +85,27 @@ final class Query
      * @param int|false $encoding Set to false to not encode, PHP_QUERY_RFC3986
      *                            to encode using RFC3986, or PHP_QUERY_RFC1738
      *                            to encode using RFC1738.
+<<<<<<< HEAD
      */
     public static function build(array $params, $encoding = PHP_QUERY_RFC3986): string
+=======
+     * @return string
+     */
+    public static function build(array $params, $encoding = PHP_QUERY_RFC3986)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$params) {
             return '';
         }
 
         if ($encoding === false) {
+<<<<<<< HEAD
             $encoder = function (string $str): string {
                 return $str;
             };
+=======
+            $encoder = function ($str) { return $str; };
+>>>>>>> parent of 31cfa1b1 (p)
         } elseif ($encoding === PHP_QUERY_RFC3986) {
             $encoder = 'rawurlencode';
         } elseif ($encoding === PHP_QUERY_RFC1738) {
@@ -88,20 +116,33 @@ final class Query
 
         $qs = '';
         foreach ($params as $k => $v) {
+<<<<<<< HEAD
             $k = $encoder((string) $k);
             if (!is_array($v)) {
                 $qs .= $k;
                 $v = is_bool($v) ? (int) $v : $v;
                 if ($v !== null) {
                     $qs .= '=' . $encoder((string) $v);
+=======
+            $k = $encoder($k);
+            if (!is_array($v)) {
+                $qs .= $k;
+                if ($v !== null) {
+                    $qs .= '=' . $encoder($v);
+>>>>>>> parent of 31cfa1b1 (p)
                 }
                 $qs .= '&';
             } else {
                 foreach ($v as $vv) {
                     $qs .= $k;
+<<<<<<< HEAD
                     $vv = is_bool($vv) ? (int) $vv : $vv;
                     if ($vv !== null) {
                         $qs .= '=' . $encoder((string) $vv);
+=======
+                    if ($vv !== null) {
+                        $qs .= '=' . $encoder($vv);
+>>>>>>> parent of 31cfa1b1 (p)
                     }
                     $qs .= '&';
                 }

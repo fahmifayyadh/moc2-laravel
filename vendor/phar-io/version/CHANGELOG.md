@@ -2,6 +2,7 @@
 
 All notable changes to phar-io/version are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [3.1.1] - 2022-02-07
 
 ### Fixed
@@ -78,13 +79,19 @@ retrieve it as given.
 - The technically invalid format using 'v' prefix ("v1.2.3") is now properly supported 
 
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 ## [2.0.1] - 08.07.2018
 
 ### Fixed
 
 - Versions without a pre-release suffix are now always considered greater 
+<<<<<<< HEAD
 than versions with a pre-release suffix. Example: `3.0.0 > 3.0.0-alpha.1`  
 
+=======
+than versions without a pre-release suffix. Example: `3.0.0 > 3.0.0-alpha.1`  
+>>>>>>> parent of 31cfa1b1 (p)
 
 ## [2.0.0] - 23.06.2018
 
@@ -117,6 +124,7 @@ Changes to public API:
 - [#10](https://github.com/phar-io/version/issues/10): Version numbers containing 
 a numeric suffix as seen in Debian packages are now supported.  
 
+<<<<<<< HEAD
 
 [3.1.0]: https://github.com/phar-io/version/compare/3.0.4...3.1.0
 [3.0.4]: https://github.com/phar-io/version/compare/3.0.3...3.0.4
@@ -124,5 +132,7 @@ a numeric suffix as seen in Debian packages are now supported.
 [3.0.2]: https://github.com/phar-io/version/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/phar-io/version/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/phar-io/version/compare/2.0.1...3.0.0
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 [2.0.1]: https://github.com/phar-io/version/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/phar-io/version/compare/1.0.1...2.0.0

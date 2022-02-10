@@ -34,7 +34,11 @@ class Ssi extends AbstractSurrogate
      */
     public function addSurrogateControl(Response $response)
     {
+<<<<<<< HEAD
         if (str_contains($response->getContent(), '<!--#include')) {
+=======
+        if (false !== strpos($response->getContent(), '<!--#include')) {
+>>>>>>> parent of 31cfa1b1 (p)
             $response->headers->set('Surrogate-Control', 'content="SSI/1.0"');
         }
     }

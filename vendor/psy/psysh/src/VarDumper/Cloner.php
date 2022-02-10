@@ -12,7 +12,10 @@
 namespace Psy\VarDumper;
 
 use Symfony\Component\VarDumper\Caster\Caster;
+<<<<<<< HEAD
 use Symfony\Component\VarDumper\Cloner\Data;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Symfony\Component\VarDumper\Cloner\Stub;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 
@@ -26,7 +29,11 @@ class Cloner extends VarCloner
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function cloneVar($var, $filter = 0): Data
+=======
+    public function cloneVar($var, $filter = 0)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->filter = $filter;
 
@@ -36,7 +43,11 @@ class Cloner extends VarCloner
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     protected function castResource(Stub $stub, $isNested): array
+=======
+    protected function castResource(Stub $stub, $isNested)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return Caster::EXCLUDE_VERBOSE & $this->filter ? [] : parent::castResource($stub, $isNested);
     }

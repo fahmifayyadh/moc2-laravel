@@ -128,9 +128,12 @@ class NodeDumper
         if ($flags & Class_::MODIFIER_FINAL) {
             $strs[] = 'MODIFIER_FINAL';
         }
+<<<<<<< HEAD
         if ($flags & Class_::MODIFIER_READONLY) {
             $strs[] = 'MODIFIER_READONLY';
         }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($strs) {
             return implode(' | ', $strs) . ' (' . $flags . ')';

@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Runner;
 
+<<<<<<< HEAD
 use function array_intersect;
 use function array_map;
 use function array_merge;
@@ -23,6 +24,8 @@ use function shuffle;
 use function strpos;
 use function substr;
 use function usort;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\DataProviderTestSuite;
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestCase;
@@ -60,7 +63,11 @@ final class TestSuiteSorter
     public const ORDER_DURATION = 4;
 
     /**
+<<<<<<< HEAD
      * Order tests by @size annotation 'small', 'medium', 'large'.
+=======
+     * Order tests by @size annotation 'small', 'medium', 'large'
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @var int
      */
@@ -118,8 +125,13 @@ final class TestSuiteSorter
         if ($test instanceof TestCase) {
             $testName = $test->getName(true);
 
+<<<<<<< HEAD
             if (strpos($testName, '::') === false) {
                 $testName = get_class($test) . '::' . $testName;
+=======
+            if (\strpos($testName, '::') === false) {
+                $testName = \get_class($test) . '::' . $testName;
+>>>>>>> parent of 31cfa1b1 (p)
             }
 
             return $testName;
@@ -134,8 +146,13 @@ final class TestSuiteSorter
     }
 
     /**
+<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws Exception
+=======
+     * @throws Exception
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function reorderTestsInSuite(Test $suite, int $order, bool $resolveDependencies, int $orderDefects, bool $isRootTestSuite = true): void
     {
@@ -147,7 +164,11 @@ final class TestSuiteSorter
             self::ORDER_SIZE,
         ];
 
+<<<<<<< HEAD
         if (!in_array($order, $allowedOrders, true)) {
+=======
+        if (!\in_array($order, $allowedOrders, true)) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception(
                 '$order must be one of TestSuiteSorter::ORDER_[DEFAULT|REVERSED|RANDOMIZED|DURATION|SIZE]'
             );
@@ -158,7 +179,11 @@ final class TestSuiteSorter
             self::ORDER_DEFECTS_FIRST,
         ];
 
+<<<<<<< HEAD
         if (!in_array($orderDefects, $allowedOrderDefects, true)) {
+=======
+        if (!\in_array($orderDefects, $allowedOrderDefects, true)) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new Exception(
                 '$orderDefects must be one of TestSuiteSorter::ORDER_DEFAULT, TestSuiteSorter::ORDER_DEFECTS_FIRST'
             );
@@ -234,8 +259,13 @@ final class TestSuiteSorter
             $testname = self::getTestSorterUID($test);
 
             if (!isset($this->defectSortOrder[$testname])) {
+<<<<<<< HEAD
                 $this->defectSortOrder[$testname] = self::DEFECT_SORT_WEIGHT[$this->cache->getState($testname)];
                 $max                              = max($max, $this->defectSortOrder[$testname]);
+=======
+                $this->defectSortOrder[$testname]        = self::DEFECT_SORT_WEIGHT[$this->cache->getState($testname)];
+                $max                                     = \max($max, $this->defectSortOrder[$testname]);
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 
@@ -244,10 +274,16 @@ final class TestSuiteSorter
 
     private function suiteOnlyContainsTests(TestSuite $suite): bool
     {
+<<<<<<< HEAD
         return array_reduce(
             $suite->tests(),
             static function ($carry, $test)
             {
+=======
+        return \array_reduce(
+            $suite->tests(),
+            static function ($carry, $test) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return $carry && ($test instanceof TestCase || $test instanceof DataProviderTestSuite);
             },
             true
@@ -256,25 +292,41 @@ final class TestSuiteSorter
 
     private function reverse(array $tests): array
     {
+<<<<<<< HEAD
         return array_reverse($tests);
+=======
+        return \array_reverse($tests);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     private function randomize(array $tests): array
     {
+<<<<<<< HEAD
         shuffle($tests);
+=======
+        \shuffle($tests);
+>>>>>>> parent of 31cfa1b1 (p)
 
         return $tests;
     }
 
     private function sortDefectsFirst(array $tests): array
     {
+<<<<<<< HEAD
         usort(
+=======
+        \usort(
+>>>>>>> parent of 31cfa1b1 (p)
             $tests,
             /**
              * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
              */
+<<<<<<< HEAD
             function ($left, $right)
             {
+=======
+            function ($left, $right) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return $this->cmpDefectPriorityAndTime($left, $right);
             }
         );
@@ -284,13 +336,21 @@ final class TestSuiteSorter
 
     private function sortByDuration(array $tests): array
     {
+<<<<<<< HEAD
         usort(
+=======
+        \usort(
+>>>>>>> parent of 31cfa1b1 (p)
             $tests,
             /**
              * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
              */
+<<<<<<< HEAD
             function ($left, $right)
             {
+=======
+            function ($left, $right) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return $this->cmpDuration($left, $right);
             }
         );
@@ -300,13 +360,21 @@ final class TestSuiteSorter
 
     private function sortBySize(array $tests): array
     {
+<<<<<<< HEAD
         usort(
+=======
+        \usort(
+>>>>>>> parent of 31cfa1b1 (p)
             $tests,
             /**
              * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
              */
+<<<<<<< HEAD
             function ($left, $right)
             {
+=======
+            function ($left, $right) {
+>>>>>>> parent of 31cfa1b1 (p)
                 return $this->cmpSize($left, $right);
             }
         );
@@ -318,7 +386,11 @@ final class TestSuiteSorter
      * Comparator callback function to sort tests for "reach failure as fast as possible":
      * 1. sort tests by defect weight defined in self::DEFECT_SORT_WEIGHT
      * 2. when tests are equally defective, sort the fastest to the front
+<<<<<<< HEAD
      * 3. do not reorder successful tests.
+=======
+     * 3. do not reorder successful tests
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
@@ -351,7 +423,11 @@ final class TestSuiteSorter
     }
 
     /**
+<<<<<<< HEAD
      * Compares test size for sorting tests small->medium->large->unknown.
+=======
+     * Compares test size for sorting tests small->medium->large->unknown
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function cmpSize(Test $a, Test $b): int
     {
@@ -386,26 +462,45 @@ final class TestSuiteSorter
         $i            = 0;
 
         do {
+<<<<<<< HEAD
             $todoNames = array_map(
                 /**
                  * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
                  */
                 static function ($test)
                 {
+=======
+            $todoNames = \array_map(
+                /**
+                 * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+                 */
+                static function ($test) {
+>>>>>>> parent of 31cfa1b1 (p)
                     return self::getTestSorterUID($test);
                 },
                 $tests
             );
 
+<<<<<<< HEAD
             if (!$tests[$i]->hasDependencies() || empty(array_intersect($this->getNormalizedDependencyNames($tests[$i]), $todoNames))) {
                 $newTestOrder = array_merge($newTestOrder, array_splice($tests, $i, 1));
+=======
+            if (!$tests[$i]->hasDependencies() || empty(\array_intersect($this->getNormalizedDependencyNames($tests[$i]), $todoNames))) {
+                $newTestOrder = \array_merge($newTestOrder, \array_splice($tests, $i, 1));
+>>>>>>> parent of 31cfa1b1 (p)
                 $i            = 0;
             } else {
                 $i++;
             }
+<<<<<<< HEAD
         } while (!empty($tests) && ($i < count($tests)));
 
         return array_merge($newTestOrder, $tests);
+=======
+        } while (!empty($tests) && ($i < \count($tests)));
+
+        return \array_merge($newTestOrder, $tests);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -416,6 +511,7 @@ final class TestSuiteSorter
     private function getNormalizedDependencyNames($test): array
     {
         if ($test instanceof DataProviderTestSuite) {
+<<<<<<< HEAD
             $testClass = substr($test->getName(), 0, strpos($test->getName(), '::'));
         } else {
             $testClass = get_class($test);
@@ -425,6 +521,16 @@ final class TestSuiteSorter
             static function ($name) use ($testClass)
             {
                 return strpos($name, '::') === false ? $testClass . '::' . $name : $name;
+=======
+            $testClass = \substr($test->getName(), 0, \strpos($test->getName(), '::'));
+        } else {
+            $testClass = \get_class($test);
+        }
+
+        $names = \array_map(
+            static function ($name) use ($testClass) {
+                return \strpos($name, '::') === false ? $testClass . '::' . $name : $name;
+>>>>>>> parent of 31cfa1b1 (p)
             },
             $test->getDependencies()
         );
@@ -444,7 +550,11 @@ final class TestSuiteSorter
                 if (!($test instanceof TestSuite)) {
                     $tests[] = self::getTestSorterUID($test);
                 } else {
+<<<<<<< HEAD
                     $tests = array_merge($tests, $this->calculateTestExecutionOrder($test));
+=======
+                    $tests = \array_merge($tests, $this->calculateTestExecutionOrder($test));
+>>>>>>> parent of 31cfa1b1 (p)
                 }
             }
         }

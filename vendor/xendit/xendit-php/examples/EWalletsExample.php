@@ -11,11 +11,21 @@
  * @link     https://api.xendit.co
  */
 
+<<<<<<< HEAD
+=======
+use Dotenv\Dotenv;
+>>>>>>> parent of 31cfa1b1 (p)
 use Xendit\Xendit;
 
 require 'vendor/autoload.php';
 
+<<<<<<< HEAD
 Xendit::setApiKey('SECRET_API_KEY');
+=======
+$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
+Xendit::setApiKey(getenv('SECRET_API_KEY'));
+>>>>>>> parent of 31cfa1b1 (p)
 
 $ovoParams = [
     'external_id' => 'demo-' . time(),
@@ -28,7 +38,11 @@ $danaParams = [
     'external_id' => 'demo_' . time(),
     'amount' => 32000,
     'phone' => '081298498259',
+<<<<<<< HEAD
     'expiration_date' => '2100-02-20T00:00:00.000Z',
+=======
+    'expiration_date' => '2020-02-20T00:00:00.000Z',
+>>>>>>> parent of 31cfa1b1 (p)
     'callback_url' => 'https://my-shop.com/callbacks',
     'redirect_url' => 'https://my-shop.com/home',
     'ewallet_type' => 'DANA'
@@ -57,6 +71,7 @@ $linkajaParams = [
     'ewallet_type' => 'LINKAJA'
 ];
 
+<<<<<<< HEAD
 $ewalletChargeParams = [
     'reference_id' => 'test-reference-id',
     'currency' => 'IDR',
@@ -71,6 +86,8 @@ $ewalletChargeParams = [
     ]
 ];
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 try {
     $createOvo = \Xendit\EWallets::create($ovoParams);
     var_dump($createOvo);
@@ -95,6 +112,7 @@ $getLinkaja = \Xendit\EWallets::getPaymentStatus(
     'LINKAJA'
 );
 var_dump($getLinkaja);
+<<<<<<< HEAD
 
 echo "Creating E-Wallet Charge...\n";
 $createEWalletCharge = \Xendit\EWallets::createEWalletCharge($ewalletChargeParams);
@@ -143,3 +161,5 @@ $listRefund = \Xendit\EWallets::listRefund(
     $listRefundParam
     );
 var_dump($listRefund);
+=======
+>>>>>>> parent of 31cfa1b1 (p)

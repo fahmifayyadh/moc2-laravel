@@ -9,9 +9,12 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
 use function call_user_func;
 use function class_exists;
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
@@ -41,10 +44,17 @@ final class MockClass implements MockType
 
     public function generate(): string
     {
+<<<<<<< HEAD
         if (!class_exists($this->mockName, false)) {
             eval($this->classCode);
 
             call_user_func(
+=======
+        if (!\class_exists($this->mockName, false)) {
+            eval($this->classCode);
+
+            \call_user_func(
+>>>>>>> parent of 31cfa1b1 (p)
                 [
                     $this->mockName,
                     '__phpunit_initConfigurableMethods',

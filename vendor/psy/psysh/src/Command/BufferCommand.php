@@ -68,7 +68,11 @@ HELP
      *
      * @return array Formatted strings
      */
+<<<<<<< HEAD
     protected function formatLines(array $lines, string $type = 'return'): array
+=======
+    protected function formatLines(array $lines, $type = 'return')
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $template = \sprintf('<%s>%%s</%s>', $type, $type);
 

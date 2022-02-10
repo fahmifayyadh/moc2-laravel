@@ -36,7 +36,11 @@ final class Nullable implements Type
     /**
      * Provide access to the actual type directly, if needed.
      */
+<<<<<<< HEAD
     public function getActualType(): Type
+=======
+    public function getActualType() : Type
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->realType;
     }
@@ -44,7 +48,11 @@ final class Nullable implements Type
     /**
      * Returns a rendered output of the Type as it would be used in a DocBlock.
      */
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return '?' . $this->realType->__toString();
     }

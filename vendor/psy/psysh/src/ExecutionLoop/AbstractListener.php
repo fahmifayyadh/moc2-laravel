@@ -35,14 +35,22 @@ abstract class AbstractListener implements Listener
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function onInput(Shell $shell, string $input)
+=======
+    public function onInput(Shell $shell, $input)
+>>>>>>> parent of 31cfa1b1 (p)
     {
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function onExecute(Shell $shell, string $code)
+=======
+    public function onExecute(Shell $shell, $code)
+>>>>>>> parent of 31cfa1b1 (p)
     {
     }
 

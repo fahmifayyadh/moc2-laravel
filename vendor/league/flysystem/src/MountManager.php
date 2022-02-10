@@ -20,6 +20,11 @@ use League\Flysystem\Plugin\PluginNotFoundException;
  * @method void assertPresent($path)
  * @method void assertAbsent($path)
  * @method Filesystem addPlugin(PluginInterface $plugin)
+<<<<<<< HEAD
+=======
+ *
+ * @deprecated This functionality will be removed in 2.0
+>>>>>>> parent of 31cfa1b1 (p)
  */
 class MountManager implements FilesystemInterface
 {

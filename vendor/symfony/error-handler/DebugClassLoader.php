@@ -11,11 +11,17 @@
 
 namespace Symfony\Component\ErrorHandler;
 
+<<<<<<< HEAD
 use Composer\InstalledVersions;
 use Doctrine\Common\Persistence\Proxy as LegacyProxy;
 use Doctrine\Persistence\Proxy;
 use Mockery\MockInterface;
 use Phake\IMock;
+=======
+use Doctrine\Common\Persistence\Proxy as LegacyProxy;
+use Doctrine\Persistence\Proxy;
+use Mockery\MockInterface;
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\MockObject\Matcher\StatelessInvocation;
 use PHPUnit\Framework\MockObject\MockObject;
 use Prophecy\Prophecy\ProphecySubjectInterface;
@@ -69,11 +75,18 @@ class DebugClassLoader
         'string' => 'string',
         'self' => 'self',
         'parent' => 'parent',
+<<<<<<< HEAD
         'mixed' => 'mixed',
     ] + (\PHP_VERSION_ID >= 80000 ? [
         'static' => 'static',
         '$this' => 'static',
     ] : [
+=======
+    ] + (\PHP_VERSION_ID >= 80000 ? [
+        '$this' => 'static',
+    ] : [
+        'mixed' => 'mixed',
+>>>>>>> parent of 31cfa1b1 (p)
         'static' => 'object',
         '$this' => 'object',
     ]);
@@ -234,8 +247,13 @@ class DebugClassLoader
     public static function enable(): void
     {
         // Ensures we don't hit https://bugs.php.net/42098
+<<<<<<< HEAD
         class_exists(\Symfony\Component\ErrorHandler\ErrorHandler::class);
         class_exists(\Psr\Log\LogLevel::class);
+=======
+        class_exists('Symfony\Component\ErrorHandler\ErrorHandler');
+        class_exists('Psr\Log\LogLevel');
+>>>>>>> parent of 31cfa1b1 (p)
 
         if (!\is_array($functions = spl_autoload_functions())) {
             return;
@@ -311,7 +329,10 @@ class DebugClassLoader
                     && !is_subclass_of($symbols[$i], ProxyInterface::class)
                     && !is_subclass_of($symbols[$i], LegacyProxy::class)
                     && !is_subclass_of($symbols[$i], MockInterface::class)
+<<<<<<< HEAD
                     && !is_subclass_of($symbols[$i], IMock::class)
+=======
+>>>>>>> parent of 31cfa1b1 (p)
                 ) {
                     $loader->checkClass($symbols[$i]);
                 }
@@ -495,6 +516,7 @@ class DebugClassLoader
                         self::$method[$class] = self::$method[$use];
                     }
                 } elseif (!$refl->isInterface()) {
+<<<<<<< HEAD
                     if (!strncmp($vendor, str_replace('_', '\\', $use), $vendorLen)
                         && 0 === strpos($className, 'Symfony\\')
                         && (!class_exists(InstalledVersions::class)
@@ -507,6 +529,12 @@ class DebugClassLoader
                     $hasStaticCall = $refl->hasMethod('__callStatic');
                     foreach (self::$method[$use] as $method) {
                         [$interface, $name, $static, $description] = $method;
+=======
+                    $hasCall = $refl->hasMethod('__call');
+                    $hasStaticCall = $refl->hasMethod('__callStatic');
+                    foreach (self::$method[$use] as $method) {
+                        list($interface, $name, $static, $description) = $method;
+>>>>>>> parent of 31cfa1b1 (p)
                         if ($static ? $hasStaticCall : $hasCall) {
                             continue;
                         }
@@ -546,7 +574,11 @@ class DebugClassLoader
             if (null !== (self::INTERNAL_TYPES[$use] ?? null)) {
                 foreach (self::INTERNAL_TYPES[$use] as $method => $returnType) {
                     if ('void' !== $returnType) {
+<<<<<<< HEAD
                         self::$returnTypes[$class] += [$method => [$returnType, $returnType, $use, '']];
+=======
+                        self::$returnTypes[$class] += [$method => [$returnType, $returnType, $class, '']];
+>>>>>>> parent of 31cfa1b1 (p)
                     }
                 }
             }
@@ -568,12 +600,20 @@ class DebugClassLoader
             }
 
             if ($parent && isset(self::$finalMethods[$parent][$method->name])) {
+<<<<<<< HEAD
                 [$declaringClass, $message] = self::$finalMethods[$parent][$method->name];
+=======
+                list($declaringClass, $message) = self::$finalMethods[$parent][$method->name];
+>>>>>>> parent of 31cfa1b1 (p)
                 $deprecations[] = sprintf('The "%s::%s()" method is considered final%s. It may change without further notice as of its next major version. You should not extend it from "%s".', $declaringClass, $method->name, $message, $className);
             }
 
             if (isset(self::$internalMethods[$class][$method->name])) {
+<<<<<<< HEAD
                 [$declaringClass, $message] = self::$internalMethods[$class][$method->name];
+=======
+                list($declaringClass, $message) = self::$internalMethods[$class][$method->name];
+>>>>>>> parent of 31cfa1b1 (p)
                 if (strncmp($ns, $declaringClass, $len)) {
                     $deprecations[] = sprintf('The "%s::%s()" method is considered internal%s. It may change without further notice. You should not extend it from "%s".', $declaringClass, $method->name, $message, $className);
                 }
@@ -612,8 +652,13 @@ class DebugClassLoader
                 ;
             }
 
+<<<<<<< HEAD
             if (null !== ($returnType = self::$returnTypes[$class][$method->name] ?? self::MAGIC_METHODS[$method->name] ?? null) && !$method->hasReturnType() && !($doc && preg_match('/\n\s+\* @return +([^\s<(]+)/', $doc))) {
                 [$normalizedType, $returnType, $declaringClass, $declaringFile] = \is_string($returnType) ? [$returnType, $returnType, '', ''] : $returnType;
+=======
+            if (null !== ($returnType = self::$returnTypes[$class][$method->name] ?? self::MAGIC_METHODS[$method->name] ?? null) && !$method->hasReturnType() && !($doc && preg_match('/\n\s+\* @return +(\S+)/', $doc))) {
+                list($normalizedType, $returnType, $declaringClass, $declaringFile) = \is_string($returnType) ? [$returnType, $returnType, '', ''] : $returnType;
+>>>>>>> parent of 31cfa1b1 (p)
 
                 if ('void' === $normalizedType) {
                     $canAddReturnType = false;
@@ -623,7 +668,11 @@ class DebugClassLoader
                     $this->patchMethod($method, $returnType, $declaringFile, $normalizedType);
                 }
 
+<<<<<<< HEAD
                 if (false === strpos($doc, '* @deprecated') && strncmp($ns, $declaringClass, $len)) {
+=======
+                if (strncmp($ns, $declaringClass, $len)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     if ($canAddReturnType && 'docblock' === $this->patchTypes['force'] && false === strpos($method->getFileName(), \DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR)) {
                         $this->patchMethod($method, $returnType, $declaringFile, $normalizedType);
                     } elseif ('' !== $declaringClass && $this->patchTypes['deprecations']) {
@@ -640,7 +689,11 @@ class DebugClassLoader
 
             $matches = [];
 
+<<<<<<< HEAD
             if (!$method->hasReturnType() && ((false !== strpos($doc, '@return') && preg_match('/\n\s+\* @return +([^\s<(]+)/', $doc, $matches)) || 'void' !== (self::MAGIC_METHODS[$method->name] ?? 'void'))) {
+=======
+            if (!$method->hasReturnType() && ((false !== strpos($doc, '@return') && preg_match('/\n\s+\* @return +(\S+)/', $doc, $matches)) || 'void' !== (self::MAGIC_METHODS[$method->name] ?? 'void'))) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $matches = $matches ?: [1 => self::MAGIC_METHODS[$method->name]];
                 $this->setReturnType($matches[1], $method, $parent);
 
@@ -681,7 +734,11 @@ class DebugClassLoader
                     $definedParameters[$parameter->name] = true;
                 }
             }
+<<<<<<< HEAD
             foreach ($matches as [, $parameterType, $parameterName]) {
+=======
+            foreach ($matches as list(, $parameterType, $parameterName)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 if (!isset($definedParameters[$parameterName])) {
                     $parameterType = trim($parameterType);
                     self::$annotatedParameters[$class][$method->name][$parameterName] = sprintf('The "%%s::%s()" method will require a new "%s$%s" argument in the next major version of its %s "%s", not defining it is deprecated.', $method->name, $parameterType ? $parameterType.' ' : '', $parameterName, interface_exists($className) ? 'interface' : 'parent class', $className);
@@ -952,10 +1009,17 @@ class DebugClassLoader
                 continue;
             }
 
+<<<<<<< HEAD
             [$namespace, $useOffset, $useMap] = $useStatements[$file] ?? $useStatements[$file] = self::getUseStatements($file);
 
             if ('\\' !== $type[0]) {
                 [$declaringNamespace, , $declaringUseMap] = $useStatements[$declaringFile] ?? $useStatements[$declaringFile] = self::getUseStatements($declaringFile);
+=======
+            list($namespace, $useOffset, $useMap) = $useStatements[$file] ?? $useStatements[$file] = self::getUseStatements($file);
+
+            if ('\\' !== $type[0]) {
+                list($declaringNamespace, , $declaringUseMap) = $useStatements[$declaringFile] ?? $useStatements[$declaringFile] = self::getUseStatements($declaringFile);
+>>>>>>> parent of 31cfa1b1 (p)
 
                 $p = strpos($type, '\\', 1);
                 $alias = $p ? substr($type, 0, $p) : $type;

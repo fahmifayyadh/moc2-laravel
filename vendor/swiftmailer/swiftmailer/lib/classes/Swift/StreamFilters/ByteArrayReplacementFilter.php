@@ -49,11 +49,19 @@ class Swift_StreamFilters_ByteArrayReplacementFilter implements Swift_StreamFilt
         $last_size = $size = 0;
         foreach ($search as $i => $search_element) {
             if (null !== $tree) {
+<<<<<<< HEAD
                 $tree[-1] = min(\count($replace) - 1, $i - 1);
                 $tree[-2] = $last_size;
             }
             $tree = &$this->tree;
             if (\is_array($search_element)) {
+=======
+                $tree[-1] = min(count($replace) - 1, $i - 1);
+                $tree[-2] = $last_size;
+            }
+            $tree = &$this->tree;
+            if (is_array($search_element)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 foreach ($search_element as $k => $char) {
                     $this->index[$char] = true;
                     if (!isset($tree[$char])) {
@@ -74,19 +82,33 @@ class Swift_StreamFilters_ByteArrayReplacementFilter implements Swift_StreamFilt
             }
         }
         if (null !== $i) {
+<<<<<<< HEAD
             $tree[-1] = min(\count($replace) - 1, $i);
+=======
+            $tree[-1] = min(count($replace) - 1, $i);
+>>>>>>> parent of 31cfa1b1 (p)
             $tree[-2] = $last_size;
             $this->treeMaxLen = $size;
         }
         foreach ($replace as $rep) {
+<<<<<<< HEAD
             if (!\is_array($rep)) {
+=======
+            if (!is_array($rep)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $rep = [$rep];
             }
             $this->replace[] = $rep;
         }
+<<<<<<< HEAD
         for ($i = \count($this->replace) - 1; $i >= 0; --$i) {
             $this->replace[$i] = $rep = $this->filter($this->replace[$i], $i);
             $this->repSize[$i] = \count($rep);
+=======
+        for ($i = count($this->replace) - 1; $i >= 0; --$i) {
+            $this->replace[$i] = $rep = $this->filter($this->replace[$i], $i);
+            $this->repSize[$i] = count($rep);
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -119,7 +141,11 @@ class Swift_StreamFilters_ByteArrayReplacementFilter implements Swift_StreamFilt
         }
 
         $newBuffer = [];
+<<<<<<< HEAD
         $buf_size = \count($buffer);
+=======
+        $buf_size = count($buffer);
+>>>>>>> parent of 31cfa1b1 (p)
         $last_size = 0;
         for ($i = 0; $i < $buf_size; ++$i) {
             $search_pos = $this->tree;

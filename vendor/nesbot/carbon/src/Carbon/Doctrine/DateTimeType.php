@@ -6,11 +6,17 @@
  */
 namespace Carbon\Doctrine;
 
+<<<<<<< HEAD
 use Carbon\Carbon;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use Doctrine\DBAL\Types\VarDateTimeType;
 
 class DateTimeType extends VarDateTimeType implements CarbonDoctrineType
 {
+<<<<<<< HEAD
     /** @use CarbonTypeConverter<Carbon> */
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     use CarbonTypeConverter;
 }

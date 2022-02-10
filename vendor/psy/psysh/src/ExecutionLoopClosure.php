@@ -33,7 +33,11 @@ class ExecutionLoopClosure extends ExecutionClosure
             // Restore execution scope variables
             \extract($__psysh__->getScopeVariables(false));
 
+<<<<<<< HEAD
             while (true) {
+=======
+            do {
+>>>>>>> parent of 31cfa1b1 (p)
                 $__psysh__->beforeLoop();
 
                 try {
@@ -60,6 +64,16 @@ class ExecutionLoopClosure extends ExecutionClosure
                         }
 
                         throw $_e;
+<<<<<<< HEAD
+=======
+                    } catch (\Exception $_e) {
+                        // Clean up on our way out.
+                        if (\ob_get_level() > 0) {
+                            \ob_end_clean();
+                        }
+
+                        throw $_e;
+>>>>>>> parent of 31cfa1b1 (p)
                     } finally {
                         // Won't be needing this anymore
                         \restore_error_handler();
@@ -89,7 +103,11 @@ class ExecutionLoopClosure extends ExecutionClosure
                 }
 
                 $__psysh__->afterLoop();
+<<<<<<< HEAD
             }
+=======
+            } while (true);
+>>>>>>> parent of 31cfa1b1 (p)
         });
     }
 }

@@ -25,15 +25,22 @@ class PluralizationRules
     /**
      * Returns the plural position to use for the given locale and number.
      *
+<<<<<<< HEAD
      * @param float  $number The number
+=======
+     * @param int    $number The number
+>>>>>>> parent of 31cfa1b1 (p)
      * @param string $locale The locale
      *
      * @return int The plural position
      */
     public static function get($number, $locale/*, bool $triggerDeprecation = true*/)
     {
+<<<<<<< HEAD
         $number = abs($number);
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         if (3 > \func_num_args() || func_get_arg(2)) {
             @trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.2.', __CLASS__), \E_USER_DEPRECATED);
         }
@@ -43,7 +50,11 @@ class PluralizationRules
             $locale = 'xbr';
         }
 
+<<<<<<< HEAD
         if ('en_US_POSIX' !== $locale && \strlen($locale) > 3) {
+=======
+        if (\strlen($locale) > 3) {
+>>>>>>> parent of 31cfa1b1 (p)
             $locale = substr($locale, 0, -\strlen(strrchr($locale, '_')));
         }
 
@@ -88,7 +99,10 @@ class PluralizationRules
             case 'de':
             case 'el':
             case 'en':
+<<<<<<< HEAD
             case 'en_US_POSIX':
+=======
+>>>>>>> parent of 31cfa1b1 (p)
             case 'eo':
             case 'es':
             case 'et':
@@ -147,7 +161,11 @@ class PluralizationRules
             case 'xbr':
             case 'ti':
             case 'wa':
+<<<<<<< HEAD
                 return ($number < 2) ? 0 : 1;
+=======
+                return ((0 == $number) || (1 == $number)) ? 0 : 1;
+>>>>>>> parent of 31cfa1b1 (p)
 
             case 'be':
             case 'bs':

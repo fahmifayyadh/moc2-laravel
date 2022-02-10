@@ -28,7 +28,11 @@ class ConsoleEvent extends Event
     private $input;
     private $output;
 
+<<<<<<< HEAD
     public function __construct(?Command $command, InputInterface $input, OutputInterface $output)
+=======
+    public function __construct(Command $command = null, InputInterface $input, OutputInterface $output)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $this->command = $command;
         $this->input = $input;

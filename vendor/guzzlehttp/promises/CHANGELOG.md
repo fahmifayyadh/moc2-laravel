@@ -1,5 +1,6 @@
 # CHANGELOG
 
+<<<<<<< HEAD
 ## 1.5.1 - 2021-10-22
 
 ### Fixed
@@ -22,6 +23,8 @@
 ### Fixed
 
 - Fixed `each_limit` skipping promises and failing
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 
 ## 1.4.0 - 2020-09-30
 

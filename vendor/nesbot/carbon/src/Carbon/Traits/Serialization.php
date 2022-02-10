@@ -8,12 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
 namespace Carbon\Traits;
 
 use Carbon\Exceptions\InvalidFormatException;
 use ReturnTypeWillChange;
 use Throwable;
+=======
+namespace Carbon\Traits;
+
+use Carbon\Exceptions\InvalidFormatException;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Trait Serialization.
@@ -55,6 +61,7 @@ trait Serialization
      *
      * @var string|null
      */
+<<<<<<< HEAD
     protected $dumpLocale;
 
     /**
@@ -64,6 +71,9 @@ trait Serialization
      * @var array|null
      */
     protected $dumpDateProperties;
+=======
+    protected $dumpLocale = null;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Return a serialized string of the instance.
@@ -86,7 +96,11 @@ trait Serialization
      */
     public static function fromSerialized($value)
     {
+<<<<<<< HEAD
         $instance = @unserialize((string) $value);
+=======
+        $instance = @unserialize("$value");
+>>>>>>> parent of 31cfa1b1 (p)
 
         if (!$instance instanceof static) {
             throw new InvalidFormatException("Invalid serialized value: $value");
@@ -102,10 +116,16 @@ trait Serialization
      *
      * @return static
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
     public static function __set_state($dump)
     {
         if (\is_string($dump)) {
+=======
+    public static function __set_state($dump)
+    {
+        if (is_string($dump)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return static::parse($dump);
         }
 
@@ -124,7 +144,11 @@ trait Serialization
      */
     public function __sleep()
     {
+<<<<<<< HEAD
         $properties = $this->getSleepProperties();
+=======
+        $properties = $this->dumpProperties;
+>>>>>>> parent of 31cfa1b1 (p)
 
         if ($this->localTranslator ?? null) {
             $properties[] = 'dumpLocale';
@@ -136,6 +160,7 @@ trait Serialization
 
     /**
      * Set locale if specified on unserialize() called.
+<<<<<<< HEAD
      *
      * @return void
      */
@@ -152,6 +177,13 @@ trait Serialization
                 parent::__construct($date, unserialize($timezone));
             }
             // @codeCoverageIgnoreEnd
+=======
+     */
+    public function __wakeup()
+    {
+        if (get_parent_class() && method_exists(parent::class, '__wakeup')) {
+            parent::__wakeup();
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $this->constructedObjectId = spl_object_hash($this);
@@ -169,6 +201,7 @@ trait Serialization
      *
      * @return array|string
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
     public function jsonSerialize()
     {
@@ -178,6 +211,15 @@ trait Serialization
             return \is_string($serializer)
                 ? $this->rawFormat($serializer)
                 : $serializer($this);
+=======
+    public function jsonSerialize()
+    {
+        $serializer = $this->localSerializer ?? static::$serializer;
+        if ($serializer) {
+            return is_string($serializer)
+                ? $this->rawFormat($serializer)
+                : call_user_func($serializer, $this);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         return $this->toJSON();
@@ -215,6 +257,7 @@ trait Serialization
 
         return $this;
     }
+<<<<<<< HEAD
 
     private function getSleepProperties(): array
     {
@@ -237,4 +280,6 @@ trait Serialization
         return $properties;
         // @codeCoverageIgnoreEnd
     }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

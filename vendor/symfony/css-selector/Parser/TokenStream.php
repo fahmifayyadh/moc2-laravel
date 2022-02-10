@@ -118,7 +118,13 @@ class TokenStream
     }
 
     /**
+<<<<<<< HEAD
      * Returns next identifier token.
+=======
+     * Returns nex identifier token.
+     *
+     * @return string The identifier token value
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws SyntaxErrorException If next token is not an identifier
      */
@@ -134,7 +140,13 @@ class TokenStream
     }
 
     /**
+<<<<<<< HEAD
      * Returns next identifier or null if star delimiter token is found.
+=======
+     * Returns nex identifier or star delimiter token.
+     *
+     * @return string|null The identifier token value or null if star found
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @throws SyntaxErrorException If next token is not an identifier or a star delimiter
      */

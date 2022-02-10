@@ -120,7 +120,11 @@ class PusherBroadcaster extends Broadcaster
 
         throw new BroadcastException(
             ! empty($response['body'])
+<<<<<<< HEAD
                 ? sprintf('Pusher error: %s.', $response['body'])
+=======
+                ? sprintf('Pusher error: %s.', $response['status'])
+>>>>>>> parent of 31cfa1b1 (p)
                 : 'Failed to connect to Pusher.'
         );
     }

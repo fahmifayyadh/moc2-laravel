@@ -5,17 +5,26 @@ declare(strict_types=1);
 namespace Doctrine\Common\Lexer;
 
 use ReflectionClass;
+<<<<<<< HEAD
 
+=======
+use const PREG_SPLIT_DELIM_CAPTURE;
+use const PREG_SPLIT_NO_EMPTY;
+use const PREG_SPLIT_OFFSET_CAPTURE;
+>>>>>>> parent of 31cfa1b1 (p)
 use function implode;
 use function in_array;
 use function preg_split;
 use function sprintf;
 use function substr;
 
+<<<<<<< HEAD
 use const PREG_SPLIT_DELIM_CAPTURE;
 use const PREG_SPLIT_NO_EMPTY;
 use const PREG_SPLIT_OFFSET_CAPTURE;
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * Base class for writing simple lexers, i.e. for creating small DSLs.
  */
@@ -37,8 +46,12 @@ abstract class AbstractLexer
      *                 parameter, none)
      *  - 'position' : the position of the token in the input string
      *
+<<<<<<< HEAD
      * @var mixed[][]
      * @psalm-var list<array{value: string, type: string|int|null, position: int}>
+=======
+     * @var array
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $tokens = [];
 
@@ -59,23 +72,35 @@ abstract class AbstractLexer
     /**
      * The next token in the input.
      *
+<<<<<<< HEAD
      * @var mixed[]|null
      * @psalm-var array{value: string, type: string|int|null, position: int}|null
+=======
+     * @var array|null
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public $lookahead;
 
     /**
      * The last matched/seen token.
      *
+<<<<<<< HEAD
      * @var mixed[]|null
      * @psalm-var array{value: string, type: string|int|null, position: int}|null
+=======
+     * @var array|null
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public $token;
 
     /**
      * Composed regex for input parsing.
      *
+<<<<<<< HEAD
      * @var string|null
+=======
+     * @var string
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $regex;
 
@@ -160,7 +185,11 @@ abstract class AbstractLexer
     /**
      * Checks whether any of the given tokens matches the current lookahead.
      *
+<<<<<<< HEAD
      * @param string[] $tokens
+=======
+     * @param array $tokens
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return bool
      */
@@ -214,8 +243,12 @@ abstract class AbstractLexer
     /**
      * Moves the lookahead token forward.
      *
+<<<<<<< HEAD
      * @return mixed[]|null The next token or NULL if there are no more tokens ahead.
      * @psalm-return array{value: string, type: string|int|null, position: int}|null
+=======
+     * @return array|null The next token or NULL if there are no more tokens ahead.
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function peek()
     {
@@ -229,8 +262,12 @@ abstract class AbstractLexer
     /**
      * Peeks at the next token, returns it and immediately resets the peek.
      *
+<<<<<<< HEAD
      * @return mixed[]|null The next token or NULL if there are no more tokens ahead.
      * @psalm-return array{value: string, type: string|int|null, position: int}|null
+=======
+     * @return array|null The next token or NULL if there are no more tokens ahead.
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function glimpse()
     {
@@ -313,14 +350,22 @@ abstract class AbstractLexer
     /**
      * Lexical catchable patterns.
      *
+<<<<<<< HEAD
      * @return string[]
+=======
+     * @return array
+>>>>>>> parent of 31cfa1b1 (p)
      */
     abstract protected function getCatchablePatterns();
 
     /**
      * Lexical non-catchable patterns.
      *
+<<<<<<< HEAD
      * @return string[]
+=======
+     * @return array
+>>>>>>> parent of 31cfa1b1 (p)
      */
     abstract protected function getNonCatchablePatterns();
 

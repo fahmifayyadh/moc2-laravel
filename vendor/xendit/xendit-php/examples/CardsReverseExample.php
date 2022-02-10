@@ -11,11 +11,21 @@
  * @link     https://api.xendit.co
  */
 
+<<<<<<< HEAD
+=======
+use Dotenv\Dotenv;
+>>>>>>> parent of 31cfa1b1 (p)
 use Xendit\Xendit;
 
 require 'vendor/autoload.php';
 
+<<<<<<< HEAD
 Xendit::setApiKey('SECRET_API_KEY');
+=======
+$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
+Xendit::setApiKey(getenv('SECRET_API_KEY'));
+>>>>>>> parent of 31cfa1b1 (p)
 
 $params = [
     'token_id' => '5e3149b915faf8739dd96178',

@@ -16,7 +16,11 @@ class Transformations implements WordInflector
         $this->transformations = $transformations;
     }
 
+<<<<<<< HEAD
     public function inflect(string $word): string
+=======
+    public function inflect(string $word) : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         foreach ($this->transformations as $transformation) {
             if ($transformation->getPattern()->matches($word)) {

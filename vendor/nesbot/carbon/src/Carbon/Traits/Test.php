@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
 namespace Carbon\Traits;
 
@@ -18,6 +19,12 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use InvalidArgumentException;
 use Throwable;
+=======
+namespace Carbon\Traits;
+
+use Closure;
+use DateTimeImmutable;
+>>>>>>> parent of 31cfa1b1 (p)
 
 trait Test
 {
@@ -44,9 +51,12 @@ trait Test
      * Note the timezone parameter was left out of the examples above and
      * has no affect as the mock value will be returned regardless of its value.
      *
+<<<<<<< HEAD
      * Only the moment is mocked with setTestNow(), the timezone will still be the one passed
      * as parameter of date_default_timezone_get() as a fallback (see setTestNowAndTimezone()).
      *
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * To clear the test instance call this method using the default
      * parameter of null.
      *
@@ -60,6 +70,7 @@ trait Test
             $testNow = null;
         }
 
+<<<<<<< HEAD
         static::$testNow = \is_string($testNow) ? static::parse($testNow) : $testNow;
     }
 
@@ -96,6 +107,9 @@ trait Test
             $now = static::getMockedTestNow(\func_num_args() === 1 ? null : $tz);
             self::setDefaultTimezone($now->tzName, $now);
         }
+=======
+        static::$testNow = is_string($testNow) ? static::parse($testNow) : $testNow;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -105,18 +119,28 @@ trait Test
      *
      * /!\ Use this method for unit tests only.
      *
+<<<<<<< HEAD
      * @param Closure|static|string|false|null $testNow  real or mock Carbon instance
      * @param Closure|null                     $callback
      *
      * @return mixed
+=======
+     * @param Closure|static|string|false|null $testNow real or mock Carbon instance
+     * @param Closure|null $callback
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public static function withTestNow($testNow = null, $callback = null)
     {
         static::setTestNow($testNow);
+<<<<<<< HEAD
         $result = $callback();
         static::setTestNow();
 
         return $result;
+=======
+        $callback();
+        static::setTestNow();
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -142,6 +166,30 @@ trait Test
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Return the given timezone and set it to the test instance if not null.
+     * If null, get the timezone from the test instance and return it.
+     *
+     * @param string|\DateTimeZone    $tz
+     * @param \Carbon\CarbonInterface $testInstance
+     *
+     * @return string|\DateTimeZone
+     */
+    protected static function handleMockTimezone($tz, &$testInstance)
+    {
+        //shift the time according to the given time zone
+        if ($tz !== null && $tz !== static::getMockedTestNow($tz)->getTimezone()) {
+            $testInstance = $testInstance->setTimezone($tz);
+
+            return $tz;
+        }
+
+        return $testInstance->getTimezone();
+    }
+
+    /**
+>>>>>>> parent of 31cfa1b1 (p)
      * Get the mocked date passed in setTestNow() and if it's a Closure, execute it.
      *
      * @param string|\DateTimeZone $tz
@@ -161,20 +209,33 @@ trait Test
         }
         /* @var \Carbon\CarbonImmutable|\Carbon\Carbon|null $testNow */
 
+<<<<<<< HEAD
         return $testNow instanceof CarbonInterface
             ? $testNow->avoidMutation()->tz($tz)
             : $testNow;
     }
 
     protected static function mockConstructorParameters(&$time, $tz)
+=======
+        return $testNow;
+    }
+
+    protected static function mockConstructorParameters(&$time, &$tz)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         /** @var \Carbon\CarbonImmutable|\Carbon\Carbon $testInstance */
         $testInstance = clone static::getMockedTestNow($tz);
 
+<<<<<<< HEAD
+=======
+        $tz = static::handleMockTimezone($tz, $testInstance);
+
+>>>>>>> parent of 31cfa1b1 (p)
         if (static::hasRelativeKeywords($time)) {
             $testInstance = $testInstance->modify($time);
         }
 
+<<<<<<< HEAD
         $time = $testInstance instanceof self
             ? $testInstance->rawFormat(static::MOCK_DATETIME_FORMAT)
             : $testInstance->format(static::MOCK_DATETIME_FORMAT);
@@ -204,5 +265,8 @@ trait Test
                 $previous
             );
         }
+=======
+        $time = $testInstance instanceof self ? $testInstance->rawFormat(static::MOCK_DATETIME_FORMAT) : $testInstance->format(static::MOCK_DATETIME_FORMAT);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

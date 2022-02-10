@@ -20,10 +20,14 @@ class Stream extends File
 {
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return int|false
      */
     #[\ReturnTypeWillChange]
+=======
+     */
+>>>>>>> parent of 31cfa1b1 (p)
     public function getSize()
     {
         return false;

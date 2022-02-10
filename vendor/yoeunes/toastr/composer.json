@@ -1,7 +1,11 @@
 {
     "name": "yoeunes/toastr",
     "license": "MIT",
+<<<<<<< HEAD
     "description": "toastr.js flush notifications for Laravel and Lumen",
+=======
+    "description": "toastr.js flush notifications for Laravel 5, 6, 7 and Lumen",
+>>>>>>> parent of 31cfa1b1 (p)
     "homepage": "https://github.com/yoeunes/toastr",
     "keywords": [
         "toastr",
@@ -41,8 +45,13 @@
     "require": {
         "php": ">=7.0",
         "ext-json": "*",
+<<<<<<< HEAD
         "illuminate/session": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
         "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+=======
+        "illuminate/session": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+        "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0"
+>>>>>>> parent of 31cfa1b1 (p)
     },
     "autoload": {
         "psr-4": {

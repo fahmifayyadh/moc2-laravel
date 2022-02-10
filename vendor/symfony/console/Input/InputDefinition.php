@@ -185,7 +185,13 @@ class InputDefinition
     }
 
     /**
+<<<<<<< HEAD
      * @return array<string|bool|int|float|array|null>
+=======
+     * Gets the default values.
+     *
+     * @return array An array of default values
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getArgumentDefaults()
     {
@@ -314,7 +320,13 @@ class InputDefinition
     }
 
     /**
+<<<<<<< HEAD
      * @return array<string|bool|int|float|array|null>
+=======
+     * Gets an array of default values.
+     *
+     * @return array An array of all default values
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getOptionDefaults()
     {

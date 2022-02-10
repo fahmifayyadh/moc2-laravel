@@ -69,7 +69,11 @@ class Store implements StoreInterface
             if (!file_exists(\dirname($path)) && false === @mkdir(\dirname($path), 0777, true) && !is_dir(\dirname($path))) {
                 return $path;
             }
+<<<<<<< HEAD
             $h = fopen($path, 'c');
+=======
+            $h = fopen($path, 'cb');
+>>>>>>> parent of 31cfa1b1 (p)
             if (!flock($h, \LOCK_EX | \LOCK_NB)) {
                 fclose($h);
 
@@ -114,7 +118,11 @@ class Store implements StoreInterface
             return false;
         }
 
+<<<<<<< HEAD
         $h = fopen($path, 'r');
+=======
+        $h = fopen($path, 'rb');
+>>>>>>> parent of 31cfa1b1 (p)
         flock($h, \LOCK_EX | \LOCK_NB, $wouldBlock);
         flock($h, \LOCK_UN); // release the lock we just acquired
         fclose($h);
@@ -277,8 +285,13 @@ class Store implements StoreInterface
 
         foreach (preg_split('/[\s,]+/', $vary) as $header) {
             $key = str_replace('_', '-', strtolower($header));
+<<<<<<< HEAD
             $v1 = $env1[$key] ?? null;
             $v2 = $env2[$key] ?? null;
+=======
+            $v1 = isset($env1[$key]) ? $env1[$key] : null;
+            $v2 = isset($env2[$key]) ? $env2[$key] : null;
+>>>>>>> parent of 31cfa1b1 (p)
             if ($v1 !== $v2) {
                 return false;
             }
@@ -298,7 +311,11 @@ class Store implements StoreInterface
             return [];
         }
 
+<<<<<<< HEAD
         return unserialize($entries) ?: [];
+=======
+        return unserialize($entries);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -349,7 +366,11 @@ class Store implements StoreInterface
     {
         $path = $this->getPath($key);
 
+<<<<<<< HEAD
         return file_exists($path) && false !== ($contents = @file_get_contents($path)) ? $contents : null;
+=======
+        return file_exists($path) && false !== ($contents = file_get_contents($path)) ? $contents : null;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**
@@ -379,7 +400,11 @@ class Store implements StoreInterface
             }
 
             $tmpFile = tempnam(\dirname($path), basename($path));
+<<<<<<< HEAD
             if (false === $fp = @fopen($tmpFile, 'w')) {
+=======
+            if (false === $fp = @fopen($tmpFile, 'wb')) {
+>>>>>>> parent of 31cfa1b1 (p)
                 @unlink($tmpFile);
 
                 return false;

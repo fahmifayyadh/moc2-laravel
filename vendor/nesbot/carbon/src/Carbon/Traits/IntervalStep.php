@@ -8,7 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace Carbon\Traits;
 
 use Carbon\Carbon;
@@ -65,7 +68,11 @@ trait IntervalStep
         $carbonDate = $dateTime instanceof CarbonInterface ? $dateTime : $this->resolveCarbon($dateTime);
 
         if ($this->step) {
+<<<<<<< HEAD
             return $carbonDate->setDateTimeFrom(($this->step)($carbonDate->avoidMutation(), $negated));
+=======
+            return $carbonDate->setDateTimeFrom(($this->step)($carbonDate->copy(), $negated));
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($negated) {

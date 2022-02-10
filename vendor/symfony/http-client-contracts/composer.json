@@ -26,8 +26,14 @@
     },
     "minimum-stability": "dev",
     "extra": {
+<<<<<<< HEAD
         "branch-alias": {
             "dev-main": "2.5-dev"
+=======
+        "branch-version": "2.3",
+        "branch-alias": {
+            "dev-main": "2.3-dev"
+>>>>>>> parent of 31cfa1b1 (p)
         },
         "thanks": {
             "name": "symfony/contracts",

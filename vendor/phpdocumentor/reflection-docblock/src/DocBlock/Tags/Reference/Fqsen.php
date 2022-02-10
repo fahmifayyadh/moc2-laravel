@@ -31,7 +31,11 @@ final class Fqsen implements Reference
     /**
      * @return string string representation of the referenced fqsen
      */
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return (string) $this->fqsen;
     }

@@ -28,7 +28,11 @@ class CsvFileDumper extends FileDumper
      */
     public function formatCatalogue(MessageCatalogue $messages, $domain, array $options = [])
     {
+<<<<<<< HEAD
         $handle = fopen('php://memory', 'r+');
+=======
+        $handle = fopen('php://memory', 'r+b');
+>>>>>>> parent of 31cfa1b1 (p)
 
         foreach ($messages->all($domain) as $source => $target) {
             fputcsv($handle, [$source, $target], $this->delimiter, $this->enclosure);

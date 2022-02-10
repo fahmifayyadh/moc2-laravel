@@ -226,11 +226,29 @@ class CacheManager implements FactoryContract
      */
     protected function createDynamodbDriver(array $config)
     {
+<<<<<<< HEAD
         $client = $this->newDynamodbClient($config);
 
         return $this->repository(
             new DynamoDbStore(
                 $client,
+=======
+        $dynamoConfig = [
+            'region' => $config['region'],
+            'version' => 'latest',
+            'endpoint' => $config['endpoint'] ?? null,
+        ];
+
+        if ($config['key'] && $config['secret']) {
+            $dynamoConfig['credentials'] = Arr::only(
+                $config, ['key', 'secret', 'token']
+            );
+        }
+
+        return $this->repository(
+            new DynamoDbStore(
+                new DynamoDbClient($dynamoConfig),
+>>>>>>> parent of 31cfa1b1 (p)
                 $config['table'],
                 $config['attributes']['key'] ?? 'key',
                 $config['attributes']['value'] ?? 'value',
@@ -241,6 +259,7 @@ class CacheManager implements FactoryContract
     }
 
     /**
+<<<<<<< HEAD
      * Create new DynamoDb Client instance.
      *
      * @return DynamoDbClient
@@ -263,6 +282,8 @@ class CacheManager implements FactoryContract
     }
 
     /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Create a new cache repository with the given implementation.
      *
      * @param  \Illuminate\Contracts\Cache\Store  $store

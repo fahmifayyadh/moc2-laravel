@@ -104,6 +104,7 @@ class RedisSessionHandler extends AbstractSessionHandler
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return int|false
      */
@@ -111,6 +112,12 @@ class RedisSessionHandler extends AbstractSessionHandler
     public function gc($maxlifetime)
     {
         return 0;
+=======
+     */
+    public function gc($maxlifetime): bool
+    {
+        return true;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

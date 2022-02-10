@@ -8,11 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
 namespace Carbon;
 
 use JsonSerializable;
 use ReturnTypeWillChange;
+=======
+namespace Carbon;
+
+use JsonSerializable;
+>>>>>>> parent of 31cfa1b1 (p)
 
 class Language implements JsonSerializable
 {
@@ -334,7 +340,10 @@ class Language implements JsonSerializable
      *
      * @return string
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function jsonSerialize()
     {
         return $this->getIsoDescription();

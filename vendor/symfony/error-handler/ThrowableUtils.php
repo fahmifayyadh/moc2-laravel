@@ -11,19 +11,28 @@
 
 namespace Symfony\Component\ErrorHandler;
 
+<<<<<<< HEAD
 use Symfony\Component\ErrorHandler\Exception\SilencedErrorContext;
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * @internal
  */
 class ThrowableUtils
 {
+<<<<<<< HEAD
     /**
      * @param SilencedErrorContext|\Throwable
      */
     public static function getSeverity($throwable): int
     {
         if ($throwable instanceof \ErrorException || $throwable instanceof SilencedErrorContext) {
+=======
+    public static function getSeverity(\Throwable $throwable): int
+    {
+        if ($throwable instanceof \ErrorException) {
+>>>>>>> parent of 31cfa1b1 (p)
             return $throwable->getSeverity();
         }
 

@@ -9,10 +9,13 @@
  */
 namespace PHPUnit\Framework\MockObject\Rule;
 
+<<<<<<< HEAD
 use function count;
 use function get_class;
 use function sprintf;
 use Exception;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\IsAnything;
 use PHPUnit\Framework\Constraint\IsEqual;
@@ -71,7 +74,11 @@ final class Parameters implements ParametersRule
     }
 
     /**
+<<<<<<< HEAD
      * @throws Exception
+=======
+     * @throws \Exception
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function apply(BaseInvocation $invocation): void
     {
@@ -92,8 +99,13 @@ final class Parameters implements ParametersRule
      * does the rule will get the invoked() method called which should check
      * if an expectation is met.
      *
+<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
+=======
+     * @throws ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function verify(): void
     {
@@ -101,8 +113,13 @@ final class Parameters implements ParametersRule
     }
 
     /**
+<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
+=======
+     * @throws ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private function doVerify(): bool
     {
@@ -114,27 +131,44 @@ final class Parameters implements ParametersRule
             throw new ExpectationFailedException('Mocked method does not exist.');
         }
 
+<<<<<<< HEAD
         if (count($this->invocation->getParameters()) < count($this->parameters)) {
+=======
+        if (\count($this->invocation->getParameters()) < \count($this->parameters)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $message = 'Parameter count for invocation %s is too low.';
 
             // The user called `->with($this->anything())`, but may have meant
             // `->withAnyParameters()`.
             //
             // @see https://github.com/sebastianbergmann/phpunit-mock-objects/issues/199
+<<<<<<< HEAD
             if (count($this->parameters) === 1 &&
                 get_class($this->parameters[0]) === IsAnything::class) {
+=======
+            if (\count($this->parameters) === 1 &&
+                \get_class($this->parameters[0]) === IsAnything::class) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $message .= "\nTo allow 0 or more parameters with any value, omit ->with() or use ->withAnyParameters() instead.";
             }
 
             throw new ExpectationFailedException(
+<<<<<<< HEAD
                 sprintf($message, $this->invocation->toString())
+=======
+                \sprintf($message, $this->invocation->toString())
+>>>>>>> parent of 31cfa1b1 (p)
             );
         }
 
         foreach ($this->parameters as $i => $parameter) {
             $parameter->evaluate(
                 $this->invocation->getParameters()[$i],
+<<<<<<< HEAD
                 sprintf(
+=======
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Parameter %s for invocation %s does not match expected ' .
                     'value.',
                     $i,

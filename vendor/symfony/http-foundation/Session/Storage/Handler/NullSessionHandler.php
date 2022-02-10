@@ -21,7 +21,10 @@ class NullSessionHandler extends AbstractSessionHandler
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function close()
     {
         return true;
@@ -30,7 +33,10 @@ class NullSessionHandler extends AbstractSessionHandler
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function validateId($sessionId)
     {
         return true;
@@ -47,7 +53,10 @@ class NullSessionHandler extends AbstractSessionHandler
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function updateTimestamp($sessionId, $data)
     {
         return true;
@@ -70,11 +79,19 @@ class NullSessionHandler extends AbstractSessionHandler
     }
 
     /**
+<<<<<<< HEAD
      * @return int|false
      */
     #[\ReturnTypeWillChange]
     public function gc($maxlifetime)
     {
         return 0;
+=======
+     * @return bool
+     */
+    public function gc($maxlifetime)
+    {
+        return true;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

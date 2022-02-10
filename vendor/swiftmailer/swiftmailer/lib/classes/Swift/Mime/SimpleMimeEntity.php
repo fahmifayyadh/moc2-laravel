@@ -634,7 +634,11 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
      */
     protected function fixHeaders()
     {
+<<<<<<< HEAD
         if (\count($this->immediateChildren)) {
+=======
+        if (count($this->immediateChildren)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $this->setHeaderParameter('Content-Type', 'boundary',
                 $this->getBoundary()
                 );
@@ -731,7 +735,11 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
         }
 
         $realLevel = $child->getNestingLevel();
+<<<<<<< HEAD
         $lowercaseType = strtolower($child->getContentType() ?? '');
+=======
+        $lowercaseType = strtolower($child->getContentType());
+>>>>>>> parent of 31cfa1b1 (p)
 
         if (isset($filter[$realLevel]) && isset($filter[$realLevel][$lowercaseType])) {
             return $filter[$realLevel][$lowercaseType];
@@ -778,7 +786,11 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
             $sorted = [];
             foreach ($this->immediateChildren as $child) {
                 $type = $child->getContentType();
+<<<<<<< HEAD
                 $level = \array_key_exists($type, $this->alternativePartOrder) ? $this->alternativePartOrder[$type] : max($this->alternativePartOrder) + 1;
+=======
+                $level = array_key_exists($type, $this->alternativePartOrder) ? $this->alternativePartOrder[$type] : max($this->alternativePartOrder) + 1;
+>>>>>>> parent of 31cfa1b1 (p)
 
                 if (empty($sorted[$level])) {
                     $sorted[$level] = [];
@@ -817,10 +829,13 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_CharsetObserver, Swift_M
         }
         $this->setChildren($children);
     }
+<<<<<<< HEAD
 
     public function __wakeup()
     {
         $this->cacheKey = bin2hex(random_bytes(16)); // set 32 hex values
         $this->cache = new Swift_KeyCache_ArrayKeyCache(new Swift_KeyCache_SimpleKeyCacheInputStream());
     }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

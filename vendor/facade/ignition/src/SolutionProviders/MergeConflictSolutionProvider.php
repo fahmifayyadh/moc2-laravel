@@ -17,7 +17,11 @@ class MergeConflictSolutionProvider implements HasSolutionsForThrowable
             return false;
         }
 
+<<<<<<< HEAD
         if (! $this->hasMergeConflictExceptionMessage($throwable)) {
+=======
+        if (! Str::startsWith($throwable->getMessage(), 'syntax error, unexpected \'<<\'')) {
+>>>>>>> parent of 31cfa1b1 (p)
             return false;
         }
 
@@ -58,6 +62,7 @@ class MergeConflictSolutionProvider implements HasSolutionsForThrowable
 
         return $branch;
     }
+<<<<<<< HEAD
 
     protected function hasMergeConflictExceptionMessage(Throwable $throwable): bool
     {
@@ -73,4 +78,6 @@ class MergeConflictSolutionProvider implements HasSolutionsForThrowable
 
         return false;
     }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 }

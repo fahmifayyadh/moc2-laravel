@@ -9,9 +9,12 @@
  */
 namespace PHPUnit\Util;
 
+<<<<<<< HEAD
 use function in_array;
 use function sprintf;
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  * @psalm-immutable
@@ -31,7 +34,11 @@ final class VersionComparisonOperator
     }
 
     /**
+<<<<<<< HEAD
      * @return '!='|'<'|'<='|'<>'|'='|'=='|'>'|'>='|'eq'|'ge'|'gt'|'le'|'lt'|'ne'
+=======
+     * @return '<'|'lt'|'<='|'le'|'>'|'gt'|'>='|'ge'|'=='|'='|'eq'|'!='|'<>'|'ne'
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function asString(): string
     {
@@ -45,9 +52,15 @@ final class VersionComparisonOperator
      */
     private function ensureOperatorIsValid(string $operator): void
     {
+<<<<<<< HEAD
         if (!in_array($operator, ['<', 'lt', '<=', 'le', '>', 'gt', '>=', 'ge', '==', '=', 'eq', '!=', '<>', 'ne'], true)) {
             throw new Exception(
                 sprintf(
+=======
+        if (!\in_array($operator, ['<', 'lt', '<=', 'le', '>', 'gt', '>=', 'ge', '==', '=', 'eq', '!=', '<>', 'ne'])) {
+            throw new Exception(
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     '"%s" is not a valid version_compare() operator',
                     $operator
                 )

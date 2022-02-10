@@ -33,10 +33,13 @@ class Standard extends PrettyPrinterAbstract
              . $this->p($node->value);
     }
 
+<<<<<<< HEAD
     protected function pVariadicPlaceholder(Node\VariadicPlaceholder $node) {
         return '...';
     }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function pConst(Node\Const_ $node) {
         return $node->name . ' = ' . $this->p($node->value);
     }
@@ -49,10 +52,13 @@ class Standard extends PrettyPrinterAbstract
         return $this->pImplode($node->types, '|');
     }
 
+<<<<<<< HEAD
     protected function pIntersectionType(Node\IntersectionType $node) {
         return $this->pImplode($node->types, '&');
     }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function pIdentifier(Node\Identifier $node) {
         return $node->name;
     }
@@ -735,6 +741,7 @@ class Standard extends PrettyPrinterAbstract
              . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
     }
 
+<<<<<<< HEAD
     protected function pStmt_Enum(Stmt\Enum_ $node) {
         return $this->pAttrGroups($node->attrGroups)
              . 'enum ' . $node->name
@@ -743,6 +750,8 @@ class Standard extends PrettyPrinterAbstract
              . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
     }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function pStmt_Class(Stmt\Class_ $node) {
         return $this->pClassCommon($node, ' ' . $node->name);
     }
@@ -753,6 +762,7 @@ class Standard extends PrettyPrinterAbstract
              . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
     }
 
+<<<<<<< HEAD
     protected function pStmt_EnumCase(Stmt\EnumCase $node) {
         return $this->pAttrGroups($node->attrGroups)
              . 'case ' . $node->name
@@ -760,6 +770,8 @@ class Standard extends PrettyPrinterAbstract
              . ';';
     }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     protected function pStmt_TraitUse(Stmt\TraitUse $node) {
         return 'use ' . $this->pCommaSeparated($node->traits)
              . (empty($node->adaptations)
@@ -1007,6 +1019,7 @@ class Standard extends PrettyPrinterAbstract
             $escaped = addcslashes($string, "\n\r\t\f\v$" . $quote . "\\");
         }
 
+<<<<<<< HEAD
         // Escape control characters and non-UTF-8 characters.
         // Regex based on https://stackoverflow.com/a/11709412/385378.
         $regex = '/(
@@ -1028,6 +1041,16 @@ class Standard extends PrettyPrinterAbstract
             assert(strlen($matches[0]) === 1);
             $hex = dechex(ord($matches[0]));;
             return '\\x' . str_pad($hex, 2, '0', \STR_PAD_LEFT);
+=======
+        // Escape other control characters
+        return preg_replace_callback('/([\0-\10\16-\37])(?=([0-7]?))/', function ($matches) {
+            $oct = decoct(ord($matches[1]));
+            if ($matches[2] !== '') {
+                // If there is a trailing digit, use the full three character form
+                return '\\' . str_pad($oct, 3, '0', \STR_PAD_LEFT);
+            }
+            return '\\' . $oct;
+>>>>>>> parent of 31cfa1b1 (p)
         }, $escaped);
     }
 
@@ -1076,7 +1099,11 @@ class Standard extends PrettyPrinterAbstract
      * @param Node[] $nodes
      * @return bool
      */
+<<<<<<< HEAD
     protected function hasNodeWithComments(array $nodes) {
+=======
+    private function hasNodeWithComments(array $nodes) {
+>>>>>>> parent of 31cfa1b1 (p)
         foreach ($nodes as $node) {
             if ($node && $node->getComments()) {
                 return true;
@@ -1085,7 +1112,11 @@ class Standard extends PrettyPrinterAbstract
         return false;
     }
 
+<<<<<<< HEAD
     protected function pMaybeMultiline(array $nodes, bool $trailingComma = false) {
+=======
+    private function pMaybeMultiline(array $nodes, bool $trailingComma = false) {
+>>>>>>> parent of 31cfa1b1 (p)
         if (!$this->hasNodeWithComments($nodes)) {
             return $this->pCommaSeparated($nodes);
         } else {
@@ -1093,7 +1124,11 @@ class Standard extends PrettyPrinterAbstract
         }
     }
 
+<<<<<<< HEAD
     protected function pAttrGroups(array $nodes, bool $inline = false): string {
+=======
+    private function pAttrGroups(array $nodes, bool $inline = false): string {
+>>>>>>> parent of 31cfa1b1 (p)
         $result = '';
         $sep = $inline ? ' ' : $this->nl;
         foreach ($nodes as $node) {

@@ -23,7 +23,11 @@ class VariablesMatcher extends AbstractContextAwareMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getMatches(array $tokens, array $info = []): array
+=======
+    public function getMatches(array $tokens, array $info = [])
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $var = \str_replace('$', '', $this->getInput($tokens));
 
@@ -35,7 +39,11 @@ class VariablesMatcher extends AbstractContextAwareMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function hasMatched(array $tokens): bool
+=======
+    public function hasMatched(array $tokens)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $token = \array_pop($tokens);
 

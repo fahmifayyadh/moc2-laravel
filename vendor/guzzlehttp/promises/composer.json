@@ -5,6 +5,7 @@
     "license": "MIT",
     "authors": [
         {
+<<<<<<< HEAD
             "name": "Graham Campbell",
             "email": "hello@gjcampbell.co.uk",
             "homepage": "https://github.com/GrahamCampbell"
@@ -23,6 +24,11 @@
             "name": "Tobias Schultze",
             "email": "webmaster@tubo-world.de",
             "homepage": "https://github.com/Tobion"
+=======
+            "name": "Michael Dowling",
+            "email": "mtdowling@gmail.com",
+            "homepage": "https://github.com/mtdowling"
+>>>>>>> parent of 31cfa1b1 (p)
         }
     ],
     "require": {
@@ -48,11 +54,16 @@
     },
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "1.5-dev"
         }
     },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true
+=======
+            "dev-master": "1.4-dev"
+        }
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

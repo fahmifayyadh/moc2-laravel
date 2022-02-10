@@ -1,14 +1,23 @@
 <?php
 
+<<<<<<< HEAD
 declare(strict_types=1);
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp\Psr7;
 
 use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
+<<<<<<< HEAD
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriInterface;
+=======
+use Psr\Http\Message\UriInterface;
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UploadedFileInterface;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * Server-side HTTP request
@@ -37,7 +46,11 @@ class ServerRequest extends Request implements ServerRequestInterface
     private $cookieParams = [];
 
     /**
+<<<<<<< HEAD
      * @var array|object|null
+=======
+     * @var null|array|object
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private $parsedBody;
 
@@ -59,17 +72,30 @@ class ServerRequest extends Request implements ServerRequestInterface
     /**
      * @param string                               $method       HTTP method
      * @param string|UriInterface                  $uri          URI
+<<<<<<< HEAD
      * @param array<string, string|string[]>       $headers      Request headers
      * @param string|resource|StreamInterface|null $body         Request body
+=======
+     * @param array                                $headers      Request headers
+     * @param string|null|resource|StreamInterface $body         Request body
+>>>>>>> parent of 31cfa1b1 (p)
      * @param string                               $version      Protocol version
      * @param array                                $serverParams Typically the $_SERVER superglobal
      */
     public function __construct(
+<<<<<<< HEAD
         string $method,
         $uri,
         array $headers = [],
         $body = null,
         string $version = '1.1',
+=======
+        $method,
+        $uri,
+        array $headers = [],
+        $body = null,
+        $version = '1.1',
+>>>>>>> parent of 31cfa1b1 (p)
         array $serverParams = []
     ) {
         $this->serverParams = $serverParams;
@@ -82,9 +108,17 @@ class ServerRequest extends Request implements ServerRequestInterface
      *
      * @param array $files A array which respect $_FILES structure
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException for unrecognized values
      */
     public static function normalizeFiles(array $files): array
+=======
+     * @return array
+     *
+     * @throws InvalidArgumentException for unrecognized values
+     */
+    public static function normalizeFiles(array $files)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $normalized = [];
 
@@ -111,8 +145,12 @@ class ServerRequest extends Request implements ServerRequestInterface
      * delegate to normalizeNestedFileSpec() and return that return value.
      *
      * @param array $value $_FILES struct
+<<<<<<< HEAD
      *
      * @return UploadedFileInterface|UploadedFileInterface[]
+=======
+     * @return array|UploadedFileInterface
+>>>>>>> parent of 31cfa1b1 (p)
      */
     private static function createUploadedFileFromSpec(array $value)
     {
@@ -135,9 +173,16 @@ class ServerRequest extends Request implements ServerRequestInterface
      * Loops through all nested files and returns a normalized array of
      * UploadedFileInterface instances.
      *
+<<<<<<< HEAD
      * @return UploadedFileInterface[]
      */
     private static function normalizeNestedFileSpec(array $files = []): array
+=======
+     * @param array $files
+     * @return UploadedFileInterface[]
+     */
+    private static function normalizeNestedFileSpec(array $files = [])
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $normalizedFiles = [];
 
@@ -162,10 +207,19 @@ class ServerRequest extends Request implements ServerRequestInterface
      * $_COOKIE
      * $_FILES
      * $_SERVER
+<<<<<<< HEAD
      */
     public static function fromGlobals(): ServerRequestInterface
     {
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+=======
+     *
+     * @return ServerRequestInterface
+     */
+    public static function fromGlobals()
+    {
+        $method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
+>>>>>>> parent of 31cfa1b1 (p)
         $headers = getallheaders();
         $uri = self::getUriFromGlobals();
         $body = new CachingStream(new LazyOpenStream('php://input', 'r+'));
@@ -180,24 +234,42 @@ class ServerRequest extends Request implements ServerRequestInterface
             ->withUploadedFiles(self::normalizeFiles($_FILES));
     }
 
+<<<<<<< HEAD
     private static function extractHostAndPortFromAuthority(string $authority): array
     {
         $uri = 'http://' . $authority;
+=======
+    private static function extractHostAndPortFromAuthority($authority)
+    {
+        $uri = 'http://'.$authority;
+>>>>>>> parent of 31cfa1b1 (p)
         $parts = parse_url($uri);
         if (false === $parts) {
             return [null, null];
         }
 
+<<<<<<< HEAD
         $host = $parts['host'] ?? null;
         $port = $parts['port'] ?? null;
+=======
+        $host = isset($parts['host']) ? $parts['host'] : null;
+        $port = isset($parts['port']) ? $parts['port'] : null;
+>>>>>>> parent of 31cfa1b1 (p)
 
         return [$host, $port];
     }
 
     /**
      * Get a Uri populated with values from $_SERVER.
+<<<<<<< HEAD
      */
     public static function getUriFromGlobals(): UriInterface
+=======
+     *
+     * @return UriInterface
+     */
+    public static function getUriFromGlobals()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $uri = new Uri('');
 
@@ -205,7 +277,11 @@ class ServerRequest extends Request implements ServerRequestInterface
 
         $hasPort = false;
         if (isset($_SERVER['HTTP_HOST'])) {
+<<<<<<< HEAD
             [$host, $port] = self::extractHostAndPortFromAuthority($_SERVER['HTTP_HOST']);
+=======
+            list($host, $port) = self::extractHostAndPortFromAuthority($_SERVER['HTTP_HOST']);
+>>>>>>> parent of 31cfa1b1 (p)
             if ($host !== null) {
                 $uri = $uri->withHost($host);
             }
@@ -241,17 +317,39 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $uri;
     }
 
+<<<<<<< HEAD
     public function getServerParams(): array
+=======
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getServerParams()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->serverParams;
     }
 
+<<<<<<< HEAD
     public function getUploadedFiles(): array
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getUploadedFiles()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->uploadedFiles;
     }
 
+<<<<<<< HEAD
     public function withUploadedFiles(array $uploadedFiles): ServerRequestInterface
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function withUploadedFiles(array $uploadedFiles)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $new = clone $this;
         $new->uploadedFiles = $uploadedFiles;
@@ -259,12 +357,26 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $new;
     }
 
+<<<<<<< HEAD
     public function getCookieParams(): array
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getCookieParams()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->cookieParams;
     }
 
+<<<<<<< HEAD
     public function withCookieParams(array $cookies): ServerRequestInterface
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function withCookieParams(array $cookies)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $new = clone $this;
         $new->cookieParams = $cookies;
@@ -272,12 +384,26 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $new;
     }
 
+<<<<<<< HEAD
     public function getQueryParams(): array
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getQueryParams()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->queryParams;
     }
 
+<<<<<<< HEAD
     public function withQueryParams(array $query): ServerRequestInterface
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function withQueryParams(array $query)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $new = clone $this;
         $new->queryParams = $query;
@@ -287,15 +413,25 @@ class ServerRequest extends Request implements ServerRequestInterface
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return array|object|null
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getParsedBody()
     {
         return $this->parsedBody;
     }
 
+<<<<<<< HEAD
     public function withParsedBody($data): ServerRequestInterface
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function withParsedBody($data)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $new = clone $this;
         $new->parsedBody = $data;
@@ -303,15 +439,25 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $new;
     }
 
+<<<<<<< HEAD
     public function getAttributes(): array
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getAttributes()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->attributes;
     }
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return mixed
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getAttribute($attribute, $default = null)
     {
@@ -322,7 +468,14 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $this->attributes[$attribute];
     }
 
+<<<<<<< HEAD
     public function withAttribute($attribute, $value): ServerRequestInterface
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function withAttribute($attribute, $value)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $new = clone $this;
         $new->attributes[$attribute] = $value;
@@ -330,7 +483,14 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $new;
     }
 
+<<<<<<< HEAD
     public function withoutAttribute($attribute): ServerRequestInterface
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function withoutAttribute($attribute)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (false === array_key_exists($attribute, $this->attributes)) {
             return $this;

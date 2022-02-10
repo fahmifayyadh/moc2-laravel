@@ -29,7 +29,11 @@ abstract class Warning
      */
     public function code()
     {
+<<<<<<< HEAD
         return static::CODE;
+=======
+        return self::CODE;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

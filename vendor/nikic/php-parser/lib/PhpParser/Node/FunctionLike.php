@@ -23,7 +23,11 @@ interface FunctionLike extends Node
     /**
      * Get the declared return type or null
      *
+<<<<<<< HEAD
      * @return null|Identifier|Name|ComplexType
+=======
+     * @return null|Identifier|Name|NullableType|UnionType
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function getReturnType();
 

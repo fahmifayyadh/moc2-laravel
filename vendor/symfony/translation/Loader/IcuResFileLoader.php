@@ -52,7 +52,11 @@ class IcuResFileLoader implements LoaderInterface
         $catalogue = new MessageCatalogue($locale);
         $catalogue->add($messages, $domain);
 
+<<<<<<< HEAD
         if (class_exists(DirectoryResource::class)) {
+=======
+        if (class_exists('Symfony\Component\Config\Resource\DirectoryResource')) {
+>>>>>>> parent of 31cfa1b1 (p)
             $catalogue->addResource(new DirectoryResource($resource));
         }
 

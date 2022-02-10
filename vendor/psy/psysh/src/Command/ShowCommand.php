@@ -46,7 +46,11 @@ class ShowCommand extends ReflectingCommand
             ->setName('show')
             ->setDefinition([
                 new CodeArgument('target', CodeArgument::OPTIONAL, 'Function, class, instance, constant, method or property to show.'),
+<<<<<<< HEAD
                 new InputOption('ex', null, InputOption::VALUE_OPTIONAL, 'Show last exception context. Optionally specify a stack index.', 1),
+=======
+                new InputOption('ex', null,  InputOption::VALUE_OPTIONAL, 'Show last exception context. Optionally specify a stack index.', 1),
+>>>>>>> parent of 31cfa1b1 (p)
             ])
             ->setDescription('Show the code for an object, class, constant, method or property.')
             ->setHelp(
@@ -114,6 +118,7 @@ HELP
             // If we didn't get a target and Reflector, maybe we got a filename?
             $target = $e->getTarget();
             if (\is_string($target) && \is_file($target) && $code = @\file_get_contents($target)) {
+<<<<<<< HEAD
                 $file = \realpath($target);
                 if ($file !== $this->context->get('__file')) {
                     $this->context->setCommandScopeVariables([
@@ -125,6 +130,10 @@ HELP
                 $output->page(CodeFormatter::formatCode($code));
 
                 return;
+=======
+                // @todo maybe set $__file to $target?
+                return $output->page(CodeFormatter::formatCode($code));
+>>>>>>> parent of 31cfa1b1 (p)
             } else {
                 throw $e;
             }
@@ -157,7 +166,11 @@ HELP
                 $index = 0;
             }
         } else {
+<<<<<<< HEAD
             $index = \max(0, (int) $input->getOption('ex') - 1);
+=======
+            $index = \max(0, \intval($input->getOption('ex')) - 1);
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         $trace = $exception->getTrace();
@@ -195,16 +208,27 @@ HELP
         ));
     }
 
+<<<<<<< HEAD
     private function replaceCwd(string $file): string
     {
         if ($cwd = \getcwd()) {
             $cwd = \rtrim($cwd, \DIRECTORY_SEPARATOR).\DIRECTORY_SEPARATOR;
+=======
+    private function replaceCwd($file)
+    {
+        if ($cwd = \getcwd()) {
+            $cwd = \rtrim($cwd, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if ($cwd === false) {
             return $file;
         } else {
+<<<<<<< HEAD
             return \preg_replace('/^'.\preg_quote($cwd, '/').'/', '', $file);
+=======
+            return \preg_replace('/^' . \preg_quote($cwd, '/') . '/', '', $file);
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -254,7 +278,11 @@ HELP
                 if ($namespace = $refl->getNamespaceName()) {
                     $vars['__namespace'] = $namespace;
                 }
+<<<<<<< HEAD
             } catch (\Throwable $e) {
+=======
+            } catch (\Exception $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 // oh well
             }
         } elseif (isset($context['function'])) {
@@ -265,7 +293,11 @@ HELP
                 if ($namespace = $refl->getNamespaceName()) {
                     $vars['__namespace'] = $namespace;
                 }
+<<<<<<< HEAD
             } catch (\Throwable $e) {
+=======
+            } catch (\Exception $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 // oh well
             }
         }
@@ -290,7 +322,11 @@ HELP
         $this->context->setCommandScopeVariables($vars);
     }
 
+<<<<<<< HEAD
     private function extractEvalFileAndLine(string $file)
+=======
+    private function extractEvalFileAndLine($file)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (\preg_match('/(.*)\\((\\d+)\\) : eval\\(\\)\'d code$/', $file, $matches)) {
             return [$matches[1], $matches[2]];

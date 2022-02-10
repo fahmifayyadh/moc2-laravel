@@ -25,7 +25,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class TimeitCommand extends Command
 {
+<<<<<<< HEAD
     const RESULT_MSG = '<info>Command took %.6f seconds to complete.</info>';
+=======
+    const RESULT_MSG     = '<info>Command took %.6f seconds to complete.</info>';
+>>>>>>> parent of 31cfa1b1 (p)
     const AVG_RESULT_MSG = '<info>Command took %.6f seconds on average (%.6f median; %.6f total) to complete.</info>';
 
     private static $start = null;
@@ -167,7 +171,11 @@ HELP
      *
      * @return string
      */
+<<<<<<< HEAD
     private function instrumentCode(string $code): string
+=======
+    private function instrumentCode($code)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->printer->prettyPrint($this->traverser->traverse($this->parse($code)));
     }
@@ -179,9 +187,15 @@ HELP
      *
      * @return array Statements
      */
+<<<<<<< HEAD
     private function parse(string $code): array
     {
         $code = '<?php '.$code;
+=======
+    private function parse($code)
+    {
+        $code = '<?php ' . $code;
+>>>>>>> parent of 31cfa1b1 (p)
 
         try {
             return $this->parser->parse($code);
@@ -191,7 +205,11 @@ HELP
             }
 
             // If we got an unexpected EOF, let's try it again with a semicolon.
+<<<<<<< HEAD
             return $this->parser->parse($code.';');
+=======
+            return $this->parser->parse($code . ';');
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 }

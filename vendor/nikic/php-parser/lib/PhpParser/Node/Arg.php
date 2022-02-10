@@ -2,7 +2,10 @@
 
 namespace PhpParser\Node;
 
+<<<<<<< HEAD
 use PhpParser\Node\VariadicPlaceholder;
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use PhpParser\NodeAbstract;
 
 class Arg extends NodeAbstract

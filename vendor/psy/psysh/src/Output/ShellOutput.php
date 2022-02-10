@@ -47,7 +47,11 @@ class ShellOutput extends ConsoleOutput
         } elseif ($pager instanceof OutputPager) {
             $this->pager = $pager;
         } else {
+<<<<<<< HEAD
             throw new \InvalidArgumentException('Unexpected pager parameter: '.$pager);
+=======
+            throw new \InvalidArgumentException('Unexpected pager parameter: ' . $pager);
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 
@@ -64,7 +68,11 @@ class ShellOutput extends ConsoleOutput
      * @param string|array|\Closure $messages A string, array of strings or a callback
      * @param int                   $type     (default: 0)
      */
+<<<<<<< HEAD
     public function page($messages, int $type = 0)
+=======
+    public function page($messages, $type = 0)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (\is_string($messages)) {
             $messages = (array) $messages;
@@ -176,6 +184,7 @@ class ShellOutput extends ConsoleOutput
         $formatter = $this->getFormatter();
 
         $formatter->setStyle('warning', new OutputFormatterStyle('black', 'yellow'));
+<<<<<<< HEAD
         $formatter->setStyle('error', new OutputFormatterStyle('white', 'red', ['bold']));
         $formatter->setStyle('aside', new OutputFormatterStyle('blue'));
         $formatter->setStyle('strong', new OutputFormatterStyle(null, null, ['bold']));
@@ -202,6 +211,32 @@ class ShellOutput extends ConsoleOutput
         $formatter->setStyle('keyword', new OutputFormatterStyle('yellow'));
         $formatter->setStyle('comment', new OutputFormatterStyle('blue'));
         $formatter->setStyle('object', new OutputFormatterStyle('blue'));
+=======
+        $formatter->setStyle('error',   new OutputFormatterStyle('white', 'red', ['bold']));
+        $formatter->setStyle('aside',   new OutputFormatterStyle('blue'));
+        $formatter->setStyle('strong',  new OutputFormatterStyle(null, null, ['bold']));
+        $formatter->setStyle('return',  new OutputFormatterStyle('cyan'));
+        $formatter->setStyle('urgent',  new OutputFormatterStyle('red'));
+        $formatter->setStyle('hidden',  new OutputFormatterStyle('black'));
+
+        // Visibility
+        $formatter->setStyle('public',    new OutputFormatterStyle(null, null, ['bold']));
+        $formatter->setStyle('protected', new OutputFormatterStyle('yellow'));
+        $formatter->setStyle('private',   new OutputFormatterStyle('red'));
+        $formatter->setStyle('global',    new OutputFormatterStyle('cyan', null, ['bold']));
+        $formatter->setStyle('const',     new OutputFormatterStyle('cyan'));
+        $formatter->setStyle('class',     new OutputFormatterStyle('blue', null, ['underscore']));
+        $formatter->setStyle('function',  new OutputFormatterStyle(null));
+        $formatter->setStyle('default',   new OutputFormatterStyle(null));
+
+        // Types
+        $formatter->setStyle('number',   new OutputFormatterStyle('magenta'));
+        $formatter->setStyle('string',   new OutputFormatterStyle('green'));
+        $formatter->setStyle('bool',     new OutputFormatterStyle('cyan'));
+        $formatter->setStyle('keyword',  new OutputFormatterStyle('yellow'));
+        $formatter->setStyle('comment',  new OutputFormatterStyle('blue'));
+        $formatter->setStyle('object',   new OutputFormatterStyle('blue'));
+>>>>>>> parent of 31cfa1b1 (p)
         $formatter->setStyle('resource', new OutputFormatterStyle('yellow'));
 
         // Code-specific formatting

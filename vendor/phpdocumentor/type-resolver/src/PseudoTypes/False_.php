@@ -16,7 +16,10 @@ namespace phpDocumentor\Reflection\PseudoTypes;
 use phpDocumentor\Reflection\PseudoType;
 use phpDocumentor\Reflection\Type;
 use phpDocumentor\Reflection\Types\Boolean;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use function class_alias;
 
 /**
@@ -26,12 +29,20 @@ use function class_alias;
  */
 final class False_ extends Boolean implements PseudoType
 {
+<<<<<<< HEAD
     public function underlyingType(): Type
+=======
+    public function underlyingType() : Type
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return new Boolean();
     }
 
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return 'false';
     }

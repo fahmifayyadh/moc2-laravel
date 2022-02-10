@@ -22,7 +22,11 @@ class Swift_FailoverTransport extends Swift_Transport_FailoverTransport
      */
     public function __construct($transports = [])
     {
+<<<<<<< HEAD
         \call_user_func_array(
+=======
+        call_user_func_array(
+>>>>>>> parent of 31cfa1b1 (p)
             [$this, 'Swift_Transport_FailoverTransport::__construct'],
             Swift_DependencyContainer::getInstance()
                 ->createDependenciesFor('transport.failover')

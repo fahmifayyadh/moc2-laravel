@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
 use function assert;
 use function count;
 use function get_class;
@@ -19,19 +20,32 @@ use PHPUnit\Util\InvalidDataSetException;
 use PHPUnit\Util\Test as TestUtil;
 use ReflectionClass;
 use Throwable;
+=======
+use PHPUnit\Util\Filter;
+use PHPUnit\Util\InvalidDataSetException;
+use PHPUnit\Util\Test as TestUtil;
+>>>>>>> parent of 31cfa1b1 (p)
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 final class TestBuilder
 {
+<<<<<<< HEAD
     public function build(ReflectionClass $theClass, string $methodName): Test
+=======
+    public function build(\ReflectionClass $theClass, string $methodName): Test
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $className = $theClass->getName();
 
         if (!$theClass->isInstantiable()) {
             return new WarningTestCase(
+<<<<<<< HEAD
                 sprintf('Cannot instantiate class "%s".', $className)
+=======
+                \sprintf('Cannot instantiate class "%s".', $className)
+>>>>>>> parent of 31cfa1b1 (p)
             );
         }
 
@@ -64,7 +78,11 @@ final class TestBuilder
         $parameters = $constructor->getParameters();
 
         // TestCase() or TestCase($name)
+<<<<<<< HEAD
         if (count($parameters) < 2) {
+=======
+        if (\count($parameters) < 2) {
+>>>>>>> parent of 31cfa1b1 (p)
             $test = $this->buildTestWithoutData($className);
         } // TestCase($name, $data)
         else {
@@ -74,7 +92,11 @@ final class TestBuilder
                     $methodName
                 );
             } catch (IncompleteTestError $e) {
+<<<<<<< HEAD
                 $message = sprintf(
+=======
+                $message = \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     "Test for %s::%s marked incomplete by data provider\n%s",
                     $className,
                     $methodName,
@@ -83,7 +105,11 @@ final class TestBuilder
 
                 $data = new IncompleteTestCase($className, $methodName, $message);
             } catch (SkippedTestError $e) {
+<<<<<<< HEAD
                 $message = sprintf(
+=======
+                $message = \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     "Test for %s::%s skipped by data provider\n%s",
                     $className,
                     $methodName,
@@ -91,8 +117,13 @@ final class TestBuilder
                 );
 
                 $data = new SkippedTestCase($className, $methodName, $message);
+<<<<<<< HEAD
             } catch (Throwable $t) {
                 $message = sprintf(
+=======
+            } catch (\Throwable $t) {
+                $message = \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     "The data provider specified for %s::%s is invalid.\n%s",
                     $className,
                     $methodName,
@@ -162,7 +193,11 @@ final class TestBuilder
             foreach ($data as $_dataName => $_data) {
                 $_test = new $className($methodName, $_data, $_dataName);
 
+<<<<<<< HEAD
                 assert($_test instanceof TestCase);
+=======
+                \assert($_test instanceof TestCase);
+>>>>>>> parent of 31cfa1b1 (p)
 
                 $this->configureTestCase(
                     $_test,
@@ -213,25 +248,43 @@ final class TestBuilder
         }
     }
 
+<<<<<<< HEAD
     private function throwableToString(Throwable $t): string
     {
         $message = $t->getMessage();
 
         if (empty(trim($message))) {
+=======
+    private function throwableToString(\Throwable $t): string
+    {
+        $message = $t->getMessage();
+
+        if (empty(\trim($message))) {
+>>>>>>> parent of 31cfa1b1 (p)
             $message = '<no message>';
         }
 
         if ($t instanceof InvalidDataSetException) {
+<<<<<<< HEAD
             return sprintf(
+=======
+            return \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                 "%s\n%s",
                 $message,
                 Filter::getFilteredStacktrace($t)
             );
         }
 
+<<<<<<< HEAD
         return sprintf(
             "%s: %s\n%s",
             get_class($t),
+=======
+        return \sprintf(
+            "%s: %s\n%s",
+            \get_class($t),
+>>>>>>> parent of 31cfa1b1 (p)
             $message,
             Filter::getFilteredStacktrace($t)
         );

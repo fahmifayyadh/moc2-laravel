@@ -19,7 +19,11 @@ class TinkerCommand extends Command
      * @var array
      */
     protected $commandWhitelist = [
+<<<<<<< HEAD
         'clear-compiled', 'down', 'env', 'inspire', 'migrate', 'migrate:install', 'optimize', 'up',
+=======
+        'clear-compiled', 'down', 'env', 'inspire', 'migrate', 'optimize', 'up',
+>>>>>>> parent of 31cfa1b1 (p)
     ];
 
     /**
@@ -118,7 +122,10 @@ class TinkerCommand extends Command
         $casters = [
             'Illuminate\Support\Collection' => 'Laravel\Tinker\TinkerCaster::castCollection',
             'Illuminate\Support\HtmlString' => 'Laravel\Tinker\TinkerCaster::castHtmlString',
+<<<<<<< HEAD
             'Illuminate\Support\Stringable' => 'Laravel\Tinker\TinkerCaster::castStringable',
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         ];
 
         if (class_exists('Illuminate\Database\Eloquent\Model')) {
@@ -129,9 +136,13 @@ class TinkerCommand extends Command
             $casters['Illuminate\Foundation\Application'] = 'Laravel\Tinker\TinkerCaster::castApplication';
         }
 
+<<<<<<< HEAD
         $config = $this->getLaravel()->make('config');
 
         return array_merge($casters, (array) $config->get('tinker.casters', []));
+=======
+        return $casters;
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

@@ -19,7 +19,10 @@ namespace Illuminate\Support\Facades;
  * @method static \Illuminate\Support\ServiceProvider register(\Illuminate\Support\ServiceProvider|string $provider, bool $force = false)
  * @method static void registerDeferredProvider(string $provider, string $service = null)
  * @method static \Illuminate\Support\ServiceProvider resolveProvider(string $provider)
+<<<<<<< HEAD
  * @method static mixed make($abstract, array $parameters = [])
+=======
+>>>>>>> parent of 31cfa1b1 (p)
  * @method static void boot()
  * @method static void booting(callable $callback)
  * @method static void booted(callable $callback)

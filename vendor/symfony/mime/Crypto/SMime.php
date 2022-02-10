@@ -83,7 +83,11 @@ abstract class SMime
             }
 
             // Handle headers that span multiple lines
+<<<<<<< HEAD
             if (!str_contains($headerLine, ':')) {
+=======
+            if (false === strpos($headerLine, ':')) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $headers[$currentHeaderName] .= ' '.trim($headerLine);
                 continue;
             }

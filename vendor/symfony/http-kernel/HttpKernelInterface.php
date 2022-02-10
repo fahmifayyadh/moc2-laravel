@@ -21,8 +21,13 @@ use Symfony\Component\HttpFoundation\Response;
  */
 interface HttpKernelInterface
 {
+<<<<<<< HEAD
     public const MASTER_REQUEST = 1;
     public const SUB_REQUEST = 2;
+=======
+    const MASTER_REQUEST = 1;
+    const SUB_REQUEST = 2;
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Handles a Request to convert it to a Response.

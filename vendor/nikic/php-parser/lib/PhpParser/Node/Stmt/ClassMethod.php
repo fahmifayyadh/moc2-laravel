@@ -15,7 +15,11 @@ class ClassMethod extends Node\Stmt implements FunctionLike
     public $name;
     /** @var Node\Param[] Parameters */
     public $params;
+<<<<<<< HEAD
     /** @var null|Node\Identifier|Node\Name|Node\ComplexType Return type */
+=======
+    /** @var null|Node\Identifier|Node\Name|Node\NullableType|Node\UnionType Return type */
+>>>>>>> parent of 31cfa1b1 (p)
     public $returnType;
     /** @var Node\Stmt[]|null Statements */
     public $stmts;

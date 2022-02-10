@@ -625,7 +625,10 @@ class SQLiteGrammar extends Grammar
      * Create the column definition for a date-time (with time zone) type.
      *
      * Note: "SQLite does not have a storage class set aside for storing dates and/or times."
+<<<<<<< HEAD
      *
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * @link https://www.sqlite.org/datatype3.html
      *
      * @param  \Illuminate\Support\Fluent  $column

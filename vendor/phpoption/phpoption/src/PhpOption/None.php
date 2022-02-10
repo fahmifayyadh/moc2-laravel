@@ -31,7 +31,11 @@ final class None extends Option
     /**
      * @return None
      */
+<<<<<<< HEAD
     public static function create(): self
+=======
+    public static function create()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -60,12 +64,20 @@ final class None extends Option
         throw $ex;
     }
 
+<<<<<<< HEAD
     public function isEmpty(): bool
+=======
+    public function isEmpty()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return true;
     }
 
+<<<<<<< HEAD
     public function isDefined(): bool
+=======
+    public function isDefined()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return false;
     }
@@ -115,7 +127,11 @@ final class None extends Option
         return $this;
     }
 
+<<<<<<< HEAD
     public function getIterator(): EmptyIterator
+=======
+    public function getIterator()
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return new EmptyIterator();
     }

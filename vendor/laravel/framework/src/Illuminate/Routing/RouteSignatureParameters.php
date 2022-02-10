@@ -37,7 +37,11 @@ class RouteSignatureParameters
     {
         [$class, $method] = Str::parseCallback($uses);
 
+<<<<<<< HEAD
         if (! method_exists($class, $method) && Reflector::isCallable($class, $method)) {
+=======
+        if (! method_exists($class, $method) && is_callable($class, $method)) {
+>>>>>>> parent of 31cfa1b1 (p)
             return [];
         }
 

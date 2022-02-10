@@ -107,7 +107,11 @@ class Router implements RouterInterface, RequestMatcherInterface
         $this->loader = $loader;
         $this->resource = $resource;
         $this->logger = $logger;
+<<<<<<< HEAD
         $this->context = $context ?? new RequestContext();
+=======
+        $this->context = $context ?: new RequestContext();
+>>>>>>> parent of 31cfa1b1 (p)
         $this->setOptions($options);
         $this->defaultLocale = $defaultLocale;
     }

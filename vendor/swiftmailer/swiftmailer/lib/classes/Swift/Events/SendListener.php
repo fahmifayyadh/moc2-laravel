@@ -17,11 +17,21 @@ interface Swift_Events_SendListener extends Swift_Events_EventListener
 {
     /**
      * Invoked immediately before the Message is sent.
+<<<<<<< HEAD
+=======
+     *
+     * @param Swift_Events_SendEvent $evt
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function beforeSendPerformed(Swift_Events_SendEvent $evt);
 
     /**
      * Invoked immediately after the Message is sent.
+<<<<<<< HEAD
+=======
+     *
+     * @param Swift_Events_SendEvent $evt
+>>>>>>> parent of 31cfa1b1 (p)
      */
     public function sendPerformed(Swift_Events_SendEvent $evt);
 }

@@ -32,8 +32,13 @@ use PhpParser\NodeTraverser;
  */
 class UseStatementPass extends CodeCleanerPass
 {
+<<<<<<< HEAD
     private $aliases = [];
     private $lastAliases = [];
+=======
+    private $aliases       = [];
+    private $lastAliases   = [];
+>>>>>>> parent of 31cfa1b1 (p)
     private $lastNamespace = null;
 
     /**
@@ -50,7 +55,11 @@ class UseStatementPass extends CodeCleanerPass
         if ($node instanceof Namespace_) {
             // If this is the same namespace as last namespace, let's do ourselves
             // a favor and reload all the aliases...
+<<<<<<< HEAD
             if (\strtolower($node->name ?: '') === \strtolower($this->lastNamespace ?: '')) {
+=======
+            if (\strtolower($node->name) === \strtolower($this->lastNamespace)) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->aliases = $this->lastAliases;
             }
         }
@@ -92,8 +101,13 @@ class UseStatementPass extends CodeCleanerPass
         // Start fresh, since we're done with this namespace.
         if ($node instanceof Namespace_) {
             $this->lastNamespace = $node->name;
+<<<<<<< HEAD
             $this->lastAliases = $this->aliases;
             $this->aliases = [];
+=======
+            $this->lastAliases   = $this->aliases;
+            $this->aliases       = [];
+>>>>>>> parent of 31cfa1b1 (p)
 
             return;
         }
@@ -128,8 +142,13 @@ class UseStatementPass extends CodeCleanerPass
         foreach ($this->aliases as $alias => $prefix) {
             if ($that === $alias) {
                 return new FullyQualifiedName($prefix->toString());
+<<<<<<< HEAD
             } elseif (\substr($that, 0, \strlen($alias) + 1) === $alias.'\\') {
                 return new FullyQualifiedName($prefix->toString().\substr($name, \strlen($alias)));
+=======
+            } elseif (\substr($that, 0, \strlen($alias) + 1) === $alias . '\\') {
+                return new FullyQualifiedName($prefix->toString() . \substr($name, \strlen($alias)));
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
     }

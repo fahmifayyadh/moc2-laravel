@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.github        export-ignore
 /.phive         export-ignore
 /.php_cs.dist   export-ignore
@@ -9,4 +10,6 @@
 /tools          export-ignore
 /tools/*        binary
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 *.php diff=php

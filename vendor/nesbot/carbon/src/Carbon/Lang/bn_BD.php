@@ -11,7 +11,11 @@
 
 /*
  * Authors:
+<<<<<<< HEAD
  * - Ankur Group, Taneem Ahmed, Jamil Ahmed
+=======
+ * - Ankur Group, http://www.ankurbangla.org, http://www.bengalinux.org Taneem Ahmed, Jamil Ahmed taneem@bengalinux.org, jamil@bengalinux.org
+>>>>>>> parent of 31cfa1b1 (p)
  */
 return array_replace_recursive(require __DIR__.'/bn.php', [
     'formats' => [

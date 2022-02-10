@@ -19,7 +19,10 @@ use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 use phpDocumentor\Reflection\DocBlock\StandardTagFactory;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
 use Webmozart\Assert\Assert;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 use function preg_match;
 
 /**
@@ -51,7 +54,11 @@ final class Generic extends BaseTag implements Factory\StaticMethod
         string $name = '',
         ?DescriptionFactory $descriptionFactory = null,
         ?TypeContext $context = null
+<<<<<<< HEAD
     ): self {
+=======
+    ) : self {
+>>>>>>> parent of 31cfa1b1 (p)
         Assert::stringNotEmpty($name);
         Assert::notNull($descriptionFactory);
 
@@ -63,7 +70,11 @@ final class Generic extends BaseTag implements Factory\StaticMethod
     /**
      * Returns the tag as a serialized string
      */
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    public function __toString() : string
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($this->description) {
             $description = $this->description->render();
@@ -77,7 +88,11 @@ final class Generic extends BaseTag implements Factory\StaticMethod
     /**
      * Validates if the tag name matches the expected format, otherwise throws an exception.
      */
+<<<<<<< HEAD
     private function validateTagName(string $name): void
+=======
+    private function validateTagName(string $name) : void
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!preg_match('/^' . StandardTagFactory::REGEX_TAGNAME . '$/u', $name)) {
             throw new InvalidArgumentException(

@@ -50,6 +50,12 @@ class PseudoNode extends AbstractNode
         return $this->selector->getSpecificity()->plus(new Specificity(0, 1, 0));
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> parent of 31cfa1b1 (p)
     public function __toString(): string
     {
         return sprintf('%s[%s:%s]', $this->getNodeName(), $this->selector, $this->identifier);

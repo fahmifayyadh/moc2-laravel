@@ -21,6 +21,7 @@ use Symfony\Component\Mime\Exception\LogicException;
  */
 final class Headers
 {
+<<<<<<< HEAD
     private const UNIQUE_HEADERS = [
         'date', 'from', 'sender', 'reply-to', 'to', 'cc', 'bcc',
         'message-id', 'in-reply-to', 'references', 'subject',
@@ -42,6 +43,13 @@ final class Headers
     /**
      * @var HeaderInterface[][]
      */
+=======
+    private static $uniqueHeaders = [
+        'date', 'from', 'sender', 'reply-to', 'to', 'cc', 'bcc',
+        'message-id', 'in-reply-to', 'references', 'subject',
+    ];
+
+>>>>>>> parent of 31cfa1b1 (p)
     private $headers = [];
     private $lineLength = 76;
 
@@ -75,7 +83,11 @@ final class Headers
     }
 
     /**
+<<<<<<< HEAD
      * @param array<Address|string> $addresses
+=======
+     * @param (Address|string)[] $addresses
+>>>>>>> parent of 31cfa1b1 (p)
      *
      * @return $this
      */
@@ -138,6 +150,7 @@ final class Headers
         return $this->add(new ParameterizedHeader($name, $value, $params));
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
@@ -154,6 +167,8 @@ final class Headers
         return $this->$method($name, $argument, $more);
     }
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     public function has(string $name): bool
     {
         return isset($this->headers[strtolower($name)]);
@@ -164,12 +179,36 @@ final class Headers
      */
     public function add(HeaderInterface $header): self
     {
+<<<<<<< HEAD
         self::checkHeaderClass($header);
+=======
+        static $map = [
+            'date' => DateHeader::class,
+            'from' => MailboxListHeader::class,
+            'sender' => MailboxHeader::class,
+            'reply-to' => MailboxListHeader::class,
+            'to' => MailboxListHeader::class,
+            'cc' => MailboxListHeader::class,
+            'bcc' => MailboxListHeader::class,
+            'message-id' => IdentificationHeader::class,
+            'in-reply-to' => IdentificationHeader::class,
+            'references' => IdentificationHeader::class,
+            'return-path' => PathHeader::class,
+        ];
+>>>>>>> parent of 31cfa1b1 (p)
 
         $header->setMaxLineLength($this->lineLength);
         $name = strtolower($header->getName());
 
+<<<<<<< HEAD
         if (\in_array($name, self::UNIQUE_HEADERS, true) && isset($this->headers[$name]) && \count($this->headers[$name]) > 0) {
+=======
+        if (isset($map[$name]) && !$header instanceof $map[$name]) {
+            throw new LogicException(sprintf('The "%s" header must be an instance of "%s" (got "%s").', $header->getName(), $map[$name], get_debug_type($header)));
+        }
+
+        if (\in_array($name, self::$uniqueHeaders, true) && isset($this->headers[$name]) && \count($this->headers[$name]) > 0) {
+>>>>>>> parent of 31cfa1b1 (p)
             throw new LogicException(sprintf('Impossible to set header "%s" as it\'s already defined and must be unique.', $header->getName()));
         }
 
@@ -217,6 +256,7 @@ final class Headers
 
     public static function isUniqueHeader(string $name): bool
     {
+<<<<<<< HEAD
         return \in_array(strtolower($name), self::UNIQUE_HEADERS, true);
     }
 
@@ -230,6 +270,9 @@ final class Headers
         if (($c = self::HEADER_CLASS_MAP[$name] ?? null) && !$header instanceof $c) {
             throw new LogicException(sprintf('The "%s" header must be an instance of "%s" (got "%s").', $header->getName(), $c, get_debug_type($header)));
         }
+=======
+        return \in_array($name, self::$uniqueHeaders, true);
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     public function toString(): string
@@ -257,7 +300,11 @@ final class Headers
     /**
      * @internal
      */
+<<<<<<< HEAD
     public function getHeaderBody(string $name)
+=======
+    public function getHeaderBody($name)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         return $this->has($name) ? $this->get($name)->getBody() : null;
     }
@@ -274,6 +321,12 @@ final class Headers
         }
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @internal
+     */
+>>>>>>> parent of 31cfa1b1 (p)
     public function getHeaderParameter(string $name, string $parameter): ?string
     {
         if (!$this->has($name)) {
@@ -291,7 +344,11 @@ final class Headers
     /**
      * @internal
      */
+<<<<<<< HEAD
     public function setHeaderParameter(string $name, string $parameter, ?string $value): void
+=======
+    public function setHeaderParameter(string $name, string $parameter, $value): void
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if (!$this->has($name)) {
             throw new LogicException(sprintf('Unable to set parameter "%s" on header "%s" as the header is not defined.', $parameter, $name));

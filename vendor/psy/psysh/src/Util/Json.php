@@ -24,9 +24,15 @@ class Json
      *
      * @return string
      */
+<<<<<<< HEAD
     public static function encode($val, int $opt = 0): string
     {
         $opt |= \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE;
+=======
+    public static function encode($val, $opt = 0)
+    {
+        $opt |= JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
+>>>>>>> parent of 31cfa1b1 (p)
 
         return \json_encode($val, $opt);
     }

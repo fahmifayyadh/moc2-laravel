@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function get_resource_type;
 use function is_array;
 use function is_bool;
@@ -24,6 +25,8 @@ use function is_string;
 use function sprintf;
 use TypeError;
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 /**
  * Constraint that asserts that the value it is evaluated for is of a
  * specified type.
@@ -126,7 +129,11 @@ final class IsType extends Constraint
     {
         if (!isset(self::KNOWN_TYPES[$type])) {
             throw new \PHPUnit\Framework\Exception(
+<<<<<<< HEAD
                 sprintf(
+=======
+                \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
                     'Type specified for PHPUnit\Framework\Constraint\IsType <%s> ' .
                     'is not a valid type.',
                     $type
@@ -142,7 +149,11 @@ final class IsType extends Constraint
      */
     public function toString(): string
     {
+<<<<<<< HEAD
         return sprintf(
+=======
+        return \sprintf(
+>>>>>>> parent of 31cfa1b1 (p)
             'is of type "%s"',
             $this->type
         );
@@ -158,15 +169,24 @@ final class IsType extends Constraint
     {
         switch ($this->type) {
             case 'numeric':
+<<<<<<< HEAD
                 return is_numeric($other);
 
             case 'integer':
             case 'int':
                 return is_int($other);
+=======
+                return \is_numeric($other);
+
+            case 'integer':
+            case 'int':
+                return \is_int($other);
+>>>>>>> parent of 31cfa1b1 (p)
 
             case 'double':
             case 'float':
             case 'real':
+<<<<<<< HEAD
                 return is_float($other);
 
             case 'string':
@@ -175,11 +195,22 @@ final class IsType extends Constraint
             case 'boolean':
             case 'bool':
                 return is_bool($other);
+=======
+                return \is_float($other);
+
+            case 'string':
+                return \is_string($other);
+
+            case 'boolean':
+            case 'bool':
+                return \is_bool($other);
+>>>>>>> parent of 31cfa1b1 (p)
 
             case 'null':
                 return null === $other;
 
             case 'array':
+<<<<<<< HEAD
                 return is_array($other);
 
             case 'object':
@@ -187,21 +218,40 @@ final class IsType extends Constraint
 
             case 'resource':
                 if (is_resource($other)) {
+=======
+                return \is_array($other);
+
+            case 'object':
+                return \is_object($other);
+
+            case 'resource':
+                if (\is_resource($other)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     return true;
                 }
 
                 try {
+<<<<<<< HEAD
                     $resource = @get_resource_type($other);
 
                     if (is_string($resource)) {
                         return true;
                     }
                 } catch (TypeError $e) {
+=======
+                    $resource = @\get_resource_type($other);
+
+                    if (\is_string($resource)) {
+                        return true;
+                    }
+                } catch (\TypeError $e) {
+>>>>>>> parent of 31cfa1b1 (p)
                 }
 
                 return false;
 
             case 'scalar':
+<<<<<<< HEAD
                 return is_scalar($other);
 
             case 'callable':
@@ -209,6 +259,15 @@ final class IsType extends Constraint
 
             case 'iterable':
                 return is_iterable($other);
+=======
+                return \is_scalar($other);
+
+            case 'callable':
+                return \is_callable($other);
+
+            case 'iterable':
+                return \is_iterable($other);
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 }

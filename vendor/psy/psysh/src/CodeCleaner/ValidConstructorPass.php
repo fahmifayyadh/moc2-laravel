@@ -94,7 +94,11 @@ class ValidConstructorPass extends CodeCleanerPass
                 \implode('\\', \array_merge($this->namespace, (array) $className)),
                 $constructor->name
             );
+<<<<<<< HEAD
             throw new FatalErrorException($msg, 0, \E_ERROR, null, $classNode->getLine());
+=======
+            throw new FatalErrorException($msg, 0, E_ERROR, null, $classNode->getLine());
+>>>>>>> parent of 31cfa1b1 (p)
         }
 
         if (\method_exists($constructor, 'getReturnType') && $constructor->getReturnType()) {
@@ -106,7 +110,11 @@ class ValidConstructorPass extends CodeCleanerPass
                 \implode('\\', \array_merge($this->namespace, (array) $className)),
                 $constructor->name
             );
+<<<<<<< HEAD
             throw new FatalErrorException($msg, 0, \E_ERROR, null, $classNode->getLine());
+=======
+            throw new FatalErrorException($msg, 0, E_ERROR, null, $classNode->getLine());
+>>>>>>> parent of 31cfa1b1 (p)
         }
     }
 }

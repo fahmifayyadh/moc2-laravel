@@ -23,7 +23,11 @@ class MongoClientMatcher extends AbstractContextAwareMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getMatches(array $tokens, array $info = []): array
+=======
+    public function getMatches(array $tokens, array $info = [])
+>>>>>>> parent of 31cfa1b1 (p)
     {
         $input = $this->getInput($tokens);
 
@@ -33,8 +37,13 @@ class MongoClientMatcher extends AbstractContextAwareMatcher
             \array_pop($tokens);
         }
         $objectToken = \array_pop($tokens);
+<<<<<<< HEAD
         $objectName = \str_replace('$', '', $objectToken[1]);
         $object = $this->getVariable($objectName);
+=======
+        $objectName  = \str_replace('$', '', $objectToken[1]);
+        $object      = $this->getVariable($objectName);
+>>>>>>> parent of 31cfa1b1 (p)
 
         if (!$object instanceof \MongoClient) {
             return [];
@@ -55,9 +64,15 @@ class MongoClientMatcher extends AbstractContextAwareMatcher
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function hasMatched(array $tokens): bool
     {
         $token = \array_pop($tokens);
+=======
+    public function hasMatched(array $tokens)
+    {
+        $token     = \array_pop($tokens);
+>>>>>>> parent of 31cfa1b1 (p)
         $prevToken = \array_pop($tokens);
 
         switch (true) {

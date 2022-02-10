@@ -15,9 +15,12 @@ class Method extends FunctionLike
     /** @var array|null */
     protected $stmts = [];
 
+<<<<<<< HEAD
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
     /**
      * Creates a method builder.
      *
@@ -116,6 +119,7 @@ class Method extends FunctionLike
     }
 
     /**
+<<<<<<< HEAD
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -129,6 +133,8 @@ class Method extends FunctionLike
     }
 
     /**
+=======
+>>>>>>> parent of 31cfa1b1 (p)
      * Returns the built method node.
      *
      * @return Stmt\ClassMethod The built method node
@@ -140,7 +146,10 @@ class Method extends FunctionLike
             'params'     => $this->params,
             'returnType' => $this->returnType,
             'stmts'      => $this->stmts,
+<<<<<<< HEAD
             'attrGroups' => $this->attributeGroups,
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         ], $this->attributes);
     }
 }

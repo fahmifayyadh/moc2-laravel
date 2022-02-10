@@ -75,7 +75,11 @@ class ArgvInput extends Input
                 $this->parseArgument($token);
             } elseif ($parseOptions && '--' == $token) {
                 $parseOptions = false;
+<<<<<<< HEAD
             } elseif ($parseOptions && str_starts_with($token, '--')) {
+=======
+            } elseif ($parseOptions && 0 === strpos($token, '--')) {
+>>>>>>> parent of 31cfa1b1 (p)
                 $this->parseLongOption($token);
             } elseif ($parseOptions && '-' === $token[0] && '-' !== $token) {
                 $this->parseShortOption($token);
@@ -137,7 +141,11 @@ class ArgvInput extends Input
         $name = substr($token, 2);
 
         if (false !== $pos = strpos($name, '=')) {
+<<<<<<< HEAD
             if ('' === $value = substr($name, $pos + 1)) {
+=======
+            if (0 === \strlen($value = substr($name, $pos + 1))) {
+>>>>>>> parent of 31cfa1b1 (p)
                 array_unshift($this->parsed, $value);
             }
             $this->addLongOption(substr($name, 0, $pos), $value);
@@ -243,7 +251,11 @@ class ArgvInput extends Input
         $isOption = false;
         foreach ($this->tokens as $i => $token) {
             if ($token && '-' === $token[0]) {
+<<<<<<< HEAD
                 if (str_contains($token, '=') || !isset($this->tokens[$i + 1])) {
+=======
+                if (false !== strpos($token, '=') || !isset($this->tokens[$i + 1])) {
+>>>>>>> parent of 31cfa1b1 (p)
                     continue;
                 }
 
@@ -285,8 +297,13 @@ class ArgvInput extends Input
                 // Options with values:
                 //   For long options, test for '--option=' at beginning
                 //   For short options, test for '-o' at beginning
+<<<<<<< HEAD
                 $leading = str_starts_with($value, '--') ? $value.'=' : $value;
                 if ($token === $value || '' !== $leading && str_starts_with($token, $leading)) {
+=======
+                $leading = 0 === strpos($value, '--') ? $value.'=' : $value;
+                if ($token === $value || '' !== $leading && 0 === strpos($token, $leading)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     return true;
                 }
             }
@@ -316,8 +333,13 @@ class ArgvInput extends Input
                 // Options with values:
                 //   For long options, test for '--option=' at beginning
                 //   For short options, test for '-o' at beginning
+<<<<<<< HEAD
                 $leading = str_starts_with($value, '--') ? $value.'=' : $value;
                 if ('' !== $leading && str_starts_with($token, $leading)) {
+=======
+                $leading = 0 === strpos($value, '--') ? $value.'=' : $value;
+                if ('' !== $leading && 0 === strpos($token, $leading)) {
+>>>>>>> parent of 31cfa1b1 (p)
                     return substr($token, \strlen($leading));
                 }
             }

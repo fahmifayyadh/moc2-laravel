@@ -32,7 +32,11 @@ abstract class NamespaceAwarePass extends CodeCleanerPass
      */
     public function beforeTraverse(array $nodes)
     {
+<<<<<<< HEAD
         $this->namespace = [];
+=======
+        $this->namespace    = [];
+>>>>>>> parent of 31cfa1b1 (p)
         $this->currentScope = [];
     }
 
@@ -56,7 +60,11 @@ abstract class NamespaceAwarePass extends CodeCleanerPass
      *
      * @return string
      */
+<<<<<<< HEAD
     protected function getFullyQualifiedName($name): string
+=======
+    protected function getFullyQualifiedName($name)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($name instanceof FullyQualifiedName) {
             return \implode('\\', $name->parts);

@@ -57,7 +57,11 @@ abstract class AbstractSurrogate implements SurrogateInterface
             return false;
         }
 
+<<<<<<< HEAD
         return str_contains($value, sprintf('%s/1.0', strtoupper($this->getName())));
+=======
+        return false !== strpos($value, sprintf('%s/1.0', strtoupper($this->getName())));
+>>>>>>> parent of 31cfa1b1 (p)
     }
 
     /**

@@ -18,5 +18,9 @@ namespace phpDocumentor\Reflection\DocBlock\Tags\Reference;
  */
 interface Reference
 {
+<<<<<<< HEAD
     public function __toString(): string;
+=======
+    public function __toString() : string;
+>>>>>>> parent of 31cfa1b1 (p)
 }

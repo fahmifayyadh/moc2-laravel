@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31cfa1b1 (p)
 namespace GuzzleHttp;
 
 use GuzzleHttp\Exception\GuzzleException;
@@ -14,9 +17,15 @@ use Psr\Http\Message\UriInterface;
 interface ClientInterface
 {
     /**
+<<<<<<< HEAD
      * The Guzzle major version.
      */
     public const MAJOR_VERSION = 7;
+=======
+     * @deprecated Will be removed in Guzzle 7.0.0
+     */
+    const VERSION = '6.5.5';
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Send an HTTP request.
@@ -25,9 +34,16 @@ interface ClientInterface
      * @param array            $options Request options to apply to the given
      *                                  request and to the transfer.
      *
+<<<<<<< HEAD
      * @throws GuzzleException
      */
     public function send(RequestInterface $request, array $options = []): ResponseInterface;
+=======
+     * @return ResponseInterface
+     * @throws GuzzleException
+     */
+    public function send(RequestInterface $request, array $options = []);
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Asynchronously send an HTTP request.
@@ -35,8 +51,15 @@ interface ClientInterface
      * @param RequestInterface $request Request to send
      * @param array            $options Request options to apply to the given
      *                                  request and to the transfer.
+<<<<<<< HEAD
      */
     public function sendAsync(RequestInterface $request, array $options = []): PromiseInterface;
+=======
+     *
+     * @return PromiseInterface
+     */
+    public function sendAsync(RequestInterface $request, array $options = []);
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Create and send an HTTP request.
@@ -49,9 +72,16 @@ interface ClientInterface
      * @param string|UriInterface $uri     URI object or string.
      * @param array               $options Request options to apply.
      *
+<<<<<<< HEAD
      * @throws GuzzleException
      */
     public function request(string $method, $uri, array $options = []): ResponseInterface;
+=======
+     * @return ResponseInterface
+     * @throws GuzzleException
+     */
+    public function request($method, $uri, array $options = []);
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Create and send an asynchronous HTTP request.
@@ -64,8 +94,15 @@ interface ClientInterface
      * @param string              $method  HTTP method
      * @param string|UriInterface $uri     URI object or string.
      * @param array               $options Request options to apply.
+<<<<<<< HEAD
      */
     public function requestAsync(string $method, $uri, array $options = []): PromiseInterface;
+=======
+     *
+     * @return PromiseInterface
+     */
+    public function requestAsync($method, $uri, array $options = []);
+>>>>>>> parent of 31cfa1b1 (p)
 
     /**
      * Get a client configuration option.
@@ -77,8 +114,13 @@ interface ClientInterface
      * @param string|null $option The config option to retrieve.
      *
      * @return mixed
+<<<<<<< HEAD
      *
      * @deprecated ClientInterface::getConfig will be removed in guzzlehttp/guzzle:8.0.
      */
     public function getConfig(?string $option = null);
+=======
+     */
+    public function getConfig($option = null);
+>>>>>>> parent of 31cfa1b1 (p)
 }

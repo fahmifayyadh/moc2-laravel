@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 namespace GuzzleHttp;
 
@@ -8,10 +9,18 @@ use GuzzleHttp\Handler\CurlMultiHandler;
 use GuzzleHttp\Handler\Proxy;
 use GuzzleHttp\Handler\StreamHandler;
 use Psr\Http\Message\UriInterface;
+=======
+namespace GuzzleHttp;
+
+use GuzzleHttp\Exception\InvalidArgumentException;
+use Psr\Http\Message\UriInterface;
+use Symfony\Polyfill\Intl\Idn\Idn;
+>>>>>>> parent of 31cfa1b1 (p)
 
 final class Utils
 {
     /**
+<<<<<<< HEAD
      * Debug function used to describe the provided value type and class.
      *
      * @param mixed $input
@@ -314,18 +323,46 @@ EOT
     }
 
     /**
+=======
+     * Wrapper for the hrtime() or microtime() functions
+     * (depending on the PHP version, one of the two is used)
+     *
+     * @return float|mixed UNIX timestamp
+     *
+     * @internal
+     */
+    public static function currentTime()
+    {
+        return function_exists('hrtime') ? hrtime(true) / 1e9 : microtime(true);
+    }
+
+    /**
+     * @param int $options
+     *
+     * @return UriInterface
+>>>>>>> parent of 31cfa1b1 (p)
      * @throws InvalidArgumentException
      *
      * @internal
      */
+<<<<<<< HEAD
     public static function idnUriConvert(UriInterface $uri, int $options = 0): UriInterface
+=======
+    public static function idnUriConvert(UriInterface $uri, $options = 0)
+>>>>>>> parent of 31cfa1b1 (p)
     {
         if ($uri->getHost()) {
             $asciiHost = self::idnToAsci($uri->getHost(), $options, $info);
             if ($asciiHost === false) {
+<<<<<<< HEAD
                 $errorBitSet = $info['errors'] ?? 0;
 
                 $errorConstants = array_filter(array_keys(get_defined_constants()), static function (string $name): bool {
+=======
+                $errorBitSet = isset($info['errors']) ? $info['errors'] : 0;
+
+                $errorConstants = array_filter(array_keys(get_defined_constants()), function ($name) {
+>>>>>>> parent of 31cfa1b1 (p)
                     return substr($name, 0, 11) === 'IDNA_ERROR_';
                 });
 
@@ -342,10 +379,18 @@ EOT
                 }
 
                 throw new InvalidArgumentException($errorMessage);
+<<<<<<< HEAD
             }
             if ($uri->getHost() !== $asciiHost) {
                 // Replace URI only if the ASCII version is different
                 $uri = $uri->withHost($asciiHost);
+=======
+            } else {
+                if ($uri->getHost() !== $asciiHost) {
+                    // Replace URI only if the ASCII version is different
+                    $uri = $uri->withHost($asciiHost);
+                }
+>>>>>>> parent of 31cfa1b1 (p)
             }
         }
 
@@ -353,6 +398,7 @@ EOT
     }
 
     /**
+<<<<<<< HEAD
      * @internal
      */
     public static function getenv(string $name): ?string
@@ -378,5 +424,31 @@ EOT
         }
 
         throw new \Error('ext-idn or symfony/polyfill-intl-idn not loaded or too old');
+=======
+     * @param string $domain
+     * @param int    $options
+     * @param array  $info
+     *
+     * @return string|false
+     */
+    private static function idnToAsci($domain, $options, &$info = [])
+    {
+        if (\preg_match('%^[ -~]+$%', $domain) === 1) {
+            return $domain;
+        }
+
+        if (\extension_loaded('intl') && defined('INTL_IDNA_VARIANT_UTS46')) {
+            return \idn_to_ascii($domain, $options, INTL_IDNA_VARIANT_UTS46, $info);
+        }
+
+        /*
+         * The Idn class is marked as @internal. Verify that class and method exists.
+         */
+        if (method_exists(Idn::class, 'idn_to_ascii')) {
+            return Idn::idn_to_ascii($domain, $options, Idn::INTL_IDNA_VARIANT_UTS46, $info);
+        }
+
+        throw new \RuntimeException('ext-intl or symfony/polyfill-intl-idn not loaded or too old');
+>>>>>>> parent of 31cfa1b1 (p)
     }
 }

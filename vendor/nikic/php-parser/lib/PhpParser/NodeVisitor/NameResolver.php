@@ -86,6 +86,7 @@ class NameResolver extends NodeVisitorAbstract
 
             $this->resolveAttrGroups($node);
             $this->addNamespacedName($node);
+<<<<<<< HEAD
          } elseif ($node instanceof Stmt\Enum_) {
             foreach ($node->implements as &$interface) {
                 $interface = $this->resolveClassName($interface);
@@ -95,6 +96,8 @@ class NameResolver extends NodeVisitorAbstract
             if (null !== $node->name) {
                 $this->addNamespacedName($node);
             }
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         } elseif ($node instanceof Stmt\Trait_) {
             $this->resolveAttrGroups($node);
             $this->addNamespacedName($node);
@@ -119,8 +122,11 @@ class NameResolver extends NodeVisitorAbstract
             }
         } else if ($node instanceof Stmt\ClassConst) {
             $this->resolveAttrGroups($node);
+<<<<<<< HEAD
         } else if ($node instanceof Stmt\EnumCase) {
             $this->resolveAttrGroups($node);
+=======
+>>>>>>> parent of 31cfa1b1 (p)
         } elseif ($node instanceof Expr\StaticCall
                   || $node instanceof Expr\StaticPropertyFetch
                   || $node instanceof Expr\ClassConstFetch
@@ -189,7 +195,11 @@ class NameResolver extends NodeVisitorAbstract
             $node->type = $this->resolveType($node->type);
             return $node;
         }
+<<<<<<< HEAD
         if ($node instanceof Node\UnionType || $node instanceof Node\IntersectionType) {
+=======
+        if ($node instanceof Node\UnionType) {
+>>>>>>> parent of 31cfa1b1 (p)
             foreach ($node->types as &$type) {
                 $type = $this->resolveType($type);
             }

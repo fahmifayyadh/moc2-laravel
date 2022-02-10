@@ -27,9 +27,15 @@ use Symfony\Component\CssSelector\XPath\XPathExpr;
  */
 class NodeExtension extends AbstractExtension
 {
+<<<<<<< HEAD
     public const ELEMENT_NAME_IN_LOWER_CASE = 1;
     public const ATTRIBUTE_NAME_IN_LOWER_CASE = 2;
     public const ATTRIBUTE_VALUE_IN_LOWER_CASE = 4;
+=======
+    const ELEMENT_NAME_IN_LOWER_CASE = 1;
+    const ATTRIBUTE_NAME_IN_LOWER_CASE = 2;
+    const ATTRIBUTE_VALUE_IN_LOWER_CASE = 4;
+>>>>>>> parent of 31cfa1b1 (p)
 
     private $flags;
 
@@ -157,7 +163,11 @@ class NodeExtension extends AbstractExtension
     {
         $element = $node->getElement();
 
+<<<<<<< HEAD
         if ($element && $this->hasFlag(self::ELEMENT_NAME_IN_LOWER_CASE)) {
+=======
+        if ($this->hasFlag(self::ELEMENT_NAME_IN_LOWER_CASE)) {
+>>>>>>> parent of 31cfa1b1 (p)
             $element = strtolower($element);
         }
 

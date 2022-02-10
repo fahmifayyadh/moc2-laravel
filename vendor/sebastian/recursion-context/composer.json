@@ -18,7 +18,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": ">=7.0"
+=======
+        "php": "^7.0"
+>>>>>>> parent of 31cfa1b1 (p)
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0"
