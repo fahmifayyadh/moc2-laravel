@@ -46,7 +46,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="../img/boy.png" style="max-width: 60px; border: none;">
+                <img class="img-profile rounded-circle" src="{{asset('admin/img/boy.png')}}" style="max-width: 60px; border: none;">
                 <span class="ml-2 d-none d-lg-inline small"
                   style="color:#FF9F1C; font-family: 'Rubik', sans-serif;">Maman Ketoprak</span>
               </a>
