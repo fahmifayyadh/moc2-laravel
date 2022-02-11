@@ -61,7 +61,7 @@
       font-size: 17px;
       font-family: 'Rubik', sans-serif;
       font-weight: 500;
-      background: #73BB17;
+      background:  #73BB17;
       color: #283246;
       padding: 2px 20px 2px 20px;
 
@@ -103,28 +103,8 @@
       padding: 2px 20px 2px 20px;
     }
 
-
     table tbody tr td .btn-8:hover {
       color: #F86D6D;
-    }
-
-    table tbody tr td .btn-4 {
-      font-size: 17px;
-      font-family: 'Rubik', sans-serif;
-      font-weight: 500;
-      background: #F4F4F4;
-      color: rgb(0, 0, 0);
-      padding: 2px 20px 2px 20px;
-    }
-
-    table tbody tr td .btn-5 {
-      font-size: 17px;
-      font-family: 'Rubik', sans-serif;
-      font-weight: 500;
-      background: #283246;
-      color: #FF9F1C;
-      padding: 2px 20px 2px 20px;
-
     }
 
     .modal-header .modal-title {
@@ -135,7 +115,6 @@
       line-height: 20px;
       letter-spacing: 0em;
       text-align: center;
-      color: #1F2028;
     }
   </style>
 @section('content')
@@ -151,68 +130,47 @@
         <p
         style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
         <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-        KELOLA EKSPEDISI <span style="font-weight: 100;"></span>
+        PENCAIRAN DANA <span style="font-weight: 100;"></span>
         </p>
     </a>
     </div>
-
     <!-- Row -->
     <div class="row" style="margin: 0; padding: 0;">
 
     <div class="col-12 col-md-12 col-lg-12">
         <div class="container container-3">
-
+    
         <!-- ---------tabel------------- -->
         <div class="cards">
             <table class="table  table-dark  " style="background: 
         #252633;">
             <thead>
                 <th class="th-1"> No</th>
-                <th class="th-3">Nama</th>
-                <th class="th-2">Action</th>
-
-
-
+                <th class="th-3">Tanggal</th>
+                <th class="th-3">Nama Penerima</th>
+                <th class="th-3">Total</th>
+                <th class="th-3">No Rekening Tujuan</th>
+                <th class="th-2">Bank</th>
+                
+            
             </thead>
             <tbody style="border: none;">
                 <tr>
                 <td>1 <span>.</span></td>
-                <td>SI CEPAT</td>
-                <td>
-                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Edit Ekspedisi</h5>
-                        </div>
-                        <div class="modal-body">
-                            <!-- form -->
-                            <form action="">
-                            <div class="mb-3">
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                                placeholder="">
-                            </div>
-                            <div class="buttonn" style="text-align: right;">
-                                <div class="col">
-                                <button type="submit" class="btn btn-7">Save</button>
-                                <button type="submit" class="btn btn-8">Cancel</button>
-                                </div>
-                            </div>
-                            </form>
-                            <!-- Form Ahir -->
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-
-                    <a class="btn btn-4" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Edit</a>
-                    <a href="" class="btn btn-5">Delet</a>
-                </td>
-
+                <td>31-Jan-2021</td>
+                <td>Fahmi</td>
+                <td>200.000</td>
+                <td>76598709870</td>
+                <td>BCA</td> 
                 </tr>
-
+                <tr>
+                <td>1 <span>.</span></td>
+                <td>31-Jan-2021</td>
+                <td>Fahmi</td>
+                <td>200.000</td>
+                <td>76598709870</td>
+                <td>BCA</td> 
+                </tr>
             </tbody>
             </table>
         </div>
