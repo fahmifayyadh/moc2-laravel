@@ -62,7 +62,21 @@
         $('#dataTableHover').DataTable(); // ID From dataTable with Hover
       });
     </script>
+<script>
+function openNav() {
+   if (document.getElementById("accordionSidebar").style.display === "none") {
+    document.getElementById("accordionSidebar").style.display = "block";
+  } else {
+    document.getElementById("accordionSidebar").style.display = "none";
+  }
+}
 
+function closeNav() {
+  document.getElementById("accordionSidebar").style.display = "none";
+  document.getElementById("content").style.marginLeft= "0";
+}
+</script>
+   
 </body>
 
 </html>
