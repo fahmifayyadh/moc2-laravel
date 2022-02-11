@@ -58,7 +58,7 @@
     }
   </style>
 @section('content')
-          <div class="container-fluid" id="container-wrapper">
+        <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <a href="allproduct.html">
               <h4 style="color:white;font-family: 'Rubik', sans-serif; font-weight: bold;"><span
@@ -88,13 +88,13 @@
                       <div class="card-heade">
                         <h1
                           style="text-transform: uppercase; border:none; padding: 0px 50px 50px 20px;  color: white;  font-family: 'Rubik', sans-serif; font-weight: bold;">
-                          5000000000000000</h1>
+                          {{number_format($saldo,0,'.','.')}}</h1>
                       </div>
 
                     </div>
                   </div>
                 </div>
-
+                
          
                 <div class="titlee">
                   <p> <span>|</span> Data Hari ini</p>
@@ -106,7 +106,7 @@
                         <p>Transaksi</p>
                       </div>
                       <div class="jumlah" style="text-align: center;">
-                        <h4>70</h4>
+                        <h4>{{number_format($leadnow,0,'.','.')}}</h4>
                       </div>
                     </div>
                   </div>
@@ -116,7 +116,7 @@
                         <p>Pengguna</p>
                       </div>
                       <div class="jumlah">
-                        <h4>70</h4>
+                        <h4> {{number_format($salesnow,0,'.','.')}}</h4>
                       </div>
                     </div>
                   </div>
@@ -127,7 +127,7 @@
                         <p>Omset</p>
                       </div>
                       <div class="jumlah">
-                        <h4>70</h4>
+                        <h4>{{number_format($omsetnow,0,'.','.')}}</h4>
                       </div>
                     </div>
                   </div>
@@ -143,7 +143,7 @@
                         <p>Transaksi</p>
                       </div>
                       <div class="jumlah" style="text-align: center;">
-                        <h4>70</h4>
+                        <h4>{{number_format($leadbulan,0,'.','.')}}</h4>
                       </div>
                     </div>
                   </div>
@@ -153,7 +153,7 @@
                         <p>Pengguna</p>
                       </div>
                       <div class="jumlah">
-                        <h4>70</h4>
+                        <h4>{{number_format($salesbulan,0,'.','.')}}</h4>
                       </div>
                     </div>
                   </div>
@@ -164,7 +164,7 @@
                         <p>Omset</p>
                       </div>
                       <div class="jumlah">
-                        <h4>70</h4>
+                        <h4>{{number_format($omsetbulan,0,'.','.')}}</h4>
                       </div>
                     </div>
                   </div>
@@ -180,7 +180,7 @@
                         <p>Transaksi</p>
                       </div>
                       <div class="jumlah" style="text-align: center;">
-                        <h4>70</h4>
+                        <h4>{{number_format($lead,0,'.','.')}}</h4>
                       </div>
                     </div>
                   </div>
@@ -190,7 +190,7 @@
                         <p>Pengguna</p>
                       </div>
                       <div class="jumlah">
-                        <h4>70</h4>
+                        <h4>{{number_format($sales,0,'.','.')}}</h4>
                       </div>
                     </div>
                   </div>
@@ -201,7 +201,7 @@
                         <p>Omset</p>
                       </div>
                       <div class="jumlah">
-                        <h4>70</h4>
+                        <h4>{{number_format($omset,0,'.','.')}}</h4>
                       </div>
                     </div>
                   </div>
