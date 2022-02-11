@@ -1,6 +1,6 @@
         <nav class="navbar navbar-expand  bg-navbar topbar mb-4 static-top" style="background: 
         #353535; width: auto;">
-          <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+          <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3"  onclick="mydisplay(document.getElementById('accordionSidebar')">
             <i class="fa fa-bars" style="color: #FF9F1C;"></i>
           </button>
           <ul class="navbar-nav ml-auto">
@@ -72,3 +72,12 @@
             </li>
           </ul>
         </nav>
+  <script>
+  function listIcon(divTag, id) {
+    if (document.getElementById(divTag+id).style.display == 'none') {
+          document.getElementById(divTag+id).style.display = 'block';
+        } else {
+          document.getElementById(divTag+id).style.display = 'none';
+    };
+  }
+</script>
