@@ -120,73 +120,64 @@
 @section('content')
 
 <style>
-    .d-sm-flex a {
-    text-decoration: none;
-    }
-</style>
-<div class="container-fluid" id="container-wrapper">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <a href="allproduct.html">
-        <p
-        style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
-        <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-        INFORMASI REWARD <span style="font-weight: 100;"></span>
-        </p>
-    </a>
-    </div>
+          .d-sm-flex a {
+            text-decoration: none;
+          }
+        </style>
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <a href="allproduct.html">
+              <p
+                style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
+                <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+                INFORMASI REWARD <span style="font-weight: 100;"></span>
+              </p>
+            </a>
+          </div>
 
-    <!-- Row -->
-    <div class="row" style="margin: 0; padding: 0;">
+          <!-- Row -->
+          <div class="row" style="margin: 0; padding: 0;">
 
-    <div class="col-12 col-md-12 col-lg-12">
-        <div class="container container-3">
-    
-        <!-- ---------tabel------------- -->
-        <div class="cards">
-            <table class="table  table-dark  " style="background: 
-        #252633;">
-            <thead>
-                <th class="th-1"> No</th>
-                <th class="th-3">Nama Pemilik</th>
-                <th class="th-3">Produk</th>
-                <th class="th-3">Harga Poin </th>
-                <th class="th-3">Kode Transaksi</th>
-                <th class="th-3">Tanggal</th>
-                <th class="th-2">Statsu</th>
-            
-            </thead>
-            <tbody style="border: none;">
-                <tr>
-                <td>1 <span>.</span></td>
-                <td>Fathiya</td>
-                <td>Smatphone</td>
-                <td>10.000</td>
-                <td>asdad</td>
-                <td>2030-12-31</td>
-                <td><a href="" class="btn btn-5">Aktif</a></td>
-                    
-                </tr>
-                <tr>
-                <td>2 <span>.</span></td>
-                <td>Fathiya</td>
-                <td>Smatphone</td>
-                <td>10.000</td>
-                <td>asdad</td>
-                <td>2030-12-31</td>
-                <td><a href="" class="btn btn-5">Aktif</a></td>
-                    
-                </tr>
-                
-            </tbody>
-            </table>
+            <div class="col-12 col-md-12 col-lg-12">
+              <div class="container container-3">
+          
+                <!-- ---------tabel------------- -->
+                <div class="cards">
+                  <table class="table  table-dark  " style="background: 
+                #252633;">
+                    <thead>
+                      <th class="th-1"> No</th>
+                      <th class="th-3">Nama Pemilik</th>
+                      <th class="th-3">Produk</th>
+                      <th class="th-3">Harga Poin </th>
+                      <th class="th-3">Kode Transaksi</th>
+                      <th class="th-3">Tanggal</th>
+                      <th class="th-2">Status</th>
+                  
+                    </thead>
+                    <tbody style="border: none;">
+                    @foreach ($tw as $i=>$t)
+                      <tr>
+                        <td>{{$i+1}} <span>.</span></td>
+                        <td>{{$t->user->name}}</td>
+                        <td>{{$t->judul}}</td>
+                        <td>{{number_format($t->harga_point,0,'.','.')}}</td>
+                        <td>{{Str::random(6)}}</td>
+                        <td>{{$t->created_at->format('d-M-Y')}}</td>
+                        <td><a href="" class="btn btn-5">Aktif</a></td>
+                          
+                      </tr>
+                    @endforeach
+                      
+                    </tbody>
+                  </table>
+                </div>
+                <!-- ---------tabel------------- -->
+              </div>
+            </div>
+
+          </div>
+          <!--Row-->
         </div>
-        <!-- ---------tabel------------- -->
-        </div>
-    </div>
-
-    </div>
-    <!--Row-->
-
-    </div>
-</div>
+      
 @endsection
