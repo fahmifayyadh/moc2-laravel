@@ -107,7 +107,7 @@ class HomeController extends Controller
             $lead = intval(Transaction::where('status','selesai')->count()) + intval(TransactionCourse::where('status','selesai')->count());
 
             //return view('tests.dashboard.rekap',compact(['saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
-            return view('v2.admin.dashboard',compact(['saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
+            return view('V2.Admin.dashboard',compact(['saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
 
 
         }

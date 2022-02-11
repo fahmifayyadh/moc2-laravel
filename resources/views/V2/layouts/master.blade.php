@@ -16,78 +16,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body id="page-top">
-
-  <style>
-    .judul p {
-      color: #FF9F1C;
-      font-weight: 700;
-      font-size: 15px;
-      padding: 10px 0px 0px 10px;
-      font-family: 'Rubik', sans-serif;
-    }
-
-    .jumlah h4 {
-      color: #FF9F1C;
-      font-size: 40px;
-      font-weight: 600;
-      font-family: 'Rubik', sans-serif;
-      padding: none;
-      margin-top: -10px;
-    }
-
-    .jumlah {
-      text-align: center;
-    }
-
-    .titlee p {
-      font-size: 25px;
-      font-weight: bold;
-      font-family: 'Rubik', sans-serif;
-      margin-top: 35px;
-      padding-top: 20px;
-      color: black;
-    }
-
-    .titlee p span {
-      color: #FF9F1C;
-      font-family: 'Rubik', sans-serif;
-      font-weight: bold;
-    }
-
-    .margin {
-      margin-right: 140px;
-    }
-
-
-    @media only screen and (max-width: 780px) {
-      .margin {
-        margin-right: 5px;
-      }
-
-      .card {
-        margin: 5px;
-      }
-    }
-
-    @media only screen and (max-width: 1024px) {
-      .margin {
-        margin-right: 80px;
-      }
-    }
-  </style>
   <div id="wrapper">
     <!-- Sidebar -->
-    @include('layouts.sidebar')
+    @include('V2.layouts.sidebar')
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column" style="background:#1F2028;">
       <div id="content">
         <!-- TopBar -->
-         @include('layouts.topbar')
+         @include('V2.layouts.topbar')
         <!-- Topbar -->
         @yield('content')
         <!-- Footer -->
         <!-- Footer -->
-        @include('layouts.footer')
+        @include('V2.layouts.footer')
         <!-- Footer -->
 
       </div>
