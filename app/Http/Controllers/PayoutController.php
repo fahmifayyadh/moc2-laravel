@@ -15,12 +15,12 @@ class PayoutController extends Controller
     public function index()
     {
         $bank = Bank::where('type','gateway')->get();
-        return view('tests.pencairan.index',compact('bank'));
+        return view('V2.Admin.pencairan-dana',compact('bank'));
     }
     function riwayat()
     {
         $pay = Payout::get();
-        return view('tests.pencairan.riwayat',compact('pay'));
+        return view('V2.Admin.riwayat-pencairan-dana',compact('pay'));
     }
     public function create(Request $request)
     {

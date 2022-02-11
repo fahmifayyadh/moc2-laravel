@@ -15,7 +15,7 @@ class BankController extends Controller
         $pembayaran = $x->getBank();
         $useBank = Bank::where('type','personal')->get();
         $useBankk = Bank::where('type','gateway')->get();
-        return view('tests.bank.index', compact(['useBankk','pembayaran', 'useBank']));
+        return view('V2.Admin.kelola-bank', compact(['useBankk','pembayaran', 'useBank']));
     }
     public function createPayment(Request $request)
     {
