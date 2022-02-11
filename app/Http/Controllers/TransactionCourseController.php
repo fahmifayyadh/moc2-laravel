@@ -19,7 +19,7 @@ class TransactionCourseController extends Controller
         }])->orderByRaw("FIELD(status, \"'pembayaran\", \"selesai\", \"batal\")")->orderBy("created_at", "desc")->paginate(10);
         // return $transaksi;
         $tf=true;
-        return view('tests.transaksi.transaksi-produk-course',compact(['tf','transaksi']));
+        return view('V2.Admin.transaksi',compact(['tf','transaksi']));
         
     }
     public function filterCourse($fil)
