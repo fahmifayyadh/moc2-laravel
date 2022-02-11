@@ -1,197 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master')
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="{{asset('img/logo/logo.png')}}" rel="icon">
-    <title>RuangAdmin - Alerts</title>
-
-
-    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/ruang-admin.css" rel="stylesheet')}}">
-    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
-
-    <!-- font rubik -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@200;500;700&display=swap" rel="stylesheet">
-
-    <!-- font roboto -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body id="page-top">
-    <div id="wrapper">
-        <!-- Sidebar -->
-       
-        <!-- Sidebar -->
-        <div id="content-wrapper" class="d-flex flex-column" style="background:#1F2028;">
-            <div id="content">
-                <!-- TopBar -->
-                <nav class="navbar navbar-expand  bg-navbar topbar mb-4 static-top" style="background: 
-        #353535; width: auto;">
-                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
-                        <i class="fa fa-bars" style="color: #FF9F1C;"></i>
-                    </button>
-                    <ul class="navbar-nav ml-auto">
-
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                <i class="fas fa-shopping-cart" style="color:#FF9F1C;"></i>
-                                <span class="badge badge-danger badge-counter"
-                                    style="background-color:  #FF9F1C;">3+</span>
-                            </a>
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-black">
-                                        Revolotion Bright 100 ml
-                                        <div class="small">Rp 125.000</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-black">
-                                        Glowing Packages
-                                        <div class="small">Rp 125.000</div>
-                                    </div>
-                                </a>
-                                <div class="text-right p-3">
-                                    <a class="btn button-custome text-center small text-light" href="#">Lihat keranjang</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                        
-                                <i class="far fa-bell" style="color:#FF9F1C;"></i>
-                                <span class="badge badge-danger badge-counter" style="background-color:  #FF9F1C;">3+</span>
-                            </a>
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-black">
-                                        <div class="small">Admin MOC</div>
-                                        Selamat Bergabung dengan keluarga
-                                        MOC Member
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-black">
-                                        <div class="small">December 7, 2019</div>
-                                        pembelian mengalami expired
-                                    </div>
-                                </a>
-                                <div class="text-center p-3">
-                                    <a class="btn button-custome text-center small text-light" href="#">Cek semua notifikasi</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-expand" style="color: #FF9F1C;"></i>
-                                <span class="badge badge-warning badge-counter">2</span>
-                            </a>
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="{{asset('../img/man.png')}}" style="max-width: 60px" alt="">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been
-                                            having.</div>
-                                        <div class="small text-gray-500">Udin Cilok · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="{{asset('../img/girl.png')}}" style="max-width: 60px"
-                                            alt="">
-                                        <div class="status-indicator bg-default"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people
-                                            say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Jaenab · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle" src="img/boy.png"
-                                    style="max-width: 60px; border: none;">
-                                <span class="ml-2 d-none d-lg-inline small"
-                                    style="color:#FF9F1C; font-family: 'Rubik', sans-serif;">Maman Ketoprak</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.html">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- Topbar -->
-
-                <div class="container-fluid" id="container-wrapper">
+@section('content')
+ <div class="container-fluid" id="container-wrapper">
                     <!-- caraousel slide -->
                     <div id="carouselExampleIndicators" class="carousel slide mr-3" data-ride="carousel">
                         <ol class="carousel-indicators d-flex justify-content-end mr-5">
@@ -201,13 +11,13 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100 rounded" src="img/slide/index.svg" alt="First slide">
+                                <img class="d-block w-100 rounded" src="{{asset('assets\images\slider-auto-width\11.jpg')}}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100 rounded" src="img/slide/slide2.svg" alt="Second slide">
+                                <img class="d-block w-100 rounded" src="{{asset('assets\images\slider-auto-width\11.jpg')}}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100 rounded" src="img/slide/slide3.svg" alt="Third slide">
+                                <img class="d-block w-100 rounded" src="{{asset('assets\images\slider-auto-width\11.jpg')}}" alt="Third slide">
                             </div>
                         </div>
                         
@@ -231,7 +41,7 @@
                                     <!-- list berita -->
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="{{asset('img/item/index.svg')}}" class="img-fluid" alt="Responsive image">
+                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
                                         </div>
                                         <div class="col-9 my-auto text-black">
                                             <p class="h4">Berita 1</p>
@@ -245,7 +55,7 @@
                                     <hr style="border-top: 1px dashed" class="">
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="{{asset('img/item/index.svg')}}" class="img-fluid" alt="Responsive image">
+                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
                                         </div>
                                         <div class="col-9 my-auto text-black">
                                             <p class="h4">Berita 1</p>
@@ -259,7 +69,7 @@
                                     <hr style="border-top: 1px dashed" class="">
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="{{asset('img/item/index.svg')}}" class="img-fluid" alt="Responsive image">
+                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
                                         </div>
                                         <div class="col-9 my-auto text-black">
                                             <p class="h4">Berita 1</p>
@@ -511,37 +321,16 @@
                         </div>
                     </div>
                 </div>
+@endsection
+<!-- Bookmark Ends-->
 
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span> &copy;
-                                <script> document.write(new Date().getFullYear()); </script>
-                                <b><a href="#" target="_blank">Master Online Community</a></b>
-                            </span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- Footer -->
-
-            </div>
-
-        </div>
-        <!---Container Fluid-->
-
-
-
-        <!-- Scroll to top -->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-        <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-        <script src="{{asset('js/ruang-admin.min.js')}}"></script>
-
-</body>
-
-</html>
+@section('footer')
+<script>
+    $(document).ready(function () {
+        $('.carousel').carousel({
+            interval: 4000
+        });
+        $('#berr *').css("width", "100%")
+    });
+</script>
+@endsection

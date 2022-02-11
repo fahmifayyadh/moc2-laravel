@@ -1,15 +1,4 @@
 @extends('layouts.master')
-@section('head')
-    <style>
-    #berr p img{
-        width: 100%;
-      }
-      .card .card-body {
-          background-color:#c3c3c3;
-          padding:20px;
-      }
-    </style>
-@endsection
 @section('content')
 <div class="page-body">
     <div class="container-fluid">
