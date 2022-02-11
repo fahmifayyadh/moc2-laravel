@@ -1112,17 +1112,14 @@ a:focus {
 
   .sidebar .sidebar-brand .sidebar-brand-text {
     overflow: visible;
-    display: none;
   }
 
   .sidebar .nav-item {
     overflow: visible;
-    display: none;
   }
 
   .sidebar .sidebar-brand .sidebar-brand-icon img {
     overflow: visible;
-    display: none;
   }
 
   .sidebar hr.sidebar-divider {
