@@ -12,7 +12,7 @@ class BannerController extends Controller
     public function index()
     {
         $banner = Banner::get();
-        return view('tests.banner.index', compact('banner'));
+        return view('V2.Admin.kelola-banner', compact('banner'));
     }
     public function create()
     {

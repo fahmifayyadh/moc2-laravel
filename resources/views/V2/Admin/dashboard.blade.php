@@ -58,7 +58,7 @@
     }
   </style>
 @section('content')
-   <div class="container-fluid" id="container-wrapper">
+          <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <a href="allproduct.html">
               <h4 style="color:white;font-family: 'Rubik', sans-serif; font-weight: bold;"><span
@@ -210,7 +210,5 @@
               </div>
             </div>
           </div>
-          <!-- Documentation Link -->
-          <!---Container Fluid-->
         </div>
 @endsection

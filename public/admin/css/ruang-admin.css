@@ -1099,26 +1099,30 @@ a:focus {
   }
 
   .sidebar {
-    width: 0 !important;
-    overflow: hidden;
+    width: 250px  !important;
+    overflow: visible;
     transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
+    display: none;
   }
 
   .sidebar .sidebar-brand {
-    overflow: hidden;
+    overflow: visible;
   }
 
   .sidebar .sidebar-brand .sidebar-brand-text {
-    overflow: hidden;
+    overflow: visible;
+    display: none;
   }
 
   .sidebar .nav-item {
-    overflow: hidden;
+    overflow: visible;
+    display: none;
   }
 
   .sidebar .sidebar-brand .sidebar-brand-icon img {
-    overflow: hidden;
+    overflow: visible;
+    display: none;
   }
 
   .sidebar hr.sidebar-divider {
