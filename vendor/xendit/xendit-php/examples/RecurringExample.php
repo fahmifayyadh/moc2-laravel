@@ -11,14 +11,11 @@
  * @link     https://api.xendit.co
  */
 
-use Dotenv\Dotenv;
 use Xendit\Xendit;
 
 require 'vendor/autoload.php';
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->load();
-Xendit::setApiKey(getenv('SECRET_API_KEY'));
+Xendit::setApiKey('SECRET_API_KEY');
 
 $params = [
     'external_id' => 'demo_147580196270',
@@ -34,7 +31,10 @@ var_dump($createRecurring);
 
 $id = $createRecurring['id'];
 
-$getRecurring = \Xendit\Recurring::retrieve($id);
+$retrieveParams = [
+    'for-user-id' => '<enter user id>'
+];
+$getRecurring = \Xendit\Recurring::retrieve($id, $retrieveParams);
 var_dump($getRecurring);
 
 $editRecurring = \Xendit\Recurring::update($id, ['amount' => 10000]);

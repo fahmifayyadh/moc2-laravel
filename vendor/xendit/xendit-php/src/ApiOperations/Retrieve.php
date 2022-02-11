@@ -27,13 +27,13 @@ trait Retrieve
     /**
      * Send GET request to retrieve data
      *
-     * @param int|null $id ID
+     * @param string|null $id ID
      *
      * @return array
      */
-    public static function retrieve($id)
+    public static function retrieve($id, $params = [])
     {
         $url = static::classUrl() . '/' . $id;
-        return static::_request('GET', $url, []);
+        return static::_request('GET', $url, $params);
     }
 }
