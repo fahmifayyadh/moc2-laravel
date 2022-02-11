@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth', 'checkRole:member,admin', 'checkStatus:ac
 		Route::post('/link-generate', 'AfiliasiController@generate')->name('generate');
 		Route::get('/list-stats', 'AfiliasiController@status')->name('list-stats');
 	});
-	
+
 	Route::prefix('facebook-pixel')->name('facebookPixel.')->group(function () {
 		Route::get('/', 'PixelController@index')->name('index');
 		Route::post('/', 'PixelController@create')->name('pixel');
@@ -193,7 +193,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 		// fisik
 		Route::post('/bayar', 'KomisiFisikController@bayar')->name('bayar');
 		Route::post('/batal', 'KomisiFisikController@batal')->name('batal');
-	
+
 	});
 
 	Route::prefix('produk')->name('produk.')->group(function () {

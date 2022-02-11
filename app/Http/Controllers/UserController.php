@@ -20,11 +20,11 @@ class UserController extends Controller
         if($request->search != null){
             $users = User::where('name','LIKE','%'.$request->search.'%')->paginate(300);
         }else{
-        $users = User::paginate(30);    
+        $users = User::paginate(30);
         }
-        
+
         return view('tests.user.list-user',compact('users'));
-        
+
     }
     public function detail($id)
     {
@@ -40,13 +40,21 @@ class UserController extends Controller
         }])->withCount(['transactionsCourse' => function($z){
             $z->where('status','selesai');
         }])->withCount('dummy')->havingRaw('dummy_count + transactions_count + transactions_course_count > 0')->orderByRaw('dummy_count + transactions_count + transactions_course_count desc')->get();
-	    return view('tests.leaderboard.index',compact('users'));
+	    // return view('tests.leaderboard.index',compact('users'));
+
+        //v2
+        if (auth()->user()->role != 'admin') {
+            return view('V2.Member.leaderboard', compact('users'));
+        }else {
+            return view('tests.leaderboard.index',compact('users'));
+        }
+
 
     }
     public function filterLeaderboard(Request $request)
     {
         $tanggalAwal = substr($request->tanggal,0,strpos($request->tanggal, "/"));
-        $tanggalAkhir = substr($request->tanggal,strpos($request->tanggal, "/")+1); 
+        $tanggalAkhir = substr($request->tanggal,strpos($request->tanggal, "/")+1);
         $users = User::where('role','!=','admin');
         if($request->prod == 'fisik'){
             $users = $users->withCount(['transactions' => function($q) use($tanggalAwal, $tanggalAkhir){
@@ -139,7 +147,7 @@ class UserController extends Controller
 
     public function update(Request $request,$id)
     {
-     
+
         $user = User::findOrFail($id);
         $ema = $user->email;
         $msg = [
@@ -158,7 +166,7 @@ class UserController extends Controller
             }
             return redirect()->back();
         }
-       
+
         if($request->password){
           $user->update([
                     'password' => bcrypt($request->password),
