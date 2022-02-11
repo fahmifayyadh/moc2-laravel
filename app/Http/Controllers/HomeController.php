@@ -86,7 +86,7 @@ class HomeController extends Controller
             $z->where('status','selesai');
         }])->withCount('dummy')->first();
             //return view('tests.dashboard.rekap',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
-             return view('v2.member.dashboard',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
+            return view('v2.member.dashboard',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
 
 
         }else{

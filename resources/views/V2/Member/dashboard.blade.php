@@ -10,14 +10,14 @@
     <link href="{{asset('img/logo/logo.png')}}" rel="icon">
     <title>RuangAdmin - Alerts</title>
 
-     <link rel="stylesheet" href="{{asset('/assets/bootstrap-4.min.css')}}">
+     <!-- <link rel="stylesheet" href="{{asset('/assets/bootstrap-4.min.css')}}"> -->
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css') }}">
+   <!--  <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css') }}"> -->
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style.css')}}">
-    <link id="color" rel="stylesheet" href="{{asset('/assets/css/color-2.css')}}" media="screen">
+   <!--  <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style.css')}}">
+    <link id="color" rel="stylesheet" href="{{asset('/assets/css/color-2.css')}}" media="screen"> -->
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/responsive.css')}}">
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
