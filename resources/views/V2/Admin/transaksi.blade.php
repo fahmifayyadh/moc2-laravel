@@ -4,7 +4,7 @@
       border-radius: 5px;
       background:
         #252633;
-    }
+    } 
 
     table thead .th-3 {
       border: none;
@@ -329,9 +329,9 @@
             </div>
             <div class="col-12 col-md-4 col-lg-4">
               <div class="search" style="float: right;">
-                <form id="animated">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                  <input type="text" name="search" placeholder="Search">
+                <form action="{{route('transaksi.order-course-search')}}" method="GET" id="animated">
+                  <input name="search" type="text" placeholder="Search">
+                  <button type="submit" class="btn btn-floating"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
               </div>
             </div>
@@ -353,33 +353,52 @@
                     <th class="th-3">Harga</th>
                     <th class="th-3">Waktu</th>
                     <th class="th-3">Order By</th>
-                    <th class="th-3">Order By</th>
                     <th class="th-2">Action</th>
                     <!-- <th class="th-2"></th> -->
                   </thead>
                   <tbody>
+                     @foreach ($transaksi as $i=>$t)
                     <tr>
                       <td>
-                        1 <span>.</span></td>
-                      <td>Widi Hartanto</td>
-                      <td>Revolotion Bright</td>
-                      <td>chat</td>
-                      <td>E-Course</td>
-                      <td></td>
-                        <td>	OlAvUC</td>
-                        <td>135.371</td>
-                        <td>2021-10-02</td>
-                        <td>Marketplace</td>
-                        <td><a href="" class="btn btn-danger">Menunggu Konfirmasi</a></td>
+                       {{$i+1}}<span>.</span></td>
+                      <td>{{$t->user->name}}</td>
+                      <td>{{$t->paket->name}}</td>
+                      <td><a target="__blank"
+                        href="https://wa.me/62{{substr($t->user->no_hp,0, 1) == 0 ? substr($t->user->no_hp,1) :(substr($t->user->no_hp,0, 1) == 6 ? substr($t->user->no_hp,2) : (substr($t->user->no_hp,0, 1) == 8 ? $t->user->no_hp :$t->user->no_hp))}}">Chat</a>
+                      </td>
+                      <td>E-course</td>
+                      <td>{{$t->kupon != null ? $t->kupon->kode.'-'.$t->discount : null}}</td>
+                      <td>{{$t->kode}}</td>
+                      <td>
+                        {{number_format($t->price-$t->discount,0,'.','.')}}
 
-                      <td style="text-align: center;">
-                        <a href="" class="btn btn-6" role="button">Bukti</a>
+                      </td>
+                      <td>{{$t->created_at->format('Y-m-d')}}</td>
+                      {{-- Detail modal --}}
+                      @include('tests.transaksi.komponen.detail')
+
+                      @include('tests.transaksi.komponen.badgeCourse')
+                      <td>
+                        @if ($t->status == 'selesai')
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#DetailModal{{$t->id}}">Detail</button>
+                        @endif
+                        @if ($t->status == 'pembayaran')
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                        data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
+                        @include('tests.transaksi.komponen.priv')
+                        @endif
+                        @if ($t->status == 'batal')
+                        <button type="button" class="btn btn-6" data-toggle="modal"
+                        data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
+                        @include('tests.transaksi.komponen.priv')
+                        @endif
                       </td>
                       <!-- <td>
                         <a href="" class="btn btn-5" role="button">Edit</a>
                       </td> -->
                     </tr>
-
+                     @endforeach
 
                   </tbody>
                 </table>
@@ -391,7 +410,13 @@
 
 
         </div>
-
+ <!-- Page level custom scripts -->
+  <script>
+    $(document).ready(function () {
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+  </script>
 
 
 @endsection
