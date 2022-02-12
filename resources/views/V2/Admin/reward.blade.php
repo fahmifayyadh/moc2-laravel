@@ -188,38 +188,40 @@
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel">Edit Reward</h5>
+                        <h5 class="modal-title" id="exampleModalToggleLabel">Add Reward</h5>
                       </div>
                       <div class="modal-body">
                         <!-- form -->
-                        <form action="">
+                        <form action="{{route('reward.add')}}" method="POST" enctype="multipart/form-data">
+                          @csrf
                           <div class="mb-3">
-                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                            <input type="text" class="form-control" required type="text" placeholder="Title" name="judul" id="exampleFormControlInput1"
                               style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                               placeholder="">
                           </div>
                           <div class="mb-3">
-                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                            <label class="col-form-label">Choose Thumbnail</label>
+                            <input class="form-control form-control-sm" name="image" id="formFileSm" type="file">
                           </div>
                           <div class="mb-3">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" required placeholder="Deskripsi" cols="30" rows="10"
                               style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"></textarea>
                           </div>
                           <div class="mb-3">
-                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                            <input type="text" class="form-control" id="exampleFormControlInput1" required placeholder="Point" name="harga_point"
                               style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                               placeholder="">
                           </div>
                           <div class="mb-3">
-                            <input type="date" class="form-control" id="exampleFormControlInput1"
+                            <input type="date" class="form-control" id="exampleFormControlInput1" name="batas"
                               style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                               placeholder="">
                           </div>
 
                           <div class="buttonn" style="text-align: right;">
                             <div class="col">
-                              <button type="submit" class="btn btn-7">Add</button>
-                              <button type="submit" class="btn btn-8">Cancel</button>
+                              <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Add</button>
+                              <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
                             </div>
                           </div>
                         </form>
@@ -231,8 +233,7 @@
                 <!-- End Modal Add Reward -->
                 <!-- ---------tabel------------- -->
                 <div class="cards">
-                  <table class="table  table-dark  " style="background: 
-                #252633;">
+                  <table class="table table-dark" style="background: #252633;">
                     <thead>
                       <th class="th-1">No</th>
                       <th class="th-3">Judul</th>
@@ -255,57 +256,96 @@
                         <td>{{ number_format($r->harga_point,0,'.','.') }}</td>
                         <td>{{ $r->batas }}</td>
                         <td style="text-align: center;">
-                          <div class="modal fade" id="editReward" aria-hidden="true"
-                            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalToggleLabel">Edit Reward</h5>
-                                </div>
-                                <div class="modal-body">
-                                  <!-- form -->
-                                  <form action="">
-                                    <div class="mb-3">
-                                      <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                                        placeholder="">
-                                    </div>
-                                    <div class="mb-3">
-                                      <input class="form-control form-control-sm" id="formFileSm" type="file">
-                                    </div>
-                                    <div class="mb-3">
-                                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                        style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                      <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                                        placeholder="">
-                                    </div>
-                                    <div class="mb-3">
-                                      <input type="date" class="form-control" id="exampleFormControlInput1"
-                                        style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                                        placeholder="">
-                                    </div>
-
-                                    <div class="buttonn" style="text-align: right;">
-                                      <div class="col">
-                                        <button type="submit" class="btn btn-7">Add</button>
-                                        <button type="submit" class="btn btn-8">Cancel</button>
+                          <ul class="list-inline m-0">
+                              <li class="list-inline-item">
+                                <button class="btn btn-4" data-toggle="modal" data-target="#editReward{{ $i }}">Edit</button>
+                              </li>
+                              <li class="list-inline-item">
+                                <button class="btn btn-5" data-toggle="modal" data-target="#detailReward{{ $i }}">Detail</button>
+                              </li>
+                              <li class="list-inline-item">
+                                @if (!$r->transactionReward()->exists())
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{$i}}">Delete</button> 
+                                @endif
+                              </li>    
+                          <ul>
+                        </td>
+                      </tr>
+                      <!-- Modal Delete -->
+                      <div class="modal fade" id="deleteModal{{$i}}" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title">Delete Reward</h5>
+                                      <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                  </div>
+                                  <div class="modal-body">
+                                  <form class="theme-form" action="{{route('reward.delete',$r->id)}}" method="POST" enctype="multipart/form-data">
+                                    @csrf 
+                                    @method('delete') 
+                                    <h5>Apakah anda yakin akan menghapus?</h4>
+                                      <div class="modal-footer ">
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                      </form>
+                                        <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancel</button>
                                       </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- End Modal Delete -->
+                      <!-- Modal Edit -->
+                        <div class="modal fade" id="editReward{{ $i }}" aria-hidden="true"
+                          aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalToggleLabel">Edit Reward</h5>
+                              </div>
+                              <div class="modal-body">
+                                <!-- form -->
+                                <form action="{{route('reward.edit',$r->id)}}" method="POST" enctype="multipart/form-data">
+                                  @csrf  
+                                  @method('put')
+                                  <div class="mb-3">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="judul" value="{{$r->judul}}"
+                                      style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
+                                      placeholder="">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label>Choose Thumbnail</label>
+                                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="image">
+                                  </div>
+                                  <div class="mb-3">
+                                    <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                      style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;">{{$r->desc}}</textarea>
+                                  </div>
+                                  <div class="mb-3">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" laceholder="Point" name="harga_point" value="{{$r->harga_point}}"
+                                      style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
+                                      placeholder="">
+                                  </div>
+                                  <div class="mb-3">
+                                    <input type="date" class="form-control" id="exampleFormControlInput1" name="batas" value="{{$r->batas}}"
+                                      style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
+                                      placeholder="">
+                                  </div>
+
+                                  <div class="buttonn" style="text-align: right;">
+                                    <div class="col">
+                                      <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Edit</button>
+                                      <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
                                     </div>
-                                  </form>
-                                  <!-- Form Ahir -->
-                                </div>
+                                  </div>
+                                </form>
+                                <!-- Form Ahir -->
                               </div>
                             </div>
                           </div>
-
-                          <a class="btn btn-4" data-bs-toggle="modal" href="#exampleModalTogglee" role="button">Edit</a>
-                        </td>
-                        <td style="text-align: center;">
-
-                          <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                        </div>
+                        <!-- End Modal Edit -->
+                        <!-- Modal Detail -->
+                          <div class="modal fade" id="detailReward{{ $i }}" aria-hidden="true"
                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                             <div class="modal-dialog modal-dialog-centered">
                               <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
@@ -316,31 +356,31 @@
                                   <!-- form -->
                                   <form action="">
                                     <div class="gambar-1">
-                                      <img src="../img/downloada.png" alt="">
+                                      <img src="{{asset(Storage::url('/reward/'.$r->image))}}" itemprop="thumbnail" alt="Image description">
                                     </div>
                                     <div class="mb-3">
-                                      <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        style="  font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                                        placeholder="">
+                                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="judul" value="{{$r->judul}}"
+                                        style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
+                                        readonly>
                                     </div>
                                     <div class="mb-3">
-                                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                        style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"></textarea>
+                                    <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                      style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;" readonly>{{$r->desc}}</textarea>
                                     </div>
                                     <div class="mb-3">
-                                      <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        style="  font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                                        placeholder="">
+                                      <input type="text" class="form-control" id="exampleFormControlInput1" laceholder="Point" name="harga_point" value="{{$r->harga_point}}"
+                                        style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
+                                        readonly>
                                     </div>
                                     <div class="mb-3">
-                                      <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        style=" font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                                        placeholder="">
+                                      <input type="date" class="form-control" id="exampleFormControlInput1" name="batas" value="{{$r->batas}}"
+                                        style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
+                                        readonly>
                                     </div>
 
                                     <div class="buttonn" style="text-align: right;">
                                       <div class="col">
-                                        <button type="submit" class="btn btn-8">Cancel</button>
+                                        <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
                                       </div>
                                     </div>
                                   </form>
@@ -349,12 +389,7 @@
                               </div>
                             </div>
                           </div>
-
-                          <a class="btn btn-4" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Detail
-                          </a>
-
-                        </td>
-                      </tr>
+                          <!-- End Modal Detail  -->
                       @endforeach
                     </tbody>
                   </table>

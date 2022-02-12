@@ -67,6 +67,29 @@
 
     }
 
+    .container-3 .judul {
+      padding-bottom: 5vh;
+      margin-bottom: 5vh;
+      text-align: center;
+    }
+
+    .container-3 .judul a {
+      float: right;
+      padding: 10px 20px 10px 20px;
+      /* top: 302px; */
+      color: #ffffff;
+      background: #FF9F1C;
+      border-radius: 4px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 11px;
+      letter-spacing: 0em;
+      text-align: center;
+      box-shadow: 0px 3px 4px 0px #00000040;
+    }
+
     .container-3 .cards {
       box-shadow: 0px 3px 4px 0px #00000040;
     }
@@ -161,59 +184,101 @@
 
     <div class="col-12 col-md-12 col-lg-12">
         <div class="container container-3">
-
+        @php
+            $kur ='jne, pos, tiki, rpx, pandu, wahana, sicepat, jnt, pahala, sap, jet, indah, dse, slis, first, ncs, star, ninja, lion, idl, rex, ide, sentral';
+                    $kur = explode(",", $kur);
+        @endphp 
         <!-- ---------tabel------------- -->
+        <div class="judul">
+          <a href="" type="submit" class="btn btn-5" data-toggle="modal" data-target="#addEkspedisi" role="button">Add</a>
+        </div>
+        <!-- Modal Add -->
+        <div class="modal fade" id="addEkspedisi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Personal Exspedisi</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="{{route('exspedisi.store')}}" class="theme-form" method="POST">
+                        @csrf    
+                        
+                        <div class="form-group">
+                          <select name="name" class="form-control btn-square" id="select-1">
+                            <option value="p" disabled selected>Pilih Exspedisi</option>
+                            @foreach ($kur as $k)
+                            <option value="{{trim($k)}}">{{Str::title($k)}}</option> 
+                            @endforeach        
+                          </select>
+                        </div>
+                        <div class="modal-footer ">
+                          <button class="btn btn-primary">Add</button>
+                          <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancel</button>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal Add -->
         <div class="cards">
-            <table class="table  table-dark  " style="background: 
-        #252633;">
-            <thead>
-                <th class="th-1"> No</th>
-                <th class="th-3">Nama</th>
-                <th class="th-2">Action</th>
-
-
-
-            </thead>
-            <tbody style="border: none;">
-                <tr>
-                <td>1 <span>.</span></td>
-                <td>SI CEPAT</td>
-                <td>
-                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <table class="table table-dark" style="background: #252633;">
+              <thead>
+                  <th class="th-1"> No</th>
+                  <th class="th-3">Nama</th>
+                  <th class="th-2">Action</th>
+              </thead>
+              <tbody style="border: none;">
+              @foreach ($kurir as $in => $item)
+                  <tr>
+                    <td>{{$in+1}} <span>.</span></td>
+                    <td>{{$item->name}}</td>
+                    <td>
+                      <ul class="list-inline m-0">
+                          <li class="list-inline-item">
+                          <button class="btn btn-4" data-toggle="modal" data-target="#editEkspedisi{{ $item->id }}" role="button">Edit</button>
+                          </li>
+                          <li class="list-inline-item">
+                          <form action="{{route('exspedisi.delete',['id'=>$item->id])}}" method="POST">@csrf @method('delete') <button type=submit class="btn btn-5">Delete</button></form>
+                          </li>      
+                      <ul>
+                    </td>
+                  </tr>
+                  <div class="modal fade" id="editEkspedisi{{ $item->id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Edit Ekspedisi</h5>
-                        </div>
-                        <div class="modal-body">
-                            <!-- form -->
-                            <form action="">
-                            <div class="mb-3">
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                                placeholder="">
-                            </div>
-                            <div class="buttonn" style="text-align: right;">
-                                <div class="col">
-                                <button type="submit" class="btn btn-7">Save</button>
-                                <button type="submit" class="btn btn-8">Cancel</button>
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalToggleLabel">Edit Ekspedisi</h5>
+                          </div>
+                          <div class="modal-body">
+                              <!-- form -->
+                              <form action="{{route('exspedisi.edit',['id' => $item->id])}}" method="POST">
+                                @csrf    
+                                @method('put')
+                                <div class="mb-3">
+                                  <select name="name" class="form-control btn-square" id="select-1">
+                                    <option value="p" disabled selected>Pilih Exspedisi</option>
+                                    @foreach ($kur as $k)
+                                    <option value="{{trim($k)}}" {!! $item->name == trim($k) ? 'selected' : null !!}>{{Str::title($k)}}</option>
+                                    @endforeach 
+                                  </select>
                                 </div>
-                            </div>
-                            </form>
-                            <!-- Form Ahir -->
-                        </div>
+                                <div class="buttonn" style="text-align: right;">
+                                    <div class="col">
+                                    <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Save</button>
+                                    <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
+                                    </div>
+                                </div>
+                              </form>
+                              <!-- Form Ahir -->
+                          </div>
                         </div>
                     </div>
-                    </div>
+                  </div>
+                  @endforeach
 
-                    <a class="btn btn-4" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Edit</a>
-                    <a href="" class="btn btn-5">Delet</a>
-                </td>
-
-                </tr>
-
-            </tbody>
+              </tbody>
             </table>
         </div>
         <!-- ---------tabel------------- -->
@@ -222,7 +287,5 @@
 
     </div>
     <!--Row-->
-
-</div>
 </div>
 @endsection
