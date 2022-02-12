@@ -17,7 +17,14 @@ class BeritaController extends Controller
     public function index()
     {
         $berita = Berita::get();
-        return view('V2.Admin.kelola-berita',compact('berita'));
+        //return view('tests.berita.index',compact('berita'));
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.berita.index',compact('berita'));
+        }else{
+          return view('V2.Admin.kelola-berita',compact('berita'));  
+        }
     }
     public function create()
     {
