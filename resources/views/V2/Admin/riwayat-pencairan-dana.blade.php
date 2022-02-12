@@ -142,8 +142,7 @@
     
         <!-- ---------tabel------------- -->
         <div class="cards">
-            <table class="table  table-dark  " style="background: 
-        #252633;">
+            <table class="table table-dark" style="background: #252633;">
             <thead>
                 <th class="th-1"> No</th>
                 <th class="th-3">Tanggal</th>
@@ -155,22 +154,17 @@
             
             </thead>
             <tbody style="border: none;">
+              @foreach ($pay as $i=>$p)
                 <tr>
-                <td>1 <span>.</span></td>
-                <td>31-Jan-2021</td>
-                <td>Fahmi</td>
-                <td>200.000</td>
-                <td>76598709870</td>
-                <td>BCA</td> 
+                <td>{{ $i+1 }}<span>.</span></td>
+                <td>{{ $p->created_at->format('d-M-Y') }}</td>
+                <td>{{ $p->name }}</td>
+                <td>{{ $p->amount }}</td>
+                <td>{{ $p->no_rekening }}</td>
+                <td>{{ $p->bank }}</td> 
                 </tr>
                 <tr>
-                <td>1 <span>.</span></td>
-                <td>31-Jan-2021</td>
-                <td>Fahmi</td>
-                <td>200.000</td>
-                <td>76598709870</td>
-                <td>BCA</td> 
-                </tr>
+              @endforeach
             </tbody>
             </table>
         </div>
@@ -180,7 +174,5 @@
 
     </div>
     <!--Row-->
-
-</div>
 </div>
 @endsection
