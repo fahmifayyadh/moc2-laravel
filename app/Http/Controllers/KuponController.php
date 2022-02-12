@@ -10,7 +10,14 @@ class KuponController extends Controller
     public function index()
     {
         $kupon = Kupon::orderBy('created_at', 'desc')->get();
-        return view('tests.kupon.index', compact('kupon'));
+        //return view('tests.kupon.index', compact('kupon'));
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+           return view('tests.kupon.index', compact('kupon'));
+        }else{
+          return view('V2.Admin.kelola-kupon', compact('banner')); 
+        }
     }
     public function create()
     {

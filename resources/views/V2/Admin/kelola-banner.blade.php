@@ -294,9 +294,9 @@
             <!-- Datatables -->
             <div class="col-12" style="top: -3vh;">
                <div class="tambah" style="float: right;">
-              <a href="" class="btn btn-5">Tambah Banner</a>
+              <a href="{{route('banner.create')}}" class="btn btn-5">Tambah Banner</a>
             </div>
-            </div>
+            </div> 
            
             <div class="col-12 col-md-8 col-lg-8">
               <div class="pagination">
@@ -330,29 +330,26 @@
                     <th class="th-2"></th>
                   </thead>
                   <tbody>
-             
+                    @foreach ($banner as $i => $b)
+                     @include('tests.banner.isi')
                     <tr>
-                      <td>1 <span>.</span></td>
-                      <td>mocmembership,com</td>
-                      <td id="italic">Lihat</td>
+                      <td>{{$i+1}}<span>.</span></td>
+                      <td>{{$b->link}}</td>
+                      <td id="italic"><span style="color: aqua;cursor:pointer" data-toggle="modal" data-target="#img{{$b->id}}">lihat</span></td>
                       <td style="text-align: center;" >
-                        <a href="" class="btn btn-4" role="button">Edit</a>
+                        <a href="{{route('banner.edit',$b->id)}}" class="btn btn-4" role="button">Edit</a>
                       </td>
                       <td>
-                        <a href="" class="btn btn-5" role="button">Edit</a>
+                      <form style="display: inline" onclick="return confirm('apakah anda yakin?')" action="{{route('banner.destroy',$b->id)}}" method="post">
+                      @csrf
+                      @method('delete')
+                      <button type="submit" class="btn btn-5">
+                      Delete
+                      </button>
+                      </form>
                       </td>
                     </tr>
-                        <tr>
-                      <td>1 <span>.</span></td>
-                      <td>mocmembership,com</td>
-                      <td id="italic">Lihat</td>
-                      <td style="text-align: center;" >
-                        <a href="" class="btn btn-4" role="button">Edit</a>
-                      </td>
-                      <td>
-                        <a href="" class="btn btn-5" role="button">Edit</a>
-                      </td>
-                    </tr>
+                     @endforeach
                   </tbody>
                 </table>
               </div>

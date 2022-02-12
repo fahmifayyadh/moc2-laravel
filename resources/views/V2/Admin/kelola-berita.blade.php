@@ -86,11 +86,9 @@
    
 
     .container-3 .judul {
-
       padding-bottom: 5vh;
       margin-bottom: 5vh;
       text-align: center;
-
     }
 
     .container-3 .judul a {
@@ -265,7 +263,7 @@
 @section('content')
   <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <a href="allproduct.html">
+            <a href="{{route('berita')}}">
               <p
                 style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
@@ -280,7 +278,7 @@
             <!-- Datatables -->
             <div class="col-12" style="top: -3vh;">
                <div class="tambah" style="float: right;">
-              <a href="" class="btn btn-5">Tambah Berita</a>
+              <a href="{{route('berita.create')}}" class="btn btn-5">Tambah Berita</a>
             </div>
             </div>
            
@@ -317,34 +315,29 @@
                     <th class="th-2"></th>
                   </thead>
                   <tbody>
+                     @foreach ($berita as $i => $b)
+                      @include('tests.berita.isi')
                     <tr>
-                      <td>1 <span>.</span></td>
-                      <td>Jasa Pembuatan Landing Pages / Website Produk MOC</td>
+                      <td>{{$i+1}}<span>.</span></td>
+                      <td>{{$b->judul}}</td>
 
-                      <td id="italic">Lihat</td>
+                      <td id="italic" ata-target="#isi{{$b->id}}">Lihat</td>
                       <td>Warning</td>
 
                       <td style="text-align: center;">
-                        <a href="" class="btn btn-4" role="button">Edit</a>
+                        <a href="{{route('berita.edit',$b->id)}}" class="btn btn-4" role="button">Edit</a>
                       </td>
                       <td>
-                        <a href="" class="btn btn-5" role="button">Edit</a>
+                        <form style="display: inline" onclick="return confirm('apakah anda yakin?')" action="{{route('berita.delete',$b->id)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-5">
+                        Delete
+                        </button>
+                        </form>
                       </td>
                     </tr>
-                    <tr>
-                      <td>2 <span>.</span></td>
-                      <td>Jasa Pembuatan Landing Pages / Website Produk MOC</td>
-
-                      <td id="italic">Lihat</td>
-                      <td>Warning</td>
-
-                      <td style="text-align: center;">
-                        <a href="" class="btn btn-4" role="button">Edit</a>
-                      </td>
-                      <td>
-                        <a href="" class="btn btn-5" role="button">Edit</a>
-                      </td>
-                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
