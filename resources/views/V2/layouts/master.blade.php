@@ -15,7 +15,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet">
 </head>
+@yield('head')
+@toastr_css
 <body id="page-top">
+    @jquery
+    @toastr_js
+    @toastr_render
+    @auth
+    @php
+    $notif = new \App\Http\Controllers\NotifController;
+    $all = $notif->all();
+    $jumlah = $notif->status();         
+    $notif = $notif->view();   
+    @endphp
+    @include('layouts.komponen.notif')
+    @endauth
   <div id="wrapper">
     <!-- Sidebar -->
     @include('V2.layouts.sidebar')

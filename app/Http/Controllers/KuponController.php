@@ -16,7 +16,7 @@ class KuponController extends Controller
         if(auth()->user()->role != 'admin'){
            return view('tests.kupon.index', compact('kupon'));
         }else{
-          return view('V2.Admin.kelola-kupon', compact('banner')); 
+          return view('V2.Admin.kelola-kupon', compact('kupon')); 
         }
     }
     public function create()
@@ -44,7 +44,13 @@ class KuponController extends Controller
     }
     public function edit(Kupon $kupon)
     {
-        return view('tests.kupon.edit', compact('kupon'));
+        //return view('tests.kupon.edit', compact('kupon'));
+        // V2
+        if(auth()->user()->role != 'admin'){
+           return view('tests.kupon.edit', compact('kupon'));
+        }else{
+          return view('V2.Admin.edit-kupon', compact('kupon')); 
+        }
     }
     public function update(Request $request, Kupon $kupon)
     {

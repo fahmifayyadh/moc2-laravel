@@ -1,4 +1,7 @@
 @extends('V2.layouts.master')
+<link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet"
+      href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 <style>
     table {
       border-radius: 5px;
@@ -287,7 +290,7 @@
                 <p>Show</p>
                 <div class="jumlah">
                   <p>5</p>
-                </div>
+                </div> 
                 <p>Entries</p>
               </div>
             </div>
@@ -312,7 +315,6 @@
                     <th class="th-3">isi</th>
                     <th class="th-3">Type</th>
                     <th class="th-3">Action</th>
-                    <th class="th-2"></th>
                   </thead>
                   <tbody>
                      @foreach ($berita as $i => $b)
@@ -326,8 +328,6 @@
 
                       <td style="text-align: center;">
                         <a href="{{route('berita.edit',$b->id)}}" class="btn btn-4" role="button">Edit</a>
-                      </td>
-                      <td>
                         <form style="display: inline" onclick="return confirm('apakah anda yakin?')" action="{{route('berita.delete',$b->id)}}" method="post">
                         @csrf
                         @method('delete')
