@@ -1,7 +1,48 @@
 @extends('v2.layouts.master')
+@section('css')
+<link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">
+@endsection
+@section('js')
+<script src="{{asset('/assets/js/datepicker/date-picker/datepicker.js')}}"></script>
+<script src="{{asset('/assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
+<script src="{{asset('/assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
+@endsection
 @section('content')
 <div class="container-fluid" id="container-wrapper">
+    {{-- modal --}}
+    <div class="modal fade" id="filter-leaderboard" tabindex="-1" role="dialog" aria-labelledby="preview-course" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content p-l-10 p-r-10 ">
+                <div class="modal-header">
+                    <h5 class="modal-title">Filter LeaderBoard</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                <form action="{{route('user.filterLeaderboard')}}" method="GET">
+                  <div class="form-group row">
+                    <p>Nb: cara Pencarian jika mencari tanggal 20 saja berarti 20-21, jika dari tanggal 23-25 berarti 23-26</p>
+                    <input required class="datepicker-here form-control digits" type="text" data-range="true" name="tanggal" data-multiple-dates-separator="/" data-language="en" data-original-title="" title="" data-date-format="yyyy-m-d" >
+                  </div>
+                  <div class="form-group row">
+                      <select class="form-control field" data-type="select" id="inputsize" name="prod">
+                        <option value="">all</option>
+                      <option value="fisik">Product</option>
+                      <option value="course">E-course</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+      {{-- end modal --}}
     <div class="row">
+
         <div class="col-7">
             <!-- title Leaderboard -->
             <div class="d-sm-flex align-items-center justify-content-between">
@@ -29,7 +70,7 @@
             <div class="text-right">
                 <div class="dropdown">
                     <button class="btn btn-primary text-custome bg-secondary-card border-0"
-                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        type="button" data-toggle="modal" data-target="#filter-leaderboard"
                         aria-expanded="false">
                         <i class="fas fa-filter"></i>
                         Filter</button>
@@ -62,7 +103,8 @@
                 <tbody>
                     @foreach ($users as $k=>$u)
 
-        <tr class="{{$k % 2 == 0 ? 'bg-white' : ''}} shadow">
+        {{-- <tr class="{{$k % 2 == 0 ? 'bg-white' : ''}} shadow"> --}}
+            <tr class="shadow">
         <th class="align-middle text-secondary"><h6>{{$k+1}}</h6></th>
           {{-- <td>
             <img src="{{$u->foto ? asset(Storage::url('/user/'.$u->foto)): asset('/assets/images/user.jpg')}}" class="img-fluid" style="width: 3em;height:3em;border-radius:50%;" alt="">

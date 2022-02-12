@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet">
+  @yield('css')
 </head>
 <body id="page-top">
   <div id="wrapper">
@@ -47,6 +48,7 @@
     <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src=".{{asset('admin/js/ruang-admin.min.js')}}"></script>
+    @yield('js')
 
 </body>
 
