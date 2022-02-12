@@ -10,12 +10,12 @@
 
                         <div class="col-sm-12">
                             <div class="card">
+                                
                                 <div class="card-body">
                                     <div class="invoice">
                                         <div style="padding-left: px;">
                                             <div>
                                                 <div>
-
                                                     <div class="row">
                                                         <div class="col-sm-6">
                                                             <div class="media">
