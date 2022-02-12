@@ -25,7 +25,7 @@ class TransactionCourseController extends Controller
         if(auth()->user()->role != 'admin'){
           return view('tests.transaksi.transaksi-produk-course',compact(['tf','transaksi']));
         }else{
-          return view('V2.Admin.transaksi',compact(['tf','transaksi']));
+          return view('V2.Admin.transaksi-produk-course',compact(['tf','transaksi']));
         }
     }
     public function filterCourse($fil)
@@ -51,7 +51,7 @@ class TransactionCourseController extends Controller
         if(auth()->user()->role != 'admin'){
           return view('tests.transaksi.transaksi-produk-course',compact(['tf','transaksi']));
         }else{
-          return view('V2.Admin.transaksi',compact(['tf','transaksi']));
+          return view('V2.Admin.transaksi-produk-course',compact(['tf','transaksi']));
         }
     }
 }

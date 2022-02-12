@@ -1,4 +1,5 @@
-@extends('V2.layouts.master',['title'=>'Edit Banner'])
+@extends('V2.layouts.master')
+@section('title','Edit Banner')
 @section('head')
 <script src="{{ asset('js/app.js') }}" defer></script>
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">

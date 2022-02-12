@@ -53,7 +53,13 @@ class BeritaController extends Controller
     }
     public function edit(Berita $berita)
     {
-        return view('tests.berita.edit',compact('berita'));
+        //return view('tests.berita.edit',compact('berita'));
+         // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.berita.edit',compact('berita'));
+        }else{
+          return view('V2.Admin.edit-berita',compact('berita'));  
+        }
     }
     public function update(Request $request,Berita $berita)
     {

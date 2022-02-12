@@ -203,8 +203,8 @@
       }
 
       #animated i {
-        position: relative;
-        left: 30px;
+       /* position: relative;
+        left: 30px;*/
       }
 
       @media (max-width: 912px) {
@@ -296,7 +296,7 @@
           </div>
 
           <!-- Row -->
-          <div class="row">
+          <div class="row" style="margin: 0; padding: 0;">
             <!-- Datatables -->
             <div class="col-12" style="top: -3vh;">
                <div class="tambah" style="float: right;">
@@ -313,11 +313,11 @@
                 <p>Entries</p>
               </div>
             </div>
-            <div class="col-12 col-md-4 col-lg-4">
-              <div class="search" style="float: right;">
-                <form id="animated">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                  <input type="text" name="search" placeholder="Search">
+           <div class="col-12 col-md-4 col-lg-4">
+              <div class="search" style="float: right;display: flex;">
+                <form action="#" method="GET" id="animated" >
+                  <button type="submit" class="btn btn-floating" style="position: absolute;margin: 10px 5px;"><i class="fa fa-search"></i></button>
+                  <input name="search" type="text" placeholder="Search" style="flex: 1">
                 </form>
               </div>
             </div>

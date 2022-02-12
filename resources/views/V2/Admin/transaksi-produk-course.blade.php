@@ -1,8 +1,9 @@
 @extends('V2.layouts.master')
+@section('title','Transaksi Produk Course')
   <style>
     table {
       border-radius: 5px;
-      background:
+      background: 
         #252633;
     } 
 
@@ -193,6 +194,7 @@
       font-family: 'Roboto', sans-serif;
       text-align: center;
     }
+
   </style>
   <!-- Row -->
   <style>
@@ -208,11 +210,6 @@
       -webkit-transition: width 0.5s ease-out;
       transition: width 0.5s ease-out;
       border-radius: 100px;
-    }
-
-    #animated i {
-      position: relative;
-      left: 30px;
     }
 
     @media (max-width: 912px) {
@@ -311,14 +308,14 @@
               <p
                 style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-                KELOLA BAB PEMBELAJARAN <span style="font-weight: 100;"></span>
+               TRANSAKSI PRODUK FISIK <span style="font-weight: 100;"></span>
               </p>
             </a>
           </div>
 
         
           <!-- Row -->
-          <div class="row">
+          <div class="row" style="margin: 0">
             <!-- Datatables -->
 
 
@@ -328,10 +325,10 @@
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-4">
-              <div class="search" style="float: right;">
-                <form action="{{route('transaksi.order-course-search')}}" method="GET" id="animated">
-                  <input name="search" type="text" placeholder="Search">
-                  <button type="submit" class="btn btn-floating"><i class="fa fa-search" aria-hidden="true"></i></button>
+              <div class="search" style="float: right;display: flex;">
+                <form action="{{route('transaksi.order-course-search')}}" method="GET" id="animated" >
+                  <button type="submit" class="btn btn-floating" style="position: absolute;margin: 10px 5px;"><i class="fa fa-search"></i></button>
+                  <input name="search" type="text" placeholder="Search" style="flex: 1">
                 </form>
               </div>
             </div>
@@ -354,7 +351,7 @@
                     <th class="th-3">Waktu</th>
                     <th class="th-3">Order By</th>
                     <th class="th-2">Action</th>
-                    <!-- <th class="th-2"></th> -->
+                    <th class="th-2"></th>
                   </thead>
                   <tbody>
                      @foreach ($transaksi as $i=>$t)
@@ -369,31 +366,27 @@
                       <td>E-course</td>
                       <td>{{$t->kupon != null ? $t->kupon->kode.'-'.$t->discount : null}}</td>
                       <td>{{$t->kode}}</td>
-                      <td>
-                        {{number_format($t->price-$t->discount,0,'.','.')}}
-
-                      </td>
+                      <td>{{number_format($t->price-$t->discount,0,'.','.')}}</td>
                       <td>{{$t->created_at->format('Y-m-d')}}</td>
-                      {{-- Detail modal --}}
+                       {{-- Detail modal --}}
                       @include('tests.transaksi.komponen.detail')
-
-                      @include('tests.transaksi.komponen.badgeCourse')
+                       @include('tests.transaksi.komponen.badgeCourse')
                       <td>
-                        @if ($t->status == 'selesai')
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                        data-target="#DetailModal{{$t->id}}">Detail</button>
-                        @endif
-                        @if ($t->status == 'pembayaran')
-                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                        data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
-                        @include('tests.transaksi.komponen.priv')
-                        @endif
-                        @if ($t->status == 'batal')
-                        <button type="button" class="btn btn-6" data-toggle="modal"
-                        data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
-                        @include('tests.transaksi.komponen.priv')
-                        @endif
-                      </td>
+                       @if ($t->status == 'selesai')
+                       <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                       data-target="#DetailModal{{$t->id}}">Detail</button>
+                       @endif
+                       @if ($t->status == 'pembayaran')
+                       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                       data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
+                       @include('tests.transaksi.komponen.priv')
+                       @endif
+                       @if ($t->status == 'batal')
+                       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                       data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
+                       @include('tests.transaksi.komponen.priv')
+                       @endif
+                     </td>
                       <!-- <td>
                         <a href="" class="btn btn-5" role="button">Edit</a>
                       </td> -->
@@ -402,6 +395,13 @@
 
                   </tbody>
                 </table>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                   @if($tf)
+                  {{$transaksi->links()}}
+                  @endif    
+                </div>
               </div>
               <!-- ---------tabel------------- -->
             </div>

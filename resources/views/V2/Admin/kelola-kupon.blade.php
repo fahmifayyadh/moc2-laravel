@@ -200,8 +200,8 @@
       }
 
       #animated i {
-        position: relative;
-        left: 30px;
+        /*position: relative;
+        left: 30px;*/
       }
 
       @media (max-width: 912px) {
@@ -283,7 +283,7 @@
 @section('content')
 <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <a href="allproduct.html">
+            <a href="#">
               <p
                 style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
@@ -311,10 +311,10 @@
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-4">
-              <div class="search" style="float: right;">
-                <form id="animated">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                  <input type="text" name="search" placeholder="Search">
+              <div class="search" style="float: right;display: flex;">
+                <form action="#" method="GET" id="animated" >
+                  <button type="submit" class="btn btn-floating" style="position: absolute;margin: 10px 5px;"><i class="fa fa-search"></i></button>
+                  <input name="search" type="text" placeholder="Search" style="flex: 1">
                 </form>
               </div>
             </div>
@@ -361,9 +361,6 @@
               <!-- ---------tabel------------- -->
             </div>
           </div>
-
-
-
         </div>
   <script>
     $(document).ready(function () {

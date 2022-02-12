@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('title','Dashboard')
   <style>
     .judul p {
       color: #FF9F1C;

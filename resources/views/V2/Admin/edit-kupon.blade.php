@@ -1,4 +1,5 @@
-@extends('V2.layouts.master',['title'=>'Edit Kupon'])
+@extends('V2.layouts.master')
+@section('title','Edit Kupon')
 <style>
     .container-2 {
       background: #283246;
