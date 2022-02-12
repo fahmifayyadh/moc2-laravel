@@ -1,11 +1,14 @@
 @extends('V2.layouts.master')
 <style>
-    table {
-      border-radius: 5px;
-      background: #252633;
+    .table-long{
       display: block;
       overflow-x: auto;
       white-space: nowrap;
+    }
+
+    table {
+      border-radius: 5px;
+      background: #252633;
     }
 
     table thead .th-3 {
@@ -172,12 +175,54 @@
       <div class="container container-3">
         <div class="judul">
           <p>BANK PERSONAL <span>
-              <a href="" type="submit" class="btn btn-5">Add</a>
+              <a href="" class="btn btn-5" data-toggle="modal" data-target="#addBankPersonal" role="button">Add</a>
             </span></p>
         </div>
+        <!-- Add Bank Personal -->
+        <div class="modal fade" id="addBankPersonal" aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Modal Title</h5>
+              </div>
+              <div class="modal-body">
+                <!-- form -->
+                <form action="{{route('bank.createPersonal')}}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="mb-3">
+                    <input type="text" placeholder="Nama Bank" name="name" class="form-control" id="exampleFormControlInput1"
+                      style=" font-family: 'Roboto', sans-serif;font-size: 9px;color:black; font-weight: 700;">
+                  </div>
+                  <div class="mb-3">
+                    <label class="col-form-label">Choose Thumbnail</label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="image">
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" placeholder="No. Rekening Bank" name="no_rekening" class="form-control" id="exampleFormControlInput1"
+                      style=" font-family: 'Roboto', sans-serif;font-size: 9px;color:black; font-weight: 700;">
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" placeholder="Nama Pemilik" name="nama_pemilik" class="form-control" id="exampleFormControlInput1"
+                      style=" font-family: 'Roboto', sans-serif;font-size: 9px;color:black; font-weight: 700;">
+                  </div>
+
+                  <div class="buttonn" style="text-align: right;">
+                    <div class="col">
+                      <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Add</button>
+                      <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
+                    </div>
+                  </div>
+                </form>
+                <!-- Form Ahir -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Add Bank Personal -->
         <!-- ---------tabel------------- -->
         <div class="cards">
-          <table class="table table-dark" style="background: #252633;">
+          <table class="table table-long table-dark" style="background: #252633;">
             <thead>
               <th class="th-1">No</th>
               <th class="th-3">Nama Bank</th>
@@ -195,40 +240,49 @@
                 <td>{{ $u->no_rekening }}</td>
                 <td>{{$u->nama_pemilik}}</td>
                 <td style="text-align: center;">
-
-                  <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                  <ul class="list-inline m-0">
+                      <li class="list-inline-item">
+                      <button class="btn btn-4" data-toggle="modal" data-target="#EditBank{{ $u->id }}" role="button">Edit</button>
+                      </li>
+                      <li class="list-inline-item">
+                          <form action="{{route('bank.delete',['id'=>$u->id])}}" method="POST">@csrf @method('delete') <button type=submit class="btn btn-5">Delete</button></form>
+                      </li>      
+                  <ul>
+                </td>
+                <!-- Edit Modal Personal Bank -->
+                <div class="modal fade" id="EditBank{{ $u->id }}" aria-hidden="true"
                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalToggleLabel">Modal Title</h5>
+                          <h5 class="modal-title" id="exampleModalToggleLabel">Personal Bank</h5>
                         </div>
                         <div class="modal-body">
                           <!-- form -->
-                          <form action="">
+                          <form action="{{route('bank.updatePersonal',['id'=>$u->id])}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('put')
                             <div class="mb-3">
-                              <input type="text" class="form-control" id="exampleFormControlInput1"
-                                style=" font-family: 'Roboto', sans-serif;font-size: 9px;color:black; font-weight: 700;"
-                                placeholder="">
+                              <input type="text" placeholder="Nama Bank" name="name" class="form-control" id="exampleFormControlInput1" value="{{$u->name}}"
+                                style=" font-family: 'Roboto', sans-serif;font-size: 9px;color:black; font-weight: 700;">
                             </div>
                             <div class="mb-3">
-                              <input class="form-control form-control-sm" id="formFileSm" type="file">
+                              <label>Choose Thumbnail</label>
+                              <input class="form-control form-control-sm" id="formFileSm" type="file" name="image">
                             </div>
                             <div class="mb-3">
-                              <input type="text" class="form-control" id="exampleFormControlInput1"
-                                style=" font-family: 'Roboto', sans-serif;font-size: 9px;color:black; font-weight: 700;"
-                                placeholder="">
+                              <input type="text" placeholder="No. Rekening Bank" name="no_rekening" class="form-control" id="exampleFormControlInput1" value="{{$u->no_rekening}}"
+                                style=" font-family: 'Roboto', sans-serif;font-size: 9px;color:black; font-weight: 700;">
                             </div>
                             <div class="mb-3">
-                              <input type="text" class="form-control" id="exampleFormControlInput1"
-                                style=" font-family: 'Roboto', sans-serif;font-size: 9px;color:black; font-weight: 700;"
-                                placeholder="">
+                              <input type="text" placeholder="Nama Pemilik" name="nama_pemilik" class="form-control" id="exampleFormControlInput1" value="{{$u->nama_pemilik}}"
+                                style=" font-family: 'Roboto', sans-serif;font-size: 9px;color:black; font-weight: 700;">
                             </div>
 
                             <div class="buttonn" style="text-align: right;">
                               <div class="col">
-                                <button type="submit" class="btn btn-7">Add</button>
-                                <button type="submit" class="btn btn-8">Lancel</button>
+                                  <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Edit</button>
+                                  <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
                               </div>
                             </div>
                           </form>
@@ -237,10 +291,7 @@
                       </div>
                     </div>
                   </div>
-
-                  <a class="btn btn-4" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Edit</a>
-                  <a href="" type="submit" class="btn btn-5">Delete</a>
-                </td>
+                  <!-- End Edit Modal Personal Bank -->
               </tr>
               @endforeach
 
@@ -255,7 +306,7 @@
         <!-- ---------tabel------------- -->
         <div class="judul">
           <p>PAYMENT GATEWAY <span>
-              <a href="" type="submit" class="btn btn-5" data-toggle="modal" data-target="#addPaymentGateway" role="button">Add</a>
+              <a href="" class="btn btn-5" data-toggle="modal" data-target="#addPaymentGateway" role="button">Add</a>
             </span></p>
         </div>
         <!-- Modal Add Payment Gateway -->
@@ -283,7 +334,7 @@
                   <div class="buttonn mt-3" style="text-align: right;">
                     <div class="col">
                       <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Add</button>
-                      <button type="button" class="btn btn-8" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
+                      <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
                     </div>
                   </div>
                 </form>
@@ -306,8 +357,18 @@
                 <td>{{ $index+1 }}</td>
                 <td>{{ $u->name }}</td>
                 <td style="text-align: center;">
+                  <ul class="list-inline m-0">
+                      <li class="list-inline-item">
+                      <button class="btn btn-4" data-toggle="modal" data-target="#exampleModalTogglee{{ $u->id }}" role="button">Edit</button>
+                      </li>
+                      <li class="list-inline-item">
+                          <form action="{{route('bank.delete',['id'=>$u->id])}}" method="POST">@csrf @method('delete') <button type=submit class="btn btn-5">Delete</button></form>
+                      </li>      
+                  <ul>
+                </td>
 
-                  <div class="modal fade" id="exampleModalTogglee{{ $u->id }}" aria-hidden="true"
+                <!-- modal edit payment gateway -->
+                <div class="modal fade" id="exampleModalTogglee{{ $u->id }}" aria-hidden="true"
                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
@@ -329,8 +390,8 @@
                             </div>
                             <div class="buttonn" style="text-align: right;">
                               <div class="col">
-                                <button type="submit" class="btn btn-7">Edit</button>
-                                <button type="button" class="btn btn-8">Cancel</button>
+                              <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Edit</button>
+                                  <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
                               </div>
                             </div>
                           </form>
@@ -339,10 +400,7 @@
                       </div>
                     </div>
                   </div>
-
-                  <button class="btn btn-4" data-toggle="modal" data-target="#exampleModalTogglee{{ $u->id }}" role="button">Edit</button>
-                  <form action="{{route('bank.delete',['id'=>$u->id])}}" method="POST">@csrf @method('delete') <button type=submit class="btn btn-5">Delete</button></form>
-                </td>
+                  <!-- End modal edit payment gateway -->
               </tr>
               @endforeach
 

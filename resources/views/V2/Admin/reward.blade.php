@@ -180,8 +180,55 @@
             <div class="col-12 col-md-12 col-lg-12">
               <div class="container container-3">
                 <div class="judul">
-                  <a href="" type="submit" class="btn btn-5">Add</a>
+                  <a href="" type="submit" class="btn btn-5" data-toggle="modal" data-target="#addReward" role="button">Add</a>
                 </div>
+                <!-- Modal Add Reward -->
+                <div class="modal fade" id="addReward" aria-hidden="true"
+                  aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel">Edit Reward</h5>
+                      </div>
+                      <div class="modal-body">
+                        <!-- form -->
+                        <form action="">
+                          <div class="mb-3">
+                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                              style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
+                              placeholder="">
+                          </div>
+                          <div class="mb-3">
+                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                          </div>
+                          <div class="mb-3">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                              style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"></textarea>
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                              style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
+                              placeholder="">
+                          </div>
+                          <div class="mb-3">
+                            <input type="date" class="form-control" id="exampleFormControlInput1"
+                              style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
+                              placeholder="">
+                          </div>
+
+                          <div class="buttonn" style="text-align: right;">
+                            <div class="col">
+                              <button type="submit" class="btn btn-7">Add</button>
+                              <button type="submit" class="btn btn-8">Cancel</button>
+                            </div>
+                          </div>
+                        </form>
+                        <!-- Form Ahir -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Modal Add Reward -->
                 <!-- ---------tabel------------- -->
                 <div class="cards">
                   <table class="table  table-dark  " style="background: 
@@ -197,16 +244,18 @@
                       <th class="th-2"></th>
                     </thead>
                     <tbody>
+                      @foreach ($reward as $i => $r)
                       <tr>
-                        <td>1</td>
-                        <td>Smartphone</td>
-                        <td><img src="../img/downloada.png" alt=""></td>
-                        <td>Tukar point anda
-                          dengan Smart aaaaa aaaaaaaaaaaaa aaa</td>
-                        <td>10.000</td>
-                        <td>2030-12-31</td>
+                        <td>{{ $i+1 }}</td>
+                        <td>{{ $r->judul }}</td>
+                        <td>
+                          <a href="{{asset(Storage::url('reward/'.$r->image))}}"itemprop="contentUrl" data-size="1600x950"><img src="{{asset(Storage::url('reward/'.$r->image))}}" alt="Image description" style="height:100px ;width: 200px;"></a>
+                        </td>
+                        <td style="width: 300px;">{{ $r->desc }}</td>
+                        <td>{{ number_format($r->harga_point,0,'.','.') }}</td>
+                        <td>{{ $r->batas }}</td>
                         <td style="text-align: center;">
-                          <div class="modal fade" id="exampleModalTogglee" aria-hidden="true"
+                          <div class="modal fade" id="editReward" aria-hidden="true"
                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                             <div class="modal-dialog modal-dialog-centered">
                               <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
@@ -306,6 +355,7 @@
 
                         </td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -315,7 +365,5 @@
 
           </div>
           <!--Row-->
-
         </div>
-      </div>
 @endsection
