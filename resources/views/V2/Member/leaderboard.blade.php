@@ -1,4 +1,5 @@
 @extends('v2.layouts.master')
+@section('title', 'Leaderboard member')
 @section('css')
 <link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">

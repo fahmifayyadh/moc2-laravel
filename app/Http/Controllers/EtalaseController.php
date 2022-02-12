@@ -16,7 +16,14 @@ class EtalaseController extends Controller
     public function course()
     {
         $produk = Paket::get();
-        return view('tests.etalase.index',compact('produk'));
+        // return view('tests.etalase.index',compact('produk'));
+
+        //v2
+        if (auth()->user()->role != 'admin') {
+            return view('v2.member.allproduct_course',compact('produk'));
+        }else {
+            return view('tests.etalase.index',compact('produk'));
+        }
     }
     // public function paketCourse()
     // {
@@ -43,7 +50,7 @@ class EtalaseController extends Controller
     // public function detailPaketCourse(Paket $paket)
     // {
     //     return view('tests.etalase.detailpaketcourse',compact('paket'));
-   
+
     // }
     public function detailProduk(Product $product)
     {

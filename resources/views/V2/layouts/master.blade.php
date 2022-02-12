@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="{{asset('admin/img/logo/logo.png')}}" rel="icon">
-  <title>RuangAdmin - Alerts</title>
+  <title>@yield('title', 'MOC Membership')</title>
   <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('admin/vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('admin/css/ruang-admin.css')}}" rel="stylesheet">
