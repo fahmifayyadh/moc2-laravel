@@ -117,7 +117,7 @@ class UserController extends Controller
         }
         $spon = User::where('email',$user->sponsor)->first()->name ?? null;
 
-        return view('tests.user.lihatedit',compact(['li','spon','provinsi','user','users','kota']));
+        //return view('tests.user.lihatedit',compact(['li','spon','provinsi','user','users','kota']));
 
         //v2
         if (auth()->user()->role != 'admin') {
