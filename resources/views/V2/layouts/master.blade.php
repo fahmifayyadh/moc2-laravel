@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet">
+  @yield('css')
 </head>
 @yield('head')
 @toastr_css
@@ -61,6 +62,7 @@
     <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    @yield('js')
     <script src="{{asset('admin/js/ruang-admin.min.js')}}"></script>
      <!-- Page level plugins -->
     <script src="{{asset('admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
