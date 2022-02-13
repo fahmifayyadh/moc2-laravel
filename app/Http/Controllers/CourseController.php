@@ -98,7 +98,10 @@ class CourseController extends Controller
     {
         $course = Course::findOrFail($id);
         $paket = Paket::get();
-        return view('tests.course.edit', compact(['course','paket']));
+        // return view('tests.course.edit', compact(['course','paket']));
+
+        // V2
+        return view('V2.Admin.kelola-produk.edit-course', compact(['course','paket']));
     }
 
     /**
@@ -157,7 +160,10 @@ class CourseController extends Controller
         ->orWhere('desc',$request->desc)
         ->get();
         // ->orWhere('desc','like','%'.$request->desc.'%')
-        return view('tests.course.index', compact('c'));
+        // return view('tests.course.index', compact('c'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.course', compact('c'));
     }
     public function paket()
     {
@@ -215,7 +221,10 @@ class CourseController extends Controller
     public function paketEdit(Paket $paket)
     {
         $course= $paket;
-        return view('tests.course.editpaket',compact('course'));
+        // return view('tests.course.editpaket',compact('course'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.edit-paket',compact('course'));
     }
     public function paketUpdate(Request $request,Paket $paket)
     {

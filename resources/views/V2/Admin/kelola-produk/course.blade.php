@@ -268,25 +268,95 @@
   </style>
 @section('content')
 
+
 <div class="container-fluid" id="container-wrapper">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <a href="allproduct.html">
-        <h4 style="color:white;font-family: 'Rubik', sans-serif; font-weight: bold;"><span
-            style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span> COURSE</h4>
+      <h4 style="color:white;font-family: 'Rubik', sans-serif; font-weight: bold;"><span
+          style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span> COURSE</h4>
     </a>
     <div class="sort">
-        <i class="fa-solid fa-arrow-down-wide-short"></i></i>
-        <p> Sort By</p>
+      <a class="btn btn-2" data-toggle="modal" data-target="#filter-leaderboard"><i class="fa-solid fa-arrow-down-wide-short"></i>
+      <p> Sort By</p></a>
     </div>
+    <!-- Modal Filter -->
+    <div class="modal fade" id="filter-leaderboard" tabindex="-1" role="dialog" aria-labelledby="preview-course" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content p-l-10 p-r-10 ">
+              <div class="modal-header">
+                  <h5 class="modal-title">Filter Course</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <div class="modal-body">
+              <form action="{{route('course.courseSearch')}}" method="GET">
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="name" placeholder="nama e-course">
+                </div>
+                <div class="mb-3">
+                  <input class="form-control" type="text" name="desc" placeholder="Dekripsi">
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-7" type="submit" style="background: #FF9F1C; border-radius: 7px; font-weight: bold; color: black;">Search</button>
+                  <button class="btn btn-8" type="button" data-dismiss="modal" style="background: #283246; border-radius: 7px; font-weight: bold; color: #FF9F1C;">Close</button>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+    <!-- End Modal Filter -->
     <div class="search">
 
-        <form id="animated">
+      <form id="animated" action="{{route('course.courseSearch')}}" method="get">
         <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="text" name="search" placeholder="Search">
-        </form>
+        <input type="text" placeholder="Search" required="" name="name">
+      </form>
     </div>
 
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+      @foreach ($c as $item)
+      <div class="col-6 col-md-12 col-lg-6 mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-7 col-lg-7 -col-md-7">
+              <img src="{{ asset(Storage::url('course/main/'.$item->image)) }}" alt="">
+            </div>
+            <div class="col-5">
+              <p>{{ Str::limit($item->desc, 60)}}</p>
+            </div>
+          </div>
+          <div class="col">
+            <h2 style="font-weight: bold; color: black;">{{ $item->name }}</h2>
+          </div>
+          <div class="col-12">
+            <a href="{{route('babCourse.index',$item->id)}}" type="button" class="btn btn-1" data-original-title="MOC active" title="">Add</a>
+            <form style="display:inline" onclick="return confirm('apakah anda yakin?')" action="{{route('course.delete',$item->id)}}" method="post">
+              @csrf
+              @method('delete')
+              <button class="btn btn-2" type="submit" data-original-title="MOC active" title="">Delete</button>
+            </form>
+            <a href="{{route('course.edit',['id'=>$item->id])}}" type="button" class="btn btn-3">Edit</a>
+          </div>
+          <div class="col-12">
+            <div class="icon">
+              <i class="far fa-eye" style="float: right;"><span>{{ $item->paket()->count() }}x</span> </i>
+              <i class="fa fa-archive" aria-hidden="true" style="float: right;"><span>{{ $item->subCourse()->count() }}</span> </i>
+            </div>
+          </div>
+          <div class="col-12" style=" visibility: hidden;">aaaaaa</div>
+        </div>
+      </div>
+      @endforeach
     </div>
+  </div>
+  
+  <!-- Documentation Link -->
+  <!---Container Fluid-->
+</div>
 
 
 @endsection

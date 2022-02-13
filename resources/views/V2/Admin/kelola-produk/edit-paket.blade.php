@@ -1,5 +1,5 @@
 @extends('V2.layouts.master')
-@section('title','Create Paket')
+@section('title','Edit Paket')
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
 <style>
@@ -54,7 +54,7 @@
       <a href="allproduct.html"  >
         <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
           <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-          CREATE PAKET <span style="font-weight: 100;"></span>
+          EDIT PAKET <span style="font-weight: 100;"></span>
         </p>
       </a>
     </div>
@@ -62,11 +62,12 @@
       <!-- ---------From Input------------- -->
       <div class="row">
         <div class="col-12 col-md-6 col-lg-6">
-          <form action="{{route('course.paketCreate')}}" method="POST" enctype="multipart/form-data">
+          <form action="{{route('course.paketUpdate',$course->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('put')
             <div class="mb-3">
-              <label for="">Nama</label>
-              <input type="text" placeholder="Name" name="name" value="{{old('name')}}" class="form-control"
+                <label for="">Nama</label>
+              <input type="text" placeholder="Name" name="name" value="{{$course->name}}" class="form-control"
                 style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;">
                 @error('name')
                 <small>{{$message}}</small>
@@ -75,8 +76,8 @@
             <div class="mb-3">
               <label for="">Free member</label>
               <select name="is_member" class="form-control" style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;">
-                <option value="1">iya</option>
-                <option value="0">tidak</option>   
+                <option value="1" {!! $course->is_member == 1 ? 'selected' : null !!}>iya</option>
+                <option value="0" {!! $course->is_member == 0 ? 'selected' : null !!}>tidak</option>   
               </select>
               @error('is_member')
               <small>{{$message}}</small>
@@ -84,7 +85,7 @@
             </div>
             <div class="mb-3">
               <label for="">Harga</label>
-              <input type="number" placeholder="Harga" name="price" value="{{old('price')}}" required class="form-control"
+              <input type="number" placeholder="Harga" name="price" value="{{$course->price}}" required class="form-control"
                 style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;">
                 @error('price')
                 <small>{{$message}}</small>
@@ -92,7 +93,7 @@
             </div>
             <div class="mb-3">
               <label for="">Batas Pengguna</label>
-              <input type="number" placeholder="Batas hari penggunaan video (life time tidak perlu diisi)" name="batas" value="{{old('batas')}}" class="form-control"
+              <input type="number" placeholder="Batas hari penggunaan video (life time tidak perlu diisi)" name="batas" value="{{$course->batas}}" class="form-control"
                 style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;">
                 @error('batas')
                 <small>{{$message}}</small>
@@ -100,34 +101,37 @@
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">point pembeli</label>
-              <input class="form-control" type="number" placeholder="Point Pembeli" name="point_pembeli" required value="{{old('point') ?? 0}}" style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
+              <input class="form-control" type="number" placeholder="Point Pembeli" name="point_pembeli" required value="{{$course->point_pembeli}}" style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
                 @error('point_pembeli')
                 <small>{{$message}}</small>
                 @enderror
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">point sponsor</label>
-              <input class="form-control" type="number" placeholder="Point Sponsor" name="point_sponsor" value="{{old('point') ?? 0}}" required style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
+              <input class="form-control" type="number" placeholder="Point Sponsor" name="point_sponsor" value="{{$course->point_sponsor}}" required style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
                 @error('point_sponsor')
                 <small>{{$message}}</small>
                 @enderror
             </div>
             <div class="mb-3">
               <label for="">komisi</label>
-              <input class="form-control" type="number" placeholder="Komisi" name="commission" value="{{old('commission') ?? 0}}" required style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
+              <input class="form-control" type="number" placeholder="Komisi" name="commission" value="{{$course->commission}}" required style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
                 @error('commission')
                 <small>{{$message}}</small>
                 @enderror
             </div>
             <div class="mb-3">
               <label for="">Deskripsi Singkat</label>
-              <div id="summernote" class="form-control summernote" name="desc" value="{{old('desc')}}" required>Paket Detail</div>
+              <div id="summernote" class="form-control summernote" name="desc" value="{{old('desc')}}" required>{{$course->desc}}</div>
                 @error('desc')
                 <small>{{$message}}</small>
                 @enderror
             </div>
             <div class="mb-3">
-              <label class="col-sm-4">Choose Thumbnail</label>
+                <center><img style="width: 30%;height:30%" src="{{asset(Storage::url('/paket/'.$course->image))}}" alt=""></center>
+            </div>
+            <div class="mb-3">
+            <label class="col-sm-4">Choose Thumbnail</label>
               <div class="col-md-8">
                 <input class="form-control" type="file" name="image" value="{{old('image')}}" required>
               </div>

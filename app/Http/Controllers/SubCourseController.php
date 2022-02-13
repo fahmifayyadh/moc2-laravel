@@ -19,7 +19,10 @@ class SubCourseController extends Controller
         $course = SubCourse::where('babcourse_id', $babCourse->id)->with('babCourse')->get();
       
         $name   = $babCourse->name;
-        return view('tests.course.sub.detail', compact(['babCourse', 'course', 'name']));
+        // return view('tests.course.sub.detail', compact(['babCourse', 'course', 'name']));
+
+        // V2
+        return view('V2.Admin.kelola-produk.detail-sub-course', compact(['babCourse', 'course', 'name']));
     }
 
     /**
@@ -30,7 +33,10 @@ class SubCourseController extends Controller
     public function create(Babcourse $babCourse)
     {
         $course = $babCourse;
-        return view('tests.course.sub.create', compact('course'));
+        // return view('tests.course.sub.create', compact('course'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.create-sub-course', compact('course'));
     }
 
     /**
@@ -59,7 +65,10 @@ class SubCourseController extends Controller
     public function edit($id)
     {
         $subCourse = SubCourse::findOrFail($id);
-        return view('tests.course.sub.edit', compact('subCourse'));
+        // return view('tests.course.sub.edit', compact('subCourse'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.edit-sub-course', compact('subCourse'));
     }
 
     /**
