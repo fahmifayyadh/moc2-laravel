@@ -8,6 +8,12 @@ href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4
 <style>
 <style>
   <style>
+  .table-long{
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
     table {
       border-radius: 5px;
       background: 
@@ -331,85 +337,107 @@ href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4
                 <a href="" class="btn btn-14"> <i class="fas fa-filter"></i>Filter</a>
               </div>
             </div>
-            <div class="col-12 col-md-4 col-lg-4">
+            <!-- <div class="col-12 col-md-4 col-lg-4">
               <div class="search" style="float: right;display: flex;">
                 <form action="{{route('transaksi.order-course-search')}}" method="GET" id="animated" >
                   <button type="submit" class="btn btn-floating" style="position: absolute;margin: 10px 5px;"><i class="fa fa-search"></i></button>
                   <input name="search" type="text" placeholder="Search" style="flex: 1">
                 </form>
               </div>
-            </div>
+            </div> -->
 
             <!-- <div class="col-lg-12"> -->
             <div class="col-12" style="margin-top: 5vh;">
               <!-- ---------tabel------------- -->
               <div class="cards">
-                <table id="table_id"  class="display table  table-dark  " style="background: 
-                  #252633;">
+                <table id="table_id"  class="table-long display table table-dark " style="background: 
+                  #252633; display: block;overflow-x: auto;white-space: nowrap;">
                   <thead>
-                    <th class="th-1">No</th>
-                    <th class="th-3">Pembeli</th>
-                    <th class="th-3">Nama Barang</th>
-                    <th class="th-3">Whatsapp</th>
-                    <th class="th-3">Kategori Paket</th>
-                    <th class="th-3">Kupon</th>
-                    <th class="th-3">Kode Transaksi</th>
-                    <th class="th-3">Harga</th>
-                    <th class="th-3">Waktu</th>
-                    <th class="th-3">Order By</th>
-                    <th class="th-2">Action</th>
-                    <th class="th-2"></th>
+                    <th  class="th-4">No</th>
+                    <th class="th-4">Pembeli</th>
+                    <th class="th-4">Nama Barang</th>
+                    <th class="th-4">Kode Transaksi</th>
+                    <th class="th-4">Whatsapp</th>
+                    <th class="th-4">Kupon</th>
+                    <th class="th-4">Ekspedisi</th>
+                    <th class="th-4">Jenis Pengiriman</th>
+                    <th class="th-4">No Resi</th>
+                    <th class="th-4">Harga</th>
+                    <th class="th-4">Kuantiti</th>
+                    <th class="th-4">Waktu</th>
+                    <th class="th-4">Status</th>
+                    <th class="th-4">Action</th>
                   </thead>
                   <tbody>
-                     @foreach ($transaksi as $i=>$t)
+                    @foreach ($transaksi as $i=>$t)
                     <tr>
-                      <td>
-                       {{$i+1}}<span>.</span></td>
+                      <td>{{$i+1}}</td>
                       <td>{{$t->user->name}}</td>
-                      <td>{{$t->paket->name}}</td>
+                      <td>{{$t->product->name}}</td>
+                      <td>{{$t->kode}}</td>
                       <td><a target="__blank"
                         href="https://wa.me/62{{substr($t->user->no_hp,0, 1) == 0 ? substr($t->user->no_hp,1) :(substr($t->user->no_hp,0, 1) == 6 ? substr($t->user->no_hp,2) : (substr($t->user->no_hp,0, 1) == 8 ? $t->user->no_hp :$t->user->no_hp))}}">Chat</a>
                       </td>
-                      <td>E-course</td>
                       <td>{{$t->kupon != null ? $t->kupon->kode.'-'.$t->discount : null}}</td>
-                      <td>{{$t->kode}}</td>
-                      <td>{{number_format($t->price-$t->discount,0,'.','.')}}</td>
-                      <td>{{$t->created_at->format('Y-m-d')}}</td>
-                       {{-- Detail modal --}}
-                      @include('tests.transaksi.komponen.detail')
-                       @include('tests.transaksi.komponen.badgeCourse')
+                      <td>{{$t->delivery->kurir}}</td>
+                      <td>{{$t->delivery->jenis}}</td>
+                      <td>{{$t->delivery->no_resi}}</td>
                       <td>
-                       @if ($t->status == 'selesai')
-                       <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                       data-target="#DetailModal{{$t->id}}">Detail</button>
-                       @endif
-                       @if ($t->status == 'pembayaran')
-                       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                       data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
-                       @include('tests.transaksi.komponen.priv')
-                       @endif
-                       @if ($t->status == 'batal')
-                       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                       data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
-                       @include('tests.transaksi.komponen.priv')
-                       @endif
-                     </td>
-                      <!-- <td>
-                        <a href="" class="btn btn-5" role="button">Edit</a>
-                      </td> -->
-                    </tr>
-                     @endforeach
+                        {{number_format(($t->price*$t->kuantiti) - $t->discount + $t->delivery->ongkir,0,'.','.')}}
 
-                  </tbody>
+                      </td>
+                      <td>
+                        {{$t->kuantiti}}
+                      </td>
+                      <td>{{$t->created_at->format('Y-m-d')}}</td>
+                      {{-- Detail modal --}}
+                      @include('tests.transaksi.kompo.detail')
+                      @include('tests.transaksi.kompo.pembayaran')
+                      @include('tests.transaksi.kompo.badge')
+                      <td>
+                        @if ($t->status != 'batal')
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="{{$t->status == 'pembayaran' ? '#preview-pembayaran'.$i :null}}{{$t->status == 'proses' || $t->status == 'selesai' || $t->status == 'refund' ? '#DetailModal'.$i : null}}">Detail</button>
+                        @endif
+                        @if ($t->status == 'proses')
+                        <form onsubmit="return confirm('apakah anda yakin?')"
+                        action="{{route('transaksi.selesai',$t->id)}}" method="POST" style="display: inline">
+                        @csrf
+                        <button type="submit" class="btn btn-warning btn-sm">Selesai</button>
+                      </form>
+                      <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                      data-target="#InputResiModal{{$i}}">Resi</button>
+                      @endif
+                      @if ($t->status == 'pembayaran' && $t->bukti == null)
+                      <form style="display: inline"
+                      onsubmit="return confirm('apakah anda yakin?')"
+                      action="{{route('transaksi.cancle',$t->id)}}" method="post">
+                      @csrf
+                      @method('put')
+                      <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                    </form>
+                    @elseif($t->status == 'pembayaran' && $t->bukti != null)
+                    <form style="display: inline"
+                    onsubmit="return confirm('apakah anda yakin?')"
+                    action="{{route('transaksi.refund',$t->id)}}" method="post">
+                    @csrf
+                    @method('put')
+                    <button type="submit" class="btn btn-danger btn-sm">Refund</button>
+                  </form>
+                  @endif
+                </td>
+              </tr>
+              @if ($t->status == "proses")
+
+              @include('tests.transaksi.kompo.resi')
+              @endif
+
+              @endforeach
+
+            </tbody>
                 </table>
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                   @if($tf)
-                  {{$transaksi->links()}}
-                  @endif    
-                </div>
-              </div>
+              <!--  -->
               <!-- ---------tabel------------- -->
             </div>
           </div>
