@@ -163,7 +163,10 @@ class CourseController extends Controller
     {
         $paket = Paket::with('course')->with('sales')->get();
         $course = Course::get();
-        return view('tests.course.paket',compact(['paket','course']));
+        // return view('tests.course.paket',compact(['paket','course']));
+
+        // V2
+        return view('V2.Admin.kelola-produk.kelola-paket',compact(['paket','course']));
     }
     public function paketCreate()
     {
