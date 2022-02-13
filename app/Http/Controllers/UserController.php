@@ -23,13 +23,26 @@ class UserController extends Controller
         $users = User::paginate(30);
         }
 
-        return view('tests.user.list-user',compact('users'));
+        //return view('tests.user.list-user',compact('users'));
 
+        // V2
+        if(auth()->user()->role != 'admin'){
+           return view('tests.user.list-user',compact('users'));
+        }else{
+          return view('V2.Admin.list-user', compact('users')); 
+        }
     }
     public function detail($id)
     {
         $user = User::findOrFail($id);
-        return view('tests.user.detail',compact('user'));
+        //$users = user::where('id','=',$user->sponsor)->get();
+        //return view('tests.user.detail',compact('user'));
+        //v2
+        if (auth()->user()->role != 'admin') {
+             return view('tests.user.detail',compact('user'));
+        }else {
+            return view('v2.admin.detail-user',compact('user'));
+        }
 
     }
     public function leaderboard()
@@ -96,13 +109,22 @@ class UserController extends Controller
         }
         $user = User::findOrFail($id ?? auth()->user()->id);
         $users = User::get(['id','name','email']);
+        //$sponsor = user::where('id','=',$user->sponsor)->first();
         $provinsi = Province::get();
         $kota = User::where('role','admin')->where('city','!=',null)->first()->city ?? null;
         if($kota != null){
             $kota = City::where('city_id',$kota)->first()->name ?? null;
         }
         $spon = User::where('email',$user->sponsor)->first()->name ?? null;
+
         return view('tests.user.lihatedit',compact(['li','spon','provinsi','user','users','kota']));
+
+        //v2
+        if (auth()->user()->role != 'admin') {
+            return view('tests.user.lihatedit',compact(['li','spon','provinsi','user','users','kota']));;
+        }else {
+            return view('v2.admin.edit-user',compact(['li','spon','provinsi','user','users','kota']));
+        }
     }
     public function create(Request $request)
     {
@@ -209,7 +231,7 @@ class UserController extends Controller
 		return redirect()->route('dashboard.index');
     }
     public function updatePoint(Request $request,User $user)
-    {
+    {   
          $user->update([
             'point' => $request->point,
         ]);
@@ -217,6 +239,7 @@ class UserController extends Controller
             'user_id' => $user->id,
             'isi' => $request->pesan
         ]);
+
         toastr()->success('berhasil update point','success');
         return redirect()->back();
     }

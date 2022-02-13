@@ -20,6 +20,7 @@ class DummyController extends Controller
         }elseif($request->jumlah < $d){
             Dummy::where('user_id',$id->id)->take($d - $request->jumlah)->delete();
         }
+        toastr()->success('berhasil mengubah leaderboard','success');
         return redirect()->back();
     }
 }

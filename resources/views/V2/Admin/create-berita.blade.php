@@ -96,8 +96,5 @@
       </form>
     </div>
   </div>
-  <!-- ---------From Input------------- -->
-
 </div>
-
 @endsection

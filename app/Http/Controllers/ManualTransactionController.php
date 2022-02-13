@@ -26,9 +26,15 @@ class ManualTransactionController extends Controller
         ]);
         $transaksi = Transaction::with(['product' => function($x){
             $x->withTrashed();
-        }])->orderByRaw("FIELD(status, \"'pembayaran\", \"proses\", \"selesai\", \"batal\")")->orderBy("created_at", "desc")->paginate(10);
+        }])->orderByRaw("FIELD(status, \"'pembayaran\", \"proses\", \"selesai\", \"batal\")")->orderBy("created_at", "desc")->get();
         // return $transaksi; 'selesai','pembayaran','proses','batal','refund' orderByRaw("FIELD(status, \"'pembayaran\", \"proses\", \"selesai\", \"batal\")")
-        return view('tests.transaksi.transaksi-produk-fisik', compact('transaksi'));
+        // return view('tests.transaksi.transaksi-produk-fisik', compact('transaksi'));
+         // V2
+        if(auth()->user()->role != 'admin'){
+          return view('tests.transaksi.transaksi-produk-fisik',compact(['transaksi']));
+        }else{
+          return view('V2.Admin.transaksi-produk-fisik',compact(['transaksi']));
+        }
     }
     public function filterFisik($fil)
     {

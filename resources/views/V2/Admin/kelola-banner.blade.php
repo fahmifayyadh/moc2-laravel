@@ -1,10 +1,9 @@
 @extends('V2.layouts.master')
 @section('title','Banner')
 @section('head')
-    <!-- data table -->
-    <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet"
-          href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet"
+href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 @endsection
   <style>
     table {
@@ -305,7 +304,7 @@
             </div>
             </div> 
            
-            <div class="col-12 col-md-8 col-lg-8">
+           <!--  <div class="col-12 col-md-8 col-lg-8">
               <div class="pagination">
                 <p>Show</p>
                 <div class="jumlah">
@@ -321,13 +320,13 @@
                   <input name="search" type="text" placeholder="Search" style="flex: 1">
                 </form>
               </div>
-            </div>
+            </div> -->
 
             <!-- <div class="col-lg-12"> -->
-            <div class="col-12 col-md-12 col-lg-12" style="margin-top: 5vh;">
+            <div class="col-12 col-md-12 col-lg-12">
               <!-- ---------tabel------------- -->
               <div class="cards">
-                <table class="table  table-dark  " style="background: 
+                <table id="table_id" class="display table  table-dark  " style="background: 
                   #252633;">
                   <thead>
                     <th class="th-1">No</th>
@@ -364,12 +363,9 @@
             </div>
           </div>
         </div>
-
-        
-  <script>
-    $(document).ready(function () {
-      $('#dataTable').DataTable(); // ID From dataTable 
-      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+<script>
+    $(document).ready( function () {
+        $('#table_id').DataTable();
     });
-  </script>
+</script>
 @endsection
