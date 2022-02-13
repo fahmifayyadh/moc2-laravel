@@ -170,7 +170,10 @@ class CourseController extends Controller
     }
     public function paketCreate()
     {
-        return view('tests.course.createpaket');
+        // return view('tests.course.createpaket');
+
+        // V2
+        return view('V2.Admin.kelola-produk.create-paket');
     }
     public function paketStore(Request $request)
     {

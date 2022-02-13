@@ -1,4 +1,5 @@
 @extends('V2.layouts.master', ['title'=>'Paket'])
+@section('css')
 <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet"
       href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -289,6 +290,14 @@
             text-decoration: none;
           }
       </style>
+@endsection
+@section('js')
+<script>
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+    });
+</script>
+@endsection
 @section('content')
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -306,7 +315,7 @@
     <!-- Datatables -->
     <div class="col-12" style="top: -3vh;">
         <div class="tambah" style="float: right;">
-        <a href="{{route('banner.create')}}" class="btn btn-5">Tambah Paket</a>
+        <a href="{{route('course.paketCreate')}}" class="btn btn-5">Tambah Paket</a>
         </div>
     </div> 
     
@@ -374,9 +383,4 @@
     </div>
     </div>
 </div>
-<script>
-    $(document).ready( function () {
-        $('#table_id').DataTable();
-    });
-</script>
 @endsection
