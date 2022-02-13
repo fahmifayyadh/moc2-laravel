@@ -1,4 +1,5 @@
-@extends('V2.layouts.master', ['title'=>'Banner'])
+@extends('V2.layouts.master')
+@section('title','Banner')
 @section('head')
     <!-- data table -->
     <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
@@ -337,7 +338,7 @@
                   </thead>
                   <tbody>
                     @foreach ($banner as $i => $b)
-                     @include('tests.banner.isi')
+                     @include('v2.admin.modal.img-banner')
                     <tr>
                       <td>{{$i+1}}<span>.</span></td>
                       <td>{{$b->link}}</td>
@@ -362,10 +363,9 @@
               <!-- ---------tabel------------- -->
             </div>
           </div>
-
-
-
         </div>
+
+        
   <script>
     $(document).ready(function () {
       $('#dataTable').DataTable(); // ID From dataTable 

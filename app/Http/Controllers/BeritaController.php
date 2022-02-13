@@ -28,7 +28,14 @@ class BeritaController extends Controller
     }
     public function create()
     {
-        return view('tests.berita.create');
+        //return view('tests.berita.create');
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.berita.create');
+        }else{
+          return view('V2.Admin.create-berita');  
+        }
     }
     public function store(Request $request)
     {

@@ -8,7 +8,7 @@
           <span>Pesan</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="addproduct.html">
+        <a class="nav-link" href="{{route('dashboard.index')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -29,25 +29,25 @@
 
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('berita.index')}}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Kelola Berita</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('banner.index')}}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Kelola Banner</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('banner.index')}}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Kelola Kupon</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('transaksi.order-ecourse')}}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Transaksi</span>
         </a>

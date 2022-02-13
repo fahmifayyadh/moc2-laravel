@@ -23,7 +23,14 @@ class BannerController extends Controller
     }
     public function create()
     {
-        return view('tests.banner.create');
+        //return view('tests.banner.create');
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.banner.create');
+        }else{
+          return view('V2.Admin.create-banner'); 
+        }
     }
     public function store(Request $request)
     {

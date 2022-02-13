@@ -1,5 +1,5 @@
 @extends('V2.layouts.master')
-@section('title','Edit Banner')
+@section('title','Buat Banner')
 @section('head')
 <script src="{{ asset('js/app.js') }}" defer></script>
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
@@ -44,23 +44,17 @@
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">	
 		<p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
 			<span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-			EDIT BANNER <span style="font-weight: 100;"></span>
+			BUAT BANNER <span style="font-weight: 100;"></span>
 		</p>
 	</div>
 	<div class="container container-2">
-		<form action="{{route('banner.edit',$banner->id)}}" method="POST" enctype="multipart/form-data">
+		<form action="{{route('banner.create')}}" method="POST" enctype="multipart/form-data">
 		@csrf
-        @method('PUT')
 			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<img src="{{ asset(Storage::url('banner/'.$banner->img))}}" alt="">
-					</div>
-				</div>
 				<div class="col-12 col-md-5 col-lg-5 mt-5">
 					<div class="mb-3">
 						<label for="formFile" class="form-label">Link Baner</label>
-						<input class="form-control" value="{{$banner->link}}" type="text" placeholder="Link *opsional" name="link" value="{{old('link')}}">
+						<input class="form-control" placeholder="Link *opsional" name="link" value="{{old('link')}}">
 						@error('link')
 						<small>{{$message}}</small>
 						@enderror
@@ -68,10 +62,11 @@
 					<div class="mb-3">
 						<label for="formFile" class="form-label">Upload Baner</label>
 						<input class="form-control" type="file" id="formFile"  style=" font-family: 'Rubik', sans-serif;font-size: 14px; color:#FF9F1C; ;"  name="img">
+						<small>Max size 5mb</small>
 					</div>
 				</div>
 				<div class="col-12">
-					<button type="submit" class="btn btn-light">SAVE</button>
+					<button type="submit" class="btn btn-light">ADD</button>
 				</div>
 			</div>
 		</form>

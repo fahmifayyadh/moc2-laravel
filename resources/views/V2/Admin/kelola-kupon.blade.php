@@ -1,4 +1,5 @@
-@extends('V2.layouts.master', ['title'=>'Kupon'])
+@extends('V2.layouts.master')
+@section('title','kupon')
 <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet"
       href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -297,7 +298,7 @@
             <!-- Datatables -->
             <div class="col-12" style="top: -3vh;">
                <div class="tambah" style="float: right;">
-              <a href="{{route('banner.create')}}" class="btn btn-5">Tambah Kupon</a>
+              <a href="{{route('kupon.create')}}" class="btn btn-5">Tambah Kupon</a>
             </div>
             </div> 
            
