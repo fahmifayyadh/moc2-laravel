@@ -19,7 +19,10 @@ class RewardController extends Controller
     public function admin()
     {
         $reward = Reward::whereDate('batas','>=',Carbon::now()->format('Y-m-d'))->get();
-        return view('tests.reward.admin',compact('reward'));
+        // return view('tests.reward.admin',compact('reward'));
+
+        // V2
+        return view('V2.Admin.reward',compact('reward'));
     }
     public function create(Request $request)
     {
@@ -87,7 +90,7 @@ class RewardController extends Controller
 
         }else{
             $tw = TransactionReward::get();
-            return view('tests.reward.informasi',compact('tw'));
+            return view('V2.Admin.history-reward',compact('tw'));
 
             
         }

@@ -10,7 +10,10 @@ class CourierController extends Controller
     public function index()
     {
         $kurir = Courier::get(['id','name']);
-        return view('tests.exspedisi.index',compact('kurir'));
+        // return view('tests.exspedisi.index',compact('kurir'));
+
+        // V2
+        return view('V2.Admin.kelola-ekspedisi',compact('kurir'));
         
     }
     public function store(Request $request)

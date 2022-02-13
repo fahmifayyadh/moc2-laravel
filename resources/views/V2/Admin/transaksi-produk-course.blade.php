@@ -1,16 +1,11 @@
-@extends('V2.layouts.master', ['title'=>'Banner'])
-@section('head')
-    <!-- data table -->
-    <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet"
-          href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-@endsection
+@extends('V2.layouts.master')
+@section('title','Transaksi Produk Course')
   <style>
     table {
       border-radius: 5px;
-      background:
+      background: 
         #252633;
-    }
+    } 
 
     table thead .th-3 {
       border: none;
@@ -20,7 +15,7 @@
       font-style: normal;
       font-weight: 400;
       padding-left: 5vh;
-      
+      text-align: center;
 
       color: rgb(182, 182, 182);
     }
@@ -34,8 +29,9 @@
       font-style: normal;
       font-weight: 400;
       color: rgb(182, 182, 182);
-
+      text-align: center;
     }
+
     table thead .th-4 {
       background: #283246;
       border-radius: 5px 0px 0px 0px;
@@ -46,6 +42,7 @@
       font-weight: 400;
       color: rgb(182, 182, 182);
       text-align: center;
+
 
     }
 
@@ -72,6 +69,7 @@
       letter-spacing: 0em;
       text-align: left;
       color: #FF9F1C;
+      text-align: center;
 
 
     }
@@ -87,7 +85,8 @@
       font-size: 17px;
       font-family: 'Rubik', sans-serif;
       font-weight: 500;
-      background: #F4F4F4;
+      background:
+        #FFBF69;
       color: rgb(0, 0, 0);
       padding: 2px 20px 2px 20px;
     }
@@ -96,12 +95,22 @@
       font-size: 17px;
       font-family: 'Rubik', sans-serif;
       font-weight: 500;
+      background: #F86D6D;
+      color: rgb(0, 0, 0);
+      padding: 2px 20px 2px 20px;
+
+    }
+
+    table tbody tr td .btn-6 {
+      font-size: 17px;
+      font-family: 'Rubik', sans-serif;
+      font-weight: 500;
       background: #283246;
       color: #FF9F1C;
       padding: 2px 20px 2px 20px;
 
     }
-   
+
 
     .container-3 .judul {
 
@@ -185,37 +194,33 @@
       font-family: 'Roboto', sans-serif;
       text-align: center;
     }
+
   </style>
-  <!-- Row -->  
-   <style>
-      #animated input[type=text] {
-        width: 325.76px;
-        height: 50px;
-        box-sizing: border-box;
-        border: 1px solid #c8c8c8;
-        /* border-radius: 4px; */
-        font-size: 16px;
-        background-color: white;
-        padding: 7px 5px 7px 40px;
-        -webkit-transition: width 0.5s ease-out;
-        transition: width 0.5s ease-out;
-        border-radius: 100px;
-      }
+  <!-- Row -->
+  <style>
+    #animated input[type=text] {
+      width: 325.76px;
+      height: 50px;
+      box-sizing: border-box;
+      border: 1px solid #c8c8c8;
+      /* border-radius: 4px; */
+      font-size: 16px;
+      background-color: white;
+      padding: 7px 5px 7px 40px;
+      -webkit-transition: width 0.5s ease-out;
+      transition: width 0.5s ease-out;
+      border-radius: 100px;
+    }
 
+    @media (max-width: 912px) {
       #animated i {
-       /* position: relative;
-        left: 30px;*/
+        position: relative;
+        left: 15px;
+        top: 38px;
       }
+    }
 
-      @media (max-width: 912px) {
-        #animated i {
-          position: relative;
-          left: 15px;
-          top: 38px;
-        }
-      }
-
-      /* @media (min-width: 300px) {
+    /* @media (min-width: 300px) {
         #animated i {
         position: relative;
         left: 30px;
@@ -223,99 +228,105 @@
       }
       } */
 
-      form i {
-        color: #FF9F1C;
-      }
+    form i {
+      color: #FF9F1C;
+    }
 
-      ::-webkit-input-placeholder {
-        /* Edge */
-        color: #FF9F1C;
-        font-style: italic;
-      }
+    ::-webkit-input-placeholder {
+      /* Edge */
+      color: #FF9F1C;
+      font-style: italic;
+    }
 
-      .pagination p {
-        font-family: 'Rubik', sans-serif;
-        font-size: 30px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 36px;
-        letter-spacing: 0em;
-        text-align: left;
-        color: #ffffff;
+    .pagination .btn-14 {
+      font-family: 'Roboto', sans-serif;
+      color: #FF9F1C;
+      background: #252633;
+      box-shadow: 0px 3px 4px 0px #00000040;
+      font-size: 25px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 29px;
+      letter-spacing: 0em;
+      text-align: left;
 
-      }
+    }
 
-      .pagination .jumlah {
-        height: 30px;
-        width: 56px;
-        left: 172px;
-        top: 250px;
-        border-radius: 5px;
-        background: #252633;
-        margin: 0px 10px 0px 10px;
-        box-shadow: 0px 3px 4px 0px #00000040;
-      }
+    .pagination .jumlah {
+      height: 30px;
+      width: 56px;
+      left: 172px;
+      top: 250px;
+      border-radius: 5px;
+      background: #252633;
+      margin: 0px 10px 0px 10px;
+      box-shadow: 0px 3px 4px 0px #00000040;
+    }
 
-      .pagination .jumlah p {
-        text-align: center;
-        font-family: 'Rubik', sans-serif;
-        color:
-          #FF9F1C;
-        font-size: 30px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 36px;
-        letter-spacing: 0em;
-        margin-top: -1px;
-      }
+    .pagination .jumlah p {
+      text-align: center;
+      font-family: 'Rubik', sans-serif;
+      color:
+        #FF9F1C;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 36px;
+      letter-spacing: 0em;
+      margin-top: -1px;
+    }
 
-      .col-12 .tambah .btn-5 {
+    .col-12 .tambah .btn-5 {
       font-size: 17px;
       font-family: 'Rubik', sans-serif;
       font-weight: 500;
       background: #283246;
-      color: #ffffff;
+      color:
+        #FF9F1C;
       padding: 2px 20px 2px 20px;
-   
+    }
 
-    }      
-     .d-sm-flex a {
-            text-decoration: none;
-          }
-      </style>
+    .col-12 .tambah {
+      float: right;
+    }
+
+    @media only screen and (max-width: 912px) {
+      .col-12 .tambah {
+        float: left;
+      }
+    }
+  </style>
+  <style>
+  .d-sm-flex a {
+    text-decoration: none;
+  }
+</style>
 @section('content')
-<div class="container-fluid" id="container-wrapper">
+ <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <a href="allproduct.html">
               <p
                 style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-                KELOLA BANNER <span style="font-weight: 100;"></span>
+               TRANSAKSI PRODUK FISIK <span style="font-weight: 100;"></span>
               </p>
             </a>
           </div>
 
+        
           <!-- Row -->
-          <div class="row" style="margin: 0; padding: 0;">
+          <div class="row" style="margin: 0">
             <!-- Datatables -->
-            <div class="col-12" style="top: -3vh;">
-               <div class="tambah" style="float: right;">
-              <a href="{{route('banner.create')}}" class="btn btn-5">Tambah Banner</a>
-            </div>
-            </div> 
-           
+
+
             <div class="col-12 col-md-8 col-lg-8">
               <div class="pagination">
-                <p>Show</p>
-                <div class="jumlah">
-                  <p>5</p>
-                </div>
-                <p>Entries</p>
+                <a href="" class="btn btn-14"> <i class="fas fa-filter"></i>Filter</a>
               </div>
             </div>
-           <div class="col-12 col-md-4 col-lg-4">
+            <div class="col-12 col-md-4 col-lg-4">
               <div class="search" style="float: right;display: flex;">
-                <form action="#" method="GET" id="animated" >
+                <form action="{{route('transaksi.order-course-search')}}" method="GET" id="animated" >
                   <button type="submit" class="btn btn-floating" style="position: absolute;margin: 10px 5px;"><i class="fa fa-search"></i></button>
                   <input name="search" type="text" placeholder="Search" style="flex: 1">
                 </form>
@@ -323,41 +334,74 @@
             </div>
 
             <!-- <div class="col-lg-12"> -->
-            <div class="col-12 col-md-12 col-lg-12" style="margin-top: 5vh;">
+            <div class="col-12" style="margin-top: 5vh;">
               <!-- ---------tabel------------- -->
               <div class="cards">
                 <table class="table  table-dark  " style="background: 
                   #252633;">
                   <thead>
                     <th class="th-1">No</th>
-                    <th class="th-3">Link</th>
-                    <th class="th-4">Gambar</th>
-                    <th class="th-4">Action</th>
+                    <th class="th-3">Pembeli</th>
+                    <th class="th-3">Nama Barang</th>
+                    <th class="th-3">Whatsapp</th>
+                    <th class="th-3">Kategori Paket</th>
+                    <th class="th-3">Kupon</th>
+                    <th class="th-3">Kode Transaksi</th>
+                    <th class="th-3">Harga</th>
+                    <th class="th-3">Waktu</th>
+                    <th class="th-3">Order By</th>
+                    <th class="th-2">Action</th>
                     <th class="th-2"></th>
                   </thead>
                   <tbody>
-                    @foreach ($banner as $i => $b)
-                     @include('tests.banner.isi')
+                     @foreach ($transaksi as $i=>$t)
                     <tr>
-                      <td>{{$i+1}}<span>.</span></td>
-                      <td>{{$b->link}}</td>
-                      <td id="italic"><span style="color: aqua;cursor:pointer" data-toggle="modal" data-target="#img{{$b->id}}">lihat</span></td>
-                      <td style="text-align: center;" >
-                        <a href="{{route('banner.edit',$b->id)}}" class="btn btn-4" role="button">Edit</a>
-                      </td>
                       <td>
-                      <form style="display: inline" onclick="return confirm('apakah anda yakin?')" action="{{route('banner.destroy',$b->id)}}" method="post">
-                      @csrf
-                      @method('delete')
-                      <button type="submit" class="btn btn-5">
-                      Delete
-                      </button>
-                      </form>
+                       {{$i+1}}<span>.</span></td>
+                      <td>{{$t->user->name}}</td>
+                      <td>{{$t->paket->name}}</td>
+                      <td><a target="__blank"
+                        href="https://wa.me/62{{substr($t->user->no_hp,0, 1) == 0 ? substr($t->user->no_hp,1) :(substr($t->user->no_hp,0, 1) == 6 ? substr($t->user->no_hp,2) : (substr($t->user->no_hp,0, 1) == 8 ? $t->user->no_hp :$t->user->no_hp))}}">Chat</a>
                       </td>
+                      <td>E-course</td>
+                      <td>{{$t->kupon != null ? $t->kupon->kode.'-'.$t->discount : null}}</td>
+                      <td>{{$t->kode}}</td>
+                      <td>{{number_format($t->price-$t->discount,0,'.','.')}}</td>
+                      <td>{{$t->created_at->format('Y-m-d')}}</td>
+                       {{-- Detail modal --}}
+                      @include('tests.transaksi.komponen.detail')
+                       @include('tests.transaksi.komponen.badgeCourse')
+                      <td>
+                       @if ($t->status == 'selesai')
+                       <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                       data-target="#DetailModal{{$t->id}}">Detail</button>
+                       @endif
+                       @if ($t->status == 'pembayaran')
+                       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                       data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
+                       @include('tests.transaksi.komponen.priv')
+                       @endif
+                       @if ($t->status == 'batal')
+                       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                       data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
+                       @include('tests.transaksi.komponen.priv')
+                       @endif
+                     </td>
+                      <!-- <td>
+                        <a href="" class="btn btn-5" role="button">Edit</a>
+                      </td> -->
                     </tr>
                      @endforeach
+
                   </tbody>
                 </table>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                   @if($tf)
+                  {{$transaksi->links()}}
+                  @endif    
+                </div>
               </div>
               <!-- ---------tabel------------- -->
             </div>
@@ -366,10 +410,13 @@
 
 
         </div>
+ <!-- Page level custom scripts -->
   <script>
     $(document).ready(function () {
       $('#dataTable').DataTable(); // ID From dataTable 
       $('#dataTableHover').DataTable(); // ID From dataTable with Hover
     });
   </script>
+
+
 @endsection
