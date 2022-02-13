@@ -24,7 +24,10 @@ class CourseController extends Controller
     public function index()
     {
         $c = Course::get();
-        return view('tests.course.index', compact('c'));
+        // return view('tests.course.index', compact('c'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.course', compact('c'));
     }
 
     /**
