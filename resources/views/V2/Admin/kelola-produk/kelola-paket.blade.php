@@ -7,6 +7,11 @@
         color: #FF9F1C !important;
         background-color: #252633 !important; 
     }
+    .table-long {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
     table {
       border-radius: 5px;
       background:
@@ -309,8 +314,8 @@
     <div class="col-12 col-md-12 col-lg-12" style="margin-top: 5vh;">
         <!-- ---------tabel------------- -->
         <div class="cards">
-        <table id="table_id" class="display table table-dark" style="background: #252633;">
-            <thead>
+        <table id="table_id" class="display table table-dark table-long" style="background: #252633;">
+            <thead class="text-center">
             <th>No</th>
             <th>Nama</th>
             <th>Deskripsi</th>
