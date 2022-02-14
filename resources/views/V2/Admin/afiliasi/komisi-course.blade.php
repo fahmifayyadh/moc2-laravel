@@ -1,5 +1,5 @@
 @extends('V2.layouts.master')
-@section('tittle', 'Komisi Course')
+@section('title', 'Komisi Course')
   <style>
     table {
       border-radius: 5px;
@@ -226,7 +226,7 @@
 
                 <!-- ---------tabel------------- -->
                 <div class="cards">
-                  <table class="table table-dark  " style="background: 
+                  <table id="table_id" class="display table table-dark  " style="background: 
                 #252633;">
                     <thead>
                       <th class="th-1"> No</th>
@@ -239,38 +239,40 @@
                       <th class="th-2">Action</th>
                     </thead>
                     <tbody style="border: none;">
+                       @foreach ($transactionCourse as $t=>$i) 
                       <tr>
-                        <td>1 <span>.</span></td>
-                        <td>Danuar Riyaldi</td>
-                        <td>7 Days Private
-                          Premium Access </td>
-                        <td>E-Course</td>
-                        <td>a@gmail.com</td>
-                        <td>Rp. 0</td>
+                        <td>{{$t+1}}<span>.</span></td>
+                        <td>{{$i->user->name}}</td>
+                        <td>{{$i->paket->name}}</td>
+                        <td>E-course</td>
+                        <td>{{$i->user->sponsor ?? 'tidak ada'}}</td>
+                        <td>Rp. {{$i->commission}}/td>
                         <td>
-                          <a href="" class=" btn-5">Menunggu Pembayaran</a>
+                         @if (is_null($i->komisi))
+                         <span class="badge badge-pill badge-warning" style="color: white;font-size:12px">Belum Di Bayar</span>
+                         @endif
+                         @if (!is_null($i->komisi) && $i->komisi->status == 'menunggu')
+                         <span class="badge badge-pill badge-success" style="color: white;font-size:12px">Suda Di Bayar</span>
+                         @endif
+                         @if (!is_null($i->komisi) && $i->komisi->status == 'batal')
+                         <span class="badge badge-pill badge-danger" style="color: white;font-size:12px">Batal</span>
+                         @endif
+                         @if (!is_null($i->komisi) && $i->komisi->status == 'selesai')
+                         <span class="badge badge-pill badge-primary" style="color: white;font-size:12px">Selesai</span>
+                         @endif
                         </td>
                         <td>
-                          <a href="" class=" btn-6">Detail</a>
-                          <a href="" class=" btn-7">Bayar</a>
+                           <button type="button" class="btn btn-6" data-toggle="modal" data-target="#afiliasi-detail55{{$i->id}}">Detail</button>
+                            @include('tests.afiliasi.komponenKomisi.detail')
+                            @if (is_null($i->komisi))
+                            <button class="btn btn-7" type="button" data-toggle="modal" data-target="#exampleModalCenter1{{$i->id}}">Bayar</button>
+                            @include('tests.afiliasi.komponenKomisi.pembayaran')
+                            <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#exampleModalCenter3{{$i->id}}">Batal</button>
+                            @include('tests.afiliasi.komponenKomisi.batal')
+                            @endif
                         </td>
                       </tr>
-                      <tr>
-                        <td>1 <span>.</span></td>
-                        <td>Danuar Riyaldi</td>
-                        <td>7 Days Private
-                          Premium Access </td>
-                        <td>E-Course</td>
-                        <td>a@gmail.com</td>
-                        <td>Rp. 0</td>
-                        <td>
-                          <a href="" class=" btn-11">Sudah Bayar</a>
-                        </td>
-                        <td>
-                          <a href="" class=" btn-6">Detail</a>
-                          <a href="" class=" btn-7">Bayar</a>
-                        </td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
