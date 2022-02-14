@@ -38,7 +38,10 @@ class CourseController extends Controller
     public function create()
     {
         $paket = Paket::get();
-        return view('tests.course.form',compact('paket'));
+        // return view('tests.course.form',compact('paket'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.create-course',compact('paket'));
     }
 
     /**

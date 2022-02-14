@@ -276,7 +276,7 @@
           style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span> COURSE</h4>
     </a>
     <div class="tambah">
-        <button href="{{route('course.paketCreate')}}" class="btn btn-5" style="background: #283246; border-radius: 7px; font-weight: bold; color: #FF9F1C;">Tambah Course</button>
+        <a href="{{route('course.create')}}"><button class="btn btn-5" style="background: #283246; border-radius: 7px; font-weight: bold; color: #FF9F1C;">Tambah Course</button></a>
     </div>
     <div class="sort">
       <a class="btn btn-2" data-toggle="modal" data-target="#filter-leaderboard"><i class="fa-solid fa-arrow-down-wide-short"></i>

@@ -26,8 +26,11 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::All();
-        return view('tests.fisik.index',compact('products'));
-}
+        // return view('tests.fisik.index',compact('products'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.produk-fisik',compact('products'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +39,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('tests.fisik.add-fisik');
+        // return view('tests.fisik.add-fisik');
+
+        // V2
+        return view('V2.Admin.kelola-produk.create-produk-fisik');
     }
 
     /**
@@ -110,7 +116,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('tests.fisik.edit-fisik', compact('product'));
+        // return view('tests.fisik.edit-fisik', compact('product'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.edit-produk-fisik', compact('product'));
     }
 
     /**
@@ -207,6 +216,9 @@ class ProductController extends Controller
         ->orWhere('commission',$request->price)
         ->get();
         // ->orWhere('desc','like','%'.$request->desc.'%')
-        return view('tests.fisik.index',compact('products'));
+        // return view('tests.fisik.index',compact('products'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.produk-fisik',compact('products'));
     }
 }

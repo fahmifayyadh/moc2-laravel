@@ -947,7 +947,7 @@ a:focus {
 @media (max-width: 1600px) {
 
   #container-wrapper {
-    min-width: 100vw;
+    min-width: 100%;
   }
 
   .sidebar.toggled {

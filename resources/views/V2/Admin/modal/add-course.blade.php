@@ -20,8 +20,8 @@
                         @endforeach
                         </select>
                         @error('is_member')
-                <small>{{$message}}</small>
-                @enderror
+                        <small>{{$message}}</small>
+                        @enderror
                         </div>
                     </form>
                 <table class="table">
