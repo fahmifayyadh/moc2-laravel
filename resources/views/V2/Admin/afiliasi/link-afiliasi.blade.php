@@ -1,5 +1,4 @@
 @extends('V2.layouts.master')
-@section('title','Link Afiliasi')
 @section('head')
 <script>
     function myFunction(l = 0) {
@@ -185,6 +184,5 @@
           </div>
 
         </div>
-      </div>
 
 @endsection

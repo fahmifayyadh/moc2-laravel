@@ -82,6 +82,13 @@ class AfiliasiController extends Controller
             })->orderByDesc('created_at')->paginate(10);
         return view('tests.afiliasi.status', compact('transaksi'));
         }
-        return view('tests.afiliasi.list-stats', compact('agents'));
+        //return view('tests.afiliasi.list-stats', compact('agents'));
+
+         // V2
+        if(auth()->user()->role != 'admin'){
+          return view('tests.afiliasi.list-stats', compact('agents'));
+        }else{
+          return view('v2.admin.afiliasi.status-afiliasi', compact('agents')); 
+        }
     }
 }

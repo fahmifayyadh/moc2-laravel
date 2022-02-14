@@ -15,7 +15,14 @@ class PixelController extends Controller
     {
        $courses = Paket::paginate(10);
        $t=false;
-        return view('tests.afiliasi.facebookp',compact(['courses','t']));
+        // return view('tests.afiliasi.facebookp',compact(['courses','t']));
+
+       // V2
+        if(auth()->user()->role != 'admin'){
+          return view('tests.afiliasi.facebookp',compact(['courses','t']));
+        }else{
+          return view('v2.admin.afiliasi.facebookpixel', compact(['courses','t'])); 
+        }
     }
     public function create(Request $request)
     {
@@ -43,6 +50,14 @@ class PixelController extends Controller
         }
         $t = true;
         $courses = Paket::paginate(10);
-        return view('tests.afiliasi.facebookp', compact(['courses', 'link', 't']));
+        toastr()->success('', 'Berhasil disimpan');
+        //return view('tests.afiliasi.facebookp', compact(['courses', 'link', 't']));
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+          return view('tests.afiliasi.facebookp',compact(['courses','t']));
+        }else{
+          return view('v2.admin.afiliasi.facebookpixel', compact(['courses','t'])); 
+        }
     }
 }

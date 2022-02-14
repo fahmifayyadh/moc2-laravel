@@ -14,6 +14,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   @yield('css')
 </head>
 @yield('head')
@@ -91,6 +93,10 @@ function closeNav() {
   document.getElementById("accordionSidebar").style.display = "none";
   document.getElementById("content").style.marginLeft= "0";
 }
+
+  $(document).ready( function () {
+    $('#table_id').DataTable();
+  });
 </script>
    
 </body>

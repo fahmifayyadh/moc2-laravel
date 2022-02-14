@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('tittle', 'Komisi Course')
   <style>
     table {
       border-radius: 5px;
@@ -213,11 +214,11 @@
        
           <!-- Row -->
           <div class="row" style="margin: 0; padding: 0;">
-            <div class="col-12" style="top: -3vh;">
+            <!-- <div class="col-12" style="top: -3vh;">
               <div class="container-fluid container-3">
                 <a href="" class="btn "> Filter <i class="fas fa-arrow-down"></i></a>
               </div>
-            </div>
+            </div> -->
 
             <div class="col-12 col-md-12 col-lg-12">
               <div class="container-fluid container-3">

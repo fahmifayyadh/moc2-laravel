@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('title','Status Afiliasi')
  <style>
     table {
       border-radius: 5px;
@@ -142,77 +143,83 @@
     }
   </style>
 @section('content')
- <style>
-          .d-sm-flex a {
-            text-decoration: none;
-          }
-        </style>
-        <div class="container-fluid" id="container-wrapper">
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <a href="allproduct.html">
-              <p
-                style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
-                <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-                STATUS AFILIASI <span style="font-weight: 100;"></span>
-              </p>
-            </a>
-          </div>
+<style>
+  .d-sm-flex a {
+    text-decoration: none;
+  }
+</style>
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="allproduct.html">
+      <p
+      style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
+      <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+      STATUS AFILIASI <span style="font-weight: 100;"></span>
+    </p>
+  </a>
+</div>
 
-    
-          <!-- Row -->
-          <div class="row" style="margin: 0; padding: 0;">
-            <div class="col-12" style="top: -3vh;">
-              <div class="container-fluid container-3" >
-              <a href="" class="btn "> Filter <i class="fas fa-arrow-down"></i></a>
-              </div>
-            </div>
-   
-            <div class="col-12 col-md-12 col-lg-12">
-              <div class="container-fluid container-3">
-                
-             
-                <!-- ---------tabel------------- -->
-                <div class="cards">
-                  <table class="table  table-dark  " style="background: 
-                #252633;">
-                    <thead>
-                      <th class="th-1"> No</th>
-                      <th class="th-3">Nama</th>
-                      <th class="th-3">Produk</th>
-                      <th class="th-3">Poin</th>
-                      <th class="th-3">Tanggal</th>
-                      <th class="th-3">Total Point</th>
-                      <th class="th-3">Total Omset</th>
-                      <th class="th-3">Status</th>
-                      <th class="th-2">Action</th>
-                    </thead>
-                    <tbody style="border: none;">
-                      <tr>
-                        <td>1 <span>.</span></td>
-                        <td>Danuar Riyaldi</td>
-                        <td>Buku Master FB</td>
-                        <td>0</td>
-                        <td>2021-10-31</td>
-                        <td>0</td>
-                        <td>Rp.000</td>
-                        <td>
-                          <a href="" class=" btn-5">Aktif</a>
-                        </td>
-                        <td>
-                          <a href="" class=" btn-6">Detail</a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+<!-- Row -->
+<div class="row" style="margin: 0; padding: 0;">
+<!--   <div class="col-12" style="top: -3vh;">
+    <div class="container-fluid container-3" >
+      <a href="" class="btn "> Filter <i class="fas fa-arrow-down"></i></a>
+    </div>
+  </div> -->
+
+  <div class="col-12 col-md-12 col-lg-12">
+    <div class="container-fluid container-3">
+
+
+      <!-- ---------tabel------------- -->
+      <div class="cards">
+        <table id="table_id" class="display table table-dark " style="background: 
+        #252633;">
+        <thead>
+          <th class="th-1"> No</th>
+          <th class="th-3">Nama</th>
+          <th class="th-3">Produk</th>
+          <th class="th-3">Total Poin</th>
+          <th class="th-3">Tanggal</th>
+          <th class="th-3">Action</th>
+        </thead>
+        <tbody style="border: none;">
+           @foreach ($agents as $i=>$a)
+          <tr>
+            <td>{{$i+1}}</td>
+            <td>{{$a->user->name}}<span>.</span></td>
+            <td>{{$a->paket->name}}</td>
+            <td>{{$a->transaksi()->where('status','selesai')->sum('point_sponsor')}}</td>
+            <td>{{$a->created_at->format('Y-m-d')}}</td>
+            <td>
+              <span class=" btn-5">Aktif</span>
+               <button type="button" class="btn btn-6" data-toggle="modal" data-target="#afi0{{$a->id}}">Detail</button>
+            </td>
+          </tr>
+          <div class="modal fade" id="afi0{{$a->id}}" tabindex="-1" role="dialog" aria-labelledby="afi0" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Detail Status</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
-                <!-- ---------tabel------------- -->
+                <div class="modal-body">
+                  <p>link yang digunakan : <a target="__blank" href="{{URL::to('/').'/order-sponsor/'.$a->user_id.'/'.$a->kode}}">{{URL::to('/').'/order-sponsor/'.$a->user_id.'/'.$a->kode}}</a></p> 
+                </div>
               </div>
             </div>
-
           </div>
-          <!--Row-->
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+    <!-- ---------tabel------------- -->
+  </div>
+</div>
 
-        </div>
-      </div>
+</div>
+<!--Row-->
 
+</div>
 @endsection
