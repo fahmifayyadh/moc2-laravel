@@ -98,7 +98,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{route('pencairan.index')}}">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Pencairan dana</span>
+          <span>Pencairan Dana</span>
         </a>
       </li>
       <li class="nav-item">
