@@ -31,7 +31,7 @@
     @endphp
     @include('layouts.komponen.notif')
     @endauth
-  <div id="wrapper" style="height: 100%">
+  <div id="wrapper" style="height: auto">
     <!-- Sidebar -->
     @include('V2.layouts.sidebar')
     <!-- Sidebar -->
