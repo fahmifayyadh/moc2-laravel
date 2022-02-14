@@ -1,10 +1,5 @@
 @extends('V2.layouts.master')
 @section('title','Kelola Berita')
-@section('head')
-<link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-<link rel="stylesheet"
-href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-@endsection
 <style>
   table {
     border-radius: 5px;
@@ -348,10 +343,4 @@ form i {
   </div>
 </div>
 </div>
-
-<script>
-    $(document).ready( function () {
-        $('#table_id').DataTable();
-    });
-</script>
 @endsection
