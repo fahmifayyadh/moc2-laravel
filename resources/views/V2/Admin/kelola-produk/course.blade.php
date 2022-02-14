@@ -275,6 +275,9 @@
       <h4 style="color:white;font-family: 'Rubik', sans-serif; font-weight: bold;"><span
           style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span> COURSE</h4>
     </a>
+    <div class="tambah">
+        <button href="{{route('course.paketCreate')}}" class="btn btn-5" style="background: #283246; border-radius: 7px; font-weight: bold; color: #FF9F1C;">Tambah Course</button>
+    </div>
     <div class="sort">
       <a class="btn btn-2" data-toggle="modal" data-target="#filter-leaderboard"><i class="fa-solid fa-arrow-down-wide-short"></i>
       <p> Sort By</p></a>

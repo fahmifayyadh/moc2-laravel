@@ -84,9 +84,21 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{route('reward.admin')}}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Reward</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('reward.riwayatMember')}}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>History Reward</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{route('pencairan.index')}}">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Pencairan Dana</span>
+          <span>Pencairan dana</span>
         </a>
       </li>
       <li class="nav-item">
