@@ -1,5 +1,5 @@
 @extends('V2.layouts.master')
-@section('title','Berita')
+@section('title','Kelola Berita')
 @section('head')
 <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet"
@@ -321,16 +321,16 @@ form i {
         </thead>
         <tbody>
           @foreach ($berita as $i => $b)
-          @include('tests.berita.isi')
+          @include('v2.admin.modal.isi-berita')
           <tr>
             <td>{{$i+1}}<span>.</span></td>
             <td>{{$b->judul}}</td>
 
-            <td id="italic" ata-target="#isi{{$b->id}}">Lihat</td>
+            <td id="italic"><a style="color: aqua;cursor:pointer" data-toggle="modal" data-target="#isi{{$b->id}}">Lihat</a></td>
             <td>Warning</td>
 
             <td style="text-align: center;">
-              <a href="{{route('berita.edit',$b->id)}}" class="btn btn-4" role="button">Edit</a>
+              <button class="btn btn-4" role="button"><a href="{{route('berita.edit',$b->id)}}">Edit</a></button>
               <form style="display: inline" onclick="return confirm('apakah anda yakin?')" action="{{route('berita.delete',$b->id)}}" method="post">
                 @csrf
                 @method('delete')

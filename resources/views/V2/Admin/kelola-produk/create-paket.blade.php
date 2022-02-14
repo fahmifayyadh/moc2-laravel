@@ -37,6 +37,7 @@
         width: auto;
       }
     }
+  </st
   </style>
 @endsection
 @section('js')

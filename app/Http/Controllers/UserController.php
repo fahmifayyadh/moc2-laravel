@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if($request->search != null){
-            $users = User::where('name','LIKE','%'.$request->search.'%')->paginate(300);
+            $users = User::where('name','LIKE','%'.$request->search.'%')->paginate(30);
         }else{
         $users = User::paginate(30);
         }

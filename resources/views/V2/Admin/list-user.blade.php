@@ -10,7 +10,7 @@ href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4
 		width: 325.76px;
 		height: 50px;
 		box-sizing: border-box;
-		border: 1px solid #c8c8c8;
+		border: 1px solid #c8c8c8; 
 		/* border-radius: 4px; */
 		font-size: 16px;
 		background-color: white;
@@ -188,7 +188,7 @@ href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4
 	</a>
 
 	<div class="search" style="float: right; display: flex;">
-		<form id="animated" >
+		<form id="animated" action="{{route('user.index')}}" method="get">
 			<i class="fa fa-search" aria-hidden="true"></i>
 			<input type="text" name="search" placeholder="Search">
 		</form>
