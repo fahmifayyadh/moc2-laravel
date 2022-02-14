@@ -1,8 +1,5 @@
 @extends('V2.layouts.master')
 @section('css')
-<link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-<link rel="stylesheet"
-      href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 <style>
     div.dataTables_length select {
         color: #FF9F1C !important;
