@@ -37,7 +37,10 @@ class KomisiController extends Controller
             })->where('status','selesai')->with(['paket' => function($x){
                 $x->withTrashed();
             }])->paginate(10);
-            return view('tests.afiliasi.afiliasi', compact(['transactionCourse','bank']));
+            //return view('tests.afiliasi.afiliasi', compact(['transactionCourse','bank']));
+
+            //v2
+            return view('v2.admin.afiliasi.komisi-fisik', compact(['transactionCourse','bank'])); 
         }
     }
     public function bayar(Request $request)
