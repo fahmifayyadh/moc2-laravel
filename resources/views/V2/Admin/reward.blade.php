@@ -2,6 +2,9 @@
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">
 <style>
+    .datepicker{
+      z-index: 1100 !important;
+    }     
     table {
       border-radius: 5px;
       background: black;
@@ -203,29 +206,27 @@
                 <form action="{{route('reward.add')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="mb-3">
-                    <input type="text" class="form-control" required type="text" placeholder="Title" name="judul" id="exampleFormControlInput1"
+                    <input type="text" class="form-control" required type="text" placeholder="Judul" name="judul" id="exampleFormControlInput1"
                       style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                       placeholder="">
                   </div>
                   <div class="mb-3">
                     <label class="col-form-label">Choose Thumbnail</label>
-                    <input class="form-control form-control-sm" name="image" id="formFileSm" type="file">
+                    <input class="form-control" name="image" id="formFileSm" type="file" required>
+                  </div>
+                  <div class="mb-3">
+                    <input required id="datepicker" class="datepicker-here form-control digits" type="text" data-range="true" name="batas" data-multiple-dates-separator="/" data-language="en" data-original-title="" title="" data-date-format="yyyy-mm-dd" placeholder="Jangka Waktu" 
+                    style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;">
                   </div>
                   <div class="mb-3">
                     <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" required placeholder="Deskripsi" cols="30" rows="10"
                       style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"></textarea>
                   </div>
                   <div class="mb-3">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" required placeholder="Point" name="harga_point"
+                    <input type="number" class="form-control" id="exampleFormControlInput1" required placeholder="Point" name="harga_point"
                       style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                       placeholder="">
                   </div>
-                  <div class="mb-3">
-                    <input type="date" class="form-control" id="exampleFormControlInput1" name="batas"
-                      style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                      placeholder="">
-                  </div>
-
                   <div class="buttonn" style="text-align: right;">
                     <div class="col">
                       <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Add</button>
@@ -276,7 +277,7 @@
               <!-- Modal Delete -->
               <div class="modal fade" id="deleteModal{{$i}}" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
+                      <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
                           <div class="modal-header">
                               <h5 class="modal-title">Delete Reward</h5>
                               <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -285,11 +286,11 @@
                           <form class="theme-form" action="{{route('reward.delete',$r->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf 
                             @method('delete') 
-                            <h5>Apakah anda yakin akan menghapus?</h4>
+                            <h5 style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;">Apakah anda yakin akan menghapus?</h4>
                               <div class="modal-footer ">
-                                <button type="submit" class="btn btn-primary">Delete</button>
+                                <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Delete</button>
                               </form>
-                                <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancel</button>
+                                <button class="btn btn-8" data-dismiss="modal" aria-label="Close" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
                               </div>
                           </div>
                       </div>
@@ -310,7 +311,7 @@
                           @csrf  
                           @method('put')
                           <div class="mb-3">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="judul" value="{{$r->judul}}"
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="judul" value="{{$r->judul}}" required
                               style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                               placeholder="">
                           </div>
@@ -319,20 +320,18 @@
                             <input class="form-control form-control-sm" id="formFileSm" type="file" name="image">
                           </div>
                           <div class="mb-3">
-                            <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            <input required id="datepicker" value="{{$r->batas}}" class="datepicker-here form-control digits" type="text" data-range="true" name="batas" data-multiple-dates-separator="/" data-language="en" data-original-title="" title="" data-date-format="yyyy-mm-dd" placeholder="Jangka Waktu" 
+                            style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;">
+                          </div>
+                          <div class="mb-3">
+                            <textarea required name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"
                               style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;">{{$r->desc}}</textarea>
                           </div>
                           <div class="mb-3">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" laceholder="Point" name="harga_point" value="{{$r->harga_point}}"
+                            <input required type="number" class="form-control" id="exampleFormControlInput1" laceholder="Point" name="harga_point" value="{{$r->harga_point}}"
                               style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                               placeholder="">
                           </div>
-                          <div class="mb-3">
-                            <input type="date" class="form-control" id="exampleFormControlInput1" name="batas" value="{{$r->batas}}"
-                              style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                              placeholder="">
-                          </div>
-
                           <div class="buttonn" style="text-align: right;">
                             <div class="col">
                               <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Edit</button>
@@ -361,25 +360,27 @@
                               <img src="{{asset(Storage::url('/reward/'.$r->image))}}" itemprop="thumbnail" alt="Image description">
                             </div>
                             <div class="mb-3">
+                              <label>Judul</label>
                               <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="judul" value="{{$r->judul}}"
                                 style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                                 readonly>
                             </div>
                             <div class="mb-3">
-                            <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                              style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;" readonly>{{$r->desc}}</textarea>
+                              <label>Jangka Waktu</label>
+                              <input readonly id="datepicker" value="{{$r->batas}}" class="datepicker-here form-control digits" type="text" data-range="true" name="batas" data-multiple-dates-separator="/" data-language="en" data-original-title="" title="" data-date-format="yyyy-mm-dd" placeholder="Jangka Waktu" 
+                              style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;">
                             </div>
                             <div class="mb-3">
+                              <label>Deskripsi</label>
+                              <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;" readonly>{{$r->desc}}</textarea>
+                            </div>
+                            <div class="mb-3">
+                              <label>Point</label>
                               <input type="text" class="form-control" id="exampleFormControlInput1" laceholder="Point" name="harga_point" value="{{$r->harga_point}}"
                                 style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                                 readonly>
                             </div>
-                            <div class="mb-3">
-                              <input type="date" class="form-control" id="exampleFormControlInput1" name="batas" value="{{$r->batas}}"
-                                style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
-                                readonly>
-                            </div>
-
                             <div class="buttonn" style="text-align: right;">
                               <div class="col">
                                 <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
