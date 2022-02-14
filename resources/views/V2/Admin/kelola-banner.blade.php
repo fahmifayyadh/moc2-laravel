@@ -1,5 +1,5 @@
 @extends('V2.layouts.master')
-@section('title','Banner')
+@section('title','Kelola Banner')
 @section('head')
 <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet"

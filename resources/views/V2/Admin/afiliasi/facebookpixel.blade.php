@@ -1,4 +1,14 @@
 @extends('V2.layouts.master')
+@section('js')
+<script>
+  function myFunction() {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+  }
+  </script>
+@endsection
 <style>
     table {
       border-radius: 5px;
@@ -11,7 +21,7 @@
       font-family: 'Rubik', sans-serif;
       font-size: 23px;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 400; 
       /* text-align: center; */
 
       color: rgb(182, 182, 182);

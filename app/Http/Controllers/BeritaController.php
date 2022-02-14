@@ -16,7 +16,7 @@ class BeritaController extends Controller
     }
     public function index()
     {
-        $berita = Berita::get();
+        $berita = Berita::latest()->get();
         //return view('tests.berita.index',compact('berita'));
 
         // V2
@@ -28,7 +28,7 @@ class BeritaController extends Controller
     }
     public function create()
     {
-        //return view('tests.berita.create');
+        // /return view('tests.berita.create');
 
         // V2
         if(auth()->user()->role != 'admin'){
@@ -69,7 +69,8 @@ class BeritaController extends Controller
         }
     }
     public function update(Request $request,Berita $berita)
-    {
+    {   
+        $fileName = $berita->img ?? null;
         try {
             if($request->img != null){
 

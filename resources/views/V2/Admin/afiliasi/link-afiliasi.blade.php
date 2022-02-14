@@ -1,4 +1,15 @@
 @extends('V2.layouts.master')
+@section('title','Link Afiliasi')
+@section('head')
+<script>
+    function myFunction(l = 0) {
+        var copyText = document.getElementById(l == 0 ? "myInput" : "myInput1");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+    }
+</script>
+@endsection
  <style>
     .container-2 {
       margin-bottom: 10vh;
@@ -92,6 +103,9 @@
     .link {
       padding: 5vh;
     }
+    .buton{
+      padding: 35px 10px;
+    }
   </style>
 @section('content')
  <style>
@@ -115,57 +129,55 @@
 
               <div class="container">
                 <!-- form -->
-                <form class="row g-3 needs-validation" style="margin-top: 3rem;" novalidate>
-                  <div class="col-md-9" style="display: flex;">
+                <form class="row g-3 needs-validation" style="margin-top: 3rem;" novalidate action="{{route('afiliasi.generate')}}" method="post">
+                  @csrf
+                  <div class="col-12 mt-3" style="display: flex;">
+                
                     <div class="form-group" style="width: 100%;">
-                      <label class="label-1" for="inputGroupSelect01">Options</label>
-                      <select class="form-select" id="inputGroupSelect01">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                      <label class="label-1" for="product_id">Link Produk</label>
+                      <select class="form-control"id="product_id" name="product" data-select2-id="product_id" tabindex="-1" aria-hidden="true">
+                       <option value="" data-select2-id="6">Pilih Produk</option>
+                       @foreach ($products as $p)
+                       <option value="{{$p->id}}">{{$p->name}}</option>
+                       @endforeach
                       </select>
                     </div>
-
-                  </div>
-                  <div class="col-md-3">
                     <div class="buton">
-                      <a href="" class="btn btn-warning">Generate</a>
+                      <button type="submit" class="btn btn-warning btn-lg">Generate</button>
                     </div>
                   </div>
-                </form>
-
                 <!-- ahir form -->
                 <!-- link -->
                 <div class="link row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Halaman Penjualan / Sales Page</label>
-                      <input type="txt" class="form-control" id="exampleInputProdukNama" placeholder="">
+                      <input type="txt" class="form-control" id="myInput" name="aff-link-0" type="text" value="{{$link ?? 'Kosong'}}/salesPage" readonly="">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="copy" style="margin-top: 6vh; margin-left:1vh ;">
-                      <a href="" class="btn btn-primary">copy</a>
+                      <a href="" class="btn btn-primary"onclick="myFunction()"><i
+                        class="copy icon"></i>copy</a>
+                      </div>
                     </div>
-                  </div>
 
 
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Product Price</label>
-                      <input type="txt" class="form-control" id="exampleInputProdukNama" placeholder="">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Halaman Checkout</label>
+                        <input type="txt" class="form-control"  id="myInput1" name="aff-link-1" type="text"value="{{$link ?? 'Kosong'}}" readonly="">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="copy" style="margin-top: 6vh; margin-left:1vh ;">
-                      <a href="" class="btn btn-primary">copy</a>
+                    <div class="col-md-6">
+                      <div class="copy" style="margin-top: 6vh; margin-left:1vh ;">
+                        <a href="" class="btn btn-primary"onclick="myFunction(1)"><i
+                          class="copy icon"></i>copy</a>
+                        </div>
+                      </div>
                     </div>
+                    <!-- ahir link -->
                   </div>
-                </div>
-                <!-- ahir link -->
-              </div>
 
 
 

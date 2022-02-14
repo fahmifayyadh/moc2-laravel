@@ -18,7 +18,15 @@ class AfiliasiController extends Controller
         // dd(URL::to('/'));
         $products = Paket::get(['id', 'name']);
 
-        return view('tests.afiliasi.index', compact('products'));
+        // return view('tests.afiliasi.index', compact('products')); 
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+          return view('tests.afiliasi.index', compact('products')); 
+        }else{
+          return view('v2.admin.afiliasi.link-afiliasi', compact('products')); 
+        }
+
     }
     public function generate(Request $request)
     {
@@ -53,7 +61,14 @@ class AfiliasiController extends Controller
                 return redirect()->back();
             }
         $link = URL::to('/') . '/order-sponsor/' . auth()->user()->id . '/' . $kode;
-        return view('tests.afiliasi.index', compact(['link', 'products']));
+        //return view('tests.afiliasi.index', compact(['link', 'products']));
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+          return view('tests.afiliasi.index', compact(['link', 'products'])); 
+        }else{
+          return view('v2.admin.afiliasi.link-afiliasi', compact(['link', 'products'])); 
+        }
     }
     public function status()
     {

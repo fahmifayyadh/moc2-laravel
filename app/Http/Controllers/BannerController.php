@@ -11,7 +11,7 @@ class BannerController extends Controller
 {
     public function index()
     {
-        $banner = Banner::get();
+        $banner = Banner::latest()->get();
          // return view('tests.banner.index', compact('banner'));;
 
         // V2
