@@ -8,6 +8,11 @@ href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4
 <style>
 <style>
   <style>
+    .table-long{
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
     table {
       border-radius: 5px;
       background: 
@@ -315,7 +320,7 @@ href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4
               <p
                 style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-               TRANSAKSI PRODUK FISIK <span style="font-weight: 100;"></span>
+               TRANSAKSI COURSE <span style="font-weight: 100;"></span>
               </p>
             </a>
           </div>
@@ -331,11 +336,12 @@ href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4
                 <a href="" class="btn btn-14"> <i class="fas fa-filter"></i>Filter</a>
               </div>
             </div>
+
             <div class="col-12 col-md-4 col-lg-4">
-              <div class="search" style="float: right;display: flex;">
+              <div class="search" style="position: relative;float: right;">
                 <form action="{{route('transaksi.order-course-search')}}" method="GET" id="animated" >
-                  <button type="submit" class="btn btn-floating" style="position: absolute;margin: 10px 5px;"><i class="fa fa-search"></i></button>
-                  <input name="search" type="text" placeholder="Search" style="flex: 1">
+                  <input name="search" type="text" placeholder="Search">
+                  <button type="submit" class="btn btn-floating" style="position: absolute;margin: 10px 5px;padding: 5px 10px;left: 3px;"><i class="fa fa-search" for="search"></i></button>
                 </form>
               </div>
             </div>
@@ -344,8 +350,8 @@ href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4
             <div class="col-12" style="margin-top: 5vh;">
               <!-- ---------tabel------------- -->
               <div class="cards">
-                <table id="table_id"  class="display table  table-dark  " style="background: 
-                  #252633;">
+                <table id=""  class="table  table-dark table-long " style="background: 
+                  #252633; display: block;overflow-x: auto;white-space: nowrap;">
                   <thead>
                     <th class="th-1">No</th>
                     <th class="th-3">Pembeli</th>
