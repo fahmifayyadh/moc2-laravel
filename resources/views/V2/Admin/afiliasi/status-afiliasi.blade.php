@@ -1,5 +1,5 @@
 @extends('V2.layouts.master')
-  <style>
+ <style>
     table {
       border-radius: 5px;
       background: black;
@@ -30,7 +30,7 @@
     }
 
     table thead .th-2 {
-
+      text-align: center;
       border-radius: 0px 5px 0px 0px;
       border: none;
       color: rgb(182, 182, 182);
@@ -50,11 +50,9 @@
       font-weight: 500;
       line-height: 23px;
       letter-spacing: 0em;
-
+      text-align: left;
       color: #FF9F1C;
       text-align: center;
-      align-items: center;
-      justify-content: center;
 
     }
 
@@ -92,74 +90,24 @@
 
 
     table tbody tr td .btn-5 {
-      font-size: 14px;
+      font-size: 15px;
       font-family: 'Rubik', sans-serif;
       font-weight: 500;
-      background: #BD1616;
-      height: 38px;
-      width: 201px;
-      /* float: none; */
-      text-align: center;
-      border-radius: 9px;
-      /* padding: 2px 40px 2px 40px; */
+      background: #73BB17;
       color: #ffffff;
-
-
-    }
-
-    table tbody tr td .btn-11 {
-      font-size: 14px;
-      font-family: 'Rubik', sans-serif;
-      font-weight: 500;
-      background: #4CBD16;
+      padding: 0vh 30px 0vh 30px;
       border-radius: 9px;
-      padding: 8px 20px 8px 20px;
-      float:none;
-      color: #ffffff;
-    }
-    table tbody tr td .btn-11:hover{
-      color: black;
-    }
 
-    table tbody tr td .btn-5:hover {
-      color: rgb(0, 0, 0);
     }
-
     table tbody tr td .btn-6 {
       font-size: 15px;
       font-family: 'Rubik', sans-serif;
       font-weight: 500;
       background: #fdfdfd;
       color: #252525;
-      padding: 0vh 25px 0vh 25px;
-      padding: 4px 20px 4px 20px;
- 
+      padding: 0vh 30px 0vh 30px;
       border-radius: 9px;
-      float: none;
 
-    }
-
-    table tbody tr td .btn-7 {
-      font-size: 15px;
-      font-family: 'Rubik', sans-serif;
-      font-weight: 500;
-      background: #FF9F1C;
-      margin-top: 1vh;
-      color: #ffffff;
-      padding: 0vh 25px 0vh 25px;
-      border-radius: 5px;
-      height: 26.434782028198242px;
-      float: none;
-      width: 90px;
-      left: 1260px;
-      top: 346px;
-      border-radius: 9px;
-      padding: 4px 20px 4px 20px;
-
-    }
-
-    table tbody tr td .btn-7:hover {
-      color: rgb(0, 0, 0);
     }
 
     .modal-header .modal-title {
@@ -175,7 +123,7 @@
 
     .container-3 a {
       float: right;
-      background: #252633;
+      background:#252633;
       color: #FF9F1C;
       font-family: 'Roboto', sans-serif;
       font-size: 25px;
@@ -205,34 +153,36 @@
               <p
                 style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-                KOMISI FISIK <span style="font-weight: 100;"></span>
+                STATUS AFILIASI <span style="font-weight: 100;"></span>
               </p>
             </a>
           </div>
 
+    
           <!-- Row -->
           <div class="row" style="margin: 0; padding: 0;">
             <div class="col-12" style="top: -3vh;">
-              <div class="container-fluid container-3">
-                <a href="" class="btn "> Filter <i class="fas fa-arrow-down"></i></a>
+              <div class="container-fluid container-3" >
+              <a href="" class="btn "> Filter <i class="fas fa-arrow-down"></i></a>
               </div>
             </div>
-
+   
             <div class="col-12 col-md-12 col-lg-12">
               <div class="container-fluid container-3">
-
-
+                
+             
                 <!-- ---------tabel------------- -->
                 <div class="cards">
-                  <table class="table table-dark  " style="background: 
+                  <table class="table  table-dark  " style="background: 
                 #252633;">
                     <thead>
                       <th class="th-1"> No</th>
-                      <th class="th-3">Nama Pembeli</th>
-                      <th class="th-3">Nama Produk</th>
-                      <th class="th-3">Kategori Afiliasi</th>
-                      <th class="th-3">Sponsor</th>
-                      <th class="th-3">Total Komisi Fisik</th>
+                      <th class="th-3">Nama</th>
+                      <th class="th-3">Produk</th>
+                      <th class="th-3">Poin</th>
+                      <th class="th-3">Tanggal</th>
+                      <th class="th-3">Total Point</th>
+                      <th class="th-3">Total Omset</th>
                       <th class="th-3">Status</th>
                       <th class="th-2">Action</th>
                     </thead>
@@ -240,33 +190,16 @@
                       <tr>
                         <td>1 <span>.</span></td>
                         <td>Danuar Riyaldi</td>
-                        <td>7 Days Private
-                          Premium Access </td>
-                        <td>E-Course</td>
-                        <td>a@gmail.com</td>
-                        <td>Rp. 0</td>
+                        <td>Buku Master FB</td>
+                        <td>0</td>
+                        <td>2021-10-31</td>
+                        <td>0</td>
+                        <td>Rp.000</td>
                         <td>
-                          <a href="" class=" btn-5">Menunggu Pembayaran</a>
+                          <a href="" class=" btn-5">Aktif</a>
                         </td>
                         <td>
                           <a href="" class=" btn-6">Detail</a>
-                          <a href="" class=" btn-7">Bayar</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1 <span>.</span></td>
-                        <td>Danuar Riyaldi</td>
-                        <td>7 Days Private
-                          Premium Access </td>
-                        <td>E-Course</td>
-                        <td>a@gmail.com</td>
-                        <td>Rp. 0</td>
-                        <td>
-                          <a href="" class=" btn-11">Sudah Bayar</a>
-                        </td>
-                        <td>
-                          <a href="" class=" btn-6">Detail</a>
-                          <a href="" class=" btn-7">Bayar</a>
                         </td>
                       </tr>
                     </tbody>

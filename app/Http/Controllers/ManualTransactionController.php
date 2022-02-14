@@ -28,7 +28,7 @@ class ManualTransactionController extends Controller
             $x->withTrashed();
         }])->orderByRaw("FIELD(status, \"'pembayaran\", \"proses\", \"selesai\", \"batal\")")->orderBy("created_at", "desc")->paginate(10);
         // return $transaksi; 'selesai','pembayaran','proses','batal','refund' orderByRaw("FIELD(status, \"'pembayaran\", \"proses\", \"selesai\", \"batal\")")
-        return view('tests.transaksi.transaksi-produk-fisik', compact('transaksi'));
+        //return view('tests.transaksi.transaksi-produk-fisik', compact('transaksi'));
         
          // V2
         if(auth()->user()->role != 'admin'){

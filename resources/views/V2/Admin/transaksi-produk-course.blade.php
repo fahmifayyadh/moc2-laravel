@@ -333,9 +333,31 @@ href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4
 
             <div class="col-12 col-md-8 col-lg-8">
               <div class="pagination">
-                <a href="" class="btn btn-14"> <i class="fas fa-filter"></i>Filter</a>
+                <a href="#" class="btn btn-14" data-toggle="modal" data-target="#filter-produk"> <i class="fas fa-filter"></i>Filter</a>
               </div>
             </div>
+            <!-- Modal Filter -->
+            <div class="modal fade" id="filter-produk" tabindex="-1" role="dialog" aria-labelledby="preview-course" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content p-l-10 p-r-10 ">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Filter Status Transaksi</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="mb-3">
+                        <select class="form-control" name="product" id="filter-produk" onchange="location = this.value;">
+                          <option value="" >Pilih Option</option>
+                          <option value="{{route('transaksi.order-course-filter','selesai')}}">Selesai</option>
+                          <option value="{{route('transaksi.order-course-filter','pembayaran')}}">Menunggu Pembayaran</option>
+                          <option value="{{route('transaksi.order-course-filter','batal')}}">Batal</option>
+                        </select>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Modal Filter -->
 
             <div class="col-12 col-md-4 col-lg-4">
               <div class="search" style="position: relative;float: right;">
