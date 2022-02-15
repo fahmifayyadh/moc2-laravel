@@ -90,6 +90,9 @@ class RewardController extends Controller
 
         }else{
             $tw = TransactionReward::get();
+            // return view('tests.reward.informasi',compact('tw'));
+
+            // V2
             return view('V2.Admin.history-reward',compact('tw'));
 
             

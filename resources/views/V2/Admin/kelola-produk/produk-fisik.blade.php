@@ -333,7 +333,7 @@
               <img src="{{ asset(Storage::url('/product/main/'.$pr->image)) }}" alt="">
             </div>
             <div class="col-5">
-              <p>{!! $pr->desc !!}</p>
+              <p>{{ Str::limit(strip_tags($pr->desc), 150, $end='...') }}</p>
             </div>
           </div>
           <div class="col">

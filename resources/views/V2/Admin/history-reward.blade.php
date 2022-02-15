@@ -164,7 +164,7 @@
                         <td>{{number_format($t->harga_point,0,'.','.')}}</td>
                         <td>{{Str::random(6)}}</td>
                         <td>{{$t->created_at->format('d-M-Y')}}</td>
-                        <td><a href="" class="btn btn-5">Aktif</a></td>
+                        <td><span class="badge badge-pill btn-5">Aktif</span></td>
                           
                       </tr>
                     @endforeach
