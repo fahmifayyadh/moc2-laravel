@@ -93,13 +93,6 @@
     }
   </style>
   <style>
-    .sort {
-      margin-top: 1.5vh;
-      position: absolute;
-      margin-left: 130vh;
-      display: flex;
-    }
-
     @media (max-width: 1024px) {
       .sort {
         margin-left: 90vh;
@@ -273,13 +266,11 @@
       <h4 style="color:white;font-family: 'Rubik', sans-serif; font-weight: bold;"><span
           style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span> PRODUK FISIK</h4>
     </a>
-    <div class="tambah">
-        <a href="{{route('produk.create')}}"><button class="btn btn-5" style="background: #283246; border-radius: 7px; font-weight: bold; color: #FF9F1C;">Tambah Produk Fisik</button></a>
-    </div>
-    <div class="sort">
-      <a class="btn btn-2" data-toggle="modal" data-target="#filter-leaderboard"><i class="fa-solid fa-arrow-down-wide-short"></i>
+    <div class="tambah sort">
+        <a class="btn btn-2" data-toggle="modal" data-target="#filter-leaderboard"><i class="fa fa-filter"></i>
       <p> Sort By</p></a>
     </div>
+    
     <!-- Modal Filter -->
     <div class="modal fade" id="filter-leaderboard" tabindex="-1" role="dialog" aria-labelledby="preview-course" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -312,13 +303,16 @@
       </div>
     </div>
     <!-- End Modal Filter -->
-    <div class="search">
-
-      <form id="animated" action="{{route('course.courseSearch')}}" method="get">
+    <div class="search" style="float: right; display: flex;">
+      <form id="animated" action="{{route('produk.produkSearch')}}" method="get">
         <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="text" placeholder="Search" required="" name="name">
+        <input type="text" name="name" placeholder="Search">
       </form>
-    </div>
+      <div class="add pl-4 pr-3">
+        <a href="{{route('produk.create')}}"><button class="btn btn-5" type="button" style="background: #283246; border-radius: 7px; font-weight: bold; color: #FF9F1C;">Tambah Produk</button></a>
+      </div>
+	  </div>
+    
 
   </div>
 
@@ -350,9 +344,9 @@
           </div>
           <div class="col-12">
             <div class="icon">
-              <i class="fas fa-coin" style="float: right;"><span>RP, {{number_format($pr->varian()->first()->price,0,'.','.')}}</span> </i>
+              <i class="fas fa-money-bill" style="float: right;"><span>RP, {{number_format($pr->varian()->first()->price,0,'.','.')}}</span> </i>
               <i class="far fa-eye" style="float: right;"><span>{{$pr->transaksi()->count()}} terjual</span> </i>
-              <i class="fas fa-archive" aria-hidden="true" style="float: right;"><span>{{$pr->point_pembeli}} Poin</span> </i>
+              <i class="fas fa-coins" aria-hidden="true" style="float: right;"><span>{{$pr->point_pembeli}} Poin</span> </i>
             </div>
           </div>
           <div class="col-12" style=" visibility: hidden;">aaaaaa</div>

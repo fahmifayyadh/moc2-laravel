@@ -93,13 +93,6 @@
     }
   </style>
   <style>
-    .sort {
-      margin-top: 1.5vh;
-      position: absolute;
-      margin-left: 130vh;
-      display: flex;
-    }
-
     @media (max-width: 1024px) {
       .sort {
         margin-left: 90vh;
@@ -275,11 +268,8 @@
       <h4 style="color:white;font-family: 'Rubik', sans-serif; font-weight: bold;"><span
           style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span> COURSE</h4>
     </a>
-    <div class="tambah">
-        <a href="{{route('course.create')}}"><button class="btn btn-5" style="background: #283246; border-radius: 7px; font-weight: bold; color: #FF9F1C;">Tambah Course</button></a>
-    </div>
-    <div class="sort">
-      <a class="btn btn-2" data-toggle="modal" data-target="#filter-leaderboard"><i class="fa-solid fa-arrow-down-wide-short"></i>
+    <div class="tambah sort">
+        <a class="btn btn-2" data-toggle="modal" data-target="#filter-leaderboard"><i class="fa fa-filter"></i>
       <p> Sort By</p></a>
     </div>
     <!-- Modal Filter -->
@@ -308,13 +298,15 @@
       </div>
     </div>
     <!-- End Modal Filter -->
-    <div class="search">
-
+    <div class="search" style="float: right; display: flex;">
       <form id="animated" action="{{route('course.courseSearch')}}" method="get">
         <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="text" placeholder="Search" required="" name="name">
+        <input type="text" name="name" placeholder="Search">
       </form>
-    </div>
+      <div class="add pl-4 pr-3">
+        <a href="{{route('course.create')}}"><button class="btn btn-5" type="button" style="background: #283246; border-radius: 7px; font-weight: bold; color: #FF9F1C;">Tambah Course</button></a>
+      </div>
+	  </div>
 
   </div>
 
