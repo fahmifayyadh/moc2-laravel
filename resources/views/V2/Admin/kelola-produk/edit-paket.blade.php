@@ -1,7 +1,6 @@
 @extends('V2.layouts.master')
 @section('title','Edit Paket')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
 <style>
     .container-2 {
       background: #283246;
@@ -39,15 +38,6 @@
     }
   </style>
 @endsection
-@section('js')
-<script src="{{asset('/assets/js/editor/summernote/summernote.js')}}"></script>
-<script src="{{asset('/assets/js/editor/summernote/summernote.custom.js')}}"></script>
-<script>
-  $(document).ready(function() {
-      $('#summernote').summernote();
-  });
-</script>
-@endsection
 @section('content')
  <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -61,7 +51,7 @@
     <div class="container container-2">
       <!-- ---------From Input------------- -->
       <div class="row">
-        <div class="col-12 col-md-6 col-lg-6">
+        <div class="col-12 col-md-6 col-lg-12">
           <form action="{{route('course.paketUpdate',$course->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')

@@ -1,7 +1,6 @@
 @extends('V2.layouts.master')
 @section('title','Create Produk')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
 <style>
     .container-2 {
       background: #ffbd60;
@@ -40,12 +39,7 @@
   </style>
 @endsection
 @section('js')
-<script src="{{asset('/assets/js/editor/summernote/summernote.js')}}"></script>
-<script src="{{asset('/assets/js/editor/summernote/summernote.custom.js')}}"></script>
 <script>
-  $(document).ready(function() {
-      $('#summernote').summernote();
-  });
   $(document).ready(function(){
     var addButton = $('.add_button');
     var wrapper = $('.field_wrapper');

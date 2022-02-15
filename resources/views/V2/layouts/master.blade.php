@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
   @yield('css')
 </head>
 @yield('head')
@@ -31,7 +32,7 @@
     $jumlah = $notif->status();         
     $notif = $notif->view();   
     @endphp
-    @include('layouts.komponen.notif')
+    @include('V2.Admin.modal.notif')
     @endauth
   <div id="wrapper" style="height: auto">
     <!-- Sidebar -->
@@ -70,14 +71,20 @@
     <script src="{{asset('admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
-
-
-
     <!-- Page level custom scripts -->
     <script>
       $(document).ready(function () {
         $('#dataTable').DataTable(); // ID From dataTable 
         $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+      });
+    </script>
+
+    <!-- Summernote -->
+    <script src="{{asset('/assets/js/editor/summernote/summernote.js')}}"></script>
+    <script src="{{asset('/assets/js/editor/summernote/summernote.custom.js')}}"></script>
+    <script>
+      $(document).ready(function() {
+          $('#summernote').summernote();
       });
     </script>
 <script>

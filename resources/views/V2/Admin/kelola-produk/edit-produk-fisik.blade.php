@@ -1,15 +1,6 @@
 @extends('V2.layouts.master')
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
-@endsection
 @section('js')
-<script src="{{asset('/assets/js/editor/summernote/summernote.js')}}"></script>
-<script src="{{asset('/assets/js/editor/summernote/summernote.custom.js')}}"></script>
 <script>
-  $(document).ready(function() {
-      $('#summernote').summernote();
-  });
-
 function readURL(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();

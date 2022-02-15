@@ -1,7 +1,6 @@
 @extends('V2.layouts.master')
 @section('title','Create Berita')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
 <style>
     .container-2 {
       background: #283246;
@@ -44,15 +43,6 @@
       }
     }
   </style>
-@endsection
-@section('js')
-<script src="{{asset('/assets/js/editor/summernote/summernote.js')}}"></script>
-<script src="{{asset('/assets/js/editor/summernote/summernote.custom.js')}}"></script>
-<script>
-  $(document).ready(function() {
-      $('#summernote').summernote();
-  });
-</script>
 @endsection
 @section('content')
  <div class="container-fluid" id="container-wrapper">

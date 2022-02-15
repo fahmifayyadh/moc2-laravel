@@ -51,9 +51,9 @@
     <div class="container container-2">
       <!-- ---------From Input------------- -->
       <div class="row">
-        <div class="col-12 col-md-6 col-lg-6">
+        <div class="col-12 col-md-6 col-lg-12">
           <form action="{{route('course.store')}}" method="POST" enctype="multipart/form-data">
-			@csrf
+			      @csrf
             <div class="mb-3">
               <label for="">Nama</label>
               <input required type="text" placeholder="Name" name="name" value="{{old('name')}}" data-original-title="" title="" class="form-control"
@@ -63,7 +63,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <textarea class="form-control" required rows="3" placeholder="Course Detail" name="desc" value="{{old('desc')}}"></textarea>
+                <textarea id="summernote" class="form-control" required placeholder="Course Detail" name="desc" value="{{old('desc')}}"></textarea>
                 @error('desc')
                 <small>{{$message}}</small>
                 @enderror
