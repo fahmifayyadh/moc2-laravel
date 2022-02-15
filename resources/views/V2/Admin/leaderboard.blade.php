@@ -3,6 +3,11 @@
 @section('css')
 <link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">
+<style type="text/css">
+	    .datepicker{
+      z-index: 1100 !important;
+    }    
+</style>
 @endsection
 @section('js')
 <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.js')}}"></script>
@@ -16,18 +21,21 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content p-l-10 p-r-10 ">
                 <div class="modal-header">
-                    <h5 class="modal-title">Filter LeaderBoard</h5>
+                    <h5 class="modal-title" style="color:#000;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
+                <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+              Filter LeaderBoard <span style="font-weight: 100;"></span></h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
                 <form action="{{route('user.filterLeaderboard')}}" method="GET">
                   <div class="form-group row">
                     <p>Nb: cara Pencarian jika mencari tanggal 20 saja berarti 20-21, jika dari tanggal 23-25 berarti 23-26</p>
-                    <input required class="datepicker-here form-control digits" type="text" data-range="true" name="tanggal" data-multiple-dates-separator="/" data-language="en" data-original-title="" title="" data-date-format="yyyy-m-d" >
+                    <input required id="datepicker" class="datepicker-here form-control digits" type="text" data-range="true" name="batas" data-multiple-dates-separator="/" data-language="en" data-original-title="" title="" data-date-format="yyyy-mm-dd" placeholder="Jangka Waktu" 
+                    style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;">
                   </div>
                   <div class="form-group row">
                       <select class="form-control field" data-type="select" id="inputsize" name="prod">
-                        <option value="">all</option>
+                        <option value="">All</option>
                       <option value="fisik">Product</option>
                       <option value="course">E-course</option>
                       </select>
@@ -60,12 +68,12 @@
             <!-- title Leaderboard-->
         </div>
         <div class="col-3">
-            <div class="box">
+           <!--  <div class="box">
                 <a href="">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </a>
                 <input type="text" name="" placeholder="cari barang">
-            </div>
+            </div> -->
         </div>
         <div class="col-2">
             <div class="text-right">
@@ -86,19 +94,16 @@
         </div>
     </div>
     <div class="card bg-primary-card mb-5">
-        <div
-            class="card-header py-1 d-flex flex-row align-items-center justify-content-between bg-secondary-card">
 
-        </div>
         <div class="table-responsive">
-            <table class="table table-borderless align-items-center table-flush">
+            <table id="table_id" class="display table table-borderless align-items-center table-flush">
                 <thead class="thead bg-secondary-card">
                     <tr>
                         <th>No.</th>
                         <th>Nama</th>
                         <th>Rank</th>
                         <th>Jumlah Transaksi</th>
-
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -183,7 +188,6 @@
                 </tbody>
             </table>
         </div>
-        <div class="card-footer bg-primary-card"></div>
     </div>
 </div>
 @endsection

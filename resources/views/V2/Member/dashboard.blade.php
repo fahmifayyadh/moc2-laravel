@@ -1,114 +1,327 @@
 @extends('v2.layouts.master')
 @section('content')
-<div class="container-fluid" id="container-wrapper">
-    <div class="row">
-        <div class="col-7">
-            <!-- title Leaderboard -->
-            <div class="d-sm-flex align-items-center justify-content-between">
-                <a href="allproduct.html">
-                    <p
-                        style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
-                        <span
-                            style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;">
-                            | </span>
-                        LEADERBOARD <span style="font-weight: 100;"></span>
-                    </p>
-                </a>
-            </div>
-            <!-- title Leaderboard-->
-        </div>
-        <div class="col-3">
-            <div class="box">
-                <a href="">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </a>
-                <input type="text" name="" placeholder="cari barang">
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="text-right">
-                <div class="dropdown">
-                    <button class="btn btn-primary text-custome bg-secondary-card border-0"
-                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fas fa-filter"></i>
-                        Filter</button>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Terbaru</a>
-                        <a class="dropdown-item" href="#">Harga Tertinggi</a>
-                        <a class="dropdown-item" href="#">Harga Terendahg</a>
+                <div class="container-fluid" id="container-wrapper">
+                    <!-- caraousel slide -->
+                    <div id="carouselExampleIndicators" class="carousel slide mr-3" data-ride="carousel">
+                        <ol class="carousel-indicators d-flex justify-content-end mr-5">
+                             @forelse ($banner as $ic => $t)
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{$ic}}"></li>
+                            @empty
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            @endforelse
+                        </ol>
+                        <div class="carousel-inner">
+                            @forelse ($banner as $i=>$it)
+                            <div class="carousel-item @if ($i==0) active @endif">
+                                <a @if ($it->link != '#') target="__blank" @endif href="{{$it->link}}">
+                                    <img class="d-block w-100 rounded" src="{{asset(Storage::url('banner/'.$it->img))}}" alt="Iklan ye">
+                                </a>
+                            </div>
+                            @empty
+                            <div class="carousel-item active">
+                                <a href="#">
+                                    <img class="d-block w-100 rounded" src="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Iklan ye">
+                                </a>
+                            </div>
+                            @endforelse
+                        </div>
+                        
+                    </div>
+                    <!-- caraousel slide -->
+                    <!-- title berita -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
+                        <a href="allproduct.html">
+                            <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
+                                <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+                                BERITA PENTING <span style="font-weight: 100;"></span>
+                            </p>
+                        </a>
+                    </div>
+                    <!-- title berita-->
+                    <!-- berita -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <!-- list berita -->
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
+                                        </div>
+                                        <div class="col-9 my-auto text-black">
+                                            <p class="h4">Berita 1</p>
+                                            <h3>
+                                                <strong>
+                                                    JUALAN ONLINE DAPAT EMAS GRATIS SEBANYAK BANYAKNYA!!
+                                                </strong>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <hr style="border-top: 1px dashed" class="">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
+                                        </div>
+                                        <div class="col-9 my-auto text-black">
+                                            <p class="h4">Berita 1</p>
+                                            <h3>
+                                                <strong>
+                                                    JUALAN ONLINE DAPAT EMAS GRATIS SEBANYAK BANYAKNYA!!
+                                                </strong>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <hr style="border-top: 1px dashed" class="">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
+                                        </div>
+                                        <div class="col-9 my-auto text-black">
+                                            <p class="h4">Berita 1</p>
+                                            <h3>
+                                                <strong>
+                                                    JUALAN ONLINE DAPAT EMAS GRATIS SEBANYAK BANYAKNYA!!
+                                                </strong>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <hr style="border-top: 1px dashed" class="">
+                                    <!-- list berita -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- dashboard -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
+                        <a href="allproduct.html">
+                            <p>
+                                <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;font-weight: 600; font-size: 30px;"> | </span>
+                                <span style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">DASHBOARD</span>  
+                                <span class="badge bg-danger text-light">Reseller</span>
+                                <span class="badge bg-success text-light">Danger</span>
+                                <span style="font-weight: 100;"></span>
+                            </p>
+                            <p style="text-indent: 15px;" class="text-light">
+                                Tanggal daftar : 31-Jan-2021, Masa Aktif User: Life Time
+                            </p>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card bg-primary-card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body">
+                                                            <p style="color:#FF9F1C;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
+                                                                <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+                                                                KOMISI <span style="font-weight: 100;"></span>
+                                                            </p>
+                                                            <p class="text-center text-light h1">
+                                                                0
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <!-- data hari ini -->
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
+                                                        <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+                                                        Data Hari Ini <span style="font-weight: 100;"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p class="text-custome">
+                                                                Point
+                                                            </p>
+                                                            <p class="text-center text-light h3">
+                                                                70
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p class="text-custome">
+                                                                Invitation
+                                                            </p>
+                                                            <p class="text-center text-light h3">
+                                                                0
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p class="text-custome">
+                                                                Omzet
+                                                            </p>
+                                                            <p class="text-center text-light h3">
+                                                                0
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- data bulan ini -->
+                                            <div class="row mt-2">
+                                                <div class="col-12">
+                                                    <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
+                                                        <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+                                                        Data Bulan Ini <span style="font-weight: 100;"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p class="text-custome">
+                                                                Point
+                                                            </p>
+                                                            <p class="text-center text-light h3">
+                                                                70
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p class="text-custome">
+                                                                Invitation
+                                                            </p>
+                                                            <p class="text-center text-light h3">
+                                                                0
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p class="text-custome">
+                                                                Omzet
+                                                            </p>
+                                                            <p class="text-center text-light h3">
+                                                                0
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-3">
+                                            <!-- total omzet -->
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p style="color:#FF9F1C;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
+                                                                <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+                                                                Total Omzet <span style="font-weight: 100;"></span>
+                                                            </p>
+                                                            <p class="text-center text-light h1">
+                                                                0
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <!-- data semua -->
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
+                                                        <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+                                                        Data Semua <span style="font-weight: 100;"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p class="text-custome">
+                                                                Point
+                                                            </p>
+                                                            <p class="text-center text-light h3">
+                                                                70
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p class="text-custome">
+                                                                Invitation
+                                                            </p>
+                                                            <p class="text-center text-light h3">
+                                                                0
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="card bg-secondary-card">
+                                                        <div class="card-body ">
+                                                            <p class="text-custome">
+                                                                Omzet
+                                                            </p>
+                                                            <p class="text-center text-light h3">
+                                                                0
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="card bg-primary-card mb-5">
-        <div
-            class="card-header py-1 d-flex flex-row align-items-center justify-content-between bg-secondary-card">
-
-        </div>
-        <div class="table-responsive">
-            <table class="table table-borderless align-items-center table-flush">
-                <thead class="thead bg-secondary-card">
-                    <tr>
-                        <th>No.</th>
-                        <th>Nama</th>
-                        <th>Rank</th>
-                        <th>Jumlah Transaksi</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class=" text-custome">
-                        <td>1</td>
-                        <td><img class="img-profile rounded-circle mr-3" src="../../img/boy.png"
-                                style="max-width: 30px">Udin Wayang</td>
-                        <td><span class="badge badge-danger mr-2">Master seller</span><span
-                                class="badge badge-success">Bronze</span></td>
-                        <td>940 transaksi</td>
-
-                    </tr>
-                    <tr class=" text-custome">
-                        <td>2</td>
-                        <td><img class="img-profile rounded-circle mr-3" src="../../img/boy.png"
-                                style="max-width: 30px">Udin Wayang</td>
-                        <td><span class="badge badge-danger mr-2">Master seller</span><span
-                                class="badge badge-success">Bronze</span></td>
-                        <td>940 transaksi</td>
-
-                    </tr>
-                    <tr class=" text-custome">
-                        <td>3</td>
-                        <td><img class="img-profile rounded-circle mr-3" src="../../img/boy.png"
-                                style="max-width: 30px">Udin Wayang</td>
-                        <td><span class="badge badge-danger mr-2">Master seller</span><span
-                                class="badge badge-success">Bronze</span></td>
-                        <td>940 transaksi</td>
-
-                    </tr>
-                    <tr class=" text-custome">
-                        <td>4</td>
-                        <td><img class="img-profile rounded-circle mr-3" src="../../img/boy.png"
-                                style="max-width: 30px">Udin Wayang</td>
-                        <td><span class="badge badge-danger mr-2">Master seller</span><span
-                                class="badge badge-success">Bronze</span></td>
-                        <td>940 transaksi</td>
-
-                    </tr>
-                    <tr class=" text-custome">
-                        <td>5</td>
-                        <td><img class="img-profile rounded-circle mr-3" src="../../img/boy.png"
-                                style="max-width: 30px">Udin Wayang</td>
-                        <td><span class="badge badge-danger mr-2">Master seller</span><span
-                                class="badge badge-success">Bronze</span></td>
-                        <td>940 transaksi</td>
-
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="card-footer bg-primary-card"></div>
-    </div>
-</div>
+                <!-- modal -->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary mt-5 ml-4 mb-4" data-toggle="modal" data-target="#exampleModal">
+                    sample modal
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Silahkan pilih</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <button type="button" class="btn button-custome text-light" data-dismiss="modal">Lihat Komisi Course</button>
+                                <button type="button" class="btn button-custome text-light">Lihat Komisi Fisik</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
 @endsection

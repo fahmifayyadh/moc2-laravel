@@ -85,8 +85,11 @@ class HomeController extends Controller
         }])->withCount(['transactionsCourse' => function($z){
             $z->where('status','selesai');
         }])->withCount('dummy')->first();
-            return view('tests.dashboard.rekap',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
-           // return view('v2.member.dashboard',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
+            //return view('tests.dashboard.rekap',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
+
+
+            // v2
+           return view('v2.member.dashboard',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
 
 
         }else{
@@ -107,6 +110,8 @@ class HomeController extends Controller
             $lead = intval(Transaction::where('status','selesai')->count()) + intval(TransactionCourse::where('status','selesai')->count());
 
             //return view('tests.dashboard.rekap',compact(['saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
+
+            // V2
             return view('V2.Admin.dashboard',compact(['saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
 
 
