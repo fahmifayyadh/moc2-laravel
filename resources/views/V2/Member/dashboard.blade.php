@@ -1,4 +1,4 @@
-@extends('v2.layouts.master')
+@extends('V2.layouts.master')
 @section('content')
                 <div class="container-fluid" id="container-wrapper">
                     <!-- caraousel slide -->
@@ -25,8 +25,15 @@
                             </div>
                             @endforelse
                         </div>
-                        
-                    </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                      </a>
+                  </div>
                     <!-- caraousel slide -->
                     <!-- title berita -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
@@ -42,86 +49,116 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-body">
+                                <div id="posts" class="card-body accordion" id="accordionExample">
                                     <!-- list berita -->
-                                    <div class="row">
+                                    @foreach ($berita as $i => $b)
+                                    <div class="row" id="pagination">
                                         <div class="col-3">
-                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
+                                            <img src="{{asset(Storage::url('berita/'.$b->img))}}" class="img-fluid" alt="Responsive image">
                                         </div>
                                         <div class="col-9 my-auto text-black">
-                                            <p class="h4">Berita 1</p>
-                                            <h3>
-                                                <strong>
-                                                    JUALAN ONLINE DAPAT EMAS GRATIS SEBANYAK BANYAKNYA!!
-                                                </strong>
-                                            </h3>
+                                         <div data-toggle="collapse"
+                                         data-target="#collapse{{$i+1}}" class="card-header" id="heading{{$i+1}}" style="background-color: #fff;padding: 0">
+                                         <h2 class="mb-0">
+                                            <p class="h4">Berita {{$i+1}}</p>
+                                            <button style="color:black" class="btn btn-link" type="button" aria-expanded="true" aria-controls="collapse{{$i+1}}">
+                                                <h5>{{$b->judul}}</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapse{{$i+1}}" class="collapse" aria-labelledby="heading{{$i+1}}" data-parent="#accordionExample"style="background-color: #fff;padding: 0">
+                                        <div style="padding: 10px" class="card-body">
+                                            <div id="berr">
+                                                {!!$b->isi!!}
+                                            </div>
+                                        </div>
+                                    </div>
                                         </div>
                                     </div>
                                     <hr style="border-top: 1px dashed" class="">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
-                                        </div>
-                                        <div class="col-9 my-auto text-black">
-                                            <p class="h4">Berita 1</p>
-                                            <h3>
-                                                <strong>
-                                                    JUALAN ONLINE DAPAT EMAS GRATIS SEBANYAK BANYAKNYA!!
-                                                </strong>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <hr style="border-top: 1px dashed" class="">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
-                                        </div>
-                                        <div class="col-9 my-auto text-black">
-                                            <p class="h4">Berita 1</p>
-                                            <h3>
-                                                <strong>
-                                                    JUALAN ONLINE DAPAT EMAS GRATIS SEBANYAK BANYAKNYA!!
-                                                </strong>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <hr style="border-top: 1px dashed" class="">
+                                    @endforeach
+
                                     <!-- list berita -->
                                 </div>
+                                <div class="col-3" style="align-self: center;">
+                                    {{ $berita }}
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
                     <!-- dashboard -->
+                    @php
+                    $paket = 0;
+                    $sp='';
+                    $paket = $us->transactions_count+$us->transactions_course_count+$us->dummy_count; 
+
+                    if($paket >= 100000){
+                    $sp = 'Master Entrepreneur';
+                    }elseif($paket >= 10000){
+                    $sp = 'Entrepreneur';
+                    }elseif($paket >= 1000){
+                    $sp = 'Expert';
+                    }elseif($paket >= 500){
+                    $sp = 'Master Seller';
+                    }elseif($paket >= 100){
+                    $sp = 'Star Seller';
+                    }elseif($paket >= 10){
+                    $sp = 'Top Seller';
+                    }else{
+                    $sp = 'Reseller';
+                    }
+                    $ts = App\User::where('sponsor',auth()->user()->email)->count();
+                    $rm = '';
+                    if($ts >= 100000){
+                    $rm = 'Director';
+                    }elseif($ts >= 10000){
+                    $rm = 'Mentor';
+                    }elseif($ts >= 1000){
+                    $rm = 'Diamond';
+                    }elseif($ts >= 500){
+                    $rm = 'Gold';
+                    }elseif($ts >= 100){
+                    $rm = 'Silver';
+                    }elseif($ts >= 10){
+                    $rm = 'Bronze';
+                    }else{
+                    $rm = 'Affiliate';
+                    }
+                    @endphp
                     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-                        <a href="allproduct.html">
+                        
                             <p>
                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;font-weight: 600; font-size: 30px;"> | </span>
                                 <span style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">DASHBOARD</span>  
-                                <span class="badge bg-danger text-light">Reseller</span>
-                                <span class="badge bg-success text-light">Danger</span>
+                                <span class="badge bg-danger text-light">{{$sp}}</span>
+                                <span class="badge bg-success text-light">{{$rm}}</span>
                                 <span style="font-weight: 100;"></span>
                             </p>
                             <p style="text-indent: 15px;" class="text-light">
-                                Tanggal daftar : 31-Jan-2021, Masa Aktif User: Life Time
+                                Tanggal daftar : {{auth()->user()->created_at->format('d-M-Y')}},
+                                Masa Aktif User:
+                                {{auth()->user()->batas == null ? 'Life Time' : Carbon\Carbon::parse(auth()->user()->batas)->format('d-M-Y')}}
                             </p>
-                        </a>
+                      
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="card bg-primary-card">
+                            <div class="card bg-primary-card" style="background-color: #252633;">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-3">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body">
                                                             <p style="color:#FF9F1C;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
                                                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-                                                                KOMISI <span style="font-weight: 100;"></span>
+                                                               {{auth()->user()->role == 'admin' ? 'Saldo' : 'Komisi'}}<span style="font-weight: 100;"></span>
                                                             </p>
                                                             <p class="text-center text-light h1">
-                                                                0
+                                                                 {{number_format($saldo,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -140,37 +177,37 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Point
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                70
+                                                               {{number_format($leadnow,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Invitation
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                               {{number_format($salesnow,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
-                                                                Omzet
+                                                               Omzet
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                                {{number_format($omsetnow,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -187,37 +224,37 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Point
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                70
+                                                                {{number_format($leadbulan,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Invitation
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                                {{number_format($salesbulan,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
-                                                                Omzet
+                                                              Omzet
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                               {{number_format($omsetbulan,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -230,14 +267,14 @@
                                             <!-- total omzet -->
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p style="color:#FF9F1C;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
                                                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-                                                                Total Omzet <span style="font-weight: 100;"></span>
+                                                               Total Omzet<span style="font-weight: 100;"></span>
                                                             </p>
                                                             <p class="text-center text-light h1">
-                                                                0
+                                                                {{number_format($sales,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -256,37 +293,37 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Point
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                70
+                                                               {{number_format($lead,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Invitation
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                               {{number_format($sales,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
-                                                                Omzet
+                                                               Omzet
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                               {{number_format($omset,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -301,12 +338,12 @@
                 </div>
                 <!-- modal -->
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary mt-5 ml-4 mb-4" data-toggle="modal" data-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-primary mt-5 ml-4 mb-4" data-toggle="modal" data-target="#exampleModal">
                     sample modal
-                </button>
+                </button> -->
                 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+               <!--  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -323,5 +360,6 @@
                             
                         </div>
                     </div>
-                </div>
+                </div> -->
+
 @endsection

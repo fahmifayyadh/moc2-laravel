@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Berita;
 use App\Komisi;
 use App\Transaction;
 use App\TransactionCourse;
@@ -75,8 +76,9 @@ class HomeController extends Controller
              $omset =  TransactionCourse::whereHas('agent',function($q){
                 return $q->where('user_id',auth()->user()->id);
             })->where('status','selesai')->count();
-            $berita = new BeritaController;
-            $berita = $berita->berita();
+            // $berita = new BeritaController;
+            // $berita = $berita->berita();
+            $berita = Berita::orderBy('created_at', 'DESC')->paginate(5);
             $banner = Banner::get();
             
             
