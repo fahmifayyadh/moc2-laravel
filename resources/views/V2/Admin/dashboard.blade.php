@@ -63,7 +63,7 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <a href="#">
               <h4 style="color:white;font-family: 'Rubik', sans-serif; font-weight: bold;"><span
-                  style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span> DHASBOARD</h4>
+                  style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span> DASHBOARD</h4>
             </a>
 
           </div>

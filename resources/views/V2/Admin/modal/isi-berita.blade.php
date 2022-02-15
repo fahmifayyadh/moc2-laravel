@@ -10,7 +10,7 @@
                         aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body modal-content">
-                <img style="width: 100%" height="200px" src="{{ Storage::url('berita/'.$b->img) }}" alt="">
+               <!-- -->
                 <div id="berr">
                     {!! $b->isi !!}
 

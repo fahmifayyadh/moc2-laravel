@@ -52,6 +52,8 @@ class TransactionCourseController extends Controller
             $z->withTrashed();
         }])->where('kode','like','%'.$search.'%')->orWhereHas('paket',function($query) use ($search){
             return $query->withTrashed()->Where('name','like','%'.$search.'%');
+              })->orWhereHas('user', function ($query) use ($search) {
+            return $query->Where('name', 'like', '%' . $search . '%');
         })->get();
         //return view('tests.transaksi.transaksi-produk-course',compact(['tf','transaksi']));
         

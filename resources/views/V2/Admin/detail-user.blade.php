@@ -217,12 +217,47 @@
 					<h4>{{$user->name}}</h4>
 					<button type="button" class="btn btn-1">{{($user->role)}}</button>
 					<p class="akun">Batas Akun :<span> {{$user->batas == null ? 'Life Time' : Carbon\Carbon::parse($user->batas)->format('d-M-Y')}}</span> <i class="fa fa-calendar-alt"></i></p>
-					@if (auth()->user()->role == 'member')
+										@if ($user->role == 'member')
 					<p class="sponsor">Sponsor by: {{$spon ?? '....'}}</p>
-					@endif
-					<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<button type="button" class="btn btn-2">{{$user->status}}</button>
+					<!-- status course -->
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item dropdown no-arrow mx-1">
+							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button type="button" class="btn btn-2">Status E-Course</button>
 							</a>
+							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+								<h6 class="dropdown-header" style="font-family: 'Rubik', sans-serif; font-weight: 500; color:black ;">
+									<span style="color:#FF9F1C; font-weight: bold ;">|</span> Status E-Course
+								</h6>
+
+								<hr style="margin: 0; padding: 0; background:#fddbab ;">
+								@php
+								$a=[]
+								@endphp              
+								@foreach ($course as $zz)
+								@foreach ($zz->paket->course as $c)
+								@if (!in_array($c->id,$a))
+
+								@php
+								$a[] = $c->id 
+								@endphp
+								<a class="dropdown-item d-flex align-items-center" href="#">
+									<div class="small text-gray-500 d-flex">
+										<p style="color: black; padding-right: 2vh "> <span>.</span></p>
+										<p style="color: black;">{{$c->name}}</p>
+										<a href="" class="btn-success" style="color: rgb(255, 255, 255);  padding: 1vh 1vh 1vh 1vh; height: 25px; width: 150px; text-align: center; text-decoration: none;">
+											<p>Aktif</p>
+										</a>
+									</div>
+									<hr style="margin: 0; padding: 0; background:#fddbab ;">
+								</a>
+								  @endif
+					            @endforeach
+					              @endforeach
+							</div>
+						</li>
+					</ul>
+					@endif
 				</div>
 			</div>
 			<div class="row">

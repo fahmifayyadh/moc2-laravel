@@ -51,12 +51,12 @@
 
 	.col-4 .btn-2 {
 		background: black;
-		font-size: 5px;
+		font-size: 7px;
 		font-weight: 500;
 		color: white;
 		font-family: 'Rubik', sans-serif;
 		/*margin-top: -5vh;*/
-		padding: 0.5vh 1vh 0.5vh 1vh;
+		/*padding: 0.5vh 1vh 0.5vh 1vh;*/
 	}
 
 	.row .col-5 img {
@@ -104,12 +104,12 @@
 
 		.col-4 .btn-2 {
 			background: black;
-			font-size: 5px;
+			font-size: 6px;
 			font-weight: 500;
 			color: white;
 			font-family: 'Rubik', sans-serif;
 			/*margin-top: -2vh;*/
-			padding: 0.5vh 1vh 0.5vh 1vh;
+			/*padding: 0.5vh 1vh 0.5vh 1vh;*/
 		}
 	}
 </style>
@@ -220,10 +220,9 @@
 					<h4>{{$user->name}}</h4>
 					<button type="button" class="btn btn-1">{{($user->role)}}</button>
 					<p class="akun">Batas Akun :<span> {{$user->batas == null ? 'Life Time' : Carbon\Carbon::parse($user->batas)->format('d-M-Y')}}</span> <i class="fa fa-calendar-alt"></i></p>
-					@if (auth()->user()->role == 'member')
+					@if ($user->role == 'member')
 					<p class="sponsor">Sponsor by: {{$spon ?? '....'}}</p>
-					@endif
-
+					<!-- status course -->
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item dropdown no-arrow mx-1">
 							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -235,26 +234,29 @@
 								</h6>
 
 								<hr style="margin: 0; padding: 0; background:#fddbab ;">
+								@php
+								$a=[]
+								@endphp              
+								@foreach ($course as $zz)
+								@foreach ($zz->paket->course as $c)
+								@if (!in_array($c->id,$a))
+
+								@php
+								$a[] = $c->id 
+								@endphp
 								<a class="dropdown-item d-flex align-items-center" href="#">
 									<div class="small text-gray-500 d-flex">
-										<p style="color: black; padding-right: 2vh ">1 <span>.</span></p>
-										<p style="color: black;">7 Private Acces</p>
+										<p style="color: black; padding-right: 2vh "> <span>.</span></p>
+										<p style="color: black;">{{$c->name}}</p>
 										<a href="" class="btn-success" style="color: rgb(255, 255, 255);  padding: 1vh 1vh 1vh 1vh; height: 25px; width: 150px; text-align: center; text-decoration: none;">
 											<p>Aktif</p>
 										</a>
 									</div>
 									<hr style="margin: 0; padding: 0; background:#fddbab ;">
 								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="small text-gray-500 d-flex">
-										<p style="color: black; padding-right: 2vh ">2 <span>.</span></p>
-										<p style="color: black;">7 Private Acces</p>
-										<a href="" class="btn-danger" style="color: rgb(255, 255, 255);  padding: 1vh 1vh 1vh 1vh; height: 25px; width: 150px; text-align: center; text-decoration: none;">
-											<p> Tidak Aktif</p>
-										</a>
-									</div>
-									<hr style="margin: 0; padding: 0; background:#fddbab ;">
-								</a>
+								  @endif
+            @endforeach
+              @endforeach
 								<div class="add text-center">
 									<button type="button" class="btn btn-" style="background: #A927F9;    font-family: 'Rubik', sans-serif; color: white; font-weight: 500px; font-size: 11px;margin-top: 2.5vh; padding: 1px 3vh 1px 3vh;">
 									Add</button>
@@ -262,6 +264,7 @@
 							</div>
 						</li>
 					</ul>
+					@endif
 				</div>
 			</div>
 			<div class="row">
@@ -312,9 +315,37 @@
 						<div class="invalid-feedback">{{$message}}</div>
 						@enderror  
 					</div>
-					@if (auth()->user()->role == 'admin')
-<!-- 					if ($user->role == 'admin')
+					 @if (auth()->user()->role == 'admin')
+					<div class="form-group">
+						<label style="cursor: pointer" id="batas" class="form-label">Seumur Hidup</label>
+						<input {!! $li != null ? 'readonly' : null !!} id="batass" type="date" class="form-control @error('batas') is-invalid @enderror" placeholder="Batas Akun" name="batas" value="{{$user->batas}}">
+						@error('batas')
+						<div class="invalid-feedback">{{$message}}</div>
+						@enderror  
+					</div>
+					@endif
 
+					<span class="btn bnt-2" for="" style="color: black;font-weight: bolder;">Ganti Password</span>
+					<div class="col-8">
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Password Baru</label>
+							<input {!! $li != null ? 'readonly' : null !!} class=" form-control @error('password') is-invalid @enderror" type="password" name="password" data-original-title="" title="" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
+							@error('password')
+							<div class="invalid-feedback">{{$message}}</div>
+							@enderror
+						</div>
+					</div>
+					<div class="col-8">
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Ulangi Pasword</label>
+							<input {!! $li != null ? 'readonly' : null !!} type="password" class=" form-control" name="password_confirmation" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
+						</div>
+					</div>
+					<div class="mb-3">
+						<label for="formFile" class="form-label">Ganti Foto</label>
+						<input {!! $li != null ? 'readonly' : null !!} class=" form-control" type="file" name="foto">
+					</div>
+					@if ($user->role == 'admin')
 					<div class="form-group mb-3">
 						<label for="inputEmail4">Provinsi</label>
 						<select name="provinci" id="provinci" class=" form-control selectpicker" id="search-produk"  data-size="5" data-live-search="true" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
@@ -334,7 +365,7 @@
 						<label for="inputEmail4">Kota pengiriman yang digunakan</label>
 						<input {!! $li != null ? 'readonly' : null !!} readonly class=" form-control" type="text" value="{{$kota ?? 'belum di Set'}}" data-original-title="" title="" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">  
 					</div>
-					endif  -->
+					@endif 
 					<div class="form-group">
 						<label for="exampleFormControlSelect1" style="color: black;">Hak Akses</label>
 						<select name="role" id="akses" class=" form-control" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
@@ -356,39 +387,18 @@
 					<div class="form-group">
 						<label for="exampleFormControlSelect1" style="color: black;">Sponsor</label>
 						<select id="sponsor" name="sponsor" class=" form-control" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
-							<option value="{{$user->sponsor}}">Pilih Sponsor</option>
+							<option value="{{$user->sponsor}}" selected="" hidden="">{{$spon}}</option>
 							@foreach ($users as $u)
 							<option value="{{$u->email}}" {{$user->sponsor == $u->email ? 'selected' : null}}>{{$u->name}}</option>
 							@endforeach
 						</select>
 					</div>
-
-					<button class="btn btn-1">Ganti Password</button>
-
-					<div class="col-8">
-						<div class="mb-3">
-							<label for="exampleFormControlInput1" class="form-label">Password Baru</label>
-							<input {!! $li != null ? 'readonly' : null !!} class=" form-control @error('password') is-invalid @enderror" type="password" name="password" data-original-title="" title="" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
-							@error('password')
-							<div class="invalid-feedback">{{$message}}</div>
-							@enderror
-						</div>
-					</div>
-					<div class="col-8">
-						<div class="mb-3">
-							<label for="exampleFormControlInput1" class="form-label">Ulangi Pasword</label>
-							<input {!! $li != null ? 'readonly' : null !!} type="password" class=" form-control" name="password_confirmation" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
-						</div>
-					</div>
-					<div class="mb-3">
-						<label for="formFile" class="form-label">Ganti Foto</label>
-						<input {!! $li != null ? 'readonly' : null !!} class=" form-control" type="file" name="foto">
-					</div>
+					
 					<div class="buttonn justify-content-center">
 						<div class="col">
 							<a class="btn btn-3" href="{{route('user.index')}}" role="button" >Cancel</a>
 							<!-- modal -->
-							<div class="modal fade" id="exampleModalTogglee{{ $user->id }}" aria-hidden="true"
+							<!-- <div class="modal fade" id="exampleModalTogglee{{ $user->id }}" aria-hidden="true"
 								aria-labelledby="exampleModalToggleLabel" tabindex="-1">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
@@ -400,7 +410,7 @@
 											</button>
 										</div>
 										<div class="modal-body">
-											<!-- form -->
+											
 											<div class="mb-3">
 												<select id="sponsor" name="sponsor" class=" form-control">
 													<option value="">Pilih Sponsor</option>
@@ -412,9 +422,9 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div>  -->
 							<!-- endmodal -->
-							@endif
+							
 							@if ($li == null)
 							<button type="submit" class="btn btn-4">Save</button>
 							@endif
@@ -425,4 +435,46 @@
 		</form>
 	</div>
 </div>
+    <script>
+  $(document).ready(function(){
+    $("#batas").click(function(){
+    $("#batass").val("DD-MM-YYYY");
+
+    });
+  });      
+      $('.cp').hide();
+
+      var p = "@error('password') b @enderror";
+      var op = "@error('old_password') o @enderror";
+      
+      if( p != '' || op != ''){
+        $('.cp').show();
+
+      }
+      $('.cb').click(function(){
+        if($('.cb:checked').val() == 'on'){
+          $('.cp').show();
+        }else{
+          $('.cp').hide();
+          
+        }
+      });
+      $('#provinci').change(function () {
+     var optionKab = '';
+        $.ajax({
+            url: "{{route('getCity')}}",
+            method: "GET",
+            data: {
+                province_id: this.value,
+            },
+            success: function (data) {
+              $.each(data, function( key, value ) {
+                optionKab += '<option value="'+key+'">'+value+'</option>';
+              });
+              $("#kabupaten").find('option').remove().end().append(optionKab);
+              $("#kabupaten").selectpicker("refresh");
+            }
+        });
+    });
+</script>
 @endsection
