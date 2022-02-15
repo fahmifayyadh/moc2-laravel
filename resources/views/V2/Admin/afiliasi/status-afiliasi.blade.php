@@ -1,5 +1,5 @@
 @extends('V2.layouts.master')
-@section('title','Status Afiliasi')
+@section('title','List Status Afiliasi')
  <style>
     table {
       border-radius: 5px;
@@ -182,6 +182,7 @@
           <th class="th-3">Produk</th>
           <th class="th-3">Total Poin</th>
           <th class="th-3">Tanggal</th>
+          <th class="th-3">Status</th>
           <th class="th-3">Action</th>
         </thead>
         <tbody style="border: none;">
@@ -193,8 +194,8 @@
             <td>{{$a->transaksi()->where('status','selesai')->sum('point_sponsor')}}</td>
             <td>{{$a->created_at->format('Y-m-d')}}</td>
             <td>
-              <span class=" btn-5">Aktif</span>
-               <button type="button" class="btn btn-6" data-toggle="modal" data-target="#afi0{{$a->id}}">Detail</button>
+              <span class=" btn-5">Aktif</span></td>
+            <td><button type="button" class="btn btn-6" data-toggle="modal" data-target="#afi0{{$a->id}}">Detail</button>
             </td>
           </tr>
           <div class="modal fade" id="afi0{{$a->id}}" tabindex="-1" role="dialog" aria-labelledby="afi0" aria-hidden="true">

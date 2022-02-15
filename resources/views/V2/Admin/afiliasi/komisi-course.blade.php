@@ -283,7 +283,5 @@
           </div>
           <!--Row-->
 
-        </div>
-      </div>
-
+        </div> 
 @endsection

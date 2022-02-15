@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('title','Facebook Pixel')
 @section('head')
 <script>
   function myFunction() {
@@ -167,7 +168,9 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Facebook pixel</h5>
+                <h5 class="modal-title" style="color:#000;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
+                   <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
+                    Facebook Pixel <span style="font-weight: 100;"></span></h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
                   aria-hidden="true">×</span></button>
                 </div>

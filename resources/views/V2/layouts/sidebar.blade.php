@@ -4,12 +4,12 @@
   @if (Auth::check() && (( auth()->user()->role == 'member' && auth()->user()->status != 'pembeli') || auth()->user()->role == 'admin'))
       <li class="nav-item mt-4">
         <a class="nav-link" href="{{route('dashboard.index')}}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-home"></i>
           <span>Dashboard</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('chat.index')}}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-comments"></i>
           <span>Pesan</span></a>
       </li>
        <li class="nav-item">
@@ -20,7 +20,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#afiliasi" aria-expanded="true"
         aria-controls="collapseTable">
-        <i class="fas fa-fw fa-table"></i>
+        <i class="fas fa-fw fa-link"></i>
         <span>Afiliasi</span>
       </a>
       <div id="afiliasi" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
@@ -41,13 +41,13 @@
       @if (Auth::check() && auth()->user()->role == 'admin')
       <li class="nav-item">
         <a class="nav-link" href="{{route('user.index')}}">
-          <i class="fas fa-fw fa-palette"></i>
+          <i class="fas fa-fw fa-user-friends"></i>
           <span>List user</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('berita.index')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-newspaper"></i>
           <span>Kelola Berita</span>
         </a>
       </li>
@@ -58,15 +58,15 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('banner.index')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+        <a class="nav-link" href="{{route('kupon.index')}}">
+          <i class="fas fa-fw fa-journal-whills"></i>
           <span>Kelola Kupon</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Transaksi" aria-expanded="true"
         aria-controls="collapseTable">
-        <i class="fas fa-fw fa-table"></i>
+        <i class="fas fa-fw fa-money-bill-wave"></i>
         <span>Transaksi</span>
       </a>
       <div id="Transaksi" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
@@ -79,13 +79,13 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('bank.index')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-money-check"></i>
           <span>Kelola Bank</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('reward.admin')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-compass"></i>
           <span>Reward</span>
         </a>
       </li>
@@ -97,26 +97,26 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('pencairan.index')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-exchange-alt"></i>
           <span>Pencairan Dana</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('pencairan.riwayat')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-money-check"></i>
           <span>Riwayat Pencairan Dana</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('exspedisi.index')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-truck"></i>
           <span>Kelola Ekspedisi</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#kelolaproduk" aria-expanded="true"
         aria-controls="collapseTable">
-        <i class="fas fa-fw fa-table"></i>
+        <i class="fas fa-fw fa-object-group"></i>
         <span>Kelola Produk</span>
       </a>
       <div id="kelolaproduk" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">

@@ -7,6 +7,8 @@ use App\Notif;
 use App\Product;
 use App\Province;
 use App\User;
+use App\TransactionCourse;
+use App\Paket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -35,13 +37,20 @@ class UserController extends Controller
     public function detail($id)
     {
         $user = User::findOrFail($id);
+        // $course = TransactionCourse::with(['paket' => function($z){
+        //     $z->withTrashed();
+        // }])->where('user_id',$id)->get();
+        $spon = User::where('email',$user->sponsor)->first()->name ?? null;
+        $course = TransactionCourse::where([['user_id', $id]])->with(['paket' => function($z){
+            $z->withTrashed();
+        }])->get();
         //$users = user::where('id','=',$user->sponsor)->get();
         //return view('tests.user.detail',compact('user'));
         //v2
         if (auth()->user()->role != 'admin') {
              return view('tests.user.detail',compact('user'));
         }else {
-            return view('v2.admin.detail-user',compact('user'));
+            return view('v2.admin.detail-user',compact(['user','course','spon']));
         }
 
     }
@@ -59,7 +68,7 @@ class UserController extends Controller
         if (auth()->user()->role != 'admin') {
             return view('V2.Member.leaderboard', compact('users'));
         }else {
-            return view('tests.leaderboard.index',compact('users'));
+            return view('V2.Admin.leaderboard',compact('users'));
         }
 
 
@@ -93,7 +102,14 @@ class UserController extends Controller
             toastr()->warning('Pencarian tidak ditemukan', 'success');
 
         }
-	    return view('tests.leaderboard.index',compact('users'));
+	    //return view('tests.leaderboard.index',compact('users'));
+
+         //v2
+        if (auth()->user()->role != 'admin') {
+            return view('V2.Member.leaderboard', compact('users'));
+        }else {
+            return view('V2.Admin.leaderboard',compact('users'));
+        }
 
     }
     public function edit($id=null,$lihat= null)
@@ -116,14 +132,16 @@ class UserController extends Controller
             $kota = City::where('city_id',$kota)->first()->name ?? null;
         }
         $spon = User::where('email',$user->sponsor)->first()->name ?? null;
-
+        $course = TransactionCourse::where([['user_id', $id]])->with(['paket' => function($z){
+            $z->withTrashed();
+        }])->get();
         //return view('tests.user.lihatedit',compact(['li','spon','provinsi','user','users','kota']));
 
         //v2
         if (auth()->user()->role != 'admin') {
             return view('tests.user.lihatedit',compact(['li','spon','provinsi','user','users','kota']));;
         }else {
-            return view('v2.admin.edit-user',compact(['li','spon','provinsi','user','users','kota']));
+            return view('v2.admin.edit-user',compact(['li','spon','provinsi','user','users','kota','course']));
         }
     }
     public function create(Request $request)
