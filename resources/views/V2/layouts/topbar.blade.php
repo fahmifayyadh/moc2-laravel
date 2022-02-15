@@ -90,10 +90,12 @@
           style="color:#FF9F1C; font-family: 'Rubik', sans-serif;">{{auth()->user()->name}}</span>
       </a>
       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="#" style="color: #FF9F1C;">
+        @if (auth()->user()->status != 'pembeli')
+        <a class="dropdown-item" href="{{route('user.edit')}}" style="color: #FF9F1C;">
           <i class="fas fa-user fa-sm fa-fw mr-2"></i>
           Profile
         </a>
+        @endif
         <a class="dropdown-item" href="{{ route('logout') }}" style="color: #FF9F1C;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
           Logout
