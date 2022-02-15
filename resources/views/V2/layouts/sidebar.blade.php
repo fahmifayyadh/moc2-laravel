@@ -2,7 +2,7 @@
 
       <!-- memmber bukan status pembeli sm admin bisa lihat -->
   @if (Auth::check() && (( auth()->user()->role == 'member' && auth()->user()->status != 'pembeli') || auth()->user()->role == 'admin'))
-      <li class="nav-item mt-4">
+      <li class="nav-item mt-5">
         <a class="nav-link" href="{{route('dashboard.index')}}">
           <i class="fas fa-fw fa-home"></i>
           <span>Dashboard</span></a>

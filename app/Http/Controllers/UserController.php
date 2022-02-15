@@ -37,9 +37,6 @@ class UserController extends Controller
     public function detail($id)
     {
         $user = User::findOrFail($id);
-        // $course = TransactionCourse::with(['paket' => function($z){
-        //     $z->withTrashed();
-        // }])->where('user_id',$id)->get();
         $spon = User::where('email',$user->sponsor)->first()->name ?? null;
         $course = TransactionCourse::where([['user_id', $id]])->with(['paket' => function($z){
             $z->withTrashed();
