@@ -1,4 +1,4 @@
-@extends('layouts.master',['title' => 'Konfirmasi komisiFisik Masuk'])
+@extends('layouts.master',['title' => 'Konfirmasi Komisi Masuk'])
 @section('content')
 
 <div class="page-body">
@@ -7,11 +7,10 @@
             <div class="row">
                 <div class="col-12">
 
-                <!-- Container Fluid-->
-                 <div class="container-fluid" id="container-wrapper">
+                <div class="container-fluid" id="container-wrapper">
                     <div class="row">
                         <div class="col-7">
-                            <!-- title KOMISI FISIK -->
+                            <!-- title KOMISI COURSE -->
                             <div class="d-sm-flex align-items-center justify-content-between">
                                 <a href="allproduct.html">
                                     <p
@@ -19,11 +18,11 @@
                                         <span
                                             style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;">
                                             | </span>
-                                        KOMISI FISIK<span style="font-weight: 100;"></span>
+                                        KOMISI COURSE <span style="font-weight: 100;"></span>
                                     </p>
                                 </a>
                             </div>
-                            <!-- title KOMISI FISIK-->
+                            <!-- title KOMISI COURSE-->
                         </div>
                         <div class="col-3">
                             <div class="box">
@@ -63,30 +62,27 @@
                                         <th>No.</th>
                                         <th>User</th>
                                         <th>Nama Produk</th>
-                                        <th>Kuantiti</th>
-                                        <th>Poin</th>
                                         <th>Tanggal Transaksi</th>
-                                        <th>Total Komisi Fisik</th>
+                                        <th>Total Komisi</th>
                                         <th>Status</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <!-- loop data -->
-                                    @foreach ($transaksi as $i => $t)
+                                    @foreach ($transactionCourse as $i => $t)
                                     <tr class=" text-custome">
                                         <td>{{$i+1}}</td>
                                         <td>{{$t->user->name}}</td>
-                                        <td>{{$t->product->name}}</td>
-                                        <td>1</td>
-                                        <td>{{$t->point_sponsor}}</td>
-                                        <td>{{$t->created_at->format('d-m-Y')}}</td>
+                                        <td>{{$t->paket->name}}</td>
                                         <td>Rp.{{$t->commission}}</td>
-                                        @if (!is_null($t->komisiFisik) && $t->komisiFisik->status ==
+                                        <td>{{$t->created_at->format('d-m-Y')}}</td>
+
+                                        @if (!is_null($t->komisi) && $t->komisi->status ==
                                                                     'selesai')
                                         <td><span class="badge badge-success mr-2 p-2">sudah bayar</span></td>
                                         @endif
-                                        @if (is_null($t->komisiFisik))
+                                        @if (is_null($t->komisi))
                                         <td><span class="badge badge-danger mr-2 p-2">menunggu pembayaran</span></td>
                                         @endif
                                     </tr>
@@ -96,12 +92,10 @@
                                         <td>Danuar Riyaldi</td>
                                         <td>7 Days Private
                                             Premium Access</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>19-05-2021</td>
                                         <td>Rp.0</td>
+                                        <td>19-05-2021</td>
                                         <td><span class="badge badge-success mr-2 p-2">sudah bayar</span></td>
-
+                                        
 
                                     </tr> -->
                                     <!-- loop data -->
@@ -111,10 +105,7 @@
                         <div class="card-footer bg-primary-card"></div>
                     </div>
                 </div>
-                <!---Container Fluid-->
-
 @endsection
-
 </div>
 </div>
 </div>

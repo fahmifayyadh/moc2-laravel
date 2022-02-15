@@ -27,7 +27,7 @@ class KomisiController extends Controller
             })->with(['paket' => function($x){
                 $x->withTrashed();
             }])->where('status','selesai')->paginate(10);
-            return view('tests.afiliasi.komisi', compact('transactionCourse'));
+            return view('V2.Member.komisi', compact('transactionCourse'));
         } else {
             $bank = $this->xendit->getBank();
             $transactionCourse = TransactionCourse::where(function($xz){
