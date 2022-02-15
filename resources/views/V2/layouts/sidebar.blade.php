@@ -147,7 +147,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('reward.admin')}}">
+        <a class="nav-link" href="{{route('reward.member')}}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reward</span>
         </a>
