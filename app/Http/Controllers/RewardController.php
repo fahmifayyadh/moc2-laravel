@@ -14,7 +14,10 @@ class RewardController extends Controller
     public function member()
     {
         $reward = Reward::whereDate('batas','>=',Carbon::now()->format('Y-m-d'))->get();
-        return view('tests.reward.member',compact('reward'));
+        // return view('tests.reward.member',compact('reward'));
+
+        // V2
+        return view('V2.Member.reward',compact('reward'));
     }
     public function admin()
     {
@@ -86,7 +89,10 @@ class RewardController extends Controller
     {
         if(auth()->user()->role == 'member'){
             $tw = TransactionReward::where('user_id',auth()->user()->id)->get();
-            return view('tests.reward.tukar',compact('tw'));
+            // return view('tests.reward.tukar',compact('tw'));
+
+            // V2
+            return view('V2.Member.history-reward',compact('tw'));
 
         }else{
             $tw = TransactionReward::get();
