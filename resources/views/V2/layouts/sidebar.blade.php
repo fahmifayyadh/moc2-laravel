@@ -2,7 +2,7 @@
 
       <!-- memmber bukan status pembeli sm admin bisa lihat -->
   @if (Auth::check() && (( auth()->user()->role == 'member' && auth()->user()->status != 'pembeli') || auth()->user()->role == 'admin'))
-      <li class="nav-item mt-4">
+      <li class="nav-item mt-5">
         <a class="nav-link" href="{{route('dashboard.index')}}">
           <i class="fas fa-fw fa-home"></i>
           <span>Dashboard</span></a>
@@ -179,9 +179,9 @@
       <div id="Orderproduk" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Order Produk</h6>
-          <a class="collapse-item" href="#">Course</a>
-          <a class="collapse-item" href="#">Paket Course</a>
-          <a class="collapse-item" href="#">Produk Fisik</a>
+          <a class="collapse-item" href="{{route('etalase.course')}}">Course</a>
+         {{-- <a class="collapse-item" href="{{route('etalase.paketCourse')}}">Paket Course</a> --}}
+          <a class="collapse-item" href="{{route('etalase.product')}}">Produk Fisik</a> 
         </div>
       </div>
     </li>

@@ -1,151 +1,233 @@
 @extends('V2.layouts.master')
 @section('title','Pesan')
+<style type="text/css">
+    .hr-sect {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: #9DA7B5;
+    margin: 8px 0px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+
+}
+.hr-sect:before,
+.hr-sect:after {
+    content: "";
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 10px;
+}
+</style>
 @section('content')
-<!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col call-chat-sidebar col-sm-12">
-                <div class="card">
-                    <div class="card-body chat-body">
-                        <div class="chat-box">
-                            <!-- Chat left side Start-->
-                            <div class="chat-left-aside">
-                                <div class="media"><img class="rounded-circle user-image"
-                                        src="{{auth()->user()->foto ? asset(Storage::url('/user/'.auth()->user()->foto)): asset('assets/images/user/1.jpg')}}"
-                                        alt="">
-                                    <div class="about">
-                                        <div class="name f-w-600">{{auth()->user()->name}}</div>
-                                        {{-- <div class="status">Status...</div> --}}
-                                    </div>
-                                </div>
-                                <div class="people-list" id="people-list">
-                                    <div class="search">
-                                        <form class="theme-form">
-                                            <div class="form-group">
-                                                <form action="{{route('chat.index')}}" method="get">
-                                                    <input class="form-control" type="text" name="name"
-                                                        placeholder="search name"><i class="fa fa-search"></i>
-                                                </form>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <ul class="list">
-                                        @foreach ($user as $u)
-                                        @if ($u->id != auth()->user()->id)
-
-                                        <li class="clearfix"><img class="rounded-circle user-image"
-                                                src="{{$u->foto ? asset(Storage::url('/user/'.$u->foto)): asset('assets/images/user/1.jpg')}}"
-                                                alt="">
-                                            <div style="{{$u->from_user_count > 0 ? 'background-color: green;': null}}" class="status-circle away"></div>
-                                            <div class="about">
-                                                <a href="{{route('chat.pesan',$u->id)}}">
-                                                    <div style="cursor: pointer" class="name">
-                                                        {{Str::limit($u->name,11)}}</div>
-                                                </a>
-                                                <div class="status text-info">belum terbaca:{{$u->from_user_count}}
-                                                </div>
-                                            </div>
-                                        </li>
-                                        @endif
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Chat left side Ends-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col call-chat-body">
-                <div class="card">
-                    <div class="card-body p-0">
-                        <div class="row chat-box">
-                            <!-- Chat right side start-->
-                            @if ($chat != null)
-                            <div class="col pr-0 chat-right-aside" style="flex: none;max-width:100%">
-                                <!-- chat start-->
-                                <div class="chat">
-                                    <!-- chat-header start-->
-                                    <div class="chat-header clearfix"><img class="rounded-circle"
-                                            src="{{$us->foto ? asset(Storage::url('/user/'.$us->foto)): asset('assets/images/user/1.jpg')}}"
-                                            alt="">
-                                        <div class="about">
-                                            <div class="name">{{$us->name}}</div>
-
-                                        </div>
-                                        <ul class="list-inline float-left float-sm-right chat-menu-icons">
-
-                                        </ul>
-                                    </div>
-                                    <!-- chat-header end-->
-                                    <div class="chat-history chat-msg-box custom-scrollbar">
-                                        <ul>
-
-
-                                            @foreach ($chat as $c)
-                                            @if ($c->from_user_id == auth()->user()->id)
-
-                                            <li class="clearfix">
-                                                <div class="message other-message pull-right text-right"><img
-                                                        style="width: 4em;height:2em;border-radius:50%;"
-                                                        class="float-right chat-user-img img-30"
-                                                        src="{{auth()->user()->foto ? asset(Storage::url('/user/'.auth()->user()->foto)): asset('assets/images/user/1.jpg')}}"
-                                                        alt="">
-                                                    <div class="message-data"><span
-                                                            class="message-data-time">{{$c->created_at->diffForHumans()}}</span>
-                                                    </div>{!!$c->pesan!!}
-                                                </div>
-                                            </li>
-                                            @else
-                                            <li>
-                                                <div class="message my-message text-left"><img
-                                                        style="width: 4em;height:2em;border-radius:50%;"
-                                                        class="float-left chat-user-img img-30"
-                                                        src="{{$us->foto ? asset(Storage::url('/user/'.$us->foto)): asset('assets/images/user/1.jpg')}}"
-                                                        alt="">
-                                                    <div class="message-data"><span
-                                                            class="message-data-time">{{$c->created_at->diffForHumans()}}</span>
-                                                          </div>{!!$c->pesan!!}
-                                                        </div>
-                                                      </li>
-                                                      @endif
-                                                      @endforeach
-                                                      
-                                                    </ul>
-                                                  </div>
-                                        <!-- end chat-history-->
-                                        <div class="chat-message clearfix" style="padding: 10px;">
-                                            <div class="row">
-
-                                                <div class="col-xl-12 d-flex">
-                                                   
-                                                    <form action="{{route('chat.create',$us->id)}}" method="post">
-                                                        @csrf
-                                                        <div class="input-group text-box">
-                                                            <textarea class="form-control input-txt-bx"
-                                                                id="message-to-send" name="pesan">
-                              </textarea>
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-primary"
-                                                                    type="submit">SEND</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end chat-message-->
-                                        <!-- chat end-->
-                                        <!-- Chat right side ends-->
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                    </div>
-                </div>
-            </div>
+  <div class="container py-5">
+     <div class="row">
+        <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
+            <h5 class="font-weight-bold mb-3 text-center text-lg-start">Member</h5>
         </div>
-    </div>
-    <!-- Container-fluid Ends-->
+        <div class="col-md-6 col-lg-7 col-xl-8">
+           
+        </div>
+     </div>
+    <div class="row">
 
+      <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
+
+     
+            <div class="input-group rounded mb-3">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                      aria-describedby="search-addon" />
+                    <span class="input-group-text border-0" id="search-addon">
+                      <i class="fas fa-search"></i>
+                    </span>
+                  </div>
+        <div class="card">
+          <div class="card-body">
+
+            <ul class="list-unstyled mb-0">
+              <li class="p-2 border-bottom" style="background-color: #eee;">
+                <a href="#!" class="d-flex justify-content-between">
+                  <div class="d-flex flex-row">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp" alt="avatar"
+                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    <div class="pt-1">
+                      <p class="fw-bold mb-0">John Doe</p>
+                      <p class="small text-muted">Hello, Are you there?</p>
+                    </div>
+                  </div>
+                  <div class="pt-1">
+                    <p class="small text-muted mb-1">Just now</p>
+                    <span class="badge bg-danger float-end">1</span>
+                  </div>
+                </a>
+              </li>
+              <li class="p-2 border-bottom">
+                <a href="#!" class="d-flex justify-content-between">
+                  <div class="d-flex flex-row">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp" alt="avatar"
+                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    <div class="pt-1">
+                      <p class="fw-bold mb-0">Danny Smith</p>
+                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
+                    </div>
+                  </div>
+                  <div class="pt-1">
+                    <p class="small text-muted mb-1">5 mins ago</p>
+                  </div>
+                </a>
+              </li>
+              <li class="p-2 border-bottom">
+                <a href="#!" class="d-flex justify-content-between">
+                  <div class="d-flex flex-row">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp" alt="avatar"
+                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    <div class="pt-1">
+                      <p class="fw-bold mb-0">Alex Steward</p>
+                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
+                    </div>
+                  </div>
+                  <div class="pt-1">
+                    <p class="small text-muted mb-1">Yesterday</p>
+                  </div>
+                </a>
+              </li>
+              <li class="p-2 border-bottom">
+                <a href="#!" class="d-flex justify-content-between">
+                  <div class="d-flex flex-row">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp" alt="avatar"
+                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    <div class="pt-1">
+                      <p class="fw-bold mb-0">Ashley Olsen</p>
+                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
+                    </div>
+                  </div>
+                  <div class="pt-1">
+                    <p class="small text-muted mb-1">Yesterday</p>
+                  </div>
+                </a>
+              </li>
+              <li class="p-2 border-bottom">
+                <a href="#!" class="d-flex justify-content-between">
+                  <div class="d-flex flex-row">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-4.webp" alt="avatar"
+                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    <div class="pt-1">
+                      <p class="fw-bold mb-0">Kate Moss</p>
+                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
+                    </div>
+                  </div>
+                  <div class="pt-1">
+                    <p class="small text-muted mb-1">Yesterday</p>
+                  </div>
+                </a>
+              </li>
+              <li class="p-2 border-bottom">
+                <a href="#!" class="d-flex justify-content-between">
+                  <div class="d-flex flex-row">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    <div class="pt-1">
+                      <p class="fw-bold mb-0">Lara Croft</p>
+                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
+                    </div>
+                  </div>
+                  <div class="pt-1">
+                    <p class="small text-muted mb-1">Yesterday</p>
+                  </div>
+                </a>
+              </li>
+              <li class="p-2">
+                <a href="#!" class="d-flex justify-content-between">
+                  <div class="d-flex flex-row">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                    <div class="pt-1">
+                      <p class="fw-bold mb-0">Brad Pitt</p>
+                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
+                    </div>
+                  </div>
+                  <div class="pt-1">
+                    <p class="small text-muted mb-1">5 mins ago</p>
+                    <span class="text-muted float-end"><i class="fas fa-check" aria-hidden="true"></i></span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-6 col-lg-7 col-xl-8">
+              <span class="hr-sect"><h5>FEBRUARY 20, 2021</h5></span>
+        <ul class="list-unstyled">
+          <li class="d-flex justify-content-between mb-4">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+              class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+            <div class="card">
+              <div class="card-header d-flex justify-content-between p-3">
+                <p class="fw-bold mb-0">Brad Pitt</p>
+                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 12 mins ago</p>
+              </div>
+              <div class="card-body">
+                <p class="mb-0">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                  labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="d-flex justify-content-between mb-4">
+            <div class="card w-100">
+              <div class="card-header d-flex justify-content-between p-3">
+                <p class="fw-bold mb-0">Lara Croft</p>
+                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
+              </div>
+              <div class="card-body">
+                <p class="mb-0">
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                  laudantium.
+                </p>
+              </div>
+            </div>
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+              class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+          </li>
+          <li class="d-flex justify-content-between mb-4">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+              class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+            <div class="card">
+              <div class="card-header d-flex justify-content-between p-3">
+                <p class="fw-bold mb-0">Brad Pitt</p>
+                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 10 mins ago</p>
+              </div>
+              <div class="card-body">
+                <p class="mb-0">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                  labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="bg-white mb-3">
+            <div class="form-outline">
+              <textarea class="form-control" id="textAreaExample2" rows="4"></textarea>
+              <label class="form-label" for="textAreaExample2">Message</label>
+            </div>
+          </li>
+          <button type="button" class="btn btn-info btn-rounded float-end">Send</button>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
 @endsection
