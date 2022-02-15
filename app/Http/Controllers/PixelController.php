@@ -15,7 +15,7 @@ class PixelController extends Controller
     {
        $courses = Paket::paginate(10);
        $t=false;
-        return view('tests.afiliasi.facebookp',compact(['courses','t']));
+        return view('V2.Member.facebook',compact(['courses','t']));
     }
     public function create(Request $request)
     {
@@ -43,6 +43,6 @@ class PixelController extends Controller
         }
         $t = true;
         $courses = Paket::paginate(10);
-        return view('tests.afiliasi.facebookp', compact(['courses', 'link', 't']));
+        return view('V2.Member.facebook', compact(['courses', 'link', 't']));
     }
 }

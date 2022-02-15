@@ -61,8 +61,6 @@
                                         @endif
                                         </td>
                                             
-                                        
-                                       
                                         <td>
                                             {{number_format($t->price-$t->discount,0,'.','.')}}
                                             

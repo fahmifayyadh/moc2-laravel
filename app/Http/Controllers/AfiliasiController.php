@@ -65,8 +65,8 @@ class AfiliasiController extends Controller
            $transaksi = TransactionCourse::whereHas('agent',function($z){
                 return $z->where('user_id',auth()->user()->id);
             })->orderByDesc('created_at')->paginate(10);
-        return view('tests.afiliasi.status', compact('transaksi'));
+        return view('V2.Member.status', compact('transaksi'));
         }
-        return view('tests.afiliasi.list-stats', compact('agents'));
+        return view('V2.Member.status', compact('agents'));
     }
 }

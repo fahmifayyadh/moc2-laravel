@@ -2,11 +2,7 @@
 @section('content')
 
 <div class="page-body">
-    <div class="container-fluid">
-        <div class="page-header">
-            <div class="row">
-                <div class="col-12">
-
+    <br>
                 <!-- Container Fluid-->
                  <div class="container-fluid" id="container-wrapper">
                     <div class="row">
@@ -112,10 +108,5 @@
                     </div>
                 </div>
                 <!---Container Fluid-->
-
+</div>
 @endsection
-
-</div>
-</div>
-</div>
-</div>
