@@ -47,8 +47,8 @@
       $('#summernote').summernote();
   });
   $(document).ready(function(){
-    var addButton = $('.add_button'); //Add button selector
-    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var addButton = $('.add_button');
+    var wrapper = $('.field_wrapper');
 
     var fieldHTML = `<div class="row">
             <div class="col-md-6">
@@ -59,21 +59,17 @@
             </div>
             <a href="javascript:void(0);" class="remove_button btn btn-danger mt-3">Delete Varian</a>
           </div>`;
-    var x = 1; //Initial field counter is 1
-    
-    //Once add button is clicked
+    var x = 1;
     $(addButton).click(function(){
-        //Check maximum number of input fields
-            x++; //Increment field counter
-            $(wrapper).append(fieldHTML); //Add field html
+            x++;
+            $(wrapper).append(fieldHTML);
         
     });
     
-    //Once remove button is clicked
     $(wrapper).on('click', '.remove_button', function(e){
         e.preventDefault();
-        $(this).parent('div').remove(); //Remove field html
-        x--; //Decrement field counter
+        $(this).parent('div').remove();
+        x--;
     });
 });
 </script>
@@ -91,7 +87,7 @@
     <div class="container container-2">
       <!-- ---------From Input------------- -->
       <div class="row">
-        <div class="col-12 col-md-6 col-lg-6">
+        <div class="col-12 col-md-6 col-lg-12">
         <form action="{{route('produk.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-1">

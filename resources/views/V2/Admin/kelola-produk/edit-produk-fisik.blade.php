@@ -368,7 +368,7 @@ $("#thumbnail").change(function() {
     </style>
     <div class="col-12 col-md-8 col-lg-6">
         <div class="container container-3">
-        <button type="button" class="tmsa btn btn-dark btn-sm mt-3">
+        <button type="button" class="tmsa btn btn-danger btn-sm mt-3">
           Tambah Varian Lain
         </button>
         <!-- MODAL ADD VARIAN -->
@@ -433,17 +433,17 @@ $("#thumbnail").change(function() {
                 </td>
                 <td class="text-center">
                   <div class="row m-0">
-                    <button type="button" id="bl" class="bl{{$varian->id}} btn btn-sm btn-warning" bd="{{$varian->id}}">Ubah</button>
                     <div class="d-flex">
+                        <button type="button" id="bl" class="bl{{$varian->id}} btn btn-sm" bd="{{$varian->id}}" style="background: #283246; border-radius: 7px; color: white;">Ubah</button>
                         <button type="submit" style="display: none" class="boq{{$varian->id}} btn btn-sm btn-primary">Simpan</button>
                         <button type="button" style="display: none" id="fl" class="boX{{$varian->id}} btn btn-sm btn-success ml-2" bd="{{$varian->id}}">Batal</button>
+                        </form>
+                        <form action="{{route('v.delete', ['id' => $varian->id])}}" method="POST" style="margin-top: 0;">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="bl{{$varian->id}} btn btn-sm ml-2" bd="{{$varian->id}}" style="background: #CCD2E3; border-radius: 7px; color: black;">Hapus</button>
+                        </form>
                     </div>
-                </form>
-                  <form action="{{route('v.delete', ['id' => $varian->id])}}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="bl{{$varian->id}} btn btn-sm btn-danger ml-2" bd="{{$varian->id}}">Hapus</button>
-                  </form>
                   </div>
                 </td>
             </tr>
