@@ -159,7 +159,7 @@
                 <td>{{ $i+1 }}<span>.</span></td>
                 <td>{{ $p->created_at->format('d-M-Y') }}</td>
                 <td>{{ $p->name }}</td>
-                <td>{{ $p->amount }}</td>
+                <td>{{ number_format($p->amount,0,'.','.') }}</td>
                 <td>{{ $p->no_rekening }}</td>
                 <td>{{ $p->bank }}</td> 
                 </tr>

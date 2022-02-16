@@ -31,9 +31,11 @@ class PayoutController extends Controller
     public function create(Request $request)
     {
         DB::transaction(function() use($request){
+            $currency = floatval(str_replace(',', '.', str_replace('.', '', $request->amount)));
+            
             $p = Payout::create([
                 'user_id' => auth()->user()->id,
-                'amount' => $request->amount,
+                'amount' => (int)$currency,
                 'no_rekening' => $request->no_rekening,
                 'name' => $request->name,
                 'bank' => $request->bank

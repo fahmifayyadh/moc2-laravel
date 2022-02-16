@@ -29,21 +29,25 @@ class RewardController extends Controller
     }
     public function create(Request $request)
     {
-            $file = $request->file('image');
-            $fileName = substr(md5(microtime()), 0, 100).'.'.$file->getClientOriginalExtension();
-            $request->file('image')->storeAs('public/reward/',$fileName);
+        $currency = floatval(str_replace(',', '.', str_replace('.', '', $request->harga_point)));
+        
+        $file = $request->file('image');
+        $fileName = substr(md5(microtime()), 0, 100).'.'.$file->getClientOriginalExtension();
+        $request->file('image')->storeAs('public/reward/',$fileName);
         
         Reward::create([
             'judul' => $request->judul,
             'image' => $fileName,
             'desc' => $request->desc,
-            'harga_point' => $request->harga_point,
+            'harga_point' => (int)$currency,
             'batas' => $request->batas
         ]);
         return redirect()->back();
     }
     public function edit(Request $request,Reward $reward)
     {
+        $currency = floatval(str_replace(',', '.', str_replace('.', '', $request->harga_point)));
+
         $fileName = $reward->image;
         if($request->file('image') != null){
             File::delete(storage_path('app/public/reward/'.$fileName));
@@ -55,7 +59,7 @@ class RewardController extends Controller
             'judul' => $request->judul,
             'image' => $fileName,
             'desc' => $request->desc,
-            'harga_point' => $request->harga_point,
+            'harga_point' => (int)$currency,
             'batas' => $request->batas
         ]);
         return redirect()->back();
@@ -63,6 +67,7 @@ class RewardController extends Controller
     public function destroy(Reward $reward)
     {
         $reward->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
     public function tukar(Reward $reward)

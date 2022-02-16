@@ -5,6 +5,19 @@
       font-family: 'Rubik', sans-serif;
     }
   </style>
+@section('js')
+<script>
+  $('input.numberformat').keyup(function(event) {
+    if(event.which >= 37 && event.which <= 40) return;
+    $(this).val(function(index, value) {
+      return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      ;
+    });
+  });
+</script>
+@endsection
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
@@ -70,7 +83,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text bg-warning" id="basic-addon1">Rp</span>
             </div>
-            <input name="amount" type="number"  class="form-control" placeholder="Masukan Nominal" required="" aria-label="Username" aria-describedby="basic-addon1">
+            <input name="amount" class="form-control numberformat" placeholder="Masukan Nominal" required="" aria-label="Username" aria-describedby="basic-addon1">
           </div>
           <div class="info">
             <p>Info! Untuk pengisian rekening penerima, akan lebih baik jika anda mengisi lebih dari

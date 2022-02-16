@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">
   @yield('css')
 </head>
 @yield('head')
@@ -83,6 +84,11 @@
     <!-- Summernote -->
     <script src="{{asset('/assets/js/editor/summernote/summernote.js')}}"></script>
     <script src="{{asset('/assets/js/editor/summernote/summernote.custom.js')}}"></script>
+
+    <!-- Datepicker -->
+    <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.js')}}"></script>
+    <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
+    <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 
     <script>
       // Open Close Sidebar 
