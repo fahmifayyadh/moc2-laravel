@@ -123,7 +123,7 @@ background-color: #82B1FF; }
         <div class="input-group rounded mb-3">
         	 <span class="cari-logo"><i class="fas fa-search"></i></span>
 		    <input type="text" class="rounded chat-input" placeholder="Cari atau mulai chat baru" aria-label="Search"
-		      aria-describedby="search-addon" id="carichat" onkeyup="searchchat()"/>
+		      aria-describedby="search-addon" id="carichat" onkeyup="searchchat()" name="name" />
 		    </span>
        </div> 
 		    </form>
