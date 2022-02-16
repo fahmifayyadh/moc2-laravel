@@ -21,7 +21,7 @@ class PixelController extends Controller
         if(auth()->user()->role != 'admin'){
           return view('tests.afiliasi.facebookp',compact(['courses','t']));
         }else{
-          return view('v2.admin.afiliasi.facebookpixel', compact(['courses','t'])); 
+          return view('V2.Admin.afiliasi.facebookpixel', compact(['courses','t'])); 
         }
     }
     public function create(Request $request)
@@ -57,7 +57,7 @@ class PixelController extends Controller
         if(auth()->user()->role != 'admin'){
           return view('tests.afiliasi.facebookp',compact(['courses','t']));
         }else{
-          return view('v2.admin.afiliasi.facebookpixel', compact(['courses','t'])); 
+          return view('V2.Admin.afiliasi.facebookpixel', compact(['courses','t'])); 
         }
     }
 }
