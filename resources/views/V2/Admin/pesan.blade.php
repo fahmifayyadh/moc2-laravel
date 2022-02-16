@@ -198,6 +198,7 @@ background-color: #82B1FF; }
           </ul>
           <div class="white">
           	<form action="{{route('chat.create',$us->id)}}" method="post">
+              
             <div class="form-group basic-textarea">
               <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" placeholder="Type your message here..."></textarea>
             </div>
