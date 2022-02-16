@@ -201,7 +201,7 @@ background-color: #F5F5F5; }
                   <small class="pull-right text-muted"><i class="far fa-clock"></i> {{$c->created_at->diffForHumans()}}</small>
                 </div>
                 
-                <p class="mb-0" style="color: #FFFFFF">
+                <p class="mb-0" >
                  {!!$c->pesan!!}
                 </p>
               </div>
@@ -214,7 +214,7 @@ background-color: #F5F5F5; }
                   <strong class="primary-font">{{$us->name}}</strong>
                 </div>
               
-                <p class="mb-0" style="color: #FFFFFF">
+                <p class="mb-0">
                   {!!$c->pesan!!}
                 </p>
               </div>
