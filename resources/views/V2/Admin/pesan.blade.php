@@ -198,9 +198,9 @@ background-color: #82B1FF; }
           </ul>
           <div class="white">
           	<form action="{{route('chat.create',$us->id)}}" method="post">
-              
+              @csrf
             <div class="form-group basic-textarea">
-              <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" placeholder="Type your message here..."></textarea>
+              <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" placeholder="Type your message here..." name="pesan"></textarea>
             </div>
           </div>
           <button type="submit" class="btn btn-outline-pink btn-rounded btn-sm waves-effect waves-dark float-right">Send</button>
