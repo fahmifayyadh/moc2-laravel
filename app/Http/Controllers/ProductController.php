@@ -53,6 +53,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $point_pembeli = floatval(str_replace(',', '.', str_replace('.', '', $request->point_pembeli)));
+        $point_sponsor = floatval(str_replace(',', '.', str_replace('.', '', $request->point_sponsor)));
+        $commission = floatval(str_replace(',', '.', str_replace('.', '', $request->commission)));
+
         $fileName = null;
         $msg = [
             'numeric' => 'Inputan :attribute harus berupa angka',
@@ -76,9 +80,9 @@ class ProductController extends Controller
             'slug' => Str::slug(preg_replace('/[^a-zA-Z0-9\']/', '-', $named)) .'-' . $this->generateUnique,
             'desc' => $request->desc,
             'image'=> $fileName,
-            'point_pembeli' => $request->point_pembeli,
-            'point_sponsor' => $request->point_sponsor,
-            'commission' => $request->commission,
+            'point_pembeli' => (int)$point_pembeli,
+            'point_sponsor' => (int)$point_sponsor,
+            'commission' => (int)$commission,
             'berat' => $request->berat,
             'length' => $request->length,
             'width' => $request->width,
@@ -131,6 +135,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $point_pembeli = floatval(str_replace(',', '.', str_replace('.', '', $request->point_pembeli)));
+        $point_sponsor = floatval(str_replace(',', '.', str_replace('.', '', $request->point_sponsor)));
+        $commission = floatval(str_replace(',', '.', str_replace('.', '', $request->commission)));
+
         $msg = [
             'numeric' => 'Inputan :attribute harus berupa angka',
             'required' => 'Inputan :attribute wajib diisi',
@@ -163,9 +171,9 @@ class ProductController extends Controller
             'length' => $request->length,
             'width' => $request->width,
             'height' => $request->height,
-            'point_pembeli' => $request->point_pembeli,
-            'point_sponsor' => $request->point_sponsor,
-            'commission' => $request->commission,
+            'point_pembeli' => (int)$point_pembeli,
+            'point_sponsor' => (int)$point_sponsor,
+            'commission' => (int)$commission,
             
         ]);
         // Varian::whereId($request->varianID)->update([

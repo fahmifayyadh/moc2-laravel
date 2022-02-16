@@ -38,6 +38,19 @@
     }
   </style>
 @endsection
+@section('js')
+<script>
+  $('input.numberformat').keyup(function(event) {
+    if(event.which >= 37 && event.which <= 40) return;
+    $(this).val(function(index, value) {
+      return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      ;
+    });
+  });
+</script>
+@endsection
 @section('content')
  <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -75,7 +88,7 @@
             </div>
             <div class="mb-3">
               <label for="">Harga</label>
-              <input type="number" placeholder="Harga" name="price" value="{{$course->price}}" required class="form-control"
+              <input placeholder="Harga" name="price" value="{{$course->price}}" class="form-control numberformat"
                 style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;">
                 @error('price')
                 <small>{{$message}}</small>
@@ -91,28 +104,28 @@
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">point pembeli</label>
-              <input class="form-control" type="number" placeholder="Point Pembeli" name="point_pembeli" required value="{{$course->point_pembeli}}" style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
+              <input class="form-control numberformat" placeholder="Point Pembeli" name="point_pembeli" value="{{$course->point_pembeli}}" style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
                 @error('point_pembeli')
                 <small>{{$message}}</small>
                 @enderror
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">point sponsor</label>
-              <input class="form-control" type="number" placeholder="Point Sponsor" name="point_sponsor" value="{{$course->point_sponsor}}" required style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
+              <input class="form-control numberformat" placeholder="Point Sponsor" name="point_sponsor" value="{{$course->point_sponsor}}" style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
                 @error('point_sponsor')
                 <small>{{$message}}</small>
                 @enderror
             </div>
             <div class="mb-3">
               <label for="">komisi</label>
-              <input class="form-control" type="number" placeholder="Komisi" name="commission" value="{{$course->commission}}" required style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
+              <input class="form-control numberformat" placeholder="Komisi" name="commission" value="{{$course->commission}}" style=" font-family: 'Roboto', sans-serif;font-size: 10px;color:black;" >
                 @error('commission')
                 <small>{{$message}}</small>
                 @enderror
             </div>
             <div class="mb-3">
               <label for="">Deskripsi Singkat</label>
-              <div id="summernote" class="form-control summernote" name="desc" value="{{old('desc')}}" required>{{$course->desc}}</div>
+              <div id="summernote" class="form-control summernote" name="desc" value="{{old('desc')}}" {{$course->desc}}</div>
                 @error('desc')
                 <small>{{$message}}</small>
                 @enderror
@@ -123,7 +136,7 @@
             <div class="mb-3">
             <label class="col-sm-4">Choose Thumbnail</label>
               <div class="col-md-8">
-                <input class="form-control" type="file" name="image" value="{{old('image')}}" required>
+                <input class="form-control" type="file" name="image" value="{{old('image')}}">
               </div>
               @error('image')
               <small>{{$message}}</small>

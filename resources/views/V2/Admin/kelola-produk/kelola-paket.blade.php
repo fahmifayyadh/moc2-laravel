@@ -348,12 +348,12 @@
                 <td>{{$ce->name}}</td>
                 <td>{{$ce->desc}}</td>
                 <td>{{$ce->batas}} Hari</td>
-                <td>{{$ce->price}}</td>
+                <td>{{ number_format($ce->price,0,'.','.') }}</td>
                 <td><img class="img-fluid rounded-circle" style="width: 50px;height:50px" src="{{asset(Storage::url('/paket/'.$ce->image))}}" style="width: 50px" alt=""></td>
                 <td>{{$ce->is_member == 1 ? 'benar' : 'Tidak'}}</td>
-                <td>{{$ce->point_pembeli}}</td>
-                <td>{{$ce->point_sponsor}}</td>
-                <td>{{$ce->commission}}</td>
+                <td>{{ number_format($ce->point_pembeli,0,'.','.') }}</td>
+                <td>{{ number_format($ce->point_sponsor,0,'.','.') }}</td>
+                <td>{{ number_format($ce->commission,0,'.','.') }}</td>
                 <td>
                     <div class="d-flex">
                         <button type="button" class="btn btn-info btn-sm ml-2"

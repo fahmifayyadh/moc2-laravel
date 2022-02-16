@@ -187,6 +187,11 @@ class CourseController extends Controller
     }
     public function paketStore(Request $request)
     {
+        $price = floatval(str_replace(',', '.', str_replace('.', '', $request->price)));
+        $point_pembeli = floatval(str_replace(',', '.', str_replace('.', '', $request->point_pembeli)));
+        $point_sponsor = floatval(str_replace(',', '.', str_replace('.', '', $request->point_sponsor)));
+        $commission = floatval(str_replace(',', '.', str_replace('.', '', $request->commission)));
+        
         $fileName = null;
         $msg = [
             'numeric' => 'Inputan :attribute harus berupa angka',
@@ -195,11 +200,11 @@ class CourseController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'image' => 'nullable|image|max:2048',
-            'point_pembeli' => 'nullable|numeric|min:0',
-            'point_sponsor' => 'nullable|numeric|min:0',
-            'commission' => 'numeric|nullable',
+            'point_pembeli' => 'nullable',
+            'point_sponsor' => 'nullable',
+            'commission' => 'nullable',
             'batas' => 'nullable|numeric|numeric',
-            'price' => 'nullable|numeric|min:0',
+            'price' => 'nullable',
         ], $msg);
         if ($request->file('image') != null) {
             $file = $request->file('image');
@@ -214,11 +219,11 @@ class CourseController extends Controller
             'desc' => $request->desc,
             'image'=> $fileName,
             'batas' => $request->batas,
-            'price' => $request->price,
+            'price' => (int)$price,
             'is_member' => $request->is_member,
-            'point_pembeli' => $request->point_pembeli,
-            'point_sponsor' => $request->point_sponsor,
-            'commission' => $request->commission,
+            'point_pembeli' => (int)$point_pembeli,
+            'point_sponsor' => (int)$point_sponsor,
+            'commission' => (int)$commission,
         ]);
         return redirect()->route('course.paket');
     }
@@ -232,6 +237,11 @@ class CourseController extends Controller
     }
     public function paketUpdate(Request $request,Paket $paket)
     {
+        $price = floatval(str_replace(',', '.', str_replace('.', '', $request->price)));
+        $point_pembeli = floatval(str_replace(',', '.', str_replace('.', '', $request->point_pembeli)));
+        $point_sponsor = floatval(str_replace(',', '.', str_replace('.', '', $request->point_sponsor)));
+        $commission = floatval(str_replace(',', '.', str_replace('.', '', $request->commission)));
+
         $msg = [
             'numeric' => 'Inputan :attribute harus berupa angka',
             'required' => 'Inputan :attribute wajib diisi',
@@ -239,7 +249,7 @@ class CourseController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'image' => 'nullable|image|max:2048',
-            'commission' => 'numeric|nullable',
+            'commission' => 'nullable',
         ], $msg);
         $fileName = $paket->image; 
         if ($request->file('image') != null) {
@@ -250,17 +260,17 @@ class CourseController extends Controller
         }
 
         $named = $request->name;
-    $paket->update([
-        'name' => Str::title($named),
-        'slug' => Str::slug($named),
-        'desc' => $request->desc,
+        $paket->update([
+            'name' => Str::title($named),
+            'slug' => Str::slug($named),
+            'desc' => $request->desc,
             'image'=> $fileName,
             'batas' => $request->batas,
-            'price' => $request->price,
+            'price' => (int)$price,
             'is_member' => $request->is_member,
-            'point_pembeli' => $request->point_pembeli,
-            'point_sponsor' => $request->point_sponsor,
-            'commission' => $request->commission,
+            'point_pembeli' => (int)$point_pembeli,
+            'point_sponsor' => (int)$point_sponsor,
+            'commission' => (int)$commission,
         ]);
         return redirect()->route('course.paket');
     }

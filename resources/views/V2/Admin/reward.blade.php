@@ -165,6 +165,17 @@
 <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.js')}}"></script>
 <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
 <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
+<script>
+  $('input.numberformat').keyup(function(event) {
+    if(event.which >= 37 && event.which <= 40) return;
+    $(this).val(function(index, value) {
+      return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      ;
+    });
+  });
+</script>
 @endsection
 @section('content')
 
@@ -223,7 +234,7 @@
                       style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"></textarea>
                   </div>
                   <div class="mb-3">
-                    <input type="number" class="form-control" id="exampleFormControlInput1" required placeholder="Point" name="harga_point"
+                    <input class="form-control numberformat" required placeholder="Point" name="harga_point"
                       style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                       placeholder="">
                   </div>
@@ -328,7 +339,7 @@
                               style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;">{{$r->desc}}</textarea>
                           </div>
                           <div class="mb-3">
-                            <input required type="number" class="form-control" id="exampleFormControlInput1" laceholder="Point" name="harga_point" value="{{$r->harga_point}}"
+                            <input required class="form-control numberformat" laceholder="Point" name="harga_point" value="{{$r->harga_point}}"
                               style="font-family: 'Rubik', sans-serif;font-size:17px; color:#FF9F1C; font-weight: 500;"
                               placeholder="">
                           </div>

@@ -1,6 +1,16 @@
 @extends('V2.layouts.master')
 @section('js')
 <script>
+$('input.numberformat').keyup(function(event) {
+    if(event.which >= 37 && event.which <= 40) return;
+        $(this).val(function(index, value) {
+            return value
+            .replace(/\D/g, "")
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+            ;
+    });
+});
+
 function readURL(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -264,17 +274,17 @@ $("#thumbnail").change(function() {
                 </div>
                 <div class="mb-1">
                     <label for="exampleFormControlInput1" class="form-label">Point Pembeli</label>
-                    <input type="number" name="point_pembeli" placeholder="Poin pembeli" data-original-title="" title="" value="{{$product->point_pembeli}}" class="form-control" id="exampleFormControlInput1"
+                    <input name="point_pembeli" placeholder="Poin pembeli" data-original-title="" title="" value="{{$product->point_pembeli}}" class="form-control numberformat" id="exampleFormControlInput1"
                     style=" font-family: 'Rubik', sans-serif;font-size: 14px;color:black;" style="color: tomato;">
                 </div>
                 <div class="mb-1">
                     <label for="exampleFormControlInput1" class="form-label">Point Sponsor</label>
-                    <input type="number" name="point_sponsor" placeholder="Poin sponsor" data-original-title="" title="" value="{{$product->point_sponsor}}" class="form-control" id="exampleFormControlInput1"
+                    <input name="point_sponsor" placeholder="Poin sponsor" data-original-title="" title="" value="{{$product->point_sponsor}}" class="form-control numberformat" id="exampleFormControlInput1"
                         style=" font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
                 </div>
                 <div class="mb-1">
                 <label for="exampleFormControlInput1" class="form-label">Komisi</label>
-                <input type="number" name="commission" placeholder="komisi" data-original-title="" title="" value="{{$product->commission}}" class="form-control" id="exampleFormControlInput1"
+                <input name="commission" placeholder="komisi" data-original-title="" title="" value="{{$product->commission}}" class="form-control numberformat" id="exampleFormControlInput1"
                     style=" font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
                 </div>
                 <div class="mb-1">
