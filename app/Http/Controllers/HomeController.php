@@ -91,7 +91,7 @@ class HomeController extends Controller
 
 
             // v2
-           return view('v2.member.dashboard',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
+           return view('V2.Member.dashboard',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
 
 
         }else{

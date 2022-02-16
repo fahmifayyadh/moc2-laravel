@@ -47,7 +47,7 @@ class UserController extends Controller
         if (auth()->user()->role != 'admin') {
              return view('tests.user.detail',compact('user'));
         }else {
-            return view('v2.admin.detail-user',compact(['user','course','spon']));
+            return view('V2.Admin.detail-user',compact(['user','course','spon']));
         }
 
     }
@@ -136,9 +136,9 @@ class UserController extends Controller
 
         //v2
         if (auth()->user()->role != 'admin') {
-            return view('v2.admin.edit-user',compact(['li','spon','provinsi','user','users','kota','course']));;
+            return view('V2.Admin.edit-user',compact(['li','spon','provinsi','user','users','kota','course']));;
         }else {
-            return view('v2.admin.edit-user',compact(['li','spon','provinsi','user','users','kota','course']));
+            return view('V2.Admin.edit-user',compact(['li','spon','provinsi','user','users','kota','course']));
         }
     }
     public function create(Request $request)

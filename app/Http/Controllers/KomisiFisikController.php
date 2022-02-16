@@ -33,7 +33,7 @@ class KomisiFisikController extends Controller
             //return view('tests.afiliasi.afiliasiFisik', compact(['transaksi','bank']));
 
             // V2
-            return view('v2.admin.afiliasi.komisi-fisik', compact(['transaksi','bank'])); 
+            return view('V2.Admin.afiliasi.komisi-fisik', compact(['transaksi','bank'])); 
         
         }
     }

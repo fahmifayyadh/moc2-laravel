@@ -81,6 +81,7 @@ class FileController extends Controller
     public function delete(File $file)
     {
         $file->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
 }

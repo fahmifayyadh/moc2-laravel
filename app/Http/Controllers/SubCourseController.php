@@ -110,6 +110,7 @@ class SubCourseController extends Controller
     public function destroy(SubCourse $course)
     {
         $course->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
 }

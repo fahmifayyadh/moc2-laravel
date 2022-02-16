@@ -24,7 +24,7 @@ class AfiliasiController extends Controller
         if(auth()->user()->role != 'admin'){
           return view('tests.afiliasi.index', compact('products')); 
         }else{
-          return view('v2.admin.afiliasi.link-afiliasi', compact('products')); 
+          return view('V2.Admin.afiliasi.link-afiliasi', compact('products')); 
         }
 
     }
@@ -67,7 +67,7 @@ class AfiliasiController extends Controller
         if(auth()->user()->role != 'admin'){
           return view('tests.afiliasi.index', compact(['link', 'products'])); 
         }else{
-          return view('v2.admin.afiliasi.link-afiliasi', compact(['link', 'products'])); 
+          return view('V2.Admin.afiliasi.link-afiliasi', compact(['link', 'products'])); 
         }
     }
     public function status()
@@ -88,7 +88,7 @@ class AfiliasiController extends Controller
         if(auth()->user()->role != 'admin'){
           return view('tests.afiliasi.list-stats', compact('agents'));
         }else{
-          return view('v2.admin.afiliasi.status-afiliasi', compact('agents')); 
+          return view('V2.Admin.afiliasi.status-afiliasi', compact('agents')); 
         }
     }
 }

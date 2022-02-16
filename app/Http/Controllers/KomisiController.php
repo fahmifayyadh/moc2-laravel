@@ -40,7 +40,7 @@ class KomisiController extends Controller
             //return view('tests.afiliasi.afiliasi', compact(['transactionCourse','bank']));
 
             //v2
-            return view('v2.admin.afiliasi.komisi-course', compact(['transactionCourse','bank'])); 
+            return view('V2.Admin.afiliasi.komisi-course', compact(['transactionCourse','bank'])); 
         }
     }
     public function bayar(Request $request)

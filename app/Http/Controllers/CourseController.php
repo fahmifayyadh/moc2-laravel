@@ -154,6 +154,7 @@ class CourseController extends Controller
     public function delete(Course $course)
     {
         $course->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
 
@@ -266,6 +267,7 @@ class CourseController extends Controller
     public function paketDelete(Paket $paket)
     {
         $paket->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
     public function coursePaket(Request $request,Paket $paket)
@@ -276,6 +278,7 @@ class CourseController extends Controller
     public function addCourseDelete(Request $request,Paket $paket)
     {
         $paket->course()->detach($request->courseId);
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
 }
