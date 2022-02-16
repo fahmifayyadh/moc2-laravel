@@ -34,12 +34,16 @@
 .chat-rigth{
     width: 1066px;
     height: auto;
+    color: #FF9F1C;
+    text-align: right;
 }
 .chat-left{
     background: #252633;
     border-radius: 20px;
     width: 1066px;
     height: auto;
+    color: #FFFFFF;
+    
 }
 .hr-sect:before,
 .hr-sect:after {
@@ -169,11 +173,12 @@ background-color: #82B1FF; }
             <li class="d-flex justify-content mb-4">
               <img src="{{auth()->user()->foto ? asset(Storage::url('/user/'.auth()->user()->foto)): asset('assets/images/user/1.jpg')}}" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
               <div class="chat-body chat-rigth p-3 ml-2 z-depth-1">
-                <div class="header">
-                  <strong class="primary-font">{{$us->name}}</strong>
+                <div class="header" >
+                  
                   <small class="pull-right text-muted"><i class="far fa-clock"></i> {{$c->created_at->diffForHumans()}}</small>
+                  <strong class="primary-font">{{auth()->user()->name}}</strong>
                 </div>
-                <hr class="w-100">
+                
                 <p class="mb-0">
                  {!!$c->pesan!!}
                 </p>
@@ -186,7 +191,7 @@ background-color: #82B1FF; }
                   <strong class="primary-font">{{$us->name}}</strong>
                   <small class="pull-right text-muted"><i class="far fa-clock"></i> {{$c->created_at->diffForHumans()}}</small>
                 </div>
-                <hr class="w-100">
+              
                 <p class="mb-0">
                   {!!$c->pesan!!}
                 </p>
@@ -233,6 +238,9 @@ background-color: #82B1FF; }
         }
     }
 }
-</script>
+       $(document).ready(function(){
+        $('.footer').hide();
+              });
+      </script>
 <!--  -->
 @endsection

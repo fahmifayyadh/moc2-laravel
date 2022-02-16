@@ -51,11 +51,12 @@ class ChatController extends Controller
             $user = User::where('name', 'like', '%' . $request->name . '%')->get();
         }
         $chat = null;
+       
         // return view('tests.chat.index', compact(['user', 'chat']));
 
         //V2
         if(auth()->user()->role != 'admin'){
-            return view('tests.chat.index', compact(['user', 'chat']));
+            return view('V2.Admin.pesan', compact(['user', 'chat']));
         }
         else{
             return view('V2.Admin.pesan', compact(['user', 'chat']));
@@ -74,7 +75,7 @@ class ChatController extends Controller
 
         //V2
         if(auth()->user()->role != 'admin'){
-            return view('tests.chat.index', compact(['user', 'chat', 'us']));
+             return view('V2.Admin.pesan', compact(['user', 'chat', 'us']));
         }
         else{
             return view('V2.Admin.pesan', compact(['user', 'chat', 'us']));
