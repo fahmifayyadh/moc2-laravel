@@ -50,9 +50,10 @@
     height: auto;
     color: #FF9F1C;
     text-align: right;
+    background: #252633;
 }
 .chat-right{
-    background: #252633;
+    
     border-radius: 20px;
     width: 1066px;
     height: auto;
@@ -229,7 +230,7 @@ background-color: #F5F5F5; }
             <div class="form-outline">
               <textarea class="form-control" id="textAreaExample3" rows="4" name="pesan"></textarea>
             </div>
-          <button type="submit" class="btn btn-send" style="background-color: transparent;border: none;position: absolute;height: 107px;right: 0;"><img src="{{asset('assets/images/send.png')}}" ></button>
+          <button type="submit" class="btn btn-send" style="background-color: transparent;border: none;position: absolute;height: 107px;right: 0;"><img src="{{asset('assets/images/send.png')}}" alt="kirim" ></button>
           </div>
         </form>
         </div>
