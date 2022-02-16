@@ -18,6 +18,20 @@
     line-height: 18px;
 
 }
+.state{
+    position: relative;
+    display: block;
+    background-color: #f8d62b;
+    height: 0.65rem;
+    width: 0.65rem;
+    z-index: 2;
+    /* margin-left: 1.35rem; */
+    right: 0.8rem;
+    /* bottom: -2rem; */
+    top: 2.5rem;
+    border-radius: 50%;
+    border: 0.1rem solid #fff;
+}
 .cari-logo{
     position: absolute;
     padding: 17px 12px;
@@ -31,13 +45,13 @@
     border-radius: 5px;
     background-color: transparent;
 }
-.chat-rigth{
+.chat-left{
     width: 1066px;
     height: auto;
     color: #FF9F1C;
     text-align: right;
 }
-.chat-left{
+.chat-right{
     background: #252633;
     border-radius: 20px;
     width: 1066px;
@@ -99,12 +113,19 @@ width: 12px;
 background-color: #F5F5F5; }
 
 .scrollbar-light-blue::-webkit-scrollbar-thumb {
-border-radius: 10px;
--webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-background-color: #82B1FF; }
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #82B1FF; }
+.form-outline{
+  width: 100%;
+}
+.form-outline .form-control{
+    width: 100%;
+    background-color: #1C1D25;
+    border: none;
+    position: relative;
+}
 
-.rare-wind-gradient {
-	background-color: #26262E;
 </style>
 @section('content')
   <div class="container-fluid mb-3">
@@ -137,7 +158,8 @@ background-color: #82B1FF; }
           		@if ($u->id != auth()->user()->id)
             <li class="active grey lighten-3 p-2">
               <a href="{{route('chat.pesan',$u->id)}}" class="d-flex ">
-                <img src="{{$u->foto ? asset(Storage::url('/user/'.$u->foto)): asset('assets/images/user/1.jpg')}}" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
+                <img src="{{$u->foto ? asset(Storage::url('/user/'.$u->foto)): asset('assets/images/user/1.jpg')}}" alt="avatar" class="avatar rounded-circle d-flex align-self-center">
+                <div style="{{$u->from_user_count > 0 ? 'background-color: #f8d62b;': null}}" class="state"></div>
                 <div class="text-small">
                   <strong>{{$u->name}}</strong>
                  <!--  <p class="last-message text-muted">{{Str::limit($u->name,11)}}</p> -->
@@ -167,19 +189,19 @@ background-color: #82B1FF; }
         @else
         <div class="chat-message">
           <ul class="list-unstyled chat-1 scrollbar-light-blue">
+             <span class="hr-sect"><h5>PESAN MASUK</h5></span>
           	@foreach ($chat as $c)
-             <span class="hr-sect"><h5>{{$c->created_at}}</h5></span>
           	  @if ($c->from_user_id == auth()->user()->id)
             <li class="d-flex justify-content mb-4">
               <img src="{{auth()->user()->foto ? asset(Storage::url('/user/'.auth()->user()->foto)): asset('assets/images/user/1.jpg')}}" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
               <div class="chat-body chat-rigth p-3 ml-2 z-depth-1">
                 <div class="header" >
                   
-                  <small class="pull-right text-muted"><i class="far fa-clock"></i> {{$c->created_at->diffForHumans()}}</small>
                   <strong class="primary-font">{{auth()->user()->name}}</strong>
+                  <small class="pull-right text-muted"><i class="far fa-clock"></i> {{$c->created_at->diffForHumans()}}</small>
                 </div>
                 
-                <p class="mb-0">
+                <p class="mb-0" style="color: #FFFFFF">
                  {!!$c->pesan!!}
                 </p>
               </div>
@@ -188,11 +210,11 @@ background-color: #82B1FF; }
             <li class="d-flex justify-content-between mb-4">
               <div class="chat-body chat-left p-3 z-depth-1">
                 <div class="header">
-                  <strong class="primary-font">{{$us->name}}</strong>
                   <small class="pull-right text-muted"><i class="far fa-clock"></i> {{$c->created_at->diffForHumans()}}</small>
+                  <strong class="primary-font">{{$us->name}}</strong>
                 </div>
               
-                <p class="mb-0">
+                <p class="mb-0" style="color: #FFFFFF">
                   {!!$c->pesan!!}
                 </p>
               </div>
@@ -201,15 +223,15 @@ background-color: #82B1FF; }
             @endif
             @endforeach
           </ul>
-          <div class="white">
-          	<form action="{{route('chat.create',$us->id)}}" method="post">
+          <form action="{{route('chat.create',$us->id)}}" method="post">
               @csrf
-            <div class="form-group basic-textarea">
-              <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" placeholder="Type your message here..." name="pesan"></textarea>
+           <div class="mb-3 row">
+            <div class="form-outline">
+              <textarea class="form-control" id="textAreaExample3" rows="4" name="pesan"></textarea>
             </div>
+          <button type="submit" class="btn btn-send" style="background-color: transparent;border: none;position: absolute;height: 107px;right: 0;"><img src="{{asset('assets/images/send.png')}}" ></button>
           </div>
-          <button type="submit" class="btn btn-outline-pink btn-rounded btn-sm waves-effect waves-dark float-right">Send</button>
-     		</form>
+        </form>
         </div>
         @endif
       </div>
