@@ -133,12 +133,12 @@
         <!-- member dan bukan pembeli bisa lihat -->
        @elseif((Auth::check() && auth()->user()->role == 'member' && auth()->user()->status != 'pembeli'))
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#My Order" aria-expanded="true"
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#MyOrder" aria-expanded="true"
           aria-controls="collapseTable">
           <i class="fas fa-fw fa-table"></i>
           <span>My Order</span>
         </a>
-        <div id="My Order" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+        <div id="MyOrder" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">My Order</h6>
             <a class="collapse-item" href="{{route('order.order-status-fisik')}}">Produk</a>

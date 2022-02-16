@@ -1,9 +1,13 @@
 @extends('V2.layouts.master')
 @section('title','Pesan')
 <style type="text/css">
+  .avatar{
+    height: 48px;
+    width: 48px;
+  }
     .hr-sect {
     display: flex;
-    flex-basis: 100%;
+    flex-basis: 100%; 
     align-items: center;
     color: #9DA7B5;
     margin: 8px 0px;
@@ -13,6 +17,29 @@
     font-size: 15px;
     line-height: 18px;
 
+}
+.cari-logo{
+    position: absolute;
+    padding: 17px 12px;
+}
+.chat-input{
+    padding: 12px 20px 12px 40px;
+    width: 90%;
+    color: #79818F;
+     border: 1px solid #54545A;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: transparent;
+}
+.chat-rigth{
+    width: 1066px;
+    height: auto;
+}
+.chat-left{
+    background: #252633;
+    border-radius: 20px;
+    width: 1066px;
+    height: auto;
 }
 .hr-sect:before,
 .hr-sect:after {
@@ -24,210 +51,187 @@
     line-height: 0px;
     margin: 0px 10px;
 }
+.text-title{
+	margin: 5px 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	line-height: 29px;
+	color: #FF9F1C;
+}
+.text-small{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 29px;
+	margin-left: 0;
+	color: #FFFFFF;
+}
+.card.chat-room .members-panel-1,
+.card.chat-room .chat-1 {
+position: relative;
+overflow-y: scroll; }
+
+.card.chat-room .members-panel-1 {
+height: 570px; }
+
+.card.chat-room .chat-1 {
+height: 495px; }
+
+.card.chat-room .friend-list li {
+border-bottom: 1px solid #e0e0e0; }
+.card.chat-room .friend-list li:last-of-type {
+border-bottom: none; }
+
+.scrollbar-light-blue::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #F5F5F5;
+border-radius: 10px; }
+
+.scrollbar-light-blue::-webkit-scrollbar {
+width: 12px;
+background-color: #F5F5F5; }
+
+.scrollbar-light-blue::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #82B1FF; }
+
+.rare-wind-gradient {
+	background-color: #26262E;
 </style>
 @section('content')
-  <div class="container py-5">
-     <div class="row">
-        <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
-            <h5 class="font-weight-bold mb-3 text-center text-lg-start">Member</h5>
+  <div class="container-fluid mb-3">
+  	 <div class="row d-flex ml-3">
+  	 	<img src="{{auth()->user()->foto ? asset(Storage::url('/user/'.auth()->user()->foto)): asset('assets/images/user/1.jpg')}}" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
+                <div class="text-title">
+                  <strong>{{auth()->user()->name}}</strong>
+                </div>
+   </div>
+  </div>
+<div class="card rare-wind-gradient chat-room" style="background-color: #26262E ">
+  <div class="card-body">
+
+    <!-- Grid row -->
+    <div class="row px-lg-2 px-2">
+
+      <!-- Grid column List user -->
+      <div class="col-md-6 col-xl-4 px-0">
+         <form action="{{route('chat.index')}}" method="get">
+        <div class="input-group rounded mb-3">
+        	 <span class="cari-logo"><i class="fas fa-search"></i></span>
+		    <input type="text" class="rounded chat-input" placeholder="Cari atau mulai chat baru" aria-label="Search"
+		      aria-describedby="search-addon" id="carichat" onkeyup="searchchat()"/>
+		    </span>
+       </div> 
+		    </form>
+        <div class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue">
+          <ul class="list-unstyled friend-list" id="listchat">
+          	@foreach ($user as $u)
+          		@if ($u->id != auth()->user()->id)
+            <li class="active grey lighten-3 p-2">
+              <a href="{{route('chat.pesan',$u->id)}}" class="d-flex ">
+                <img src="{{$u->foto ? asset(Storage::url('/user/'.$u->foto)): asset('assets/images/user/1.jpg')}}" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
+                <div class="text-small">
+                  <strong>{{$u->name}}</strong>
+                 <!--  <p class="last-message text-muted">{{Str::limit($u->name,11)}}</p> -->
+                </div>
+                @if($u->from_user_count > 0)
+                <div class="chat-footer">
+                 <!--  <p class="text-smaller text-muted mb-0">Just now</p> -->
+                  <span class=" badge badge-danger float-right">{{$u->from_user_count}}</span>
+                </div>
+                @endif
+              </a>
+            </li>
+            @endif
+            @endforeach
+          </ul>
         </div>
-        <div class="col-md-6 col-lg-7 col-xl-8">
-           
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column list chat -->
+      <div class="col-md-6 col-xl-8 pl-md-3 px-lg-auto px-0">
+        @if ($chat == null)
+        <div class="chat-message mt-5">
+          <h3 class="center" style="text-align: center;">Select a chat or start a new conversation</h3>
         </div>
-     </div>
-    <div class="row">
-
-      <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
-
-     
-            <div class="input-group rounded mb-3">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                      aria-describedby="search-addon" />
-                    <span class="input-group-text border-0" id="search-addon">
-                      <i class="fas fa-search"></i>
-                    </span>
-                  </div>
-        <div class="card">
-          <div class="card-body">
-
-            <ul class="list-unstyled mb-0">
-              <li class="p-2 border-bottom" style="background-color: #eee;">
-                <a href="#!" class="d-flex justify-content-between">
-                  <div class="d-flex flex-row">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp" alt="avatar"
-                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                    <div class="pt-1">
-                      <p class="fw-bold mb-0">John Doe</p>
-                      <p class="small text-muted">Hello, Are you there?</p>
-                    </div>
-                  </div>
-                  <div class="pt-1">
-                    <p class="small text-muted mb-1">Just now</p>
-                    <span class="badge bg-danger float-end">1</span>
-                  </div>
-                </a>
-              </li>
-              <li class="p-2 border-bottom">
-                <a href="#!" class="d-flex justify-content-between">
-                  <div class="d-flex flex-row">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp" alt="avatar"
-                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                    <div class="pt-1">
-                      <p class="fw-bold mb-0">Danny Smith</p>
-                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
-                    </div>
-                  </div>
-                  <div class="pt-1">
-                    <p class="small text-muted mb-1">5 mins ago</p>
-                  </div>
-                </a>
-              </li>
-              <li class="p-2 border-bottom">
-                <a href="#!" class="d-flex justify-content-between">
-                  <div class="d-flex flex-row">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp" alt="avatar"
-                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                    <div class="pt-1">
-                      <p class="fw-bold mb-0">Alex Steward</p>
-                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
-                    </div>
-                  </div>
-                  <div class="pt-1">
-                    <p class="small text-muted mb-1">Yesterday</p>
-                  </div>
-                </a>
-              </li>
-              <li class="p-2 border-bottom">
-                <a href="#!" class="d-flex justify-content-between">
-                  <div class="d-flex flex-row">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp" alt="avatar"
-                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                    <div class="pt-1">
-                      <p class="fw-bold mb-0">Ashley Olsen</p>
-                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
-                    </div>
-                  </div>
-                  <div class="pt-1">
-                    <p class="small text-muted mb-1">Yesterday</p>
-                  </div>
-                </a>
-              </li>
-              <li class="p-2 border-bottom">
-                <a href="#!" class="d-flex justify-content-between">
-                  <div class="d-flex flex-row">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-4.webp" alt="avatar"
-                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                    <div class="pt-1">
-                      <p class="fw-bold mb-0">Kate Moss</p>
-                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
-                    </div>
-                  </div>
-                  <div class="pt-1">
-                    <p class="small text-muted mb-1">Yesterday</p>
-                  </div>
-                </a>
-              </li>
-              <li class="p-2 border-bottom">
-                <a href="#!" class="d-flex justify-content-between">
-                  <div class="d-flex flex-row">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
-                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                    <div class="pt-1">
-                      <p class="fw-bold mb-0">Lara Croft</p>
-                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
-                    </div>
-                  </div>
-                  <div class="pt-1">
-                    <p class="small text-muted mb-1">Yesterday</p>
-                  </div>
-                </a>
-              </li>
-              <li class="p-2">
-                <a href="#!" class="d-flex justify-content-between">
-                  <div class="d-flex flex-row">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
-                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                    <div class="pt-1">
-                      <p class="fw-bold mb-0">Brad Pitt</p>
-                      <p class="small text-muted">Lorem ipsum dolor sit.</p>
-                    </div>
-                  </div>
-                  <div class="pt-1">
-                    <p class="small text-muted mb-1">5 mins ago</p>
-                    <span class="text-muted float-end"><i class="fas fa-check" aria-hidden="true"></i></span>
-                  </div>
-                </a>
-              </li>
-            </ul>
-
+        @else
+        <div class="chat-message">
+          <ul class="list-unstyled chat-1 scrollbar-light-blue">
+          	@foreach ($chat as $c)
+             <span class="hr-sect"><h5>{{$c->created_at}}</h5></span>
+          	  @if ($c->from_user_id == auth()->user()->id)
+            <li class="d-flex justify-content mb-4">
+              <img src="{{auth()->user()->foto ? asset(Storage::url('/user/'.auth()->user()->foto)): asset('assets/images/user/1.jpg')}}" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+              <div class="chat-body chat-rigth p-3 ml-2 z-depth-1">
+                <div class="header">
+                  <strong class="primary-font">{{$us->name}}</strong>
+                  <small class="pull-right text-muted"><i class="far fa-clock"></i> {{$c->created_at->diffForHumans()}}</small>
+                </div>
+                <hr class="w-100">
+                <p class="mb-0">
+                 {!!$c->pesan!!}
+                </p>
+              </div>
+            </li>
+            @else
+            <li class="d-flex justify-content-between mb-4">
+              <div class="chat-body chat-left p-3 z-depth-1">
+                <div class="header">
+                  <strong class="primary-font">{{$us->name}}</strong>
+                  <small class="pull-right text-muted"><i class="far fa-clock"></i> {{$c->created_at->diffForHumans()}}</small>
+                </div>
+                <hr class="w-100">
+                <p class="mb-0">
+                  {!!$c->pesan!!}
+                </p>
+              </div>
+              <img src="{{$us->foto ? asset(Storage::url('/user/'.$us->foto)): asset('assets/images/user/1.jpg')}}" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+            </li>
+            @endif
+            @endforeach
+          </ul>
+          <div class="white">
+          	<form action="{{route('chat.create',$us->id)}}" method="post">
+            <div class="form-group basic-textarea">
+              <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" placeholder="Type your message here..."></textarea>
+            </div>
           </div>
+          <button type="submit" class="btn btn-outline-pink btn-rounded btn-sm waves-effect waves-dark float-right">Send</button>
+     		</form>
         </div>
-
+        @endif
       </div>
-
-      <div class="col-md-6 col-lg-7 col-xl-8">
-              <span class="hr-sect"><h5>FEBRUARY 20, 2021</h5></span>
-        <ul class="list-unstyled">
-          <li class="d-flex justify-content-between mb-4">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
-              class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-            <div class="card">
-              <div class="card-header d-flex justify-content-between p-3">
-                <p class="fw-bold mb-0">Brad Pitt</p>
-                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 12 mins ago</p>
-              </div>
-              <div class="card-body">
-                <p class="mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                  labore et dolore magna aliqua.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="d-flex justify-content-between mb-4">
-            <div class="card w-100">
-              <div class="card-header d-flex justify-content-between p-3">
-                <p class="fw-bold mb-0">Lara Croft</p>
-                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
-              </div>
-              <div class="card-body">
-                <p class="mb-0">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                  laudantium.
-                </p>
-              </div>
-            </div>
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
-              class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-          </li>
-          <li class="d-flex justify-content-between mb-4">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
-              class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-            <div class="card">
-              <div class="card-header d-flex justify-content-between p-3">
-                <p class="fw-bold mb-0">Brad Pitt</p>
-                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 10 mins ago</p>
-              </div>
-              <div class="card-body">
-                <p class="mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                  labore et dolore magna aliqua.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="bg-white mb-3">
-            <div class="form-outline">
-              <textarea class="form-control" id="textAreaExample2" rows="4"></textarea>
-              <label class="form-label" for="textAreaExample2">Message</label>
-            </div>
-          </li>
-          <button type="button" class="btn btn-info btn-rounded float-end">Send</button>
-        </ul>
-
-      </div>
+      <!-- Grid column -->
 
     </div>
+    <!-- Grid row -->
 
   </div>
+</div>
+<!-- search chat -->
+<script>
+	function searchchat() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("carichat");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("listchat");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+<!--  -->
 @endsection

@@ -258,8 +258,9 @@
             @endforeach
               @endforeach
 								<div class="add text-center">
-									<button type="button" class="btn btn-" style="background: #A927F9;    font-family: 'Rubik', sans-serif; color: white; font-weight: 500px; font-size: 11px;margin-top: 2.5vh; padding: 1px 3vh 1px 3vh;">
-									Add</button>
+									 @if (auth()->user()->role == 'member')
+									<a class="btn btn-" style="background: #A927F9;    font-family: 'Rubik', sans-serif; color: white; font-weight: 500px; font-size: 11px;margin-top: 2.5vh; padding: 1px 3vh 1px 3vh;" href="{{route('etalase.course')}}">Add</a>
+									@endif
 								</div>
 							</div>
 						</li>
@@ -270,46 +271,46 @@
 			<div class="row">
 				<div class="col-12 col-md-6 col-lg-6">
 					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Nama</label>
+						<label for="exampleFormControlInput1" class="form-label fw-bold">Nama</label>
 						<input {!! $li != null ? 'readonly' : null !!} type="text" class=" form-control @error('name') is-invalid @enderror" placeholder="Nama" name="name" value="{{$user->name}}" data-original-title="" title="" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
 						@error('name')
 						<div class="invalid-feedback">{{$message}}</div>
 						@enderror
 					</div>
 					<div class="mb-3">
-						<label for="exampleFormControlTextarea1" class="form-label">alamat</label>
+						<label for="exampleFormControlTextarea1" class="form-label fw-bold">Alamat</label>
 						<textarea {!! $li != null ? 'readonly' : null !!} class=" form-control @error('alamat') is-invalid @enderror" name="alamat" rows="5" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">{{$user->alamat}}</textarea>
 						@error('alamat')
 						<div class="invalid-feedback">{{$message}}</div>
 						@enderror  
 					</div>
 					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Email</label>
+						<label for="exampleFormControlInput1" class="form-label fw-bold">Email</label>
 						<input {!! $li != null ? 'readonly' : null !!} type="email" class=" form-control @error('email') is-invalid @enderror" placeholder="your-email@domain.com" name="email" value="{{$user->email}}" data-original-title="" title="" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
 						@error('email')
 						<div class="invalid-feedback">{{$message}}</div>
 						@enderror 
 					</div>
 					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Tanggal Lahir</label>
+						<label for="exampleFormControlInput1" class="form-label fw-bold">Tanggal Lahir</label>
 						<input {!! $li != null ? 'readonly' : null !!} class=" form-control" id="foto" value="{{$user->tanggal_lahir}}" type="date" name="ttl" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
 					</div>
 					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Nomor Handphone</label>
+						<label for="exampleFormControlInput1" class="form-label fw-bold">Nomor Handphone</label>
 						<input {!! $li != null ? 'readonly' : null !!} type="text" class=" form-control @error('no_hp') is-invalid @enderror" placeholder="No Handphone" name="no_hp" value="{{$user->no_hp}}" data-original-title="" title="" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
 						@error('no_hp')
 						<div class="invalid-feedback">{{$message}}</div>
 						@enderror 
 					</div>
 					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Nomor Rekening</label>
+						<label for="exampleFormControlInput1" class="form-label fw-bold">Nomor Rekening</label>
 						<input {!! $li != null ? 'readonly' : null !!} type="text" class=" form-control @error('no_rekening') is-invalid @enderror" placeholder="No Rekening" name="no_rekening" value="{{$user->no_rekening}}" data-original-title="" title=""style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;"> 
 						@error('no_rekening')
 						<div class="invalid-feedback">{{$message}}</div>
 						@enderror  
 					</div>
 					<div class="mb-3">
-						<label class="form-label">Atas Nama Rekening</label>
+						<label class="form-label fw-bold">Atas Nama Rekening</label>
 						<input {!! $li != null ? 'readonly' : null !!} type="text" class="form-control @error('nama_rekening') is-invalid @enderror" placeholder="Atas Nama Rekening" name="nama_rekening" value="{{$user->nama_rekening}}" data-original-title="" title="" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
 						@error('nama_rekening')
 						<div class="invalid-feedback">{{$message}}</div>
@@ -317,7 +318,8 @@
 					</div>
 					 @if (auth()->user()->role == 'admin')
 					<div class="form-group">
-						<label style="cursor: pointer" id="batas" class="form-label">Seumur Hidup</label>
+						<label class="form-label fw-bold">Batas Akun User</label>
+                  		<span style="cursor: pointer" id="batas" class="small text-primary">Seumur Hidup</span>
 						<input {!! $li != null ? 'readonly' : null !!} id="batass" type="date" class="form-control @error('batas') is-invalid @enderror" placeholder="Batas Akun" name="batas" value="{{$user->batas}}">
 						@error('batas')
 						<div class="invalid-feedback">{{$message}}</div>
@@ -328,7 +330,7 @@
 					<span class="btn bnt-2" for="" style="color: black;font-weight: bolder;">Ganti Password</span>
 					<div class="col-8">
 						<div class="mb-3">
-							<label for="exampleFormControlInput1" class="form-label">Password Baru</label>
+							<label for="exampleFormControlInput1" class="form-label fw-bold">Password Baru</label>
 							<input {!! $li != null ? 'readonly' : null !!} class=" form-control @error('password') is-invalid @enderror" type="password" name="password" data-original-title="" title="" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
 							@error('password')
 							<div class="invalid-feedback">{{$message}}</div>
@@ -337,12 +339,12 @@
 					</div>
 					<div class="col-8">
 						<div class="mb-3">
-							<label for="exampleFormControlInput1" class="form-label">Ulangi Pasword</label>
+							<label for="exampleFormControlInput1" class="form-label fw-bold">Ulangi Pasword</label>
 							<input {!! $li != null ? 'readonly' : null !!} type="password" class=" form-control" name="password_confirmation" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
 						</div>
 					</div>
 					<div class="mb-3">
-						<label for="formFile" class="form-label">Ganti Foto</label>
+						<label for="formFile" class="form-label fw-bold">Ganti Foto</label>
 						<input {!! $li != null ? 'readonly' : null !!} class=" form-control" type="file" name="foto">
 					</div>
 					@if ($user->role == 'admin')
@@ -376,7 +378,6 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlSelect1" style="color: black;">Status Keanggotaan</label>
-						<label for="status">Status Keanggotaan</label>
 						<select name="status" id="status" class=" form-control" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
 							<option disabled value="">Status</option>
 							<option value="active" {{$user->status == 'active' ? 'selected' : ''}}>Active</option>
@@ -396,7 +397,7 @@
 					
 					<div class="buttonn justify-content-center">
 						<div class="col">
-							<a class="btn btn-3" href="{{route('user.index')}}" role="button" >Cancel</a>
+							<a class="btn btn-3" href="{{route('dashboard.index')}}" role="button" >Cancel</a>
 							<!-- modal -->
 							<!-- <div class="modal fade" id="exampleModalTogglee{{ $user->id }}" aria-hidden="true"
 								aria-labelledby="exampleModalToggleLabel" tabindex="-1">
