@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="{{asset('admin/img/logo/logo.png')}}" rel="icon">
+  <link rel="icon" href="https://raw.githubusercontent.com/suainul1/dewisata/main/fav.png" type="image/x-icon">
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/suainul1/dewisata/main/fav.png" type="image/x-icon">
   <title>@yield('title', 'MOC Membership')</title>
   <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('admin/vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">

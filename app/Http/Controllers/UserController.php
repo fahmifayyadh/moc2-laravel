@@ -136,7 +136,7 @@ class UserController extends Controller
 
         //v2
         if (auth()->user()->role != 'admin') {
-            return view('tests.user.lihatedit',compact(['li','spon','provinsi','user','users','kota']));;
+            return view('v2.admin.edit-user',compact(['li','spon','provinsi','user','users','kota','course']));;
         }else {
             return view('v2.admin.edit-user',compact(['li','spon','provinsi','user','users','kota','course']));
         }
