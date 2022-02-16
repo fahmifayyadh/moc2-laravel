@@ -190,9 +190,6 @@
 
     <div class="col-12 col-md-12 col-lg-12">
       <div class="container container-3">
-        <div class="judul">
-          <a href="" type="submit" class="btn btn-5" data-toggle="modal" data-target="#addReward" role="button">Add</a>
-        </div>
         <!-- ---------tabel------------- -->
         <div class="cards">
           <table class="table table-dark" style="background: #252633;">
@@ -262,7 +259,7 @@
                             </div>
                             <div class="buttonn" style="text-align: right;">
                               <div class="col">
-                                <button type="submit" class="btn btn-7" style="background: #283246; border-radius: 7px; color: white;">Beli</button>  
+                                <button type="submit" class="btn btn-7" style="background: #F86D6D; border-radius: 7px; color: white;">Beli</button>  
                                 <button type="button" class="btn btn-8" data-dismiss="modal" style="background: #283246; border-radius: 7px; color: white;">Cancel</button>
                               </div>
                             </div>

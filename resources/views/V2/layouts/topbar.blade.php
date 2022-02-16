@@ -1,41 +1,10 @@
-@section('js')
-<script type="text/javascript">
-  function fullscreen(){
-    var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
-      (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-      (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-      (document.msFullscreenElement && document.msFullscreenElement !== null);
-
-    var docElm = document.documentElement;
-    if (!isInFullScreen) {
-        if (docElm.requestFullscreen) {
-            docElm.requestFullscreen();
-        } else if (docElm.mozRequestFullScreen) {
-            docElm.mozRequestFullScreen();
-        } else if (docElm.webkitRequestFullScreen) {
-            docElm.webkitRequestFullScreen();
-        } else if (docElm.msRequestFullscreen) {
-            docElm.msRequestFullscreen();
-        }
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-        }
-    }
-  }
-</script>
-@endsection
 <nav class="navbar navbar-expand  bg-navbar topbar mb-4 static-top" style="background: 
 #353535; width: auto;" id="sidebarToggleTop">
   <button  class="btn btn-link rounded-circle mr-3" data-target="#accordionSidebar" onclick="openNav()">
     <i class="fa fa-bars" style="color: #FF9F1C;"></i>
   </button>
+  <img src="{{asset('assets/images/logo/logo.png')}}" style="width: 80px; height:50px" alt=""></td>
+
   @if (Auth::check() && Request::segment(1) != 'order-sponsor')
   <ul class="navbar-nav ml-auto">
 

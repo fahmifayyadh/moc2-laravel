@@ -1,6 +1,5 @@
 @extends('V2.layouts.master')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">
 <style>
     .datepicker{
       z-index: 1100 !important;
@@ -160,11 +159,6 @@
       text-align: center;
     }
   </style>
-@endsection
-@section('js')
-<script src="{{asset('/assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('/assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{asset('/assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 @endsection
 @section('content')
 

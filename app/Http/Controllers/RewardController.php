@@ -69,20 +69,21 @@ class RewardController extends Controller
     {
        
         if(auth()->user()->point - $reward->harga_point >= 0){
-        TransactionReward::create([
-            'user_id' => auth()->user()->id,
-            'reward_id' => $reward->id,
-            'judul' => $reward->judul,
-            'harga_point' => $reward->harga_point,
-           'batas' => $reward->batas,
-        ]);
-        auth()->user()->update([
-            'point' => auth()->user()->point - $reward->harga_point,
-        ]);
+            TransactionReward::create([
+                'user_id' => auth()->user()->id,
+                'reward_id' => $reward->id,
+                'judul' => $reward->judul,
+                'harga_point' => $reward->harga_point,
+            'batas' => $reward->batas,
+            ]);
+            auth()->user()->update([
+                'point' => auth()->user()->point - $reward->harga_point,
+            ]);
+            toastr('berhasil membeli','success');
         }else{
             toastr('Point anda tidak mencukupi','warning');
         }
-        toastr('berhasil membeli','success');
+        
         return redirect()->back();
     }
     public function riwayatMember()

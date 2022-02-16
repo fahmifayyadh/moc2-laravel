@@ -32,7 +32,7 @@
     $jumlah = $notif->status();         
     $notif = $notif->view();   
     @endphp
-    @include('V2.Admin.modal.notif')
+    @include('V2.layouts.notif')
     @endauth
   <div id="wrapper" style="height: auto">
     <!-- Sidebar -->
@@ -82,29 +82,67 @@
     <!-- Summernote -->
     <script src="{{asset('/assets/js/editor/summernote/summernote.js')}}"></script>
     <script src="{{asset('/assets/js/editor/summernote/summernote.custom.js')}}"></script>
+
     <script>
+      // Open Close Sidebar 
+      function openNav() {
+        if (document.getElementById("accordionSidebar").style.display === "none") {
+          document.getElementById("accordionSidebar").style.display = "block";
+        } else {
+          document.getElementById("accordionSidebar").style.display = "none";
+        }
+      }
+
+      function closeNav() {
+        document.getElementById("accordionSidebar").style.display = "none";
+        document.getElementById("content").style.marginLeft= "0";
+      }
+      // End Open Close Sidebar
+
+      // Fullscreen
+      function fullscreen(){
+        var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+          (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+          (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+          (document.msFullscreenElement && document.msFullscreenElement !== null);
+
+        var docElm = document.documentElement;
+        if (!isInFullScreen) {
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen();
+            } else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+            } else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+            } else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+      }
+      // End Fullscreen
+
+      // Datatable
+        $(document).ready( function () {
+          $('#table_id').DataTable();
+        });
+      // End Datatable
+   
+      // Summernote
       $(document).ready(function() {
           $('#summernote').summernote();
       });
+      // End Summernote
     </script>
-<script>
-function openNav() {
-   if (document.getElementById("accordionSidebar").style.display === "none") {
-    document.getElementById("accordionSidebar").style.display = "block";
-  } else {
-    document.getElementById("accordionSidebar").style.display = "none";
-  }
-}
-
-function closeNav() {
-  document.getElementById("accordionSidebar").style.display = "none";
-  document.getElementById("content").style.marginLeft= "0";
-}
-
-  $(document).ready( function () {
-    $('#table_id').DataTable();
-  });
-</script>
    
 </body>
 
