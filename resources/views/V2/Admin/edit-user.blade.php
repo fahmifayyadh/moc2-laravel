@@ -293,7 +293,7 @@
 					</div>
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Tanggal Lahir</label>
-						<input {!! $li != null ? 'readonly' : null !!} class=" form-control" id="foto" value="{{$user->tanggal_lahir}}" type="date" name="ttl" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
+						<input {!! $li != null ? 'readonly' : null !!} class="form-control datepicker-here" id="foto" value="{{$user->tanggal_lahir}}" type="text" name="ttl" data-range="true" data-multiple-dates-separator="/" data-language="en" data-original-title="" title="" data-date-format="yyyy-mm-dd" style="font-family: 'Rubik', sans-serif;font-size: 14px;color:black;">
 					</div>
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Nomor Handphone</label>
@@ -320,7 +320,7 @@
 					<div class="form-group">
 						<label class="form-label fw-bold">Batas Akun User</label>
                   		<span style="cursor: pointer" id="batas" class="small text-primary">Seumur Hidup</span>
-						<input {!! $li != null ? 'readonly' : null !!} id="batass" type="date" class="form-control @error('batas') is-invalid @enderror" placeholder="Batas Akun" name="batas" value="{{$user->batas}}">
+						<input {!! $li != null ? 'readonly' : null !!} id="batass" type="text" class="form-control @error('batas') is-invalid @enderror datepicker-here" placeholder="Batas Akun" name="batas" value="{{$user->batas}}" data-range="true" data-multiple-dates-separator="/" data-language="en" data-original-title="" title="" data-date-format="yyyy-mm-dd">
 						@error('batas')
 						<div class="invalid-feedback">{{$message}}</div>
 						@enderror  

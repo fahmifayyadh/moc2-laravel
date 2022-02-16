@@ -1,6 +1,10 @@
 @extends('V2.layouts.master')
 @section('title','List User') 
 <style>
+	.datepicker{
+      z-index: 1100 !important;
+    }     
+	
 	#animated input[type=text] {
 		width: 325.76px;
 		height: 50px;
@@ -347,7 +351,7 @@
 				</div>
 				<div class="form-group">
 					<label for="foto">Tanggal Lahir</label>
-					<input class="form-control" id="foto" type="date" name="ttl">
+					<input class="form-control datepicker-here" id="foto" name="ttl" type="text" data-range="true" data-multiple-dates-separator="/" data-language="en" data-original-title="" title="" data-date-format="yyyy-mm-dd" placeholder="YYYY-MM-DD">
 				</div>
 				<div class="form-group">
 					<select name="role" class="form-control">
