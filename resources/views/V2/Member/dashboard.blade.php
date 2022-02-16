@@ -268,6 +268,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="card bg-secondary-card" style="background-color: #343546;">
+                                                        <a type="button" data-toggle="modal" data-target="#totalomzet">
                                                         <div class="card-body ">
                                                             <p style="color:#FF9F1C;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
                                                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
@@ -277,6 +278,7 @@
                                                                 {{number_format($sales,0,'.','.')}}
                                                             </p>
                                                         </div>
+                                                            </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -338,12 +340,8 @@
                 </div>
                 <!-- modal -->
                 <!-- Button trigger modal -->
-                <!-- <button type="button" class="btn btn-primary mt-5 ml-4 mb-4" data-toggle="modal" data-target="#exampleModal">
-                    sample modal
-                </button> -->
-                
                 <!-- Modal -->
-               <!--  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="totalomzet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -354,12 +352,12 @@
                                 </button>
                             </div>
                             <div class="modal-body text-center">
-                                <button type="button" class="btn button-custome text-light" data-dismiss="modal">Lihat Komisi Course</button>
-                                <button type="button" class="btn button-custome text-light">Lihat Komisi Fisik</button>
+                               <a href="{{route('komisi.index')}}" ><button class="btn button-custome text-light" style="background-color: #FF9F1C;color:#FFFFFF;">Lihat Komisi Course</button></a> 
+                              <a href="{{route('komisiFisik.index')}}" > <button class="btn button-custome text-light" style="background-color: #FF9F1C;color:#FFFFFF;">Lihat Komisi Fisik</button></a> 
                             </div>
                             
                         </div>
                     </div>
-                </div> -->
+                </div>
 
 @endsection
