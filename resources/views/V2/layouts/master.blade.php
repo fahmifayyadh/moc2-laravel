@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="{{asset('admin/img/logo/logo.png')}}" rel="icon">
+  <link rel="icon" href="https://raw.githubusercontent.com/suainul1/dewisata/main/fav.png" type="image/x-icon">
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/suainul1/dewisata/main/fav.png" type="image/x-icon">
   <title>@yield('title', 'MOC Membership')</title>
   <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('admin/vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
@@ -14,6 +15,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">
   @yield('css')
 </head>
 @yield('head')
@@ -29,9 +34,9 @@
     $jumlah = $notif->status();         
     $notif = $notif->view();   
     @endphp
-    @include('layouts.komponen.notif')
+    @include('V2.layouts.notif')
     @endauth
-  <div id="wrapper" style="height: 100%">
+  <div id="wrapper" style="height: auto">
     <!-- Sidebar -->
     @include('V2.layouts.sidebar')
     <!-- Sidebar -->
@@ -68,9 +73,6 @@
     <script src="{{asset('admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
-
-
-
     <!-- Page level custom scripts -->
     <script>
       $(document).ready(function () {
@@ -78,20 +80,76 @@
         $('#dataTableHover').DataTable(); // ID From dataTable with Hover
       });
     </script>
-<script>
-function openNav() {
-   if (document.getElementById("accordionSidebar").style.display === "none") {
-    document.getElementById("accordionSidebar").style.display = "block";
-  } else {
-    document.getElementById("accordionSidebar").style.display = "none";
-  }
-}
 
-function closeNav() {
-  document.getElementById("accordionSidebar").style.display = "none";
-  document.getElementById("content").style.marginLeft= "0";
-}
-</script>
+    <!-- Summernote -->
+    <script src="{{asset('/assets/js/editor/summernote/summernote.js')}}"></script>
+    <script src="{{asset('/assets/js/editor/summernote/summernote.custom.js')}}"></script>
+
+    <!-- Datepicker -->
+    <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.js')}}"></script>
+    <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
+    <script src="{{asset('/assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
+
+    <script>
+      // Open Close Sidebar 
+      function openNav() {
+        if (document.getElementById("accordionSidebar").style.display === "none") {
+          document.getElementById("accordionSidebar").style.display = "block";
+        } else {
+          document.getElementById("accordionSidebar").style.display = "none";
+        }
+      }
+
+      function closeNav() {
+        document.getElementById("accordionSidebar").style.display = "none";
+        document.getElementById("content").style.marginLeft= "0";
+      }
+      // End Open Close Sidebar
+
+      // Fullscreen
+      function fullscreen(){
+        var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+          (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+          (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+          (document.msFullscreenElement && document.msFullscreenElement !== null);
+
+        var docElm = document.documentElement;
+        if (!isInFullScreen) {
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen();
+            } else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+            } else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+            } else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+      }
+      // End Fullscreen
+
+      // Datatable
+        $(document).ready( function () {
+          $('#table_id').DataTable();
+        });
+      // End Datatable
+   
+      // Summernote
+      $(document).ready(function() {
+          $('#summernote').summernote();
+      });
+      // End Summernote
+    </script>
    
 </body>
 

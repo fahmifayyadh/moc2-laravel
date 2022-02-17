@@ -21,7 +21,13 @@ class KuponController extends Controller
     }
     public function create()
     {
-        return view('tests.kupon.create');
+        //return view('tests.kupon.create');
+         // V2
+        if(auth()->user()->role != 'admin'){
+           return view('tests.kupon.create');
+        }else{
+          return view('V2.Admin.create-kupon'); 
+        }
     }
     public function store(Request $request)
     {

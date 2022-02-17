@@ -48,7 +48,7 @@
 		</p>
 	</div>
 	<div class="container container-2">
-		<form aaction="{{route('banner.edit',$banner->id)}}" method="POST" enctype="multipart/form-data">
+		<form action="{{route('banner.edit',$banner->id)}}" method="POST" enctype="multipart/form-data">
 		@csrf
         @method('PUT')
 			<div class="row">

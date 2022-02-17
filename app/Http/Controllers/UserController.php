@@ -7,6 +7,8 @@ use App\Notif;
 use App\Product;
 use App\Province;
 use App\User;
+use App\TransactionCourse;
+use App\Paket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -18,18 +20,35 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if($request->search != null){
-            $users = User::where('name','LIKE','%'.$request->search.'%')->paginate(300);
+            $users = User::where('name','LIKE','%'.$request->search.'%')->paginate(30);
         }else{
         $users = User::paginate(30);
         }
 
-        return view('tests.user.list-user',compact('users'));
+        //return view('tests.user.list-user',compact('users'));
 
+        // V2
+        if(auth()->user()->role != 'admin'){
+           return view('tests.user.list-user',compact('users'));
+        }else{
+          return view('V2.Admin.list-user', compact('users')); 
+        }
     }
     public function detail($id)
     {
         $user = User::findOrFail($id);
-        return view('tests.user.detail',compact('user'));
+        $spon = User::where('email',$user->sponsor)->first()->name ?? null;
+        $course = TransactionCourse::where([['user_id', $id]])->with(['paket' => function($z){
+            $z->withTrashed();
+        }])->get();
+        //$users = user::where('id','=',$user->sponsor)->get();
+        //return view('tests.user.detail',compact('user'));
+        //v2
+        if (auth()->user()->role != 'admin') {
+             return view('tests.user.detail',compact('user'));
+        }else {
+            return view('V2.Admin.detail-user',compact(['user','course','spon']));
+        }
 
     }
     public function leaderboard()
@@ -46,7 +65,7 @@ class UserController extends Controller
         if (auth()->user()->role != 'admin') {
             return view('V2.Member.leaderboard', compact('users'));
         }else {
-            return view('tests.leaderboard.index',compact('users'));
+            return view('V2.Admin.leaderboard',compact('users'));
         }
 
 
@@ -80,7 +99,14 @@ class UserController extends Controller
             toastr()->warning('Pencarian tidak ditemukan', 'success');
 
         }
-	    return view('tests.leaderboard.index',compact('users'));
+	    //return view('tests.leaderboard.index',compact('users'));
+
+         //v2
+        if (auth()->user()->role != 'admin') {
+            return view('V2.Member.leaderboard', compact('users'));
+        }else {
+            return view('V2.Admin.leaderboard',compact('users'));
+        }
 
     }
     public function edit($id=null,$lihat= null)
@@ -96,13 +122,24 @@ class UserController extends Controller
         }
         $user = User::findOrFail($id ?? auth()->user()->id);
         $users = User::get(['id','name','email']);
+        //$sponsor = user::where('id','=',$user->sponsor)->first();
         $provinsi = Province::get();
         $kota = User::where('role','admin')->where('city','!=',null)->first()->city ?? null;
         if($kota != null){
             $kota = City::where('city_id',$kota)->first()->name ?? null;
         }
         $spon = User::where('email',$user->sponsor)->first()->name ?? null;
-        return view('tests.user.lihatedit',compact(['li','spon','provinsi','user','users','kota']));
+        $course = TransactionCourse::where([['user_id', $id]])->with(['paket' => function($z){
+            $z->withTrashed();
+        }])->get();
+        //return view('tests.user.lihatedit',compact(['li','spon','provinsi','user','users','kota']));
+
+        //v2
+        if (auth()->user()->role != 'admin') {
+            return view('V2.Admin.edit-user',compact(['li','spon','provinsi','user','users','kota','course']));;
+        }else {
+            return view('V2.Admin.edit-user',compact(['li','spon','provinsi','user','users','kota','course']));
+        }
     }
     public function create(Request $request)
     {
@@ -209,7 +246,7 @@ class UserController extends Controller
 		return redirect()->route('dashboard.index');
     }
     public function updatePoint(Request $request,User $user)
-    {
+    {   
          $user->update([
             'point' => $request->point,
         ]);
@@ -217,6 +254,7 @@ class UserController extends Controller
             'user_id' => $user->id,
             'isi' => $request->pesan
         ]);
+
         toastr()->success('berhasil update point','success');
         return redirect()->back();
     }

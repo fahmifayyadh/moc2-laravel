@@ -13,11 +13,17 @@ class BabCourseController extends Controller
         $name = $course->name;
         $idd= $course->id;
         $course = Babcourse::where('course_id',$course->id)->with('course')->get();
-        return view('tests.course.bab.detail',compact(['course','name','idd']));
+        // return view('tests.course.bab.detail',compact(['course','name','idd']));
+
+        // V2
+        return view('V2.Admin.kelola-produk.detail-bab-course',compact(['course','name','idd']));
     }
     public function create(Course $course)
     {
-        return view('tests.course.bab.create',compact('course'));
+        // return view('tests.course.bab.create',compact('course'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.create-bab-course',compact('course'));
     }
     public function store(Request $request, Course $course)
     {
@@ -30,7 +36,10 @@ class BabCourseController extends Controller
     public function edit(Babcourse $id)
     {
         $subCourse = $id;
-        return view('tests.course.bab.edit', compact('subCourse'));
+        // return view('tests.course.bab.edit', compact('subCourse'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.edit-bab-course', compact('subCourse'));
     }
     public function update(Request $request,Babcourse $id)
     {

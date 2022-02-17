@@ -1,6 +1,13 @@
 @extends('V2.layouts.master')
 @section('title','Transaksi Produk Course')
+<style>
+<style>
   <style>
+    .table-long{
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
     table {
       border-radius: 5px;
       background: 
@@ -304,11 +311,11 @@
 @section('content')
  <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <a href="allproduct.html">
+            <a href="#">
               <p
                 style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;list-style: none;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-               TRANSAKSI PRODUK FISIK <span style="font-weight: 100;"></span>
+               TRANSAKSI COURSE <span style="font-weight: 100;"></span>
               </p>
             </a>
           </div>
@@ -321,14 +328,37 @@
 
             <div class="col-12 col-md-8 col-lg-8">
               <div class="pagination">
-                <a href="" class="btn btn-14"> <i class="fas fa-filter"></i>Filter</a>
+                <a href="#" class="btn btn-14" data-toggle="modal" data-target="#filter-produk"> <i class="fas fa-filter"></i>Filter</a>
               </div>
             </div>
+            <!-- Modal Filter -->
+            <div class="modal fade" id="filter-produk" tabindex="-1" role="dialog" aria-labelledby="preview-course" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content p-l-10 p-r-10 ">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Filter Status Transaksi</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="mb-3">
+                        <select class="form-control" name="product" id="filter-produk" onchange="location = this.value;">
+                          <option value="" >Pilih Option</option>
+                          <option value="{{route('transaksi.order-course-filter','selesai')}}">Selesai</option>
+                          <option value="{{route('transaksi.order-course-filter','pembayaran')}}">Menunggu Pembayaran</option>
+                          <option value="{{route('transaksi.order-course-filter','batal')}}">Batal</option>
+                        </select>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Modal Filter -->
+
             <div class="col-12 col-md-4 col-lg-4">
-              <div class="search" style="float: right;display: flex;">
+              <div class="search" style="position: relative;float: right;">
                 <form action="{{route('transaksi.order-course-search')}}" method="GET" id="animated" >
-                  <button type="submit" class="btn btn-floating" style="position: absolute;margin: 10px 5px;"><i class="fa fa-search"></i></button>
-                  <input name="search" type="text" placeholder="Search" style="flex: 1">
+                  <input name="search" type="text" placeholder="Search">
+                  <button type="submit" class="btn btn-floating" style="position: absolute;margin: 10px 5px;padding: 5px 10px;left: 3px;"><i class="fa fa-search" for="search"></i></button>
                 </form>
               </div>
             </div>
@@ -337,8 +367,8 @@
             <div class="col-12" style="margin-top: 5vh;">
               <!-- ---------tabel------------- -->
               <div class="cards">
-                <table class="table  table-dark  " style="background: 
-                  #252633;">
+                <table id=""  class="table  table-dark table-long " style="background: 
+                  #252633; display: block;overflow-x: auto;white-space: nowrap;">
                   <thead>
                     <th class="th-1">No</th>
                     <th class="th-3">Pembeli</th>
@@ -366,11 +396,11 @@
                       <td>E-course</td>
                       <td>{{$t->kupon != null ? $t->kupon->kode.'-'.$t->discount : null}}</td>
                       <td>{{$t->kode}}</td>
-                      <td>{{number_format($t->price-$t->discount,0,'.','.')}}</td>
+                      <td>Rp {{number_format($t->price-$t->discount,0,'.','.')}}</td>
                       <td>{{$t->created_at->format('Y-m-d')}}</td>
                        {{-- Detail modal --}}
-                      @include('tests.transaksi.komponen.detail')
-                       @include('tests.transaksi.komponen.badgeCourse')
+                       @include('v2.admin.modal.detail-transaksi-course')
+                       @include('v2.admin.modal.badge-transaksi-course')
                       <td>
                        @if ($t->status == 'selesai')
                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -379,12 +409,12 @@
                        @if ($t->status == 'pembayaran')
                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
                        data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
-                       @include('tests.transaksi.komponen.priv')
+                       @include('v2.admin.modal.priv')
                        @endif
                        @if ($t->status == 'batal')
                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
                        data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
-                       @include('tests.transaksi.komponen.priv')
+                       @include('v2.admin.modal.priv')
                        @endif
                      </td>
                       <!-- <td>
@@ -406,17 +436,6 @@
               <!-- ---------tabel------------- -->
             </div>
           </div>
-
-
-
         </div>
  <!-- Page level custom scripts -->
-  <script>
-    $(document).ready(function () {
-      $('#dataTable').DataTable(); // ID From dataTable 
-      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-    });
-  </script>
-
-
 @endsection

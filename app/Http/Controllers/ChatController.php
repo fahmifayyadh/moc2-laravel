@@ -51,7 +51,16 @@ class ChatController extends Controller
             $user = User::where('name', 'like', '%' . $request->name . '%')->get();
         }
         $chat = null;
-        return view('tests.chat.index', compact(['user', 'chat']));
+       
+        // return view('tests.chat.index', compact(['user', 'chat']));
+
+        //V2
+        if(auth()->user()->role != 'admin'){
+            return view('V2.Admin.pesan', compact(['user', 'chat']));
+        }
+        else{
+            return view('V2.Admin.pesan', compact(['user', 'chat']));
+        }
     }
     public function send($id)
     {
@@ -62,7 +71,15 @@ class ChatController extends Controller
                 ->Where('to_user_id', $id);
         })->get();
         $this->status($id);
-        return view('tests.chat.index', compact(['user', 'chat', 'us']));
+        //return view('tests.chat.index', compact(['user', 'chat', 'us']));
+
+        //V2
+        if(auth()->user()->role != 'admin'){
+             return view('V2.Admin.pesan', compact(['user', 'chat', 'us']));
+        }
+        else{
+            return view('V2.Admin.pesan', compact(['user', 'chat', 'us']));
+        }
     }
     public function create(Request $request, $id)
     {

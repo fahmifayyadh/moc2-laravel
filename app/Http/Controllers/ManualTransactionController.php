@@ -28,7 +28,14 @@ class ManualTransactionController extends Controller
             $x->withTrashed();
         }])->orderByRaw("FIELD(status, \"'pembayaran\", \"proses\", \"selesai\", \"batal\")")->orderBy("created_at", "desc")->paginate(10);
         // return $transaksi; 'selesai','pembayaran','proses','batal','refund' orderByRaw("FIELD(status, \"'pembayaran\", \"proses\", \"selesai\", \"batal\")")
-        return view('tests.transaksi.transaksi-produk-fisik', compact('transaksi'));
+        //return view('tests.transaksi.transaksi-produk-fisik', compact('transaksi'));
+        
+         // V2
+        if(auth()->user()->role != 'admin'){
+          return view('tests.transaksi.transaksi-produk-fisik',compact(['transaksi']));
+        }else{
+          return view('V2.Admin.transaksi-produk-fisik',compact(['transaksi']));
+        }
     }
     public function filterFisik($fil)
     {
@@ -36,7 +43,14 @@ class ManualTransactionController extends Controller
             $x->withTrashed();
         }])->where('status', $fil)->get();
         $tr = false;
-        return view('tests.transaksi.transaksi-produk-fisik', compact(['transaksi', 'tr']));
+        // return view('tests.transaksi.transaksi-produk-fisik', compact(['transaksi', 'tr']));
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.transaksi.transaksi-produk-fisik', compact(['transaksi', 'tr']));
+        }else{
+            return view('V2.Admin.transaksi-produk-fisik', compact(['transaksi', 'tr']));
+        }
     }
     public function searchFisik(Request $request)
     {
@@ -49,7 +63,15 @@ class ManualTransactionController extends Controller
             return $query->Where('name', 'like', '%' . $search . '%');
         })->get();
         $tr = false;
-        return view('tests.transaksi.transaksi-produk-fisik', compact(['transaksi', 'tr']));
+
+        //return view('tests.transaksi.transaksi-produk-fisik', compact(['transaksi', 'tr']));
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.transaksi.transaksi-produk-fisik', compact(['transaksi', 'tr']));
+        }else{
+            return view('V2.Admin.transaksi-produk-fisik', compact(['transaksi', 'tr']));
+        }
     }
     public function bukti(Request $request, Transaction $transaction)
     {
@@ -87,6 +109,7 @@ class ManualTransactionController extends Controller
             ];
             Mail::to($transaction->user->email)->send(new \App\Mail\PesananProses($details));
         }
+        toastr()->success('pembayaran terverifikasi', 'Berhasil');
         return redirect()->back();
     }
     public function buktiCourse(Request $request, TransactionCourse $transaction)
@@ -253,6 +276,7 @@ class ManualTransactionController extends Controller
             'username' => $transaction->user->name,
         ];
         Mail::to($transaction->user->email)->send(new \App\Mail\PesananProses($details));
+        toastr()->success('Resi berhasil diinput', 'Sukses');
         return redirect()->back();
     }
     public function cancle(Transaction $transaction)

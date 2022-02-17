@@ -1,8 +1,5 @@
 @extends('V2.layouts.master')
-@section('title','Berita')
-<link rel="stylesheet" href="{{asset('/assets/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-<link rel="stylesheet"
-href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+@section('title','Kelola Berita')
 <style>
   table {
     border-radius: 5px;
@@ -286,7 +283,7 @@ form i {
     </div>
   </div>
 
-  <div class="col-12 col-md-8 col-lg-8">
+<!--   <div class="col-12 col-md-8 col-lg-8">
     <div class="pagination">
       <p>Show</p>
       <div class="jumlah">
@@ -302,13 +299,13 @@ form i {
         <input name="search" type="text" placeholder="Search" style="flex: 1">
       </form>
     </div>
-  </div>
+  </div> -->
 
   <!-- <div class="col-lg-12"> -->
-    <div class="col-12 col-md-12 col-lg-12" style="margin-top: 5vh;">
+    <div class="col-12 col-md-12 col-lg-12">
       <!-- ---------tabel------------- -->
       <div class="cards">
-        <table class="table  table-dark  " style="background: 
+        <table id="table_id" class="display table  table-dark  " style="background: 
         #252633;">
         <thead>
           <th class="th-1">No</th>
@@ -319,16 +316,16 @@ form i {
         </thead>
         <tbody>
           @foreach ($berita as $i => $b)
-          @include('tests.berita.isi')
+          @include('v2.admin.modal.isi-berita')
           <tr>
             <td>{{$i+1}}<span>.</span></td>
             <td>{{$b->judul}}</td>
 
-            <td id="italic" ata-target="#isi{{$b->id}}">Lihat</td>
+            <td id="italic"><a style="color: aqua;cursor:pointer" data-toggle="modal" data-target="#isi{{$b->id}}">Lihat</a></td>
             <td>Warning</td>
 
             <td style="text-align: center;">
-              <a href="{{route('berita.edit',$b->id)}}" class="btn btn-4" role="button">Edit</a>
+              <button class="btn btn-4" role="button"><a href="{{route('berita.edit',$b->id)}}">Edit</a></button>
               <form style="display: inline" onclick="return confirm('apakah anda yakin?')" action="{{route('berita.delete',$b->id)}}" method="post">
                 @csrf
                 @method('delete')
@@ -346,11 +343,4 @@ form i {
   </div>
 </div>
 </div>
-
-<script>
-  $(document).ready(function () {
-$('#dataTable').DataTable(); // ID From dataTable 
-$('#dataTableHover').DataTable(); // ID From dataTable with Hover
-});
-</script>
 @endsection

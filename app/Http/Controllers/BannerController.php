@@ -11,7 +11,7 @@ class BannerController extends Controller
 {
     public function index()
     {
-        $banner = Banner::get();
+        $banner = Banner::latest()->get();
          // return view('tests.banner.index', compact('banner'));;
 
         // V2
@@ -23,7 +23,14 @@ class BannerController extends Controller
     }
     public function create()
     {
-        return view('tests.banner.create');
+        //return view('tests.banner.create');
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.banner.create');
+        }else{
+          return view('V2.Admin.create-banner'); 
+        }
     }
     public function store(Request $request)
     {

@@ -38,7 +38,10 @@ class CourseController extends Controller
     public function create()
     {
         $paket = Paket::get();
-        return view('tests.course.form',compact('paket'));
+        // return view('tests.course.form',compact('paket'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.create-course',compact('paket'));
     }
 
     /**
@@ -98,7 +101,10 @@ class CourseController extends Controller
     {
         $course = Course::findOrFail($id);
         $paket = Paket::get();
-        return view('tests.course.edit', compact(['course','paket']));
+        // return view('tests.course.edit', compact(['course','paket']));
+
+        // V2
+        return view('V2.Admin.kelola-produk.edit-course', compact(['course','paket']));
     }
 
     /**
@@ -148,6 +154,7 @@ class CourseController extends Controller
     public function delete(Course $course)
     {
         $course->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
 
@@ -157,20 +164,34 @@ class CourseController extends Controller
         ->orWhere('desc',$request->desc)
         ->get();
         // ->orWhere('desc','like','%'.$request->desc.'%')
-        return view('tests.course.index', compact('c'));
+        // return view('tests.course.index', compact('c'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.course', compact('c'));
     }
     public function paket()
     {
         $paket = Paket::with('course')->with('sales')->get();
         $course = Course::get();
-        return view('tests.course.paket',compact(['paket','course']));
+        // return view('tests.course.paket',compact(['paket','course']));
+
+        // V2
+        return view('V2.Admin.kelola-produk.kelola-paket',compact(['paket','course']));
     }
     public function paketCreate()
     {
-        return view('tests.course.createpaket');
+        // return view('tests.course.createpaket');
+
+        // V2
+        return view('V2.Admin.kelola-produk.create-paket');
     }
     public function paketStore(Request $request)
     {
+        $price = floatval(str_replace(',', '.', str_replace('.', '', $request->price)));
+        $point_pembeli = floatval(str_replace(',', '.', str_replace('.', '', $request->point_pembeli)));
+        $point_sponsor = floatval(str_replace(',', '.', str_replace('.', '', $request->point_sponsor)));
+        $commission = floatval(str_replace(',', '.', str_replace('.', '', $request->commission)));
+        
         $fileName = null;
         $msg = [
             'numeric' => 'Inputan :attribute harus berupa angka',
@@ -179,11 +200,11 @@ class CourseController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'image' => 'nullable|image|max:2048',
-            'point_pembeli' => 'nullable|numeric|min:0',
-            'point_sponsor' => 'nullable|numeric|min:0',
-            'commission' => 'numeric|nullable',
+            'point_pembeli' => 'nullable',
+            'point_sponsor' => 'nullable',
+            'commission' => 'nullable',
             'batas' => 'nullable|numeric|numeric',
-            'price' => 'nullable|numeric|min:0',
+            'price' => 'nullable',
         ], $msg);
         if ($request->file('image') != null) {
             $file = $request->file('image');
@@ -198,21 +219,29 @@ class CourseController extends Controller
             'desc' => $request->desc,
             'image'=> $fileName,
             'batas' => $request->batas,
-            'price' => $request->price,
+            'price' => (int)$price,
             'is_member' => $request->is_member,
-            'point_pembeli' => $request->point_pembeli,
-            'point_sponsor' => $request->point_sponsor,
-            'commission' => $request->commission,
+            'point_pembeli' => (int)$point_pembeli,
+            'point_sponsor' => (int)$point_sponsor,
+            'commission' => (int)$commission,
         ]);
         return redirect()->route('course.paket');
     }
     public function paketEdit(Paket $paket)
     {
         $course= $paket;
-        return view('tests.course.editpaket',compact('course'));
+        // return view('tests.course.editpaket',compact('course'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.edit-paket',compact('course'));
     }
     public function paketUpdate(Request $request,Paket $paket)
     {
+        $price = floatval(str_replace(',', '.', str_replace('.', '', $request->price)));
+        $point_pembeli = floatval(str_replace(',', '.', str_replace('.', '', $request->point_pembeli)));
+        $point_sponsor = floatval(str_replace(',', '.', str_replace('.', '', $request->point_sponsor)));
+        $commission = floatval(str_replace(',', '.', str_replace('.', '', $request->commission)));
+
         $msg = [
             'numeric' => 'Inputan :attribute harus berupa angka',
             'required' => 'Inputan :attribute wajib diisi',
@@ -220,7 +249,7 @@ class CourseController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'image' => 'nullable|image|max:2048',
-            'commission' => 'numeric|nullable',
+            'commission' => 'nullable',
         ], $msg);
         $fileName = $paket->image; 
         if ($request->file('image') != null) {
@@ -231,23 +260,24 @@ class CourseController extends Controller
         }
 
         $named = $request->name;
-    $paket->update([
-        'name' => Str::title($named),
-        'slug' => Str::slug($named),
-        'desc' => $request->desc,
+        $paket->update([
+            'name' => Str::title($named),
+            'slug' => Str::slug($named),
+            'desc' => $request->desc,
             'image'=> $fileName,
             'batas' => $request->batas,
-            'price' => $request->price,
+            'price' => (int)$price,
             'is_member' => $request->is_member,
-            'point_pembeli' => $request->point_pembeli,
-            'point_sponsor' => $request->point_sponsor,
-            'commission' => $request->commission,
+            'point_pembeli' => (int)$point_pembeli,
+            'point_sponsor' => (int)$point_sponsor,
+            'commission' => (int)$commission,
         ]);
         return redirect()->route('course.paket');
     }
     public function paketDelete(Paket $paket)
     {
         $paket->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
     public function coursePaket(Request $request,Paket $paket)
@@ -258,6 +288,7 @@ class CourseController extends Controller
     public function addCourseDelete(Request $request,Paket $paket)
     {
         $paket->course()->detach($request->courseId);
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
 }

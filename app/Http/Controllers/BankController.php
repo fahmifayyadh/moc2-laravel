@@ -111,6 +111,7 @@ class BankController extends Controller
     public function delete($id)
     {
         Bank::findOrFail($id)->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
 }
