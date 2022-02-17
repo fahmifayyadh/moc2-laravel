@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('title','Riwayat Pencairan Dana')
 <style>
     table {
       border-radius: 5px;
