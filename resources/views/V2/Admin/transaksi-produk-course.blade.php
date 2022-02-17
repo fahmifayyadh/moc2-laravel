@@ -396,7 +396,7 @@
                       <td>E-course</td>
                       <td>{{$t->kupon != null ? $t->kupon->kode.'-'.$t->discount : null}}</td>
                       <td>{{$t->kode}}</td>
-                      <td>{{number_format($t->price-$t->discount,0,'.','.')}}</td>
+                      <td>Rp {{number_format($t->price-$t->discount,0,'.','.')}}</td>
                       <td>{{$t->created_at->format('Y-m-d')}}</td>
                        {{-- Detail modal --}}
                        @include('v2.admin.modal.detail-transaksi-course')

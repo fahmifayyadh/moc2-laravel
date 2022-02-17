@@ -246,7 +246,7 @@
                         <td>{{$i->paket->name}}</td>
                         <td>E-course</td>
                         <td>{{$i->user->sponsor ?? 'tidak ada'}}</td>
-                        <td>Rp. {{$i->commission}}</td>
+                        <td>Rp. {{number_format($i->commission,0,'.','.')}}</td>
                         <td>
                          @if (is_null($i->komisi))
                          <span class="badge badge-pill badge-warning" style="color: white;font-size:12px">Belum Di Bayar</span>

@@ -399,7 +399,7 @@
                       <td>{{$t->delivery->kurir}}</td>
                       <td>{{$t->delivery->jenis}}</td>
                       <td>{{$t->delivery->no_resi}}</td>
-                      <td>
+                      <td>Rp 
                         {{number_format(($t->price*$t->kuantiti) - $t->discount + $t->delivery->ongkir,0,'.','.')}}
 
                       </td>
