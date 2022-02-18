@@ -40,9 +40,9 @@
                                         Filter</button>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{route('order.filterCourse','')}}">Terbaru</a>
-                                        <a class="dropdown-item" href="{{route('order.filterCourse','')}}">Harga Tertinggi</a>
-                                        <a class="dropdown-item" href="{{route('order.filterCourse','')}}">Harga Terendahg</a>
+                                        <a class="dropdown-item" href="{{route('order.filter','')}}">Terbaru</a>
+                                        <a class="dropdown-item" href="{{route('order.filter','')}}">Harga Tertinggi</a>
+                                        <a class="dropdown-item" href="{{route('order.filter','')}}">Harga Terendahg</a>
                                     </div>
                                 </div>
                             </div>
@@ -90,8 +90,10 @@
                                         <td>{{$tf->delivery->name}}</td>
                                         <td>{{$tf->delivery->no_resi}}</td>
                                         <td>{{$tf->created_at->format('d-m-Y')}}</td>
-                                        <td>{{$tf->status == 'selesai' ? $tf->updated_at->format('d-m-Y') : 'Belum Selesai'}}<</td>
+                                        <td>{{$tf->status == 'selesai' ? $tf->updated_at->format('d-m-Y') : 'Belum Selesai'}}</td>
                                         <td>Rp {{number_format(($tf->price*$tf->kuantiti)-$tf->discount+$tf->delivery->ongkir,0,'.','.')}}</td>
+
+                                        @include('tests.order.komponen.badgefisik')
                                         <td>
                                   @if ($tf->status != 'refund' && $tf->status != 'batal' && $tf->status != 'selesai')
                                       
