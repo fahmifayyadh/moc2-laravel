@@ -1,11 +1,13 @@
-@extends('V2.layouts.master',['title' => 'Konfirmasi Komisi Masuk'])
+@extends('V2.layouts.master',['title' => 'Status Transaksi E-Course'])
 @section('content')
 <div class="page-body">
     <br>
+
+    <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="row">
                         <div class="col-7">
-                            <!-- title KOMISI COURSE -->
+                            <!-- title KOMISI FISIK -->
                             <div class="d-sm-flex align-items-center justify-content-between">
                                 <a href="allproduct.html">
                                     <p
@@ -13,11 +15,11 @@
                                         <span
                                             style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;">
                                             | </span>
-                                        KOMISI COURSE <span style="font-weight: 100;"></span>
+                                        STATUS AFILIASI <span style="font-weight: 100;"></span>
                                     </p>
                                 </a>
                             </div>
-                            <!-- title KOMISI COURSE-->
+                            <!-- title KOMISI FISIK-->
                         </div>
                         <div class="col-3">
                             <div class="box">
@@ -57,49 +59,40 @@
                                         <th>No.</th>
                                         <th>User</th>
                                         <th>Nama Produk</th>
-                                        <th>Tanggal Transaksi</th>
-                                        <th>Total Komisi</th>
+                                        <th>Whatsapp</th>
+                                        <th>Harga</th>
+                                        <th>Email</th>
                                         <th>Status</th>
+                                        <th>Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <!-- loop data -->
-                                    @foreach ($transactionCourse as $i => $t)
+                                    @foreach ($transaksi as $i=>$t)
                                     <tr class=" text-custome">
                                         <td>{{$i+1}}</td>
                                         <td>{{$t->user->name}}</td>
                                         <td>{{$t->paket->name}}</td>
-                                        <td>Rp.{{$t->commission}}</td>
-                                        <td>{{$t->created_at->format('d-m-Y')}}</td>
-
-                                        @if (!is_null($t->komisi) && $t->komisi->status ==
-                                                                    'selesai')
-                                        <td><span class="badge badge-success mr-2 p-2">sudah bayar</span></td>
+                                        @if ($t->status != 'selesai')
+                                        <td><img src="img/logo/whatsapp.png" alt=""></td>
                                         @endif
-                                        @if (is_null($t->komisi))
-                                        <td><span class="badge badge-danger mr-2 p-2">menunggu pembayaran</span></td>
-                                        @endif
+                                        <td>{{number_format($t->price-$t->discount,0,'.','.')}}</td>
+                                        <td>{{$t->user->email}}</td>
+                                        {{-- Detail modal --}}
+                                      @include('tests.afiliasi.kompo.detail')
+                                      @include('tests.transaksi.komponen.badgeCourse')
+                                        <td><button class="btn btn-primary">Detail</button></td>
                                     </tr>
+                                
                                     @endforeach
-                                    <!-- <tr class=" text-custome">
-                                        <td>2</td>
-                                        <td>Danuar Riyaldi</td>
-                                        <td>7 Days Private
-                                            Premium Access</td>
-                                        <td>Rp.0</td>
-                                        <td>19-05-2021</td>
-                                        <td><span class="badge badge-success mr-2 p-2">sudah bayar</span></td>
-                                        
-
-                                    </tr> -->
-                                    <!-- loop data -->
                                 </tbody>
                             </table>
                         </div>
                         <div class="card-footer bg-primary-card"></div>
                     </div>
                 </div>
+                <!---Container Fluid-->
 
 </div>
 @endsection

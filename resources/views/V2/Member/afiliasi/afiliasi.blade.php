@@ -1,4 +1,4 @@
-@extends('layouts.master',['title' => 'Generate Afiliasi'])
+@extends('V2.layouts.master',['title' => 'Generate Afiliasi'])
 @section('head')
 <script>
     function myFunction(l = 0) {
@@ -13,7 +13,7 @@
 <div class="page-body">
   <div class="container-fluid">
     <div class="page-header">
-      <div class="row">s
+      <div class="row">
         <div class="col-12">
  
  <!-- Container Fluid-->

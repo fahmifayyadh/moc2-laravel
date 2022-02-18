@@ -1,4 +1,4 @@
-@extends('layouts.master',['title' => 'Facebook Pixel'])
+@extends('V2.layouts.master',['title' => 'Facebook Pixel'])
 @section('head')
 <script>
   function myFunction() {
