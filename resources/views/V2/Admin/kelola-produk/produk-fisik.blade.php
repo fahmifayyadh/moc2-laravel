@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('title','Produk Fisik')
 <style>
     #animated input[type=text] {
       width: 325.76px;

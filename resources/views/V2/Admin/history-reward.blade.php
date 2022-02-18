@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('title','History Reward')
 <style>
     table {
       border-radius: 5px;

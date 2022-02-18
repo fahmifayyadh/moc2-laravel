@@ -1,4 +1,5 @@
-@extends('V2.layouts.master', ['title'=>'Paket'])
+@extends('V2.layouts.master')
+@section('title','Paket')
 @section('css')
   <style>
     div.dataTables_length select {
