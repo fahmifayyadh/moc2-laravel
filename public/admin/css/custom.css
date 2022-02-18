@@ -1,0 +1,179 @@
+.nav-item a {
+  color: white;
+  font-family: "Rubik", sans-serif;
+}
+.text-custome {
+  font-family: "Rubik", sans-serif;
+  color: #ff9f1c !important;
+}
+.button-custome {
+  background-color: #ff9f1c;
+}
+.bg-transparant {
+  background-color: rgba(222, 184, 135, 0)!important;
+}
+.button-outline-custome {
+  border: 1px solid #ff9f1c;
+  color: #ff9f1c;
+}
+.text-title-link {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 30px;
+
+  /* identical to box height */
+
+  color: #ffffff;
+}
+.text-black {
+  font-family: "Rubik", sans-serif;
+  color: black;
+}
+.text-blue {
+  font-family: "Rubik", sans-serif;
+  color: #1A4C93;
+}
+.text-roboto {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 29px;
+}
+.bg-secondary-card {
+  background-color: #343546;
+}
+.bg-primary-card {
+  background-color: #252633;
+}
+.bg-select-option {
+  background-color: #4c4e63;
+}
+
+.carousel-indicators > li {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+.carousel-indicators > .active {
+  background-color: #ff9f1c;
+}
+
+.image-active:hover {
+  border: 2.5px solid #ff9f1c;
+  border-radius: 20px;
+}
+
+/* detail product */
+.tittle-text {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+
+  color: #000000;
+}
+.dec-text {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+
+  /* identical to box height */
+
+  color: #000000;
+}
+.list-text {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 24px;
+
+  color: #000000;
+}
+/* sidebar */
+.sidebar-light {
+  background-color: #151622 !important;
+}
+
+/* search button */
+.box {
+  width: 319px;
+  height: 40px;
+  background-color: #252633;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.box > a {
+  color: #777;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.box > i {
+  font-size: 20px;
+  color: #777;
+}
+
+.box > input {
+  flex: 1;
+  height: 40px;
+  background-color: #252633;
+  border: none;
+  color: #b8b8b8;
+  text-indent: 10px;
+  outline: none;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+/* quantity button tokopedia*/
+.css-h82t6w-unf-quantity-editor {
+  display: inline-flex;
+  -moz-box-align: center;
+  align-items: center;
+  border: solid 1px var(--NN300,#BFC9D9);
+  border-radius: 4px;
+  padding: 3px;
+  transition: border 120ms cubic-bezier(0.2, 0.64, 0.21, 1) 0s;
+}
+
+.css-199ul1b {
+  background-color: transparent;
+  padding: 0px;
+  border: medium none;
+  appearance: none;
+}
+.css-1a29oke input[type="text"] {
+  padding: 1px;
+  margin-bottom: 0px;
+  border: medium none;
+  border-radius: 0px;
+  box-shadow: none;
+  outline: currentcolor none medium;
+  line-height: 22px;
+  font-size: 16px;
+}
+
+.css-1igct5v-unf-quantity-editor__input {
+  outline: none;
+  border: none;
+  font-family: "Rubik", sans-serif;
+  background-color: transparent;
+  color: var(--color-text-low,#000000);
+  font-size: 1.1428571428571428rem;
+  width: 66px;
+  text-align: center;
+}
