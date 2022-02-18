@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('title','Reward')
 @section('css')
 <style>
     .datepicker{

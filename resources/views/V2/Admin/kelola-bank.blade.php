@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('title','Kelola Bank')
 <style>
     .table-long{
       display: block;
@@ -184,7 +185,7 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalToggleLabel">Modal Title</h5>
+                <h5 class="modal-title" id="exampleModalToggleLabel">Add Personal Bank</h5>
               </div>
               <div class="modal-body">
                 <!-- form -->
@@ -255,7 +256,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalToggleLabel">Personal Bank</h5>
+                          <h5 class="modal-title" id="exampleModalToggleLabel">Edit Personal Bank</h5>
                         </div>
                         <div class="modal-body">
                           <!-- form -->
@@ -315,7 +316,7 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalToggleLabel" style="font-weight: 500; font-size: 27px; color: #000000;">Payment Gateway</h5>
+                <h5 class="modal-title" id="exampleModalToggleLabel" style="font-weight: 500; font-size: 27px; color: #000000;">Add Payment Gateway</h5>
               </div>
               <div class="modal-body">
                 <!-- form -->
@@ -373,7 +374,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content" style="border-radius: 20px; background: #F2F2F2;">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalToggleLabel">Modal Title</h5>
+                          <h5 class="modal-title" id="exampleModalToggleLabel">Edit Payment Gateway</h5>
                         </div>
                         <div class="modal-body">
                           <!-- form -->

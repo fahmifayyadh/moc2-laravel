@@ -168,7 +168,10 @@ class CheckoutController extends Controller
         $t = $zz[1];
         $b = $zz[2];
         toastr()->success('Terimaksih telah membeli', 'success');
-        return view('tests.transaksi.invoice', compact('d', 't', 'b'));
+        // return view('tests.transaksi.invoice', compact('d', 't', 'b'));
+
+        // V2
+        return view('V2.Member.detail-pembayaran', compact('d', 't', 'b'));
     }
     public function invoiceCourse(Request $request, Paket $course)
     {

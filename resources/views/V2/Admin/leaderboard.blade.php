@@ -2,7 +2,6 @@
 @section('title','Leaderboard')
 @section('css')
 <link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">
 <style type="text/css">
 	    .datepicker{
       z-index: 1100 !important;

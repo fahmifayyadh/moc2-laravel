@@ -204,6 +204,7 @@ class ProductController extends Controller
     public function deleteVarian($id)
     {
         Varian::destroy($id);
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
     /**
@@ -215,6 +216,7 @@ class ProductController extends Controller
     public function delete(Product $product)
     {
         $product->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
     public function search(Request $request)
