@@ -18,9 +18,9 @@ class EtalaseController extends Controller
         $produk = Paket::get();
         // return view('tests.etalase.index',compact('produk'));
 
-        //v2
+        //V2
         if (auth()->user()->role != 'admin') {
-            return view('v2.Member.allproduct_course',compact('produk'));
+            return view('V2.Member.allproduct_course',compact('produk'));
         }else {
             return view('tests.etalase.index',compact('produk'));
         }
@@ -46,10 +46,10 @@ class EtalaseController extends Controller
         $bank = Bank::where('type','gateway')->get();
         // return view('tests.etalase.detailcourse',compact(['course','bank']));
 
-        // v2
+        // V2
         $lainnya = Paket::take(4)->get();
         if (auth()->user()->role != 'admin') {
-            return view('v2.Member.detailproduct_ecourse',compact(['course','bank', 'lainnya']));
+            return view('V2.Member.detailproduct_ecourse',compact(['course','bank', 'lainnya']));
         }else {
             return view('tests.etalase.detailcourse',compact(['course','bank']));
         }
@@ -58,9 +58,9 @@ class EtalaseController extends Controller
     {
         // return view('tests.etalase.detailpaketcourse',compact('course'));
 
-        // v2
+        // V2
         if (auth()->user()->role != 'admin') {
-            return view('v2.Member.detailcourse',compact('course'));
+            return view('V2.Member.detailcourse',compact('course'));
         }else {
             return view('tests.etalase.detailpaketcourse',compact('course'));
         }
