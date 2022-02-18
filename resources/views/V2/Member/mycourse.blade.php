@@ -34,14 +34,11 @@
                           $a[] = $c->id 
                       @endphp
                     <div class="col-4 mb-4">
-                            <div class="card">
-                                <img class="card-img-top mx-auto d-block" style="height: 25rem;width: 20rem;" src="{{asset(Storage::url('course/main/'.$c->image))}}" alt="Mycourse Img">
-                                <li>
-                                 <a href="{{route('myCourse.see',[$zz->paket->id,$c->id,$zz->id])}}"><button class="btn" type="button"><i class="icon-eye"></i></button></a>
-                                </li>
+                            <div class="card" style="height: 100%;">
+                                 <a href="{{route('myCourse.see',[$zz->paket->id,$c->id,$zz->id])}}"><img class="card-img-top mx-auto d-block" style="height: 25rem;width: 20rem;" src="{{asset(Storage::url('course/main/'.$c->image))}}" alt="Mycourse Img">
                                 <div class="card-body">
-                                    <h5 class="card-title text-black text-center">{$c->name}}</h5>
-                                </div>
+                                    <h5 class="card-title text-black text-center">{{$c->name}}</h5>
+                                </div></a>
                                 <div class="card-footer d-flex">
                                 </div>
                             </div>
