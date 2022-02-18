@@ -20,7 +20,10 @@ class MycourseController extends Controller
             $z->withTrashed();
         }])->orderBy('created_at','DESC')->get();
 
-        return view('tests.materi.index', compact('course'));
+        //return view('tests.materi.index', compact('course'));
+
+        //V2
+        return view('V2.Member.mycourse', compact('course'));
     }
     public function see($paketId,Course $course,TransactionCourse $trans)
     {
