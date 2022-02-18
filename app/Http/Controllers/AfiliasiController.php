@@ -22,7 +22,7 @@ class AfiliasiController extends Controller
 
         // V2
         if(auth()->user()->role != 'admin'){
-          return view('tests.afiliasi.index', compact('products')); 
+          return view('V2.Member.afiliasi', compact('products')); 
         }else{
           return view('V2.Admin.afiliasi.link-afiliasi', compact('products')); 
         }
@@ -40,7 +40,7 @@ class AfiliasiController extends Controller
             $ag       = Agent::where('user_id', auth()->user()->id)->where('paket_id', $request->product)->first();
             if ($ag) {
                 $link = URL::to('/') . '/order-sponsor/' . auth()->user()->id . '/' . $ag->kode;
-                return view('tests.afiliasi.index', compact(['link', 'products']));
+                return view('V2.Member.afiliasi', compact(['link', 'products']));
             } else {
                 
                 $coki = 0;
@@ -65,7 +65,7 @@ class AfiliasiController extends Controller
 
         // V2
         if(auth()->user()->role != 'admin'){
-          return view('tests.afiliasi.index', compact(['link', 'products'])); 
+          return view('V2.Member.afiliasi', compact(['link', 'products'])); 
         }else{
           return view('V2.Admin.afiliasi.link-afiliasi', compact(['link', 'products'])); 
         }
@@ -80,13 +80,13 @@ class AfiliasiController extends Controller
            $transaksi = TransactionCourse::whereHas('agent',function($z){
                 return $z->where('user_id',auth()->user()->id);
             })->orderByDesc('created_at')->paginate(10);
-        return view('tests.afiliasi.status', compact('transaksi'));
+        return view('V2.Member.status', compact('transaksi'));
         }
         //return view('tests.afiliasi.list-stats', compact('agents'));
 
          // V2
         if(auth()->user()->role != 'admin'){
-          return view('tests.afiliasi.list-stats', compact('agents'));
+          return view('V2.Member.status', compact('agents'));
         }else{
           return view('V2.Admin.afiliasi.status-afiliasi', compact('agents')); 
         }
