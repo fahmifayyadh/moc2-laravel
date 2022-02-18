@@ -41,7 +41,7 @@
                             </p>
                             <div class="row">
                                 <div class="col">
-                                    <img class="mt-5" src="{{img/item/bca.png}}" width="200px" height="50px" alt="">
+                                    <img class="mt-5" src="{{asset(Storage::url('bank/'.$b->image))}}" width="200px" height="50px" alt="">
                                 </div>
                                 <div class="col">
                                     <ul class="list-unstyled">
@@ -153,10 +153,10 @@ aria-hidden="true">
         </div>
         <div class="modal-body">
             <div class="row mb-1">
-                <div class="col-6">Total Harga (1 barang)</div><div class="col-6 text-right text-black">Rp125.000</div>
+                <div class="col-6">Total Harga ({{$t->kuantiti}} barang)</div><div class="col-6 text-right text-black">{{$t->price}}</div>
             </div>
             <div class="row mb-1">
-                <div class="col-6">Total Ongkos Kirim</div><div class="col-6 text-right text-black">Rp11.000</div>
+                <div class="col-6">Total Ongkos Kirim</div><div class="col-6 text-right text-black">Rp.{{$d->ongkir}}</div>
             </div>
             <div class="row mb-1">
                 <div class="col-6">Kode Unik</div><div class="col-6 text-right text-red">+Rp2</div>
@@ -166,14 +166,14 @@ aria-hidden="true">
             </div>
             <hr>
             <div class="row mb-2">
-                <div class="col-6 text-black font-weight-bold">Total Bayar</div><div class="col-6 text-right text-custome font-weight-bold">Rp 228.000</div>
+                <div class="col-6 text-black font-weight-bold">Total Bayar</div><div class="col-6 text-right text-custome font-weight-bold">Rp {{($t->kuantiti*$t->price)+$d->ongkir-$t->discount}}</div>
             </div>
             <hr>
             <div class="row mb-2">
                 <div class="col-6 text-black font-weight-bold">Barang yang dibeli</div>
             </div>
             <div class="row mb-2">
-                <div class="col-6"><span class="text-custome font-weight-bold"> Revolotion Bright 100 ml</span> x1</div><div class="col-6 text-right text-black">Rp 125.000</div>
+                <div class="col-6"><span class="text-custome font-weight-bold"> {{$t->product->name}}</span> x{{$t->kuantiti}}</div><div class="col-6 text-right text-black">Rp {{($t->kuantiti*$t->price)+$d->ongkir-$t->discount}}</div>
             </div>
             <div class="row mb-1">
                 <div class="col-6">Ongkos Kirim</div>
@@ -214,10 +214,10 @@ aria-hidden="true">
         </div>
         <div class="modal-body">
             <div class="row text-black mb-3">
-                <div class="col-3">Nama Penerima</div><div class="col-4"> : Danuar Riyadi</div>
+                <div class="col-3">Nama Penerima</div><div class="col-4"> : {{$d->name}}</div>
             </div>
             <div class="row text-black mb-3">
-                <div class="col-3">No. Hp Penerima</div><div class="col-4"> : 0853743292359</div>
+                <div class="col-3">No. Hp Penerima</div><div class="col-4"> : {{$d->no_hp}}</div>
             </div>
             <div class="row text-black mb-3">
                 <div class="col-3">Marketplace</div><div class="col-8"> : Tokopedia</div>
@@ -229,7 +229,7 @@ aria-hidden="true">
                 <div class="col-3">Resi</div><div class="col-4"> : 465475474</div>
             </div>
             <div class="row text-black mb-3">
-                <div class="col-3">Kecamatan</div><div class="col-4"> : Cilegon</div>
+                <div class="col-3">Alamat</div><div class="col-4"> : {{$d->alamat}}</div>
             </div>
             <div class="row text-black mb-3">
                 <div class="col-3">Kode Pos</div><div class="col-4"> : 17212</div>
@@ -246,11 +246,11 @@ aria-hidden="true">
                 <div class="col-10">
                     <img src="img/item/image.png" class="mr-2" width="44px" height="40" alt="">
                     <span class="text-custome font-weight-bold">
-                        Revolotion Bright 100 ml
-                        <span class="">x1</span>
+                        {{$t->product->name}}
+                        <span class="">x{{$t->kuantiti}}</span>
                     </span>
                 </div>
-                <div class="col-2 text-right">Rp 125.000</div>
+                <div class="col-2 text-right">Rp {{($t->kuantiti*$t->price)+$d->ongkir-$t->discount}}</div>
             </div>
         </div>
 
