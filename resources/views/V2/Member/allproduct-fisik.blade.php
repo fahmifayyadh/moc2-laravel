@@ -41,7 +41,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Terbaru</a>
                         <a class="dropdown-item" href="#">Harga Tertinggi</a>
-                        <a class="dropdown-item" href="#">Harga Terendahg</a>
+                        <a class="dropdown-item" href="#">Harga Terendah</a>
                     </div>
                 </div>
             </div>

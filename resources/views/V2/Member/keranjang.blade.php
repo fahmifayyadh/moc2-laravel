@@ -5,40 +5,39 @@
 @endsection
 @section('js')
 <script>
-    $(document).ready(function () {
+$(document).ready(function () {
+    var quantitiy = 0;
+    $('.quantity-right-plus').click(function (e) {
 
-            var quantitiy = 0;
-            $('.quantity-right-plus').click(function (e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        var quantity = parseInt($('#quantity').val());
 
-                // Stop acting like a button
-                e.preventDefault();
-                // Get the field name
-                var quantity = parseInt($('#quantity').val());
+        // If is not undefined
 
-                // If is not undefined
-
-                $('#quantity').val(quantity + 1);
+        $('#quantity').val(quantity + 1);
 
 
-                // Increment
+        // Increment
 
-            });
+    });
 
-            $('.quantity-left-minus').click(function (e) {
-                // Stop acting like a button
-                e.preventDefault();
-                // Get the field name
-                var quantity = parseInt($('#quantity').val());
+    $('.quantity-left-minus').click(function (e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        var quantity = parseInt($('#quantity').val());
 
-                // If is not undefined
+        // If is not undefined
 
-                // Increment
-                if (quantity > 0) {
-                    $('#quantity').val(quantity - 1);
-                }
-            });
+        // Increment
+        if (quantity > 0) {
+            $('#quantity').val(quantity - 1);
+        }
+    });
 
-        });
+});
 </script>
 @endsection
 @section('content')
