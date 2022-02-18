@@ -1,7 +1,7 @@
 @extends('V2.layouts.master')
 @section('title','Detail Produk')
 @section('css')
-<link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
+<link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
 @endsection
 @section('js')
 <script>
@@ -55,7 +55,7 @@
 <div class="container-fluid" id="container-wrapper">
     <!-- title berita -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-        <a href="allproduct.html">
+        <a href="#">
             <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> |
                 </span>
@@ -191,7 +191,7 @@
     </div>
     <!-- detail product -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-        <a href="allproduct.html">
+        <a href="#">
             <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> |
                 </span>

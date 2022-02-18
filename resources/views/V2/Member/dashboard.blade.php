@@ -37,7 +37,7 @@
                     <!-- caraousel slide -->
                     <!-- title berita -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-                        <a href="allproduct.html">
+                        <a href="#">
                             <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
                                 BERITA PENTING <span style="font-weight: 100;"></span>
@@ -152,6 +152,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="card bg-secondary-card" style="background-color: #343546;">
+                                                        <a type="button" data-toggle="modal" data-target="#totalomzet">
                                                         <div class="card-body">
                                                             <p style="color:#FF9F1C;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
                                                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
@@ -160,7 +161,7 @@
                                                             <p class="text-center text-light h1">
                                                                  {{number_format($saldo,0,'.','.')}}
                                                             </p>
-                                                        </div>
+                                                        </div></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,7 +269,6 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="card bg-secondary-card" style="background-color: #343546;">
-                                                        <a type="button" data-toggle="modal" data-target="#totalomzet">
                                                         <div class="card-body ">
                                                             <p style="color:#FF9F1C;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
                                                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
@@ -278,7 +278,6 @@
                                                                 {{number_format($sales,0,'.','.')}}
                                                             </p>
                                                         </div>
-                                                            </a>
                                                     </div>
                                                 </div>
                                             </div>

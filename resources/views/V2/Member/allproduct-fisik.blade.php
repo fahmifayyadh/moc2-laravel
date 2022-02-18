@@ -1,7 +1,7 @@
 @extends('V2.layouts.master')
 @section('title','All Product Fisik')
 @section('css')
-<link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
+<link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
 @endsection
 @section('content')
 <!-- Container Fluid-->
@@ -10,13 +10,13 @@
         <div class="col-6">
             <!-- title Leaderboard -->
             <div class="d-sm-flex align-items-center justify-content-between">
-                <a href="allproduct.html">
+                <a href="#">
                     <p
                         style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                         <span
                             style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;">
                             | </span>
-                        All Product (Produk Fisik)<span style="font-weight: 100;">(Produk Fisik)</span>
+                        All Product <span style="font-weight: 100;">(Produk Fisik)</span>
                     </p>
                 </a>
             </div>
@@ -60,7 +60,7 @@
         <!-- loop product -->
         @foreach ($produk as $c)
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card w-80">
+            <div class="card w-80" style="height: 100%">
                 <a href="{{route(Request::path() == 'etalase/product' ? 'etalase.detail-produk' : 'etalase.detail-course',$c->id) }}"><img class="card-img-top mx-auto d-block img-fluid" style="height: 20rem; object-fit: cover;height: 300px;width:300px"
                 src="{{asset(Storage::url(Request::path() == 'etalase/product' ? 'product/main/'.$c->image : 'paket/'.$c->image))}}" alt="Card image cap"></a>
                 <div class="card-body">

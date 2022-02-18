@@ -121,7 +121,7 @@ class CheckoutController extends Controller
                 'name'           => $request->name,
                 'alamat'         => $request->alamat,
                 'no_hp'          => $request->no_hp,
-                //'kode_pos'       => $request->kode_pos,
+                'kode_pos'       => $request->kode_pos,
                 'ongkir'         => $harga[$request->jenis],
                 'jenis'          => $request->jenis
             ]);

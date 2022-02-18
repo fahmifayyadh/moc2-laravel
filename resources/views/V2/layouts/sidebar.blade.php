@@ -164,12 +164,12 @@
           <span>My Course</span>
         </a>
       </li>
-     {{-- <li class="nav-item">
+     <li class="nav-item">
         <a class="nav-link" href="{{route('file.index')}}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Media Promosi</span>
         </a>
-      </li> --}}
+      </li> 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Orderproduk" aria-expanded="true"
         aria-controls="collapseTable">

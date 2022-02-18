@@ -1,7 +1,7 @@
 @extends('V2.layouts.master')
 @section('title','Keranjang')
 @section('css')
-<link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
+<link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
 @endsection
 @section('js')
 <script>

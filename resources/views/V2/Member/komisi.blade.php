@@ -7,7 +7,7 @@
                         <div class="col-7">
                             <!-- title KOMISI COURSE -->
                             <div class="d-sm-flex align-items-center justify-content-between">
-                                <a href="allproduct.html">
+                                <a href="#">
                                     <p
                                         style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                                         <span
