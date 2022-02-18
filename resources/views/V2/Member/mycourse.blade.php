@@ -28,8 +28,7 @@
                         @endphp  
                         @foreach ($course as $zz)
                       @foreach ($zz->paket->course as $c)
-                      @if (!in_array($c->id,$a))
-                          
+                      @if (!in_array($c->id,$a))     
                       @php
                           $a[] = $c->id 
                       @endphp
