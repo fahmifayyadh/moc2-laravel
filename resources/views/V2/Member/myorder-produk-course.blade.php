@@ -85,15 +85,18 @@
                                         	@include('tests.order.komponen.invoice')
                                         	<label class="badge badge-primary p-2 mb-2" data-toggle="modal"
                                         	data-target="#person{{$tc->id}}"
-                                        	style="cursor: pointer">Lihat</label>
+                                        	style="cursor: pointer">Lihat Pembayaran</label>
                                         	@elseif(!is_null($tc->link_invoice) )
                                         	@include('tests.order.komponen.invoicegateway')
-                                        	<label class="badge badge-warning p-2" data-toggle="modal"
+                                        	<label class="badge badge-primary p-2 mb-2" data-toggle="modal"
                                         	data-target="#gate{{$tc->id}}"
                                         	style="cursor: pointer">Lihat</label>
                                         	@else
 
                                         	@endif
+                                             @if ($tc->status != 'selesai' && $tc->link_invoice == null)
+                                        <label class="badge badge-warning p-2" data-toggle="modal" data-target="#bukti{{$tc->id}}" style="cursor: pointer;">Upload Bukti</label></td>
+                                         @endif
 
                                         </td>
                                         <td> {{$tc->created_at->format('d-m-Y')}}</td>
@@ -102,10 +105,7 @@
 
                                         @include('V2.Member.modal.myorder.badgecourse')
                                         
-                                        <td><label class="badge badge-pill badge-danger p-2" data-toggle="modal" data-target="#orderDetail{{$tc->id}}" style="cursor: pointer;">Detail</label>
-                                        @if ($tc->status != 'selesai' && $tc->link_invoice == null)
-                                        <label class="btn btn-success btn-sm text-light" data-toggle="modal" data-target="#bukti{{$tc->id}}" style="cursor: pointer;">Bukti</label></td>
-                                         @endif
+                                        <td><label class="btn btn-success btn-sm text-light" data-toggle="modal" data-target="#orderDetail{{$tc->id}}" style="cursor: pointer;">Detail Order</label>
                                     </tr>
                                      {{-- upload bukti --}}
                                     @include('V2.Member.modal.myorder.bukti')

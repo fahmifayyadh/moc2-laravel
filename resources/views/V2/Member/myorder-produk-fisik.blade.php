@@ -60,18 +60,15 @@
                                         <th>No.</th>
                                         <th>Nama Produk</th>
                                         <th>Jenis Produk</th>
-                                        <th>Point pembeli</th>
+                                        <th>Point Pembeli</th>
                                         <th>Kuantiti</th>
-                                        <th>Exspedisi</th>
-                                        <th>Jenis Pengiriman</th>
+                                        <th>Detail Pengiriman</th>
+                                        <th>Link Pembayaran</th>
                                         <th>Kupon</th>
-                                        <th>Penerima</th>
-                                        <th>No Resi</th>
                                         <th>Tanggal Beli</th>
                                         <th>Tanggal Tiba</th>
-                                        <th>Total harga</th>
+                                        <th>Total Harga</th>
                                         <th>Status</th>
-                                        <th>Action</th>
 
                                     </tr>
                                 </thead>
@@ -84,31 +81,30 @@
                                         <td>Produk</td>
                                         <td>{{$tf->point_pembeli}}</td>
                                         <td>{{$tf->kuantiti}}</td>
-                                        <td>{{$tf->delivery->kurir}}</td>
-                                        <td>{{$tf->delivery->jenis}}</td>
+                                        <td>
+                                           @include('V2.Member.modal.myorder.detailpengirimanproduk')
+                                            <label  class="badge badge-primary p-2 mb-2" data-toggle="modal" data-target="#kirimproduk{{$tf->id}}" style="cursor: pointer;">Detail Pengiriman</label>
+                                            <!-- <a href="#" class="badge badge-warning p-2" data-toggle="modal" data-target="#exampleModal2">Detail Penerima</a> -->
+                                        </td>
+                                        <td>@if ($tf->status != 'refund' && $tf->status != 'batal' && $tf->status != 'selesai')
+                                      
+                                            <span style="cursor: pointer;" class="badge badge-success p-2 mb-2" data-toggle="modal" data-target="#orderDetail{{$tf->id}}">Invoice</span>
+                                            @include('tests.order.komponen.invoicefisik')
+                                            @endif
+
+                                           @if ($tf->status != 'proses' && $tf->status != 'batal' && $tf->status != 'selesai' && $tf->status != 'refund')
+                                      
+                                         <span style="cursor: pointer;" class="badge badge-warning p-2 mb-2" data-toggle="modal" data-target="#bukti{{$tf->id}}">Uploud Bukti Bayar</span>
+                                         @include('tests.order.komponen.buktifisik')
+
+                                             @endif
+                                        </td>
                                         <td>{{$tf->kupon != null ? $tf->kupon->kode.'-'.$tf->discount : null}}</td>
-                                        <td>{{$tf->delivery->name}}</td>
-                                        <td>{{$tf->delivery->no_resi}}</td>
                                         <td>{{$tf->created_at->format('d-m-Y')}}</td>
                                         <td>{{$tf->status == 'selesai' ? $tf->updated_at->format('d-m-Y') : 'Belum Selesai'}}</td>
                                         <td>Rp {{number_format(($tf->price*$tf->kuantiti)-$tf->discount+$tf->delivery->ongkir,0,'.','.')}}</td>
-
-                                        @include('tests.order.komponen.badgefisik')
-                                        <td>
-                                  @if ($tf->status != 'refund' && $tf->status != 'batal' && $tf->status != 'selesai')
-                                      
-                                  <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#orderDetail{{$tf->id}}">Invoice</button>
-                                  @include('tests.order.komponen.invoicefisik')
-                                  @endif
-                                  @if ($tf->status != 'proses' && $tf->status != 'batal' && $tf->status != 'selesai' && $tf->status != 'refund')
-                                      
-                                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#bukti{{$tf->id}}">Bukti</button>
-                                @include('tests.order.komponen.buktifisik')
-
-                                @endif
-                              </td>
+                                            @include('tests.order.komponen.badgefisik')
                                     </tr>
-
                                     @endforeach
                                     <!-- loop data -->
                                 </tbody>
