@@ -1,4 +1,4 @@
-@extends('v2.layouts.master')
+@extends('V2.layouts.master')
 @section('title', 'Detail Product Ecourse')
 @section('css')
 <link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
