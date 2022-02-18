@@ -1,9 +1,5 @@
 @extends('V2.layouts.master')
 @section('title','Edit Banner')
-@section('head')
-<script src="{{ asset('js/app.js') }}" defer></script>
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
-@endsection
 <style>
 	.card {
 		border-radius: 10px;
@@ -77,6 +73,4 @@
 		</form>
 	</div>
 </div>
-<script src="{{asset('/assets/js/editor/summernote/summernote.js')}}"></script>
-<script src="{{asset('/assets/js/editor/summernote/summernote.custom.js')}}"></script>
 @endsection

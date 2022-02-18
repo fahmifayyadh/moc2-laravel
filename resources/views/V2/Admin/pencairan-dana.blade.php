@@ -1,4 +1,5 @@
 @extends('V2.layouts.master')
+@section('title','Pencairan Dana')
 <style>
     .nav-item a {
       color: white;
