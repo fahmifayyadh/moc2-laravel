@@ -1,5 +1,5 @@
 @extends('V2.layouts.master')
-@section('title','My Order Fisik')
+@section('title','My Order Produk')
 @section('css')
  <link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
 @endsection
@@ -16,19 +16,19 @@
                                         <span
                                             style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;">
                                             | </span>
-                                            MY ORDER (COURSE) <span style="font-weight: 100;"></span>
+                                            MY ORDER (PRODUK) <span style="font-weight: 100;"></span>
                                     </p>
                                 </a>
                             </div>
                             <!-- title KOMISI FISIK-->
                         </div>
                         <div class="col-3">
-                            <div class="box">
+                            <!-- <div class="box">
                                 <a href="">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </a>
                                 <input type="text" name="" placeholder="cari komisi">
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-2">
                             <div class="text-right">
@@ -40,9 +40,9 @@
                                         Filter</button>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Terbaru</a>
-                                        <a class="dropdown-item" href="#">Harga Tertinggi</a>
-                                        <a class="dropdown-item" href="#">Harga Terendahg</a>
+                                        <a class="dropdown-item" href="{{route('order.filterCourse','')}}">Terbaru</a>
+                                        <a class="dropdown-item" href="{{route('order.filterCourse','')}}">Harga Tertinggi</a>
+                                        <a class="dropdown-item" href="{{route('order.filterCourse','')}}">Harga Terendahg</a>
                                     </div>
                                 </div>
                             </div>
@@ -54,19 +54,22 @@
 
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-borderless align-items-center table-flush">
+                            <table id="table_id" class="display table table-borderless align-items-center table-flush">
                                 <thead class="thead bg-secondary-card">
                                     <tr>
                                         <th>No.</th>
                                         <th>Nama Produk</th>
-                                        <th>Kelompok Paket</th>
+                                        <th>Jenis Produk</th>
+                                        <th>Point pembeli</th>
+                                        <th>Kuantiti</th>
+                                        <th>Exspedisi</th>
+                                        <th>Jenis Pengiriman</th>
                                         <th>Kupon</th>
-                                        <th>Point Pembeli</th>
-                                        <th>Link Pembayaran</th>
+                                        <th>Penerima</th>
+                                        <th>No Resi</th>
                                         <th>Tanggal Beli</th>
-                                        <th>Batas hari
-                                            penggunaan video</th>
-                                        <th>Harga</th>
+                                        <th>Tanggal Tiba</th>
+                                        <th>Total harga</th>
                                         <th>Status</th>
                                         <th>Action</th>
 
@@ -74,22 +77,37 @@
                                 </thead>
                                 <tbody>
                                     <!-- loop data -->
+                                   @foreach ($transFisik ?? [] as $i => $tf)
                                     <tr class=" text-custome">
-                                        <td>1</td>
-                                        <td>7 Days Private
-                                            Premium Access </td>
-                                        <td>E-course</td>
-                                        <td>Not Use</td>
-                                        <td>0</td>
-                                        <td><a href="#" class="badge badge-primary p-2 mb-2">Pembayaran</a>
-                                            <a href="#" class="badge badge-warning p-2">Uploud Bukti Bayar</a>
-                                        </td>
-                                        <td>29-07-2021</td>
-                                        <td>Belum Bayar</td>
-                                        <td>Rp 1.534.999</td>
-                                        <td><span class="badge badge-pill badge-danger p-2">Expired</span></td>
-                                        <td><button class="btn btn-success btn-sm text-light" data-toggle="modal" data-target="#exampleModal">Detail Order</button></td>
+                                        <td><label>{{$i+1}}</label>.</td>
+                                        <td>{{$tf->product->name}}</td>
+                                        <td>Produk</td>
+                                        <td>{{$tf->point_pembeli}}</td>
+                                        <td>{{$tf->kuantiti}}</td>
+                                        <td>{{$tf->delivery->kurir}}</td>
+                                        <td>{{$tf->delivery->jenis}}</td>
+                                        <td>{{$tf->kupon != null ? $tf->kupon->kode.'-'.$tf->discount : null}}</td>
+                                        <td>{{$tf->delivery->name}}</td>
+                                        <td>{{$tf->delivery->no_resi}}</td>
+                                        <td>{{$tf->created_at->format('d-m-Y')}}</td>
+                                        <td>{{$tf->status == 'selesai' ? $tf->updated_at->format('d-m-Y') : 'Belum Selesai'}}<</td>
+                                        <td>Rp {{number_format(($tf->price*$tf->kuantiti)-$tf->discount+$tf->delivery->ongkir,0,'.','.')}}</td>
+                                        <td>
+                                  @if ($tf->status != 'refund' && $tf->status != 'batal' && $tf->status != 'selesai')
+                                      
+                                  <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#orderDetail{{$tf->id}}">Invoice</button>
+                                  @include('tests.order.komponen.invoicefisik')
+                                  @endif
+                                  @if ($tf->status != 'proses' && $tf->status != 'batal' && $tf->status != 'selesai' && $tf->status != 'refund')
+                                      
+                                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#bukti{{$tf->id}}">Bukti</button>
+                                @include('tests.order.komponen.buktifisik')
+
+                                @endif
+                              </td>
                                     </tr>
+
+                                    @endforeach
                                     <!-- loop data -->
                                 </tbody>
                             </table>
