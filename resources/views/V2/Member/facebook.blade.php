@@ -94,4 +94,4 @@
       }
       @endif
     </script>
-@endsections
+@endsection
