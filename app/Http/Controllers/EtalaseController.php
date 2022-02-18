@@ -20,7 +20,7 @@ class EtalaseController extends Controller
 
         //v2
         if (auth()->user()->role != 'admin') {
-            return view('v2.member.allproduct_course',compact('produk'));
+            return view('v2.Member.allproduct_course',compact('produk'));
         }else {
             return view('tests.etalase.index',compact('produk'));
         }
@@ -44,14 +44,26 @@ class EtalaseController extends Controller
     public function detailCourse(Paket $course)
     {
         $bank = Bank::where('type','gateway')->get();
-        //return view('tests.etalase.detailcourse',compact(['course','bank']));
+        // return view('tests.etalase.detailcourse',compact(['course','bank']));
 
-        //V2
-        return view('V2.Member.detail-produk-course',compact(['course','bank']));
+        // v2
+        $lainnya = Paket::take(4)->get();
+        if (auth()->user()->role != 'admin') {
+            return view('v2.Member.detailproduct_ecourse',compact(['course','bank', 'lainnya']));
+        }else {
+            return view('tests.etalase.detailcourse',compact(['course','bank']));
+        }
     }
     public function detailCoursePaket(Course $course)
     {
-        return view('tests.etalase.detailpaketcourse',compact('course'));
+        // return view('tests.etalase.detailpaketcourse',compact('course'));
+
+        // v2
+        if (auth()->user()->role != 'admin') {
+            return view('v2.Member.detailcourse',compact('course'));
+        }else {
+            return view('tests.etalase.detailpaketcourse',compact('course'));
+        }
     }
     // public function detailPaketCourse(Paket $paket)
     // {
