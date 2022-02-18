@@ -1,4 +1,4 @@
-@extends('layouts.master',['title' => 'Status Transaksi E-Course'])
+@extends('V2.layouts.master')
 @section('content')
 <div class="page-body">
     <br>

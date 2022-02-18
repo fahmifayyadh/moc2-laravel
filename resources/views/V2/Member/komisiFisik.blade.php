@@ -1,4 +1,4 @@
-@extends('layouts.master',['title' => 'Konfirmasi komisiFisik Masuk'])
+@extends('V2.layouts.master')
 @section('content')
 
 <div class="page-body">
