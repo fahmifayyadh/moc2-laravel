@@ -84,7 +84,7 @@
                                         <td>
                                            @include('V2.Member.modal.myorder.detailpengirimanproduk')
                                             <label  class="badge badge-primary p-2 mb-2" data-toggle="modal" data-target="#kirimproduk{{$tf->id}}" style="cursor: pointer;">Detail Pengiriman</label>
-                                            <!-- <a href="#" class="badge badge-warning p-2" data-toggle="modal" data-target="#exampleModal2">Detail Penerima</a> -->
+                                            <a href="#" class="badge badge-warning p-2" data-toggle="modal" data-target="#exampleModal2">Detail Penerima</a>
                                         </td>
                                         <td>@if ($tf->status != 'refund' && $tf->status != 'batal' && $tf->status != 'selesai')
                                       
