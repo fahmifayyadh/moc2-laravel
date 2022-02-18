@@ -7,7 +7,15 @@
 
   @if (Auth::check() && Request::segment(1) != 'order-sponsor')
   <ul class="navbar-nav ml-auto">
-
+    @if (Auth::check() && auth()->user()->role == 'member')
+    <li class="nav-item dropdown no-arrow mx-1">
+      <a class="nav-link" href="{{route('etalase.keranjang')}}"
+        aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-shopping-cart" style="color: #FF9F1C;"></i>
+        <span class="badge badge-danger badge-counter">3</span>
+      </a>
+    </li>
+    @endif
     <li class="nav-item dropdown no-arrow mx-1">
       <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
