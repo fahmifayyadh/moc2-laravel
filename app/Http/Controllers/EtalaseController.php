@@ -41,7 +41,10 @@ class EtalaseController extends Controller
     public function detailCourse(Paket $course)
     {
         $bank = Bank::where('type','gateway')->get();
-        return view('tests.etalase.detailcourse',compact(['course','bank']));
+        //return view('tests.etalase.detailcourse',compact(['course','bank']));
+
+        //V2
+        return view('V2.Member.detail-produk-course',compact(['course','bank']));
     }
     public function detailCoursePaket(Course $course)
     {
