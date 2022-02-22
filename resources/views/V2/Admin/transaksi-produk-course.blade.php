@@ -399,8 +399,8 @@
                       <td>Rp {{number_format($t->price-$t->discount,0,'.','.')}}</td>
                       <td>{{$t->created_at->format('Y-m-d')}}</td>
                        {{-- Detail modal --}}
-                       @include('v2.admin.modal.detail-transaksi-course')
-                       @include('v2.admin.modal.badge-transaksi-course')
+                       @include('V2.Admin.modal.detail-transaksi-course')
+                       @include('V2.Admin.modal.badge-transaksi-course')
                       <td>
                        @if ($t->status == 'selesai')
                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -409,12 +409,12 @@
                        @if ($t->status == 'pembayaran')
                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
                        data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
-                       @include('v2.admin.modal.priv')
+                       @include('V2.Admin.modal.priv')
                        @endif
                        @if ($t->status == 'batal')
                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
                        data-target="#preview-pembayaran{{$t->id}}">Bukti</button>
-                       @include('v2.admin.modal.priv')
+                       @include('V2.Admin.modal.priv')
                        @endif
                      </td>
                       <!-- <td>
