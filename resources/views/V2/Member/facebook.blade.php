@@ -1,4 +1,4 @@
-@extends('layouts.master',['title' => 'Facebook Pixel'])
+@extends('V2.layouts.master',['title' => 'Facebook Pixel'])
 @section('head')
 <script>
   function myFunction() {
@@ -9,12 +9,27 @@
   }
   </script>
 @endsection
+@section('css')
+  <style>
+    .card-header{
+      background: #252633;
+    }
+    thead {
+      background: #283246;
+    }
+  table tbody tr {
+      background: #252633;
+  }
+  table tbody tr td {
+      color: #FF9F1C;
+  }
+  .card-footer{
+    background: #252633;
+  }
+  
+  </style>
+@endsection
 @section('content')
-<div class="page-body">
-  <div class="container-fluid">
-    <div class="page-header">
-      <div class="row">
-        <div class="col-12">
 
   <!-- Container Fluid-->
   <div class="container-fluid" id="container-wrapper">
@@ -79,11 +94,6 @@
                 </div>
                 <!---Container Fluid-->
                 
-</div>
-</div>
-</div>
-</div>
-</div>
 @endsection
 @section('footer')
     <script>

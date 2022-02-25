@@ -1,7 +1,29 @@
-@extends('layouts.master',['title' => 'Konfirmasi Komisi Masuk'])
+@extends('V2.layouts.master',['title' => 'Konfirmasi Komisi Masuk'])
+@section('title','Komisi Course')
+
+@section('css')
+  <style>
+    .card-header{
+      background: #252633;
+    }
+    thead {
+      background: #283246;
+    }
+  table tbody tr {
+      background: #252633;
+  }
+  table tbody tr td {
+      color: #FF9F1C;
+  }
+  .card-footer{
+    background: #252633;
+  }
+  
+  </style>
+@endsection
 @section('content')
-<div class="page-body">
-    <br>
+
+<!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="row">
                         <div class="col-7">
@@ -20,13 +42,12 @@
                             <!-- title KOMISI COURSE-->
                         </div>
                         <div class="col-3">
-                            <div class="box">
-                                <a href="">
+                                <!-- <a href="">
                                     <i class="fa fa-search" aria-hidden="true"></i>
-                                </a>
-                                <input type="text" name="" placeholder="cari komisi">
-                            </div>
-                        </div>
+                                </a> -->
+                                   
+                                    <input class="form-control" type="text" name="" placeholder="cari komisi">
+                                </div>
                         <div class="col-2">
                             <div class="text-right">
                                 <div class="dropdown">
@@ -39,7 +60,7 @@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">Terbaru</a>
                                         <a class="dropdown-item" href="#">Harga Tertinggi</a>
-                                        <a class="dropdown-item" href="#">Harga Terendahg</a>
+                                        <a class="dropdown-item" href="#">Harga Terendah</a>
                                     </div>
                                 </div>
                             </div>
@@ -63,16 +84,16 @@
 
                                     </tr>
                                 </thead>
+                                
                                 <tbody>
+                                @foreach ($transactionCourse as $i => $t)
                                     <!-- loop data -->
-                                    @foreach ($transactionCourse as $i => $t)
                                     <tr class=" text-custome">
                                         <td>{{$i+1}}</td>
                                         <td>{{$t->user->name}}</td>
                                         <td>{{$t->paket->name}}</td>
                                         <td>Rp.{{$t->commission}}</td>
                                         <td>{{$t->created_at->format('d-m-Y')}}</td>
-
                                         @if (!is_null($t->komisi) && $t->komisi->status ==
                                                                     'selesai')
                                         <td><span class="badge badge-success mr-2 p-2">sudah bayar</span></td>
@@ -80,19 +101,9 @@
                                         @if (is_null($t->komisi))
                                         <td><span class="badge badge-danger mr-2 p-2">menunggu pembayaran</span></td>
                                         @endif
-                                    </tr>
-                                    @endforeach
-                                    <!-- <tr class=" text-custome">
-                                        <td>2</td>
-                                        <td>Danuar Riyaldi</td>
-                                        <td>7 Days Private
-                                            Premium Access</td>
-                                        <td>Rp.0</td>
-                                        <td>19-05-2021</td>
-                                        <td><span class="badge badge-success mr-2 p-2">sudah bayar</span></td>
-                                        
 
-                                    </tr> -->
+                                    </tr>
+                                  @endforeach
                                     <!-- loop data -->
                                 </tbody>
                             </table>
@@ -100,6 +111,7 @@
                         <div class="card-footer bg-primary-card"></div>
                     </div>
                 </div>
+                <!---Container Fluid-->
 
-</div>
+
 @endsection

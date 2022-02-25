@@ -1,4 +1,4 @@
-@extends('layouts.master',['title' => 'Generate Afiliasi'])
+@extends('V2.layouts.master',['title' => 'Generate Afiliasi'])
 @section('head')
 <script>
     function myFunction(l = 0) {
@@ -9,13 +9,20 @@
     }
 </script>
 @endsection
-@section('content')
-<div class="page-body">
-  <div class="container-fluid">
-    <div class="page-header">
-      <div class="row">s
-        <div class="col-12">
- 
+@section('css')
+    <style>
+        .card-body{
+            background : #252633;
+        }
+        .form-control{
+            color: #F7941F;
+        }
+        .card-footer{
+            background : #252633;
+        }
+    </style>
+@endsection
+@section('content') 
  <!-- Container Fluid-->
  <div class="container-fluid" id="container-wrapper">
                     <div class="row">
@@ -43,20 +50,20 @@
                             @csrf
                                 <div class="form-row">
                                     <div class="col-10">
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select class="form-control" style="color: #ffffff; background: #4C4E63; border: 1px solid #4C4E63;" id="exampleFormControlSelect1">
                                             @foreach ($products as $p)
-                                            <option  value="{{$p->id}}">{{$p->name}}</option>
+                                            <option value="{{$p->id}}">{{$p->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <button type="submit"  class="btn button-custome btn-sm text-light form-control">generate</button>
+                                        <button type="submit" style="color: #ffffff; background: #F7941F; " class="btn button-custome btn-sm text-light form-control">Generate</button>
                                     </div>
                                 </div>
                                 <p class="text-title-link mt-3">Halaman Penjualan / Sales Page</p>
                                 <div class="form-row">
                                     <div class="col-6">
-                                        <input id="myInput" name="aff-link-0" type="text" class="form-control"  value="{{$link ?? 'Kosong'}}/salesPage" placeholder="mocmembership.com/order-sponsor/2/8P" readonly="">
+                                        <input id="myInput" style="background: #252633; border: 1px solid #54545A;" name="aff-link-0" type="text" class="form-control"  value="{{$link ?? 'Kosong'}}/salesPage" placeholder="mocmembership.com/order-sponsor/2/8P" readonly="">
                                     </div>
                                     <div class="col-2">
                                         <button class="btn btn-success btn-sm text-light form-control" onclick="myFunction()">copy</button>
@@ -65,7 +72,7 @@
                                 <p class="text-title-link mt-3">Halaman Checkout</p>
                                 <div class="form-row">
                                     <div class="col-6">
-                                        <input id="myInput1" name="aff-link-1"  value="{{$link ?? 'Kosong'}}" type="text" class="form-control" placeholder="mocmembership.com/order-sponsor/2/8P" readonly="">
+                                        <input style="background: #252633; border: 1px solid #54545A;" id="myInput1" name="aff-link-1"  value="{{$link ?? 'Kosong'}}" type="text" class="form-control" placeholder="mocmembership.com/order-sponsor/2/8P" readonly="">
                                     </div>
                                     <div class="col-2">
                                         <button onclick="myFunction(1)" class="btn btn-success btn-sm text-light form-control">copy</button>
@@ -76,10 +83,5 @@
                         <div class="card-footer bg-primary-card"></div>
                     </div>
                 </div>
-                </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                
 @endsection

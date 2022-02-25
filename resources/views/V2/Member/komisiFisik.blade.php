@@ -1,4 +1,24 @@
-@extends('layouts.master',['title' => 'Konfirmasi komisiFisik Masuk'])
+@extends('V2.layouts.master',['title' => 'Konfirmasi komisiFisik Masuk'])
+@section('css')
+  <style>
+    .card-header{
+      background: #252633;
+    }
+    thead {
+      background: #283246;
+    }
+  table tbody tr {
+      background: #252633;
+  }
+  table tbody tr td {
+      color: #FF9F1C;
+  }
+  .card-footer{
+    background: #252633;
+  }
+  
+  </style>
+@endsection
 @section('content')
 
 <div class="page-body">
