@@ -160,7 +160,7 @@ background-color: #F5F5F5; }
             <li class="active grey lighten-3 p-2">
               <a href="{{route('chat.pesan',$u->id)}}" class="d-flex ">
                 <img src="{{$u->foto ? asset(Storage::url('/user/'.$u->foto)): asset('assets/images/user/1.jpg')}}" alt="avatar" class="avatar rounded-circle d-flex align-self-center">
-                <div style="{{$u->from_user_count > 0 ? 'background-color: #f8d62b;': null}}" class="state"></div>
+                <div class="state" style="{{$u->from_user_count > 0 ? 'background-color: #f8d62b;': null}}" ></div>
                 <div class="text-small">
                   <strong>{{$u->name}}</strong>
                  <!--  <p class="last-message text-muted">{{Str::limit($u->name,11)}}</p> -->

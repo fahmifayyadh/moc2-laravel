@@ -408,9 +408,9 @@
                       </td>
                       <td>{{$t->created_at->format('Y-m-d')}}</td>
                       {{-- Detail modal --}}
-                      @include('v2.admin.modal.detail-transaksi-produk')
-                      @include('v2.admin.modal.pembayaran-transaksi')
-                      @include('v2.admin.modal.badge-transaksi-produk')
+                      @include('V2.Admin.modal.detail-transaksi-produk')
+                      @include('V2.Admin.modal.pembayaran-transaksi')
+                      @include('V2.Admin.modal.badge-transaksi-produk')
                       <td>
                         @if ($t->status != 'batal')
                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -445,7 +445,7 @@
                 </td>
               </tr>
               @if ($t->status == "proses")
-              @include('v2.admin.modal.resi-transaksi')
+              @include('V2.Admin.modal.resi-transaksi')
               @endif
               @endforeach
 
