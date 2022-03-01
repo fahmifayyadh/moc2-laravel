@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="col-9 my-auto text-black">
                                          <div data-toggle="collapse"
-                                         data-target="#collapse{{$i+1}}" class="card-header" id="heading{{$i+1}}" style="background-color: #fff;padding: 0">
+                                         data-target="#collapse{{$i+1}}" class="card-header" id="heading{{$i+1}}" style="background-color: #fff;padding: 0" onclick="collapse()">
                                          <h2 class="mb-0">
                                             <p class="h4">Berita {{$i+1}}</p>
                                             <button style="color:black" class="btn btn-link" type="button" aria-expanded="true" aria-controls="collapse{{$i+1}}">
@@ -74,6 +74,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                        <small>dibuat pada: {{$b->created_at}}</small>
                                         </div>
                                     </div>
                                     <hr style="border-top: 1px dashed" class="">
@@ -359,4 +360,15 @@
                     </div>
                 </div>
 
+@endsection
+@section('js')
+<script >
+         function collapse() {
+        if (document.getElementById("collapse{{$i+1}}").style.display === "none") {
+          document.getElementById("collapse{{$i+1}}").style.display = "block";
+        } else {
+          document.getElementById("collapse{{$i+1}}").style.display = "none";
+        }
+      }
+</script>
 @endsection

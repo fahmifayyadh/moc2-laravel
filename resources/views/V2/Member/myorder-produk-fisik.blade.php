@@ -91,14 +91,14 @@
                                         <td>@if ($tf->status != 'refund' && $tf->status != 'batal' && $tf->status != 'selesai')
                                       
                                             <span style="cursor: pointer;" class="badge badge-success p-2 mb-2" data-toggle="modal" data-target="#orderDetail{{$tf->id}}">Detail Pembayaran</span>
-                                            @include('tests.order.komponen.invoicefisik')
+                                            @include('V2.Member.modal.myorder.invoicefisik')
                                           <!--  <a href="{{route('order.invoice',$tf->id)}}" class="badge badge-success p-2 mb-2">Detail Pembayaran</a> -->
                                             @endif
 
                                            @if ($tf->status != 'proses' && $tf->status != 'batal' && $tf->status != 'selesai' && $tf->status != 'refund')
                                       
-                                         <span style="cursor: pointer;" class="badge badge-warning p-2 mb-2" data-toggle="modal" data-target="#bukti{{$tf->id}}">Uploud Bukti Bayar</span>
-                                         @include('tests.order.komponen.buktifisik')
+                                         <span style="cursor: pointer;" class="badge badge-warning p-2 mb-2" data-toggle="modal" data-target="#bukti{{$tf->id}}">Upload Bukti Bayar</span>
+                                         @include('V2.Member.modal.myorder.buktifisik')
 
                                              @endif
                                         </td>
@@ -106,7 +106,7 @@
                                         <td>{{$tf->created_at->format('d-m-Y')}}</td>
                                         <td>{{$tf->status == 'selesai' ? $tf->updated_at->format('d-m-Y') : 'Belum Selesai'}}</td>
                                         <td>Rp {{number_format(($tf->price*$tf->kuantiti)-$tf->discount+$tf->delivery->ongkir,0,'.','.')}}</td>
-                                            @include('tests.order.komponen.badgefisik')
+                                            @include('V2.Member.modal.myorder.badgefisik')
                                     </tr>
                                     @endforeach
                                     <!-- loop data -->
