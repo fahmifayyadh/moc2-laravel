@@ -52,7 +52,10 @@ class MycourseController extends Controller
             toastr($e->getMessage(),'error');
             return redirect()->back();
         }
-        return view('tests.materi.materi', compact(['babCourse','ar','course','namaCourse','trans','subcourse', 'prog',]));
+        //return view('tests.materi.materi', compact(['babCourse','ar','course','namaCourse','trans','subcourse', 'prog',]));
+
+        //v2
+        return view('V2.Member.mycourse-detail', compact(['babCourse','ar','course','namaCourse','trans','subcourse', 'prog',]));
     }
     public function sudaDibaca(TransactionCourse $trans,Course $course)
     {

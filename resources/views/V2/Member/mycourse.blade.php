@@ -1,5 +1,5 @@
  @extends('V2.layouts.master')
-@section('title','My Order Course')
+@section('title','My Course')
 @section('css')
  <link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
 @endsection

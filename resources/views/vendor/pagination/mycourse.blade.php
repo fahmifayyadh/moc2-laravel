@@ -19,7 +19,7 @@ $sd = [];
     @foreach ($element as $page => $url)
     @if (!in_array($namaCourse[$page-1]->babcourse->id, $sd))
     <div class="data">
-        <div class="card text-light" style="background-color:#EC3C27">
+        <div class="card text-light" style="background-color:#DC4343">
             <span class="pl-2 m-2">BAB: {{$namaCourse[$page-1]->babcourse->name}}
             </span>
         </div>
@@ -38,7 +38,7 @@ $sd = [];
 @else
 <div class="data ml-5">
     <a href="{{$url}}" class="">
-        <div class="card bg-warning text-light">
+        <div class="card bg-warning text-light" style="background-color: #FF9F1C">
             <span class="pl-2 m-1">{{$namaCourse[$page-1]->name}} {!!in_array($page,$ar) ? '<i class="fas fa-eye"></i>'
                 :null !!}</span>
         </div>
