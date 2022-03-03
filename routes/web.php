@@ -29,6 +29,9 @@ Route::group(['middleware' => ['auth', 'checkRole:member,admin', 'checkStatus:ac
 		Route::get('/min/quantity/{product}', 'CartController@minQuantity')->name('min');
 		Route::post('/delete/{product}', 'CartController@delete')->name('delete');
 	});
+	Route::prefix('omset')->name('omset.')->group(function () {
+		Route::get('/', 'OmsetMemberController@index')->name('index');
+	});
 	Route::prefix('notif')->name('notif.')->group(function () {
 		Route::get('/{id}', 'NotifController@baca')->name('baca');
 	});
