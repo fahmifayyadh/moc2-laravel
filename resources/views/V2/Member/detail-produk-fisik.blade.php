@@ -11,50 +11,6 @@
     }
     document.addEventListener("DOMContentLoaded", function (event) {
     });
-
-    $(document).ready(function(){
-   
-        $('#provinci').change(function () {
-            var optionKab = '';
-            var ii=0;
-            $.ajax({
-                url: "{{route('getCity')}}",
-                method: "GET",
-                data: {
-                    province_id: this.value,
-                },
-                success: function (data) {
-                    $.each(data, function( key, value ) {
-                    if(ii==0){
-                        optionKab += '<option selected="" disabled>Kabupaten</option>';
-                    }
-                    ii+=1;
-                    optionKab += '<option value="'+key+'">'+value+'</option>';
-                    });
-                    ii=0;
-                    $("#kabupaten").find('option').remove().end().append(optionKab);
-                    
-                }
-            });
-        });
-        $('#provinci').change();
-        $('#kabupaten').change(function () {
-            var optionKec = '';
-            $.ajax({
-                url: "{{route('getKecamatan')}}",
-                method: "GET",
-                data: {
-                    city_id: this.value,
-                },
-                success: function (data) {
-                    $.each(data, function( key, value ) {
-                    optionKec += '<option value="'+key+'">'+value+'</option>';
-                    });
-                    $("#kecamatan").find('option').remove().end().append(optionKec);
-                }
-            });
-        });
-    });
 </script>
 <!-- change quantity -->
 <script>
@@ -228,7 +184,7 @@
                         </div>
                     </p>
                     <a href="{{route('etalase.keranjang')}}" style="text-decoration: none;"><button class="btn button-outline-custome btn-block mb-3">+ keranjang</button></a>
-                    <button class="btn button-custome btn-block text-light" data-toggle="modal" data-target="#belii">beli sekarang</button>
+                    <button class="btn button-custome btn-block text-light" data-toggle="modal" data-target="#exampleModal">beli sekarang</button>
                 </div>
             </div>
         </div>
@@ -376,5 +332,4 @@
                 </div>
             </div>
         </div>
-@include('V2.Member.modal.checkout')
 @endsection

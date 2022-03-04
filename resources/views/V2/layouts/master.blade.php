@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">
-  <link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
   @yield('css')
 </head>
 @yield('head')

@@ -9,40 +9,11 @@
   <ul class="navbar-nav ml-auto">
     @if (Auth::check() && auth()->user()->role == 'member')
     <li class="nav-item dropdown no-arrow mx-1">
-      <a class="nav-link dropdown-toggle" href="" id="alertsDropdown" role="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-link" href="{{route('etalase.keranjang')}}"
+        aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-shopping-cart" style="color: #FF9F1C;"></i>
         <span class="badge badge-danger badge-counter">3</span>
       </a>
-      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-          aria-labelledby="alertsDropdown" style="background: wheat;">
-          <a class="dropdown-item d-flex align-items-center" href="#">
-              <div class="mr-3">
-                  <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                  </div>
-              </div>
-              <div class="font-weight-bold" style="color: black;">
-                  Revolotion Bright 100 ml
-                  <div class="small" style="color: black;">Rp 125.000</div>
-              </div>
-          </a>
-          <a class="dropdown-item d-flex align-items-center" href="#">
-              <div class="mr-3">
-                  <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                  </div>
-              </div>
-              <div class="font-weight-bold" style="color: black;">
-                  Glowing Packages
-                  <div class="small" style="color: black;">Rp 125.000</div>
-              </div>
-          </a>
-          <div class="text-right p-3">
-              <a class="btn button-custome text-center small text-light" href="{{route('etalase.keranjang')}}">Lihat
-                  keranjang</a>
-          </div>
-      </div>
     </li>
     @endif
     <li class="nav-item dropdown no-arrow mx-1">
