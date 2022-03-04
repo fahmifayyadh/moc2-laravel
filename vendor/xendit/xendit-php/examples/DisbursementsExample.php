@@ -11,11 +11,14 @@
  * @link     https://api.xendit.co
  */
 
+use Dotenv\Dotenv;
 use Xendit\Xendit;
 
 require 'vendor/autoload.php';
 
-Xendit::setApiKey('SECRET_API_KEY');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
+Xendit::setApiKey(getenv('SECRET_API_KEY'));
 
 $params = [
     'external_id' => 'disb-12345678',
@@ -61,13 +64,10 @@ $external_id = $params['external_id'];
 $getDisbursementsBanks = \Xendit\Disbursements::getAvailableBanks();
 var_dump($getDisbursementsBanks);
 
-$retrieveParams = [
-    'for-user-id' => '<enter user id>'
-];
-$getDisbursements = \Xendit\Disbursements::retrieve($id, $retrieveParams);
+$getDisbursements = \Xendit\Disbursements::retrieve($id);
 var_dump($getDisbursements);
 
-$getDisbursementsByExt = \Xendit\Disbursements::retrieveExternal($external_id, $retrieveParams);
+$getDisbursementsByExt = \Xendit\Disbursements::retrieveExternal($external_id);
 var_dump($getDisbursementsByExt);
 
 $createBatchDisbursements = \Xendit\Disbursements::createBatch($batch_params);

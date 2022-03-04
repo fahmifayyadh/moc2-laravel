@@ -58,8 +58,7 @@ trait Request
      * @return array
      * @throws \Xendit\Exceptions\ApiException
      */
-    protected static function _request(
-        $method,
+    protected static function _request($method,
         $url,
         $params = []
     ) {
@@ -69,25 +68,12 @@ trait Request
             $headers['for-user-id'] = $params['for-user-id'];
         }
 
-        if (array_key_exists('with-fee-rule', $params)) {
-            $headers['with-fee-rule'] = $params['with-fee-rule'];
-        }
-
-        if (array_key_exists('Idempotency-key', $params)) {
-            $headers['Idempotency-key'] = $params['Idempotency-key'];
-        }
-
         if (array_key_exists('X-IDEMPOTENCY-KEY', $params)) {
             $headers['X-IDEMPOTENCY-KEY'] = $params['X-IDEMPOTENCY-KEY'];
         }
 
         if (array_key_exists('api-version', $params)) {
             $headers['api-version'] = $params['api-version'];
-            unset($params['api-version']);
-        }
-
-        if (array_key_exists('X-API-VERSION', $params)) {
-            $headers['X-API-VERSION'] = $params['X-API-VERSION'];
         }
 
         $requestor = new \Xendit\ApiRequestor();

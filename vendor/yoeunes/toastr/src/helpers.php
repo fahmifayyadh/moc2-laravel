@@ -4,10 +4,11 @@ use Yoeunes\Toastr\Toastr;
 
 if (! function_exists('toastr')) {
     /**
-     * @param  string  $message
-     * @param  string  $type
-     * @param  string  $title
-     * @param  array  $options
+     * @param string $message
+     * @param string $type
+     * @param string $title
+     * @param array  $options
+     *
      * @return Toastr
      */
     function toastr(string $message = null, string $type = 'success', string $title = '', array $options = []): Toastr
@@ -22,9 +23,10 @@ if (! function_exists('toastr')) {
 
 if (! function_exists('toastInfo')) {
     /**
-     * @param  string  $message
-     * @param  string  $title
-     * @param  array  $options
+     * @param string $message
+     * @param string $title
+     * @param array  $options
+     *
      * @return Toastr
      */
     function toastInfo(string $message = null, string $title = '', array $options = []): Toastr
@@ -35,9 +37,10 @@ if (! function_exists('toastInfo')) {
 
 if (! function_exists('toastSuccess')) {
     /**
-     * @param  string  $message
-     * @param  string  $title
-     * @param  array  $options
+     * @param string $message
+     * @param string $title
+     * @param array  $options
+     *
      * @return Toastr
      */
     function toastSuccess(string $message = null, string $title = '', array $options = []): Toastr
@@ -48,9 +51,10 @@ if (! function_exists('toastSuccess')) {
 
 if (! function_exists('toastWarning')) {
     /**
-     * @param  string  $message
-     * @param  string  $title
-     * @param  array  $options
+     * @param string $message
+     * @param string $title
+     * @param array  $options
+     *
      * @return Toastr
      */
     function toastWarning(string $message = null, string $title = '', array $options = []): Toastr
@@ -61,9 +65,10 @@ if (! function_exists('toastWarning')) {
 
 if (! function_exists('toastError')) {
     /**
-     * @param  string  $message
-     * @param  string  $title
-     * @param  array  $options
+     * @param string $message
+     * @param string $title
+     * @param array  $options
+     *
      * @return Toastr
      */
     function toastError(string $message = null, string $title = '', array $options = []): Toastr
@@ -74,8 +79,9 @@ if (! function_exists('toastError')) {
 
 if (! function_exists('toastr_js')) {
     /**
-     * @param  string  $version
-     * @param  string  $src
+     * @param string $version
+     * @param string $src
+     *
      * @return string
      */
     function toastr_js(string $version = '2.1.4', string $src = null): string
@@ -90,8 +96,9 @@ if (! function_exists('toastr_js')) {
 
 if (! function_exists('toastr_css')) {
     /**
-     * @param  string  $version
-     * @param  string  $href
+     * @param string $version
+     * @param string $href
+     *
      * @return string
      */
     function toastr_css(string $version = '2.1.4', string $href = null): string
@@ -106,8 +113,9 @@ if (! function_exists('toastr_css')) {
 
 if (! function_exists('jquery')) {
     /**
-     * @param  string  $version
-     * @param  string  $src
+     * @param string $version
+     * @param string $src
+     *
      * @return string
      */
     function jquery(string $version = '3.3.1', string $src = null): string
@@ -120,15 +128,16 @@ if (! function_exists('jquery')) {
     }
 }
 
-if (! function_exists('toastr_path')) {
+if (!function_exists('toastr_path')) {
     /**
-     * normalize paths for linux and windows.
+     * normalize paths for linux and windows
      *
-     * @param  string  $path
+     * @param string $path
+     *
      * @return string
      */
     function toastr_path($path = ''): string
     {
-        return str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path);
+        return str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $path);
     }
 }

@@ -23,11 +23,11 @@ class FunctionsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
-    public function getMatches(array $tokens, array $info = []): array
+    public function getMatches(array $tokens, array $info = [])
     {
         $func = $this->getInput($tokens);
 
-        $functions = \get_defined_functions();
+        $functions    = \get_defined_functions();
         $allFunctions = \array_merge($functions['user'], $functions['internal']);
 
         return \array_filter($allFunctions, function ($function) use ($func) {
@@ -38,9 +38,9 @@ class FunctionsMatcher extends AbstractMatcher
     /**
      * {@inheritdoc}
      */
-    public function hasMatched(array $tokens): bool
+    public function hasMatched(array $tokens)
     {
-        $token = \array_pop($tokens);
+        $token     = \array_pop($tokens);
         $prevToken = \array_pop($tokens);
 
         switch (true) {

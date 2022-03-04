@@ -37,8 +37,7 @@ class PayoutsTest extends TestCase
     {
         $params = [
             'external_id'=> 'payouts-123456789',
-            'amount'=> 50000,
-            'email'=> 'demo@xendit.co',
+            'amount'=> 50000
         ];
 
         $this->stubRequest(
@@ -52,7 +51,6 @@ class PayoutsTest extends TestCase
         $result = Payouts::create($params);
         $this->assertEquals($result['external_id'], $params['external_id']);
         $this->assertEquals($result['amount'], $params['amount']);
-        $this->assertEquals($result['email'], $params['email']);
     }
 
     /**
