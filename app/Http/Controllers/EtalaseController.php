@@ -74,7 +74,7 @@ class EtalaseController extends Controller
     {
         $provinsi = Province::get(['province_id','name']);
         $exspedisi = Courier::get();
-        return view('tests.etalase.detailProduk',compact(['exspedisi','product','provinsi']));
+        // return view('tests.etalase.detailProduk',compact(['exspedisi','product','provinsi']));
 
         // V2
         return view('V2.Member.detail-produk-fisik',compact(['exspedisi','product','provinsi']));

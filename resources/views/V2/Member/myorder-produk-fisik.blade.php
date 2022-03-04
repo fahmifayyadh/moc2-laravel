@@ -91,14 +91,14 @@
                                         <td>@if ($tf->status != 'refund' && $tf->status != 'batal' && $tf->status != 'selesai')
                                       
                                             <span style="cursor: pointer;" class="badge badge-success p-2 mb-2" data-toggle="modal" data-target="#orderDetail{{$tf->id}}">Detail Pembayaran</span>
-                                            @include('tests.order.komponen.invoicefisik')
+                                            @include('V2.Member.modal.myorder.invoicefisik')
                                           <!--  <a href="{{route('order.invoice',$tf->id)}}" class="badge badge-success p-2 mb-2">Detail Pembayaran</a> -->
                                             @endif
 
                                            @if ($tf->status != 'proses' && $tf->status != 'batal' && $tf->status != 'selesai' && $tf->status != 'refund')
                                       
-                                         <span style="cursor: pointer;" class="badge badge-warning p-2 mb-2" data-toggle="modal" data-target="#bukti{{$tf->id}}">Uploud Bukti Bayar</span>
-                                         @include('tests.order.komponen.buktifisik')
+                                         <span style="cursor: pointer;" class="badge badge-warning p-2 mb-2" data-toggle="modal" data-target="#bukti{{$tf->id}}">Upload Bukti Bayar</span>
+                                         @include('V2.Member.modal.myorder.buktifisik')
 
                                              @endif
                                         </td>
@@ -106,7 +106,7 @@
                                         <td>{{$tf->created_at->format('d-m-Y')}}</td>
                                         <td>{{$tf->status == 'selesai' ? $tf->updated_at->format('d-m-Y') : 'Belum Selesai'}}</td>
                                         <td>Rp {{number_format(($tf->price*$tf->kuantiti)-$tf->discount+$tf->delivery->ongkir,0,'.','.')}}</td>
-                                            @include('tests.order.komponen.badgefisik')
+                                            @include('V2.Member.modal.myorder.badgefisik')
                                     </tr>
                                     @endforeach
                                     <!-- loop data -->
@@ -118,3 +118,20 @@
                 </div>
                 <!---Container Fluid-->
 @endsection
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+</script>
+ <script>
+$(document).ready(function(){
+
+ $('.content-data img').addClass("img-fluid")
+$('.content-data video').attr("controlsList", "nodownload");
+
+});
+</script>
