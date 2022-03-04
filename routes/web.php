@@ -23,6 +23,15 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
 //============BACK END TESTING ONLY==========================//
 Route::group(['middleware' => ['auth', 'checkRole:member,admin', 'checkStatus:active']], function () {
 	// all
+	Route::prefix('cart')->name('cart.')->group(function () {
+		Route::get('/', 'CartController@index')->name('index');
+		Route::post('/create/{product}', 'CartController@create')->name('create');
+		Route::get('/min/quantity/{product}', 'CartController@minQuantity')->name('min');
+		Route::post('/delete/{product}', 'CartController@delete')->name('delete');
+	});
+	Route::prefix('omset')->name('omset.')->group(function () {
+		Route::get('/', 'OmsetMemberController@index')->name('index');
+	});
 	Route::prefix('notif')->name('notif.')->group(function () {
 		Route::get('/{id}', 'NotifController@baca')->name('baca');
 	});
