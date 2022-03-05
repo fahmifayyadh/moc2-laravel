@@ -40,6 +40,25 @@ class CartController extends Controller
         }
         return $this->resSuc($cart);
     }
+    public function addQuantity(Product $product)
+    {
+        
+        $cart = Cart::where("user_id", request()->user()->id)
+            ->where("product_id", $product->id)
+            ->first();
+        if ($cart) {
+            $cart->update([
+                "quantity" => $cart->quantity + 1,
+            ]);
+        }else{
+            $cart = Cart::create([
+                "user_id" => request()->user()->id,
+                "product_id" => $product->id,
+                "quantity" => 1,
+            ]);
+        }
+        return $this->resSuc($cart);
+    }
     public function minQuantity(Product $product)
     {
         $cart = Cart::where("user_id", request()->user()->id)

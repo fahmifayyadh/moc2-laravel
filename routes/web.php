@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth', 'checkRole:member,admin', 'checkStatus:ac
 	Route::prefix('cart')->name('cart.')->group(function () {
 		Route::get('/', 'CartController@index')->name('index');
 		Route::post('/create/{product}', 'CartController@create')->name('create');
+		Route::get('/add/quantity/{product}', 'CartController@addQuantity')->name('add');
 		Route::get('/min/quantity/{product}', 'CartController@minQuantity')->name('min');
 		Route::post('/delete/{product}', 'CartController@delete')->name('delete');
 	});
