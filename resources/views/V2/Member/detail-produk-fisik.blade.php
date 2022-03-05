@@ -4,6 +4,8 @@
 <link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
 @endsection
 @section('js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script>
     function change_image(image) {
         var container = document.getElementById("main-image");
@@ -12,8 +14,41 @@
     document.addEventListener("DOMContentLoaded", function (event) {
     });
 
+    $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#add-cart').click(function(){
+        // get data on tag
+        console.log('ss');
+        let id = $(this).data('id');
+        let quantity = $('#quantity').val();
+
+        // ajax request
+        $.ajax({
+            type:'POST',
+            url:"{{route('cart.create',$product->id)}}",
+            data:{id:id, quantity:quantity},
+            success:function(data){
+                // alert(data)
+                window.location = "{{route('etalase.keranjang')}}";
+            }
+        });
+    });
+
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+    });
+    
+
     $(document).ready(function(){
-   
+        
+
         $('#provinci').change(function () {
             var optionKab = '';
             var ii=0;
@@ -55,44 +90,33 @@
             });
         });
     });
-</script>
-<!-- change quantity -->
-<script>
     $(document).ready(function () {
-
             var quantitiy = 0;
             $('.quantity-right-plus').click(function (e) {
-
                 // Stop acting like a button
                 e.preventDefault();
                 // Get the field name
                 var quantity = parseInt($('#quantity').val());
-
                 // If is not undefined
-
                 $('#quantity').val(quantity + 1);
-
-
                 // Increment
-
             });
-
             $('.quantity-left-minus').click(function (e) {
                 // Stop acting like a button
                 e.preventDefault();
                 // Get the field name
                 var quantity = parseInt($('#quantity').val());
-
                 // If is not undefined
-
                 // Increment
                 if (quantity > 0) {
                     $('#quantity').val(quantity - 1);
                 }
             });
-
         });
+
 </script>
+<!-- change quantity -->
+
 @endsection
 @section('content')
 <!-- Container Fluid-->
@@ -184,7 +208,9 @@
                                 </button>
                             </div>
                         </div>
+                        <form id="addcart">
                         <input type="text" id="quantity" name="quantity" class="form-control" value="10" min="1" max="100">
+                        </form>
                         <div class="input-group-prepend">
                             <div class="input-group-text bg-transparant">
                                 <button type="button" class="quantity-right-plus btn btn-link border-0 p-0" data-type="plus" data-field="">
@@ -193,15 +219,15 @@
                             </div>
                         </div>
                     </div> -->
-                    
-                    <div class="css-h82t6w-unf-quantity-editor">
-                        <button type="button" class="css-199ul1b quantity-left-minus" data-type="minus" data-field="">
+                   <!-- KERANJANG -->
+                    <div class="css-h82t6w-unf-quantity-editor" data-id="">
+                        <button type="button" class="css-199ul1b quantity-left-minus" data-type="minus" data-field="" >
                             <svg class="unf-icon" viewBox="0 0 24 24" width="18px" height="18px" fill="var(--NN300, #FF9F1C)" style="display: inline-block; vertical-align: middle;">
                                 <path d="M19 13H5c-.6 0-1-.4-1-1s.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1z"></path>
                             </svg>
                         </button>
                         <input id="quantity" name="quantity" class="css-1igct5v-unf-quantity-editor__input" data-unify="QuantityEditor" type="text" value="1" min="1" max="100" style="width: 7rem;">
-                        <button type="button" class="css-199ul1b quantity-right-plus" data-type="plus" data-field="">
+                        <button type="button" class="css-199ul1b quantity-right-plus" data-type="plus" data-field="" onclick="addcart()">
                             <svg class="unf-icon" viewBox="0 0 24 24" width="18px" height="18px" fill="var(--GN500, #FF9F1C)" style="display: inline-block; vertical-align: middle;">
                                 <path d="M19 11h-6V5a1 1 0 00-2 0v6H5a1 1 0 000 2h6v6a1 1 0 002 0v-6h6a1 1 0 000-2z"></path>
                             </svg>
@@ -213,27 +239,31 @@
                                 Stok
                             </div>
                             <div class="col text-right">
-                                90
+                           {{$product->quantity}}
                             </div>
                         </div>
                     </p>
                     <p >
+                        
                         <div class="row text-black">
                             <div class="col-sm-6">
                                 Subtotal
                             </div>
                             <div class="col-sm-6 text-right">
-                                450.000
+                           
                             </div>
                         </div>
                     </p>
-                    <a href="{{route('etalase.keranjang')}}" style="text-decoration: none;"><button class="btn button-outline-custome btn-block mb-3">+ keranjang</button></a>
+                   
+                    <button class="btn button-outline-custome btn-block mb-3" id="add-cart" data-id="{{$product->id}}">+ keranjang</button>
                     <button class="btn button-custome btn-block text-light" data-toggle="modal" data-target="#belii">beli sekarang</button>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> 
+    </div> 
     <!-- detail product -->
+
+    {{-- Produk lainnya --}}
     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
         <a href="#">
             <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">

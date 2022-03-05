@@ -8,6 +8,7 @@ use App\Course;
 use App\Paket;
 use App\Product;
 use App\Province;
+use App\Cart;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -82,7 +83,9 @@ class EtalaseController extends Controller
 
     // V2
     public function keranjang()
-    {
-        return view('V2.Member.keranjang');
+    {   
+        $cart = Cart::with('product')->get();
+        //dd($cart);
+        return view('V2.Member.keranjang',compact('cart'));
     }
 }
