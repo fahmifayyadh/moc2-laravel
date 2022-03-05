@@ -14,7 +14,6 @@
 
         $('.delete-cart').click(function(){
             // get data on tag
-            console.log('sss');
             let id = $(this).data('id');
             
             // ajax request
