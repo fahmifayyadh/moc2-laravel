@@ -6,31 +6,29 @@
 @section('js')
 <script>
     $(document).ready(function() {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $('.delete-cart').click(function(){
-        // get data on tag
-        console.log('sss');
-        let id = $(this).data('id');
-        
-        // ajax request
-        $.ajax({
-            type:'DELETE',
-            url: "{{route('cart.index')}}/delete"+id,
-            data: {
-            id: ele.parents("tr").attr("data-id"),
-            "_token": "{{ csrf_token() }}",
-        },
-            success:function(data){
-                window.location.reload();
-                // window.location = "{{route('etalase.keranjang')}}";
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-    });
+
+        $('.delete-cart').click(function(){
+            // get data on tag
+            console.log('sss');
+            let id = $(this).data('id');
+            
+            // ajax request
+            $.ajax({
+                type:'POST',
+                url: "{{url('cart/delete')}}" + '/' + id,
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                },
+                success:function(data){
+                    window.location.reload();
+                }
+            });
+        });
     });
    $(document).ready(function () {
             var quantitiy = 0;
@@ -90,7 +88,7 @@
                                     {{$c->product->name}}
                                 </span>
                                 <span class="float-right">
-                                    <button class="delete-cart btn btn-transparant" id="" data-id="{{$c->id}}">
+                                    <button class="delete-cart btn btn-transparant" id="" data-id="{{$c->product->id}}">
                                         <i class="fas fa-trash-alt"></i>        
                                     </button>
                                 </span> 
@@ -132,11 +130,15 @@
                         Total
                     </p>
                     @php
-                    $total = 0;
-                   
+                    $total = array();
+                    foreach($cart as $c){
+                        $quantity = $c->quantity;
+                        $price = $c->product->varian()->first()->price;
+                        $total[] = $quantity*$price;
+                    }
                     @endphp
                     <p class="text-custome h3">
-                        Rp {{-- $cart->product->price*$qt --}}
+                        Rp @php echo array_sum($total); @endphp
                     </p>
                     <p>
                         <button class="btn button-custome btn-block text-title-link">Checkout (1)</button>

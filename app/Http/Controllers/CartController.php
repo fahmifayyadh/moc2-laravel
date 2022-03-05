@@ -57,7 +57,6 @@ class CartController extends Controller
     }
     public function delete(Product $product)
     {
-        dd('kesini');
         Cart::where("user_id", request()->user()->id)
             ->where("product_id", $product->id)
             ->delete();
