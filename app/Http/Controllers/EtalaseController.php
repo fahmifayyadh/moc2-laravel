@@ -84,7 +84,7 @@ class EtalaseController extends Controller
     // V2
     public function keranjang()
     {   
-        $cart = Cart::with('product')->get();
+        $cart = Cart::with('product')->where('user_id',auth()->user()->id)->orderBy('created_at','desc')->get();
         //dd($cart);
         return view('V2.Member.keranjang',compact('cart'));
     }

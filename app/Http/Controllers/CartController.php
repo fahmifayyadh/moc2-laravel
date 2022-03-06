@@ -81,4 +81,15 @@ class CartController extends Controller
             ->delete();
         return $this->resSuc("ok");
     }
+
+    public function cartnotif()
+    {
+        $cart = Cart::with('product')->where("user_id", request()->user()->id)->orderBy('created_at','desc')->get();
+        return $cart;
+    }
+    public function isicart()
+    {
+        $cart = Cart::with('product')->where("user_id", request()->user()->id)->count();
+        return $cart;
+    }
 }

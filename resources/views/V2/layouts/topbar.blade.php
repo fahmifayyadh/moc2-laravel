@@ -12,10 +12,12 @@
       <a class="nav-link dropdown-toggle" href="" id="alertsDropdown" role="button"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-shopping-cart" style="color: #FF9F1C;"></i>
-        <span class="badge badge-danger badge-counter">3</span>
+        <span class="badge badge-danger badge-counter">{{$isicart}}</span>
       </a>
       <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
           aria-labelledby="alertsDropdown" style="background: wheat;">
+          @auth
+          @foreach($allcart as $cs)
           <a class="dropdown-item d-flex align-items-center" href="#">
               <div class="mr-3">
                   <div class="icon-circle bg-primary">
@@ -23,21 +25,12 @@
                   </div>
               </div>
               <div class="font-weight-bold" style="color: black;">
-                  Revolotion Bright 100 ml
-                  <div class="small" style="color: black;">Rp 125.000</div>
+                 {{ $cs->product->name}}
+                  <div class="small" style="color: black;">Rp {{number_format($cs->product->varian()->first()->price,0,'.','.')}}</div>
               </div>
           </a>
-          <a class="dropdown-item d-flex align-items-center" href="#">
-              <div class="mr-3">
-                  <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                  </div>
-              </div>
-              <div class="font-weight-bold" style="color: black;">
-                  Glowing Packages
-                  <div class="small" style="color: black;">Rp 125.000</div>
-              </div>
-          </a>
+          @endforeach
+          @endauth
           <div class="text-right p-3">
               <a class="btn button-custome text-center small text-light" href="{{route('etalase.keranjang')}}">Lihat
                   keranjang</a>

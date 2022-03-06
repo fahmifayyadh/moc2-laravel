@@ -31,6 +31,9 @@
     @toastr_render
     @auth
     @php
+    $cart = new \App\Http\Controllers\CartController;
+    $allcart = $cart->cartnotif();
+    $isicart = $cart->isicart();
     $notif = new \App\Http\Controllers\NotifController;
     $all = $notif->all();
     $jumlah = $notif->status();         
