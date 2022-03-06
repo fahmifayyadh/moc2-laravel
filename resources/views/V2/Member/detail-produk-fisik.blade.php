@@ -274,20 +274,20 @@
         </a>
     </div>
     <div class="row">
+        @foreach ($randomProduct as $p)
         <div class="col-xl-3 col-md-3 mb-5">
             <div class="card" style="width: 15rem;">
-                <img class="card-img-top mx-auto d-block" style="height: 10rem;width: 10rem;"
-                    src="img/product/Untitled-1 1.png" alt="Card image cap">
+                <a href="{{route('etalase.detail-produk',$p->id) }}"><img class="card-img-top mx-auto d-block" style="height: 20rem; object-fit: cover;height: 300px;width:237px"
+                    src="{{asset(Storage::url('product/main/'.$p->image))}}" alt="Card image cap"></a>
                 <div class="card-body">
-                    <h5 class="card-title text-black">7 Private Acces</h5>
-                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
+                    <h5 class="card-title text-black">{{$p->name}}</h5>
                     <p class="card-text mb-0 text-black">
-                        E-Course
-    
+                        produk fisik
                     </p>
+                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
                 </div>
                 <div class="card-footer d-flex">
-                    <p class="text-custome">Rp. 1.755.000</p>
+                    <p class="text-custome">Rp.{{number_format($p->varian()->first()->price,0,'.','.')}}</p>
                     <p class="ml-auto text-custome"><i
                             style="display: flex; justify-content: flex-end; position: relative; left: 20px; top: 4px;"
                             class="fas fa-star fa-sm"></i></p>
@@ -295,70 +295,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-3 mb-5">
-            <div class="card" style="width: 15rem;">
-                <img class="card-img-top mx-auto d-block" style="height: 10rem;width: 10rem;"
-                    src="img/product/Untitled-1 1.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-black">7 Private Acces</h5>
-                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
-                    <p class="card-text mb-0 text-black">
-                        E-Course
-    
-                    </p>
-                </div>
-                <div class="card-footer d-flex">
-                    <p class="text-custome">Rp. 1.755.000</p>
-                    <p class="ml-auto text-custome"><i
-                            style="display: flex; justify-content: flex-end; position: relative; left: 20px; top: 4px;"
-                            class="fas fa-star fa-sm"></i></p>
-                    <p class="ml-auto">5.0</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-3 mb-5">
-            <div class="card" style="width: 15rem;">
-                <img class="card-img-top mx-auto d-block" style="height: 10rem;width: 10rem;"
-                    src="img/product/Untitled-1 1.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-black">7 Private Acces</h5>
-                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
-                    <p class="card-text mb-0 text-black">
-                        E-Course
-    
-                    </p>
-                </div>
-                <div class="card-footer d-flex">
-                    <p class="text-custome">Rp. 1.755.000</p>
-                    <p class="ml-auto text-custome"><i
-                            style="display: flex; justify-content: flex-end; position: relative; left: 20px; top: 4px;"
-                            class="fas fa-star fa-sm"></i></p>
-                    <p class="ml-auto">5.0</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-3 mb-5">
-            <div class="card" style="width: 15rem;">
-                <img class="card-img-top mx-auto d-block" style="height: 10rem;width: 10rem;"
-                    src="img/product/Untitled-1 1.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-black">7 Private Acces</h5>
-                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
-                    <p class="card-text mb-0 text-black">
-                        E-Course
-    
-                    </p>
-                </div>
-                <div class="card-footer d-flex">
-                    <p class="text-custome">Rp. 1.755.000</p>
-                    <p class="ml-auto text-custome"><i
-                            style="display: flex; justify-content: flex-end; position: relative; left: 20px; top: 4px;"
-                            class="fas fa-star fa-sm"></i></p>
-                    <p class="ml-auto">5.0</p>
-                </div>
-            </div>
-        </div>
-
+        @endforeach
     </div>
 
 </div>

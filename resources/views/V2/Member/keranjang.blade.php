@@ -63,7 +63,6 @@
             url: "{{url('cart/min/quantity')}}" + '/' + id,
             data:{id:id, quantity:quantity},
             success:function(data){
-                // alert(data)
                 window.location.reload();
                 }
             });

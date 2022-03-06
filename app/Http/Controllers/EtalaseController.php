@@ -75,17 +75,17 @@ class EtalaseController extends Controller
     {
         $provinsi = Province::get(['province_id','name']);
         $exspedisi = Courier::get();
+        $randomProduct = Product::all()->random(4);
         // return view('tests.etalase.detailProduk',compact(['exspedisi','product','provinsi']));
 
         // V2
-        return view('V2.Member.detail-produk-fisik',compact(['exspedisi','product','provinsi']));
+        return view('V2.Member.detail-produk-fisik',compact(['exspedisi','product','provinsi','randomProduct']));
     }
 
     // V2
     public function keranjang()
     {   
         $cart = Cart::with('product')->where('user_id',auth()->user()->id)->orderBy('created_at','desc')->get();
-        //dd($cart);
         return view('V2.Member.keranjang',compact('cart'));
     }
 }

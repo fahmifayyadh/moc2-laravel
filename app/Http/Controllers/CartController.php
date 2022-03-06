@@ -72,7 +72,7 @@ class CartController extends Controller
         }else{
             $cart->delete();
         }
-        return $this->resSuc("ok");
+        return $this->resSuc('ok');
     }
     public function delete(Product $product)
     {
@@ -81,7 +81,7 @@ class CartController extends Controller
             ->delete();
         return $this->resSuc("ok");
     }
-
+    
     public function cartnotif()
     {
         $cart = Cart::with('product')->where("user_id", request()->user()->id)->orderBy('created_at','desc')->get();
