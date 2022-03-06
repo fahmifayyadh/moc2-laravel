@@ -322,7 +322,7 @@ form i {
             <td>{{$b->judul}}</td>
 
             <td id="italic"><a style="color: aqua;cursor:pointer" data-toggle="modal" data-target="#isi{{$b->id}}">Lihat</a></td>
-            <td>Warning</td>
+            <td>{{$b->type}}</td>
 
             <td style="text-align: center;">
               <button class="btn btn-4" role="button"><a href="{{route('berita.edit',$b->id)}}">Edit</a></button>

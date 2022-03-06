@@ -21,12 +21,17 @@
           <a class="dropdown-item d-flex align-items-center" href="#">
               <div class="mr-3">
                   <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
+                  <img src="{{substr($cs->product->image,0,4) == 'http' ? $cs->product->image : asset(Storage::url('product/main/'.$cs->product->image))}}" width="50px" height="45px" alt="">
                   </div>
               </div>
               <div class="font-weight-bold" style="color: black;">
-                 {{ $cs->product->name}}
-                  <div class="small" style="color: black;">Rp {{number_format($cs->product->varian()->first()->price,0,'.','.')}}</div>
+                 {{ $cs->product->name}} <span style="font-weight: bold;">({{$cs->quantity}})</span>
+                 @php
+                 $price = $cs->product->varian()->first()->price;
+                 $qt = $cs->quantity;
+                 $total = $price*$qt;
+                 @endphp
+                  <div class="small" style="color: black;">Rp {{number_format($total,0,'.','.')}}</div>
               </div>
           </a>
           @endforeach
