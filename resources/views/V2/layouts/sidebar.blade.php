@@ -26,6 +26,7 @@
       <div id="afiliasi" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Afiliasi</h6>
+          <a class="collapse-item" href="{{route('omset.index')}}">Omset Member</a>
           <a class="collapse-item" href="{{route('afiliasi.index')}}">Link</a>
           <a class="collapse-item" href="{{route('komisi.index')}}">Komisi-course</a>
           <a class="collapse-item" href="{{route('komisiFisik.index')}}">Komisi-fisik</a>
