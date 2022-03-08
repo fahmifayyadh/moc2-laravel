@@ -14,6 +14,7 @@ class CartController extends Controller
             "msg" => "ok",
             "data" => $data
         ], 200);
+        
     }
     public function index()
     {
@@ -22,7 +23,27 @@ class CartController extends Controller
     }
     public function create(Request $request,Product $product)
     {
+        $quantity = $request->quantity;
         $cart = Cart::where("user_id", $request->user()->id)
+            ->where("product_id", $product->id)
+            ->first();
+        if ($cart) {
+            $cart->update([
+                "quantity" => $cart->quantity + $quantity,
+            ]);
+        }else{
+            $cart = Cart::create([
+                "user_id" => $request->user()->id,
+                "product_id" => $product->id,
+                "quantity" => $quantity,
+            ]);
+        }
+        return $this->resSuc($cart);
+    }
+    public function addQuantity(Product $product)
+    {
+        
+        $cart = Cart::where("user_id", request()->user()->id)
             ->where("product_id", $product->id)
             ->first();
         if ($cart) {
@@ -31,7 +52,7 @@ class CartController extends Controller
             ]);
         }else{
             $cart = Cart::create([
-                "user_id" => $request->user()->id,
+                "user_id" => request()->user()->id,
                 "product_id" => $product->id,
                 "quantity" => 1,
             ]);
@@ -51,7 +72,7 @@ class CartController extends Controller
         }else{
             $cart->delete();
         }
-        return $this->resSuc("ok");
+        return $this->resSuc('ok');
     }
     public function delete(Product $product)
     {
@@ -59,5 +80,16 @@ class CartController extends Controller
             ->where("product_id", $product->id)
             ->delete();
         return $this->resSuc("ok");
+    }
+    
+    public function cartnotif()
+    {
+        $cart = Cart::with('product')->where("user_id", request()->user()->id)->orderBy('created_at','desc')->get();
+        return $cart;
+    }
+    public function isicart()
+    {
+        $cart = Cart::with('product')->where("user_id", request()->user()->id)->count();
+        return $cart;
     }
 }

@@ -1,9 +1,11 @@
 @extends('V2.layouts.master')
 @section('title','Detail Produk')
 @section('css')
-<link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
+<link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
 @endsection
 @section('js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script>
     function change_image(image) {
         var container = document.getElementById("main-image");
@@ -11,51 +13,117 @@
     }
     document.addEventListener("DOMContentLoaded", function (event) {
     });
-</script>
-<!-- change quantity -->
-<script>
-    $(document).ready(function () {
 
+    $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#add-cart').click(function(){
+        // get data on tag
+        console.log('ss');
+        let id = $(this).data('id');
+        let quantity = $('#quantity').val();
+
+        // ajax request
+        $.ajax({
+            type:'POST',
+            url:"{{route('cart.create',$product->id)}}",
+            data:{id:id, quantity:quantity},
+            success:function(data){
+                // alert(data)
+                window.location = "{{route('etalase.keranjang')}}";
+            }
+        });
+    });
+
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+    });
+    
+
+    $(document).ready(function(){
+        
+
+        $('#provinci').change(function () {
+            var optionKab = '';
+            var ii=0;
+            $.ajax({
+                url: "{{route('getCity')}}",
+                method: "GET",
+                data: {
+                    province_id: this.value,
+                },
+                success: function (data) {
+                    $.each(data, function( key, value ) {
+                    if(ii==0){
+                        optionKab += '<option selected="" disabled>Kabupaten</option>';
+                    }
+                    ii+=1;
+                    optionKab += '<option value="'+key+'">'+value+'</option>';
+                    });
+                    ii=0;
+                    $("#kabupaten").find('option').remove().end().append(optionKab);
+                    
+                }
+            });
+        });
+        $('#provinci').change();
+        $('#kabupaten').change(function () {
+            var optionKec = '';
+            $.ajax({
+                url: "{{route('getKecamatan')}}",
+                method: "GET",
+                data: {
+                    city_id: this.value,
+                },
+                success: function (data) {
+                    $.each(data, function( key, value ) {
+                    optionKec += '<option value="'+key+'">'+value+'</option>';
+                    });
+                    $("#kecamatan").find('option').remove().end().append(optionKec);
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
             var quantitiy = 0;
             $('.quantity-right-plus').click(function (e) {
-
                 // Stop acting like a button
                 e.preventDefault();
                 // Get the field name
                 var quantity = parseInt($('#quantity').val());
-
                 // If is not undefined
-
                 $('#quantity').val(quantity + 1);
-
-
                 // Increment
-
             });
-
             $('.quantity-left-minus').click(function (e) {
                 // Stop acting like a button
                 e.preventDefault();
                 // Get the field name
                 var quantity = parseInt($('#quantity').val());
-
                 // If is not undefined
-
                 // Increment
                 if (quantity > 0) {
                     $('#quantity').val(quantity - 1);
                 }
             });
-
         });
+
 </script>
+<!-- change quantity -->
+
 @endsection
 @section('content')
 <!-- Container Fluid-->
 <div class="container-fluid" id="container-wrapper">
     <!-- title berita -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-        <a href="allproduct.html">
+        <a href="#">
             <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> |
                 </span>
@@ -140,7 +208,9 @@
                                 </button>
                             </div>
                         </div>
+                        <form id="addcart">
                         <input type="text" id="quantity" name="quantity" class="form-control" value="10" min="1" max="100">
+                        </form>
                         <div class="input-group-prepend">
                             <div class="input-group-text bg-transparant">
                                 <button type="button" class="quantity-right-plus btn btn-link border-0 p-0" data-type="plus" data-field="">
@@ -149,15 +219,15 @@
                             </div>
                         </div>
                     </div> -->
-                    
-                    <div class="css-h82t6w-unf-quantity-editor">
-                        <button type="button" class="css-199ul1b quantity-left-minus" data-type="minus" data-field="">
+                   <!-- KERANJANG -->
+                    <div class="css-h82t6w-unf-quantity-editor" data-id="">
+                        <button type="button" class="css-199ul1b quantity-left-minus" data-type="minus" data-field="" >
                             <svg class="unf-icon" viewBox="0 0 24 24" width="18px" height="18px" fill="var(--NN300, #FF9F1C)" style="display: inline-block; vertical-align: middle;">
                                 <path d="M19 13H5c-.6 0-1-.4-1-1s.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1z"></path>
                             </svg>
                         </button>
                         <input id="quantity" name="quantity" class="css-1igct5v-unf-quantity-editor__input" data-unify="QuantityEditor" type="text" value="1" min="1" max="100" style="width: 7rem;">
-                        <button type="button" class="css-199ul1b quantity-right-plus" data-type="plus" data-field="">
+                        <button type="button" class="css-199ul1b quantity-right-plus" data-type="plus" data-field="" onclick="addcart()">
                             <svg class="unf-icon" viewBox="0 0 24 24" width="18px" height="18px" fill="var(--GN500, #FF9F1C)" style="display: inline-block; vertical-align: middle;">
                                 <path d="M19 11h-6V5a1 1 0 00-2 0v6H5a1 1 0 000 2h6v6a1 1 0 002 0v-6h6a1 1 0 000-2z"></path>
                             </svg>
@@ -169,29 +239,33 @@
                                 Stok
                             </div>
                             <div class="col text-right">
-                                90
+                           {{$product->quantity}}
                             </div>
                         </div>
                     </p>
                     <p >
+                        
                         <div class="row text-black">
                             <div class="col-sm-6">
                                 Subtotal
                             </div>
                             <div class="col-sm-6 text-right">
-                                450.000
+                           
                             </div>
                         </div>
                     </p>
-                    <a href="{{route('etalase.keranjang')}}" style="text-decoration: none;"><button class="btn button-outline-custome btn-block mb-3">+ keranjang</button></a>
-                    <button class="btn button-custome btn-block text-light" data-toggle="modal" data-target="#exampleModal">beli sekarang</button>
+                   
+                    <button class="btn button-outline-custome btn-block mb-3" id="add-cart" data-id="{{$product->id}}">+ keranjang</button>
+                    <button class="btn button-custome btn-block text-light" data-toggle="modal" data-target="#belii">beli sekarang</button>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> 
+    </div> 
     <!-- detail product -->
+
+    {{-- Produk lainnya --}}
     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-        <a href="allproduct.html">
+        <a href="#">
             <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> |
                 </span>
@@ -200,20 +274,20 @@
         </a>
     </div>
     <div class="row">
+        @foreach ($randomProduct as $p)
         <div class="col-xl-3 col-md-3 mb-5">
             <div class="card" style="width: 15rem;">
-                <img class="card-img-top mx-auto d-block" style="height: 10rem;width: 10rem;"
-                    src="img/product/Untitled-1 1.png" alt="Card image cap">
+                <a href="{{route('etalase.detail-produk',$p->id) }}"><img class="card-img-top mx-auto d-block" style="height: 20rem; object-fit: cover;height: 300px;width:237px"
+                    src="{{asset(Storage::url('product/main/'.$p->image))}}" alt="Card image cap"></a>
                 <div class="card-body">
-                    <h5 class="card-title text-black">7 Private Acces</h5>
-                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
+                    <h5 class="card-title text-black">{{$p->name}}</h5>
                     <p class="card-text mb-0 text-black">
-                        E-Course
-    
+                        produk fisik
                     </p>
+                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
                 </div>
                 <div class="card-footer d-flex">
-                    <p class="text-custome">Rp. 1.755.000</p>
+                    <p class="text-custome">Rp.{{number_format($p->varian()->first()->price,0,'.','.')}}</p>
                     <p class="ml-auto text-custome"><i
                             style="display: flex; justify-content: flex-end; position: relative; left: 20px; top: 4px;"
                             class="fas fa-star fa-sm"></i></p>
@@ -221,70 +295,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-3 mb-5">
-            <div class="card" style="width: 15rem;">
-                <img class="card-img-top mx-auto d-block" style="height: 10rem;width: 10rem;"
-                    src="img/product/Untitled-1 1.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-black">7 Private Acces</h5>
-                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
-                    <p class="card-text mb-0 text-black">
-                        E-Course
-    
-                    </p>
-                </div>
-                <div class="card-footer d-flex">
-                    <p class="text-custome">Rp. 1.755.000</p>
-                    <p class="ml-auto text-custome"><i
-                            style="display: flex; justify-content: flex-end; position: relative; left: 20px; top: 4px;"
-                            class="fas fa-star fa-sm"></i></p>
-                    <p class="ml-auto">5.0</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-3 mb-5">
-            <div class="card" style="width: 15rem;">
-                <img class="card-img-top mx-auto d-block" style="height: 10rem;width: 10rem;"
-                    src="img/product/Untitled-1 1.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-black">7 Private Acces</h5>
-                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
-                    <p class="card-text mb-0 text-black">
-                        E-Course
-    
-                    </p>
-                </div>
-                <div class="card-footer d-flex">
-                    <p class="text-custome">Rp. 1.755.000</p>
-                    <p class="ml-auto text-custome"><i
-                            style="display: flex; justify-content: flex-end; position: relative; left: 20px; top: 4px;"
-                            class="fas fa-star fa-sm"></i></p>
-                    <p class="ml-auto">5.0</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-3 mb-5">
-            <div class="card" style="width: 15rem;">
-                <img class="card-img-top mx-auto d-block" style="height: 10rem;width: 10rem;"
-                    src="img/product/Untitled-1 1.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-black">7 Private Acces</h5>
-                    <span class="badge badge-primary mb-2 bg-purple">Free member</span>
-                    <p class="card-text mb-0 text-black">
-                        E-Course
-    
-                    </p>
-                </div>
-                <div class="card-footer d-flex">
-                    <p class="text-custome">Rp. 1.755.000</p>
-                    <p class="ml-auto text-custome"><i
-                            style="display: flex; justify-content: flex-end; position: relative; left: 20px; top: 4px;"
-                            class="fas fa-star fa-sm"></i></p>
-                    <p class="ml-auto">5.0</p>
-                </div>
-            </div>
-        </div>
-
+        @endforeach
     </div>
 
 </div>
@@ -332,4 +343,5 @@
                 </div>
             </div>
         </div>
+@include('V2.Member.modal.checkout')
 @endsection

@@ -332,7 +332,7 @@
                   </thead>
                   <tbody>
                     @foreach ($banner as $i => $b)
-                     @include('v2.admin.modal.img-banner')
+                     @include('V2.Admin.modal.img-banner')
                     <tr>
                       <td>{{$i+1}}<span>.</span></td>
                       <td>{{$b->link}}</td>

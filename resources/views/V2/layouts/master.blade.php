@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -19,6 +20,7 @@
   <link rel="stylesheet" href="{{asset('/assets/datatable/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/summernote.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css')}}">
+  <link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
   @yield('css')
 </head>
 @yield('head')
@@ -29,6 +31,9 @@
     @toastr_render
     @auth
     @php
+    $cart = new \App\Http\Controllers\CartController;
+    $allcart = $cart->cartnotif();
+    $isicart = $cart->isicart();
     $notif = new \App\Http\Controllers\NotifController;
     $all = $notif->all();
     $jumlah = $notif->status();         

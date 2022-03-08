@@ -1,7 +1,7 @@
 @extends('V2.layouts.master')
 @section('title','Detail Pembayaran')
 @section('css')
-<link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
+<link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
 @endsection
 @section('content')
 <!-- Container Fluid-->
@@ -10,7 +10,7 @@
                 <div class="col-7">
                     <!-- title KOMISI FISIK -->
                     <div class="d-sm-flex align-items-center justify-content-between">
-                        <a href="allproduct.html">
+                        <a href="#">
                             <p
                                 style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                                 <span
@@ -104,7 +104,7 @@
                 <div class="col-12 mt-2">
                     <!-- title KOMISI FISIK -->
                     <div class="d-sm-flex align-items-center justify-content-between">
-                        <a href="allproduct.html">
+                        <a href="#">
                             <p
                                 style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                                 <span
@@ -226,13 +226,13 @@ aria-hidden="true">
                 <div class="col-3">Olshop</div><div class="col-4"> : mocmembershop</div>
             </div>
             <div class="row text-black mb-3">
-                <div class="col-3">Resi</div><div class="col-4"> : 465475474</div>
+                <div class="col-3">Resi</div><div class="col-4"> : {{$d->no_resi != null ? $d->no_resi : 'Belum ada resi' }}</div>
             </div>
             <div class="row text-black mb-3">
                 <div class="col-3">Alamat</div><div class="col-4"> : {{$d->alamat}}</div>
             </div>
             <div class="row text-black mb-3">
-                <div class="col-3">Kode Pos</div><div class="col-4"> : 17212</div>
+                <div class="col-3">Kode Pos</div><div class="col-4"> : {{$d->kode_pos}}</div>
             </div>
             <div class="row mt-5">
                 <div class="col-12">

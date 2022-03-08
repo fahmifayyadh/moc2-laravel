@@ -10,7 +10,7 @@
         <div class="col-6">
             <!-- title Leaderboard -->
             <div class="d-sm-flex align-items-center justify-content-between">
-                <a href="allproduct.html">
+                <a href="#">
                     <p
                         style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                         <span
@@ -38,7 +38,7 @@
     <div class="row">
         @foreach ($produk as $c)
         <div class="col mb-5">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;height: 100%">
                 <a href="{{route(Request::path() == 'etalase/product' ? 'etalase.detail-produk' : 'etalase.detail-course',$c->id) }}">
                 <img class="card-img-top mx-auto d-block" style="height: 10rem;width: 10rem;" src="{{asset(Storage::url(Request::path() == 'etalase/product' ? 'product/main/'.$c->image : 'paket/'.$c->image))}}" alt="Card image cap">
                 <div class="card-body " style="text-decoration: none">

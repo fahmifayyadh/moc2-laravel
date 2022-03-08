@@ -16,7 +16,7 @@
                                         <span
                                             style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;">
                                             | </span>
-                                            MY ORDER (PRODUK) <span style="font-weight: 100;"></span>
+                                            MY ORDER (PRODUK FISIK) <span style="font-weight: 100;"></span>
                                     </p>
                                 </a>
                             </div>
@@ -42,7 +42,7 @@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="{{route('order.filter','')}}">Terbaru</a>
                                         <a class="dropdown-item" href="{{route('order.filter','')}}">Harga Tertinggi</a>
-                                        <a class="dropdown-item" href="{{route('order.filter','')}}">Harga Terendahg</a>
+                                        <a class="dropdown-item" href="{{route('order.filter','')}}">Harga Terendah</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,27 +83,30 @@
                                         <td>{{$tf->kuantiti}}</td>
                                         <td>
                                            @include('V2.Member.modal.myorder.detailpengirimanproduk')
+                                          
                                             <label  class="badge badge-primary p-2 mb-2" data-toggle="modal" data-target="#kirimproduk{{$tf->id}}" style="cursor: pointer;">Detail Pengiriman</label>
-                                            <!-- <a href="#" class="badge badge-warning p-2" data-toggle="modal" data-target="#exampleModal2">Detail Penerima</a> -->
+                                             @include('V2.Member.modal.myorder.detailpenerimaanproduk')
+                                            <label class="badge badge-warning p-2" data-toggle="modal" data-target="#terimaproduk{{$tf->id}}" style="cursor: pointer;">Detail Penerima</label>
                                         </td>
                                         <td>@if ($tf->status != 'refund' && $tf->status != 'batal' && $tf->status != 'selesai')
                                       
-                                            <span style="cursor: pointer;" class="badge badge-success p-2 mb-2" data-toggle="modal" data-target="#orderDetail{{$tf->id}}">Invoice</span>
-                                            @include('tests.order.komponen.invoicefisik')
+                                            <span style="cursor: pointer;" class="badge badge-success p-2 mb-2" data-toggle="modal" data-target="#orderDetail{{$tf->id}}">Detail Pembayaran</span>
+                                            @include('V2.Member.modal.myorder.invoicefisik')
+                                          <!--  <a href="{{route('order.invoice',$tf->id)}}" class="badge badge-success p-2 mb-2">Detail Pembayaran</a> -->
                                             @endif
 
                                            @if ($tf->status != 'proses' && $tf->status != 'batal' && $tf->status != 'selesai' && $tf->status != 'refund')
                                       
-                                         <span style="cursor: pointer;" class="badge badge-warning p-2 mb-2" data-toggle="modal" data-target="#bukti{{$tf->id}}">Uploud Bukti Bayar</span>
-                                         @include('tests.order.komponen.buktifisik')
+                                         <span style="cursor: pointer;" class="badge badge-warning p-2 mb-2" data-toggle="modal" data-target="#bukti{{$tf->id}}">Upload Bukti Bayar</span>
+                                         @include('V2.Member.modal.myorder.buktifisik')
 
                                              @endif
                                         </td>
-                                        <td>{{$tf->kupon != null ? $tf->kupon->kode.'-'.$tf->discount : null}}</td>
+                                        <td>{{$tf->kupon != null ? $tf->kupon->kode.'-'.$tf->discount : 'Not Use'}}</td>
                                         <td>{{$tf->created_at->format('d-m-Y')}}</td>
                                         <td>{{$tf->status == 'selesai' ? $tf->updated_at->format('d-m-Y') : 'Belum Selesai'}}</td>
                                         <td>Rp {{number_format(($tf->price*$tf->kuantiti)-$tf->discount+$tf->delivery->ongkir,0,'.','.')}}</td>
-                                            @include('tests.order.komponen.badgefisik')
+                                            @include('V2.Member.modal.myorder.badgefisik')
                                     </tr>
                                     @endforeach
                                     <!-- loop data -->
@@ -115,3 +118,20 @@
                 </div>
                 <!---Container Fluid-->
 @endsection
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+</script>
+ <script>
+$(document).ready(function(){
+
+ $('.content-data img').addClass("img-fluid")
+$('.content-data video').attr("controlsList", "nodownload");
+
+});
+</script>

@@ -14,6 +14,8 @@ class OmsetMemberController extends Controller
         ->with("transactionsCourseMonthNow")
         ->with("transactionsCourseTotal")
         ->paginate();
-        return $data;
+        //dd($data);
+        // return $data;
+        return view('V2.Member.omsetmember', compact('data'));
     }
 }

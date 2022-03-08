@@ -71,14 +71,14 @@
 
     });
 
-    // function valueChanged(t)
-    // {
-    //     var id = t.id;
-    //     if($('.productChecked').is(":checked"))
-    //         console.log(id);
-    //         var p = id;
-    //         window.location.href = "{{url('etalase/keranjang')}}" + '/' + p; 
-    // }
+    function valueChanged(t)
+    {
+        var id = t.id;
+        if($('.productChecked').is(":checked"))
+            console.log(id);
+            var p = id;
+            window.location.href = "{{url('etalase/keranjang')}}" + '/' + p; 
+    }
 </script>
 @endsection
 @section('content')
@@ -155,11 +155,22 @@
                     <p class="text-black">
                         Total
                     </p>
+                    @php
+                    $total = array();
+                    foreach($cart as $c){
+                        if($c->product_id == $product->id){
+
+                            $quantity = $c->quantity;
+                            $price = $c->product->varian()->first()->price;
+                            $total[] = $quantity*$price;
+                        }
+                    }
+                    @endphp
                     <p class="text-custome h3">
-                        Rp @php echo 0; @endphp
+                        Rp @php echo array_sum($total); @endphp
                     </p>
                     <p>
-                        <button class="btn button-custome btn-block text-title-link"> Checkout</button>
+                        <button class="btn button-custome btn-block text-title-link" data-toggle="modal" data-target="#belii"> Checkout</button>
                     </p>
                     
                 </div>
@@ -168,4 +179,5 @@
         <!-- end checkout -->
     </div>
 </div>
+@include('V2.Member.modal.checkout')
 @endsection

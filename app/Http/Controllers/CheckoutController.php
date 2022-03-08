@@ -80,7 +80,10 @@ class CheckoutController extends Controller
             toastr()->error($th->getMessage(), 'error');
             return redirect()->back();
         }
-        return view('tests.transaksi.checkout', compact(['kupon', 'jen', 'harga', 'kecamatan', 'bank', 'city', 'ongkir', 'course', 'provinsi', 'kuantiti', 'exspedisi']));
+        // return view('tests.transaksi.checkout', compact(['kupon', 'jen', 'harga', 'kecamatan', 'bank', 'city', 'ongkir', 'course', 'provinsi', 'kuantiti', 'exspedisi']));
+        
+        // V2
+        return view('V2.Member.checkout', compact(['kupon', 'jen', 'harga', 'kecamatan', 'bank', 'city', 'ongkir', 'course', 'provinsi', 'kuantiti', 'exspedisi']));
     }
     public function invoice(Request $request)
     {
@@ -121,7 +124,7 @@ class CheckoutController extends Controller
                 'name'           => $request->name,
                 'alamat'         => $request->alamat,
                 'no_hp'          => $request->no_hp,
-                //'kode_pos'       => $request->kode_pos,
+                'kode_pos'       => $request->kode_pos,
                 'ongkir'         => $harga[$request->jenis],
                 'jenis'          => $request->jenis
             ]);

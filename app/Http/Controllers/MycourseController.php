@@ -20,7 +20,10 @@ class MycourseController extends Controller
             $z->withTrashed();
         }])->orderBy('created_at','DESC')->get();
 
-        return view('tests.materi.index', compact('course'));
+        //return view('tests.materi.index', compact('course'));
+
+        //V2
+        return view('V2.Member.mycourse', compact('course'));
     }
     public function see($paketId,Course $course,TransactionCourse $trans)
     {
@@ -49,7 +52,10 @@ class MycourseController extends Controller
             toastr($e->getMessage(),'error');
             return redirect()->back();
         }
-        return view('tests.materi.materi', compact(['babCourse','ar','course','namaCourse','trans','subcourse', 'prog',]));
+        //return view('tests.materi.materi', compact(['babCourse','ar','course','namaCourse','trans','subcourse', 'prog',]));
+
+        //v2
+        return view('V2.Member.mycourse-detail', compact(['babCourse','ar','course','namaCourse','trans','subcourse', 'prog',]));
     }
     public function sudaDibaca(TransactionCourse $trans,Course $course)
     {

@@ -1,7 +1,7 @@
-@extends('v2.layouts.master')
+@extends('V2.layouts.master')
 @section('title', 'Detail Product Ecourse')
 @section('css')
-<link href="{{asset('mmbr/custom.css')}}" rel="stylesheet">
+<link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
 @endsection
 @section('js')
 @endsection
@@ -9,7 +9,7 @@
 <div class="container-fluid" id="container-wrapper">
     <!-- title berita -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-        {{-- <a href="allproduct.html"> --}}
+        {{-- <a href="#"> --}}
             <p class="ml-3"><a href="{{ route('etalase.course') }}" style="color: #FF9F1C;">All products</a> > {{$course->name}}</p>
             <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px; float:left">
 
@@ -49,8 +49,8 @@
                                 <div class="d-flex align-items-center">
                                     <span class="tittle-text">{{$course->name}}</span>
                                     @error('kode')
-<small>{{$message}}</small>
-@enderror
+                                    <small>{{$message}}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="mt-3 mb-3">
@@ -96,7 +96,7 @@
     </div>
     <!-- detail product -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-        <a href="allproduct.html">
+        <a href="#">
             <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> |
                 </span>

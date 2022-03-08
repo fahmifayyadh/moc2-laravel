@@ -108,7 +108,10 @@ class OrderController extends Controller
         $t = $transaction;
         $d = $transaction->delivery;
         $b = Bank::findOrFail($request->bank);
-        return view('tests.transaksi.invoice', compact('d', 't', 'b'));
+        //return view('tests.transaksi.invoice', compact('d', 't', 'b'));
+
+         // V2
+        return view('V2.Member.detail-pembayaran', compact('d', 't', 'b'));
     }
     public function invoiceCourse(Request $request,TransactionCourse $transaction)
     {

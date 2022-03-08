@@ -217,7 +217,7 @@
                 <td>{{ $r->batas }}</td>
                 <td style="text-align: center;">
                   <div class="d-flex">
-                      <button class="btn btn-4" data-toggle="modal" data-target="#beliReward{{ $i }}">Tukar</button> 
+                      <button class="btn btn-success" data-toggle="modal" data-target="#beliReward{{ $i }}">Tukar</button> 
                   </div>
                 </td>
               </tr>
