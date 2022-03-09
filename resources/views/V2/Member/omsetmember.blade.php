@@ -39,7 +39,7 @@
                         <a class="dropdown-item" href="#">Terbaru</a>
                         <a class="dropdown-item" href="#">Harga Tertinggi</a>
                         <a class="dropdown-item" href="#">Harga Terendahg</a>
-                    </div>s
+                    </div>
                 </div>
             </div>
         </div>

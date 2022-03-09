@@ -88,6 +88,10 @@ Route::group(['middleware' => ['auth', 'checkRole:member', 'checkStatus:active,p
 	Route::group(['middleware' => ['auth', 'checkStatus:active']], function () {
 		Route::prefix('etalase')->name('etalase.')->group(function () {
 			Route::get('/course', 'EtalaseController@course')->name('course');
+			// Tes View
+			Route::get('/pembayaran', function () {
+				return view('V2.Member.pembayaran');
+			});
 			// Route::get('/course/paket', 'EtalaseController@paketCourse')->name('paketCourse');
 			Route::get('/product', 'EtalaseController@produk')->name('product');
 			Route::get('/detail-paket/{course}', 'EtalaseController@detailCourse')->name('detail-course');
@@ -115,6 +119,10 @@ Route::group(['middleware' => ['auth', 'checkRole:member', 'checkStatus:active,p
 		Route::get('/status/filter/course/{fil}', 'OrderController@filterCourse')->name('filterCourse');
 		Route::get('/invoice/{transaction}', 'OrderController@invoice')->name('invoice');
 		Route::post('/invoice-course/{transaction}', 'OrderController@invoiceCourse')->name('invoiceCourse');
+		// Tes View
+		Route::get('/marketplace', function () {
+			return view('V2.Member.detail-pembayaran-marketplace');
+		})->name('invoiceMarketplace');
 	});
 	Route::prefix('my-file')->name('file.')->group(function () {
 		Route::get('/', 'FileController@index')->name('index');

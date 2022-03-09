@@ -31,6 +31,10 @@
   font-family: "Rubik", sans-serif;
   color: black;
 }
+.text-red{
+  font-family: "Rubik", sans-serif;
+  color: #FF0000;
+}
 .text-blue {
   font-family: "Rubik", sans-serif;
   color: #1A4C93;
@@ -176,4 +180,59 @@
   font-size: 1.1428571428571428rem;
   width: 66px;
   text-align: center;
+}
+
+/* toggle switch */
+.tab-slider--nav {
+  width: 100%;
+  float: left;
+  margin-bottom: 20px;
+}
+.tab-slider--tabs {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  border-radius: 35px;
+  overflow: hidden;
+  background: rgb(231, 231, 231);
+  height: 20px;
+  user-select: none;
+}
+.tab-slider--tabs:after {
+  content: "";
+  width: 50%;
+  background: #818181;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 250ms ease-in-out;
+  border-radius: 35px;
+}
+.tab-slider--tabs.slide:after {
+  left: 50%;
+}
+.tab-slider--trigger {
+  font-size: 18px;
+  line-height: 1;
+  font-weight: bold;
+  color: #87888a;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0px 8px;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  display: inline-block;
+  transition: color 250ms ease-in-out;
+  user-select: none;
+}
+.tab-slider--trigger.active {
+  color: #ff9f1c;
+}
+.tab-slider--body {
+  margin-bottom: 20px;
 }
