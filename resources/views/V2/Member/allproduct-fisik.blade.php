@@ -2,6 +2,11 @@
 @section('title','All Product Fisik')
 @section('css')
 <link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
+<style>
+    input:focus{
+        border: none;
+    }
+</style>
 @endsection
 @section('content')
 <!-- Container Fluid-->
@@ -24,10 +29,8 @@
         </div>
         <div class="col-4">
             <div class="box">
-                <a href="">
                     <i class="fa fa-search" aria-hidden="true"></i>
-                </a>
-                <input type="text" name="" placeholder="cari barang">
+                    <form action="{{route('etalase.searchProduk')}}" method="get"><input type="text" name="name" placeholder="cari barang" id="search" style="background: transparent;border: none;color: white;margin-left: 5px;"></form>
             </div>
         </div>
         <div class="col-2">
@@ -39,7 +42,7 @@
                         Filter</button>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Terbaru</a>
+                        <a class="dropdown-item" href="{{route('etalase.filter-produk-terbaru')}}">Terbaru</a>
                         <a class="dropdown-item" href="#">Harga Tertinggi</a>
                         <a class="dropdown-item" href="#">Harga Terendah</a>
                     </div>

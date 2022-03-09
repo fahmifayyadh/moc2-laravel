@@ -24,8 +24,10 @@
         </div>
         <div class="col-6">
             <div class="input-group shadow-lg">
-                <input type="text" class="form-control" placeholder="cari nama"
-                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <form action="{{route('etalase.searchCourse')}}" method="get">
+                    <input type="text" name="name" class="form-control" placeholder="cari nama"
+                    aria-label="Recipient's username" aria-describedby="button-addon2" style="width: 30rem;">
+                </form>
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
                             class="fas fa-search"></i></button>

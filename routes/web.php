@@ -98,9 +98,12 @@ Route::group(['middleware' => ['auth', 'checkRole:member', 'checkStatus:active,p
 			Route::get('/detail-course/{course}', 'EtalaseController@detailCoursePaket')->name('detail-course-paket');
 			// Route::get('/detail-paket-course/{paket}', 'EtalaseController@detailPaketCourse')->name('detailPaketCourse');
 			Route::get('/detail-produk/{product}', 'EtalaseController@detailProduk')->name('detail-produk');
-			// V2
 			Route::get('/keranjang', 'EtalaseController@keranjang')->name('keranjang');
 			Route::get('/keranjang/{product}', 'EtalaseController@detailKeranjang')->name('detail-keranjang');
+			// filter
+			Route::get('/product/terbaru', 'EtalaseController@filterProdukTerbaru')->name('filter-produk-terbaru');
+			Route::get('/product/search', 'EtalaseController@searchProduk')->name('searchProduk');
+			Route::get('/course/search', 'EtalaseController@searchCourse')->name('searchCourse');
 		});
 		Route::prefix('komisi')->name('komisi.')->group(function () {
 			Route::post('/member-konfrim', 'KomisiController@konfrim')->name('konfrim');
