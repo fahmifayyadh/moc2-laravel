@@ -48,12 +48,12 @@
 <div class="page-body checkout">
     <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <a href="allproduct.html"  >
+      
         <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
           <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
           CHECKOUT <span style="font-weight: 100;"></span>
         </p>
-      </a>
+      
     </div>
     <div class="container container-2">
     </div>

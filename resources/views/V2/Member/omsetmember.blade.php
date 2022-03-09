@@ -68,10 +68,26 @@
                     <tr class=" text-custome">
                         <td>{{$i+1}}</td>
                         <td>{{$dt->name}}</td>
-                        <td>{{$dt->transactionsMonthNow}}</td>
-                        <td>{{$dt->transactionsTotal}}</td>
-                        <td>{{$dt->point}}</td>
-                        <td></td>
+                        <td>{{count($dt->transactionsMonthNow) > 0 ? (count($dt->transactionsCourseMonthNow) > 0 ?  
+                            $dt->transactionsMonthNow[0]['sum_commission']+$dt->transactionsCourseMonthNow[0]['sum_commission'] 
+                            : $dt->transactionsMonthNow[0]['sum_commission'] ):
+                            (count($dt->transactionsCourseMonthNow) > 0 ? $dt->transactionsCourseMonthNow[0]['sum_commission'] : 
+                            0) }}</td>
+                        <td>{{count($dt->transactionsTotal) > 0 ? (count($dt->transactionsCourseTotal) > 0 ?  
+                            $dt->transactionsTotal[0]['sum_commission']+$dt->transactionsCourseTotal[0]['sum_commission'] 
+                            : $dt->transactionsTotal[0]['sum_commission'] ):
+                            (count($dt->transactionsCourseTotal) > 0 ? $dt->transactionsCourseTotal[0]['sum_commission'] : 
+                            0) }}</td>
+                            <td>{{count($dt->transactionsMonthNow) > 0 ? (count($dt->transactionsCourseMonthNow) > 0 ?  
+                            $dt->transactionsMonthNow[0]['point_sponsor']+$dt->transactionsCourseMonthNow[0]['point_sponsor'] 
+                            : $dt->transactionsMonthNow[0]['point_sponsor'] ):
+                            (count($dt->transactionsCourseMonthNow) > 0 ? $dt->transactionsCourseMonthNow[0]['point_sponsor'] : 
+                            0) }}</td>
+                        <td>{{count($dt->transactionsTotal) > 0 ? (count($dt->transactionsCourseTotal) > 0 ?  
+                            $dt->transactionsTotal[0]['point_sponsor']+$dt->transactionsCourseTotal[0]['point_sponsor'] 
+                            : $dt->transactionsTotal[0]['point_sponsor'] ):
+                            (count($dt->transactionsCourseTotal) > 0 ? $dt->transactionsCourseTotal[0]['point_sponsor'] : 
+                            0) }}</td>
                     </tr>
                     @endforeach
                     <!-- loop data -->
