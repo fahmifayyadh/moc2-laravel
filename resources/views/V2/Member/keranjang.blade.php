@@ -24,49 +24,47 @@
                     "_token": "{{ csrf_token() }}",
                 },
                 success:function(data){
-                    window.location.reload();
+                    $("div[id="+id+"]").remove();
                 }
             });
         });
         //tambah produk
         for (let i = 1; i <= 1000; ++i) {
-        $('.add-cart'+i).click(function(e){
-        // get data on tag
-        e.preventDefault();
-        let id = $(this).data('id');
-        let quantity = parseInt($('#quantity'+i).val());
-        $('#quantity'+i).val(quantity + 1);
-        console.log(i, id, quantity);
-        // ajax request
-        $.ajax({
-            type:'get',
-            url: "{{url('cart/add/quantity')}}" + '/' + id,
-            data:{id:id, quantity:quantity},
-            success:function(data){
-                // alert(data)
-                window.location.reload();
-                }
+            $('.add-cart'+i).click(function(e){
+                // get data on tag
+                e.preventDefault();
+                let id = $(this).data('id');
+                let quantity = parseInt($('#quantity'+i).val());
+                $('#quantity'+i).val(quantity + 1);
+                // ajax request
+                $.ajax({
+                    type:'get',
+                    url: "{{url('cart/add/quantity')}}" + '/' + id,
+                    data:{id:id, quantity:quantity},
+                    success:function(data){
+                        console.log(data);
+                    }
+                });
             });
-        });
         }
         //kurangi produk
         for (let i = 1; i <= 1000; ++i) {
-        $('.min-cart'+i).click(function(e){
-        // get data on tag
-        e.preventDefault();
-        let id = $(this).data('id');
-        let quantity = parseInt($('#quantity'+i).val());
-        $('#quantity'+i).val(quantity - 1);
-        // ajax request
-        $.ajax({
-            type:'get',
-            url: "{{url('cart/min/quantity')}}" + '/' + id,
-            data:{id:id, quantity:quantity},
-            success:function(data){
-                window.location.reload();
-                }
+            $('.min-cart'+i).click(function(e){
+                // get data on tag
+                e.preventDefault();
+                let id = $(this).data('id');
+                let quantity = parseInt($('#quantity'+i).val());
+                $('#quantity'+i).val(quantity - 1);
+                // ajax request
+                $.ajax({
+                    type:'get',
+                    url: "{{url('cart/min/quantity')}}" + '/' + id,
+                    data:{id:id, quantity:quantity},
+                    success:function(data){
+                        console.log(data);
+                    }
+                });
             });
-        });
         }
 
     });
@@ -100,7 +98,7 @@
             <div class="row">
                 <!-- loop data -->
                 @foreach($cart as $i => $c)
-                <div class="col-sm-12 mb-3">
+                <div class="col-sm-12 mb-3" id="{{$c->product->id}}">
                     <div class="card">
                         <div class="card-body">
                             <p>
@@ -126,7 +124,7 @@
                             </p>
                             <!-- button quantity -->
                             <div class="float-right mt-3">
-                                <div class="css-h82t6w-unf-quantity-editor">
+                                <div class="css-h82t6w-unf-quantity-editor" id="myQuantity">
                                     <button type="button" class="min-cart{{$i+1}} css-199ul1b quantity-left-minus" data-type="minus" data-field=""id="min-cart" data-id="{{$c->product->id}}">
                                         <svg class="unf-icon" viewBox="0 0 24 24" width="18px" height="18px" fill="var(--NN300, #FF9F1C)" style="display: inline-block; vertical-align: middle;">
                                             <path d="M19 13H5c-.6 0-1-.4-1-1s.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1z"></path>

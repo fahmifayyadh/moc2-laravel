@@ -100,4 +100,26 @@ class EtalaseController extends Controller
         // V2
         return view('V2.Member.detail-keranjang',compact(['cart','exspedisi','product','provinsi','randomProduct']));
     }
+
+    public function searchCourse(Request $request)
+    {
+        $produk = Paket::where('name','like','%'.$request->name.'%')->get();
+        if (auth()->user()->role != 'admin') {
+            return view('V2.Member.allproduct_course',compact('produk'));
+        }else {
+            return view('tests.etalase.index',compact('produk'));
+        }
+    }
+
+    public function filterProdukTerbaru()
+    {
+        $produk = Product::orderBy('created_at', 'DESC')->get();
+        return view('V2.Member.allproduct-fisik',compact('produk'));
+    }
+
+    public function searchProduk(Request $request)
+    {
+        $produk = Product::where('name','like','%'.$request->name.'%')->get();
+        return view('V2.Member.allproduct-fisik',compact('produk'));
+    }
 }
