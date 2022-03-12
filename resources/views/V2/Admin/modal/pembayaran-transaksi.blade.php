@@ -24,6 +24,7 @@ aria-labelledby="preview-pembayaran" aria-hidden="true">
        @csrf
        <label for="tolak">Tolak</label>
        <input id="tolak" type="radio" name="konfrim_bukti" value="tolak">
+       <br>
        <label for="terima">Terima</label>
        <input id="terima" type="radio" name="konfrim_bukti" value="terima">
      </div>

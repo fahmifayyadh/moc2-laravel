@@ -101,10 +101,12 @@ Route::group(['middleware' => ['auth', 'checkRole:member', 'checkStatus:active,p
 			Route::get('/keranjang', 'EtalaseController@keranjang')->name('keranjang');
 			Route::get('/keranjang/{product}', 'EtalaseController@detailKeranjang')->name('detail-keranjang');
 			// filter
+			Route::get('/course/search', 'EtalaseController@searchCourse')->name('searchCourse');
+			Route::get('/course/termahal', 'EtalaseController@filterCourseTermahal')->name('filter-course-termahal');
+			Route::get('/course/termurah', 'EtalaseController@filterCourseTermurah')->name('filter-course-termurah');
 			Route::get('/product/termahal', 'EtalaseController@filterProdukTermahal')->name('filter-produk-termahal');
 			Route::get('/product/termurah', 'EtalaseController@filterProdukTermurah')->name('filter-produk-termurah');
 			Route::get('/product/search', 'EtalaseController@searchProduk')->name('searchProduk');
-			Route::get('/course/search', 'EtalaseController@searchCourse')->name('searchCourse');
 		});
 		Route::prefix('komisi')->name('komisi.')->group(function () {
 			Route::post('/member-konfrim', 'KomisiController@konfrim')->name('konfrim');

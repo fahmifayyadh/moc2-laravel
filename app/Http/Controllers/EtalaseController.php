@@ -16,7 +16,7 @@ class EtalaseController extends Controller
 {
     public function course()
     {
-        $produk = Paket::get();
+        $produk = Paket::orderBy('created_at', 'DESC')->get();
         // return view('tests.etalase.index',compact('produk'));
 
         //V2
@@ -99,6 +99,32 @@ class EtalaseController extends Controller
 
         // V2
         return view('V2.Member.detail-keranjang',compact(['cart','exspedisi','product','provinsi','randomProduct']));
+    }
+
+    public function filterCourseTermahal()
+    {
+        $produk = Paket::orderBy('price', 'DESC')->get();
+        // return view('tests.etalase.index',compact('produk'));
+
+        //V2
+        if (auth()->user()->role != 'admin') {
+            return view('V2.Member.allproduct_course',compact('produk'));
+        }else {
+            return view('tests.etalase.index',compact('produk'));
+        }
+    }
+
+    public function filterCourseTermurah()
+    {
+        $produk = Paket::orderBy('price', 'ASC')->get();
+        // return view('tests.etalase.index',compact('produk'));
+
+        //V2
+        if (auth()->user()->role != 'admin') {
+            return view('V2.Member.allproduct_course',compact('produk'));
+        }else {
+            return view('tests.etalase.index',compact('produk'));
+        }
     }
 
     public function searchCourse(Request $request)

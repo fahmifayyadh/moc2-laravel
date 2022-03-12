@@ -17,7 +17,7 @@ class OrderController extends Controller
     {
         $transCourse = TransactionCourse::where('user_id',auth()->user()->id)->with('kupon')->with(['paket' => function($z){
             $z->withTrashed();
-        }])->orderBy("status", "desc")->orderBy("created_at", "desc")->paginate(10);
+        }])->orderBy("created_at", "desc")->get();
         $bank = Bank::query();
         $personal = Bank::where('type','personal')->get();
         $cx = true;
@@ -30,7 +30,7 @@ class OrderController extends Controller
     {
         $transFisik = Transaction::where('user_id',auth()->user()->id)->with('delivery')->with('kupon')->with(['product' => function($x){
             $x->withTrashed();
-        }])->orderBy("status", "desc")->orderBy("created_at", "desc")->paginate(10);
+        }])->orderBy("created_at", "desc")->get();
         $bank = Bank::where('type','personal')->get();
         $cx = true;
         // return view('tests.order.order-status', compact(['transFisik','bank','cx']));
