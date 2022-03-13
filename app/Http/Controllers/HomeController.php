@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Berita;
 use App\Komisi;
 use App\Transaction;
 use App\TransactionCourse;
@@ -75,8 +76,9 @@ class HomeController extends Controller
              $omset =  TransactionCourse::whereHas('agent',function($q){
                 return $q->where('user_id',auth()->user()->id);
             })->where('status','selesai')->count();
-            $berita = new BeritaController;
-            $berita = $berita->berita();
+            // $berita = new BeritaController;
+            // $berita = $berita->berita();
+            $berita = Berita::orderBy('created_at', 'DESC')->paginate(5);
             $banner = Banner::get();
             
             
@@ -86,7 +88,10 @@ class HomeController extends Controller
             $z->where('status','selesai');
         }])->withCount('dummy')->first();
             //return view('tests.dashboard.rekap',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
-             return view('v2.member.dashboard',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
+
+
+            // v2
+           return view('V2.Member.dashboard',compact(['us','banner','berita','saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
 
 
         }else{
@@ -106,8 +111,10 @@ class HomeController extends Controller
             $omset =  intval(Transaction::where('status','selesai')->sum('price')) + intval(TransactionCourse::where('status','selesai')->sum('price'));
             $lead = intval(Transaction::where('status','selesai')->count()) + intval(TransactionCourse::where('status','selesai')->count());
 
-            return view('tests.dashboard.rekap',compact(['saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
-            //return view('v2.admin.dashboard',compact(['saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
+            //return view('tests.dashboard.rekap',compact(['saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
+
+            // V2
+            return view('V2.Admin.dashboard',compact(['saldo','salesnow','omsetnow','leadnow','salesbulan','omsetbulan','leadbulan','sales','omset','lead']));
 
 
         }

@@ -26,8 +26,11 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::All();
-        return view('tests.fisik.index',compact('products'));
-}
+        // return view('tests.fisik.index',compact('products'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.produk-fisik',compact('products'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +39,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('tests.fisik.add-fisik');
+        // return view('tests.fisik.add-fisik');
+
+        // V2
+        return view('V2.Admin.kelola-produk.create-produk-fisik');
     }
 
     /**
@@ -47,6 +53,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $point_pembeli = floatval(str_replace(',', '.', str_replace('.', '', $request->point_pembeli)));
+        $point_sponsor = floatval(str_replace(',', '.', str_replace('.', '', $request->point_sponsor)));
+        $commission = floatval(str_replace(',', '.', str_replace('.', '', $request->commission)));
+
         $fileName = null;
         $msg = [
             'numeric' => 'Inputan :attribute harus berupa angka',
@@ -70,9 +80,9 @@ class ProductController extends Controller
             'slug' => Str::slug(preg_replace('/[^a-zA-Z0-9\']/', '-', $named)) .'-' . $this->generateUnique,
             'desc' => $request->desc,
             'image'=> $fileName,
-            'point_pembeli' => $request->point_pembeli,
-            'point_sponsor' => $request->point_sponsor,
-            'commission' => $request->commission,
+            'point_pembeli' => (int)$point_pembeli,
+            'point_sponsor' => (int)$point_sponsor,
+            'commission' => (int)$commission,
             'berat' => $request->berat,
             'length' => $request->length,
             'width' => $request->width,
@@ -110,7 +120,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('tests.fisik.edit-fisik', compact('product'));
+        // return view('tests.fisik.edit-fisik', compact('product'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.edit-produk-fisik', compact('product'));
     }
 
     /**
@@ -122,6 +135,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $point_pembeli = floatval(str_replace(',', '.', str_replace('.', '', $request->point_pembeli)));
+        $point_sponsor = floatval(str_replace(',', '.', str_replace('.', '', $request->point_sponsor)));
+        $commission = floatval(str_replace(',', '.', str_replace('.', '', $request->commission)));
+
         $msg = [
             'numeric' => 'Inputan :attribute harus berupa angka',
             'required' => 'Inputan :attribute wajib diisi',
@@ -154,9 +171,9 @@ class ProductController extends Controller
             'length' => $request->length,
             'width' => $request->width,
             'height' => $request->height,
-            'point_pembeli' => $request->point_pembeli,
-            'point_sponsor' => $request->point_sponsor,
-            'commission' => $request->commission,
+            'point_pembeli' => (int)$point_pembeli,
+            'point_sponsor' => (int)$point_sponsor,
+            'commission' => (int)$commission,
             
         ]);
         // Varian::whereId($request->varianID)->update([
@@ -187,6 +204,7 @@ class ProductController extends Controller
     public function deleteVarian($id)
     {
         Varian::destroy($id);
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
     /**
@@ -198,6 +216,7 @@ class ProductController extends Controller
     public function delete(Product $product)
     {
         $product->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
     public function search(Request $request)
@@ -207,6 +226,9 @@ class ProductController extends Controller
         ->orWhere('commission',$request->price)
         ->get();
         // ->orWhere('desc','like','%'.$request->desc.'%')
-        return view('tests.fisik.index',compact('products'));
+        // return view('tests.fisik.index',compact('products'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.produk-fisik',compact('products'));
     }
 }

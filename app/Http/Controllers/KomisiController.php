@@ -27,7 +27,7 @@ class KomisiController extends Controller
             })->with(['paket' => function($x){
                 $x->withTrashed();
             }])->where('status','selesai')->paginate(10);
-            return view('tests.afiliasi.komisi', compact('transactionCourse'));
+            return view('V2.Member.komisi', compact('transactionCourse'));
         } else {
             $bank = $this->xendit->getBank();
             $transactionCourse = TransactionCourse::where(function($xz){
@@ -37,7 +37,10 @@ class KomisiController extends Controller
             })->where('status','selesai')->with(['paket' => function($x){
                 $x->withTrashed();
             }])->paginate(10);
-            return view('tests.afiliasi.afiliasi', compact(['transactionCourse','bank']));
+            //return view('tests.afiliasi.afiliasi', compact(['transactionCourse','bank']));
+
+            //v2
+            return view('V2.Admin.afiliasi.komisi-course', compact(['transactionCourse','bank'])); 
         }
     }
     public function bayar(Request $request)

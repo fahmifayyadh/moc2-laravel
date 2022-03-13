@@ -45,7 +45,7 @@ class Payouts
      */
     public static function createReqParams()
     {
-        return ['external_id', 'amount', 'email'];
+        return ['external_id', 'amount'];
     }
 
     /**
@@ -57,13 +57,12 @@ class Payouts
      * 'id'=> string,
      * 'external_id'=> string,
      * 'amount'=> int,
+     * 'passcode'=> string,
      * 'merchant_name'=> string,
      * 'status'=> 'ISSUED' || 'DISBURSING' || 'VOIDED' || 'LOCKED'
      *            || 'COMPLETED' || 'FAILED',
      * 'expiration_timestamp'=> string,
-     * 'created'=> string',
-     * 'email'=> string,
-     * 'payout_url'=> string
+     * 'created'=> string'
      * ]
      * @throws Exceptions\ApiException
      */

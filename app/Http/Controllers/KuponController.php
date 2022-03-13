@@ -10,11 +10,24 @@ class KuponController extends Controller
     public function index()
     {
         $kupon = Kupon::orderBy('created_at', 'desc')->get();
-        return view('tests.kupon.index', compact('kupon'));
+        //return view('tests.kupon.index', compact('kupon'));
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+           return view('tests.kupon.index', compact('kupon'));
+        }else{
+          return view('V2.Admin.kelola-kupon', compact('kupon')); 
+        }
     }
     public function create()
     {
-        return view('tests.kupon.create');
+        //return view('tests.kupon.create');
+         // V2
+        if(auth()->user()->role != 'admin'){
+           return view('tests.kupon.create');
+        }else{
+          return view('V2.Admin.create-kupon'); 
+        }
     }
     public function store(Request $request)
     {
@@ -37,7 +50,13 @@ class KuponController extends Controller
     }
     public function edit(Kupon $kupon)
     {
-        return view('tests.kupon.edit', compact('kupon'));
+        //return view('tests.kupon.edit', compact('kupon'));
+        // V2
+        if(auth()->user()->role != 'admin'){
+           return view('tests.kupon.edit', compact('kupon'));
+        }else{
+          return view('V2.Admin.edit-kupon', compact('kupon')); 
+        }
     }
     public function update(Request $request, Kupon $kupon)
     {

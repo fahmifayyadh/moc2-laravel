@@ -29,9 +29,9 @@ trait RetrieveAll
      *
      * @return array
      */
-    public static function retrieveAll($params = [])
+    public static function retrieveAll()
     {
         $url = static::classUrl();
-        return static::_request('GET', $url, $params);
+        return static::_request('GET', $url, []);
     }
 }

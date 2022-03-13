@@ -21,7 +21,10 @@ class OrderController extends Controller
         $bank = Bank::query();
         $personal = Bank::where('type','personal')->get();
         $cx = true;
-        return view('tests.order.order-status-course', compact(['personal','transCourse','bank','cx']));
+        // return view('tests.order.order-status-course', compact(['personal','transCourse','bank','cx']));
+
+        //V2
+        return view('V2.Member.myorder-produk-course', compact(['personal','transCourse','bank','cx']));
     }
     public function fisik()
     {
@@ -30,7 +33,10 @@ class OrderController extends Controller
         }])->orderBy("status", "desc")->orderBy("created_at", "desc")->paginate(10);
         $bank = Bank::where('type','personal')->get();
         $cx = true;
-        return view('tests.order.order-status', compact(['transFisik','bank','cx']));
+        // return view('tests.order.order-status', compact(['transFisik','bank','cx']));
+
+        //V2
+        return view('V2.Member.myorder-produk-fisik', compact(['transFisik','bank','cx']));
     }
     public function filter($fil)
     {
@@ -38,8 +44,12 @@ class OrderController extends Controller
             $x->withTrashed();
         }])->orderBy("status", "desc")->orderBy("created_at", "desc")->get();
         $bank = Bank::where('type','personal')->get();
-        return view('tests.order.order-status',compact(['transFisik','bank']));
+        // return view('tests.order.order-status',compact(['transFisik','bank']));
+
+        //V2
+        return view('V2.Member.myorder-produk-fisik',compact(['transFisik','bank']));
     }
+
     public function filterCourse($fil)
     {
         $transCourse =TransactionCourse::where('user_id',auth()->user()->id)->where('status',$fil)->with(['paket' => function($x){
@@ -47,7 +57,10 @@ class OrderController extends Controller
         }])->get();
         $bank = Bank::query();
         $personal = Bank::where('type','personal')->get();
-        return view('tests.order.order-status-course', compact(['personal','transCourse','bank']));
+        //return view('tests.order.order-status-course', compact(['personal','transCourse','bank']));
+
+        //V2
+        return view('V2.Member.myorder-produk-course', compact(['personal','transCourse','bank']));
     }
     public function bukti(Request $request, Transaction $transaction)
     {
@@ -95,7 +108,10 @@ class OrderController extends Controller
         $t = $transaction;
         $d = $transaction->delivery;
         $b = Bank::findOrFail($request->bank);
-        return view('tests.transaksi.invoice', compact('d', 't', 'b'));
+        //return view('tests.transaksi.invoice', compact('d', 't', 'b'));
+
+         // V2
+        return view('V2.Member.detail-pembayaran', compact('d', 't', 'b'));
     }
     public function invoiceCourse(Request $request,TransactionCourse $transaction)
     {

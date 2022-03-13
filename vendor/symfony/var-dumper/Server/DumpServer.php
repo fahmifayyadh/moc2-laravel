@@ -30,7 +30,7 @@ class DumpServer
 
     public function __construct(string $host, LoggerInterface $logger = null)
     {
-        if (!str_contains($host, '://')) {
+        if (false === strpos($host, '://')) {
             $host = 'tcp://'.$host;
         }
 
@@ -71,7 +71,7 @@ class DumpServer
                 continue;
             }
 
-            [$data, $context] = $payload;
+            list($data, $context) = $payload;
 
             $callback($data, $context, $clientId);
         }

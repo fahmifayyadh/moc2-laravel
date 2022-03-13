@@ -39,11 +39,17 @@ class FileController extends Controller
     public function kelola(Course $course)
     {
         $file = File::where('course_id', $course->id)->get();
-        return view('tests.file.detail',compact(['file','course']));
+        // return view('tests.file.detail',compact(['file','course']));
+
+        // V2
+        return view('V2.Admin.kelola-produk.kelola-file',compact(['file','course']));
     }
     public function create(Course $course)
     {
-        return view('tests.file.create',compact(['course']));
+        // return view('tests.file.create',compact(['course']));
+
+        // V2
+        return view('V2.Admin.kelola-produk.create-file',compact(['course']));
     }
     public function store(Request $request,$id)
     {
@@ -57,7 +63,10 @@ class FileController extends Controller
     }
     public function edit(File $file)
     {
-        return view('tests.file.edit',compact('file'));
+        // return view('tests.file.edit',compact('file'));
+
+        // V2
+        return view('V2.Admin.kelola-produk.edit-file',compact(['file']));
     }
     public function update(Request $request,File $file)
     {
@@ -72,6 +81,7 @@ class FileController extends Controller
     public function delete(File $file)
     {
         $file->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
 }

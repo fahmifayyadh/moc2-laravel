@@ -1,295 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="{{asset('img/logo/logo.png')}}" rel="icon">
-    <title>RuangAdmin - Alerts</title>
-
-     <link rel="stylesheet" href="{{asset('/assets/bootstrap-4.min.css')}}">
-    <!-- Plugins css Ends-->
-    <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/date-picker.css') }}">
-    <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style.css')}}">
-    <link id="color" rel="stylesheet" href="{{asset('/assets/css/color-2.css')}}" media="screen">
-    <!-- Responsive css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/responsive.css')}}">
-    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/ruang-admin.css" rel="stylesheet')}}">
-    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
-
-    <!-- font rubik -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@200;500;700&display=swap" rel="stylesheet">
-
-    <!-- font roboto -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body id="page-top">
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <ul class="navbar-nav sidebar  accordion" id="accordionSidebar">
-
-            <!-- <hr class="sidebar-divider my-0"> -->
-
-            <li class="nav-item">
-                <a class="nav-link" href="addproduct.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fab fa-fw fa-wpforms"></i>
-                    <span>Forms</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable"
-                    aria-expanded="true" aria-controls="collapseTable">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span>
-                </a>
-                <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Tables</h6>
-                        <a class="collapse-item" href="#">Simple Tables</a>
-                        <a class="collapse-item" href="#">DataTables</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-palette"></i>
-                    <span>UI Colors</span>
-                </a>
-            </li>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Examples
-            </div>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage"
-                    aria-expanded="true" aria-controls="collapsePage">
-                    <i class="fas fa-fw fa-columns"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Example Pages</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
-                </a>
-            </li>
-            <hr class="sidebar-divider">
-            <div class="version" id="version-ruangadmin"></div>
-        </ul>
-        <!-- Sidebar -->
-        <div id="content-wrapper" class="d-flex flex-column" style="background:#1F2028;">
-            <div id="content">
-                <!-- TopBar -->
-                <nav class="navbar navbar-expand  bg-navbar topbar mb-4 static-top" style="background: 
-        #353535; width: auto;">
-                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
-                        <i class="fa fa-bars" style="color: #FF9F1C;"></i>
-                    </button>
-                    <ul class="navbar-nav ml-auto">
-
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                <i class="fas fa-shopping-cart" style="color:#FF9F1C;"></i>
-                                <span class="badge badge-danger badge-counter"
-                                    style="background-color:  #FF9F1C;">3+</span>
-                            </a>
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-black">
-                                        Revolotion Bright 100 ml
-                                        <div class="small">Rp 125.000</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-black">
-                                        Glowing Packages
-                                        <div class="small">Rp 125.000</div>
-                                    </div>
-                                </a>
-                                <div class="text-right p-3">
-                                    <a class="btn button-custome text-center small text-light" href="#">Lihat keranjang</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                        
-                                <i class="far fa-bell" style="color:#FF9F1C;"></i>
-                                <span class="badge badge-danger badge-counter" style="background-color:  #FF9F1C;">3+</span>
-                            </a>
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-black">
-                                        <div class="small">Admin MOC</div>
-                                        Selamat Bergabung dengan keluarga
-                                        MOC Member
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="text-black">
-                                        <div class="small">December 7, 2019</div>
-                                        pembelian mengalami expired
-                                    </div>
-                                </a>
-                                <div class="text-center p-3">
-                                    <a class="btn button-custome text-center small text-light" href="#">Cek semua notifikasi</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-expand" style="color: #FF9F1C;"></i>
-                                <span class="badge badge-warning badge-counter">2</span>
-                            </a>
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="../img/man.png" style="max-width: 60px" alt="">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been
-                                            having.</div>
-                                        <div class="small text-gray-500">Udin Cilok · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="../img/girl.png" style="max-width: 60px"
-                                            alt="">
-                                        <div class="status-indicator bg-default"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people
-                                            say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Jaenab · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle" src="../../img/boy.png"
-                                    style="max-width: 60px; border: none;">
-                                <span class="ml-2 d-none d-lg-inline small"
-                                    style="color:#FF9F1C; font-family: 'Rubik', sans-serif;">Maman Ketoprak</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.html">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- Topbar -->
-
+@extends('V2.layouts.master')
+@section('content')
                 <div class="container-fluid" id="container-wrapper">
                     <!-- caraousel slide -->
                     <div id="carouselExampleIndicators" class="carousel slide mr-3" data-ride="carousel">
                         <ol class="carousel-indicators d-flex justify-content-end mr-5">
+                             @forelse ($banner as $ic => $t)
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{$ic}}"></li>
+                            @empty
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            @endforelse
                         </ol>
                         <div class="carousel-inner">
+                            @forelse ($banner as $i=>$it)
+                            <div class="carousel-item @if ($i==0) active @endif">
+                                <a @if ($it->link != '#') target="__blank" @endif href="{{$it->link}}">
+                                    <img class="d-block w-100 rounded" src="{{asset(Storage::url('banner/'.$it->img))}}" alt="Iklan ye">
+                                </a>
+                            </div>
+                            @empty
                             <div class="carousel-item active">
-                                <img class="d-block w-100 rounded" src="{{asset('assets\images\slider-auto-width\11.jpg')}}" alt="First slide">
+                                <a href="#">
+                                    <img class="d-block w-100 rounded" src="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Iklan ye">
+                                </a>
                             </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100 rounded" src="{{asset('assets\images\slider-auto-width\11.jpg')}}" alt="Second slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100 rounded" src="{{asset('assets\images\slider-auto-width\11.jpg')}}" alt="Third slide">
-                            </div>
+                            @endforelse
                         </div>
-                        
-                    </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                      </a>
+                  </div>
                     <!-- caraousel slide -->
                     <!-- title berita -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-                        <a href="allproduct.html">
+                        <a href="#">
                             <p style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">
                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
                                 BERITA PENTING <span style="font-weight: 100;"></span>
@@ -301,88 +49,120 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-body">
+                                <div id="posts" class="card-body accordion" id="accordionExample">
                                     <!-- list berita -->
-                                    <div class="row">
+                                    @foreach ($berita as $i => $b)
+                                    <div class="row" id="pagination">
                                         <div class="col-3">
-                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
+                                            <img src="{{asset(Storage::url('berita/'.$b->img))}}" class="img-fluid" alt="Responsive image">
                                         </div>
                                         <div class="col-9 my-auto text-black">
-                                            <p class="h4">Berita 1</p>
-                                            <h3>
-                                                <strong>
-                                                    JUALAN ONLINE DAPAT EMAS GRATIS SEBANYAK BANYAKNYA!!
-                                                </strong>
-                                            </h3>
+                                         <div data-toggle="collapse"
+                                         data-target="#collapse{{$i+1}}" class="card-header" id="heading{{$i+1}}" style="background-color: #fff;padding: 0"  >
+                                         <h2 class="mb-0">
+                                            <p class="h4">Berita {{$i+1}}</p>
+                                            <a style="color:black" class="btn btn-link" type="button" aria-expanded="true" aria-controls="collapse{{$i+1}}" onclick="mydisplay(document.getElementById('collapse'+{{$i+1}}))">
+                                                <h5>{{$b->judul}}</h5>
+                                            </a>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapse{{$i+1}}" class="collapse" aria-labelledby="heading{{$i+1}}" data-parent="#accordionExample"style="background-color: #fff;padding: 0">
+                                        <div style="padding: 10px" class="card-body">
+                                            <div id="berr">
+                                                {!!$b->isi!!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <small>dibuat pada: {{$b->created_at}}</small>
                                         </div>
                                     </div>
                                     <hr style="border-top: 1px dashed" class="">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
-                                        </div>
-                                        <div class="col-9 my-auto text-black">
-                                            <p class="h4">Berita 1</p>
-                                            <h3>
-                                                <strong>
-                                                    JUALAN ONLINE DAPAT EMAS GRATIS SEBANYAK BANYAKNYA!!
-                                                </strong>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <hr style="border-top: 1px dashed" class="">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <img src="img/item/index.svg" class="img-fluid" alt="Responsive image">
-                                        </div>
-                                        <div class="col-9 my-auto text-black">
-                                            <p class="h4">Berita 1</p>
-                                            <h3>
-                                                <strong>
-                                                    JUALAN ONLINE DAPAT EMAS GRATIS SEBANYAK BANYAKNYA!!
-                                                </strong>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <hr style="border-top: 1px dashed" class="">
+                                    @endforeach
+
                                     <!-- list berita -->
                                 </div>
+                                <div class="col-3" style="align-self: center;">
+                                    {{ $berita }}
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
                     <!-- dashboard -->
+                    @php
+                    $paket = 0;
+                    $sp='';
+                    $paket = $us->transactions_count+$us->transactions_course_count+$us->dummy_count; 
+
+                    if($paket >= 100000){
+                    $sp = 'Master Entrepreneur';
+                    }elseif($paket >= 10000){
+                    $sp = 'Entrepreneur';
+                    }elseif($paket >= 1000){
+                    $sp = 'Expert';
+                    }elseif($paket >= 500){
+                    $sp = 'Master Seller';
+                    }elseif($paket >= 100){
+                    $sp = 'Star Seller';
+                    }elseif($paket >= 10){
+                    $sp = 'Top Seller';
+                    }else{
+                    $sp = 'Reseller';
+                    }
+                    $ts = App\User::where('sponsor',auth()->user()->email)->count();
+                    $rm = '';
+                    if($ts >= 100000){
+                    $rm = 'Director';
+                    }elseif($ts >= 10000){
+                    $rm = 'Mentor';
+                    }elseif($ts >= 1000){
+                    $rm = 'Diamond';
+                    }elseif($ts >= 500){
+                    $rm = 'Gold';
+                    }elseif($ts >= 100){
+                    $rm = 'Silver';
+                    }elseif($ts >= 10){
+                    $rm = 'Bronze';
+                    }else{
+                    $rm = 'Affiliate';
+                    }
+                    @endphp
                     <div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
-                        <a href="allproduct.html">
+                        
                             <p>
                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;font-weight: 600; font-size: 30px;"> | </span>
                                 <span style="color:white;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 30px;">DASHBOARD</span>  
-                                <span class="badge bg-danger text-light">Reseller</span>
-                                <span class="badge bg-success text-light">Danger</span>
+                                <span class="badge bg-danger text-light">{{$sp}}</span>
+                                <span class="badge bg-success text-light">{{$rm}}</span>
                                 <span style="font-weight: 100;"></span>
                             </p>
                             <p style="text-indent: 15px;" class="text-light">
-                                Tanggal daftar : 31-Jan-2021, Masa Aktif User: Life Time
+                                Tanggal daftar : {{auth()->user()->created_at->format('d-M-Y')}},
+                                Masa Aktif User:
+                                {{auth()->user()->batas == null ? 'Life Time' : Carbon\Carbon::parse(auth()->user()->batas)->format('d-M-Y')}}
                             </p>
-                        </a>
+                      
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="card bg-primary-card">
+                            <div class="card bg-primary-card" style="background-color: #252633;">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-3">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
+                                                        <a type="button" data-toggle="modal" data-target="#totalomzet">
                                                         <div class="card-body">
                                                             <p style="color:#FF9F1C;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
                                                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-                                                                KOMISI <span style="font-weight: 100;"></span>
+                                                               {{auth()->user()->role == 'admin' ? 'Saldo' : 'Komisi'}}<span style="font-weight: 100;"></span>
                                                             </p>
                                                             <p class="text-center text-light h1">
-                                                                0
+                                                                 {{number_format($saldo,0,'.','.')}}
                                                             </p>
-                                                        </div>
+                                                        </div></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -399,37 +179,37 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Point
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                70
+                                                               {{number_format($leadnow,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Invitation
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                               {{number_format($salesnow,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
-                                                                Omzet
+                                                               Omzet
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                                {{number_format($omsetnow,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -446,37 +226,37 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Point
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                70
+                                                                {{number_format($leadbulan,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Invitation
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                                {{number_format($salesbulan,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
-                                                                Omzet
+                                                              Omzet
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                               {{number_format($omsetbulan,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -489,14 +269,14 @@
                                             <!-- total omzet -->
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p style="color:#FF9F1C;font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 20px;">
                                                                 <span style="color: #FF9F1C; font-family: 'Rubik', sans-serif; font-weight: bold;"> | </span>
-                                                                Total Omzet <span style="font-weight: 100;"></span>
+                                                               Total Omzet<span style="font-weight: 100;"></span>
                                                             </p>
                                                             <p class="text-center text-light h1">
-                                                                0
+                                                                {{number_format($sales,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -515,37 +295,37 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Point
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                70
+                                                               {{number_format($lead,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
                                                                 Invitation
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                               {{number_format($sales,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="card bg-secondary-card">
+                                                    <div class="card bg-secondary-card" style="background-color: #343546;">
                                                         <div class="card-body ">
                                                             <p class="text-custome">
-                                                                Omzet
+                                                               Omzet
                                                             </p>
                                                             <p class="text-center text-light h3">
-                                                                0
+                                                               {{number_format($omset,0,'.','.')}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -558,16 +338,10 @@
                         </div>
                     </div>
                 </div>
-
-
                 <!-- modal -->
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary mt-5 ml-4 mb-4" data-toggle="modal" data-target="#exampleModal">
-                    sample modal
-                </button>
-                
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="totalomzet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -578,45 +352,23 @@
                                 </button>
                             </div>
                             <div class="modal-body text-center">
-                                <button type="button" class="btn button-custome text-light" data-dismiss="modal">Lihat Komisi Course</button>
-                                <button type="button" class="btn button-custome text-light">Lihat Komisi Fisik</button>
+                               <a href="{{route('komisi.index')}}" ><button class="btn button-custome text-light" style="background-color: #FF9F1C;color:#FFFFFF;">Lihat Komisi Course</button></a> 
+                              <a href="{{route('komisiFisik.index')}}" > <button class="btn button-custome text-light" style="background-color: #FF9F1C;color:#FFFFFF;">Lihat Komisi Fisik</button></a> 
                             </div>
                             
                         </div>
                     </div>
                 </div>
 
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span> &copy;
-                                <script> document.write(new Date().getFullYear()); </script>
-                                <b><a href="#" target="_blank">Master Online Community</a></b>
-                            </span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- Footer -->
-
-            </div>
-
-        </div>
-        <!---Container Fluid-->
-
-
-
-        <!-- Scroll to top -->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-        <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-        <script src="{{asset('js/ruang-admin.min.js')}}"></script>
-
-
-</body>
-
-</html>
+@endsection
+@section('js')
+<script >
+ function mydisplay(x){
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+@endsection

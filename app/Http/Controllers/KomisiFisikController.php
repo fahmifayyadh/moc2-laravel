@@ -22,7 +22,7 @@ class KomisiFisikController extends Controller
             })->with(['product' => function($x){
                 $x->withTrashed();
             }])->with('komisiFisik')->where('status','selesai')->paginate(10);
-            return view('tests.afiliasi.komisiFisik', compact('transaksi'));
+            return view('V2.Member.komisiFisik', compact('transaksi'));
         } else {
             $bank = $this->xendit->getBank();
             $transaksi = Transaction::whereHas('user',function($z){
@@ -30,7 +30,11 @@ class KomisiFisikController extends Controller
             })->with(['product' => function($x){
                 $x->withTrashed();
             }])->where('status','selesai')->paginate(10);
-            return view('tests.afiliasi.afiliasiFisik', compact(['transaksi','bank']));
+            //return view('tests.afiliasi.afiliasiFisik', compact(['transaksi','bank']));
+
+            // V2
+            return view('V2.Admin.afiliasi.komisi-fisik', compact(['transaksi','bank'])); 
+        
         }
     }
     public function batal(Request $request)

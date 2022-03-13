@@ -42,9 +42,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+    public function transactionsMonthNow()
+    {
+        return $this->hasMany(Transaction::class)->selectRaw('sum(commission) as sum_commission,sum(point_sponsor) as point_sponsor, user_id')->whereMonth("created_at",now()->format('m'))->where("status","selesai");
+    }
+    public function transactionsTotal()
+    {
+        return $this->hasMany(Transaction::class)->selectRaw('sum(commission) as sum_commission,sum(point_sponsor) as point_sponsor, user_id')->where("status","selesai");
+    }
     public function transactionsCourse()
     {
         return $this->hasMany(TransactionCourse::class);
+    }
+    public function transactionsCourseMonthNow()
+    {
+        return $this->hasMany(TransactionCourse::class)->selectRaw('sum(commission) as sum_commission,sum(point_sponsor) as point_sponsor, user_id')->whereMonth("created_at",now()->format('m'))->where("status","selesai");
+    }
+    public function transactionsCourseTotal()
+    {
+        return $this->hasMany(TransactionCourse::class)->selectRaw('sum(commission) as sum_commission,sum(point_sponsor) as point_sponsor, user_id')->where("status","selesai");
     }
     public function dummy()
     {
@@ -61,6 +77,10 @@ class User extends Authenticatable
     public function fromUser()
     {
         return $this->hasMany('App\Chat','from_user_id');
+    }
+    public function member()
+    {
+        return $this->hasMany(User::class,"sponsor","email");
     }
     
 }

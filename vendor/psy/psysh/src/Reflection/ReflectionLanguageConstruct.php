@@ -74,10 +74,10 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @param string $keyword
      */
-    public function __construct(string $keyword)
+    public function __construct($keyword)
     {
         if (!self::isLanguageConstruct($keyword)) {
-            throw new \InvalidArgumentException('Unknown language construct: '.$keyword);
+            throw new \InvalidArgumentException('Unknown language construct: ' . $keyword);
         }
 
         $this->keyword = $keyword;
@@ -98,7 +98,7 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->keyword;
     }
@@ -108,7 +108,7 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return bool
      */
-    public function returnsReference(): bool
+    public function returnsReference()
     {
         return false;
     }
@@ -118,11 +118,11 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return array
      */
-    public function getParameters(): array
+    public function getParameters()
     {
         $params = [];
         foreach (self::$languageConstructs[$this->keyword] as $parameter => $opts) {
-            $params[] = new ReflectionLanguageConstructParameter($this->keyword, $parameter, $opts);
+            \array_push($params, new ReflectionLanguageConstructParameter($this->keyword, $parameter, $opts));
         }
 
         return $params;
@@ -133,11 +133,8 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * (Hint: it always returns false)
      *
-     * @todo remove \ReturnTypeWillChange attribute after dropping support for PHP 7.x (when we can use union types)
-     *
-     * @return string|false (false)
+     * @return bool false
      */
-    #[\ReturnTypeWillChange]
     public function getFileName()
     {
         return false;
@@ -148,7 +145,7 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return string
      */
-    public function __toString(): string
+    public function __toString()
     {
         return $this->getName();
     }
@@ -160,7 +157,7 @@ class ReflectionLanguageConstruct extends \ReflectionFunctionAbstract
      *
      * @return bool
      */
-    public static function isLanguageConstruct(string $keyword): bool
+    public static function isLanguageConstruct($keyword)
     {
         return \array_key_exists($keyword, self::$languageConstructs);
     }

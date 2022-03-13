@@ -23,6 +23,16 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
 //============BACK END TESTING ONLY==========================//
 Route::group(['middleware' => ['auth', 'checkRole:member,admin', 'checkStatus:active']], function () {
 	// all
+	Route::prefix('cart')->name('cart.')->group(function () {
+		Route::get('/', 'CartController@index')->name('index');
+		Route::post('/create/{product}', 'CartController@create')->name('create');
+		Route::get('/add/quantity/{product}', 'CartController@addQuantity')->name('add');
+		Route::get('/min/quantity/{product}', 'CartController@minQuantity')->name('min');
+		Route::post('/delete/{product}', 'CartController@delete')->name('delete');
+	});
+	Route::prefix('omset')->name('omset.')->group(function () {
+		Route::get('/', 'OmsetMemberController@index')->name('index');
+	});
 	Route::prefix('notif')->name('notif.')->group(function () {
 		Route::get('/{id}', 'NotifController@baca')->name('baca');
 	});
@@ -52,7 +62,7 @@ Route::group(['middleware' => ['auth', 'checkRole:member,admin', 'checkStatus:ac
 		Route::post('/link-generate', 'AfiliasiController@generate')->name('generate');
 		Route::get('/list-stats', 'AfiliasiController@status')->name('list-stats');
 	});
-	
+
 	Route::prefix('facebook-pixel')->name('facebookPixel.')->group(function () {
 		Route::get('/', 'PixelController@index')->name('index');
 		Route::post('/', 'PixelController@create')->name('pixel');
@@ -78,12 +88,22 @@ Route::group(['middleware' => ['auth', 'checkRole:member', 'checkStatus:active,p
 	Route::group(['middleware' => ['auth', 'checkStatus:active']], function () {
 		Route::prefix('etalase')->name('etalase.')->group(function () {
 			Route::get('/course', 'EtalaseController@course')->name('course');
+			// Tes View
+			Route::get('/pembayaran', function () {
+				return view('V2.Member.pembayaran');
+			});
 			// Route::get('/course/paket', 'EtalaseController@paketCourse')->name('paketCourse');
 			Route::get('/product', 'EtalaseController@produk')->name('product');
 			Route::get('/detail-paket/{course}', 'EtalaseController@detailCourse')->name('detail-course');
 			Route::get('/detail-course/{course}', 'EtalaseController@detailCoursePaket')->name('detail-course-paket');
 			// Route::get('/detail-paket-course/{paket}', 'EtalaseController@detailPaketCourse')->name('detailPaketCourse');
 			Route::get('/detail-produk/{product}', 'EtalaseController@detailProduk')->name('detail-produk');
+			Route::get('/keranjang', 'EtalaseController@keranjang')->name('keranjang');
+			Route::get('/keranjang/{product}', 'EtalaseController@detailKeranjang')->name('detail-keranjang');
+			// filter
+			Route::get('/product/terbaru', 'EtalaseController@filterProdukTerbaru')->name('filter-produk-terbaru');
+			Route::get('/product/search', 'EtalaseController@searchProduk')->name('searchProduk');
+			Route::get('/course/search', 'EtalaseController@searchCourse')->name('searchCourse');
 		});
 		Route::prefix('komisi')->name('komisi.')->group(function () {
 			Route::post('/member-konfrim', 'KomisiController@konfrim')->name('konfrim');
@@ -102,6 +122,10 @@ Route::group(['middleware' => ['auth', 'checkRole:member', 'checkStatus:active,p
 		Route::get('/status/filter/course/{fil}', 'OrderController@filterCourse')->name('filterCourse');
 		Route::get('/invoice/{transaction}', 'OrderController@invoice')->name('invoice');
 		Route::post('/invoice-course/{transaction}', 'OrderController@invoiceCourse')->name('invoiceCourse');
+		// Tes View
+		Route::get('/marketplace', function () {
+			return view('V2.Member.detail-pembayaran-marketplace');
+		})->name('invoiceMarketplace');
 	});
 	Route::prefix('my-file')->name('file.')->group(function () {
 		Route::get('/', 'FileController@index')->name('index');
@@ -193,7 +217,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 		// fisik
 		Route::post('/bayar', 'KomisiFisikController@bayar')->name('bayar');
 		Route::post('/batal', 'KomisiFisikController@batal')->name('batal');
-	
+
 	});
 
 	Route::prefix('produk')->name('produk.')->group(function () {

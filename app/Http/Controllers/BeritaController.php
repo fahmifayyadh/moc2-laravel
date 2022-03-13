@@ -16,12 +16,26 @@ class BeritaController extends Controller
     }
     public function index()
     {
-        $berita = Berita::get();
-        return view('tests.berita.index',compact('berita'));
+        $berita = Berita::latest()->get();
+        //return view('tests.berita.index',compact('berita'));
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.berita.index',compact('berita'));
+        }else{
+          return view('V2.Admin.kelola-berita',compact('berita'));  
+        }
     }
     public function create()
     {
-        return view('tests.berita.create');
+        // /return view('tests.berita.create');
+
+        // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.berita.create');
+        }else{
+          return view('V2.Admin.create-berita');  
+        }
     }
     public function store(Request $request)
     {
@@ -46,10 +60,17 @@ class BeritaController extends Controller
     }
     public function edit(Berita $berita)
     {
-        return view('tests.berita.edit',compact('berita'));
+        //return view('tests.berita.edit',compact('berita'));
+         // V2
+        if(auth()->user()->role != 'admin'){
+            return view('tests.berita.edit',compact('berita'));
+        }else{
+          return view('V2.Admin.edit-berita',compact('berita'));  
+        }
     }
     public function update(Request $request,Berita $berita)
-    {
+    {   
+        $fileName = $berita->img ?? null;
         try {
             if($request->img != null){
 

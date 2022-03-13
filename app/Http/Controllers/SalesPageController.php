@@ -24,6 +24,7 @@ class SalesPageController extends Controller
     public function delete(SalesPage $id)
     {
         $id->delete();
+        toastr()->success('Sukses Menghapus', 'success');
         return redirect()->back();
     }
 }
