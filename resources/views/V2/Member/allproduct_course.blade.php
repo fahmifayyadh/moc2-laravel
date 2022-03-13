@@ -22,18 +22,26 @@
             </div>
             <!-- title Leaderboard-->
         </div>
-        <div class="col-6">
-            <div class="input-group shadow-lg">
-                <form action="{{route('etalase.searchCourse')}}" method="get">
-                    <input type="text" name="name" class="form-control" placeholder="cari nama"
-                    aria-label="Recipient's username" aria-describedby="button-addon2" style="width: 30rem;">
-                </form>
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
-                            class="fas fa-search"></i></button>
+        <div class="col-4">
+            <div class="box">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <form action="{{route('etalase.searchCourse')}}" method="get"><input type="text" name="name" placeholder="cari barang" id="search" style="background: transparent;border: none;color: white;margin-left: 5px;"></form>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="text-right">
+                <div class="dropdown">
+                    <button class="btn btn-primary text-custome bg-secondary-card border-0" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fas fa-filter"></i>
+                        Filter</button>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{route('etalase.course')}}">Terbaru</a>
+                        <a class="dropdown-item" href="{{route('etalase.filter-course-termahal')}}">Harga Tertinggi</a>
+                        <a class="dropdown-item" href="{{route('etalase.filter-course-termurah')}}">Harga Terendah</a>
+                    </div>
                 </div>
-                <button class="btn btn-primary ml-4 text-custome bg-secondary-card border-0"
-                    type="submit"><i class="fas fa-filter"></i> Filter</button>
             </div>
         </div>
     </div>

@@ -61,40 +61,30 @@
     <!-- data product -->
     <div class="row mx-lg-n3 mx-md-n1 mx-lg-n1">
         <!-- loop product -->
-        <?php
-        $getName = null;
-        if ($_GET) {
-            $getName = $_GET['name'];
-        }
-        ?>
         @foreach ($produk as $c)
-        @if (Request::path() == 'etalase/product' || 'etalase/product/search?name=$getName')
+        @if (Request::path() == 'etalase/product/termahal' || Request::path() == 'etalase/product/termurah')
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card w-80" style="height: 100%">
-                <a href="{{route(Request::path() == 'etalase/product' || 'etalase/product/search?name=$getName' ? 'etalase.detail-produk' : 'etalase.detail-course',$c->id) }}"><img class="card-img-top mx-auto d-block img-fluid" style="height: 20rem; object-fit: cover;height: 300px;width:300px"
-                src="{{asset(Storage::url(Request::path() == 'etalase/product' || 'etalase/product/search?name=$getName' ? 'product/main/'.$c->image : 'paket/'.$c->image))}}" alt="Card image cap"></a>
+                <a href="{{route(Request::path() == 'etalase/product/termahal' || Request::path() == 'etalase/product/termurah' ? 'etalase.detail-produk' : 'etalase.detail-course',$c['id']) }}"><img class="card-img-top mx-auto d-block img-fluid" style="height: 20rem; object-fit: cover;height: 300px;width:300px"
+                src="{{asset(Storage::url(Request::path() == 'etalase/product/termahal' || Request::path() == 'etalase/product/termurah' ? 'product/main/'.$c['image'] : 'paket/'.$c['image']))}}" alt="Card image cap"></a>
                 <div class="card-body">
-                    <h5 class="card-title text-black">{{$c->name}}</h5>
-                    @if (Request::path() == 'etalase/product' || 'etalase/product/search?name=$getName')
+                    <h5 class="card-title text-black">{{$c['name']}}</h5>
+                    @if (Request::path() == 'etalase/product/termahal' || Request::path() == 'etalase/product/termurah')
                     <p class="card-text mb-0 text-black">
                         produk fisik
                     </p>
                     <span class="badge badge-success mb-1">Harga Varian</span>
                 </div>
                 <div class="card-footer">
-                    @forelse ($c->Varian()->get() as $v)
                     <p class="text-custome">
-                        <span class="text-black">{{$v->name}} : </span>
-                        Rp.{{number_format($v->price,0,'.','.')}}
+                        <span class="text-black">{{$c['varian']}} : </span>
+                        Rp.{{number_format($c['price'],0,'.','.')}}
                     </p>
-                    @empty
-                        Empty Price
-                    @endforelse
                     @else
-                    {!! $c->is_member ? '<span class="badge badge-info ml-2 text-white"> free Member </span>' : null !!}
+                    {!! $c['is_member'] ? '<span class="badge badge-info ml-2 text-white"> free Member </span>' : null !!}
                     <p class="text-custome">
                         <span class="text-black">E-course :</span>
-                        Rp.{{number_format($c->price,0,'.','.')}}
+                        Rp.{{number_format($c['price'],0,'.','.')}}
                         <div class="float-right">
                             <p class="text-custome align-top"><i class="fas fa-star fa-sm"></i> 5.0</p>
                         </div>

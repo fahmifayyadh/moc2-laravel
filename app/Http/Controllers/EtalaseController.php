@@ -16,7 +16,7 @@ class EtalaseController extends Controller
 {
     public function course()
     {
-        $produk = Paket::get();
+        $produk = Paket::orderBy('created_at', 'DESC')->get();
         // return view('tests.etalase.index',compact('produk'));
 
         //V2
@@ -36,7 +36,7 @@ class EtalaseController extends Controller
     // }
     public function produk()
     {
-        $produk = Product::get();
+        $produk = Product::orderBy('created_at', 'DESC')->get();
         // return view('tests.etalase.index',compact('produk'));
 
         // V2
@@ -101,6 +101,32 @@ class EtalaseController extends Controller
         return view('V2.Member.detail-keranjang',compact(['cart','exspedisi','product','provinsi','randomProduct']));
     }
 
+    public function filterCourseTermahal()
+    {
+        $produk = Paket::orderBy('price', 'DESC')->get();
+        // return view('tests.etalase.index',compact('produk'));
+
+        //V2
+        if (auth()->user()->role != 'admin') {
+            return view('V2.Member.allproduct_course',compact('produk'));
+        }else {
+            return view('tests.etalase.index',compact('produk'));
+        }
+    }
+
+    public function filterCourseTermurah()
+    {
+        $produk = Paket::orderBy('price', 'ASC')->get();
+        // return view('tests.etalase.index',compact('produk'));
+
+        //V2
+        if (auth()->user()->role != 'admin') {
+            return view('V2.Member.allproduct_course',compact('produk'));
+        }else {
+            return view('tests.etalase.index',compact('produk'));
+        }
+    }
+
     public function searchCourse(Request $request)
     {
         $produk = Paket::where('name','like','%'.$request->name.'%')->get();
@@ -111,10 +137,44 @@ class EtalaseController extends Controller
         }
     }
 
-    public function filterProdukTerbaru()
+    public function filterProdukTermahal()
     {
-        $produk = Product::orderBy('created_at', 'DESC')->get();
-        return view('V2.Member.allproduct-fisik',compact('produk'));
+        $pd = Product::orderBy('created_at', 'DESC')->get();
+        $produk = array();
+        foreach ($pd as $key => $p) {
+            $produk[$key]["id"] = $p->id;
+            $produk[$key]["name"] = $p->name;
+            $produk[$key]["image"] = $p->image;
+            $produk[$key]["is_member"] = $p->is_member;
+            foreach ($p->Varian()->get() as $v) {
+                $produk[$key]["varian"] = $v->name;
+                $produk[$key]["price"] = $v->price;
+                $produk[$key]["product_id"] = $v->product_id;
+            }
+        }
+        $col = array_column( $produk, "price" );
+        array_multisort( $col, SORT_DESC, $produk );
+        return view('V2.Member.filter-allproduct-fisik',compact('produk'));
+    }
+
+    public function filterProdukTermurah()
+    {
+        $pd = Product::orderBy('created_at', 'DESC')->get();
+        $produk = array();
+        foreach ($pd as $key => $p) {
+            $produk[$key]["id"] = $p->id;
+            $produk[$key]["name"] = $p->name;
+            $produk[$key]["image"] = $p->image;
+            $produk[$key]["is_member"] = $p->is_member;
+            foreach ($p->Varian()->get() as $v) {
+                $produk[$key]["varian"] = $v->name;
+                $produk[$key]["price"] = $v->price;
+                $produk[$key]["product_id"] = $v->product_id;
+            }
+        }
+        $col = array_column( $produk, "price" );
+        array_multisort( $col, SORT_ASC, $produk );
+        return view('V2.Member.filter-allproduct-fisik',compact('produk'));
     }
 
     public function searchProduk(Request $request)

@@ -72,7 +72,7 @@ class CartController extends Controller
         }else{
             $cart->delete();
         }
-        return $this->resSuc('ok');
+        return $this->resSuc("ok");
     }
     public function delete(Product $product)
     {

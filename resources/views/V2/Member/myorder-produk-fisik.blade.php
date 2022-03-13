@@ -40,9 +40,11 @@
                         Filter</button>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{route('order.filter','')}}">Terbaru</a>
-                        <a class="dropdown-item" href="{{route('order.filter','')}}">Harga Tertinggi</a>
-                        <a class="dropdown-item" href="{{route('order.filter','')}}">Harga Terendah</a>
+                        <a class="dropdown-item" href="{{route('order.order-status-fisik')}}">Terbaru</a>
+                        <a class="dropdown-item" href="{{route('order.filter','selesai')}}">Sudah Di Bayar/Selesai</a>
+                        <a class="dropdown-item" href="{{route('order.filter','pembayaran')}}">Belum di bayar</a>
+                        <a class="dropdown-item" href="{{route('order.filter','proses')}}">Proses Pengiriman</a>
+                        <a class="dropdown-item" href="{{route('order.filter','batal')}}">Batal</a>
                     </div>
                 </div>
             </div>
