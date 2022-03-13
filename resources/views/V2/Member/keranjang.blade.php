@@ -61,7 +61,9 @@
                     url: "{{url('cart/min/quantity')}}" + '/' + id,
                     data:{id:id, quantity:quantity},
                     success:function(data){
-                        console.log(data);
+                        if (quantity <= 1) {
+                            $("div[id="+id+"]").remove();
+                        }
                     }
                 });
             });
@@ -124,7 +126,7 @@
                             </p>
                             <!-- button quantity -->
                             <div class="float-right mt-3">
-                                <div class="css-h82t6w-unf-quantity-editor" id="myQuantity">
+                                <div class="css-h82t6w-unf-quantity-editor">
                                     <button type="button" class="min-cart{{$i+1}} css-199ul1b quantity-left-minus" data-type="minus" data-field=""id="min-cart" data-id="{{$c->product->id}}">
                                         <svg class="unf-icon" viewBox="0 0 24 24" width="18px" height="18px" fill="var(--NN300, #FF9F1C)" style="display: inline-block; vertical-align: middle;">
                                             <path d="M19 13H5c-.6 0-1-.4-1-1s.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1z"></path>
